@@ -1,0 +1,1 @@
+import shutil, sys, time, ossrc = 'u:\\test'dst = 'c:\\test'now = time.time()for f in os.listdir(src):    if os.stat(f).st_mtime < now - 240 * 86400:        if os.path.isfile(f):            shutil.move(f, dst)
