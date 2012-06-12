@@ -3,9 +3,9 @@
 # Created				: 13th October 2011
 # Last Modified		: 
 # Version				: 1.1
-# Description			: This script will search for all *.log files in the given directory, zip them using the program you specify and then date stamp them
-
 # Modifications		: 1.1 - Added the variable zip_program so you can set it for the zip program on whichever OS, so to run on a different OS just change the locations of these two variables.
+
+# Description			: This script will search for all *.log files in the given directory, zip them using the program you specify and then date stamp them
 
 import os																	# Load the Library Module
 from time import strftime												# Load just the strftime Module from Time
