@@ -1,10 +1,19 @@
+# Script Name		: fileinfo.py
+# Author				: Not sure where I got this from
+# Created				: 28th November 2011
+# Last Modified		: 
+# Version				: 1.0
+# Modifications		: 
+
+# Description			: Show file information for a given file
+
+
 # get file information using os.stat()
 # tested with Python24 vegsaeat 25sep2006
 import os
 import stat # index constants for os.stat()
 import time
 # pick a file you have ...
-#file_name = 'puttylogs.py'
 file_name = raw_input("Enter a file name: ")
 file_stats = os.stat(file_name)
 # create a dictionary to hold file info
