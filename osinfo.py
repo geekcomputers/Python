@@ -1,3 +1,13 @@
+# Script Name		: osinfo.py
+# Author				: Craig Richards
+# Created				: 5th April 2012
+# Last Modified		: 
+# Version				: 1.0
+
+# Modifications		: 
+
+# Description			: Displays some information about the OS you are running this script on
+
 import platform
 
 profile = [
