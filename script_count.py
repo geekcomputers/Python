@@ -1,12 +1,13 @@
 # Script Name		: script_count.py
 # Author				: Craig Richards
 # Created				: 27th February 2012
-# Last Modified		: 10th May 2012
-# Version				: 1.2
+# Last Modified		: 20th July 2012
+# Version				: 1.3
 
 # Modifications		: 1.1 - 28-02-2012 - CR - Changed inside github and development functions, so instead of if os.name = "posix" do this else do this etc 
 #							: I used os.path.join, so it condensed 4 lines down to 1
 #							: 1.2 - 10-05-2012 - CR - Added a line to include PHP scripts.
+#							: 1.3 - 20-07-2012 - CR - Added the line to include Batch scripts
 
 # Description			: This scans my scripts directory and gives a count of the different types of scripts
 
@@ -54,8 +55,9 @@ clear_screen()																			# Call the function to clear the screen
 	
 print '\nYou have the following :\n'  
 print 'AutoIT:\t' + str(count_files(path, '.au3'))									# Run the count_files function to count the files with the extension we pass
+print 'Batch:\t' + str(count_files(path, ('.bat', ',cmd')))						# 1.3
 print 'Perl:\t' + str(count_files(path, '.pl'))
-print 'PHP:\t' + str(count_files(path, '.php'))
+print 'PHP:\t' + str(count_files(path, '.php'))									# 1.2
 print 'Python:\t' + str(count_files(path, '.py'))
 print 'Shell:\t' + str(count_files(path, ('.ksh', '.sh', '.bash')))
 print 'SQL:\t' + str(count_files(path, '.sql'))
