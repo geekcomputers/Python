@@ -26,3 +26,4 @@ for filename in files:											# Loop through the files
     os.rename(													# Write the files
 	    os.path.join(work_dir, filename),
 		os.path.join(work_dir, newfile))
+
