@@ -9,13 +9,9 @@
 # Description			: This will batch rename a group of files in a given directory, once you pass the current and new extensions
 
 import os															# Load the library module
-#import sys															# Load the library module
-from sys import argv
+from sys import argv                            # imports argv from sys to take arguments given in the command line when the program is initiated
 
-#work_dir=sys.argv[1]											# Set the variable work_dir with the first argument passed
-#old_ext=sys.argv[2]											# Set the variable work_dir with the first argument passed
-#new_ext=sys.argv[3]											# Set the variable work_dir with the first argument passed
-script, work_dir, old_ext, new_ext = argv
+work_dir, old_ext, new_ext = argv[1:]       # work_dir is the work directory, old_ext and new_ext are the current and wanted file extentions respectively. 
 
 files = os.listdir(work_dir)									# Set the variable files, by listing everything in the directory 
 for filename in files:											# Loop through the files
