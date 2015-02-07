@@ -1,10 +1,10 @@
-# Script Name	: password_cracker.py
-# Author		: Craig Richards
-# Created		: 20 May 2013
-# Last Modified	:
-# Version		: 1.0
+# Script Name	  : password_cracker.py
+# Author        : Craig Richards
+# Created		    : 20 May 2013
+# Last Modified	: 02 Feb 2015
+# Version		    : 1.0
 
-# Modifications	:
+# Modifications	: 
 
 # Description	: Old school password cracker using python
 
