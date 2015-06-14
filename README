@@ -35,3 +35,23 @@ script_count.py - This scans my scripts directory and gives a count of the diffe
 script_listing.py - This will list all the files in the given directory, it will also go through all the subdirectories as well
 
 testlines.py - This very simple script open a file and prints out 100 lines of whatever is set for the line variable
+
+compare_files.py - This script compares two text files
+
+count_all_mp3_files_on_machine.py - This script aims to provide a count of mp3 files present in a given directory 
+
+fetch_email_address.py - This script fetches the email address from the string provided 
+
+fetch_number_of_lines.py - This script fetches the number of lines from the text file provided
+
+fetch_url_in_a_web_page.py - This script fetches the url/ urls present in a webpage
+
+list_all_specific_type_files.py - This script list all the specific file types present in a directory 
+
+read_textfile.py - This script aims to read text file provided as an argument 
+
+search_text_file_for_string.py - This script aims to search for a string present in a text file 
+
+simple_downloader.py - This script aims to simulate a simple down loader 
+
+word_frequency.py - This script prints the word frequency in the text provided as an argument
