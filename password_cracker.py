@@ -8,7 +8,7 @@
 
 # Description	: Old school password cracker using python
 
-import crypt	# Import the module
+import crypt	# Import the module in python 3.3
 
 def testPass(cryptPass):	# Start the function
   salt = cryptPass[0:2]
