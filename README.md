@@ -16,9 +16,9 @@ In the scripts the comments etc are lined up correctly when they are viewed in [
 
 - `logs.py` - This script will search for all `*.log` files in the given directory, zip them using the program you specify and then date stamp them.
 
-- `move_files_over_x_days.py` - This will move all the files from the src directory that are over 240 days old to the destination directory.
+- `move_files_over_x_days.py` - This will move all the files from the source directory that are over 240 days old to the destination directory.
 
-- `nslookup_check.py` - This very simple script opens the file `server_list.txt` and the does an nslookup for each one to check the DNS entry/
+- `nslookup_check.py` - This very simple script opens the file `server_list.txt` and the does an nslookup for each one to check the DNS entry.
 
 - `osinfo.py` - Displays some information about the OS you are running this script on.
 
@@ -28,7 +28,7 @@ In the scripts the comments etc are lined up correctly when they are viewed in [
 
 - `powerdown_startup.py` - This goes through the server list and pings the machine, if it's up it will load the putty session, if its not it will notify you.
 
-- `puttylogs.py` - Zip up all the logs in the given directory.
+- `puttylogs.py` -  This zips up all the logs in the given directory.
 
 - `script_count.py` - This scans my scripts directory and gives a count of the different types of scripts.
 
