@@ -14,11 +14,14 @@ import os		# Import the Modules
 # Readfile Functions which open the file that is passed to the script
 
 def readfile(filename):
-	f = open(filename, 'r')
-	line = f.read()
-	print line
+	try:
+		f = open(filename, 'r')
+		line = f.read()
+		print line
+	except IOError:
+		print 'Error opening the file'
 
-def main():
+if __name__ == '__main__':
   if len(sys.argv) == 2:		# Check the arguments passed to the script
     filename = sys.argv[1]		# The filename is the first argument
     if not os.path.isfile(filename):	# Check the File exists
@@ -33,5 +36,3 @@ def main():
   print '[+] Reading from : ' + filename	# Display Message and read the file contents
   readfile(filename)
   
-if __name__ == '__main__':
-  main()
