@@ -35,3 +35,5 @@ In the scripts the comments etc are lined up correctly when they are viewed in [
 - `script_listing.py` - This will list all the files in the given directory, it will also go through all the subdirectories as well.
 
 - `testlines.py` - This very simple script open a file and prints out 100 lines of whatever is set for the line variable.
+
+- `tests/test_script_count.py` - test the script with the most functions.  
