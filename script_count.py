@@ -12,7 +12,7 @@
 #                   I used os.path.join, so it condensed 4 lines down to 1
 #1.2 - 10-05-2012 - CR - Added a line to include PHP scripts.
 #1.3 - 20-07-2012 - CR - Added the line to include Batch scripts
-
+#1.31 -23-12-2015 break into funcs to do unittest on CentOs 6.4, it might break on windows Gang Liang
 # Description: This scans my scripts directory and gives a count of the different types of scripts
 
 import sys

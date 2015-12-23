@@ -9,15 +9,11 @@ print base_dir
 
 sys.path.append(base_dir)
 # Python/__init__.py has to be present for this to work
-import script_count 
+import dir_test 
 class expandTest(unittest.TestCase):
     def test_re(self):
-        #self.assertEqual(script_count.clear_screen(),None)
-        # Linux
-        self.assertEqual(script_count.clear_screen_get_cmd(),'clear')
-        self.assertEqual(script_count.development(),None)
-
-        self.assertEqual(script_count.count_files(pwd,'.pl'),0)
+        dir_test.mkdir_python('tests');
+        self.assertEqual(os.path.exists('tests'),True)
 
 if __name__ == '__main__':
     unittest.main()
