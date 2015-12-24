@@ -8,7 +8,22 @@
 
 # Description	: Old school password cracker using python
 
-import crypt	# Import the module
+from sys import platform as _platform
+
+# Check the current operating system to import the correct version of crypt
+if _platform == "linux" or _platform == "linux2":
+    import crypt # Import the module
+elif _platform == "darwin":
+    # Mac OS X
+    import crypt
+elif _platform == "win32":
+    # Windows
+    try:
+       import fcrypt # Try importing the fcrypt module
+    except ImportError:
+       print 'Please install fcrypt if you are on Windows'
+
+
 
 def testPass(cryptPass):	# Start the function
   salt = cryptPass[0:2]
