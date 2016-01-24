@@ -35,3 +35,5 @@ In the scripts the comments etc are lined up correctly when they are viewed in [
 - `script_listing.py` - This will list all the files in the given directory, it will also go through all the subdirectories as well.
 
 - `testlines.py` - This very simple script open a file and prints out 100 lines of whatever is set for the line variable.
+
+- `serial_scanner.py` contains a method called ListAvailablePorts which returns a list with the names of the serial ports that are in use in our computer, this method works only on Linux and Windows (can be extended for mac osx). If no port is found, an empty list is returned.
