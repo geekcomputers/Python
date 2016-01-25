@@ -20,7 +20,7 @@ def readfile(filename):
 
 def main():
   if len(sys.argv) == 2:		# Check the arguments passed to the script
-    filename = sys.argv[1]		# The filename is the first argument
+    filename = sys.argv[1]	# The filename is the first argument
     if not os.path.isfile(filename):	# Check the File exists
       print '[-] ' + filename + ' does not exist.'
       exit(0)
