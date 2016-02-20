@@ -27,7 +27,5 @@ platform.system(),
 platform.uname(),
 platform.version(),
 ]
-i=1
-for item in profile:
+for i, item in enumerate(profile, 1):
   print '#',i,' ',item
-  i=i+1;
