@@ -1,31 +1,31 @@
 # Script Name		: osinfo.py
 # Author				: Craig Richards
 # Created				: 5th April 2012
-# Last Modified		: 
+# Last Modified	: 22nd February 2016
 # Version				: 1.0
 
-# Modifications		: 
+# Modifications		: Changed the list to a dictionary. Although the order is lost, the info is with its label.
 
 # Description			: Displays some information about the OS you are running this script on
 
 import platform
 
-profile = [
-platform.architecture(),
-platform.dist(),
-platform.libc_ver(),
-platform.mac_ver(),
-platform.machine(),
-platform.node(),
-platform.platform(),
-platform.processor(),
-platform.python_build(),
-platform.python_compiler(),
-platform.python_version(),
-platform.release(),
-platform.system(),
-platform.uname(),
-platform.version(),
-]
-for i, item in enumerate(profile, 1):
-  print '#',i,' ',item
+profile = {
+'Architecture: ': platform.architecture(),
+'Linux Distribution: ': platform.linux_distribution(),
+'mac_ver: ': platform.mac_ver(),
+'machine: ': platform.machine(),
+'node: ': platform.node(),
+'platform: ': platform.platform(),
+'processor: ': platform.processor(),
+'python build: ': platform.python_build(),
+'python compiler: ': platform.python_compiler(),
+'python version: ': platform.python_version(),
+'release: ': platform.release(),
+'system: ': platform.system(),
+'uname: ': platform.uname(),
+'version: ': platform.version(),
+}
+
+for key in profile:
+    print(key + str(profile[key]))
