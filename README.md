@@ -16,9 +16,9 @@ In the scripts the comments etc are lined up correctly when they are viewed in [
 
 - `logs.py` - This script will search for all `*.log` files in the given directory, zip them using the program you specify and then date stamp them.
 
-- `move_files_over_x_days.py` - This will move all the files from the src directory that are over 240 days old to the destination directory.
+- `move_files_over_x_days.py` - This will move all the files from the source directory that are over 240 days old to the destination directory.
 
-- `nslookup_check.py` - This very simple script opens the file `server_list.txt` and the does an nslookup for each one to check the DNS entry/
+- `nslookup_check.py` - This very simple script opens the file `server_list.txt` and the does an nslookup for each one to check the DNS entry.
 
 - `osinfo.py` - Displays some information about the OS you are running this script on.
 
@@ -28,10 +28,12 @@ In the scripts the comments etc are lined up correctly when they are viewed in [
 
 - `powerdown_startup.py` - This goes through the server list and pings the machine, if it's up it will load the putty session, if its not it will notify you.
 
-- `puttylogs.py` - Zip up all the logs in the given directory.
+- `puttylogs.py` -  This zips up all the logs in the given directory.
 
 - `script_count.py` - This scans my scripts directory and gives a count of the different types of scripts.
 
 - `script_listing.py` - This will list all the files in the given directory, it will also go through all the subdirectories as well.
 
 - `testlines.py` - This very simple script open a file and prints out 100 lines of whatever is set for the line variable.
+
+- `serial_scanner.py` contains a method called ListAvailablePorts which returns a list with the names of the serial ports that are in use in our computer, this method works only on Linux and Windows (can be extended for mac osx). If no port is found, an empty list is returned.
