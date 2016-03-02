@@ -1,10 +1,10 @@
 # Script Name	: check_for_sqlite_files.py
 # Author		: Craig Richards
 # Created		: 07 June 2013
-# Last Modified	:
-# Version		: 1.0
+# Last Modified	: 14 February 2016
+# Version		: 1.0.1
 
-# Modifications	:
+# Modifications	: 1.0.1 - Remove unecessary line and variable on Line 21
 
 # Description	: Scans directories to check if there are any sqlite files in there 
 
@@ -18,8 +18,7 @@ def isSQLite3(filename):
     if getsize(filename) < 100: # SQLite database file header is 100 bytes
         return False
     else:
-        fd = open(filename, 'rb')
-        Header = fd.read(100)
+        Header = open(filename, 'rb').read(100)
         fd.close()
 
         if Header[0:16] == 'SQLite format 3\000':
