@@ -52,6 +52,8 @@ script=os.path.join(outputdir, output_file)
 input_file=os.path.join(confdir,config_file)
 old_text=" Script Name	: "
 new_text=(" Script Name	: "+output_file)
+if not(os.path.exists(outputdir)):
+  os.mkdir(outputdir)
 newscript = open(script, 'w')								
 input=open(input_file,'r')
 today=datetime.date.today()
