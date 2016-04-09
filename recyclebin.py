@@ -10,7 +10,7 @@
 
 import os					# Load the Module
 import optparse			# Load the Module
-from _winreg import *	# Load the Module
+from winreg import *	# Load the Module #changed from _winreg to winreg ("The _winreg module has been renamed to winreg in Python 3.")
 
 def sid2user(sid):		# Start of the function to gather the user
   try:
@@ -27,7 +27,7 @@ def returnDir():			# Start of the function to search through the recyclebin
   #dirs=['c:\\$RECYCLE.BIN\\']
   for recycleDir in dirs:
     if os.path.isdir(recycleDir):
-	  return recycleDir
+      return recycleDir
   return None
   
 def findRecycled(recycleDir):	# Start of the function, list the contents of the recyclebin
@@ -35,9 +35,9 @@ def findRecycled(recycleDir):	# Start of the function, list the contents of the 
   for sid in dirList:
     files = os.listdir(recycleDir + sid)
     user = sid2user(sid)
-    print '\n[*] Listing Files for User: ' + str(user)
+    print('\n[*] Listing Files for User: ' + str(user)) #added brackets, otherwise gave me "Syntax error" exception (PyCharm).
     for file in files:
-	  print '[+] Found File: ' + str(file)
+      print('[+] Found File: ' + str(file))
 	  
 def main():
   recycleDir = returnDir()
