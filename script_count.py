@@ -17,16 +17,16 @@ path = os.getenv("scripts") 															# Set the variable path by getting th
 dropbox = os.getenv("dropbox")													# Set the variable dropbox by getting the value from the OS environment variable dropbox
 
 def clear_screen():																		# Function to clear the screen
-	if os.name == "posix":															# Unix/Linux/MacOS/BSD/etc
-		os.system('clear')																# Clear the Screen
-	elif os.name in ("nt", "dos", "ce"):											# DOS/Windows
-		os.system('CLS')																# Clear the Screen
+    if os.name == "posix":															# Unix/Linux/MacOS/BSD/etc
+        os.system('clear')																# Clear the Screen
+    elif os.name in ("nt", "dos", "ce"):											# DOS/Windows
+        os.system('CLS')																# Clear the Screen
 
 def count_files(path, extensions):     											# Start of the function to count the files in the scripts directory, it counts the extension when passed below
   counter = 0     																		# Set the counter to 0
   for root, dirs, files in os.walk(path):        									# Loop through all the directories in the given path 
     for file in files:             															# For all the files
-	  counter += file.endswith(extensions)										# Count the files
+      counter += file.endswith(extensions)										# Count the files
   return counter  																		# Return the count
 
 def github():   																			# Start of the function just to count the files in the github directory
@@ -38,7 +38,7 @@ def github():   																			# Start of the function just to count the fil
   elif github_count == 0:																# Unless the count is 0, then print the following messages
     print '\nGithub directory is all Clear'
   else:																						# If it is any other number then print the following message, showing the number outstanding.
-	print '\nYou have: ' + str(github_count) + ' waiting to be uploaded to github!!'
+    print '\nYou have: ' + str(github_count) + ' waiting to be uploaded to github!!'
   
 def development():   																	# Start of the function just to count the files in the development directory
   dev_dir = os.path.join(path, 'development')									# Joins the paths to get the development directory - 1.1
@@ -49,10 +49,10 @@ def development():   																	# Start of the function just to count the 
   elif dev_count ==0:																	# Unless the count is 0, then print the following messages
     print '\nDevelopment directory is all clear'
   else:
-	print '\nYou have: ' + str(dev_count) + ' waiting to be finished!!'	# If it is any other number then print the following message, showing the number outstanding.
+    print '\nYou have: ' + str(dev_count) + ' waiting to be finished!!'	# If it is any other number then print the following message, showing the number outstanding.
 
 clear_screen()																			# Call the function to clear the screen
-	
+
 print '\nYou have the following :\n'  
 print 'AutoIT:\t' + str(count_files(path, '.au3'))									# Run the count_files function to count the files with the extension we pass
 print 'Batch:\t' + str(count_files(path, ('.bat', ',cmd')))						# 1.3
