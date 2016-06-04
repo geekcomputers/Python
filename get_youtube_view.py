@@ -10,4 +10,4 @@ print("Enjoy your Time\n" +time.ctime())
 while(countBreaks < totalBreaks):
     time.sleep(5) 
     webbrowser.open("https://www.youtube.com/watch?v=o6A7nf3IeeA")
-    countBreaks = countBreaks+1
+    countBreaks += 1
