@@ -7,7 +7,6 @@
 #                       :     Added Messages and Basic Exception Handling
 
 # Description			: Tests to see if the directory testdir exists, if not it will create the directory for you
-
 import os  # Import the OS module
 
 

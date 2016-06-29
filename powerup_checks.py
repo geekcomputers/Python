@@ -29,28 +29,28 @@ text = '''
 
 You need to pass an argument, the options the script expects is 
 
-	-site1		For the Servers relating to site1
-	-site2	For the Servers located in site2'''
-	
-def windows():																																			# This is the function to run if it detects the OS is windows.
-	f = open(outputfile, 'a')																															# Open the logfile
-	for server in open(serverfile,'r'):																													# Read the list of servers from the list
-		#ret = subprocess.call("ping -n 3 %s" % server.strip(), shell=True,stdout=open('NUL', 'w'),stderr=subprocess.STDOUT)	# Ping the servers in turn
-		ret = subprocess.call("ping -n 3 %s" % server.strip(),stdout=open('NUL', 'w'),stderr=subprocess.STDOUT)	# Ping the servers in turn
-		if ret == 0:             																															# Depending on the response
-		  f.write ("%s: is alive" % server.strip().ljust(15) + "\n")																			# Write out to the logfile is the server is up
-		else: 
-		  f.write ("%s: did not respond" % server.strip().ljust(15) + "\n")																# Write to the logfile if the server is down
+    -site1		For the Servers relating to site1
+    -site2	For the Servers located in site2'''
 
-			
+def windows():																																			# This is the function to run if it detects the OS is windows.
+    f = open(outputfile, 'a')																															# Open the logfile
+    for server in open(serverfile,'r'):																													# Read the list of servers from the list
+        #ret = subprocess.call("ping -n 3 %s" % server.strip(), shell=True,stdout=open('NUL', 'w'),stderr=subprocess.STDOUT)	# Ping the servers in turn
+        ret = subprocess.call("ping -n 3 %s" % server.strip(),stdout=open('NUL', 'w'),stderr=subprocess.STDOUT)	# Ping the servers in turn
+        if ret == 0:             																															# Depending on the response
+          f.write ("%s: is alive" % server.strip().ljust(15) + "\n")																			# Write out to the logfile is the server is up
+        else:
+          f.write ("%s: did not respond" % server.strip().ljust(15) + "\n")																# Write to the logfile if the server is down
+
+
 def linux():																																					# This is the function to run if it detects the OS is nix.
-	f = open('server_startup_'+strftime("%Y-%m-%d")+'.log', 'a')																		# Open the logfile
-	for server in open(serverfile,'r'):																													# Read the list of servers from the list
-		ret = subprocess.call("ping -c 3 %s" % server, shell=True,stdout=open('/dev/null', 'w'),stderr=subprocess.STDOUT)	# Ping the servers in turn
-		if ret == 0:																																			# Depending on the response
-			f.write ("%s: is alive" % server.strip().ljust(15) + "\n")																			# Write out to the logfile is the server is up
-		else:             
-			f.write ("%s: did not respond" % server.strip().ljust(15) + "\n")															# Write to the logfile if the server is down
+    f = open('server_startup_'+strftime("%Y-%m-%d")+'.log', 'a')																		# Open the logfile
+    for server in open(serverfile,'r'):																													# Read the list of servers from the list
+        ret = subprocess.call("ping -c 3 %s" % server, shell=True,stdout=open('/dev/null', 'w'),stderr=subprocess.STDOUT)	# Ping the servers in turn
+        if ret == 0:																																			# Depending on the response
+            f.write ("%s: is alive" % server.strip().ljust(15) + "\n")																			# Write out to the logfile is the server is up
+        else:
+            f.write ("%s: did not respond" % server.strip().ljust(15) + "\n")															# Write to the logfile if the server is down
 
 def get_servers(query):																																# Function to get the servers from the database
   conn = sqlite3.connect(master_db)																											# Connect to the database
@@ -69,7 +69,7 @@ def get_servers(query):																																# Function to get the ser
 def main():																																					# Main Function
   if os.path.exists(serverfile):																														# Checks to see if there is an existing server file
     os.remove(serverfile)																																# If so remove it
-	
+
   if len(sys.argv) < 2:																																	# Check there is an argument being passed
     print text																																				# Display the help text if there isn't one passed
     sys.exit()																																				# Exit the script
@@ -81,16 +81,16 @@ def main():																																					# Main Function
     if sys.argv[1].lower().startswith('-site1'):																										# If the argument is site1
       query = 'site1'																																		# Set the variable to have the value site
     elif sys.argv[1].lower().startswith('-site2'):																								# Else if the variable is bromley
-	  query = 'site2'																																	# Set the variable to have the value bromley	
+      query = 'site2'																																	# Set the variable to have the value bromley
     else:
       print '\n[-] Unknown option [-] ' + text																										# If an unknown option is passed, let the user know
       sys.exit(0)
   get_servers(query)																																	# Call the get servers funtion, with the value from the argument
   
   if os.name == "posix":																																# If the OS is linux.
-	linux()																																					# Call the linux function
+    linux()																																					# Call the linux function
   elif os.name in ("nt", "dos", "ce"):																												# If the OS is Windows...
-	windows()																																				# Call the windows function
+    windows()																																				# Call the windows function
 
   print ('\n[+] Check the log file ' + outputfile + ' [+]\n')																					# Display the name of the log
   
