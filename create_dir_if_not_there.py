@@ -23,5 +23,5 @@ try:
     
     if not os.path.exists(home+'/testdir'):
         os.makedirs(home+'/testdir')        # If not create the directory, inside their home directory
-    except Exceptions as e:
-        print e
+except Exceptions as e:
+    print e
