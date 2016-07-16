@@ -26,6 +26,6 @@ destdir = os.path.join(dropbox, "My_backups"+"/"+"Automater_services"+todaystr+"
 for file_name in open(conffilename): 									  # Walk through the configuration file
   fname = file_name.strip()													    # Strip out the blank lines from the configuration file
   if fname:																			        # For the lines that are not blank
-    sourcefile = os.path.join(sourcedir, file_name.strip())		# Get the name of the source files to backup
-    destfile = os.path.join(destdir, file_name.strip()) 			# Get the name of the destination file names
+    sourcefile = os.path.join(sourcedir, fname)		# Get the name of the source files to backup
+    destfile = os.path.join(destdir, fname) 			# Get the name of the destination file names
     shutil.copytree(sourcefile, destfile)								  	# Copy the directories
