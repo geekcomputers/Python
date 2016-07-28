@@ -4,7 +4,7 @@
 # Last Modified	: 
 # Version		: 1.0
 
-# Modifications	: 
+# Modifications	: with statement added to ensure correct file closure
 
 # Description	: Check a file exists and that we can read the file
 
@@ -14,7 +14,8 @@ import os		# Import the Modules
 # Readfile Functions which open the file that is passed to the script
 
 def readfile(filename):
-	line = open(filename, 'r').read()
+	with open(filename, 'r') as f:      # Ensure file is correctly closed under all circumstances
+	    line = f.read()
 	print line
 
 def main():
