@@ -19,7 +19,6 @@ def isSQLite3(filename):
         return False
     else:
         Header = open(filename, 'rb').read(100)
-        fd.close()
 
         if Header[0:16] == 'SQLite format 3\000':
             return True
