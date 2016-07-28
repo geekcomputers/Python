@@ -35,7 +35,7 @@ def batch_rename(work_dir, old_ext, new_ext):
 
 def main():
     '''
-    This will be called if the script is directly envoked.
+    This will be called if the script is directly invoked.
     '''
     # Set the variable work_dir with the first argument passed
     work_dir = sys.argv[1]
