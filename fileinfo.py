@@ -19,7 +19,7 @@ file_stats = os.stat(file_name)
 # create a dictionary to hold file info
 file_info = {
   'fname': file_name,
-  'fsize': file_stats [stat.ST_SIZE],
+  'fsize': file_stats[stat.ST_SIZE],
   'f_lm': time.strftime("%d/%m/%Y %I:%M:%S %p",time.localtime(file_stats[stat.ST_MTIME])),
   'f_la': time.strftime("%d/%m/%Y %I:%M:%S %p",time.localtime(file_stats[stat.ST_ATIME])),
   'f_ct': time.strftime("%d/%m/%Y %I:%M:%S %p",time.localtime(file_stats[stat.ST_CTIME]))
