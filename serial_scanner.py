@@ -21,7 +21,7 @@ def ListAvailablePorts():
     if platform == 'win32':
         for i in range(255):
             try:
-                ser = serial.Serial(i,9600)
+                ser = serial.Serial(str(i),9600)
             except serial.serialutil.SerialException:
                 pass
             else:
