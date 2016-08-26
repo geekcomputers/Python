@@ -16,21 +16,21 @@ import os		# Import the Modules
 def readfile(filename):
 	with open(filename, 'r') as f:      # Ensure file is correctly closed under all circumstances
 	    line = f.read()
-	print line
+	print (line)
 
 def main():
   if len(sys.argv) == 2:		# Check the arguments passed to the script
     filename = sys.argv[1]		# The filename is the first argument
     if not os.path.isfile(filename):	# Check the File exists
-      print '[-] ' + filename + ' does not exist.'
+      print ('[-] ' + filename + ' does not exist.')
       exit(0)
     if not os.access(filename, os.R_OK):	# Check you can read the file
-      print '[-] ' + filename + ' access denied'
+      print ('[-] ' + filename + ' access denied')
       exit(0)
   else:
-    print '[-] Usage: ' + str(sys.argv[0]) + ' <filename>' # Print usage if not all parameters passed/Checked
+    print ('[-] Usage: ' + str(sys.argv[0]) + ' <filename>') # Print usage if not all parameters passed/Checked
     exit(0)
-  print '[+] Reading from : ' + filename	# Display Message and read the file contents
+  print ('[+] Reading from : ' + filename)	# Display Message and read the file contents
   readfile(filename)
   
 if __name__ == '__main__':
