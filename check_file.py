@@ -41,7 +41,7 @@ def main():
     usage() # Print usage if not all parameters passed/Checked
     
     # Read the content of each file
-  for file in filenames:
+  for filename in filenames:
       print ('[+] Reading from : ' + filename)	# Display Message and read the file contents
       readfile(filename)
   
