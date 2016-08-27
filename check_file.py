@@ -42,8 +42,8 @@ def main():
     
     # Read the content of each file
   for file in filenames:
-      print ('[+] Reading from : ' + file)	# Display Message and read the file contents
-      readfile(file)
+      print ('[+] Reading from : ' + filename)	# Display Message and read the file contents
+      readfile(filename)
   
 if __name__ == '__main__':
     main()
