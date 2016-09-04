@@ -1,6 +1,12 @@
-Here is some more detailed information about the scripts I have written.  I do not consider myself a programmer, I create these little programs as experiments to have a play with the language, or to solve a problem for myself.  I would gladly accept pointers from others to improve the code and make it more efficient, or simplify the code.  If you would like to make any comments then please feel free to email me at craig@geekcomputers.co.uk.
+HELPFUL PYTHON SCRIPTS:
 
-In the scripts the comments etc are lined up correctly when they are viewed in [Notepad++](https://notepad-plus-plus.org/). This is what I use to code Python scripts.
+This README file provides detailed information about the scripts I have written. These programs were created with an intention to experiment with the language and to solve various problems. I would gladly accept modifications from others which can help improve the code, make it more efficient, or even simplify it.
+If you would like to make any comments then feel free to send an email to craig@geekcomputers.co.uk.
+
+Note:
+In the scripts, the comments etc., are lined up correctly when they are viewed in [Notepad++](https://notepad-plus-plus.org/).
+
+List of helpful Python scripts:
 
 - `batch_file_rename.py` - This will batch rename a group of files in a given directory, once you pass the current and new extensions.
 
