@@ -2,7 +2,7 @@ Here is some more detailed information about the scripts I have written.  I do n
 
 In the scripts the comments etc are lined up correctly when they are viewed in [Notepad++](https://notepad-plus-plus.org/). This is what I use to code Python scripts.
 
-- `batch_file_rename.py` - This batch will rename a group of files in a given directory, once you pass the current and new extensions.
+- `batch_file_rename.py` - This will batch rename a group of files in a given directory, once you pass the current and new extensions.
 
 - `create_dir_if_not_there.py` - Checks to see if a directory exists in the users home directory, if not then create it.
 
