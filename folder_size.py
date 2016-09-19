@@ -21,5 +21,9 @@ for (path, dirs, files) in os.walk(directory):      # Walk through all the direc
         filename = os.path.join(path, file)         
         dir_size += os.path.getsize(filename)       # Add the size of each file in the root dir to get the total size.
         
-for key in fsizedicr:       #iterating through the dictionary
-    print ("Folder Size: " + str(round(fsizedicr[key]*dir_size, 2)) + " " + key)        # round function example: round(4.2384, 2) ==> 4.23
+fsizeList = [str(round(fsizedicr[key]*dir_size, 2)) + " " + key for key in fsizedicr] # List of units 
+
+if dir_size == 0: print ("File Empty") # Sanity check to eliminate corner-case of empty file. 
+else:
+  for units in sorted(fsizeList)[::-1]: # Reverse sort list of units so smallest magnitude units print first.
+      print ("Folder Size: " + units)
