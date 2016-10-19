@@ -21,3 +21,8 @@ for files in os.listdir(logsdir):                       # Find all the files in 
 		os.chdir(logsdir)                               # Change directory to the logsdir
 		os.system(zip_program + " " +  files1 +" "+ files)  # Zip the logs into dated zip files for each server. - 1.1
 		os.remove(files)                                    # Remove the original log files
+
+
+
+import os
+print(os.cwd())
