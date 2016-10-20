@@ -26,21 +26,21 @@ def clear_screen():				# Function to clear the screen
         os.system('CLS')					# Clear the Screen
 
 def print_docs():							# Function to print the daily checks automatically
-  print "Printing Daily Check Sheets:"
+    print "Printing Daily Check Sheets:"
   # The command below passes the command line string to open word, open the document, print it then close word down
-  subprocess.Popen(["C:\\Program Files (x86)\Microsoft Office\Office14\winword.exe", "P:\\\\Documentation\\Daily Docs\\Back office Daily Checks.doc", "/mFilePrintDefault", "/mFileExit"]).communicate() 
+    subprocess.Popen(["C:\\Program Files (x86)\Microsoft Office\Office14\winword.exe", "P:\\\\Documentation\\Daily Docs\\Back office Daily Checks.doc", "/mFilePrintDefault", "/mFileExit"]).communicate() 
   
 def putty_sessions():						# Function to load the putty sessions I need
-  for server in open(conffilename):			# Open the file server_list.txt, loop through reading each line - 1.1 -Changed - 1.3 Changed name to use variable conffilename
-    subprocess.Popen(('putty -load '+server))	# Open the PuTTY sessions - 1.1
+    for server in open(conffilename):			# Open the file server_list.txt, loop through reading each line - 1.1 -Changed - 1.3 Changed name to use variable conffilename
+        subprocess.Popen(('putty -load '+server))	# Open the PuTTY sessions - 1.1
 
 def rdp_sessions():
-  print "Loading RDP Sessions:"
-  subprocess.Popen("mstsc eclr.rdp")		# Open up a terminal session connection and load the euroclear session
+    print "Loading RDP Sessions:"
+    subprocess.Popen("mstsc eclr.rdp")		# Open up a terminal session connection and load the euroclear session
   
 def euroclear_docs():
   # The command below opens IE and loads the Euroclear password document
-  subprocess.Popen('"C:\\Program Files\\Internet Explorer\\iexplore.exe"' '"file://fs1\pub_b\Pub_Admin\Documentation\Settlements_Files\PWD\Eclr.doc"')
+    subprocess.Popen('"C:\\Program Files\\Internet Explorer\\iexplore.exe"' '"file://fs1\pub_b\Pub_Admin\Documentation\Settlements_Files\PWD\Eclr.doc"')
 
 # End of the functions			
 

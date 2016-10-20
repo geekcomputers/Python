@@ -23,33 +23,33 @@ def clear_screen():																		# Function to clear the screen
         os.system('CLS')																# Clear the Screen
 
 def count_files(path, extensions):     											# Start of the function to count the files in the scripts directory, it counts the extension when passed below
-  counter = 0     																		# Set the counter to 0
-  for root, dirs, files in os.walk(path):        									# Loop through all the directories in the given path 
-    for file in files:             															# For all the files
-      counter += file.endswith(extensions)										# Count the files
-  return counter  																		# Return the count
+    counter = 0     																		# Set the counter to 0
+    for root, dirs, files in os.walk(path):        									# Loop through all the directories in the given path 
+        for file in files:             															# For all the files
+            counter += file.endswith(extensions)										# Count the files
+    return counter  																		# Return the count
 
 def github():   																			# Start of the function just to count the files in the github directory
-  github_dir = os.path.join(dropbox, 'github')									# Joins the paths to get the github directory - 1.1
-  github_count = sum((len(f) for _, _, f in os.walk(github_dir)))			# Get a count for all the files in the directory
-  if github_count > 5:																	# If the number of files is greater then 5, then print the following messages
-    print '\nYou have too many in here, start uploading !!!!!'
-    print 'You have: ' + str(github_count) + ' waiting to be uploaded to github!!'
-  elif github_count == 0:																# Unless the count is 0, then print the following messages
-    print '\nGithub directory is all Clear'
-  else:																						# If it is any other number then print the following message, showing the number outstanding.
-    print '\nYou have: ' + str(github_count) + ' waiting to be uploaded to github!!'
+    github_dir = os.path.join(dropbox, 'github')									# Joins the paths to get the github directory - 1.1
+    github_count = sum((len(f) for _, _, f in os.walk(github_dir)))			# Get a count for all the files in the directory
+    if github_count > 5:																	# If the number of files is greater then 5, then print the following messages
+        print '\nYou have too many in here, start uploading !!!!!'
+        print 'You have: ' + str(github_count) + ' waiting to be uploaded to github!!'
+    elif github_count == 0:																# Unless the count is 0, then print the following messages
+        print '\nGithub directory is all Clear'
+    else:																						# If it is any other number then print the following message, showing the number outstanding.
+        print '\nYou have: ' + str(github_count) + ' waiting to be uploaded to github!!'
   
 def development():   																	# Start of the function just to count the files in the development directory
-  dev_dir = os.path.join(path, 'development')									# Joins the paths to get the development directory - 1.1
-  dev_count = sum((len(f) for _, _, f in os.walk(dev_dir)))					# Get a count for all the files in the directory
-  if dev_count > 10:																	# If the number of files is greater then 10, then print the following messages
-    print '\nYou have too many in here, finish them or delete them !!!!!'
-    print 'You have: ' + str(dev_count) + ' waiting to be finished!!'
-  elif dev_count ==0:																	# Unless the count is 0, then print the following messages
-    print '\nDevelopment directory is all clear'
-  else:
-    print '\nYou have: ' + str(dev_count) + ' waiting to be finished!!'	# If it is any other number then print the following message, showing the number outstanding.
+    dev_dir = os.path.join(path, 'development')									# Joins the paths to get the development directory - 1.1
+    dev_count = sum((len(f) for _, _, f in os.walk(dev_dir)))					# Get a count for all the files in the directory
+    if dev_count > 10:																	# If the number of files is greater then 10, then print the following messages
+        print '\nYou have too many in here, finish them or delete them !!!!!'
+        print 'You have: ' + str(dev_count) + ' waiting to be finished!!'
+    elif dev_count ==0:																	# Unless the count is 0, then print the following messages
+        print '\nDevelopment directory is all clear'
+    else:
+        print '\nYou have: ' + str(dev_count) + ' waiting to be finished!!'	# If it is any other number then print the following message, showing the number outstanding.
 
 clear_screen()																			# Call the function to clear the screen
 
