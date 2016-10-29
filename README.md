@@ -18,15 +18,15 @@ In the scripts the comments etc are lined up correctly when they are viewed in [
 
 - `move_files_over_x_days.py` - This will move all the files from the source directory that are over 240 days old to the destination directory.
 
-- `nslookup_check.py` - This very simple script opens the file `server_list.txt` and the does an nslookup for each one to check the DNS entry.
+- `nslookup_check.py` - This very simple script opens the file `server_list.txt` and then does an nslookup for each one to check the DNS entry.
 
 - `osinfo.py` - Displays some information about the OS you are running this script on.
 
-- `ping_servers.py` - This script will, depending on the arguments supplied will ping the servers associated with that application group.
+- `ping_servers.py` - This script will, depending on the arguments supplied, will ping the servers associated with that application group.
 
 - `ping_subnet.py` - After supplying the first 3 octets it will scan the final range for available addresses.
 
-- `powerdown_startup.py` - This goes through the server list and pings the machine, if it's up it will load the putty session, if its not it will notify you.
+- `powerdown_startup.py` - This goes through the server list and pings the machine, if it's up it will load the putty session, if it's not it will notify you.
 
 - `puttylogs.py` -  This zips up all the logs in the given directory.
 
@@ -39,4 +39,4 @@ In the scripts the comments etc are lined up correctly when they are viewed in [
 - `serial_scanner.py` contains a method called ListAvailablePorts which returns a list with the names of the serial ports that are in use in our computer, this method works only on Linux and Windows (can be extended for mac osx). If no port is found, an empty list is returned.
 
 - `get_youtube_view.py` - This is very simple python script to get more views for your youtube videos.Some times I use for repeating my favorite songs by this scripts.
-- `CountMillionCharacter.py` - This Script will,counting character script count how much character present *any text based file.
+- `CountMillionCharacter.py` - This Script will,counting character script, count how much character present *any text based file.
