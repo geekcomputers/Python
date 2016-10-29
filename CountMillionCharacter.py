@@ -289,8 +289,7 @@ Before, and greet his grace: my lord, we come.
 Exeunt'''
 count = { }
 for character in info.upper():
-    count.setdefault(character, 0)
-    count[character] = count[character]+1
+    count[character]=count.get(character,0)+1
 
 value = pprint.pformat(count)
 print(value)
