@@ -1,5 +1,6 @@
 # batch_file_rename.py
 # Created: 6th August 2012
+#Modified: 27th January 2016 by Gregory Dolan
 
 '''
 This will batch rename a group of files in a given directory,
@@ -18,7 +19,6 @@ def batch_rename(work_dir, old_ext, new_ext):
     This will batch rename a group of files in a given directory,
     once you pass the current and new extensions
     '''
-    # files = os.listdir(work_dir)
     for filename in os.listdir(work_dir):
         # Get the file extension
         file_ext = os.path.splitext(filename)[1]
@@ -37,15 +37,17 @@ def main():
     '''
     This will be called if the script is directly invoked.
     '''
-    # Set the variable work_dir with the first argument passed
-    work_dir = sys.argv[1]
-    # Set the variable old_ext with the second argument passed
-    old_ext = sys.argv[2]
-    # Set the variable new_ext with the third argument passed
-    new_ext = sys.argv[3]
-    batch_rename(work_dir, old_ext, new_ext)
-
+    if len(sys.argv) == 4:
+        # Set the variable work_dir with the first argument passed
+        work_dir = sys.argv[1]
+        # Set the variable old_ext with the second argument passed
+        old_ext = sys.argv[2]
+        # Set the variable new_ext with the third argument passed
+        new_ext = sys.argv[3]
+        batch_rename(work_dir, old_ext, new_ext)
+    else:
+        print 'Usage:', str(sys.argv[0]), '<work_dir> <old_ext> <new_ext>'
+        exit(0)
 
 if __name__ == '__main__':
     main()
-
