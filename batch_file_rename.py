@@ -6,7 +6,7 @@ This will batch rename a group of files in a given directory,
 once you pass the current and new extensions
 '''
 
-__author__ = 'Craig Richards'
+__author__  = 'Craig Richards'
 __version__ = '1.0'
 
 import os
@@ -45,7 +45,6 @@ def main():
     new_ext  = sys.argv[3]
     
     batch_rename(work_dir, old_ext, new_ext)
-
 
 if __name__ == '__main__':
     main()
