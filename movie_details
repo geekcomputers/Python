@@ -1,6 +1,7 @@
 import mechanize
-from bs4 import BeautifulSoup 
 import urllib2
+from bs4 import BeautifulSoup 
+
 # Create a Browser
 b = mechanize.Browser()
 
@@ -16,38 +17,37 @@ b.open('http://www.imdb.com/search/title')
 # Choose a form
 b.select_form(nr=1)
 
-
 b['title'] = nm
 
 b.find_control(type="checkbox",nr=0).get("feature").selected = True
 
 
 # Submit
-fd = b.submit()
-
+fd   = b.submit()
 soup = BeautifulSoup(fd.read(),'html5lib')
 
 #data= soup.find_all('td',class_="title")
 #for div in data:
 #  links= div.find_all('a')
- #  for a in links:
-  #      print a['href'];
+#   for a in links:
+#        print a['href'];
 
 
 for div in soup.findAll('td', {'class': 'title'},limit=1):
     a = div.findAll('a')[0]
-    print a.text.strip(), '=>', a.attrs['href']
-    hht='http://www.imdb.com'+a.attrs['href']
+    print (a.text.strip(), '=>', a.attrs['href'])
+    hht = 'http://www.imdb.com'+a.attrs['href']
     print(hht)
-    page=urllib2.urlopen(hht)
+    page  = urllib2.urlopen(hht)
     soup2 = BeautifulSoup(page.read(),'html.parser')
-    print("title of the movie: ")
+    
+    print( "title of the movie: ")
     print(soup2.find(itemprop="name").get_text())
-    print("timerun: ")
+    print(            "timerun: ")
     print(soup2.find(itemprop="duration").get_text())
-    print("genre: ")
+    print(              "genre: ")
     print(soup2.find(itemprop="genre").get_text())
     print("current IMDB rating:")
     print(soup2.find(itemprop="ratingValue").get_text())
-    print("summary:")
+    print(            "summary:")
     print(soup2.find(itemprop="description").get_text())
