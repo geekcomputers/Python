@@ -12,7 +12,7 @@
 #
 # Description	: This simple script loads everything I need to carry out the daily checks for our systems.
 
-import platform		# Load Modules
+import platform		                # Load Modules
 import os
 import subprocess
 import sys
@@ -61,5 +61,5 @@ def main():
     rdp_sessions()									# Call the rdp_sessions function
     euroclear_docs()								# Call the euroclear_docs function
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
