@@ -1,5 +1,6 @@
+from bs4 import BeautifulSoup
+import datetime
 import mechanize
-from bs4 import BeautifulSoup 
 import urllib2
 # Create a Browser
 b = mechanize.Browser()
@@ -19,28 +20,27 @@ b.select_form(nr=0)
 # Fill it out
 b['regno'] = '37000304'
 
-import datetime
 currentdate = datetime.date(1997,3,10)
 enddate = datetime.date(1998,4,1)
 while currentdate <= enddate:
    ct=0
    #print currentdate
-   yyyymmdd=currentdate.strftime("%Y/%m/%d")
-   ddmmyyyy=yyyymmdd[8:]+"/"+yyyymmdd[5:7]+"/"+yyyymmdd[:4]
+   yyyymmdd = currentdate.strftime("%Y/%m/%d")
+   ddmmyyyy = yyyymmdd[8:] + "/" + yyyymmdd[5:7] + "/" +yyyymmdd[:4]
    print(ddmmyyyy)
    b.open('http://cbseresults.nic.in/jee/jee_2015.htm')
    b.select_form(nr=0)
    b['regno'] = '37000304'
-   b['dob']=ddmmyyyy
-   
+   b['dob'] = ddmmyyyy
+
    fd = b.submit()
    #print(fd.read())
    soup = BeautifulSoup(fd.read(),'html.parser')
 
    for writ in soup.find_all('table'):
-       ct=ct+1;
+       ct = ct + 1;
    #print (ct)
-   if ct==6:
+   if ct == 6:
       print("---fail---")
    else:
       print("--true--")
