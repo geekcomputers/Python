@@ -8,8 +8,8 @@
 
 # Description			: This script will, depending on the arguments supplied will ping the servers associated with that application group.
 
-import os							# Load the Library Module
-import subprocess				# Load the Library Module 
+import os						  	# Load the Library Module
+import subprocess				# Load the Library Module
 import sys							# Load the Library Module
 
 if '-h' in sys.argv or '--h' in sys.argv or '-help' in sys.argv or '--help' in sys.argv:	# Help Menu if called
