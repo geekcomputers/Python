@@ -35,14 +35,15 @@ soup = BeautifulSoup(fd.read(),'html5lib')
 # Updated from td tag to h3 tag
 for div in soup.findAll('h3', {'class': 'lister-item-header'}, limit=1):
     a = div.findAll('a')[0]
-    hht = 'http://www.imdb.com'+a.attrs['href']
+    hht = 'http://www.imdb.com' + a.attrs['href']
     print(hht)
     page  = urllib2.urlopen(hht)
     soup2 = BeautifulSoup(page.read(),'html.parser')
     find = soup2.find
     
-    print("title of the movie: " + find(itemprop='name').get_text().strip())
-    print("timerun: " + find(itemprop='duration').get_text().strip())
-    print("genre: " + find(itemprop='genre').get_text().strip())
+    print("Title: " + find(itemprop='name').get_text().strip())
+    print("Duration: " + find(itemprop='duration').get_text().strip())
+    print("Director: " + find(itemprop='director').get_text().strip())
+    print("Genre: " + find(itemprop='genre').get_text().strip())
     print("IMDB rating: " + find(itemprop='ratingValue').get_text().strip())
-    print("summary: " + find(itemprop='description').get_text().strip())
+    print("Summary: " + find(itemprop='description').get_text().strip())
