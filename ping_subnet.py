@@ -1,15 +1,15 @@
 # Script Name		: ping_subnet.py
 # Author				: Craig Richards
 # Created				: 12th January 2012
-# Last Modified		: 
+# Last Modified		:
 # Version				: 1.0
 
-# Modifications		: 
+# Modifications		:
 
 # Description			: After supplying the first 3 octets it will scan the final range for available addresses
 
 import os						# Load the Library Module
-import subprocess			# Load the Library Module 
+import subprocess			# Load the Library Module
 import sys						# Load the Library Module
 
 filename = sys.argv[0]																				# Sets a variable for the script name
@@ -30,10 +30,11 @@ else:
     elif os.name in ("nt", "dos", "ce"):															# Check the os, if it's windows then
         myping = "ping -n 2 "																			# This is the ping command
 
-    f = open('ping_'+subnet+'.log', 'w')															# Open a logfile
+    f = open('ping_' + subnet + '.log', 'w')															# Open a logfile
     for ip in range(2,255):																				# Set the ip variable for the range of numbers
-        ret = subprocess.call(myping + str(subnet)+"."+str(ip) , shell=True,stdout=f,stderr=subprocess.STDOUT) # Run the command pinging the servers
+        ret = subprocess.call(myping + str(subnet) + "." + str(ip) ,
+            shell=True, stdout=f, stderr=subprocess.STDOUT) # Run the command pinging the servers
         if ret == 0:																							# Depending on the response
-            f.write (subnet+"."+str(ip) + " is alive" + "\n")									# Write out that you can receive a reponse
+            f.write (subnet + "." + str(ip) + " is alive" + "\n")									# Write out that you can receive a reponse
         else:
-            f.write (subnet+"."+str(ip) + " did not respond" + "\n")						# Write out you can't reach the box
+            f.write (subnet + "." + str(ip) + " did not respond" + "\n")						# Write out you can't reach the box
