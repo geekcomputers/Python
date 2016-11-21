@@ -1,8 +1,8 @@
 import pprint
 
-inputFile = input('File Name: ')
-
+inputFile = input("File Name : ")
 count = {}
+
 with open(inputFile, 'r') as info:
     readFile = info.read()
     for character in readFile.upper():
