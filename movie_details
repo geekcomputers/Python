@@ -1,6 +1,6 @@
 import mechanize
 import urllib2
-from bs4 import BeautifulSoup 
+from bs4 import BeautifulSoup
 
 # Create a Browser
 browser = mechanize.Browser()
@@ -13,7 +13,8 @@ browser.addheaders = [('User-agent',
 
 movie_title = raw_input("Enter movie title: ")
 
-movie_types = ['feature', 'tv_movie', 'tv_series', 'tv_episode', 'tv_special', 'mini_series', 'documentary', 'game', 'short', 'video']
+movie_types = ('feature', 'tv_movie', 'tv_series', 'tv_episode', 'tv_special',
+    'mini_series', 'documentary', 'game', 'short', 'video')
 
 # Navigate
 browser.open('http://www.imdb.com/search/title')
@@ -40,7 +41,7 @@ for div in soup.findAll('h3', {'class': 'lister-item-header'}, limit=1):
     page  = urllib2.urlopen(hht)
     soup2 = BeautifulSoup(page.read(),'html.parser')
     find = soup2.find
-    
+
     print("Title: " + find(itemprop='name').get_text().strip())
     print("Duration: " + find(itemprop='duration').get_text().strip())
     print("Director: " + find(itemprop='director').get_text().strip())

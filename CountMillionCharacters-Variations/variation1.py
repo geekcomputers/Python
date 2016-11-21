@@ -1,13 +1,13 @@
 import pprint
 
-inputFile = input('File Name: ') 
+inputFile = input('File Name: ')
 
-count = { }
+count = {}
 with open(inputFile, 'r') as info:
-	readFile = info.read()
-	for character in readFile.upper():
-		count.setdefault(character, 0)
-		count[character] = count[character]+1
-		
+    readFile = info.read()
+    for character in readFile.upper():
+        count.setdefault(character, 0)
+        count[character] = count[character] + 1
+
 value = pprint.pformat(count)
 print(value)
