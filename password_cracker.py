@@ -11,11 +11,8 @@
 from sys import platform as _platform
 
 # Check the current operating system to import the correct version of crypt
-if _platform == "linux" or _platform == "linux2":
+if _platform in ["linux", "linux2", "darwin"]: # darwin is _platform name for Mac OS X
     import crypt # Import the module
-elif _platform == "darwin":
-    # Mac OS X
-    import crypt
 elif _platform == "win32":
     # Windows
     try:
