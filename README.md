@@ -9,7 +9,7 @@ In the scripts the comments etc are lined up correctly when they are viewed in [
 
 - `create_dir_if_not_there.py` - Checks to see if a directory exists in the users home directory, if not then create it.
 
-- `Meme Generator` - Creates a meme using the images installed in your local system.
+- `Fast Youtube Downloader` - Downloads youtube videos fastly with parallel threads using aria2c
 
 - `Google Image Downloader` - Query the specific term and retrieve the images from google image database.
 
