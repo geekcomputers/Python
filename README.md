@@ -9,6 +9,8 @@ In the scripts the comments etc are lined up correctly when they are viewed in [
 
 - `create_dir_if_not_there.py` - Checks to see if a directory exists in the users home directory, if not then create it.
 
+- `Fast Youtube Downloader` - Downloads youtube videos fastly with parallel threads using aria2c
+
 - `Google Image Downloader` - Query the specific term and retrieve the images from google image database.
 
 - `dir_test.py` - Tests to see if the directory `testdir` exists, if not it will create the directory for you.
