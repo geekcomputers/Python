@@ -43,6 +43,8 @@ In the scripts the comments etc are lined up correctly when they are viewed in [
 
 - `testlines.py` - This very simple script open a file and prints out 100 lines of whatever is set for the line variable.
 
+- `tweeter.py` - This script allows you to tweet text or a picture from the terminal.
+
 - `serial_scanner.py` contains a method called ListAvailablePorts which returns a list with the names of the serial ports that are in use in our computer, this method works only on Linux and Windows (can be extended for mac osx). If no port is found, an empty list is returned.
 
 - `get_youtube_view.py` - This is very simple python script to get more views for your youtube videos.Some times I use for repeating my favorite songs by this scripts.

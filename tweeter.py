@@ -13,14 +13,14 @@ def tweetthis(type):
 		print "Enter your tweet "+user.name
 		tweet = raw_input()
 		api.update_status(tweet)
-		print "\n\nDONE!!"
 	elif type == "pic":
 		print "Enter pic path "+user.name
 		pic = os.path.abspath(raw_input())
 		print "Enter status "+user.name
 		title = raw_input()
 		api.update_with_media(pic, status=title)
-		print "\n\nDONE!!"
+
+	print "\n\nDONE!!"
 
 def initialize():
 	global api, auth, user
@@ -37,11 +37,10 @@ def initialize():
 
 def main():
 	doit = int(raw_input("\n1. text\n2. picture\n"))
+	initialize()
 	if doit == 1:
-		initialize()
 		tweetthis("text")
 	elif doit == 2:
-		initialize()
 		tweetthis("pic")
 	else:
 		print "OK, Let's try again!"
