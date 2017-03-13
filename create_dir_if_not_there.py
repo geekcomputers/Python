@@ -11,9 +11,9 @@
 import os		# Import the OS module
 try:
     home = os.path.expanduser("~")          # Set the variable home by expanding the users set home directory
-    print home                              # Print the location
+    print(home)                              # Print the location
 
-    if not os.path.exists(home + '/testdir'):
-        os.makedirs(home + '/testdir')        # If not create the directory, inside their home directory
-except Exception, e:
-    print e
+    if not os.path.exists(os.path.join(home, 'testdir0123')):
+        os.makedirs(os.path.join(home, 'testdir0123'))        # If not create the directory, inside their home directory
+except Exception as e:
+    print(e)
