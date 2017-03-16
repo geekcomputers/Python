@@ -11,11 +11,8 @@
 from sys import platform as _platform
 
 # Check the current operating system to import the correct version of crypt
-if _platform == "linux" or _platform == "linux2":
+if _platform in ["linux", "linux2", "darwin"]: # darwin is _platform name for Mac OS X
     import crypt # Import the module
-elif _platform == "darwin":
-    # Mac OS X
-    import crypt
 elif _platform == "win32":
     # Windows
     try:
@@ -24,26 +21,26 @@ elif _platform == "win32":
        print 'Please install fcrypt if you are on Windows'
 
 
-
-def testPass(cryptPass):	# Start the function
+def testPass(cryptPass):	  # Start the function
   salt = cryptPass[0:2]
-  dictFile=open('dictionary.txt','r')	# Open the dictionary file
-  for word in dictFile.readlines():	# Scan through the file
-    word=word.strip('\n')
-    cryptWord=crypt.crypt(word,salt)	# Check for password in the file
+  dictFile = open('dictionary.txt','r')	  # Open the dictionary file
+  for word in dictFile.readlines():	  # Scan through the file
+    word = word.strip('\n')
+    cryptWord = crypt.crypt(word, salt)	  # Check for password in the file
     if (cryptWord == cryptPass):
       print "[+] Found Password: "+word+"\n"
       return
   print "[-] Password Not Found.\n"
   return
 
+
 def main():
-  passFile = open('passwords.txt')		# Open the password file
-  for line in passFile.readlines():	# Read through the file
+  passFile = open('passwords.txt')		  # Open the password file
+  for line in passFile.readlines():	   # Read through the file
     if ":" in line:
-      user=line.split(':')[0]
+      user = line.split(':')[0]
       cryptPass = line.split(':')[1].strip(' ') # Prepare the user name etc
-      print "[*] Cracking Password For: "+user 
+      print "[*] Cracking Password For: " + user
       testPass(cryptPass)				# Call it to crack the users password
 
 if __name__ == "__main__":

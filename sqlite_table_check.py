@@ -13,15 +13,15 @@ import sqlite3
 import sys
 import os
 
-dropbox= os.getenv("dropbox")
-config=os.getenv("my_config")
-dbfile=("Databases\jarvis.db")
-listfile=("sqlite_master_table.lst")
-master_db=os.path.join(dropbox, dbfile)
-config_file=os.path.join(config, listfile)
-tablelist=open(config_file,'r');
+dropbox     = os.getenv("dropbox")
+config      = os.getenv("my_config")
+dbfile      = ("Databases\jarvis.db")
+listfile    = ("sqlite_master_table.lst")
+master_db   = os.path.join(dropbox, dbfile)
+config_file = os.path.join(config, listfile)
+tablelist   = open(config_file,'r');
 
-conn = sqlite3.connect(master_db)
+conn   = sqlite3.connect(master_db)
 cursor = conn.cursor()
 cursor.execute('SELECT SQLITE_VERSION()')
 data = cursor.fetchone()

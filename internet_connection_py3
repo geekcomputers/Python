@@ -1,0 +1,8 @@
+import urllib.request
+
+try:
+    urllib.request.urlopen('http://google.com')
+    print ("working connection")
+
+except urllib.error.URLError:
+    print ("No internet connection")

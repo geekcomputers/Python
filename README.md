@@ -9,6 +9,10 @@ In the scripts the comments etc are lined up correctly when they are viewed in [
 
 - `create_dir_if_not_there.py` - Checks to see if a directory exists in the users home directory, if not then create it.
 
+- `Fast Youtube Downloader` - Downloads youtube videos fastly with parallel threads using aria2c
+
+- `Google Image Downloader` - Query the specific term and retrieve the images from google image database.
+
 - `dir_test.py` - Tests to see if the directory `testdir` exists, if not it will create the directory for you.
 
 - `env_check.py` - This script will check to see if all of the environment variables I require are set.
@@ -38,6 +42,8 @@ In the scripts the comments etc are lined up correctly when they are viewed in [
 - `script_listing.py` - This will list all the files in the given directory, it will also go through all the subdirectories as well.
 
 - `testlines.py` - This very simple script open a file and prints out 100 lines of whatever is set for the line variable.
+
+- `tweeter.py` - This script allows you to tweet text or a picture from the terminal.
 
 - `serial_scanner.py` contains a method called ListAvailablePorts which returns a list with the names of the serial ports that are in use in our computer, this method works only on Linux and Windows (can be extended for mac osx). If no port is found, an empty list is returned.
 

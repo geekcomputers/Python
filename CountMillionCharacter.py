@@ -1,6 +1,12 @@
-import pprint
-info = '''SCENE I. Yorkshire. Gaultree Forest.
+'''Simple million word count program.
+    main idea is Python pairs words
+    with the number of times
+    that number appears in the triple quoted string.
+    Credit to William J. Turkel and Adam Crymble for the word
+    frequency code used below. I just merged the two ideas.
+'''
 
+wordstring = '''SCENE I. Yorkshire. Gaultree Forest.
 Enter the ARCHBISHOP OF YORK, MOWBRAY, LORD HASTINGS, and others
 ARCHBISHOP OF YORK
 What is this forest call'd?
@@ -28,7 +34,6 @@ MOWBRAY
 Thus do the hopes we have in him touch ground
 And dash themselves to pieces.
 Enter a Messenger
-
 HASTINGS
 Now, what news?
 Messenger
@@ -42,7 +47,6 @@ Let us sway on and face them in the field.
 ARCHBISHOP OF YORK
 What well-appointed leader fronts us here?
 Enter WESTMORELAND
-
 MOWBRAY
 I think it is my Lord of Westmoreland.
 WESTMORELAND
@@ -225,7 +229,6 @@ Which must decide it.
 ARCHBISHOP OF YORK
 My lord, we will do so.
 Exit WESTMORELAND
-
 MOWBRAY
 There is a thing within my bosom tells me
 That no conditions of our peace can stand.
@@ -278,7 +281,6 @@ MOWBRAY
 Be it so.
 Here is return'd my Lord of Westmoreland.
 Re-enter WESTMORELAND
-
 WESTMORELAND
 The prince is here at hand: pleaseth your lordship
 To meet his grace just distance 'tween our armies.
@@ -287,9 +289,14 @@ Your grace of York, in God's name then, set forward.
 ARCHBISHOP OF YORK
 Before, and greet his grace: my lord, we come.
 Exeunt'''
-count = { }
-for character in info.upper():
-    count[character]=count.get(character,0)+1
 
-value = pprint.pformat(count)
-print(value)
+wordlist = wordstring.split()
+
+wordfreq = []
+for w in wordlist:
+    wordfreq.append(wordlist.count(w))
+
+print("String\n" + wordstring +"\n")
+print("List\n" + str(wordlist) + "\n")
+print("Frequencies\n" + str(wordfreq) + "\n")
+print("Pairs\n" + str(list(zip(wordlist, wordfreq))))

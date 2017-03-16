@@ -45,5 +45,5 @@ def ListAvailablePorts():
 
 #  EXAMPLE OF HOW IT WORKS
 
-#if an Arduino is connected to the computer, the port will be show in the terminal
-#print ListAvailablePorts()
+#  if an Arduino is connected to the computer, the port will be show in the terminal
+#  print ListAvailablePorts()

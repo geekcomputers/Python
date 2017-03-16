@@ -1,8 +1,9 @@
-import glob
 import csv
-import pdb
+import glob
 import os
-import pandas as pd 
+import pdb
+import pandas as pd
+
 
 def main():
     directory = []
@@ -15,8 +16,8 @@ def main():
             frame = pd.DataFrame()
             dfs = []
             for files in allFiles:
-                df = pd.read_csv(files,index_col=None, header=0)
+                df = pd.read_csv(files, index_col=None, header=0)
                 dfs.append(df)
                 frame = pd.concat(dfs)
-            frame.to_csv(ff+"/results.csv")
+            frame.to_csv(ff + "/results.csv")
 main()
