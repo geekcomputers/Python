@@ -7,11 +7,13 @@
 
 # Description			: Tests to see if the directory testdir exists, if not it will create the directory for you
 
-import os    # Import the OS module
-DirCheck = raw_input("Please enter directory name to check : ")
+import os #Import the OS Module
+CheckDir = raw_input("Enter the name of the directory to check : ")
 print
-print "There was no directory under the name " +DirCheck
-print
-print "So, a new directory under the name " +DirCheck + " has been created!"
-if not os.path.exists(DirCheck):  # Check to see if it exists
-    os.makedirs(DirCheck)  # Create the directory
+if os.path.exists(CheckDir):#Checks if the dir exists
+	print "The directory exists"
+else:
+	print "No directory found for "+CheckDir #Output if no directory
+	print
+	os.makedirs(CheckDir)#Creates a new dir for the given name
+	print "Directory created for "+CheckDir
