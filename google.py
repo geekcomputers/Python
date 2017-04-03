@@ -1,9 +1,14 @@
+"""
+Author: Ankit Agarwal (ankit167)
+Usage: python google.py <keyword>
+Description: Script googles the keyword and opens
+             top 5 (max) search results in separate
+             tabs in the browser
+Version: 1.0
+"""
+
 import webbrowser, sys, pyperclip, requests, bs4
 
-#
-# Opens 1 (min) to 5 (max) tabs in browser with top search links.
-# (One tab for each link)
-#
 def main():
 	if len(sys.argv) > 1:
 		keyword = ' '.join(sys.argv[1:])
