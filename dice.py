@@ -17,4 +17,4 @@ class Die(object):
 
 d = Die(6)
 d1 = Die(6)
-print d.roll(), d1.roll()
+print (d.roll(), d1.roll())
