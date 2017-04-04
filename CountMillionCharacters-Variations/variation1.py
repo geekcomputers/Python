@@ -1,13 +1,14 @@
-import pprint
+def countChars(filename):
+	count = {}
 
-inputFile = input("File Name : ")
-count = {}
+	with open(inputFile) as info:
+		readFile = info.read()
+		for character in readFile.upper():
+			count[character] = count.get(character, 0) + 1
 
-with open(inputFile, 'r') as info:
-    readFile = info.read()
-    for character in readFile.upper():
-        count.setdefault(character, 0)
-        count[character] = count[character] + 1
+	return count
 
-value = pprint.pformat(count)
-print(value)
+if __name__ == '__main__':
+	import pprint
+	inputFile = input("File Name : ")
+	print(countChars(inputFile))
