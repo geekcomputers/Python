@@ -292,11 +292,9 @@ Exeunt'''
 
 wordlist = wordstring.split()
 
-wordfreq = []
-for w in wordlist:
-    wordfreq.append(wordlist.count(w))
+wordfreq = [wordlist.count(w) for w in wordlist]
 
-print("String\n" + wordstring +"\n")
-print("List\n" + str(wordlist) + "\n")
-print("Frequencies\n" + str(wordfreq) + "\n")
-print("Pairs\n" + str(list(zip(wordlist, wordfreq))))
+print("String\n {} \n".format(wordstring))
+print("List\n {} \n".format(str(wordlist)))
+print("Frequencies\n {} \n".format(str(wordfreq)))
+print("Pairs\n {}".format(str(list(zip(wordlist, wordfreq)))))
