@@ -8,10 +8,21 @@ Tweet text and pics directly from the terminal.
 """
 import tweepy, os
 
+def getStatus():
+    lines = []
+    while True:
+        line = raw_input()
+        if line:
+            lines.append(line)
+        else:
+            break
+    status = '\n'.join(lines)
+    return status
+
 def tweetthis(type):
 	if type == "text":
 		print "Enter your tweet "+user.name
-		tweet = raw_input()
+		tweet = getStatus()
 		try:
 			api.update_status(tweet)
 		except Exception as e:
@@ -21,7 +32,7 @@ def tweetthis(type):
 		print "Enter pic path "+user.name
 		pic = os.path.abspath(raw_input())
 		print "Enter status "+user.name
-		title = raw_input()
+		title = getStatus()
 		try:
 			api.update_with_media(pic, status=title)
 		except Exception as e:
