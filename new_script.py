@@ -19,11 +19,11 @@ text = '''You need to pass an argument for the new script you want to create, fo
 	-sql	: SQL Script'''
 
 if len(sys.argv) < 3:
-  print text
+  print (text)
   sys.exit()
 
 if '-h' in sys.argv or '--h' in sys.argv or '-help' in sys.argv or '--help' in sys.argv:
-  print text
+  print (text)
   sys.exit()
 else:
   if '-python' in sys.argv[1]:
@@ -39,7 +39,7 @@ else:
     config_file = "sql.cfg"
     extension = ".sql"
   else:
-    print 'Unknown option - ' + text
+    print ('Unknown option - ' + text)
     sys.exit()
 
 confdir = os.getenv("my_config")
