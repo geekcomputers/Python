@@ -1,4 +1,5 @@
 # Script Name		: check_file.py
+
 # Author		: Craig Richards
 # Created		: 20 May 2013
 # Last Modified		:
@@ -7,7 +8,6 @@
 # Modifications	: with statement added to ensure correct file closure
 
 # Description	: Check a file exists and that we can read the file
-
 from __future__ import print_function
 import sys		# Import the Modules
 import os		# Import the Modules
@@ -21,8 +21,8 @@ def usage():
 # Readfile Functions which open the file that is passed to the script
 def readfile(filename):
 	with open(filename, 'r') as f:      # Ensure file is correctly closed under all circumstances
-	    line = f.read()
-	print(line)
+	    file = f.read()
+	print(file)
 
 def main():
   if len(sys.argv) >= 2:		# Check the arguments passed to the script

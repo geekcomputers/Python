@@ -38,4 +38,3 @@ for r,d,f in os.walk(r'.'):
     else:
       log.write("[-] '%s' is NOT a sqlite database file" % os.path.join(r,files)+'\n')
       log.write("[-] '%s' is NOT a sqlite database file" % files+'\n')
-
