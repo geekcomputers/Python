@@ -48,4 +48,11 @@ In the scripts the comments etc are lined up correctly when they are viewed in [
 - `serial_scanner.py` contains a method called ListAvailablePorts which returns a list with the names of the serial ports that are in use in our computer, this method works only on Linux and Windows (can be extended for mac osx). If no port is found, an empty list is returned.
 
 - `get_youtube_view.py` - This is very simple python script to get more views for your youtube videos.Some times I use for repeating my favorite songs by this scripts.
+
 - `CountMillionCharacter.py` - This Script will,counting character script, count how much character present *any text based file.
+
+- `xkcd_downloader.py` - Downloads the latest XKCD comic and places them in a new folder "comics"
+
+- `timymodule.py` - A great alternative to Pythons 'timeit' module and easier to use.
+
+
