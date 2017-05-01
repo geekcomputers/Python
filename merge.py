@@ -1,23 +1,27 @@
-import csv
-import glob
+# author:zhangshuyx@gmail.com
+
+#!/usr/bin/env python
+# -*- coding=utf-8 -*-
+
 import os
-import pdb
-import pandas as pd
 
+# define the result filename
+resultfile = 'result.csv'
 
-def main():
-    directory = []
-    for dirs in os.walk("."):
-        directory.append(dirs)
-    folders = directory[0][1]
-    for ff in folders:
-        if ff != ".git":
-            allFiles = glob.glob(ff + "/*.csv")
-            frame = pd.DataFrame()
-            dfs = []
-            for files in allFiles:
-                df = pd.read_csv(files, index_col=None, header=0)
-                dfs.append(df)
-                frame = pd.concat(dfs)
-            frame.to_csv(ff + "/results.csv")
-main()
+# the merge func
+def merge():
+    """merge csv files to one file"""
+    # use list save the csv files
+    csvfiles = [f for f in os.listdir('.') if f != resultfile and f.split('.')[1]=='csv']
+    # open file to write
+    with open(resultfile,'w') as writefile:
+        for csvfile in csvfiles:
+            with open(csvfile) as readfile:
+                print('File {} readed.'.format(csvfile))
+                # do the read and write
+                writefile.write(readfile.read()+'\n')
+    print('\nFile {} writed.'.format(resultfile))
+
+# the main program
+if __name__ == '__main__':
+    merge()
