@@ -20,7 +20,7 @@ def merge():
                 print('File {} readed.'.format(csvfile))
                 # do the read and write
                 writefile.write(readfile.read()+'\n')
-    print('\nFile {} writed.'.format(resultfile))
+    print('\nFile {} wrote.'.format(resultfile))
 
 # the main program
 if __name__ == '__main__':
