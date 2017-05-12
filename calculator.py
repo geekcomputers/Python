@@ -10,10 +10,10 @@ Functions available:
 * : multiplication
 / : division
 % : percentage
-sin: sine(rad)
-cos: cosine(rad)
-tan: tangent(rad)
-sqrt: square_root(n)
+sine: sin(rad)
+cosine: cos(rad)
+tangent: tan(rad)
+square root: sqrt(n)
 pi: 3.141......
 """
 
@@ -23,12 +23,12 @@ def main():
     
     def calc(k):
 
-        functions = ['sin','cos','tan','sqrt','pi']    
+        functions = ['sin', 'cos', 'tan', 'sqrt', 'pi']    
         
         for i in functions:
             if i in k.lower():
                 withmath = 'math.' + i
-                k = k.replace(i,withmath)
+                k = k.replace(i, withmath)
         
         try:
             k = eval(k)
@@ -46,11 +46,11 @@ def main():
 
     k = input("\nWhat is ")
 
-    k = k.replace(' ','')
-    k = k.replace('^','**')
-    k = k.replace('=','')
-    k = k.replace('?','')
-    k = k.replace('%','/100')
+    k = k.replace(' ', '')
+    k = k.replace('^',' **')
+    k = k.replace('=', '')
+    k = k.replace('?', '')
+    k = k.replace('%', '/100')
 
     print ("\n" + str(calc(k)))
     
