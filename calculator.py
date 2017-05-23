@@ -47,7 +47,7 @@ def main():
     k = input("\nWhat is ")
 
     k = k.replace(' ', '')
-    k = k.replace('^',' **')
+    k = k.replace('^', '**')
     k = k.replace('=', '')
     k = k.replace('?', '')
     k = k.replace('%', '/100')
