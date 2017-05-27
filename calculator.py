@@ -45,12 +45,10 @@ def main():
     print ("\nScientific Calculator\nEg: pi * sin(90) - sqrt(81)")
 
     k = input("\nWhat is ")
-
-    k = k.replace(' ', '')
-    k = k.replace('^', '**')
-    k = k.replace('=', '')
-    k = k.replace('?', '')
-    k = k.replace('%', '/100')
+    replace_list = [(' ', ''), ('^', '**'), ('=', ''), ('?', ''), ('%', '/100')]
+    
+    for tup in replace_list:
+      k = k.replace(tup[0], tup[1])
 
     print ("\n" + str(calc(k)))
     
