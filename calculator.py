@@ -44,7 +44,7 @@ def main():
 
     print ("\nScientific Calculator\nEg: pi * sin(90) - sqrt(81)")
 
-    k = input("\nWhat is ")
+    k = raw_input("\nWhat is ") # Using input() function is causing NameError. Changing it to raw_input() fixes this.
 
     k = k.replace(' ', '')
     k = k.replace('^', '**')
