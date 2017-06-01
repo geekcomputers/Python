@@ -1,12 +1,12 @@
 # Script Name		: testlines.py
-# Author				: Craig Richards
-# Created				: 08th December 2011
+# Author		: Craig Richards
+# Created		: 08th December 2011
 # Last Modified		: 
-# Version				: 1.0
+# Version		: 1.0
 
 # Modifications		: beven nyamande
 
-# Description			: This very simple script open a file and prints out 100 lines of whatever is set for the line variableest you want to print\n"	# This sets the variable for the text that you want to print
+# Description		: This is a very simple script that opens up a file and writes whatever is set "
 
 
 def write_to_file(filename, txt):
