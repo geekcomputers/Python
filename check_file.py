@@ -26,7 +26,9 @@ def readfile(filename):
     with open(filename, 'r') as f:      # Ensure file is correctly closed under
         file = f.read()                 # all circumstances
     print(file)
-
+    print()
+    print('#'*80)
+    print()
 
 def main():
     # Check the arguments passed to the script
