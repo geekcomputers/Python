@@ -16,9 +16,7 @@ import os		# Import the Modules
 
 
 def usage():
-    print('[-] Usage: python check_file.py <filename1> [filename2] ... \
-    [filenameN]')
-    exit(0)
+    print('[-] Usage: python check_file.py [filename1] [filename2] ... [filenameN]')
 
 
 # Readfile Functions which open the file that is passed to the script
@@ -48,14 +46,16 @@ def main():
                 # remove non readable fileNames
                 filenames.remove(filename)
                 continue
+
+        # Read the content of each file
+        for filename in filenames:
+            # Display Message and read the file contents
+            print('[+] Reading from : ' + filename)
+            readfile(filename)
+
     else:
         usage() # Print usage if not all parameters passed/Checked
 
-    # Read the content of each file
-    for filename in filenames:
-        # Display Message and read the file contents
-        print('[+] Reading from : ' + filename)
-        readfile(filename)
 
 if __name__ == '__main__':
     main()
