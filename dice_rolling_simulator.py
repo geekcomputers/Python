@@ -14,7 +14,8 @@ roller_loop = False
 #Checking the user input to start the program.
 while correct_word == False:
 
-    user_input_raw = raw_input("\r\nWelcome to the Dice Rolling Simulator! We currently support 6, 8, and 12 sided die! Type [start] to begin!\r\n?>")
+    user_input_raw = raw_input("\r\nWelcome to the Dice Rolling Simulator! We currently support 6, 8, and 12 sided die! \
+    Type [start] to begin!\r\n?>")
 
     #Converting the user input to lower case.
     user_input = (user_input_raw.lower())
@@ -46,7 +47,8 @@ while roller_loop == False:
         else:
             print "\r\nPlease choose one of the applicable options!\r\n"
     
-    #Another inner while loop. This one does the actual rolling, as well as allowing the user to re-roll without restarting the program.
+    #Another inner while loop. This one does the actual rolling, as well as 
+    #allowing the user to re-roll without restarting the program.
     while dicer == False:
 
         if user_dice_chooser == 6:
