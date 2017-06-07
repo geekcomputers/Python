@@ -13,37 +13,49 @@ import sys		# Import the Modules
 import os		# Import the Modules
 
 # Prints usage if not appropriate length of arguments are provided
+
+
 def usage():
-    print('[-] Usage: python check_file.py <filename1> [filename2] ... [filenameN]')
-    exit(0)
+    print('[-] Usage: python check_file.py [filename1] [filename2] ... [filenameN]')
 
 
 # Readfile Functions which open the file that is passed to the script
 def readfile(filename):
-	with open(filename, 'r') as f:      # Ensure file is correctly closed under all circumstances
-	    file = f.read()
-	print(file)
+    with open(filename, 'r') as f:      # Ensure file is correctly closed under
+        file = f.read()                 # all circumstances
+    print(file)
+    print()
+    print('#'*80)
+    print()
 
 def main():
-  if len(sys.argv) >= 2:		# Check the arguments passed to the script
-      filenames = sys.argv[1:]
-      for filename in filenames: 				# Iterate for each filename passed in command line argument
-          if not os.path.isfile(filename):			# Check the File exists
-              print ('[-] ' + filename + ' does not exist.')
-              filenames.remove(filename)			#remove non existing files from filenames list
-              continue
+    # Check the arguments passed to the script
+    if len(sys.argv) >= 2:
+        filenames = sys.argv[1:]
 
-          if not os.access(filename, os.R_OK):	# Check you can read the file
-              print ('[-] ' + filename + ' access denied')
-              filenames.remove(filename)			# remove non readable filenames
-              continue
-  else:
-    usage() # Print usage if not all parameters passed/Checked
+        # Iterate for each filename passed in command line argument
+        for filename in filenames:
+            if not os.path.isfile(filename):		# Check the File exists
+                print('[-] ' + filename + ' does not exist.')
+                filenames.remove(filename)			#remove non existing files from fileNames list
+                continue
 
-    # Read the content of each file
-  for filename in filenames:
-      print ('[+] Reading from : ' + filename)	# Display Message and read the file contents
-      readfile(filename)
+            # Check you can read the file
+            if not os.access(filename, os.R_OK):
+                print('[-] ' + filename + ' access denied')
+                # remove non readable fileNames
+                filenames.remove(filename)
+                continue
+
+        # Read the content of each file
+        for filename in filenames:
+            # Display Message and read the file contents
+            print('[+] Reading from : ' + filename)
+            readfile(filename)
+
+    else:
+        usage() # Print usage if not all parameters passed/Checked
+
 
 if __name__ == '__main__':
     main()
