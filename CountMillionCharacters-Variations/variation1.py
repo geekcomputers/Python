@@ -8,6 +8,6 @@ def countChars(filename):
 
 	return count
 
-if __name__ == '__main__'
+if __name__ == '__main__':
 	inputFile = input("File Name : ")
 	print(countChars(inputFile))
