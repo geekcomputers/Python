@@ -20,7 +20,7 @@ def bye():
 
 def result():
 
-    user_dice_chooser
+    #user_dice_chooser  No idea how this got in here, thanks EroMonsterSanji.
 
 
     print "\r\nGreat! Begin by choosing a die! [6] [8] [12]?\r\n" 
