@@ -18,6 +18,8 @@ pi: 3.141......
 """
 
 import math
+import sys
+
 
 def main():
     
@@ -33,18 +35,20 @@ def main():
         try:
             k = eval(k)
         except ZeroDivisionError:
-            print ("Can't divide by 0")
+            print("Can't divide by 0")
             exit()
         except NameError:
-            print ("Invalid input")
+            print('Invalid input')
             exit()
         
         return k
 
+    print("\nScientific Calculator\nEg: pi * sin(90) - sqrt(81)")
 
-    print ("\nScientific Calculator\nEg: pi * sin(90) - sqrt(81)")
-
-    k = raw_input("\nWhat is ") # Using input() function is causing NameError. Changing it to raw_input() fixes this.
+    if sys.version_info.major >= 3:
+        k = input("\nWhat is ")
+    else:
+        k = raw_input("\nWhat is ")
 
     k = k.replace(' ', '')
     k = k.replace('^', '**')
@@ -52,7 +56,7 @@ def main():
     k = k.replace('?', '')
     k = k.replace('%', '/100')
 
-    print ("\n" + str(calc(k)))
+    print("\n" + str(calc(k)))
     
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()
