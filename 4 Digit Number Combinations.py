@@ -3,16 +3,20 @@ def FourDigitCombinations():
     numbers=[]
     for code in range(10000):
         if code<=9:
-            numbers.append(int("000"+str(code)))
+            code=str(code)
+            numbers.append(code.zfill(4))
         elif code>=10 and code<=99:
-            numbers.append(int("00"+str(code)))
+            code=str(code)
+            numbers.append(code.zfill(4))
         elif code>=100 and code<=999:
-            numbers.append(int("0"+str(code)))
+            code=str(code)
+            numbers.append(code.zfill(4))
         else:
-            numbers.append(int(code))
+            numbers.append(str(code))
             
     for i in numbers:
-        print str(i),   
-        
+        print i,   
+       
     pass
                 
+
