@@ -59,4 +59,4 @@ In the scripts the comments etc are lined up correctly when they are viewed in [
 
 - `Google_News.py` - Uses BeautifulSoup to provide Latest News Headline along with news link 
 
-- `cricket_live_score` - Uses BeautifulSoup to prove live cricket score
+- `cricket_live_score` - Uses BeautifulSoup to provide live cricket score
