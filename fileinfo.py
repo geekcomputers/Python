@@ -28,7 +28,7 @@ while try_count:
         print ("\nNameError : [%s] No such file or directory\n", file_name)
 
 if try_count == 0:
-    print ("Trial limit exceded \nExiting program")
+    print ("Trial limit exceeded \nExiting program")
     sys.exit()
     
 # create a dictionary to hold file info
