@@ -25,7 +25,7 @@ def main():
 
     def calc(k):
 
-        functions = ['sin', 'cos', 'tan', 'sqrt', 'pi']
+        functions = ['sin', 'cos', 'tan', 'sqrt', 'pi','mod']
 
         for i in functions:
             if i in k.lower():
@@ -50,6 +50,7 @@ def main():
         k = k.replace('=', '')
         k = k.replace('?', '')
         k = k.replace('%', '/100')
+	k = k.replace('mod', '%')
 
         print("\n" + str(calc(k)))
 
