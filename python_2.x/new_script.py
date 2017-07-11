@@ -50,14 +50,14 @@ output_file = (newfile + extension)
 outputdir = os.path.join(scripts,dev_dir)
 script = os.path.join(outputdir, output_file)
 input_file = os.path.join(confdir,config_file)
-old_text = " Script Name	: "
+old_text = (" Script Name	: ")
 new_text = (" Script Name	: " + output_file)
 if not(os.path.exists(outputdir)):
   os.mkdir(outputdir)
 newscript = open(script, 'w')
 input = open(input_file, 'r')
 today = datetime.date.today()
-old_date = " Created	:"
+old_date = (" Created	:")
 new_date = (" Created	: " + today.strftime("%d %B %Y"))
 
 for line in input:
