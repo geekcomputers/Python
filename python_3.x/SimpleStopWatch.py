@@ -6,7 +6,7 @@ import time
 print('Press ENTER to begin, Press Ctrl + C to stop')
 while True:
     try:
-        raw_input() #For ENTER
+        input() #For ENTER
         starttime = time.time()
         print('Started')
     except KeyboardInterrupt:
