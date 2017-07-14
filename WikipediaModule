@@ -46,6 +46,10 @@ def fullPage(page):
     return soup
     
 def randomWiki():
+'''
+This function gives you a list of n number of random articles
+Choose any article.
+'''
     number=input("No: of Random Pages : ")
     lst=wk.random(number)
     for i in enumerate(lst):
