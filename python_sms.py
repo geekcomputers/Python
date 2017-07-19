@@ -26,7 +26,7 @@ tdate = strftime("%d-%m")
 
 conn = sqlite3.connect(master_db)
 cursor = conn.cursor()
-loc_stmt ='SELECT name, number from table'
+loc_stmt = 'SELECT name, number from table'
 cursor.execute(loc_stmt)
 while True:							
   row = cursor.fetchone()	
@@ -69,7 +69,7 @@ while True:
   try:
     response = urllib2.urlopen(req)
     response_url = response.geturl()
-    if response_url==url:
+    if response_url == url:
       print 'SMS sent!'
   except urllib2.URLError, e:
     print 'Send failed!'
