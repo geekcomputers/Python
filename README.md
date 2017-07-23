@@ -27,9 +27,9 @@ In the scripts the comments etc are lined up correctly when they are viewed in [
 
 - `nslookup_check.py` - This very simple script opens the file `server_list.txt` and then does an nslookup for each one to check the DNS entry.
 
-- `osinfo.py` - Displays some information about the OS you are running this script on.
+- `osinfo.py` - Displays some information about the OS on which you are running this script.
 
-- `ping_servers.py` - This script will, depending on the arguments supplied, will ping the servers associated with that application group.
+- `ping_servers.py` - This script depending on the arguments supplied, will ping the servers associated with that application group.
 
 - `ping_subnet.py` - After supplying the first 3 octets it will scan the final range for available addresses.
 
@@ -41,22 +41,22 @@ In the scripts the comments etc are lined up correctly when they are viewed in [
 
 - `script_listing.py` - This will list all the files in the given directory, it will also go through all the subdirectories as well.
 
-- `testlines.py` - This very simple script open a file and prints out 100 lines of whatever is set for the line variable.
+- `testlines.py` - This very simple script opens a file and prints out 100 lines of whatever is the set for the line variable.
 
 - `tweeter.py` - This script allows you to tweet text or a picture from the terminal.
 
 - `serial_scanner.py` contains a method called ListAvailablePorts which returns a list with the names of the serial ports that are in use in our computer, this method works only on Linux and Windows (can be extended for mac osx). If no port is found, an empty list is returned.
 
-- `get_youtube_view.py` - This is very simple python script to get more views for your youtube videos.Some times I use for repeating my favorite songs by this scripts.
+- `get_youtube_view.py` - This is very simple python script to get more views for your youtube videos. Sometimes I use it for repeating my favorite songs by this script.
 
-- `CountMillionCharacter.py` - This Script will,counting character script, count how much character present *any text based file.
+- `CountMillionCharacter.py` - This Script is used for 1.counting character script 2.count how much characters are present on any text based file.
 
-- `xkcd_downloader.py` - Downloads the latest XKCD comic and places them in a new folder "comics"
+- `xkcd_downloader.py` - Downloads the latest XKCD comic and places them in a new folder "comics".
 
 - `timymodule.py` - A great alternative to Pythons 'timeit' module and easier to use.
 
 - `calculator.py` - Uses Python's eval() function to implement a calculator.
 
-- `Google_News.py` - Uses BeautifulSoup to provide Latest News Headline along with news link 
+- `Google_News.py` - Uses BeautifulSoup to provide Latest News Headline along with news link.
 
 - `cricket_live_score` - Uses BeautifulSoup to provide live cricket score
