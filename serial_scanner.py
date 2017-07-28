@@ -40,7 +40,11 @@ def ListAvailablePorts():
     else:
         print '''This method was developed only for linux and windows
                 the current platform isn't recognised'''
-    return AvailablePorts
+    if len(AvailablePorts) == 0:
+        print("NO port in use")
+        return 0
+    else:
+        return AvailablePorts
 
 
 #  EXAMPLE OF HOW IT WORKS
