@@ -1,2 +1,4 @@
-print [x for x in range(2, 100) if not x % 2]
-print range(2, 100, 2)
+#user can give in put now
+#pyhton3
+
+print ([x for x in range(int(input()),int(input())) if not x%2])
