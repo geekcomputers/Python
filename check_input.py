@@ -4,7 +4,7 @@ def get_user_input(start,end):
     while testcase == False:
         try:
             userInput = int(input("Enter Your choice: "))
-            if userInput > 6 or userInput < 1:
+            if userInput > end or userInput < start:
                 print("Please try again.")
                 testcase = False
             else:
