@@ -60,3 +60,5 @@ In the scripts the comments etc are lined up correctly when they are viewed in [
 - `Google_News.py` - Uses BeautifulSoup to provide Latest News Headline along with news link.
 
 - `cricket_live_score` - Uses BeautifulSoup to provide live cricket score.
+
+- `youtube.py` - Takes input a song name and fetches the youtube url of best matching song and plays it.
