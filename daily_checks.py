@@ -33,7 +33,7 @@ def print_docs():							# Function to print the daily checks automatically
   subprocess.Popen(["C:\\Program Files (x86)\Microsoft Office\Office14\winword.exe", "P:\\\\Documentation\\Daily Docs\\Back office Daily Checks.doc", "/mFilePrintDefault", "/mFileExit"]).communicate()
 
 
-def putty_sessions():						# Function to load the putty sessions I need
+def putty_sessions(conffilename):						# Function to load the putty sessions I need
   for server in open(conffilename):			# Open the file server_list.txt, loop through reading each line - 1.1 -Changed - 1.3 Changed name to use variable conffilename
     subprocess.Popen(('putty -load '+server))	# Open the PuTTY sessions - 1.1
 
@@ -63,7 +63,7 @@ def main():
            filename, "ran at", strftime("%Y-%m-%d %H:%M:%S"), "on",platform.node(), "run from",os.getcwd())
 
     print_docs()									# Call the print_docs function
-    putty_sessions()								# Call the putty_session function
+    putty_sessions(conffilename)					# Call the putty_session function
     rdp_sessions()									# Call the rdp_sessions function
     euroclear_docs()								# Call the euroclear_docs function
 
