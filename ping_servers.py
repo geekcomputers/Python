@@ -8,8 +8,8 @@
 
 # Description			: This script will, depending on the arguments supplied will ping the servers associated with that application group.
 
-import os							# Load the Library Module
-import subprocess				# Load the Library Module 
+import os						  	# Load the Library Module
+import subprocess				# Load the Library Module
 import sys							# Load the Library Module
 
 if '-h' in sys.argv or '--h' in sys.argv or '-help' in sys.argv or '--help' in sys.argv:	# Help Menu if called
@@ -47,18 +47,18 @@ else:
 
 filename = sys.argv[0]																# Sets a variable for the script name
 logdir = os.getenv("logs")															# Set the variable logdir by getting the OS environment logs
-logfile = 'ping_'+appgroup+'_'+site+'.log'										# Set the variable logfile, using the arguments passed to create the logfile
-logfilename=os.path.join(logdir, logfile)											# Set the variable logfilename by joining logdir and logfile together
+logfile = 'ping_' + appgroup + '_' + site + '.log'										# Set the variable logfile, using the arguments passed to create the logfile
+logfilename = os.path.join(logdir, logfile)											# Set the variable logfilename by joining logdir and logfile together
 confdir = os.getenv("my_config")													# Set the variable confdir from the OS environment variable - 1.2
-conffile = (appgroup+'_servers_'+site+'.txt')									# Set the variable conffile - 1.2
-conffilename=os.path.join(confdir, conffile)									# Set the variable conffilename by joining confdir and conffile together - 1.2
+conffile = (appgroup + '_servers_' + site + '.txt')									# Set the variable conffile - 1.2
+conffilename = os.path.join(confdir, conffile)									# Set the variable conffilename by joining confdir and conffile together - 1.2
 
 f = open(logfilename, "w")															# Open a logfile to write out the output
 for server in open(conffilename):													# Open the config file and read each line - 1.2
-    ret = subprocess.call(myping + server, shell=True,stdout=f,stderr=subprocess.STDOUT)	# Run the ping command for each server in the list.
+    ret = subprocess.call(myping + server, shell=True, stdout=f, stderr=subprocess.STDOUT)	# Run the ping command for each server in the list.
     if ret == 0:																				# Depending on the response
       f.write (server.strip() + " is alive" + "\n")									# Write out that you can receive a reponse
     else:
       f.write (server.strip() + " did not respond" + "\n")						# Write out you can't reach the box
 
-print ("\n\tYou can see the results in the logfile : "+ logfilename);	# Show the location of the logfile
+print ("\n\tYou can see the results in the logfile : " + logfilename);	# Show the location of the logfile
