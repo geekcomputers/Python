@@ -12,6 +12,7 @@ import os						  	# Load the Library Module
 import subprocess				# Load the Library Module
 import sys							# Load the Library Module
 
+filename = sys.argv[0]																# Sets a variable for the script name
 if '-h' in sys.argv or '--h' in sys.argv or '-help' in sys.argv or '--help' in sys.argv:	# Help Menu if called
     print '''
 You need to supply the application group for the servers you want to ping, i.e.
@@ -45,7 +46,6 @@ else:
     elif 'bromley' in sys.argv:															# Else if the argument passed is bromley
       site = 'bromley'																	# Set the variable site to bromley
 
-filename = sys.argv[0]																# Sets a variable for the script name
 logdir = os.getenv("logs")															# Set the variable logdir by getting the OS environment logs
 logfile = 'ping_' + appgroup + '_' + site + '.log'										# Set the variable logfile, using the arguments passed to create the logfile
 logfilename = os.path.join(logdir, logfile)											# Set the variable logfilename by joining logdir and logfile together
