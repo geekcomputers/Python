@@ -1,6 +1,8 @@
 '''@Author: Anurag Kumar(mailto:anuragkumarak95@gmail.com) 
 This module is used for generating a TF-IDF file or values from a list of files that contains docs.
 
+What is TF-IDF : https://en.wikipedia.org/wiki/Tf%E2%80%93idf
+
 python:
   - 3.5
 
@@ -26,10 +28,11 @@ sample file format of input:
     ##END(NOT INCLUDED)
 
 here, every line represents a document.
+
+have fun, cheers.
 '''
 import os, math, pickle
 from colorama import Fore, Style
-import pickle
 
 switcher = {
     'r':Fore.RED,
@@ -118,8 +121,8 @@ def find_tf_idf(file_names=['./../test/testdata'],prev_file_path=None, dump_path
     
     # dump if a dir-path is given
     if dump_path:
-        if dump_path[-8:] == 'tfidfpkl': 
-            pickle.dump((idf,tf_idf),open(dump_path,'wb'),protocol=pickle.HIGHEST_PROTOCOL)
-            print(TAG,'Dumping TF-IDF vars @',dump_path)
+        if dump_path[-8:] != 'tfidfpkl': raise Exception(TAG+"Please provide a .tfidfpkl file_path, it is the standard format of this module.")
+        pickle.dump((idf,tf_idf),open(dump_path,'wb'),protocol=pickle.HIGHEST_PROTOCOL)
+        print(TAG,'Dumping TF-IDF vars @',dump_path)
     return idf,tf_idf
 
