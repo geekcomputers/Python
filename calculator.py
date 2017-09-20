@@ -27,14 +27,13 @@ import sys
 
 def calc(k):
     
-    k = k.replace(' ', '')
-    k = k.replace('^', '**')
-    k = k.replace('=', '')
-    k = k.replace('?', '')
-    k = k.replace('%', '/100')
-    k = k.replace('rad', 'radians')
-    k = k.replace('mod', '%')
+    operators = [(' ', ''), ('^', '**'), ('=', ''), 
+                 ('?', ''), ('%', '/100'), ('rad', 'radians'), 
+                 ('mod', '%')]
 
+    for i,j in operators:
+        k = k.replace(i, j)
+        
     functions = ['sin', 'cos', 'tan', 'sqrt', 'pi', 'radians', 'e'] 
 
     for i in functions:

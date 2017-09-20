@@ -20,13 +20,12 @@ def batch_rename(work_dir, old_ext, new_ext):
     # files = os.listdir(work_dir)
     for filename in os.listdir(work_dir):
         # Get the file extension
-        split_file = os.path.splitext(filename)
-        file_ext = split_file[1]
+        filename_no_ext, file_ext = os.path.splitext(filename)
         # Start of the logic to check the file extensions, if old_ext = file_ext
         if old_ext == file_ext:
             # Returns changed name of the file with new extention
-            newfile = split_file[0] + new_ext 
-
+            newfile=filename_no_ext + new_ext
+            
             # Write the files
             os.rename(
                 os.path.join(work_dir, filename),
@@ -60,7 +59,6 @@ def main():
         new_ext = '.' + new_ext
 
     batch_rename(work_dir, old_ext, new_ext)
-
 
 if __name__ == '__main__':
     main()
