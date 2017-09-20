@@ -6,11 +6,10 @@ This will batch rename a group of files in a given directory,
 once you pass the current and new extensions
 '''
 
-__author__  = 'Craig Richards'
+__author__ = 'Craig Richards'
 __version__ = '1.0'
 
 import os
-import sys
 import argparse
 
 def batch_rename(work_dir, old_ext, new_ext):
@@ -21,14 +20,13 @@ def batch_rename(work_dir, old_ext, new_ext):
     # files = os.listdir(work_dir)
     for filename in os.listdir(work_dir):
         # Get the file extension
-        file_ext = os.path.splitext(filename)[1]
+        split_file = os.path.splitext(filename)
+        file_ext = split_file[1]
         # Start of the logic to check the file extensions, if old_ext = file_ext
         if old_ext == file_ext:
             # Returns changed name of the file with new extention
-            name_list=list(filename)
-            name_list[len(name_list)-len(old_ext):]=list(new_ext)
-            newfile=''.join(name_list)
-            
+            newfile = split_file[0] + new_ext 
+
             # Write the files
             os.rename(
                 os.path.join(work_dir, filename),
@@ -54,8 +52,12 @@ def main():
     work_dir = args['work_dir'][0]
     # Set the variable old_ext with the second argument passed
     old_ext = args['old_ext'][0]
+    if old_ext[0] != '.':
+        old_ext = '.' + old_ext
     # Set the variable new_ext with the third argument passed
     new_ext = args['new_ext'][0]
+    if new_ext[0] != '.':
+        new_ext = '.' + new_ext
 
     batch_rename(work_dir, old_ext, new_ext)
 
