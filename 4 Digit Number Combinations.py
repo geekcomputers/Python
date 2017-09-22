@@ -5,3 +5,8 @@ def FourDigitCombinations():
         code=str(code).zfill(4)
         print code,
         numbers.append(code)
+
+# Same as above but more pythonic
+def oneLineCombinations():
+    numbers = list(map(lambda x: str(x).zfill(4), [i for i in range(1000)]))
+    print(numbers)
