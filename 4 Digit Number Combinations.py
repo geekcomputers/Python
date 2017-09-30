@@ -3,7 +3,7 @@ def FourDigitCombinations():
     numbers=[]
     for code in range(10000):
         code=str(code).zfill(4)
-        print code,
+        print(code)
         numbers.append(code)
 
 # Same as above but more pythonic
