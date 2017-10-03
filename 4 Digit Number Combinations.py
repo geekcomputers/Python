@@ -8,5 +8,5 @@ def FourDigitCombinations():
 
 # Same as above but more pythonic
 def oneLineCombinations():
-    numbers = list(map(lambda x: str(x).zfill(4), [i for i in range(1000)]))
+    numbers = list(map(lambda x: str(x).zfill(4), [i for i in range(10000)]))
     print(numbers)
