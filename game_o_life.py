@@ -31,8 +31,12 @@ import numpy as np
 import random, time, sys
 from matplotlib import pyplot as plt
 import matplotlib.animation as animation
+from matplotlib.colors import ListedColormap
 
 usage_doc='Usage of script: script_nama <size_of_canvas:int>'
+
+choice = [0]*100 + [1]*10
+random.shuffle(choice)
 
 def create_canvas(size):
     canvas = [ [False for i in range(size)] for j in range(size)]
@@ -102,7 +106,13 @@ if __name__=='__main__':
     seed(c)
     fig, ax = plt.subplots()
     fig.show() 
-    while True:
-        c = run(c)
-        ax.matshow(c)
-        fig.canvas.draw()
+    cmap = ListedColormap(['w','k'])
+    try:
+        while True:
+            c = run(c)            
+            ax.matshow(c,cmap=cmap)
+            fig.canvas.draw()
+            ax.cla() 
+    except KeyboardInterrupt:
+        # do nothing.
+        pass
