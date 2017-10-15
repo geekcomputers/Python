@@ -15,7 +15,10 @@ noun = ["boy", "girl", "dog", "town", "car"]
 verb = ["drove", "jumped", "ran", "walked", "skipped"]
 preposition = ["to", "from", "over", "under", "on"]
 
-for x in range(20):
+
+def random_sentence():
+    """Creates random and return sentences."""
+
     sentence = ""
     sentence += article[random.randint(0, 4)] + " " + noun[random.randint(
         0, 4)] + " "
@@ -24,7 +27,13 @@ for x in range(20):
     sentence += article[random.randint(0, 4)] + " " + noun[random.randint(
         0, 4)] + ". "
     sentence = sentence[0].upper() + sentence[1:]
-    print(sentence)
+
+    return sentence
+
+
+# prints random sentences
+for x in range(20):
+    print(random_sentence())
 
 print()
 print()
@@ -32,13 +41,6 @@ print()
 # short story part
 story = ""
 for x in range(20):
-    sentence = ""
-    sentence += article[random.randint(0, 4)] + " " + noun[random.randint(
-        0, 4)] + " "
-    sentence += verb[random.randint(0, 4)] + " " + preposition[random.randint(
-        0, 4)] + " "
-    sentence += article[random.randint(0, 4)] + " " + noun[random.randint(
-        0, 4)] + ". "
-    story += sentence[0].upper() + sentence[1:]
+    story += random_sentence()
 
 print(story)
