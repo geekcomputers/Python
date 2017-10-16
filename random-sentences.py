@@ -38,7 +38,7 @@ for x in range(20):
 print()
 print()
 
-# short story part
+# creates short story
 story = ""
 for x in range(20):
     story += random_sentence()
