@@ -16,12 +16,13 @@ class Die(object):
     
   """because a dice contains at least 4 planes.
   So use this method to give it a judgement when you need to change the instance attributes."""
-  def set_sides(self,sides_change):
-    if self.sides_change>=4:
-      self.sides=self.sides_change
-      print("change sides!")
+  def set_sides(self, sides_change):
+    if sides_change>=4:
+      if sides_change != 6:
+        print("change sides from 6 to ",sides_change," !")
+      self.sides = sides_change
     else:
-      print("wrong sides!")
+      print("wrong sides! sides set to 6")
       
   def roll(self):
     return random.randint(1, self.sides)

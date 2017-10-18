@@ -5,14 +5,14 @@ script, rows, columns = argv #define rows and columns for the table and assign t
 
 def table(rows, columns):
 	for i in range(1, int(rows) + 1 ): #it's safe to assume that the user would mean 12 rows when they provide 12 as an argument, b'coz 12 will produce 11 rows
-		print "\t", i,
+		print ("\t", i,)
 
-	print "\n\n"
+	print ("\n\n")
 
 	for i in range(1, int(columns) + 1 ):
-		print i,
+		print (i),
 		for j in range(1, int(rows) + 1 ):
-			print "\t",i*j,
-		print "\n\n"
+			print ("\t",i*j,)
+		print ("\n\n")
 		
 table(rows, columns)
