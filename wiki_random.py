@@ -1,6 +1,23 @@
+'''Author Anurag Kumar(mailto:anuragkumarak95@gmail.com)
+Module for Fetching Random Wiki Pages and asking user for opening one of them
+
+Python:
+  - 3.5
+
+Requirements:
+  - requests
+  - json
+  - webbrowser
+
+Usage:
+  - $python3 wiki_random.py
+
+enter index of article you would like to see, or 'r' for retry and 'n' for exit.
+'''
 import requests, json, webbrowser
 
-url = 'https://en.wikipedia.org/w/api.php?action=query&list=random&rnnamespace=0&rnlimit=10&format=json'
+page_count = 10
+url = 'https://en.wikipedia.org/w/api.php?action=query&list=random&rnnamespace=0&rnlimit='+str(page_count)+'&format=json'
 
 def load():
     response = requests.get(url)
@@ -16,7 +33,7 @@ def load():
             print('Auf Wiedersehen!')
             return
         else:
-            try: int(i)
+            try: jsonData[int(i)]['id']
             except Exception: raise Exception("Wrong Input...")
             print('taking you to the browser...')
             webbrowser.get().open('https://en.wikipedia.org/wiki?curid='+str(jsonData[int(i)]['id']))
