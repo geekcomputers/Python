@@ -1,6 +1,22 @@
+'''Author Anurag Kumar(mailtoanuragkumarak95@gmail.com)
+Module for implementing the simpest Magic 8 Ball Game.
+
+Python:
+  - 3.5
+
+Requirements:
+  - colorama
+
+Usage:
+  - $python3 magic8ball.py
+
+Ask a question, and know the future.
+'''
 from time import sleep
 from random import randint
 from colorama import Fore, Style
+
+# response list..
 response = [
     "It is certain",
     "It is decidedly so",
@@ -23,6 +39,7 @@ response = [
     "Outlook not so good",
     "Very doubtful"]
 
+# core game...
 def game():
     ques = str(input("What is your question? \n").lower())
     print ("thinking...")
@@ -34,7 +51,7 @@ def game():
     print (color+response[idx]+Style.RESET_ALL+'\n\n')
     playloop()
 
-
+# looping func...
 def playloop():
     ques_again = str(input("Would you like to ask another question? (y/n)\n").lower())
     if ques_again == 'y':
