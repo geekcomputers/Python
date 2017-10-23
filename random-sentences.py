@@ -29,10 +29,9 @@ def random_sentence():
                         ,noun[random_int()])).capitalize()
     
 # prints random sentences
-map(lambda x: print(random_sentence()), range(0, 20))
-for x in range(20):
-    print(random_sentence())
-
+for sentence in list(map(lambda x: random_sentence(), range(0, 20))):
+  print(sentence)
+  
 print("\n")
 
 story = (". ").join(list(map(lambda x: random_sentence(), range(0, 20))))
