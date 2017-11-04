@@ -15,32 +15,26 @@ noun = ["boy", "girl", "dog", "town", "car"]
 verb = ["drove", "jumped", "ran", "walked", "skipped"]
 preposition = ["to", "from", "over", "under", "on"]
 
+def random_int():
+  return random.randint(0,4)
 
 def random_sentence():
     """Creates random and return sentences."""
-
-    sentence = ""
-    sentence += article[random.randint(0, 4)] + " " + noun[random.randint(
-        0, 4)] + " "
-    sentence += verb[random.randint(0, 4)] + " " + preposition[random.randint(
-        0, 4)] + " "
-    sentence += article[random.randint(0, 4)] + " " + noun[random.randint(
-        0, 4)] + ". "
-    sentence = sentence[0].upper() + sentence[1:]
-
-    return sentence
-
-
+    return ("{} {} {} {} {} {}"
+                .format(article[random_int()]
+                        ,noun[random_int()]
+                        ,verb[random_int()]
+                        ,preposition[random_int()]
+                        , article[random_int()]
+                        ,noun[random_int()])).capitalize()
+    
 # prints random sentences
-for x in range(20):
-    print(random_sentence())
+for sentence in list(map(lambda x: random_sentence(), range(0, 20))):
+  print(sentence)
+  
+print("\n")
 
-print()
-print()
+story = (". ").join(list(map(lambda x: random_sentence(), range(0, 20))))
 
-# creates short story
-story = ""
-for x in range(20):
-    story += random_sentence()
-
-print(story)
+# prints random sentences story
+print("{}".format(story))
