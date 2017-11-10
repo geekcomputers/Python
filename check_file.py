@@ -32,24 +32,24 @@ def main():
     # Check the arguments passed to the script
     if len(sys.argv) >= 2:
         filenames = sys.argv[1:]
-
-        filteredfilenames = list(filenames)
+        filteredfilenames_1 = list(filenames)   #To counter changing in the same list which you are iterating
+        filteredfilenames_2 = list(filenames)
         # Iterate for each filename passed in command line argument
-        for filename in filenames:
+        for filename in filteredfilenames_1:
             if not os.path.isfile(filename):		# Check the File exists
                 print('[-] ' + filename + ' does not exist.')
-                filteredfilenames.remove(filename)			#remove non existing files from fileNames list
+                filteredfilenames_2.remove(filename)			#remove non existing files from fileNames list
                 continue
 
             # Check you can read the file
             if not os.access(filename, os.R_OK):
                 print('[-] ' + filename + ' access denied')
                 # remove non readable fileNames
-                filteredfilenames.remove(filename)
+                filteredfilenames_2.remove(filename)
                 continue
 
         # Read the content of each file that both exists and is readable
-        for filename in filteredfilenames:
+        for filename in filteredfilenames_2:
             # Display Message and read the file contents
             print('[+] Reading from : ' + filename)
             readfile(filename)
