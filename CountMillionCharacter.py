@@ -247,7 +247,7 @@ We shall be winnow'd with so rough a wind
 That even our corn shall seem as light as chaff
 And good from bad find no partition.
 ARCHBISHOP OF YORK
-No, no, my lord. Note this; the king is weary
+No, no, my lord. Note this;    the king is weary
 Of dainty and such picking grievances:
 For he hath found to end one doubt by death
 Revives two greater in the heirs of life,
