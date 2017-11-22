@@ -12,7 +12,7 @@ class Dice():
         if sides > 3:
             self.sides = sides
         else:
-            print("This absolutely shouldn't ever happen. The programmer sucks.")
+            print("This absolutely shouldn't ever happen. The programmer sucks or someone has tweaked with code they weren't supposed to touch!")
       
     def roll(self):
         return random.randint(1, self.sides)
@@ -55,8 +55,8 @@ def getDices():
     dices = []
     sides = None
     diceAmount = None
-    sideLowerLimit = 3
-    diceLowerLimit = 1
+    sideLowerLimit = 3 #Do Not Touch!
+    diceLowerLimit = 1 #Do Not Touch!
 
     sides = pickNumber(sides, "How many sides will the dices have?: ", sideLowerLimit)
     diceAmount = pickNumber(diceAmount, "How many dices will do you want?: ", diceLowerLimit)
