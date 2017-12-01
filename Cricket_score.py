@@ -19,6 +19,5 @@ for result in soup.find_all('div', attrs={"class": "cb-lv-scrs-col cb-text-compl
 
 
 print(score[0],results[0])
-toaster.show_toast(title=score[0],msg=results[0],icon_path='cricket.ico')
+toaster.show_toast(title=score[0],msg=results[0])
 
-#---------------------Completed to Requirement----------------------
