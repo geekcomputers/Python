@@ -6,7 +6,7 @@
 # Modifications		:
 # Description		: This will move all the files from the src directory that are over 240 days old to the destination directory.
 import shutil
-import sys
+import sys
 import time
 import os
 src = 'u:\\test'  # Set the source directory
