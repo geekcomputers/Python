@@ -1,6 +1,7 @@
 #Made on May 27th, 2017
 #Made by SlimxShadyx
 #Editted by CaptMcTavish, June 17th, 2017
+#Comments edits by SlimxShadyx, August 11th, 2017
 
 #Dice Rolling Simulator
 
@@ -9,15 +10,19 @@ import random
 global user_exit_checker
 user_exit_checker="exit"
 
+#Our start function (What the user will first see when starting the program)
 def start():
     print "Welcome to dice rolling simulator: \nPress Enter to proceed"
     raw_input(">")
-
+    
+    #Starting our result function (The dice picker function)
     result()
 
+#Our exit function (What the user will see when choosing to exit the program)
 def bye():
     print "Thanks for using the Dice Rolling Simulator! Have a great day! =)"
 
+#Result function which is our dice chooser function
 def result():
 
     #user_dice_chooser  No idea how this got in here, thanks EroMonsterSanji.
@@ -27,7 +32,8 @@ def result():
     user_dice_chooser = raw_input(">")
 
     user_dice_chooser = int(user_dice_chooser)
-
+    
+    #Below is the references to our dice functions (Below), when the user chooses a dice.
     if user_dice_chooser == 6:
         dice6()
 
@@ -36,16 +42,20 @@ def result():
 
     elif user_dice_chooser == 12:
         dice12()
-
+    
+    #If the user doesn't choose an applicable option
     else:
         print "\r\nPlease choose one of the applicable options!\r\n"
         result()
 
 
+#Below are our dice functions.
 def dice6():
+    #Getting a random number between 1 and 6 and printing it.
     dice_6 = random.randint(1,6)
     print "\r\nYou rolled a " + str(dice_6) + "!\r\n"
-
+    
+    #Checking if the user would like to roll another die, or to exit the program
     user_exit_checker_raw = raw_input("\r\nIf you want to roll another die, type [roll]. To exit, type [exit].\r\n?>")
     user_exit_checker = (user_exit_checker_raw.lower())
     if user_exit_checker=="roll":
@@ -74,4 +84,6 @@ def dice12():
         start()
     else:
         bye()
+        
+#Actually starting the program now.
 start()
