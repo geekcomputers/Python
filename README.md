@@ -39,7 +39,7 @@ In the scripts the comments etc are lined up correctly when they are viewed in [
 
 - [script_count.py](https://github.com/geekcomputers/Python/blob/master/script_count.py) - This scans my scripts directory and gives a count of the different types of scripts.
 
-- [script_listing.py] - This will list all the files in the given directory, it will also go through all the subdirectories as well.
+- [script_listing.py](https://github.com/geekcomputers/Python/blob/master/script_listing.py) - This will list all the files in the given directory, it will also go through all the subdirectories as well.
 
 - [testlines.py](https://github.com/geekcomputers/Python/blob/master/testlines.py) - This very simple script opens a file and prints out 100 lines of whatever is the set for the line variable.
 
