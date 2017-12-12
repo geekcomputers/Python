@@ -1,10 +1,10 @@
-# Script Name		: move_files_over_x_days.py
-# Author			: Craig Richards
-# Created			: 8th December 2011
-# Last Modified     :
-# Version			: 1.0
-# Modifications		:
-# Description		: This will move all the files from the src directory that are over 240 days old to the destination directory.
+# Script Name   : move_files_over_x_days.py
+# Author        : Craig Richards
+# Created       : 8th December 2011
+# Last Modified :
+# Version       :1.0
+# Modifications :
+# Description   : This will move all the files from the src directory that are over 240 days old to the destination directory.
 import shutil
 import sys
 import time
