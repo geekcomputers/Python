@@ -1,5 +1,3 @@
-# Tic Tac Toe
-
 import random
 
 def drawBoard(board):
@@ -17,9 +15,13 @@ def inputPlayerLetter():
     # Returns a list with the player's letter as the first item, and the computer's letter as the second.
     letter = ''
     while not (letter == 'X' or letter == 'O'):
-        print('Do you want to be X or O?')
-        letter = input().upper()
-
+        while True:
+            try:
+                print('Do you want to be X or O?')
+                letter = raw_input().upper()
+                break
+            except ValueError:
+                continue
     # the first element in the tuple is the player's letter, the second is the computer's letter.
     if letter == 'X':
         return ['X', 'O']
@@ -35,9 +37,12 @@ def whoGoesFirst():
 
 def playAgain():
     # This function returns True if the player wants to play again, otherwise it returns False.
-    print('Do you want to play again? (yes or no)')
-    return input().lower().startswith('y')
-
+    while True:
+        try:
+            print('Do you want to play again? (yes or no)')
+            return raw_input().lower().startswith('y')
+        except Exception:
+            continue
 def makeMove(board, letter, move):
     board[move] = letter
 
@@ -69,9 +74,9 @@ def isSpaceFree(board, move):
 def getPlayerMove(board):
     # Let the player type in his move.
     move = ' '
-    while move not in '1 2 3 4 5 6 7 8 9'.split() or not isSpaceFree(board, int(move)):
+    while move not in range(1,10) or not isSpaceFree(board, int(move)):
         print('What is your next move? (1-9)')
-        move = input()
+        move = int(raw_input())
     return int(move)
 
 def chooseRandomMoveFromList(board, movesList):
@@ -179,4 +184,5 @@ while True:
 
     if not playAgain():
         break
+
 
