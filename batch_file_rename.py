@@ -5,7 +5,7 @@
 This will batch rename a group of files in a given directory,
 once you pass the current and new extensions
 '''
-
+#just checking
 __author__ = 'Craig Richards'
 __version__ = '1.0'
 
