@@ -20,6 +20,8 @@ class Die(object):
     if sides_change>=4:
       if sides_change != 6:
         print("change sides from 6 to ",sides_change," !")
+      else:  # added else clause for printing a message that sides set to 6
+          print ("sides set to 6")
       self.sides = sides_change
     else:
       print("wrong sides! sides set to 6")
