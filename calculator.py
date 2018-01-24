@@ -25,43 +25,70 @@ import math
 import sys
 
 
-def calc(k):
+def calc(term):
+    """
+        input: term of type str
+        output: returns the result of the computed term.
+        purpose: This function is the actual calculator and the heart of the application
+    """
     
-    k = k.replace(' ', '')
-    k = k.replace('^', '**')
-    k = k.replace('=', '')
-    k = k.replace('?', '')
-    k = k.replace('%', '/100')
-    k = k.replace('rad', 'radians')
-    k = k.replace('mod', '%')
+    # This part is for reading and converting arithmic terms.
+    term = term.replace(' ', '')
+    term = term.replace('^', '**')
+    term = term.replace('=', '')
+    term = term.replace('?', '')
+    term = term.replace('%', '/100')
+    term = term.replace('rad', 'radians')
+    term = term.replace('mod', '%')
 
     functions = ['sin', 'cos', 'tan', 'sqrt', 'pi', 'radians', 'e'] 
 
-    for i in functions:
-        if i in k.lower():
-            withmath = 'math.' + i
-            k = k.replace(i, withmath)
+    # This part is for reading and converting function expressions.
+    for function in functions:
+        if function in term.lower():
+            withmath = 'math.' + function
+            term = term.replace(function, withmath)
 
     try:
-        k = eval(k)
+
+        # here goes the actual evaluating.
+        term = eval(term)
+
+    # here goes to the error cases.
     except ZeroDivisionError:
+
         print("Can't divide by 0")
-        exit()
+        exit(1) # exit(1) for indicating an error.
+
     except NameError:
+
         print('Invalid input')
-        exit()
+        exit(1)
+
     except AttributeError:
+
         print('Check usage method')
-        exit()
+        exit(1)
         
-    return k
+    return term
 
 
-def result(k):
-    print("\n" + str(calc(k)))
+def result(term):
+    """
+        input:  term of type str
+        output: none
+        purpose: passes the argument to the function calc(...) and 
+                prints the result onto console.
+    """
+    print("\n" + str(calc(term)))
 
 
 def main():
+    """
+        main-program
+        purpose: handles the user inputs and prints 
+                some informations onto console.
+    """
     
     print("\nScientific Calculator\nEg: sin(rad(90)) + 50% * (sqrt(16)) + round(1.42^2) - 12mod3\nEnter quit to exit")
 

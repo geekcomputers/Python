@@ -17,5 +17,13 @@ if __name__ == '__main__':
     else:
         input_func = raw_input
 
-    inputFile = input_func("File Name : ")
-    print(countchars(inputFile))
+is_exist=True
+#Try to open file if exist else raise exception and try again
+while(is_exist):
+    try:
+        inputFile = input_func("File Name : ")
+        print(countchars(inputFile))
+        is_exist = False            #Set False if File Name found
+    except FileNotFoundError:
+        print("File not found...Try again!")
+

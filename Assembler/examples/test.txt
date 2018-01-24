@@ -1,0 +1,10 @@
+
+; variables
+VAR1 db 56
+$var1 db 10
+
+mov ecx, VAR1
+mov ebx, $var1
+sub ecx, ebx
+mov eax, 4
+int 0x80 

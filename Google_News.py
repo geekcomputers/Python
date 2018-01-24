@@ -6,7 +6,11 @@ def news():
 	#my_url="https://news.google.com/news/rss"
 	my_url="https://news.google.com/news/rss?ned=in&hl=en-IN"
 	#To open the Given URL
-	Client=urlopen(my_url)
+	Client=urlopen(my_url) 
+        s_url ="https://news.google.com/news/headlines/section/topic/SPORTS.en_in/Sports?ned=in&hl=en-IN&gl=IN"
+        Client=urlopen(s_url)
+
+
 
 	xml_page=Client.read()
 	Client.close()
@@ -24,3 +28,4 @@ def news():
 
 
 news()	
+
