@@ -115,13 +115,16 @@ def search_button(p1):
     w.errorOutput.configure(text="")
     sql_command = """ SELECT * FROM notes WHERE title LIKE "%{0}%";"""
     sql_command = sql_command.format(w.inputSearchTitle.get())
-    cursor.execute(sql_command)
-    results = cursor.fetchall()
-    w.errorOutput.configure(text=str(len(results)) + " results")
-    index = 0
-    if (index >= 0 and index < len(results)):
-        w.outputNotice.delete(1.0,END)
-        w.outputNotice.insert(1.0,results[index][2])
+    try:
+        cursor.execute(sql_command)
+        results = cursor.fetchall()
+        w.errorOutput.configure(text=str(len(results)) + " results")
+        index = 0
+        if (index >= 0 and index < len(results)):
+            w.outputNotice.delete(1.0,END)
+            w.outputNotice.insert(1.0,results[index][2])
+    except:
+        w.errorOutput.configure(text ="Please create at first a database.")
         
 
 
