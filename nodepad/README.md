@@ -19,7 +19,7 @@ You can also use the executables in the **bin** directory.
 ### Usage
 
 First of all you must click on the **tab Create** then on the button **Create** for creating a new note management.  
-You add new notes over the tab Add and displays the notes over the tab display. In the display-tab you must type the title of the note that you will find.  
+You add new notes over the tab Add and displays the notes over the tab display. In the display-tab you must type the title or a keyword of the note that you will find.  
 
 ### How it looks like?
 

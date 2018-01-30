@@ -32,6 +32,22 @@ results = []
 
 index = 0
 
+def delete_button(p1):
+    global index
+    global results
+    global cursor
+
+    # fetch id of the current note
+    id = results[index][0]
+
+    sql_command = """ DELETE FROM notes WHERE id = {0}; """
+    sql_command = sql_command.format(id)
+
+    cursor.execute(sql_command)
+
+    connection.commit()
+
+
 def create_button(p1):
     """
         for creating a new database
@@ -106,17 +122,18 @@ def search_button(p1):
     if (index >= 0 and index < len(results)):
         w.outputNotice.delete(1.0,END)
         w.outputNotice.insert(1.0,results[index][2])
-        index += 1
+        
 
 
 def next_button(p1):
     global results
     global index
+    index += 1
     if (len(w.inputSearchTitle.get()) > 0):
         if (index >= 0 and index < len(results)):
             w.outputNotice.delete(1.0,END)
             w.outputNotice.insert(1.0,results[index][2])
-            index += 1
+            
     else:
         w.errorOutput.configure(text="Please fill the search field. ")
 

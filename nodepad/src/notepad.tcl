@@ -159,8 +159,8 @@ proc vTclWindow.top37 {base} {
     text $site_4_1.tex46 \
         -background white -font TkTextFont -foreground black -height 272 \
         -highlightcolor black -insertbackground black \
-        -selectbackground {#c4c4c4} -selectforeground black -state disabled \
-        -width 346 -wrap word 
+        -selectbackground {#c4c4c4} -selectforeground black -width 346 \
+        -wrap word 
     .top37.tNo38.t1.tex46 configure -font TkTextFont
     .top37.tNo38.t1.tex46 insert end text
     vTcl:DefineAlias "$site_4_1.tex46" "outputNotice" vTcl:WidgetProc "Toplevel1" 1
@@ -191,11 +191,19 @@ proc vTclWindow.top37 {base} {
         lambda e: back_button(e)
     }
     button $site_4_1.but38 \
-        -activebackground {#d9d9d9} -background {#d9d9d9} \
-        -foreground {#000000} -highlightcolor black -text Search 
+        -activebackground {#d9d9d9} -activeforeground black \
+        -background {#d9d9d9} -foreground {#000000} -highlightcolor black \
+        -text Search 
     vTcl:DefineAlias "$site_4_1.but38" "Button7" vTcl:WidgetProc "Toplevel1" 1
     bind $site_4_1.but38 <Button-1> {
         lambda e: search_button(e)
+    }
+    button $site_4_1.but39 \
+        -activebackground {#d9d9d9} -background {#d9d9d9} \
+        -foreground {#000000} -highlightcolor black -text Delete 
+    vTcl:DefineAlias "$site_4_1.but39" "Button8" vTcl:WidgetProc "Toplevel1" 1
+    bind $site_4_1.but39 <Button-1> {
+        lambda e: delete_button(e)
     }
     place $site_4_1.tex46 \
         -in $site_4_1 -x 10 -y 70 -width 346 -relwidth 0 -height 272 \
@@ -211,6 +219,8 @@ proc vTclWindow.top37 {base} {
         -in $site_4_1 -x 400 -y 160 -anchor nw -bordermode ignore 
     place $site_4_1.but38 \
         -in $site_4_1 -x 400 -y 80 -anchor nw -bordermode ignore 
+    place $site_4_1.but39 \
+        -in $site_4_1 -x 400 -y 200 -anchor nw -bordermode ignore 
     frame $top.tNo38.t2 \
         -background {#d9d9d9} -highlightcolor black 
     vTcl:DefineAlias "$top.tNo38.t2" "TNotebook1_t2" vTcl:WidgetProc "Toplevel1" 1
