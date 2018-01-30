@@ -41,7 +41,7 @@ def create_button(p1):
     sql_command = """
     CREATE TABLE notes ( 
     id INTEGER PRIMARY KEY, 
-    title VARCHAR(50), 
+    title TEXT, 
     note TEXT);"""
 
     try:
