@@ -73,9 +73,9 @@ main_names = ['Video','Folders','Images','Documents','Music','Codes','Executable
 
 for name in list_dir:
 	#print (name.split('.'))
-	if len(name.split('.')) == 2:
+	if 1:
 
-		if name.split('.')[1].upper() in getVideo():
+		if name.split('.')[-1].upper() in getVideo():
 			try:
 				os.mkdir("Video")
 				print ("Video Folder Created")
@@ -89,7 +89,7 @@ for name in list_dir:
 			print os.getcwd()
 			os.chdir(arrange_dir)
 			#print ("It is a folder")
-		elif name.split('.')[1].upper() in getImages():
+		elif name.split('.')[-1].upper() in getImages():
 			try:
 				os.mkdir("Images")
 				print ("Images Folder Created")
@@ -103,7 +103,7 @@ for name in list_dir:
 			print (os.getcwd())
 			os.chdir(arrange_dir)
 			#print ("It is a folder")
-		elif name.split('.')[1].upper() in getMusic():
+		elif name.split('.')[-1].upper() in getMusic():
 			try:
 				os.mkdir("Music")
 				print ("Music Folder Created")
@@ -117,7 +117,7 @@ for name in list_dir:
 			print (os.getcwd())
 			os.chdir(arrange_dir)
 			#print ("It is a folder")
-		elif name.split('.')[1].upper() in getDoc():
+		elif name.split('.')[-1].upper() in getDoc():
 			try:
 				os.mkdir("Documents")
 				print ("Documents Folder Created")
@@ -131,7 +131,7 @@ for name in list_dir:
 			print (os.getcwd())
 			os.chdir(arrange_dir)
 			#print ("It is a folder")
-		elif name.split('.')[1].upper() in getCodes():
+		elif name.split('.')[-1].upper() in getCodes():
 			try:
 				os.mkdir("Codes")
 				print ("Codes Folder Created")
@@ -145,7 +145,7 @@ for name in list_dir:
 			print (os.getcwd())
 			os.chdir(arrange_dir)
 			#print ("It is a folder")
-		elif name.split('.')[1].upper() in getCompressed():
+		elif name.split('.')[-1].upper() in getCompressed():
 			try:
 				os.mkdir("Compressed")
 				print ("Compressed Folder Created")
@@ -159,7 +159,7 @@ for name in list_dir:
 			print (os.getcwd())
 			os.chdir(arrange_dir)
 			#print ("It is a folder")
-		elif name.split('.')[1].upper() in getExe():
+		elif name.split('.')[-1].upper() in getExe():
 			try:
 				os.mkdir("Executables")
 				print ("Executables Folder Created")
@@ -173,6 +173,7 @@ for name in list_dir:
 			print (os.getcwd())
 			os.chdir(arrange_dir)
 			#print ("It is a folder")
+	#if file type is not identified
 	else:
 		if name not in main_names:
 			try:
