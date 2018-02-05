@@ -29,3 +29,5 @@ songs = soup.findAll('div', {'class': 'yt-lockup-video'})
 song = songs[0].contents[0].contents[0].contents[0]
 link = song['href']
 webbrowser.open('https://www.youtube.com' + link)
+
+#hey i'm learning  git. 
