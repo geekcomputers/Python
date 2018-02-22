@@ -8,7 +8,7 @@ phrase = ""
 
 givenPhrase = input("\nPlease input a phrase:(Press ENTER to use the sample phrase) ")
 
-if givenPhrase == "":
+if givenPhrase == "" or not givenPhrase.strip():
     print("\nThe sample phrase is: {0}".format(samplePhrase))
     phrase = samplePhrase
 else:
