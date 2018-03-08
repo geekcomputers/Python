@@ -9,6 +9,7 @@ This file contains the test-suite for the linear algebra library.
 """
 
 import unittest
+import math
 from lib import *
 
 class Test(unittest.TestCase):
@@ -127,7 +128,21 @@ class Test(unittest.TestCase):
     def test_squareZeroMatrix(self):
         self.assertEqual('|0,0,0,0,0|\n|0,0,0,0,0|\n|0,0,0,0,0|\n|0,0,0,0,0|' 
         +'\n|0,0,0,0,0|\n',squareZeroMatrix(5).__str__())
+    def test_norm_vector(self):
+        x = Vector([1,2,3])
+        self.assertAlmostEqual(x.norm().component(0),(1/math.sqrt(14)),0.001)
+        self.assertAlmostEqual(x.norm().component(1),math.sqrt((2.0/7)),0.001)
+    def test__eq__vector(self):
+        x = Vector([1,2,3])
+        y = Vector([1,0,1])
+        self.assertTrue(x == x)
+        self.assertFalse(x == y)
+    def test__eq__matrix(self):
+        A = Matrix([[1,2,3],[2,4,5],[6,7,8]],3,3)
+        B = Matrix([[1,2,7],[2,4,5],[6,7,10]],3,3)
+        self.assertTrue(A == A)
+        self.assertFalse(A == B)
         
-
+        
 if __name__ == "__main__":
     unittest.main()
