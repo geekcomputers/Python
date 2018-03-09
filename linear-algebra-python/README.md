@@ -20,8 +20,10 @@ This module contains some useful classes and functions for dealing with linear a
     - operator + : vector addition  
     - operator - : vector subtraction  
     - operator * : scalar multiplication and dot product  
+    - operator == : returns true if the vectors are equal otherwise false.    
     - copy() : copies this vector and returns it.  
     - changeComponent(pos,value) : changes the specified component.  
+    - norm() : normalizes this vector and returns it.  
 
 - function zeroVector(dimension)  
     - returns a zero vector of 'dimension'  
@@ -44,7 +46,8 @@ This module contains some useful classes and functions for dealing with linear a
     - width() : returns the width of the matrix  
     - height() : returns the height of the matrix  
     - operator + : implements the matrix-addition.  
-    - operator - _ implements the matrix-subtraction  
+    - operator - : implements the matrix-subtraction  
+    - operator == : returns true if the matrices are equal otherwise false.  
 - function squareZeroMatrix(N)  
     - returns a square zero-matrix of dimension NxN  
 - function randomMatrix(W,H,a,b)  

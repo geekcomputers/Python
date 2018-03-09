@@ -158,6 +158,29 @@ class Vector(object):
         #precondition
         assert (pos >= 0 and pos < len(self.__components))
         self.__components[pos] = value
+    def norm(self):
+        """
+            normalizes this vector and returns it.
+        """
+        eLength = self.eulidLength()
+        quotient = 1.0 / eLength
+        for i in range(len(self.__components)):
+            self.__components[i] = self.__components[i] * quotient
+        return self
+    def __eq__(self,other):
+        """
+            returns true if the vectors are equal otherwise false.
+        """ 
+        ans = True
+        SIZE = self.size()
+        if (SIZE == other.size()):
+            for i in range(SIZE):
+                if self.__components[i] != other.component(i):
+                    ans = False
+                    break
+        else:
+            ans = False
+        return ans
     
 def zeroVector(dimension):
     """
@@ -332,6 +355,21 @@ class Matrix(object):
             return Matrix(matrix,self.__width,self.__height)
         else:
             raise Exception("matrix must have the same dimension!")
+    def __eq__(self,other):
+        """
+            returns true if the matrices are equal otherwise false.
+        """
+        ans = True
+        if self.__width == other.width() and self.__height == other.height():
+            for i in range(self.__height):
+                for j in range(self.__width):
+                    if self.__matrix[i][j] != other.component(i,j):
+                        ans = False
+                        break
+        else:
+            ans = False
+        return ans
+        
     
 
 def squareZeroMatrix(N):
