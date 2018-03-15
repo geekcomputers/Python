@@ -4,7 +4,7 @@ from  win10toast import ToastNotifier
 
 toaster = ToastNotifier()
 
-url = 'http://www.cricbuzz.com/cricket-match/live-scores'
+url = "http://www.cricbuzz.com/cricket-match/live-scores"
 
 sauce = request.urlopen(url).read()
 soup = bs.BeautifulSoup(sauce,"lxml")
