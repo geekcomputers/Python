@@ -3,7 +3,7 @@ Written by  : Shreyas Daniel - github.com/shreydan
 Description : Uses Pythons eval() function
               as a way to implement calculator.
              
-Functions available:
+Functions available are:
 --------------------------------------------
                          + : addition
                          - : subtraction
