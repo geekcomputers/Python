@@ -3,7 +3,7 @@ Written by  : Shreyas Daniel - github.com/shreydan
 Description : Uses Pythons eval() function
               as a way to implement calculator.
              
-Functions available:
+Functions available are:
 --------------------------------------------
                          + : addition
                          - : subtraction
@@ -41,10 +41,10 @@ def calc(term):
     term = term.replace('rad', 'radians')
     term = term.replace('mod', '%')
 
-    functions = ['sin', 'cos', 'tan', 'sqrt', 'pi', 'radians', 'e'] 
+    functions = ['sin', 'cos', 'tan', 'cosh', 'sinh', 'tanh', 'sqrt', 'pi', 'radians', 'e'] 
 
     # This part is for reading and converting function expressions.
-    for function in functions:
+    for function in functions:            
         if function in term.lower():
             withmath = 'math.' + function
             term = term.replace(function, withmath)
