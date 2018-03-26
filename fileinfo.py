@@ -16,10 +16,13 @@ import sys
 import stat   # index constants for os.stat()
 import time
 
+if sys.version_info >= (3, 0):
+    raw_input = input
+
 try_count = 16
 
 while try_count:
-    file_name = input("Enter a file name: ")      # pick a file you have
+    file_name = raw_input("Enter a file name: ")      # pick a file you have
     fhand = open(file_name)
     count = 0
     for lines in fhand:
