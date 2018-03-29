@@ -28,6 +28,7 @@ def inputPlayerLetter():
 
 def whoGoesFirst():
     # Randomly choose the player who goes first.
+    random.seed()
     if random.randint(0, 1) == 0:
         return 'computer'
     else:
