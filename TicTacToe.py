@@ -40,7 +40,7 @@ def playAgain():
     return input().lower().startswith('y')
 
 def makeMove(board, letter, move):
-    if board[move] == ' ':
+    if isSpaceFree(board,move):
         board[move] = letter
     else:
         raise Exception("makeMove: the field is not empty!")
@@ -68,7 +68,7 @@ def getBoardCopy(board):
 
 def isSpaceFree(board, move):
     # Return true if the passed move is free on the passed board.
-    return board[move] == ' '
+    return board[move].isdigit()
 
 def getPlayerMove(board):
     # Let the player type in his move.
@@ -141,6 +141,8 @@ def main():
     while True:
         # Reset the board
         theBoard = [' '] * 10
+        for i in range(9,0,-1):
+            theBoard[i] = str(i)
         playerLetter, computerLetter = inputPlayerLetter()
         turn = whoGoesFirst()
         print('The ' + turn + ' will go first.')
