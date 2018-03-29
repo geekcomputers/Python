@@ -40,7 +40,10 @@ def playAgain():
     return input().lower().startswith('y')
 
 def makeMove(board, letter, move):
-    board[move] = letter
+    if board[move] == ' ':
+        board[move] = letter
+    else:
+        raise Exception("makeMove: the field is not empty!")
 
 def isWinner(bo, le):
     # Given a board and a player's letter, this function returns True if that player has won.
