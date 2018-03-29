@@ -28,7 +28,6 @@ def inputPlayerLetter():
 
 def whoGoesFirst():
     # Randomly choose the player who goes first.
-    random.seed()
     if random.randint(0, 1) == 0:
         return 'computer'
     else:
@@ -81,7 +80,6 @@ def getPlayerMove(board):
 def chooseRandomMoveFromList(board, movesList):
     # Returns a valid move from the passed list on the passed board.
     # Returns None if there is no valid move.
-    random.seed()
     possibleMoves = []
     for i in movesList:
         if isSpaceFree(board, i):
@@ -137,7 +135,7 @@ def isBoardFull(board):
 
 def main():
     print('Welcome to Tic Tac Toe!')
-
+    random.seed()
     while True:
         # Reset the board
         theBoard = [' '] * 10
