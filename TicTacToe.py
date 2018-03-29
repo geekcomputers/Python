@@ -81,6 +81,7 @@ def getPlayerMove(board):
 def chooseRandomMoveFromList(board, movesList):
     # Returns a valid move from the passed list on the passed board.
     # Returns None if there is no valid move.
+    random.seed()
     possibleMoves = []
     for i in movesList:
         if isSpaceFree(board, i):
