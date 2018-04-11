@@ -3,10 +3,9 @@
 
 import time
 
-print('Press ENTER to begin, Press Ctrl + C to stop')
 while True:
     try:
-        input("Waiting for [Enter] to be pressed to start. ") # For ENTER. Use raw_input() if you are running python 2.x instead of input()
+        input("Press ENTER to begin, Press Ctrl + C to stop") # For ENTER. Use raw_input() if you are running python 2.x instead of input()
         starttime = time.time()
         print('Started')
     except KeyboardInterrupt:
