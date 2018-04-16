@@ -2,34 +2,32 @@
 #Simple encryption script for text
 #This was one my first versions of this script
 #09/07/2017
+import math
 
 text=input("Enter text: ")
-PI=3.14159265358979323846264338327950288419716939937510
-text=list(text)
-values= list()
-reverse=list()
+values= []
+reverse= []
 def encryptChar(target):
     #encrytion algorithm
-    target=(((target+42)*PI)-449)
+    target=(((target+42)*math.pi)-449)
     return target
 
 def decryptChar(target):
-    target=(((target+449)/PI)-42)
+    target=(((target+449)/math.pi)-42)
     return target
 
 def encrypt(input_text):
-    input_text_list=list(input_text)
-    col_values=list()
-    for i in range (len(input_text_list)):
-        current=ord(input_text_list[i])
+    col_values= []
+    for i in range (len(input_text)):
+        current=ord(input_text[i])
         current=encryptChar(current)
         col_values.append(current)
     return col_values
 
 def decrypt(enc_text):
-    enc_list
-    for i in range (len(input_text_list)):
-        current=int(decryptChar(values[i]))
+    col_values = []
+    for i in range (len(enc_text)):
+        current=int(decryptChar(enc_text[i]))
         current=chr(current)
         col_values.append(current)
     return col_values
@@ -37,9 +35,8 @@ def decrypt(enc_text):
 def readAndDecrypt(filename):
     file=open(filename,"r")
     data=file.read()
-    datalist=list()
-    datalistint=list()
-    actualdata=list()
+    datalistint= []
+    actualdata= []
     datalist=data.split(" ")
     datalist.remove('')
     for i in range(len(datalist)):
@@ -48,6 +45,7 @@ def readAndDecrypt(filename):
         current1=int(decryptChar(datalistint[i]))
         current1=chr(current1)
         actualdata.append(current1)
+    file.close()
     return actualdata
 
 def readAndEncrypt(filename):
@@ -60,6 +58,7 @@ def readAndEncrypt(filename):
         current=ord(datalist[i])
         current=encryptChar(current)
         encrypted_list.append(current)
+    file.close()
     return encrypted_list
 
 def readAndEncryptAndSave(inp_file,out_file):
@@ -75,6 +74,7 @@ def readAndDecryptAndSave(inp_file,out_file):
     for i in range(len(dec_list)):
         output.write(str(dec_list[i]))
     output.close()
+
 #encryption
 for i in range (len(text)):
     current=ord(text[i])
