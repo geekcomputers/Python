@@ -3,8 +3,8 @@
 # PALINDROME: A word, phrase, or sequence that reads the same backward as forward
 
 samplePhrase = "A man, a plan, a cat, a ham, a yak, a yam, a hat, a canal-Panama!"
-givenPhrase = ""
-phrase = ""
+#givenPhrase = ""
+#phrase = ""
 
 givenPhrase = input("\nPlease input a phrase:(Press ENTER to use the sample phrase) ")
 
