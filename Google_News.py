@@ -14,11 +14,12 @@ def news(xml_news_url):
 	news_list=soup_page.findAll("item")
 	
 	for news in news_list:
-		print("\n")
+		
 		print(news.title.text)
 		print(news.link.text)
 		print(news.pubDate.text)	
-		print("\n")
+		print("\n\n")
+		
 
 
 
