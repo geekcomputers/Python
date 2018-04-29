@@ -2,6 +2,7 @@
 # Use ARROW KEYS to play, SPACE BAR for pausing/resuming and Esc Key for exiting
 # Original Author : Sanchit Gangwar
 # Modified by : Rayan Dutta
+# Minor changes made to keep the game working.
 
 import curses
 from curses import KEY_RIGHT, KEY_LEFT, KEY_UP, KEY_DOWN
@@ -28,7 +29,7 @@ while key != 27:                                                   # While Esc k
     win.border(0)
     win.addstr(0, 2, 'Score : ' + str(score) + ' ')                # Printing 'Score' and
     win.addstr(0, 27, ' SNAKE ')                                   # 'SNAKE' strings
-    win.timeout(150 - (len(snake)/5 + len(snake)/10)%120)          # Increases the speed of Snake as its length increases
+    win.timeout(int(150 - (len(snake)/5 + len(snake)/10)%120))          # Increases the speed of Snake as its length increases
 
     prevKey = key                                                  # Previous key pressed
     event = win.getch()
@@ -59,8 +60,9 @@ while key != 27:                                                   # While Esc k
     #if snake[0][0] == 0 or snake[0][0] == 19 or snake[0][1] == 0 or snake[0][1] == 59: break
 
     # If snake runs over itself
-    if snake[0] in snake[1:]: break
-
+    if snake[0] in snake[1:]:
+        print('Game Over')
+        break;
 
     if snake[0] == food:                                            # When snake eats the food
         food = []
