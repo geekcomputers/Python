@@ -31,7 +31,9 @@ def calc(term):
         output: returns the result of the computed term.
         purpose: This function is the actual calculator and the heart of the application
     """
-    
+    # Ensure that the term is in lower case.
+    term = term.lower()
+
     # This part is for reading and converting arithmic terms.
     term = term.replace(' ', '')
     term = term.replace('^', '**')
@@ -45,7 +47,7 @@ def calc(term):
 
     # This part is for reading and converting function expressions.
     for function in functions:            
-        if function in term.lower():
+        if function in term:
             withmath = 'math.' + function
             term = term.replace(function, withmath)
 
