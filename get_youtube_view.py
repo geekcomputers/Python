@@ -11,12 +11,12 @@ import time
 from selenium import webdriver
 
 #adding ability to change number of repeats
-count = int(raw_input("Number of times to be repeated: "))
+count = int(input("Number of times to be repeated: "))
 #Same as before
-x = raw_input("Enter the URL (no https): ")
+x = input("Enter the URL (no https): ")
 print( "Length of video:")
-minutes = int(raw_input("Minutes "))
-seconds  = int(raw_input("Seconds "))
+minutes = int(input("Minutes "))
+seconds  = int(input("Seconds "))
 
 #Calculating the refreshrate from the user input
 refreshrate = minutes * 60 + seconds

@@ -38,8 +38,8 @@ def ListAvailablePorts():
                 AvailablePorts.append('/dev/ttyUSB'+str(i))
                 ser.close()
     else:
-        print '''This method was developed only for linux and windows
-                the current platform isn't recognised'''
+        print('''This method was developed only for linux and windows
+                the current platform isn't recognised''')
     if len(AvailablePorts) == 0:
         print("NO port in use")
         return 0

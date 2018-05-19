@@ -1,0 +1,14 @@
+mov eax, 8
+mov ebx, 2
+mul ebx
+mov ecx, eax
+mov eax, 4
+int 0x80
+
+mov eax, 8
+mov ebx, 2
+div ebx
+mov ecx, eax
+mov eax, 4
+int 0x80
+
