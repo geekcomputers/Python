@@ -54,7 +54,25 @@ def dice6():
     #Getting a random number between 1 and 6 and printing it.
     dice_6 = random.randint(1,6)
     print "\r\nYou rolled a " + str(dice_6) + "!\r\n"
+
+    user_exit_checker()
     
+
+def dice8():
+    dice_8 = random.randint(1,8)
+    print "\r\nYou rolled a " + str(dice_8) + "!"
+
+    user_exit_checker()
+
+
+def dice12():
+    dice_12 = random.randint(1,12)
+    print "\r\nYou rolled a " + str(dice_12) + "!"
+
+    user_exit_checker()
+
+
+def user_exit_checker():
     #Checking if the user would like to roll another die, or to exit the program
     user_exit_checker_raw = raw_input("\r\nIf you want to roll another die, type [roll]. To exit, type [exit].\r\n?>")
     user_exit_checker = (user_exit_checker_raw.lower())
@@ -63,27 +81,6 @@ def dice6():
     else:
         bye()
 
-def dice8():
-    dice_8 = random.randint(1,8)
-    print "\r\nYou rolled a " + str(dice_8) + "!"
-
-    user_exit_checker_raw = raw_input("\r\nIf you want to roll another die, type [roll]. To exit, type [exit].\r\n?>")
-    user_exit_checker = (user_exit_checker_raw.lower())
-    if user_exit_checker=="roll":
-        start()
-    else:
-        bye()
-
-def dice12():
-    dice_12 = random.randint(1,12)
-    print "\r\nYou rolled a " + str(dice_12) + "!"
-
-    user_exit_checker_raw = raw_input("\r\nIf you want to roll another die, type [roll]. To exit, type [exit].\r\n?>")
-    user_exit_checker = (user_exit_checker_raw.lower())
-    if user_exit_checker=="roll":
-        start()
-    else:
-        bye()
         
 #Actually starting the program now.
 start()
