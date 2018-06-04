@@ -14,8 +14,8 @@ if givenPhrase == "" or not givenPhrase.strip():
 else:
     phrase = givenPhrase
 
-string = "".join(char.lower() for char in phrase if char.isalnum())
-reversedString = "".join(reversed(string))
+string = phrase.lower()
+reversedString = reversed(string)
 
 if string == reversedString:
     print("\nWow!, The phrase is a Palindrome!")
