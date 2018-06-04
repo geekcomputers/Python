@@ -15,9 +15,8 @@ else:
     phrase = givenPhrase
 
 string = phrase.lower()
-reversedString = reversed(string)
 
-if string == reversedString:
+if string == string[::-1]:
     print("\nWow!, The phrase is a Palindrome!")
 else:
     print("\nSorry, The given phrase is not a Palindrome.")
