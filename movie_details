@@ -14,7 +14,7 @@ browser.addheaders = [('User-agent',
 movie_title = raw_input("Enter movie title: ")
 
 movie_types = ('feature', 'tv_movie', 'tv_series', 'tv_episode', 'tv_special',
-    'mini_series', 'documentary', 'game', 'short', 'video')
+    'mini_series', 'documentary', 'game', 'short', 'video', 'tvshort')
 
 # Navigate
 browser.open('http://www.imdb.com/search/title')

@@ -247,7 +247,7 @@ We shall be winnow'd with so rough a wind
 That even our corn shall seem as light as chaff
 And good from bad find no partition.
 ARCHBISHOP OF YORK
-No, no, my lord. Note this; the king is weary
+No, no, my lord. Note this;    the king is weary
 Of dainty and such picking grievances:
 For he hath found to end one doubt by death
 Revives two greater in the heirs of life,
@@ -292,11 +292,9 @@ Exeunt'''
 
 wordlist = wordstring.split()
 
-wordfreq = []
-for w in wordlist:
-    wordfreq.append(wordlist.count(w))
+wordfreq = [wordlist.count(w) for w in wordlist]
 
-print("String\n" + wordstring +"\n")
-print("List\n" + str(wordlist) + "\n")
-print("Frequencies\n" + str(wordfreq) + "\n")
-print("Pairs\n" + str(list(zip(wordlist, wordfreq))))
+print("String\n {} \n".format(wordstring))
+print("List\n {} \n".format(str(wordlist)))
+print("Frequencies\n {} \n".format(str(wordfreq)))
+print("Pairs\n {}".format(str(list(zip(wordlist, wordfreq)))))

@@ -1,0 +1,186 @@
+Free open-source library from Christian Bender
+
+This python library contains some useful functions to deal with
+prime numbers and whole numbers. 
+
+The file primelib.py or primliby.pyc will simply import by the import-statement.
+Important primelib.py or primelib.pyc must been in your project directory.
+
+Example: (In your project)
+
+import primelib
+
+print primelib.isPrime(13)   // will print out 'True'
+print primelib.primeFactorization(40)  // will print out [2,2,2,5]
+
+OR 
+
+from primelib import *
+
+print isPrime(...) 
+
+More information about the functions.
+
+help(function_name)
+
+For example:
+
+help(isPrime)
+
+---------------------------
+
+Overview about functions:
+
+-------------------------
+
+isPrime (number)
+
+input: positive integer 'number'
+returns true if 'number' is prime otherwise false.
+
+-------------------------
+
+sieveEr (N)
+
+input: positive integer 'N' > 2
+returns a list of prime numbers from 2 up to N.
+        
+This function implements the algorithm called
+sieve of erathostenes. 
+
+---------------------------
+
+getPrimeNumbers (N)
+
+input: positive integer 'N' > 2
+returns a list of prime numbers from 2 up to N (inclusive)
+This function is more efficient as function sieveEr(...)
+
+
+----------------------------
+
+primeFactorization (number)
+
+input: positive integer 'number' 
+returns a list of the prime number factors of 'number'
+
+-------------------------------
+
+greatestPrimeFactor (number)
+
+input: integer 'number' >= 0
+returns the greatest prime number factor of 'number'
+
+---------------------------------
+
+smallestPrimeFactor (number)
+
+input: integer 'number' >= 0
+returns the smallest prime number factor of 'number'
+
+----------------------------------
+
+getPrime (n)
+
+Gets the n-th prime-number. 
+
+input: positive integer 'n' >= 0
+returns the n-th prime number, beginning at index 0
+
+-------------------------------------
+
+getPrimesBetween (pNumber1, pNumber2)
+
+input: prime numbers 'pNumber1' and 'pNumber2'
+precondition: pNumber1 < pNumber2
+returns a list of all prime numbers between 'pNumber1' (exclusiv)
+        and 'pNumber2' (exclusiv) 
+
+--------------------------------------
+
+isEven (number)
+
+input: integer 'number'
+returns true if 'number' is even, otherwise false.
+
+-----------------------------------
+
+isOdd (number)
+
+input: integer 'number'
+returns true if 'number' is odd, otherwise false.
+
+------------------------------------
+
+gcd (number1, number2)
+
+Greatest common divisor
+
+input: two positive integer 'number1' and 'number2'
+returns the greatest common divisor of 'number1' and 'number2'
+
+-------------------------------------
+
+kgV (number1, number2)
+
+Least common multiple
+
+input: two positive integer 'number1' and 'number2'
+returns the least common multiple of 'number1' and 'number2'
+
+-----------------------------------------
+
+NEW-FUNCTION
+
+getDivisors (number)
+
+input: positive integer 'n' >= 1
+returns all divisors of n (inclusive 1 and 'number')
+
+-------------------------------------------
+
+NEW-FUNCTIONS
+
+isPerfectNumber (number)
+
+input: positive integer 'number' > 1
+returns true if 'number' is a perfect number otherwise false.
+
+---------------------------------------
+
+NEW-FUNCTION
+
+simplifyFraction (numerator, denominator)
+
+input: two integer 'numerator' and 'denominator'
+assumes: 'denominator' != 0
+returns: a tuple with simplify numerator and denominator.
+
+----------------------------------------------
+
+NEW-FUNCTION
+
+factorial (n)
+
+input: positive integer 'n'
+returns the factorial of 'n' (n!)
+
+
+-----------------------------------------------
+
+NEW-FUNCTION
+
+fib (n)
+
+input: positive integer 'n'
+returns the n-th fibonacci term , indexing by 0
+
+
+-----------------------------------------------
+
+goldbach(number)
+
+Goldbach's assumption
+
+input: a even positive integer 'number' > 2
+returns a list of two prime numbers whose sum is equal to 'number'
