@@ -44,8 +44,10 @@ def calc(term):
     functions = ['sin', 'cos', 'tan', 'cosh', 'sinh', 'tanh', 'sqrt', 'pi', 'radians', 'e'] 
 
     # This part is for reading and converting function expressions.
+    term = term.lower()
+    
     for function in functions:            
-        if function in term.lower():
+        if function in term:
             withmath = 'math.' + function
             term = term.replace(function, withmath)
 
