@@ -10,6 +10,8 @@ class CreditCard:
         comp =None
         if str(self.card_no).startswith('4'):
              comp = 'Visa Card'
+        elif str(self.card_no).startswith(('50', '67', '58','63',)):
+            comp = 'Maestro Card'
         elif str(self.card_no).startswith('5'):
             comp = 'Master Card'
         elif str(self.card_no).startswith('37'):
@@ -18,8 +20,6 @@ class CreditCard:
             comp = 'Discover Card'
         elif str(self.card_no).startswith('35'):
             comp = 'JCB Card'
-        elif str(self.card_no).startswith('50' or '67'or '58'or'63'):
-            comp = 'Maestro Card'
         elif str(self.card_no).startswith('7'):
             comp = 'Gasoline Card'
 
