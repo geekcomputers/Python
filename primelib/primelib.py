@@ -38,7 +38,8 @@ fib (n) // calculate the n-th fibonacci term.
 goldbach(number)  // Goldbach's assumption
 
 """
-def PI(maxK=70, prec=1008, disp=1007):
+
+def pi(maxK=70, prec=1008, disp=1007):
     """
     maxK: nuber of iterations
     prec: precision of decimal places

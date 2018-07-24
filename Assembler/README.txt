@@ -31,5 +31,5 @@ hello world
 END PROGRAM
 ```
 
-**You find a guide in GUIDE.md**
+**Refer to GUIDE.txt to read a guide**
 
