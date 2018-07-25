@@ -1,0 +1,28 @@
+
+mov ecx, 5
+call _double
+call _cube
+call _inc
+mov eax, 4
+int 0x80
+mov eax, 1
+mov ebx, 0
+int 0x80
+
+
+
+_double:
+add ecx, ecx
+ret 
+
+_cube:
+push eax
+mov eax, ecx
+add ecx, eax
+add ecx, eax
+pop eax
+ret
+
+_inc:
+add ecx, 1
+ret

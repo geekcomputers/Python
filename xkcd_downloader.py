@@ -31,7 +31,6 @@ def main():
     
     # gets comic name from the image src url
     comic_name = image_src.split('/')[-1]
-    comic_name = comic_name[:-4]
     
     # save location of comic
     comic_location = os.getcwd() + '/comics/'
