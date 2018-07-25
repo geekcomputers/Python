@@ -6,6 +6,8 @@
     frequency code used below. I just merged the two ideas.
 '''
 
+from collections import Counter
+
 wordstring = '''SCENE I. Yorkshire. Gaultree Forest.
 Enter the ARCHBISHOP OF YORK, MOWBRAY, LORD HASTINGS, and others
 ARCHBISHOP OF YORK
@@ -290,11 +292,9 @@ ARCHBISHOP OF YORK
 Before, and greet his grace: my lord, we come.
 Exeunt'''
 
-wordlist = wordstring.split()
-
-wordfreq = [wordlist.count(w) for w in wordlist]
+wordCount = Counter(wordstring.split())
 
 print("String\n {} \n".format(wordstring))
-print("List\n {} \n".format(str(wordlist)))
-print("Frequencies\n {} \n".format(str(wordfreq)))
-print("Pairs\n {}".format(str(dict(zip(wordlist, wordfreq)))))
+print("List\n {} \n".format(str(list(wordCount.keys()))))
+print("Frequencies\n {} \n".format(str(list(wordCount.values()))))
+print("Pairs\n {}".format(str(list(wordCount.items()))))

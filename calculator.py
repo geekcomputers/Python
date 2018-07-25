@@ -33,15 +33,15 @@ def calc(term):
     """
     
     # This part is for reading and converting arithmetic terms.
-    term = term.replace(' ', '')
-    term = term.replace('^', '**')
-    term = term.replace('=', '')
-    term = term.replace('?', '')
-    term = term.replace('%', '/100')
-    term = term.replace('rad', 'radians')
-    term = term.replace('mod', '%')
+    operators = [(' ', ''), ('^', '**'), ('=', ''), 
+                 ('?', ''), ('%', '/100'), ('rad', 'radians'), 
+                 ('mod', '%')]
 
-    functions = ['sin', 'cos', 'tan', 'cosh', 'sinh', 'tanh', 'sqrt', 'pi', 'radians', 'e'] 
+    for i, j in operators:
+        term = term.replace(i, j)
+        
+    functions = ['sin', 'cos', 'tan', 'cosh', 'sinh', 'tanh', 'sqrt',
+        'pi', 'radians', 'e'] 
 
     # This part is for reading and converting function expressions.
     term = term.lower()

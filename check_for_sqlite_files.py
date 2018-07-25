@@ -9,32 +9,26 @@
 # Description	: Scans directories to check if there are any sqlite files in there 
 
 from __future__ import print_function
+from os.path import isfile, getsize
+
 import os
 
 def isSQLite3(filename):
-    from os.path import isfile, getsize
-
-    if not isfile(filename):
-        return False
-    if getsize(filename) < 100: # SQLite database file header is 100 bytes
+    # SQLite database file header is 100 bytes
+    if not isfile(filename) or getsize(filename) < 100:
         return False
     else:
-        fd = open(filename, 'rb')
-        Header = fd.read(100)
-        fd.close()
-
-        if Header[0:16] == 'SQLite format 3\000':
-            return True
-        else:
-            return False
+        with open(filename, 'rb') as fd:
+            Header = fd.read(100)
+            return Header[0:16] == 'SQLite format 3\000'
 
 log=open('sqlite_audit.txt','w')
-for r,d,f in os.walk(r'.'):
-  for files in f:
-    if isSQLite3(files):
-      print(files)
-      print("[+] '%s' **** is a SQLITE database file **** " % os.path.join(r,files))
-      log.write("[+] '%s' **** is a SQLITE database file **** " % files+'\n')
+for path, dirs, files in os.walk(r'.'):
+  for f in files:
+    if isSQLite3(f):
+      print(f)
+      print("[+] '%s' **** is a SQLITE database file **** " % os.path.join(path, f))
+      log.write("[+] '%s' **** is a SQLITE database file **** " % f + '\n')
     else:
-      log.write("[-] '%s' is NOT a sqlite database file" % os.path.join(r,files)+'\n')
-      log.write("[-] '%s' is NOT a sqlite database file" % files+'\n')
+      log.write("[-] '%s' is NOT a sqlite database file" % os.path.join(path, f) + '\n')
+      log.write("[-] '%s' is NOT a sqlite database file" % f + '\n')
