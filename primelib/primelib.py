@@ -38,6 +38,7 @@ fib (n) // calculate the n-th fibonacci term.
 goldbach(number)  // Goldbach's assumption
 
 """
+
 def pi(maxK=70, prec=1008, disp=1007):
     """
     maxK: nuber of iterations
@@ -56,7 +57,6 @@ def pi(maxK=70, prec=1008, disp=1007):
     pi = 426880 * Dec(10005).sqrt() / S
     pi = Dec(str(pi)[:disp])
     return pi
-
 
 def isPrime(number):
     """
