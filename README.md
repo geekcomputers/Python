@@ -3,13 +3,13 @@
 
 Here is more detailed information about scripts I have written.  I do not consider myself a programmer; I create these little programs as experiments to play with the language, or to solve problems for myself.  I would gladly accept pointers from others to improve the code and make it more efficient, or simplify the code.  If you would like to make any comments then please feel free to email me at craig@geekcomputers.co.uk.
 
-In the scripts the comments and other documents are lined up correctly when they are viewed in [Notepad++](https://notepad-plus-plus.org/). This is what I use to code Python scripts.
+In the scripts the comments and other documents are lined up correctly when they are viewed in [Notepad++](https://notepad-plus-plus.org/). This is what I used to code Python scripts.
 
 - [batch_file_rename.py](https://github.com/geekcomputers/Python/blob/master/batch_file_rename.py) - This batch renames a group of files in a given directory, once you pass the current and the new extensions.
 
 - [create_dir_if_not_there.py](https://github.com/geekcomputers/Python/blob/master/create_dir_if_not_there.py) - Checks to see if a directory exists in the users home directory, if not then create it.
 
-- [Fast Youtube Downloader](https://github.com/geekcomputers/Python/blob/master/youtube-downloader%20fast.py) - Downloads youtube videos quickly with parallel threads using aria2c
+- [Fast Youtube Downloader](https://github.com/geekcomputers/Python/blob/master/youtube-downloader%20fast.py) - Downloads YouTube videos quickly with parallel threads using aria2c
 
 - [Google Image Downloader](https://github.com/geekcomputers/Python/tree/master/Google%20Image%20Downloader) - Query the specific term and retrieve images from the google image database.
 
@@ -47,7 +47,7 @@ In the scripts the comments and other documents are lined up correctly when they
 
 - [serial_scanner.py](https://github.com/geekcomputers/Python/blob/master/serial_scanner.py) contains a method called ListAvailablePorts which returns a list with the names of the serial ports that are in use in the computer, this method works only on Linux and Windows (can be extended for mac osx). If no port is found, an empty list is returned.
 
-- [get_youtube_view.py](https://github.com/geekcomputers/Python/blob/master/get_youtube_view.py) - This is very simple python script to get more views for your youtube videos. Useful for repeating songs on youtube.
+- [get_youtube_view.py](https://github.com/geekcomputers/Python/blob/master/get_youtube_view.py) - This is very simple python script to get more views for your YouTube videos. Useful for repeating songs on YouTube.
 
 - [CountMillionCharacter.py](https://github.com/geekcomputers/Python/blob/master/CountMillionCharacter.py) And [CountMillionCharacter2.0](https://github.com/geekcomputers/Python/blob/master/CountMillionCharacters-2.0.py).py - Counts character scripts, or how much characters are present on any text based file.
 
@@ -61,4 +61,4 @@ In the scripts the comments and other documents are lined up correctly when they
 
 - [cricket_live_score](https://github.com/geekcomputers/Python/blob/master/Cricket_score.py) - Uses BeautifulSoup to provide live cricket score.
 
-- [youtube.py](https://github.com/geekcomputers/Python/blob/master/youtube.py) - Takes a song name as input and fetches the youtube url of the best matching song and plays it.  
+- [youtube.py](https://github.com/geekcomputers/Python/blob/master/youtube.py) - Takes a song name as input and fetches the YouTube url of the best matching song and plays it.  
