@@ -16,6 +16,8 @@ class CreditCard:
             comp = 'Master Card'
         elif str(self.card_no).startswith('37'):
             comp = 'American Express Card'
+        elif str(self.card_no).startswith('62'):
+            comp = 'Unionpay Card'
         elif str(self.card_no).startswith('6'):
             comp = 'Discover Card'
         elif str(self.card_no).startswith('35'):
