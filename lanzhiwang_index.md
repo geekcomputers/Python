@@ -1,7 +1,7 @@
 ```bash
 $ tree -a .
 .
-├── Assembler
+├── Assembler 自定义汇编解释器
 │   ├── assembler.py
 │   ├── examples
 │   │   ├── code2.txt
@@ -11,7 +11,7 @@ $ tree -a .
 │   │   └── test.txt
 │   ├── GUIDE.txt
 │   └── README.txt
-├── async_downloader
+├── async_downloader 异步下载
 │   ├── async_downloader.py
 │   └── requirements.txt
 ├── backup_automater_services.py
@@ -22,12 +22,12 @@ $ tree -a .
 │   └── README.md
 ├── calculator.py
 ├── chaos.py
-├── check_file.py
+├── check_file.py 检查文件是否存在和可读
 ├── check_for_sqlite_files.py
 ├── check_input.py
 ├── check_internet_con.py
 ├── chicks_n_rabs.py
-├── CountMillionCharacter.py
+├── CountMillionCharacter.py 统计大字符串
 ├── CountMillionCharacters-2.0.py
 ├── CountMillionCharacters-Variations
 │   └── variation1.py
@@ -46,12 +46,12 @@ $ tree -a .
 ├── ex20.py
 ├── factorial_perm_comp.py
 ├── factors.py
-├── fileinfo.py
+├── fileinfo.py 获取文件相关属性信息
 ├── find_prime.py
 ├── folder_size.py
 ├── four_digit_num_combination.py
 ├── FTP in python
-├── ftp_send_receive.py
+├── ftp_send_receive.py FTP上传和下载文件操作
 ├── game_of_life
 │   ├── game_o_life.py
 │   └── sample.gif
@@ -100,9 +100,9 @@ $ tree -a .
 │       └── tags
 ├── .gitignore
 ├── Google Image Downloader
-│   ├── create_dir.py
+│   ├── create_dir.py 创建、删除目录的相关操作
 │   ├── create_dir.py~
-│   ├── image grapper.py
+│   ├── image grapper.py 同步下载文件
 │   ├── image grapper.py~
 │   └── __pycache__
 │       └── create_dir.cpython-35.pyc
@@ -118,7 +118,7 @@ $ tree -a .
 │   └── README.txt
 ├── LICENSE.md
 ├── life
-├── linear-algebra-python
+├── linear-algebra-python 矩阵相关操作
 │   ├── README.md
 │   └── src
 │       ├── lib.py
@@ -205,7 +205,7 @@ $ tree -a .
 ├── wiki_random.py
 ├── work_connect.py
 ├── xkcd_downloader.py
-├── XORcipher
+├── XORcipher 加解密字符串、列表、文件等
 │   ├── README.md
 │   └── XOR_cipher.py
 ├── youtube-downloader fast.py
