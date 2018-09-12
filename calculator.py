@@ -46,10 +46,10 @@ def calc(term):
     # This part is for reading and converting function expressions.
     term = term.lower()
     
-    for function in functions:            
-        if function in term:
-            withmath = 'math.' + function
-            term = term.replace(function, withmath)
+    for func in functions:
+        if func in term:
+            withmath = 'math.' + func
+            term = term.replace(func, withmath)
 
     try:
 

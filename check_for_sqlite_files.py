@@ -11,6 +11,7 @@
 from __future__ import print_function
 import os
 
+
 def isSQLite3(filename):
     from os.path import isfile, getsize
 
@@ -28,13 +29,14 @@ def isSQLite3(filename):
         else:
             return False
 
-log=open('sqlite_audit.txt','w')
-for r,d,f in os.walk(r'.'):
-  for files in f:
-    if isSQLite3(files):
-      print(files)
-      print("[+] '%s' **** is a SQLITE database file **** " % os.path.join(r,files))
-      log.write("[+] '%s' **** is a SQLITE database file **** " % files+'\n')
-    else:
-      log.write("[-] '%s' is NOT a sqlite database file" % os.path.join(r,files)+'\n')
-      log.write("[-] '%s' is NOT a sqlite database file" % files+'\n')
+
+log = open('sqlite_audit.txt','w')
+for r, d, f in os.walk(r'.'):
+    for files in f:
+        if isSQLite3(files):
+            print(files)
+            print("[+] '%s' **** is a SQLITE database file **** " % os.path.join(r, files))
+            log.write("[+] '%s' **** is a SQLITE database file **** " % files+'\n')
+        else:
+            log.write("[-] '%s' is NOT a sqlite database file" % os.path.join(r, files)+'\n')
+            log.write("[-] '%s' is NOT a sqlite database file" % files+'\n')
