@@ -49,10 +49,14 @@ def loadFile(fileName):
         loadFile: This function loads the file and reads its lines.
     """
     global lines
-    fo = open(fileName)
-    for line in fo:
-        lines.append(line)
-    fo.close()
+#    fo = open(fileName)
+#    for line in fo:
+#        lines.append(line)
+#    fo.close()
+
+    with open(fileName) as fo:
+        for line in fo:
+            lines.append(line)
 
 
 def scanner(string):
