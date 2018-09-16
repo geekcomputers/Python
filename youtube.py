@@ -15,8 +15,13 @@ from bs4 import BeautifulSoup
 headers = {
     'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36'}
 '''
-query = input('Enter the song to be played: ')
-query = query.replace(' ', '+')
+input_func = None
+try:
+    input_func = raw_input('Enter the song to be played: ')
+except NameError:
+    input_func = input('Enter the song to be played: ')
+
+query = input_func.replace(' ', '+')
 
 # search for the best similar matching video
 url = 'https://www.youtube.com/results?search_query=' + query
