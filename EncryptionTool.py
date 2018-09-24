@@ -2,18 +2,29 @@
 #Simple encryption script for text
 #This was one my first versions of this script
 #09/07/2017
+from __future__ import print_function
 import math
+import sys
 
-text=input("Enter text: ")
+input_fun = None
+key = int(math.pi * 1e14)
+
+if sys.version_info.major >= 3:
+    input_fun = input
+
+else:
+    input_fun = raw_input
+
+text=input_fun("Enter text: ")
 values= []
 reverse= []
 def encryptChar(target):
     #encrytion algorithm
-    target=(((target+42)*math.pi)-449)
+    target=(((target+42) * key) -449)
     return target
 
 def decryptChar(target):
-    target=(((target+449)/math.pi)-42)
+    target=(((target+449) / key) -42)
     return target
 
 def encrypt(input_text):
