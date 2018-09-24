@@ -1,10 +1,11 @@
-'''Simple million word count program.
-    main idea is Python pairs words
-    with the number of times
-    that number appears in the triple quoted string.
-    Credit to William J. Turkel and Adam Crymble for the word
-    frequency code used below. I just merged the two ideas.
-'''
+"""
+Simple million word count program.
+main idea is Python pairs words
+with the number of times
+that number appears in the triple quoted string.
+Credit to William J. Turkel and Adam Crymble for the word
+frequency code used below. I just merged the two ideas.
+"""
 
 wordstring = '''SCENE I. Yorkshire. Gaultree Forest.
 Enter the ARCHBISHOP OF YORK, MOWBRAY, LORD HASTINGS, and others
