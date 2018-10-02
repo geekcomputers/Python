@@ -2,7 +2,7 @@
 # My Python Examples.
 
 Here is more detailed information about scripts I have written.  I do not consider myself a programmer; I create these little programs as experiments to play with the language, or to solve problems for myself.  I would gladly accept pointers from others to improve the code and make it more efficient, or simplify the code.  If you would like to make any comments then please feel free to email me at craig@geekcomputers.co.uk.
-
+These scripts are very important functions which help reduce workload on people.
 In the scripts the comments and other documents are lined up correctly when they are viewed in [Notepad++](https://notepad-plus-plus.org/). This is what I used to code Python scripts.
 
 - [batch_file_rename.py](https://github.com/geekcomputers/Python/blob/master/batch_file_rename.py) - This batch renames a group of files in a given directory, once you pass the current and the new extensions.
