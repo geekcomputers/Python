@@ -14,6 +14,7 @@ Functions available are:
                         pi : 3.141592... 
                       sine : sin(rad)
                     cosine : cos(rad)
+                   exponent: x^y
                    tangent : tan(rad)
                  remainder : XmodY
                square root : sqrt(n)
@@ -37,11 +38,11 @@ def calc(term):
     term = term.replace('^', '**')
     term = term.replace('=', '')
     term = term.replace('?', '')
-    term = term.replace('%', '/100')
+    term = term.replace('%', '/100.00')
     term = term.replace('rad', 'radians')
     term = term.replace('mod', '%')
 
-    functions = ['sin', 'cos', 'tan', 'cosh', 'sinh', 'tanh', 'sqrt', 'pi', 'radians', 'e'] 
+    functions = ['sin', 'cos', 'tan','pow', 'cosh', 'sinh', 'tanh', 'sqrt', 'pi', 'radians', 'e'] 
 
     # This part is for reading and converting function expressions.
     term = term.lower()
@@ -68,6 +69,8 @@ def calc(term):
     except AttributeError:
 
         print('Please check usage method and try again.')
+    except TypeError :
+        print ("please enter inputs of correct datatype ")
         
     return term
 
