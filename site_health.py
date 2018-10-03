@@ -1,5 +1,8 @@
 #! /usr/bin/env python
-"""This script is very useful to just to see get status/infromation about your host and it's certificate"""
+"""This script is very useful for when you just to do a health check on a remote server. It does the followings:
+  - NSLOOKUP 
+  - PING to see if the site is up 
+  - Certificate/SSL/TLS info """
 from urllib.request import Request, urlopen, ssl, socket
 from urllib.error import URLError, HTTPError
 import os,json,hashlib, re
@@ -16,7 +19,6 @@ class ServerHealthCheck():
         self.ping_host()
         self.obtain_http_info()
         self.obtain_cert_info()
-        
 
     def obtain_ip(self):
         print("__LOOKUP____________________________________________")
@@ -46,7 +48,6 @@ class ServerHealthCheck():
 
     def obtain_http_info(self):
         print("__SSL/TLS INFO____________________________________________")
-        
         req = Request(self.url_path)
         try:
             response = urlopen(req,context=ssl._create_unverified_context())
@@ -61,13 +62,11 @@ class ServerHealthCheck():
             print("http code:"+str(response.getcode())  )
             
     def obtain_cert_info(self):
-
         context = ssl.create_default_context()
         with socket.create_connection((self.base_url, self.port)) as socket_connection:
             with context.wrap_socket(socket_connection, server_hostname=self.base_url) as server_socket:
                 #uncomment to print everything
                 #print(json.dumps(server_socket.getpeercert() , indent=2, sort_keys=True))
-                
                 cert_info = server_socket.getpeercert()
                 subject = dict(x[0] for x in cert_info['subject'])
                 issued_to = subject['commonName']
@@ -76,12 +75,8 @@ class ServerHealthCheck():
                 valid_from =cert_info['notBefore']
                 valid_to = cert_info['notAfter']
                 serial_number =cert_info['serialNumber']
-
-              
-
                 der_cert = server_socket.getpeercert(False)
                 der_cert_bin = server_socket.getpeercert(True)
-
                 pem_cert = ssl.DER_cert_to_PEM_cert(server_socket.getpeercert(True))
                 # uncomment the below line if you want to see the actual public cert
                 #print("certificate pub:",pem_cert)
@@ -100,7 +95,6 @@ class ServerHealthCheck():
                 print("serial_number: "+serial_number)
                 # print(server_socket.shared_ciphers())
             server_socket.close()
-
 
 
 if __name__ == '__main__':
