@@ -1,13 +1,11 @@
-#!/usr/bin/python
- 
 import urllib2
 import cookielib
 from getpass import getpass
 import sys
  
-username = raw_input('Enter mobile number:')
+username = input('Enter mobile number:')
 passwd = getpass()
-message = raw_input('Enter Message:')
+message = input('Enter Message:')
 #Fill the list with Recipients
 x=raw_input('Enter Mobile numbers seperated with comma:')
 num=x.split(',')
@@ -27,7 +25,7 @@ opener.addheaders = [('User-Agent','Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/
 try:
     usock = opener.open(url, data)
 except IOError:
-    print "Error while logging in."
+    print("Error while logging in.")
     sys.exit(1)
  
  
@@ -41,7 +39,7 @@ try:
         send_sms_data = 'ssaction=ss&Token='+jession_id+'&mobile='+number+'&message='+message+'&msgLen=136'
         sms_sent_page = opener.open(send_sms_url,send_sms_data)
 except IOError:
-    print "Error while sending message"
+    print("Error while sending message")
     
 sys.exit(1)
 print "SMS has been sent."
