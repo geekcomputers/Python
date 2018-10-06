@@ -1,5 +1,3 @@
-#!/usr/bin/python3
-
 from os import chdir
 import requests
 from bs4 import BeautifulSoup

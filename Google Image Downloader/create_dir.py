@@ -1,5 +1,3 @@
-#!/usr/bin/python3
-
 """
 Code to directly use in file to
 create directory in home location
