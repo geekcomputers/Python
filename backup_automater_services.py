@@ -24,7 +24,7 @@ sourcedir = os.path.expanduser('~/Library/Services/')	 # Source directory of whe
 destdir = os.path.join(dropbox, "My_backups" + "/" + "Automater_services" + todaystr + "/")
 
 # the destination backup directory
-for file_name in open(conffilename): 							  # Walk through the configuration file
+for file_name in open(conffile_name): 							  # Walk through the configuration file
     fname = file_name.strip()								      # Strip out the blank lines from the configuration file
     if fname:													  # For the lines that are not blank
         sourcefile = os.path.join(sourcedir, fname)		          # Get the name of the source files to backup
