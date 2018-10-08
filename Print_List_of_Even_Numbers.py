@@ -1,8 +1,8 @@
 # INPUT NUMBER OF EVEN NUMBERS
 
-n=int(input())
+n=int(input('Amount: '))
 start=0
 
-for i range(n):
+for i in range(n):
   print(start)
   start+=2
