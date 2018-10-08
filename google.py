@@ -7,7 +7,11 @@ Description: Script googles the keyword and opens
 Version: 1.0
 """
 
-import webbrowser, sys, pyperclip, requests, bs4
+import webbrowser 
+import sys 
+import pyperclip 
+import requests 
+import bs4
 
 def main():
 	if len(sys.argv) > 1:
