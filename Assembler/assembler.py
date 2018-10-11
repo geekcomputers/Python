@@ -1,4 +1,6 @@
 import sys
+//WE NEED TSHIRT FOR HACKTOBER FEST.
+//PLEASE ACCEPT MY PR.
 
 lines = [] # contains the lines of the file. 
 tokens = [] # contains all tokens of the source code.
