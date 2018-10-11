@@ -1,5 +1,4 @@
-def get_user_input(start,end):
-
+def get_user_input(start, end):
     """
         input: two integer values
                lower limit 'start' and maximum 'end'
@@ -29,17 +28,17 @@ def get_user_input(start,end):
             else:
 
                 # valid case
-                loop = False # aborts while-loop
+                loop = False  # aborts while-loop
 
         except ValueError:
 
             # error case
-            print("Please try again. Only numbers") 
+            print("Please try again. Only numbers")
 
     return user_input
-        
 
-x = get_user_input(1,6)
+
+x = get_user_input(1, 6)
 print(x)
 # Asks user to enter something, ie. a number option from a menu.
 # While type != interger, and not in the given range,

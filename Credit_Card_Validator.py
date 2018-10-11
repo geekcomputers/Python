@@ -2,7 +2,7 @@
 
 
 class CreditCard:
-    def __init__(self,card_no):
+    def __init__(self, card_no):
         self.card_no = card_no
 
     @property
@@ -10,7 +10,7 @@ class CreditCard:
         comp = None
         if str(self.card_no).startswith('4'):
             comp = 'Visa Card'
-        elif str(self.card_no).startswith(('50', '67', '58','63',)):
+        elif str(self.card_no).startswith(('50', '67', '58', '63',)):
             comp = 'Maestro Card'
         elif str(self.card_no).startswith('5'):
             comp = 'Master Card'
@@ -25,7 +25,7 @@ class CreditCard:
         elif str(self.card_no).startswith('7'):
             comp = 'Gasoline Card'
 
-        return 'Company : '+comp
+        return 'Company : ' + comp
 
     def first_check(self):
         if 13 <= len(self.card_no) <= 19:
@@ -41,7 +41,7 @@ class CreditCard:
         crd_no = self.card_no[::-1]
         for i in range(len(crd_no)):
             if i % 2 == 1:
-                double_it = int(crd_no[i])*2
+                double_it = int(crd_no[i]) * 2
 
                 if len(str(double_it)) == 2:
                     sum_ += sum([eval(i) for i in str(double_it)])
@@ -61,10 +61,10 @@ class CreditCard:
 
     @property
     def checksum(self):
-        return '#CHECKSUM# : '+self.card_no[-1]
+        return '#CHECKSUM# : ' + self.card_no[-1]
 
     @classmethod
-    def set_card(cls,card_to_check):
+    def set_card(cls, card_to_check):
         return cls(card_to_check)
 
 
@@ -76,8 +76,6 @@ print(card.first_check())
 print(card.checksum)
 print(card.validate())
 
-
 # 79927398713
 # 4388576018402626
 # 379354508162306
-

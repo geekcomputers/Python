@@ -22,8 +22,9 @@ Functions available are:
 convert degrees to radians : rad(deg)
 """
 
-import math
 import sys
+
+from fileinfo import raw_input
 
 
 def calc(term):
@@ -32,7 +33,7 @@ def calc(term):
         output: returns the result of the computed term.
         purpose: This function is the actual calculator and the heart of the application
     """
-    
+
     # This part is for reading and converting arithmetic terms.
     term = term.replace(' ', '')
     term = term.replace('^', '**')
@@ -42,11 +43,11 @@ def calc(term):
     term = term.replace('rad', 'radians')
     term = term.replace('mod', '%')
 
-    functions = ['sin', 'cos', 'tan','pow', 'cosh', 'sinh', 'tanh', 'sqrt', 'pi', 'radians', 'e'] 
+    functions = ['sin', 'cos', 'tan', 'pow', 'cosh', 'sinh', 'tanh', 'sqrt', 'pi', 'radians', 'e']
 
     # This part is for reading and converting function expressions.
     term = term.lower()
-    
+
     for func in functions:
         if func in term:
             withmath = 'math.' + func
@@ -69,9 +70,9 @@ def calc(term):
     except AttributeError:
 
         print('Please check usage method and try again.')
-    except TypeError :
-        print ("please enter inputs of correct datatype ")
-        
+    except TypeError:
+        print("please enter inputs of correct datatype ")
+
     return term
 
 
@@ -91,8 +92,8 @@ def main():
         purpose: handles user input and prints 
                  information to the console.
     """
-    
-    print("\nScientific Calculator\n\nFor Example: sin(rad(90)) + 50% * (sqrt(16)) + round(1.42^2)"+\
+
+    print("\nScientific Calculator\n\nFor Example: sin(rad(90)) + 50% * (sqrt(16)) + round(1.42^2)" +
           "- 12mod3\n\nEnter quit to exit")
 
     if sys.version_info.major >= 3:
