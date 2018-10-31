@@ -12,8 +12,8 @@ import sys
 
 
 def main():
-    if sys.version_info.major >= 3: # if the interpreter version is 3.X, use 'input',
-        input_func = input          # otherwise use 'raw_input'
+    if sys.version_info.major >= 3:  # if the interpreter version is 3.X, use 'input',
+        input_func = input  # otherwise use 'raw_input'
     else:
         input_func = raw_input
 

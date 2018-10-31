@@ -4,15 +4,15 @@ import random
 # Class that that holds dice-functions. You can set the amount of sides and roll with each dice object.
 class Dice:
     def __init__(self):
-        self.sideCount=6
-     
+        self.sideCount = 6
+
     def setSides(self, sides):
         if sides > 3:
             self.sides = sides
         else:
             print("This absolutely shouldn't ever happen. The programmer sucks or someone "
                   "has tweaked with code they weren't supposed to touch!")
-      
+
     def roll(self):
         return random.randint(1, self.sides)
 
@@ -29,7 +29,7 @@ def checkInput(sides):
                 return int(sides)
         else:
             return int(sides)
-    
+
     except:
         print("Invalid input!")
         return None
@@ -50,7 +50,7 @@ def pickNumber(item, question_string, lower_limit):
 
 
 # Main-function of the program that sets up the dices for the user as they want them.
-def getDices(): 
+def getDices():
     dices = []
     sides = None
     diceAmount = None
@@ -63,7 +63,7 @@ def getDices():
     for i in range(0, diceAmount):
         d = Dice()
         d.setSides(sides)
-        dices.append(d) 
+        dices.append(d)
 
     return dices
 
@@ -79,4 +79,4 @@ for dice in dices:
     rollOutput = rollOutput + str(dice.roll()) + ", "
 
 rollOutput = rollOutput[:-2]
-print (rollOutput)
+print(rollOutput)

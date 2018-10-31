@@ -1,6 +1,6 @@
 import bs4 as bs            # bs4 library run as bs
 from urllib import request
-from  win10toast import ToastNotifier
+from win10toast import ToastNotifier
 
 toaster = ToastNotifier()
 
@@ -17,7 +17,5 @@ for div_tags in soup.find_all('div', attrs={"class": "cb-lv-scrs-col text-black"
 for result in soup.find_all('div', attrs={"class": "cb-lv-scrs-col cb-text-complete"}):
     results.append(result.text)
 
-
 print(score[0], results[0])
 toaster.show_toast(title=score[0], msg=results[0])
-
