@@ -113,4 +113,5 @@ frame.set_keyup_handler(keyup)
 frame.add_button("Restart",reset)
 
 new_game()
+print()
 frame.start()
