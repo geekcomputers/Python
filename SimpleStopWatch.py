@@ -9,6 +9,9 @@ while True:
         input() # For ENTER. Use raw_input() if you are running python 2.x instead of input()
         starttime = time.time()
         print('Started')
+        while True:
+            print('Time Elapsed: ', round(time.time() - starttime, 0), 'secs', end="\r")
+            time.sleep(1)
     except KeyboardInterrupt:
         print('Stopped')
         endtime = time.time()
