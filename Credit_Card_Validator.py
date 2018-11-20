@@ -32,7 +32,7 @@ class CreditCard:
             message = "First check : Valid in terms of length."
 
         else:
-            message = "First chek : Check Card number once again it must be of 13 or 16 digit long."
+            message = "First check : Check Card number once again it must be of 13 or 16 digits long."
         return message
 
     def validate(self):
