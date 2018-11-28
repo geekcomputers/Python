@@ -1,4 +1,5 @@
 """ Script To Copy Spotlight(Lockscreen) Images from Windows """
+from __future__ import print_function
 import os
 import shutil
 import errno
@@ -22,7 +23,7 @@ def make_folder(folder_name):
         if exc.errno == errno.EEXIST and os.path.isdir(folder_name):
             pass
         else:
-            print "Error! Could not create a folder"
+            print("Error! Could not create a folder")
             raise
 
 def get_spotlight_wallpapers(target_folder):
@@ -61,5 +62,5 @@ def get_spotlight_wallpapers(target_folder):
 if __name__ == '__main__':
     PATH = raw_input("Enter directory path:")
     get_spotlight_wallpapers(PATH)
-    print "Lockscreen images have been copied to \""+PATH+"\""
+    print("Lockscreen images have been copied to \""+PATH+"\"")
     

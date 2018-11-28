@@ -1,3 +1,4 @@
+from __future__ import print_function
 # Script Name		: nmap_scan.py
 # Author				: Craig Richards
 # Created				: 24th May 2013
@@ -16,7 +17,7 @@ def nmapScan(tgtHost, tgtPort):									# Create the function, this fucntion doe
   nmScan = nmap.PortScanner()
   nmScan.scan(tgtHost, tgtPort)
   state = nmScan[tgtHost]['tcp'][int(tgtPort)]['state']
-  print "[*] " + tgtHost + " tcp/" + tgtPort + " " + state
+  print("[*] " + tgtHost + " tcp/" + tgtPort + " " + state)
 
 
 def main():																								# Main Program
@@ -28,7 +29,7 @@ def main():																								# Main Program
   tgtPorts = str(options.tgtPort).split(',')
 
   if (tgtHost == None) | (tgtPorts[0] == None):
-    print parser.usage
+    print(parser.usage)
     exit(0)
 
   for tgtPort in tgtPorts:				# Scan the hosts with the ports etc

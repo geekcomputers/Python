@@ -1,3 +1,4 @@
+from __future__ import print_function
 import os
 import sys
 import shutil
@@ -40,7 +41,7 @@ def Organize(dirs, name):
 	os.chdir(dest)
 	shutil.move(src, '{}\\{}'.format(dest, dirs))
 
-	print os.getcwd()
+	print(os.getcwd())
 	os.chdir(destLocation)
 
 TYPES_LIST = ['Video', 'Images', 'Documents', 'Music', 'Codes', 'Executables', 'Compressed']
