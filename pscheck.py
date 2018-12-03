@@ -19,7 +19,7 @@ def ps():
     proginfo = string.split(output)
 
     #display results
-    print ("\n\)
+    print "\n\
     Full path:\t\t", proginfo[5], "\n\
     Owner:\t\t\t", proginfo[0], "\n\
     Process ID:\t\t", proginfo[1], "\n\
@@ -32,7 +32,7 @@ def main():
   if os.name == "posix":											# Unix/Linux/MacOS/BSD/etc
     ps()																	# Call the function
   elif os.name in ("nt", "dos", "ce"):							# if the OS is windows
-    print ("You need to be on Linux or Unix to run this")
+    print "You need to be on Linux or Unix to run this"
 		 
 		 
 if __name__ == '__main__':
