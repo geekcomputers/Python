@@ -40,7 +40,7 @@ def Organize(dirs, name):
 	os.chdir(dest)
 	shutil.move(src, '{}\\{}'.format(dest, dirs))
 
-	print os.getcwd()
+	print(os.getcwd())
 	os.chdir(destLocation)
 
 TYPES_LIST = ['Video', 'Images', 'Documents', 'Music', 'Codes', 'Executables', 'Compressed']
