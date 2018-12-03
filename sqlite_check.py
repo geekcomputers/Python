@@ -23,12 +23,12 @@ try:
     cur = con.cursor()
     cur.execute('SELECT SQLITE_VERSION()')
     data = cur.fetchone()
-    print "SQLite version: %s" % data
+    print("SQLite version: %s" % data)
 
 
 except lite.Error, e:
 
-    print "Error %s:" % e.args[0]
+    print("Error %s:" % e.args[0])
     sys.exit(1)
 
 finally:
@@ -42,7 +42,7 @@ cur=con.cursor()
 cur.execute("SELECT name FROM sqlite_master WHERE type='table'")
 rows = cur.fetchall()
 for row in rows:
-  print row
+  print(row)
 
 con = lite.connect(master_db)
 cur=con.cursor()
@@ -51,4 +51,4 @@ while True:
   row = cur.fetchone()
   if row == None:
     break
-  print row[0]
+  print(row[0])
