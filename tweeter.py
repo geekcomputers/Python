@@ -6,6 +6,7 @@ Version: 1.0
 
 Tweet text and pics directly from the terminal.
 """
+from __future__ import print_function
 import tweepy, os
 
 def getStatus():
@@ -21,25 +22,25 @@ def getStatus():
 
 def tweetthis(type):
 	if type == "text":
-		print "Enter your tweet "+user.name
+		print("Enter your tweet "+user.name)
 		tweet = getStatus()
 		try:
 			api.update_status(tweet)
 		except Exception as e:
-			print e
+			print(e)
 			return
 	elif type == "pic":
-		print "Enter pic path "+user.name
+		print("Enter pic path "+user.name)
 		pic = os.path.abspath(raw_input())
-		print "Enter status "+user.name
+		print("Enter status "+user.name)
 		title = getStatus()
 		try:
 			api.update_with_media(pic, status=title)
 		except Exception as e:
-			print e
+			print(e)
 			return
 
-	print "\n\nDONE!!"
+	print("\n\nDONE!!")
 
 def initialize():
 	global api, auth, user
@@ -62,7 +63,7 @@ def main():
 	elif doit == 2:
 		tweetthis("pic")
 	else:
-		print "OK, Let's try again!"
+		print("OK, Let's try again!")
 		main()
 
 main()

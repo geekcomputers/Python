@@ -1,3 +1,4 @@
+from __future__ import print_function
 # Script Name		: script_count.py
 # Author				: Craig Richards
 # Created				: 27th February 2012
@@ -33,34 +34,34 @@ def github():   																			# Start of the function just to count the fil
   github_dir = os.path.join(dropbox, 'github')									# Joins the paths to get the github directory - 1.1
   github_count = sum((len(f) for _, _, f in os.walk(github_dir)))			# Get a count for all the files in the directory
   if github_count > 5:																	# If the number of files is greater then 5, then print the following messages
-    print '\nYou have too many in here, start uploading !!!!!'
-    print 'You have: ' + str(github_count) + ' waiting to be uploaded to github!!'
+    print('\nYou have too many in here, start uploading !!!!!')
+    print('You have: ' + str(github_count) + ' waiting to be uploaded to github!!')
   elif github_count == 0:																# Unless the count is 0, then print the following messages
-    print '\nGithub directory is all Clear'
+    print('\nGithub directory is all Clear')
   else:																						# If it is any other number then print the following message, showing the number outstanding.
-    print '\nYou have: ' + str(github_count) + ' waiting to be uploaded to github!!'
+    print('\nYou have: ' + str(github_count) + ' waiting to be uploaded to github!!')
   
 def development():   																	# Start of the function just to count the files in the development directory
   dev_dir = os.path.join(path, 'development')									# Joins the paths to get the development directory - 1.1
   dev_count = sum((len(f) for _, _, f in os.walk(dev_dir)))					# Get a count for all the files in the directory
   if dev_count > 10:																	# If the number of files is greater then 10, then print the following messages
-    print '\nYou have too many in here, finish them or delete them !!!!!'
-    print 'You have: ' + str(dev_count) + ' waiting to be finished!!'
+    print('\nYou have too many in here, finish them or delete them !!!!!')
+    print('You have: ' + str(dev_count) + ' waiting to be finished!!')
   elif dev_count ==0:																	# Unless the count is 0, then print the following messages
-    print '\nDevelopment directory is all clear'
+    print('\nDevelopment directory is all clear')
   else:
-    print '\nYou have: ' + str(dev_count) + ' waiting to be finished!!'	# If it is any other number then print the following message, showing the number outstanding.
+    print('\nYou have: ' + str(dev_count) + ' waiting to be finished!!')	# If it is any other number then print the following message, showing the number outstanding.
 
 clear_screen()																			# Call the function to clear the screen
 
-print '\nYou have the following :\n'  
-print 'AutoIT:\t' + str(count_files(path, '.au3'))									# Run the count_files function to count the files with the extension we pass
-print 'Batch:\t' + str(count_files(path, ('.bat', ',cmd')))						# 1.3
-print 'Perl:\t' + str(count_files(path, '.pl'))
-print 'PHP:\t' + str(count_files(path, '.php'))									# 1.2
-print 'Python:\t' + str(count_files(path, '.py'))
-print 'Shell:\t' + str(count_files(path, ('.ksh', '.sh', '.bash')))
-print 'SQL:\t' + str(count_files(path, '.sql'))
+print('\nYou have the following :\n')  
+print('AutoIT:\t' + str(count_files(path, '.au3')))									# Run the count_files function to count the files with the extension we pass
+print('Batch:\t' + str(count_files(path, ('.bat', ',cmd'))))						# 1.3
+print('Perl:\t' + str(count_files(path, '.pl')))
+print('PHP:\t' + str(count_files(path, '.php')))									# 1.2
+print('Python:\t' + str(count_files(path, '.py')))
+print('Shell:\t' + str(count_files(path, ('.ksh', '.sh', '.bash'))))
+print('SQL:\t' + str(count_files(path, '.sql')))
 
 github()																						# Call the github function
 development()																			# Call the development function

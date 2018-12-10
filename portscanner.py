@@ -1,3 +1,4 @@
+from __future__ import print_function
 # Script Name	: portscanner.py
 # Author		: Craig Richards
 # Created		: 20 May 2013 
@@ -21,11 +22,11 @@ def connScan(tgtHost, tgtPort):		# Start of the function
 		connSkt.send('')
 		results=connSkt.recv(100)
 		screenLock.acquire()		# Acquire the lock
-		print '[+] %d/tcp open'% tgtPort
-		print '[+] ' + str(results)
+		print('[+] %d/tcp open'% tgtPort)
+		print('[+] ' + str(results))
 	except:
 		screenLock.acquire()
-		print '[-] %d/tcp closed '% tgtPort
+		print('[-] %d/tcp closed '% tgtPort)
 	finally:
 		screenLock.release()
 		connSkt.close()
@@ -34,13 +35,13 @@ def portScan(tgtHost, tgtPorts):	# Start of the function
 	try:
 		tgtIP = gethostbyname(tgtHost)	# Get the IP from the hostname
 	except:
-		print "[-] Cannot resolve '%s': Unknown host"%tgtHost
+		print("[-] Cannot resolve '%s': Unknown host"%tgtHost)
 		return
 	try:
 		tgtName = gethostbyaddr(tgtIP)	# Get hostname from IP
-		print '\n[+] Scan Results for: ' +tgtName[0]
+		print('\n[+] Scan Results for: ' +tgtName[0])
 	except:
-		print '\n[+] Scan Results for: ' + tgtIP
+		print('\n[+] Scan Results for: ' + tgtIP)
 	setdefaulttimeout(1)
 	for tgtPort in tgtPorts:	# Scan host and ports
 		t = Thread(target=connScan, args=(tgtHost, int(tgtPort)))
@@ -54,7 +55,7 @@ def main():
 	tgtHost = options.tgtHost
 	tgtPorts = str(options.tgtPort).split(',')
 	if (tgtHost == None) | (tgtPorts[0] == None):
-		print parser.usage
+		print(parser.usage)
 		exit(0)
 	portScan(tgtHost, tgtPorts)
 if __name__ == '__main__':
