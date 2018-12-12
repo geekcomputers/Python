@@ -6,6 +6,7 @@ Version: 1.0
 
 Tweet text and pics directly from the terminal.
 """
+from __future__ import print_function
 import tweepy, os
 
 def getStatus():
@@ -62,7 +63,7 @@ def main():
 	elif doit == 2:
 		tweetthis("pic")
 	else:
-		print "OK, Let's try again!"
+		print("OK, Let's try again!")
 		main()
 
 main()

@@ -1,3 +1,4 @@
+from __future__ import print_function
 import mechanize
 import re
 import urllib2
@@ -19,7 +20,9 @@ while int<len(urls):
     urls[int]=urls[int].replace("<b>","")
     urls[int]=urls[int].replace("</b>","")
     int=int+1
-print (urls)
+
+print(urls)
+
 for url in urls:
     try:
      temp=url.split("/")
@@ -31,7 +34,7 @@ for url in urls:
      file=open('psu2'+q+'.pdf','wb')
      file.write(r.read())
      file.close()
-     print ("Done")
-    except urllib2.URLError as e:
-     print ("Sorry there exists a problem with this URL Please Download this Manually "+str(url))
 
+     print("Done")
+    except urllib2.URLError as e:
+     print("Sorry there exists a problem with this URL Please Download this Manually "+str(url))

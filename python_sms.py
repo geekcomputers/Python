@@ -1,3 +1,4 @@
+from __future__ import print_function
 # Script Name	: python_sms.py
 # Author	: Craig Richards
 # Created	: 16th February 2017
@@ -63,14 +64,15 @@ while True:
   postdata = urllib.urlencode(values)
   req = urllib2.Request(url, postdata)
 
-  print ('Attempting to send SMS to '+ sname + ' at ' + snumber + ' on ' + tdate)
-  f.write ('Attempting to send SMS to '+ sname + ' at ' + snumber + ' on ' + tdate + '\n')
+  print('Attempting to send SMS to '+ sname + ' at ' + snumber + ' on ' + tdate)
+  f.write('Attempting to send SMS to '+ sname + ' at ' + snumber + ' on ' + tdate + '\n')
 
   try:
     response = urllib2.urlopen(req)
     response_url = response.geturl()
     if response_url == url:
-      print ('SMS sent!')
-  except urllib2.URLError, e:
-    print ('Send failed!')
-    print (e.reason)
+
+      print('SMS sent!')
+  except urllib2.URLError as e:
+    print('Send failed!')
+    print(e.reason)

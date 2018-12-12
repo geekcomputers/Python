@@ -1,4 +1,5 @@
 """ Script To Copy Spotlight(Lockscreen) Images from Windows """
+from __future__ import print_function
 import os
 import shutil
 import errno
@@ -62,4 +63,6 @@ if __name__ == '__main__':
     PATH = raw_input("Enter directory path:")
     get_spotlight_wallpapers(PATH)
     print("Lockscreen images have been copied to \""+PATH+"\"")
+
     
+

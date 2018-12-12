@@ -1,3 +1,4 @@
+from __future__ import print_function
 # Script Name	: password_cracker.py
 # Author		: Craig Richards
 # Created		: 20 May 2013
@@ -18,7 +19,7 @@ elif _platform == "win32":
     try:
        import fcrypt # Try importing the fcrypt module
     except ImportError:
-       print 'Please install fcrypt if you are on Windows'
+       print('Please install fcrypt if you are on Windows')
 
 
 def testPass(cryptPass):	  # Start the function
@@ -28,9 +29,9 @@ def testPass(cryptPass):	  # Start the function
     word = word.strip('\n')
     cryptWord = crypt.crypt(word, salt)	  # Check for password in the file
     if (cryptWord == cryptPass):
-      print "[+] Found Password: "+word+"\n"
+      print("[+] Found Password: "+word+"\n")
       return
-  print "[-] Password Not Found.\n"
+  print("[-] Password Not Found.\n")
   return
 
 
@@ -40,7 +41,7 @@ def main():
     if ":" in line:
       user = line.split(':')[0]
       cryptPass = line.split(':')[1].strip(' ') # Prepare the user name etc
-      print "[*] Cracking Password For: " + user
+      print("[*] Cracking Password For: " + user)
       testPass(cryptPass)				# Call it to crack the users password
 
 if __name__ == "__main__":

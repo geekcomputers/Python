@@ -1,3 +1,4 @@
+from __future__ import print_function
 import urllib2
 import cookielib
 from getpass import getpass
@@ -42,4 +43,4 @@ except IOError:
     print("Error while sending message")
     
 sys.exit(1)
-print "SMS has been sent."
+print("SMS has been sent.")

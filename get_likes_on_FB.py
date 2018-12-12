@@ -1,3 +1,4 @@
+from __future__ import print_function
 import urllib
 import json
 import sys
@@ -12,7 +13,7 @@ url='https://graph.facebook.com/'+userId+'/posts?access_token='+accessToken +'&l
 data = json.load(urllib.urlopen(url))
 id=0
 
-print str(id)
+print(str(id))
 
 for item in data['data']:
    time=item['created_time'][11:19]
@@ -32,4 +33,4 @@ else:
 
 id+=1
 
-print str(id)+'\t'+ time.encode('utf-8')+'\t'+date.encode('utf-8')+'\t'+year.encode('utf-8')+'\t'+ str(num_share)+'\t'+str(num_like)
+print(str(id)+'\t'+ time.encode('utf-8')+'\t'+date.encode('utf-8')+'\t'+year.encode('utf-8')+'\t'+ str(num_share)+'\t'+str(num_like))

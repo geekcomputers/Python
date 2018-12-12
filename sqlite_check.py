@@ -1,3 +1,4 @@
+from __future__ import print_function
 # Script Name	: sqlite_check.py
 # Author		: Craig Richards
 # Created		: 20 May 2013
@@ -26,7 +27,7 @@ try:
     print("SQLite version: %s" % data)
 
 
-except lite.Error, e:
+except lite.Error as e:
 
     print("Error %s:" % e.args[0])
     sys.exit(1)

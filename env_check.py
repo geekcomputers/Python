@@ -23,4 +23,4 @@ for env_check in open(conffilename):  # Open the config file and read all the se
     if newenv is None:  # If it doesn't exist
         print(env_check, 'is not set')  # Print it is not set
     else:  # Else if it does exist
-        print('Current Setting for {}={}\n'.format(env_check, newenv)  # Print out the details)
+        print('Current Setting for {}={}\n'.format(env_check, newenv))  # Print out the details
