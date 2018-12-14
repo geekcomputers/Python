@@ -1,39 +1,6 @@
-# Memory_game in codeskulpter
-
 import simplegui
 import random
 
-def create(card):
-    while len(card) != 8:
-        num = random.randrange(0 ,8)
-        if num not in card:
-            card.append(num)
-    return card
-card3 = []   
-card1 = []
-card2 = []
-po = []
-card1 = create(card1)
-card2 = create(card2)
-card1.extend(card2)
-random.shuffle(card1)
-print card1
-state = 0
-exposed = []
-for i in range(0,16,1):
-    exposed.insert(i, False)
-
-def mouseclick(pos):
-    global state, card3, po
-    state += 1
-    ind = pos[0]//50
-    card3.append(card1[ind])
-    po.append(ind)# implementation of card game - Memory
-
-import simplegui
-import random
-
-# helper function to initialize globals
 def new_game():
     global card3, po, state, exposed, card1
     def create(card):
@@ -55,10 +22,7 @@ def new_game():
     for i in range(0,16,1):
         exposed.insert(i, False)
      
-
-    # define event handlers
 def mouseclick(pos):
-    # add game state logic here
     global card3, po, state, exposed, card1
     if state == 2:
         if card3[0] != card3[1]:
@@ -73,8 +37,7 @@ def mouseclick(pos):
     if exposed[ind] == False and state < 2:
         exposed[ind] = True
         state += 1
-                   
-# cards are logically 50x100 pixels in size    
+
 def draw(canvas):
     global card1
     gap = 0
@@ -85,49 +48,12 @@ def draw(canvas):
             canvas.draw_text( str(card1[i]), [ 15 + gap, 65], 50, 'White')
         gap += 50
 
-# create frame and add a button and labels
 frame = simplegui.create_frame("Memory", 800, 100)
 frame.add_button("Reset", new_game)
 label = frame.add_label("Turns = 0")
 
-# register event handlers
 frame.set_mouseclick_handler(mouseclick)
 frame.set_draw_handler(draw)
 
-# get things rolling
 new_game()
-frame.start()
-
-
-# Always remember to review the grading rubric
-    if exposed[ind] == False and state < 2:
-        exposed[ind] = True
-    elif exposed[ind] == False and state == 2:
-        exposed[ind] = True
-    if state == 3 and card3[0] == card3[1]:
-        card3 = []
-        po = []
-        state = 0
-    elif state == 3:
-        state = 0
-        for i in po:
-            exposed[i] = False
-        card3 = []
-        po = []
-                       
-def draw(canvas):
-    global card1
-    gap = 0
-    for i in range(0,16,1):
-        if exposed[i] == False:
-            canvas.draw_polygon( [ [0 + gap,0], [0 + gap,100] ,[50 + gap,100],[50 + gap,0]],1 ,"Black","Green")
-        elif exposed[i] == True:
-            canvas.draw_text( str(card1[i]), [ 15 + gap, 65], 50, 'White')
-        gap += 50
-
-frame = simplegui.create_frame("Memory", 800, 100)
-
-frame.set_mouseclick_handler(mouseclick)
-frame.set_draw_handler(draw)
-
 frame.start()
