@@ -29,7 +29,9 @@ def get_credentials():
         flow = client.flow_from_clientsecrets(CLIENT_SECRET_FILE, SCOPES)
         flow.user_agent = APPLICATION_NAME
         credentials = tools.run_flow(flow, store)
+
         print('Storing credentials to ' + credential_path)
+
     return credentials
 
 def SendMessage(sender, to, subject, msgHtml, msgPlain, attachmentFile=None):
@@ -46,7 +48,9 @@ def SendMessage(sender, to, subject, msgHtml, msgPlain, attachmentFile=None):
 def SendMessageInternal(service, user_id, message):
     try:
         message = (service.users().messages().send(userId=user_id, body=message).execute())
+
         print('Message Id: %s' % message['id'])
+
         return message
     except errors.HttpError as error:
         print('An error occurred: %s' % error)

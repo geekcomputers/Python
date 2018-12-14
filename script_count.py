@@ -34,6 +34,7 @@ def github():   																			# Start of the function just to count the fil
   github_dir = os.path.join(dropbox, 'github')									# Joins the paths to get the github directory - 1.1
   github_count = sum((len(f) for _, _, f in os.walk(github_dir)))			# Get a count for all the files in the directory
   if github_count > 5:																	# If the number of files is greater then 5, then print the following messages
+
     print('\nYou have too many in here, start uploading !!!!!')
     print('You have: ' + str(github_count) + ' waiting to be uploaded to github!!')
   elif github_count == 0:																# Unless the count is 0, then print the following messages
@@ -45,6 +46,7 @@ def development():   																	# Start of the function just to count the 
   dev_dir = os.path.join(path, 'development')									# Joins the paths to get the development directory - 1.1
   dev_count = sum((len(f) for _, _, f in os.walk(dev_dir)))					# Get a count for all the files in the directory
   if dev_count > 10:																	# If the number of files is greater then 10, then print the following messages
+
     print('\nYou have too many in here, finish them or delete them !!!!!')
     print('You have: ' + str(dev_count) + ' waiting to be finished!!')
   elif dev_count ==0:																	# Unless the count is 0, then print the following messages

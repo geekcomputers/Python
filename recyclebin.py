@@ -36,6 +36,7 @@ def findRecycled(recycleDir):	# Start of the function, list the contents of the 
   for sid in dirList:
     files = os.listdir(recycleDir + sid)
     user = sid2user(sid)
+
     print('\n[*] Listing Files for User: ' + str(user))
     for file in files:
       print('[+] Found File: ' + str(file))

@@ -31,7 +31,6 @@ def ps():
   except:
     print("There was a problem with the program.")
 
-
 def main():
   if os.name == "posix":											# Unix/Linux/MacOS/BSD/etc
     ps()																	# Call the function

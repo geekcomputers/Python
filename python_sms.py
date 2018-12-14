@@ -71,6 +71,7 @@ while True:
     response = urllib2.urlopen(req)
     response_url = response.geturl()
     if response_url == url:
+
       print('SMS sent!')
   except urllib2.URLError as e:
     print('Send failed!')
