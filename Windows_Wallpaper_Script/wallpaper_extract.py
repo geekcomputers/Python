@@ -66,7 +66,10 @@ class Wallpaper:
         for filename in os.listdir(w.file_urls["wall_dst"]):
             base_file, ext = os.path.splitext(filename)
             if ext == ".jpg":
-                im = Image.open(w.file_urls["wall_dst"] + filename)
+                try:
+                    im = Image.open(w.file_urls["wall_dst"] + filename)
+                except IOError:
+                    print("This isn't a picture.", filename)
                 if list(im.size)[0] != 1920 and list(im.size)[0] != 1080:
                     im.close()
                     os.remove(w.file_urls["wall_dst"] + filename)
