@@ -10,25 +10,25 @@ def new_game():
     print("new game")
     
 
-def range100():
+def range_of_100():
     global num
     num = random.randrange(0,100)
-    print("range is 0-100")
+    print("your range is 0-100")
 
-def range1000():
+def range_of_1000():
     global num
     num = random.randrange(0,1000)
     print("range is 0-1000")
     
 def input_guess(guess):
     global num
-    print("Guess is " + guess)
-    n1 = int(guess)
-    if n1 == num:
+    print("Your Guess is " , guess)
+    num1 = int(guess)
+    if num1 == num:
         print ("Correct")
-    elif n1 >= num:
+    elif num1 >= num:
         print ("Greater")
-    elif n1 <= num:
+    elif num1 <= num:
         print ("Lower")
             
     
