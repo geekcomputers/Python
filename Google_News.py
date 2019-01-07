@@ -11,19 +11,19 @@ def news(xml_news_url):
       '''
 
     context = ssl._create_unverified_context()
-        Client=urlopen(xml_news_url, context=context)
-        xml_page=Client.read()
-        Client.close()
+    Client=urlopen(xml_news_url, context=context)
+    xml_page=Client.read()
+    Client.close()
 
-        soup_page=soup(xml_page,"xml")
+    soup_page=soup(xml_page,"xml")
 
-        news_list=soup_page.findAll("item")
+    news_list=soup_page.findAll("item")
 
-        for news in news_list:
-            print(f'news title:   {news.title.text}')
-            print(f'news link:    {news.link.text}')
-            print(f'news pubDate: {news.pubDate.text}')
-            print("+-"*20,"\n\n")
+    for news in news_list:
+        print(f'news title:   {news.title.text}')
+        print(f'news link:    {news.link.text}')
+        print(f'news pubDate: {news.pubDate.text}')
+        print("+-"*20,"\n\n")
 
 #you can add google news 'xml' URL here for any country/category
 news_url="https://news.google.com/news/rss/?ned=us&gl=US&hl=en"
