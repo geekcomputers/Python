@@ -9,7 +9,7 @@
 """
 
 from ftplib import FTP
-ftp = FTP('xxx.xxx.x.x')    """ Enter the ip address or the domain name here """   
+ftp = FTP('xxx.xxx.x.x')  # Enter the ip address or the domain name here
 ftp.login(user='username', passwd='password')
 ftp.cwd('/Enter the directory here/')
 
