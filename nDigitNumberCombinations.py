@@ -1,5 +1,5 @@
 # ALL the combinations of n digit combo
-def nDigitCombinations():
+def nDigitCombinations(n):
 	try:
 		npow = 10**n
 		numbers=[]
