@@ -6,6 +6,11 @@ import errno
 import hashlib
 from PIL import Image
 
+try:
+    input = raw_input
+except NameError:
+    pass
+
 def md5(fname):
     """ Function to return the MD5 Digest of a file """
 
@@ -60,9 +65,6 @@ def get_spotlight_wallpapers(target_folder):
                     shutil.copy(filename, temp_path+".png")
 
 if __name__ == '__main__':
-    PATH = raw_input("Enter directory path:")
+    PATH = input("Enter directory path:").strip()
     get_spotlight_wallpapers(PATH)
     print("Lockscreen images have been copied to \""+PATH+"\"")
-
-    
-

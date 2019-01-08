@@ -12,9 +12,14 @@ import commands
 import os
 import string
 
+try:
+    input = raw_input
+except NameError:
+    pass
+
 
 def ps():
-  program = raw_input("Enter the name of the program to check: ")
+  program = input("Enter the name of the program to check: ")
 
   try:
     # perform a ps command and assign results to a list

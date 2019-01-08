@@ -4,18 +4,14 @@
 # 09/07/2017
 from __future__ import print_function
 import math
-import sys
 
-input_fun = None
+try:
+    input = raw_input
+except NameError:
+    pass
+
 key = int(math.pi * 1e14)
-
-if sys.version_info.major >= 3:
-    input_fun = input
-
-else:
-    input_fun = raw_input
-
-text = input_fun("Enter text: ")
+text = input("Enter text: ")
 values = []
 reverse = []
 
