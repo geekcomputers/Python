@@ -18,7 +18,7 @@ ftp.cwd('/Enter the directory here/')
 	Enter the location of the file where the file is received
 """
 
-def ReceiveFile(filename='example.txt'):
+def receive_file(filename='example.txt'):
 	with open(filename, 'wb') as out_file:
 		ftp.retrbinary('RETR ' + filename, out_file.write, 1024)
 		ftp.quit()
@@ -28,7 +28,7 @@ def ReceiveFile(filename='example.txt'):
 	The file send will be send to the current working directory
 """
 
-def SendFile(filename='example.txt'):
+def send_file(filename='example.txt'):
 	with open(filename, 'rb') as in_file:
 		ftp.storbinary('STOR ' + filename, in_file)
 		ftp.quit()
