@@ -1,5 +1,5 @@
 # ALL the combinations of n digit combo
-def nDigitCombinations():
+def nDigitCombinations(n):
 	try:
 		npow = 10**n
 		numbers=[]
@@ -10,3 +10,8 @@ def nDigitCombinations():
 		# handle all other exceptions
 		pass    
 	return(numbers)
+
+# An alternate solution:
+# from itertools import product
+# from string import digits
+# list("".join(x) for x in product(digits, repeat=n))
