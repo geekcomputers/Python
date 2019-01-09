@@ -18,19 +18,17 @@ ftp.cwd('/Enter the directory here/')
 	Enter the location of the file where the file is received
 """
 
-def ReceiveFile():
-	FileName = 'example.txt'   """ Enter the location of the file """
-	LocalFile = open(FileName, 'wb')
-	ftp.retrbinary('RETR ' + filename, LocalFile.write, 1024)
-	ftp.quit()
-	LocalFile.close()
+def receive_file(filename='example.txt'):
+	with open(filename, 'wb') as out_file:
+		ftp.retrbinary('RETR ' + filename, out_file.write, 1024)
+		ftp.quit()
 
 """
 	The file which will be sent via the FTP server
 	The file send will be send to the current working directory
 """
 
-def SendFile():
-	FileName = 'example.txt'   """ Enter the name of the file """
-	ftp.storbinary('STOR ' + FileName, open(FileName, 'rb'))
-	ftp.quit()
+def send_file(filename='example.txt'):
+	with open(filename, 'rb') as in_file:
+		ftp.storbinary('STOR ' + filename, in_file)
+		ftp.quit()
