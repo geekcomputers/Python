@@ -4,11 +4,16 @@ import cookielib
 from getpass import getpass
 import sys
  
+try:
+    input = raw_input
+except NameError:
+    pass
+
 username = input('Enter mobile number:')
 passwd = getpass()
 message = input('Enter Message:')
 #Fill the list with Recipients
-x=raw_input('Enter Mobile numbers seperated with comma:')
+x=input('Enter Mobile numbers seperated with comma:')
 num=x.split(',')
 message = "+".join(message.split(' '))
  
