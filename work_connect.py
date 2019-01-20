@@ -23,11 +23,11 @@ text = '''You need to pass an argument
 	-d to disconnect'''											# Text to display if there is no argument passed or it's an invalid option - 1.2
 
 if len(sys.argv) < 2:											# Check there is at least one option passed to the script - 1.2
-  print text															# If not print the text above - 1.2
+  print(text)															# If not print the text above - 1.2
   sys.exit()														# Exit the program - 1.2
   
 if '-h' in sys.argv or '--h' in sys.argv or '-help' in sys.argv or '--help' in sys.argv:	# Help Menu if called
-    print text														# Print the text, stored in the text variable - 1.2
+    print(text)														# Print the text, stored in the text variable - 1.2
     sys.exit(0)														# Exit the program
 else:
   if sys.argv[1].lower().startswith('-c'):					# If the first argument is -c then
@@ -39,4 +39,4 @@ else:
   elif sys.argv[1].lower().startswith('-d'):					# If the first argument is -d then disconnect my checkpoint session.
     subprocess.Popen((r"c:\Program Files\Checkpoint\Endpoint Connect\trac.exe disconnect "))
   else:
-    print 'Unknown option - ' + text						# If any other option is passed, then print Unknown option and the text from above - 1.2
+    print('Unknown option - ' + text)						# If any other option is passed, then print Unknown option and the text from above - 1.2

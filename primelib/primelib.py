@@ -73,15 +73,15 @@ def isPrime(number):
     
     # 0 and 1 are none primes. 
     if number <= 1:
-        status = False
-    
-    for divisor in range(2,int(round(math.sqrt(number)))+1):
+        return False
         
-        # if 'number' divisible by 'divisor' then sets 'status'
-        # of false and break up the loop. 
-        if number % divisor == 0:
-            status = False
-            break
+    # all even numbers except of 2 are no primes.    
+    if number % 2 == 0 and number > 2:
+        return False
+        
+    # if 'number' divisible by 'divisor' then sets 'status' to false.
+    # lazy evaluation breaks the all loop on first false.
+    status = all(number % divisor for divisor in range(3, int(math.sqrt(number)) + 1, 2))
     
     # precondition
     assert isinstance(status,bool), "'status' must been from type bool"    

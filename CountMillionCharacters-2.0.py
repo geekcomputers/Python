@@ -1,4 +1,3 @@
-
 """Get the number of each character in any given text.
 Inputs:
 A txt file -- You will be asked for an input file. Simply input the name
@@ -10,7 +9,6 @@ import collections
 
 
 def main():
-
     file_input = input('File Name: ')
     try:
         with open(file_input, 'r') as info:

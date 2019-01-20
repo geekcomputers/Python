@@ -9,8 +9,9 @@
 
 # Description	: Check a file exists and that we can read the file
 from __future__ import print_function
-import sys		# Import the Modules
-import os		# Import the Modules
+import sys  # Import the Modules
+import os  # Import the Modules
+
 
 # Prints usage if not appropriate length of arguments are provided
 
@@ -21,25 +22,25 @@ def usage():
 
 # Readfile Functions which open the file that is passed to the script
 def readfile(filename):
-    with open(filename, 'r') as f:      # Ensure file is correctly closed under
-        read_file = f.read()                 # all circumstances
+    with open(filename, 'r') as f:  # Ensure file is correctly closed under
+        read_file = f.read()  # all circumstances
     print(read_file)
     print()
-    print('#'*80)
+    print('#' * 80)
     print()
 
 
 def main():
     # Check the arguments passed to the script
     if len(sys.argv) >= 2:
-        filenames = sys.argv[1:]
-        filteredfilenames_1 = list(filenames)   # To counter changing in the same list which you are iterating
-        filteredfilenames_2 = list(filenames)
+        file_names = sys.argv[1:]
+        filteredfilenames_1 = list(file_names)  # To counter changing in the same list which you are iterating
+        filteredfilenames_2 = list(file_names)
         # Iterate for each filename passed in command line argument
         for filename in filteredfilenames_1:
-            if not os.path.isfile(filename):		# Check the File exists
+            if not os.path.isfile(filename):  # Check the File exists
                 print('[-] ' + filename + ' does not exist.')
-                filteredfilenames_2.remove(filename)			# remove non existing files from fileNames list
+                filteredfilenames_2.remove(filename)  # remove non existing files from fileNames list
                 continue
 
             # Check you can read the file

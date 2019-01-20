@@ -40,7 +40,7 @@ def download_video_series(video_links):
         # last string
         file_name = link.split('/')[-1]   
  
-        print "Downloading the file:%s"%file_name
+        print("Downloading the file:%s"%file_name)
          
         # create response object
         r = requests.get(link, stream = True)
@@ -51,9 +51,9 @@ def download_video_series(video_links):
                 if chunk:
                     f.write(chunk)
          
-        print "%s downloaded!\n"%file_name
+        print("%s downloaded!\n"%file_name)
  
-    print "All videos are downloaded!"
+    print("All videos are downloaded!")
     return
  
  

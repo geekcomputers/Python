@@ -6,12 +6,20 @@ Version: 1.0
 
 Tweet text and pics directly from the terminal.
 """
-import tweepy, os
+from __future__ import print_function
+import os
+import tweepy
+
+try:
+    input = raw_input
+except NameError:
+    pass
+
 
 def getStatus():
     lines = []
     while True:
-        line = raw_input()
+        line = input()
         if line:
             lines.append(line)
         else:
@@ -21,25 +29,25 @@ def getStatus():
 
 def tweetthis(type):
 	if type == "text":
-		print "Enter your tweet "+user.name
+		print("Enter your tweet "+user.name)
 		tweet = getStatus()
 		try:
 			api.update_status(tweet)
 		except Exception as e:
-			print e
+			print(e)
 			return
 	elif type == "pic":
-		print "Enter pic path "+user.name
-		pic = os.path.abspath(raw_input())
-		print "Enter status "+user.name
+		print("Enter pic path "+user.name)
+		pic = os.path.abspath(input())
+		print("Enter status "+user.name)
 		title = getStatus()
 		try:
 			api.update_with_media(pic, status=title)
 		except Exception as e:
-			print e
+			print(e)
 			return
 
-	print "\n\nDONE!!"
+	print("\n\nDONE!!")
 
 def initialize():
 	global api, auth, user
@@ -55,14 +63,14 @@ def initialize():
 	user = api.me()
 
 def main():
-	doit = int(raw_input("\n1. text\n2. picture\n"))
+	doit = int(input("\n1. text\n2. picture\n"))
 	initialize()
 	if doit == 1:
 		tweetthis("text")
 	elif doit == 2:
 		tweetthis("pic")
 	else:
-		print "OK, Let's try again!"
+		print("OK, Let's try again!")
 		main()
 
 main()
