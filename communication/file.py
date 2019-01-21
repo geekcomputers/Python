@@ -8,7 +8,7 @@ import math
  
 def slice(mink, maxk):
     s = 0.0
-    for k in range(mink, maxk):
+    for k in range(int(mink), int(maxk)):
         s += 1.0/(2*k+1)/(2*k+1)
     return s
  
@@ -36,6 +36,6 @@ def pi(n):
     return math.sqrt(sum(sums) * 8)
  
 if __name__ == '__main__': 
-    print "start"
-    print pi(10000000)
+    print("start")
+    print(pi(10000000))
 
