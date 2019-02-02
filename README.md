@@ -39,6 +39,8 @@ In the scripts the comments and other documents are lined up correctly when they
 
 - [script_count.py](https://github.com/geekcomputers/Python/blob/master/script_count.py) - This file scans the scripts directory and gives a count of the different types of scripts.
 
+- [get_youtube_view.py] - This is very simple python script to get more views for your youtube videos.Some times I use for repeating my favorite songs by this scripts.
+
 - [script_listing.py](https://github.com/geekcomputers/Python/blob/master/script_listing.py) - This file will list all the files in the given directory, and go through all the subdirectories as well.
 
 - [testlines.py](https://github.com/geekcomputers/Python/blob/master/testlines.py) - This simple script opens a file and prints out 100 lines of whatever is the set for the line variable.
