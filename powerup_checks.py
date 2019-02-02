@@ -1,3 +1,4 @@
+from __future__ import print_function
 # Script Name		: powerup_checks.py
 # Author				: Craig Richards
 # Created				: 25th June 2013
@@ -63,7 +64,7 @@ def get_servers(query):																																# Function to get the ser
       break
     f = open(serverfile, 'a')																																# Open the serverfile
     f.write("%s\n" % str(row[0]))																													# Write the server out to the file
-    print row[0]																																			# Display the server to the screen
+    print(row[0])																																			# Display the server to the screen
     f.close()																																				# Close the file
 
 def main():																																					# Main Function
@@ -71,11 +72,11 @@ def main():																																					# Main Function
     os.remove(serverfile)																																# If so remove it
 
   if len(sys.argv) < 2:																																	# Check there is an argument being passed
-    print text																																				# Display the help text if there isn't one passed
+    print(text)																																				# Display the help text if there isn't one passed
     sys.exit()																																				# Exit the script
 
   if '-h' in sys.argv or '--h' in sys.argv or '-help' in sys.argv or '--help' in sys.argv:													# If the ask for help
-    print text																																				# Display the help text if there isn't one passed
+    print(text)																																				# Display the help text if there isn't one passed
     sys.exit(0)																																				# Exit the script after displaying help
   else:
     if sys.argv[1].lower().startswith('-site1'):																										# If the argument is site1
@@ -83,7 +84,7 @@ def main():																																					# Main Function
     elif sys.argv[1].lower().startswith('-site2'):																								# Else if the variable is bromley
       query = 'site2'																																	# Set the variable to have the value bromley
     else:
-      print '\n[-] Unknown option [-] ' + text																										# If an unknown option is passed, let the user know
+      print('\n[-] Unknown option [-] ' + text)																										# If an unknown option is passed, let the user know
       sys.exit(0)
   get_servers(query)																																	# Call the get servers funtion, with the value from the argument
   

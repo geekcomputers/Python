@@ -1,0 +1,15 @@
+; begin program     
+;   variable section
+$var1 db 56
+$var2 db 44
+mov ecx, $var1
+push ecx 
+mov eax, 3
+int 0x80
+pop eax
+add ecx, ebx
+add ecx, eax 
+mov eax, 4
+int 0x80
+
+

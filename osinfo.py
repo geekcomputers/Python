@@ -1,36 +1,48 @@
 # Script Name		: osinfo.py
-# Author				: Craig Richards
-# Created				: 5th April 2012
-# Last Modified	: April 02 2016
-# Version				: 1.0
+# Authors		: {'geekcomputers': 'Craig Richards', 'dmahugh': 'Doug Mahugh','rutvik1010':'Rutvik Narayana Nadimpally','y12uc231': 'Satyapriya Krishna', 'minto4644':'Mohit Kumar'}
+# Created		: 5th April 2012
+# Last Modified	        : July 19 2016
+# Version		: 1.0
 
-# Modifications		: Changed the list to a dictionary. Although the order is lost, the info is with its label.
+# Modification 1	: Changed the profile to list again. Order is important. Everytime we run script we don't want to see different ordering.
+# Modification 2        : Fixed the AttributeError checking for all properties. Using hasttr().
+# Modification 3        : Removed ': ' from properties inside profile.
 
-# Description			: Displays some information about the OS you are running this script on
 
-import platform
+# Description		: Displays some information about the OS you are running this script on
 
-profile = {
-'Architecture: ': platform.architecture(),
-#'Linux Distribution: ': platform.linux_distribution(),
-'mac_ver: ': platform.mac_ver(),
-'machine: ': platform.machine(),
-'node: ': platform.node(),
-'platform: ': platform.platform(),
-'processor: ': platform.processor(),
-'python build: ': platform.python_build(),
-'python compiler: ': platform.python_compiler(),
-'python version: ': platform.python_version(),
-'release: ': platform.release(),
-'system: ': platform.system(),
-'uname: ': platform.uname(),
-'version: ': platform.version(),
-}
+import platform as pl
 
-if hasattr(platform, 'linux_distribution'): 
-    #to avoid AttributeError exception in some old versions of the module	
-    profile['linux_distribution'] = platform.linux_distribution()
-    #FIXME: do this for all properties but in a loop
+profile = [
+        'architecture',
+        'linux_distribution',
+        'mac_ver',
+        'machine',
+        'node',
+        'platform',
+        'processor',
+        'python_build',
+        'python_compiler',
+        'python_version',
+        'release',
+        'system',
+        'uname',
+        'version',
+    ]
+
+
+class bcolors:
+    HEADER = '\033[95m'
+    OKBLUE = '\033[94m'
+    OKGREEN = '\033[92m'
+    WARNING = '\033[93m'
+    FAIL = '\033[91m'
+    ENDC = '\033[0m'
+    BOLD = '\033[1m'
+    UNDERLINE = '\033[4m'
+
 
 for key in profile:
-    print(key + str(profile[key]))
+    if hasattr(pl, key):
+        print(key + bcolors.BOLD + ": " + str(getattr(pl, key)()) + bcolors.ENDC)
+
