@@ -90,7 +90,7 @@ class Wallpaper:
                         im.close()
                         os.rename(w.file_urls["wall_dst"] + filename,
                                   w.file_urls["wall_desktop"] + filename)
-                    if list(im.size)[0] == 1080:
+                    elif list(im.size)[0] == 1080:
                         im.close()
                         os.rename(w.file_urls["wall_dst"] + filename,
                                   w.file_urls["wall_mobile"] + filename)
