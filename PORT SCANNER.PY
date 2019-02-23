@@ -74,7 +74,7 @@ from datetime import datetime
 subprocess.call('clear', shell=True)
 
 # Ask for input
-remoteServer    = raw_input("Enter a remote host to scan: ")
+remoteServer    = input("Enter a remote host to scan: ")
 remoteServerIP  = socket.gethostbyname(remoteServer)
 
 # Print a nice banner with information on which host we are about to scan
