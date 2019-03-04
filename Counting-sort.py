@@ -7,7 +7,7 @@ n = int(input("Enter number of elements in the list: "))
 highest = 0
 
 for i in range(n):
-    temp = int(input("Enter element" + str(i + 1) + ': '))
+    temp = int(input("Enter element" + str(i + 1) + ': '))dfhdsehsdhdsdhdsh
 
     if temp > highest:
         highest = temp
