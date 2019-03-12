@@ -1,4 +1,3 @@
-from __future__ import print_function
 import mechanize
 import urllib2
 from bs4 import BeautifulSoup
