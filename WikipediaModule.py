@@ -3,6 +3,7 @@ Created on Sat Jul 15 01:41:31 2017
 
 @author: Albert
 """
+from __future__ import print_function
 import wikipedia as wk
 from bs4 import BeautifulSoup
 
@@ -14,7 +15,7 @@ def wiki():
     word=raw_input("Wikipedia Search : ")
     results=wk.search(word)
     for i in enumerate(results):
-        print i
+        print(i)
     try:    
         key=input("Enter the number : ")    
     except AssertionError:
@@ -30,12 +31,12 @@ def wiki():
     pageLength=input('''Wiki Page Type : 1.Full 2.Summary : ''')
     if pageLength==1:
         soup=fullPage(page)
-        print soup
+        print(soup)
     else:    
-        print title
-        print "Page Id = ",pageId
-        print page.summary
-        print "Page Link = ",url
+        print(title)
+        print("Page Id = ",pageId)
+        print(page.summary)
+        print("Page Link = ",url)
     #print "References : ",references
     
     
@@ -53,7 +54,7 @@ def randomWiki():
     number=input("No: of Random Pages : ")
     lst=wk.random(number)
     for i in enumerate(lst):
-        print i
+        print(i)
     try:    
         key=input("Enter the number : ")
         assert key>=0 and key<number
@@ -70,12 +71,12 @@ def randomWiki():
     pageLength=input('''Wiki Page Type : 1.Full 2.Summary : ''')
     if pageLength==1:
         soup=fullPage(page)
-        print soup
+        print(soup)
     else:    
-        print title
-        print "Page Id = ",pageId
-        print page.summary
-        print "Page Link = ",url
+        print(title)
+        print("Page Id = ",pageId)
+        print(page.summary)
+        print("Page Link = ",url)
     #print "References : ",references
     
     pass

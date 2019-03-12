@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 
+from __future__ import print_function
 try:
     # For Python 3.0 and later
     from urllib.request import urlopen

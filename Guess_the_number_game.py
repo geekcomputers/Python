@@ -1,3 +1,4 @@
+from __future__ import print_function
 # using codeSkulpter
 
 import simplegui
@@ -23,7 +24,7 @@ def range_of_1000():
 
 def input_guess(guess):
     global num
-    print("Your Guess is " , guess)
+    print(("Your Guess is " , guess))
     num1 = int(guess)
     if num1 == num:
         print("Correct")
