@@ -1,5 +1,6 @@
 # coding: utf-8
  
+from __future__ import print_function
 import os
 import sys
 import math
@@ -38,5 +39,5 @@ def pi(n):
     return math.sqrt(sum(sums) * 8)
  
  
-print pi(10000000)
+print(pi(10000000))
 
