@@ -23,7 +23,7 @@ convert degrees to radians : rad(deg)
 """
 
 import sys
-
+import math
 from fileinfo import raw_input
 
 
@@ -72,7 +72,9 @@ def calc(term):
         print('Please check usage method and try again.')
     except TypeError:
         print("please enter inputs of correct datatype ")
-
+    except SyntaxError:
+        print("""You Ended your equation with math symbol like '+,-,=...
+        Check your input again""")
     return term
 
 
