@@ -13,7 +13,7 @@ from selenium import webdriver
 #adding ability to change number of repeats
 count = int(input("Number of times to be repeated: "))
 #Same as before
-x = input("Enter the URL (no https): ")
+url = input("Enter the URL : ")
 print( "Length of video:")
 minutes = int(input("Minutes "))
 seconds  = int(input("Seconds "))
@@ -22,9 +22,13 @@ seconds  = int(input("Seconds "))
 refreshrate = minutes * 60 + seconds
 #Selecting Safari as the browser
 driver = webdriver.Safari()
-driver.get("http://"+x)
 
-for i in range(count):
+if(url.startswith("https://"):
+   driver.get(url)
+else:
+   driver.get("https://"+url)
+
+for _ in range(count):
     #Sets the page to refresh at the refreshrate.
     time.sleep(refreshrate)
     driver.refresh()
