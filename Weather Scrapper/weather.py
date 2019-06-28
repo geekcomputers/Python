@@ -4,7 +4,9 @@ from datetime import datetime
 import csv
 
 city = input('Enter City')
-url = 'https://www.wunderground.com/weather/in/' + city
+national_code = input('Enter National Code')
+
+url = f'https://www.wunderground.com/weather/{national_code}/{city}'
 
 try:
 	response = requests.get(url)
