@@ -23,12 +23,12 @@ refreshrate = minutes * 60 + seconds
 #Selecting Safari as the browser
 driver = webdriver.Safari()
 
-if(url.startswith("https://"):
+if url.startswith("https://"):
    driver.get(url)
 else:
    driver.get("https://"+url)
 
-for _ in range(count):
+for i in range(count):
     #Sets the page to refresh at the refreshrate.
     time.sleep(refreshrate)
     driver.refresh()
