@@ -5,8 +5,10 @@ def subtract(a,b):
 def multiply(a,b):
   return a*b
 def divide(a,b):
-  return a/b
-  
+    try:
+        return a/b
+    except ZeroDivisionError:
+        return "Zero Division Error"
 print("Select Operation")
 print("1.Add")
 print("2.Subtract")
