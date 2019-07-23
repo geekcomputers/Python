@@ -152,7 +152,7 @@ def scanner(string):
             elif ch == '_': # catch label for subprogram
 
                 state = 40
-                # not catch the character _
+                # not catches the character _
 
             elif ch == 'r': # catch ret-command
 
@@ -971,7 +971,7 @@ def parser():
                     print("Error: Not found argument!")
                     return
 
-                # converts the token into float, if token contains olny digits.
+                # converts the token into float, if token contains only digits.
                 # TODO response of float
                 if token.t == "identifier":     # for variables
 
@@ -1033,7 +1033,7 @@ def parser():
                     return
 
 
-                # converts the token into float, if token contains olny digits.
+                # converts the token into float, if token contains only digits.
                 if token.t == "register":
                     
                     # for the case that token is register
@@ -1094,7 +1094,7 @@ def parser():
 
             else:
 
-                print("Error: No found register!")
+                print("Error: Not found register!")
                 return
 
         elif token.token == "sub":  # sub commando
@@ -1113,7 +1113,7 @@ def parser():
                     print("Error: Not found number!")
                     return
 
-                # converts the token into float, if token contains olny digits.
+                # converts the token into float, if token contains only digits.
                 if token.t == "register":
 
                     # for the case that token is register
@@ -1141,7 +1141,7 @@ def parser():
                 if tmpToken.token == "eax":
                     eax -= token.token
 
-                    # update zero flag
+                    # updated zero flag
                     if eax == 0:
                         zeroFlag = True
                     else:
@@ -1623,7 +1623,7 @@ def parser():
 
 def registerLabels():
     """
-        This function search for labels / subprogram-labels and register this in the 'jumps' list.
+        This function search for labels / subprogram-labels and registers this in the 'jumps' list.
     """
     for i in range(len(tokens)):
         if (tokens[i].t == "label"):
