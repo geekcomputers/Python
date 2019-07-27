@@ -7,16 +7,16 @@ This module contains some useful classes and functions for dealing with linear a
 ## Overview  
 
 - class Vector  
-    - This class represents a vector of arbitray size and operations on it.  
+    - This class represents a vector of arbitrary size and operations on it.  
 
     **Overview about the methods:**    
         
     - constructor(components : list) : init the vector  
-    - set(components : list) : changes the vector components.  
+    - set(components : list) : changes the vector components 
     - __str__() : toString method  
-    - component(i : int): gets the i-th component (start by 0)  
+    - component(i : int): gets the i-th component (start with 0)  
     - size() : gets the size of the vector (number of components)  
-    - euclidLength() : returns the eulidean length of the vector.  
+    - euclidLength() : returns the euclidean length of the vector.  
     - operator + : vector addition  
     - operator - : vector subtraction  
     - operator * : scalar multiplication and dot product  
@@ -58,20 +58,20 @@ This module contains some useful classes and functions for dealing with linear a
 
 The module is well documented. You can use the python in-built ```help(...)``` function.  
 For instance: ```help(Vector)``` gives you all information about the Vector-class.  
-Or ```help(unitBasisVector)``` gives you all information you needed about the  
-global function ```unitBasisVector(...)```. If you need informations about a certain  
+Or ```help(unitBasisVector)``` gives you all information you need about the  
+global function ```unitBasisVector(...)```. If you need information about a certain  
 method you type ```help(CLASSNAME.METHODNAME)```.  
 
 ---
 
 ## Usage  
 
-You will find the module in the **src** directory its called ```lib.py```. You need to  
-import this module in your project. Alternative you can also use the file ```lib.pyc``` in python-bytecode.   
+You will find the module in the **src** directory called ```lib.py```. You need to  
+import this module in your project. Alternatively you can also use the file ```lib.pyc``` in python-bytecode.   
 
 ---
 
 ## Tests  
 
-In the **src** directory you also find the test-suite, its called ```tests.py```.  
+In the **src** directory you can also find the test-suite, its called ```tests.py```.  
 The test-suite uses the built-in python-test-framework **unittest**.  
