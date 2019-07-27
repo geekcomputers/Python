@@ -1,0 +1,7 @@
+INSTRUCTIONS FOR SUCCESSFUL OPERATION :
+
+--> hardcode variable "instaccountlink" with desired instagram URL
+--> hardcode variable "instaaccountname" with desired name
+--> hardcode variable "file" with desired output name
+--> set condition for scrolling, i.e. variable "i" which is by default set to 300
+--> you may need to redefine HTML tags used, as these are regularly changed as per INSTAGRAM security concerns, the HTML tags used here is latest as per best of my knowledge.
