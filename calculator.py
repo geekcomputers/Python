@@ -23,8 +23,9 @@ convert degrees to radians : rad(deg)
 """
 
 import sys
+import math
 
-from fileinfo import raw_input
+#from fileinfo import raw_input
 
 
 def calc(term):
