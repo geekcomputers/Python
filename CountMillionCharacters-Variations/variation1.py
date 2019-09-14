@@ -1,5 +1,5 @@
 try:
-    input = raw_input
+    input = intput()
 except NameError:
     pass
 
