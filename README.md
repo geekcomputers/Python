@@ -12,7 +12,7 @@ Code documentation is aligned correctly when the files are viewed in [Notepad++]
 
 - [Fast Youtube Downloader](https://github.com/geekcomputers/Python/blob/master/youtube-downloader%20fast.py) - Downloads YouTube videos quickly with parallel threads using aria2c
 
-- [Google Image Downloader](https://github.com/geekcomputers/Python/tree/master/Google%20Image%20Downloader) - Query a given term and retrieve images from the Google Image database.
+- [Google Image Downloader](https://github.com/geekcomputers/Python/tree/master/Google_Image_Downloader) - Query a given term and retrieve images from the Google Image database.
 
 - [dir_test.py](https://github.com/geekcomputers/Python/blob/master/dir_test.py) - Tests to see if the directory `testdir` exists, if not it will create the directory for you.
 
