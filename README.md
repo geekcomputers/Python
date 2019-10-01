@@ -18,6 +18,8 @@ Code documentation is aligned correctly when the files are viewed in [Notepad++]
 
 - [env_check.py](https://github.com/geekcomputers/Python/blob/master/env_check.py) - This script will check to see if all of the environment variables required are set.
 
+- [blackjack.py](https://github.com/Ratna04priya/Python/blob/master/BlackJack_game/blackjack.py) - This script contains the Casino BlackJack-21 Game in Python.
+
 - [fileinfo.py](https://github.com/geekcomputers/Python/blob/master/fileinfo.py) - Shows file information for a given file.
 
 - [folder_size.py](https://github.com/geekcomputers/Python/blob/master/folder_size.py) - Scans the current directory and all subdirectories and displays the size.
