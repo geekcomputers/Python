@@ -12,11 +12,13 @@ Code documentation is aligned correctly when the files are viewed in [Notepad++]
 
 - [Fast Youtube Downloader](https://github.com/geekcomputers/Python/blob/master/youtube-downloader%20fast.py) - Downloads YouTube videos quickly with parallel threads using aria2c
 
-- [Google Image Downloader](https://github.com/geekcomputers/Python/tree/master/Google%20Image%20Downloader) - Query a given term and retrieve images from the Google Image database.
+- [Google Image Downloader](https://github.com/geekcomputers/Python/tree/master/Google_Image_Downloader) - Query a given term and retrieve images from the Google Image database.
 
 - [dir_test.py](https://github.com/geekcomputers/Python/blob/master/dir_test.py) - Tests to see if the directory `testdir` exists, if not it will create the directory for you.
 
 - [env_check.py](https://github.com/geekcomputers/Python/blob/master/env_check.py) - This script will check to see if all of the environment variables required are set.
+
+- [blackjack.py](https://github.com/Ratna04priya/Python/blob/master/BlackJack_game/blackjack.py) - This script contains the Casino BlackJack-21 Game in Python.
 
 - [fileinfo.py](https://github.com/geekcomputers/Python/blob/master/fileinfo.py) - Shows file information for a given file.
 
