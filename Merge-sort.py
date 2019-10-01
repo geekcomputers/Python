@@ -2,7 +2,7 @@
 
 l = []
 
-n = int(input("Enter number of elements in the list: "))
+n = int(input("Enter number of elements in the list: "))# taking value from user
 
 for i in range(n):
     temp = int(input("Enter element"+str(i+1)+': '))
