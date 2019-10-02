@@ -34,7 +34,7 @@ def merge_sort(L):
                 i += 1
                 
             else:
-                new +=[b[j]]
+                new =new+[b[j]]
                 j += 1
 
         elif i == len(a) and j != len(b):
