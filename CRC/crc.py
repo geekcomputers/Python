@@ -1,9 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Mon Jan 28 18:31:51 2019
-
-@author: 99ansh
-"""
 def crc_check(data,div):
     l=len(div)
     ct=0
