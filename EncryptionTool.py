@@ -52,8 +52,7 @@ def readAndDecrypt(filename):
     actualdata = []
     datalist = data.split(" ")
     datalist.remove('')
-    for i in range(len(datalist)):
-        datalistint.append(float(datalist[i]))
+    datalistint=[float(datalist[i]) for i in range(len(datalist))]:
     for i in range(len(datalist)):
         current1 = int(decryptChar(datalistint[i]))
         current1 = chr(current1)
