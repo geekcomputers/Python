@@ -12,8 +12,7 @@ except NameError:
 
 key = int(math.pi * 1e14)
 text = input("Enter text: ")
-values = []
-reverse = []
+values =reverse= []
 
 
 def encryptChar(target):

@@ -12,7 +12,7 @@ def merge_sort(L):
 
     mid = int( (len(L) - 1)/2 )  #calculated value of middle index of array
 
-    if len(L) > 2: #this loop will run when length of array is greater than 2
+    if len(L) >mid+2: #this loop will run when length of array is greater than 2
         a = merge_sort(L[0:mid]) #a is initialised with left side of the array taking reference as middle index
         b = merge_sort(L[mid:len(L)]) #b is initialised with right side of the array taking reference as middle index
 

@@ -18,5 +18,9 @@ for i in range(n):
   if(n==0):
     start+=1
     print(start)
+    patch-2
   elif(n%2!=0):
-    print(start)
+    else:
+      if(n%2!=0):
+        master
+      print(start)
