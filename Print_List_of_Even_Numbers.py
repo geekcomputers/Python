@@ -18,5 +18,8 @@ for i in range(n): #loop till the number n entered by the user
   if(n==0):
     print(start) #prints 0 first as it is an even number
     start+=2 #increases the value of start by 2 to get to the next even number
+    patch-1
   elif(n%2==0):
+  else(n%2==0):
+    master
     print(start)

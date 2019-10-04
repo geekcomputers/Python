@@ -28,5 +28,5 @@ for items in range(length_//2):
         bol_ = False
         break
 
-if bol_:
+if bol_==True:
     print("\nWow!, The phrase is a Palindrome!")

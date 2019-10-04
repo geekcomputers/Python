@@ -15,5 +15,9 @@ if n < 0:
   print_error_messages()
 
 for i in range(n):
-  print(start)
-  start+=2
+  if(n==0):
+    start+=1
+    print(start)
+  else:
+    if(n%2!=0):
+    print(start)
