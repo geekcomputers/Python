@@ -18,6 +18,5 @@ for i in range(n):
   if(n==0):
     start+=1
     print(start)
-  else:
-    if(n%2!=0):
+  elif(n%2!=0):
     print(start)
