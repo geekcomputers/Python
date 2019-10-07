@@ -298,7 +298,7 @@ for x, y in enumerate(wordlist):
   special_character = pattern.search(y[-1:])
   try:
     if special_character.group():
-      wordlist[y] = wordlist[:-1]
+      wordlist[x] = y[:-1]
   except:
     continue
 
