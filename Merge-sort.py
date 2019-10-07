@@ -1,6 +1,6 @@
 #merge sort
 
-l = []
+l = []  #declaring list l 
 
 n = int(input("Enter number of elements in the list: "))# taking value from user
 
