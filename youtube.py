@@ -3,7 +3,7 @@
 Author: Abhinav Anand
 git: github.com/ab-anand
 mail: abhinavanand1905@gmail.com
-Requirements: requests, BeautifulSoup
+Requirements: requests, BeautifulSoupd
 
 '''
 import os
@@ -43,3 +43,4 @@ except KeyError:
 
 
 #hey i'm learning  git. 
+#i welcome you too to come and learn
