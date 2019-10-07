@@ -1,6 +1,6 @@
 # counting sort
 
-l = []
+l = []  # l is the list 
 
 n = int(input("Enter number of elements in the list: "))
 
