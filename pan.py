@@ -156,12 +156,12 @@ print (df.loc[['a','b','f','h'],['A','C']])
 
 df = pd.DataFrame(np.random.randn(8, 4), columns = ['A', 'B', 'C', 'D'])
 # Index slicing
-print df.ix[:,'A']
+print(df.ix[:,'A'])
 
 #............................statistics......................#
 
 s = pd.Series([1,2,3,4,5,4])
-print s.pct_change()
+print(s.pct_change())
 
 df = pd.DataFrame(np.random.randn(5, 2))
 print (df.pct_change())
@@ -181,7 +181,7 @@ df = pd.DataFrame(np.random.randn(3, 3), index=['a', 'c', 'e'],columns=['one',
 
 df = df.reindex(['a', 'b', 'c'])
 
-print df
+print(df)
 print ("NaN replaced with '0':")
 print(df.fillna(0))
 
