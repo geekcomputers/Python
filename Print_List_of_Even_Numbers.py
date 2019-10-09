@@ -15,8 +15,5 @@ if n < 0:
   print_error_messages()
 
 for i in range(n): #loop till the number n entered by the user
-  if(n==0):
-    print(start) #prints 0 first as it is an even number
-    start+=2 #increases the value of start by 2 to get to the next even number
-  else(n%2==0):
-    print(start)
+  print(start) #prints 0 first as it is an even number
+  start+=2 #increases the value of start by 2 to get to the next even number
