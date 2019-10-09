@@ -15,9 +15,10 @@ from sklearn.feature_extraction.text import CountVectorizer
 
 
 # Data for testing
-emma = nltk.corpus.gutenberg.words('austen-emma.txt')
+emma = gutenberg.words('austen-emma.txt')
 example_text = ' '.join(emma)
 df = pd.DataFrame(data={'sentences': sent_tokenize(example_text)})
+tokenizer = lambda s: clean_text(s).split()
 
 vectorizer = CountVectorizer(encoding='ascii', decode_error='ignore',
                              strip_accents='ascii',
@@ -33,7 +34,6 @@ STOP_WORDS = stopwords.words('english')
 pattern_cleaning    = compile(r'[^\w\s]|\d')
 pattern_stop_words  = compile(r'\b(' + r'|'.join(STOP_WORDS) + r')\b\s*')
 # First remove punctuation and numbers, then remove stop words
-tokenizer = lambda s: clean_text(s).split()
 remove_punctuation_r  = lambda s : sub(pattern_stop_words, '', sub(pattern_cleaning, '', s.lower()))
 remove_short_words    = lambda s : ' '.join(filter(lambda w: len(w) > 2, s.split())) 
 # Remove numbers, short words (one or two characters),
@@ -50,9 +50,9 @@ exclude = punctuation
 
 remove_punctuation_t  = lambda s : unidecode(s).translate(str.maketrans('', '', exclude)).lower()
 remove_punctuation_r  = lambda s : sub(pattern_stop_words, '', sub(pattern_cleaning, '', s.lower()))
-remove_stop_words     = lambda s : ' '.join([word for word in s.split() if word not in stop_words])
+remove_stop_words     = lambda s : ' '.join([word for word in s.split() if word not in STOP_WORDS])
 remove_stop_words_2   = lambda s : sub(pattern_stop_words, '', s)
-remove_stop_words_3    = lambda s : ' '.join(filter(lambda w: len(w) > 2 and not w in stop_words, s.split())) 
+remove_stop_words_3    = lambda s : ' '.join(filter(lambda w: len(w) > 2 and not w in STOP_WORDS, s.split())) 
 remove_short_words    = lambda s : ' '.join(filter(lambda w: len(w) > 2, s.split())) 
 remove_short_words_2  = lambda s : sub(pattern_stop_words, '', s) 
 
