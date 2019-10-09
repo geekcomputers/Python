@@ -12,15 +12,15 @@ def wiki():
     Search Anything in wikipedia
     '''
 
-    word=raw_input("Wikipedia Search : ")
+    word=input("Wikipedia Search : ")
     results=wk.search(word)
     for i in enumerate(results):
         print(i)
-    try:    
-        key=input("Enter the number : ")    
+    try:
+        key=int(input("Enter the number : "))
     except AssertionError:
-        key=input("Please enter corresponding article number : ")    
-    
+        key=int(input("Please enter corresponding article number : "))
+
     page=wk.page(results[key])
     url=page.url
     #originalTitle=page.original_title
@@ -32,20 +32,20 @@ def wiki():
     if pageLength==1:
         soup=fullPage(page)
         print(soup)
-    else:    
+    else:
         print(title)
         print("Page Id = ",pageId)
         print(page.summary)
         print("Page Link = ",url)
     #print "References : ",references
-    
-    
+
+
     pass
 
 def fullPage(page):
     soup=BeautifulSoup(page.content,'lxml')
     return soup
-    
+
 def randomWiki():
     '''
     This function gives you a list of n number of random articles
@@ -55,12 +55,12 @@ def randomWiki():
     lst=wk.random(number)
     for i in enumerate(lst):
         print(i)
-    try:    
+    try:
         key=input("Enter the number : ")
         assert key>=0 and key<number
     except AssertionError:
         key=input("Please enter corresponding article number : ")
-        
+
     page=wk.page(lst[key])
     url=page.url
     #originalTitle=page.original_title
@@ -72,16 +72,16 @@ def randomWiki():
     if pageLength==1:
         soup=fullPage(page)
         print(soup)
-    else:    
+    else:
         print(title)
         print("Page Id = ",pageId)
         print(page.summary)
         print("Page Link = ",url)
     #print "References : ",references
-    
+
     pass
-    
-        
-        
+
+
+
 #if __name__=="__main__":
 #    wiki()   
