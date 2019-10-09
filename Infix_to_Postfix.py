@@ -85,7 +85,7 @@ class Conversion:
 		while not self.isEmpty(): 
 			self.output.append(self.pop()) 
 
-		print "".join(self.output) 
+		print("".join(self.output))
 
 # Driver program to test above function 
 exp = "a+b*(c^d-e)^(f+g*h)-i"
