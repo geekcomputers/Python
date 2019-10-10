@@ -9,13 +9,13 @@ pip install -r /path/to/requirements.txt
 """
 
 import asyncio
-import aiohttp
-from os.path import basename
 import concurrent.futures as cofu
+from os.path import basename
+
+import aiohttp
 
 
 def download(ways):
-
     if not ways:
         print('Ways list is empty. Downloading is impossible')
         return
@@ -48,7 +48,6 @@ def download(ways):
 
 
 async def async_downloader(ways, loop, success_files=set(), failure_files=set()):
-
     async with aiohttp.ClientSession() as session:
         coroutines = [
             download_file_by_url(
@@ -78,7 +77,6 @@ async def async_downloader(ways, loop, success_files=set(), failure_files=set())
 
 
 async def download_file_by_url(url, session=None):
-
     fail = True
     file_name = basename(url)
 
@@ -113,7 +111,6 @@ async def download_file_by_url(url, session=None):
 
 
 def test():
-
     ways = ['https://www.wikipedia.org',
             'https://www.ya.ru',
             'https://www.duckduckgo.com',

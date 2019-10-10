@@ -1,11 +1,13 @@
-import random,time
+import random
+import time
 
 SUITS = ('C', 'S', 'H', 'D')
 RANKS = ('A', '2', '3', '4', '5', '6', '7', '8', '9', 'T', 'J', 'Q', 'K')
-VALUES = {'A':1, '2':2, '3':3, '4':4, '5':5, '6':6, '7':7, '8':8, '9':9, 'T':10, 'J':10, 'Q':10, 'K':10}
+VALUES = {'A': 1, '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9, 'T': 10, 'J': 10, 'Q': 10, 'K': 10}
+
 
 class card:
-    def __init__(self,suit,rank):
+    def __init__(self, suit, rank):
         if (suit in SUITS) and (rank in RANKS):
             self.suit = suit
             self.rank = rank
@@ -13,22 +15,30 @@ class card:
             self.suit = None
             self.rank = None
             print("Invalid card: ", suit, rank)
+
     def __str__(self):
         return self.suit + self.rank
+
     def getRank(self):
         return self.rank
+
     def getSuit(self):
         return self.suit
 
+
 class deck:
     def __init__(self):
-        self.deck = [card(suit,rank) for suit in SUITS for rank in RANKS]
+        self.deck = [card(suit, rank) for suit in SUITS for rank in RANKS]
+
     def shuffle(self):
         random.shuffle(self.deck)
+
     def dealCard(self):
         return random.choice(self.deck)
+
     def __str__(self):
         print(self.deck)
+
 
 # Begin play
 # create two decks, one for each player.
@@ -39,7 +49,7 @@ time.sleep(5)
 print('..........decks ready!!!\n')
 print('Combining and shuffling both the decks..')
 time.sleep(10)
-#Shuffle the decks
+# Shuffle the decks
 deck1.shuffle()
 deck2.shuffle()
 # combine both the shuffled decks
@@ -63,7 +73,7 @@ print("player1 goes first...hit any key to place the card on the pile..\n")
 centerPile = []
 currentPlayer2Card = None
 
-while len(player1) != 0 and len(player2) != 0: #this needs a fix as it goes on an infinite loop on a success.
+while len(player1) != 0 and len(player2) != 0:  # this needs a fix as it goes on an infinite loop on a success.
     switchPlayer = True
     while switchPlayer == True:
         for card in range(len(player1)):
@@ -91,9 +101,4 @@ while len(player1) != 0 and len(player2) != 0: #this needs a fix as it goes on a
 
 print("GAME OVER!!!\n")
 
-print("Human has {} cards and computer has {}..".format(len(player1),len(player2)))
-
-
-
-
-        
+print("Human has {} cards and computer has {}..".format(len(player1), len(player2)))

@@ -7,6 +7,7 @@ Credit to William J. Turkel and Adam Crymble for the word
 frequency code used below. I just merged the two ideas.
 """
 import re
+
 pattern = re.compile("\W")
 wordstring = '''SCENE I. Yorkshire. Gaultree Forest.
 Enter the ARCHBISHOP OF YORK, MOWBRAY, LORD HASTINGS, and others
@@ -295,12 +296,12 @@ Exeunt'''
 wordlist = wordstring.split()
 
 for x, y in enumerate(wordlist):
-  special_character = pattern.search(y[-1:])
-  try:
-    if special_character.group():
-      wordlist[x] = y[:-1]
-  except:
-    continue
+    special_character = pattern.search(y[-1:])
+    try:
+        if special_character.group():
+            wordlist[x] = y[:-1]
+    except:
+        continue
 
 wordfreq = [wordlist.count(w) for w in wordlist]
 

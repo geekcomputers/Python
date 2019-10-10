@@ -14,5 +14,5 @@ subprocess.call([
     "--external-downloader",
     "aria2c",
     "--external-downloader-args",
-    "-x"+threads
+    "-x" + threads
 ])

@@ -8,6 +8,7 @@ except ImportError:
     # Fall back to Python 2's urllib2
     from urllib2 import URLError, urlopen
 
+
 def checkInternetConnectivity():
     try:
         urlopen("http://google.com", timeout=2)

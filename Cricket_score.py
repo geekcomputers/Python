@@ -1,5 +1,6 @@
-import bs4  #Beautiful Soup for Web Scraping
 from urllib import request
+
+import bs4  # Beautiful Soup for Web Scraping
 from win10toast import ToastNotifier
 
 toaster = ToastNotifier()

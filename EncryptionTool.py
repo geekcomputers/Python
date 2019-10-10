@@ -3,6 +3,7 @@
 # This was one my first versions of this script
 # 09/07/2017
 from __future__ import print_function
+
 import math
 
 try:
@@ -12,7 +13,7 @@ except NameError:
 
 key = int(math.pi * 1e14)
 text = input("Enter text: ")
-values =reverse= []
+values = reverse = []
 
 
 def encryptChar(target):
@@ -51,7 +52,7 @@ def readAndDecrypt(filename):
     actualdata = []
     datalist = data.split(" ")
     datalist.remove('')
-    datalistint=[float(datalist[i]) for i in range(len(datalist))]
+    datalistint = [float(datalist[i]) for i in range(len(datalist))]
     for i in range(len(datalist)):
         current1 = int(decryptChar(datalistint[i]))
         current1 = chr(current1)

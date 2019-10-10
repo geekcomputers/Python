@@ -1,6 +1,7 @@
-from fpdf import FPDF
 import os
+
 from PIL import Image
+from fpdf import FPDF
 
 # Author: @NavonilDas
 
@@ -15,10 +16,10 @@ pdf.set_auto_page_break(0)
 for filename in os.listdir('images'):
     try:
         # Read Image file so that we can cover the complete image properly and if invalid image file skip those file
-        img = Image.open("images\\"+filename)
+        img = Image.open("images\\" + filename)
 
         # Read Width and Height
-        width,height = img.size
+        width, height = img.size
 
         # Close opened Image
         img.close()
@@ -30,15 +31,15 @@ for filename in os.listdir('images'):
         orientation = 'P' if width < height else 'L'
 
         # Read the minimum of A4 Size and the image size
-        width = min(A4_SIZE[orientation]['w'],width)
-        height = min(A4_SIZE[orientation]['h'],height)
+        width = min(A4_SIZE[orientation]['w'], width)
+        height = min(A4_SIZE[orientation]['h'], height)
 
         # Add Page With an orientation
         pdf.add_page(orientation=orientation)
         # Add Image with their respective width and height in mm
-        pdf.image("images\\"+filename, 0, 0, width, height)
+        pdf.image("images\\" + filename, 0, 0, width, height)
 
     except OSError:
-        print("Skipped : "+filename)
+        print("Skipped : " + filename)
 
-pdf.output('output.pdf','F')
+pdf.output('output.pdf', 'F')

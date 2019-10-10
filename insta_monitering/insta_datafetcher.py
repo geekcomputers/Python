@@ -1,20 +1,21 @@
 # only god knows  whats happening in the code
 # if I forget the code structure
 # please pray to god for help
-import socket
-import socks
-import requests
-import urllib3
-import random
-import sys
-import pymongo
-import ujson
-import bs4
-import re
 import asyncio
-import time
 import multiprocessing
 import os
+import random
+import re
+import socket
+import sys
+import time
+
+import bs4
+import pymongo
+import requests
+import socks
+import ujson
+import urllib3
 
 try:
     import instagram_monitering.con_file as config
@@ -25,7 +26,7 @@ except:
 class PorxyApplyingDecorator(object):
 
     def __init__(self):
-        filename = os.getcwd()+"/"+"ipList.txt"
+        filename = os.getcwd() + "/" + "ipList.txt"
         with open(filename, "r") as f:
             ipdata = f.read()
         self._IP = random.choice(ipdata.split(","))
@@ -35,14 +36,16 @@ class PorxyApplyingDecorator(object):
         # default_socket = socket.socket
         socks.set_default_proxy(socks.SOCKS5,
                                 SOCKS5_PROXY_HOST,
-                                config.SOCKS5_PROXY_PORT ,
-                                True ,
-                                config.auth ,
+                                config.SOCKS5_PROXY_PORT,
+                                True,
+                                config.auth,
                                 config.passcode)
         socket.socket = socks.socksocket
+
         def wrapper_function(url):
             # this is used for applyting socks5 proxy over the request
             return function_to_call_for_appling_proxy(url)
+
         socks.set_default_proxy()
         return wrapper_function
 
@@ -56,7 +59,7 @@ async def dataprocess(htmldata):
         if "window._sharedData =" in datatext:
             break
     datajson = re.findall("{(.*)}", datatext)
-    datajson = '{'+datajson[0]+'}'
+    datajson = '{' + datajson[0] + '}'
     datadict = ujson.loads(datajson)
     maindict = {}
     datadict = datadict["entry_data"]["PostPage"][0]["graphql"]["shortcode_media"]
@@ -67,6 +70,7 @@ async def dataprocess(htmldata):
         except:
             pass
     return maindict
+
 
 async def datapullpost(future, url):
     while True:
@@ -82,6 +86,7 @@ async def datapullpost(future, url):
                 data = None
             finally:
                 return data
+
         data = await request_pull(url)
         if data != None:
             break
@@ -89,18 +94,19 @@ async def datapullpost(future, url):
     # here processing of data has to occur
     future.set_result(data)
 
+
 class MoniteringClass():
 
     def __init__(self, user, tags, type, productId):
 
         try:
             self.mon = pymongo.MongoClient(host=config.host, port=config.mongoPort)
-            db = self.mon[productId+":"+user+":insta"]
+            db = self.mon[productId + ":" + user + ":insta"]
             self._collection = db[tags]
             if type == "hashtags":
-                self._url = "https://www.instagram.com/explore/tags/"+tags+"/?__a=1"
+                self._url = "https://www.instagram.com/explore/tags/" + tags + "/?__a=1"
             if type == "profile":
-                self._url = "https://www.instagram.com/"+tags+"/?__a=1"
+                self._url = "https://www.instagram.com/" + tags + "/?__a=1"
         except:
             print("error::MointeringClass.__init__>>", sys.exc_info()[1])
 
@@ -117,7 +123,7 @@ class MoniteringClass():
             futures = []
             for i in media_post:
                 tempdict = {}
-                tempdict["url"] = "https://www.instagram.com/p/"+i["code"]+"/"
+                tempdict["url"] = "https://www.instagram.com/p/" + i["code"] + "/"
                 tempdict["code"] = i["code"]
                 userdata.append(tempdict)
             for i in top_post:
@@ -141,17 +147,16 @@ class MoniteringClass():
             print("top post::", len(top_post))
             return userdata, media_post, top_post
 
-
     def _insertFunction(self, record):
         try:
-            records = self._collection.find({"id":record["id"]})
+            records = self._collection.find({"id": record["id"]})
             if records.count() == 0:
                 # record["timestamp"] = time.time()
                 self._collection.insert(record)
         except:
             print("error::Monitering.insertFunction>>", sys.exc_info()[1])
 
-    def _lastProcess(self,userdata, media_post, top_post):
+    def _lastProcess(self, userdata, media_post, top_post):
         mainlist = []
         try:
             for i in userdata:
@@ -161,7 +166,7 @@ class MoniteringClass():
                         tofind = ["owner", "location"]
                         for z in tofind:
                             try:
-                                tempdict[z+"data"] = i["data"][z]
+                                tempdict[z + "data"] = i["data"][z]
                             except:
                                 pass
                         mainlist.append(tempdict)
@@ -172,7 +177,7 @@ class MoniteringClass():
                         tofind = ["owner", "location"]
                         for z in tofind:
                             try:
-                                tempdict[z+"data"] = i["data"][z]
+                                tempdict[z + "data"] = i["data"][z]
                             except:
                                 pass
                         mainlist.append(tempdict)
@@ -195,12 +200,13 @@ class MoniteringClass():
                         data = None
                     finally:
                         return data
+
                 data = reqest_pull(self._url)
                 if data != None:
                     break
             datadict = ujson.loads(data)
             userdata, media_post, top_post = self._dataProcessing(datadict)
-            finallydata = (self._lastProcess(userdata = userdata, media_post= media_post, top_post=top_post))
+            finallydata = (self._lastProcess(userdata=userdata, media_post=media_post, top_post=top_post))
             # print(ujson.dumps(finallydata))
         except:
             print("error::Monitering.request_data_from_instagram>>", sys.exc_info()[1])
@@ -217,7 +223,6 @@ def hashtags(user, tags, type, productId):
         print("error::hashtags>>", sys.exc_info()[1])
 
 
-
 class theradPorcess(multiprocessing.Process):
 
     def __init__(self, user, tags, type, productId):
@@ -232,11 +237,9 @@ class theradPorcess(multiprocessing.Process):
 
     def run(self):
         try:
-            hashtags(user=self.user, tags=self.tags, type = self.type, productId=self.productId)
+            hashtags(user=self.user, tags=self.tags, type=self.type, productId=self.productId)
         except:
             print("error::run>>", sys.exc_info()[1])
-
-
 
 
 class InstaPorcessClass():
@@ -301,7 +304,7 @@ class InstaPorcessClass():
             temp = {}
             temp["user"] = user
             temp["tags"] = tags
-            temp["productId"] =productId
+            temp["productId"] = productId
             collection.delete_one(temp)
         except:
             print("error::deletProcess:>>", sys.exc_info()[1])
@@ -309,6 +312,7 @@ class InstaPorcessClass():
             mon.close()
             print("deleted - task", temp)
             return True
+
     def statusCheck(self, user, tags, productId):
         mon = pymongo.MongoClient(host=config.host, port=config.mongoPort)
         try:
@@ -329,12 +333,13 @@ class InstaPorcessClass():
             mon.close()
             return result
 
+
 class DBDataFetcher():
 
     def __init__(self, user, tags, type, productId):
         try:
             self.mon = pymongo.MongoClient(host=config.host, port=config.mongoPort)
-            db = self.mon[productId+":"+user+":insta"]
+            db = self.mon[productId + ":" + user + ":insta"]
             self._collection = db[tags]
         except:
             print("error::DBDataFetcher.init>>", sys.exc_info()[1])
@@ -342,7 +347,7 @@ class DBDataFetcher():
     def dbFetcher(self, limit=20):
         mainlist = []
         try:
-            records = self._collection.find().sort("id",-1).limit(limit)
+            records = self._collection.find().sort("id", -1).limit(limit)
             for i in records:
                 del i["_id"]
                 mainlist.append(i)
@@ -360,7 +365,7 @@ class DBDataFetcher():
                 raise Exception
             limit = int(limit)
             date = int(date)
-            if date!=0:
+            if date != 0:
                 doc = self._collection.find({"date": {"$gt": date}}).sort("date", pymongo.ASCENDING).limit(limit)
             else:
                 doc = self._collection.find().sort("date", pymongo.ASCENDING).limit(limit)

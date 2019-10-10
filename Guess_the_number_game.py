@@ -1,7 +1,8 @@
 # using codeSkulpter
 
-import simplegui
 import random
+
+import simplegui
 
 
 def new_game():
@@ -11,19 +12,19 @@ def new_game():
 
 def range_of_100():
     global num
-    num = random.randrange(0,100)
+    num = random.randrange(0, 100)
     print("your range is 0-100")
 
 
 def range_of_1000():
     global num
-    num = random.randrange(0,1000)
+    num = random.randrange(0, 1000)
     print("range is 0-1000")
 
 
 def input_guess(guess):
     global num
-    print("Your Guess is " , guess)
+    print("Your Guess is ", guess)
     num1 = int(guess)
     if num1 == num:
         print("Correct")
@@ -33,9 +34,9 @@ def input_guess(guess):
         print("Lower")
 
 
-frame = simplegui.create_frame("Guess The Number",200,200)
-frame.add_button("range[0-1000)",range(1000))
-frame.add_button("range[0-100)",range(100))
-frame.add_input("enter your guess",input_guess,200)
+frame = simplegui.create_frame("Guess The Number", 200, 200)
+frame.add_button("range[0-1000)", range(1000))
+frame.add_button("range[0-100)", range(100))
+frame.add_input("enter your guess", input_guess, 200)
 frame.start()
 new_game()

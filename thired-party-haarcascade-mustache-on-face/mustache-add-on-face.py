@@ -1,4 +1,3 @@
-import numpy as np
 import cv2
 
 from utils import image_resize
@@ -11,8 +10,7 @@ nose_cascade = cv2.CascadeClassifier('Nose.xml')
 
 mustache = cv2.imread('image/mustache.png', -1)
 
-
-while(True):
+while (True):
 
     ret, frame = cap.read()
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
@@ -22,8 +20,8 @@ while(True):
     frame = cv2.cvtColor(frame, cv2.COLOR_BGR2BGRA)
 
     for (x, y, w, h) in faces:
-        roi_gray = gray[y:y+h, x:x+h]  # rec
-        roi_color = frame[y:y+h, x:x+h]
+        roi_gray = gray[y:y + h, x:x + h]  # rec
+        roi_color = frame[y:y + h, x:x + h]
 
         nose = nose_cascade.detectMultiScale(
             roi_gray, scaleFactor=1.5, minNeighbors=5)
@@ -37,7 +35,7 @@ while(True):
                 for j in range(0, mh):
 
                     if mustache2[i, j][3] != 0:  # alpha 0
-                        roi_color[ny + int(nh/2.0) + i, nx +
+                        roi_color[ny + int(nh / 2.0) + i, nx +
                                   j] = mustache2[i, j]
 
     # Display the resulting frame
@@ -46,7 +44,6 @@ while(True):
     cv2.imshow('frame', frame)
     if cv2.waitKey(20) & 0xFF == ord('x'):
         break
-
 
 cap.release()
 cv2.destroyAllWindows()
