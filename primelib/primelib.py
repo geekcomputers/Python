@@ -65,31 +65,24 @@ def isPrime(number):
         input: positive integer 'number'
         returns true if 'number' is prime otherwise false.
     """
-    import math  # for function sqrt
 
     # precondition
     assert isinstance(number, int) and (number >= 0), \
         "'number' must been an int and positive"
 
-    status = True
-
     # 0 and 1 are none primes. 
-    if number <= 1:
+    if number <= 3:
+        return number > 1  
+    elif number % 2 == 0 or number % 3 == 0:
         return False
 
-    # all even numbers except of 2 are no primes.    
-    if number % 2 == 0 and number > 2:
-        return False
+    i = 5
+    while i * i <= number:
+        if number % i == 0 or number % (i + 2) == 0:
+            return False
+        i += 6
 
-    # if 'number' divisible by 'divisor' then sets 'status' to false.
-    # lazy evaluation breaks the all loop on first false.
-    status = all(number % divisor for divisor in range(3, int(math.sqrt(number)) + 1, 2))
-
-    # precondition
-    assert isinstance(status, bool), "'status' must been from type bool"
-
-    return status
-
+    return True
 
 # ------------------------------------------
 
@@ -102,31 +95,24 @@ def sieveEr(N):
         sieve of erathostenes.         
         
     """
+    from math import sqrt
 
     # precondition
     assert isinstance(N, int) and (N > 2), "'N' must been an int and > 2"
 
-    # beginList: conatins all natural numbers from 2 upt to N
-    beginList = [x for x in range(2, N + 1)]
+    primes = [True for x in xrange(N + 1)]
 
-    ans = []  # this list will be returns.
+    for p in xrange(2, sqrt(N) + 1):
+        if (primes[p]):
+            for i in xrange(p*p, N + 1, p):
+                primes[i] = False
 
-    # actual sieve of erathostenes
-    for i in range(len(beginList)):
+    ret = []
+    for p in xrange(N + 1):
+        if primes[p]:
+            ret.append(p)
 
-        for j in range(i + 1, len(beginList)):
-
-            if (beginList[i] != 0) and \
-                    (beginList[j] % beginList[i] == 0):
-                beginList[j] = 0
-
-    # filters actual prime numbers.           
-    ans = [x for x in beginList if x != 0]
-
-    # precondition
-    assert isinstance(ans, list), "'ans' must been from type list"
-
-    return ans
+    return ret
 
 
 # --------------------------------
