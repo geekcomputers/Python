@@ -1,15 +1,15 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+import json
 from os import chdir, system
+from os import walk
+from os.path import curdir
+from os.path import pardir
+from urllib.parse import urlencode
+from urllib.request import urlopen, Request
+
 import requests
 from bs4 import BeautifulSoup
-from urllib.request import urlopen, Request
-from urllib.parse import urlencode
-from os import walk
-import json
-from os.path import curdir
-from urllib.request import urlretrieve
-from os.path import pardir
 from create_dir import create_directory
 
 GOOGLE_IMAGE = \
@@ -22,7 +22,7 @@ usr_agent = {
     'Accept-Encoding': 'none',
     'Accept-Language': 'en-US,en;q=0.8',
     'Connection': 'keep-alive',
-    }
+}
 
 FX = {
     1: 'search_for_image',
@@ -30,17 +30,17 @@ FX = {
     3: 'view_images_directory',
     4: 'set_directory',
     5: 'quit',
-    }
+}
 
 
 # Download images from google images
 
 def search_for_image():
-    print ('Enter data to download Images: ')
+    print('Enter data to download Images: ')
     data = input()
     search_query = {'q': data}
     search = urlencode(search_query)
-    print (search)
+    print(search)
     g = GOOGLE_IMAGE + search
     request = Request(g, headers=usr_agent)
     r = urlopen(request).read()
@@ -70,11 +70,11 @@ def download_wallpapers_1080p():
     cont = set()  # Stores the links of images
     temp = set()  # Refines the links to download images
 
-    print ('Enter data to download wallpapers: ')
+    print('Enter data to download wallpapers: ')
     data = input()
     search_query = {'q': data}
     search = urlencode(search_query)
-    print (search)
+    print(search)
     g = WALLPAPERS_KRAFT + search
     request = Request(g, headers=usr_agent)
     r = urlopen(request).read()
@@ -84,12 +84,11 @@ def download_wallpapers_1080p():
         if 'wallpaperscraft.com/download' in links.get('href'):
             cont.add(links.get('href'))
     for re in cont:
-
         # print all valid links
         # print('https://wallpaperscraft.com/image/' + re[31:-10] + '_' + re[-9:] + '.jpg')
 
         temp.add('https://wallpaperscraft.com/image/' + re[31:-10] + '_'
-                  + re[-9:] + '.jpg')
+                 + re[-9:] + '.jpg')
 
     # Goes to Each link and downloads high resolution images
 
@@ -104,28 +103,29 @@ def download_wallpapers_1080p():
 
     return True
 
+
 ###################
 def view_images_directory():
     for (folders, subfolder, files) in walk(curdir):
         for folder in subfolder:
-            print (folder)
+            print(folder)
     return True
-
 
 
 #############
 def set_directory():
-    print ('Enter the directory to be set: ')
+    print('Enter the directory to be set: ')
     data = input()
     chdir(data + ':\\')
-    print ('Enter name for the folder: ')
+    print('Enter name for the folder: ')
     data = input()
     create_directory(data)
     return True
 
+
 ##############
 def quit():
-    print ('''
+    print('''
 -------------------------***Thank You For Using***-------------------------
         ''')
     return False
@@ -133,7 +133,7 @@ def quit():
 
 run = True
 
-print ('''
+print('''
 ***********[First Creating Folder To Save Your Images}***********
     ''')
 
@@ -142,7 +142,7 @@ DEFAULT_DIRECTORY = pardir + '\\Images'
 chdir(DEFAULT_DIRECTORY)
 count = 0
 while run:
-    print ('''
+    print('''
 -------------------------WELCOME-------------------------
     1. Search for image
     2. Download Wallpapers 1080p
@@ -163,5 +163,4 @@ while run:
         else:
             system('clear')
             print("You have attemted 5 times , try again later")
-            run = False        
-    
+            run = False

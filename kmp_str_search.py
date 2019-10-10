@@ -7,6 +7,8 @@
     2) Step through the text one character at a time and compare it to a charac$
         updating our location within the pattern if necessary
 """
+
+
 def kmp(pattern, text, len_p=None, len_t=None):
     # 1) Construct the failure array
     failure = [0]
@@ -37,7 +39,6 @@ def kmp(pattern, text, len_p=None, len_t=None):
 
 
 if __name__ == '__main__':
-
     # Test 1)
     pattern = "abc1abc12"
     text1 = "alskfjaldsabc1abc1abc12k23adsfabcabc"

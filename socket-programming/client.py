@@ -1,22 +1,23 @@
 # import socket  modules
-import socket  
+import socket
+
 # create TCP/IP socket
 s = socket.socket()
 # take user input ip of server
-server=input("Enter Server IP: ")
+server = input("Enter Server IP: ")
 # bind the socket to the port 12345, and connect  
-s.connect((server,12345))  
+s.connect((server, 12345))
 # receive message from server connection successfully established
 data = s.recv(1024).decode("utf-8")
-print(server+": "+data) 
+print(server + ": " + data)
 
 while True:
-	 	    # send message to server
-		    new_data = str(input("You: ")).encode("utf-8")
-		    s.sendall(new_data)
-		    # receive message from server
-		    data = s.recv(1024).decode("utf-8")
-		    print(server+": "+data)
-		    
+    # send message to server
+    new_data = str(input("You: ")).encode("utf-8")
+    s.sendall(new_data)
+    # receive message from server
+    data = s.recv(1024).decode("utf-8")
+    print(server + ": " + data)
+
 # close connection
-s.close()  
+s.close()

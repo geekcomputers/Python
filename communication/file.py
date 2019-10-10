@@ -1,18 +1,18 @@
 #!/usr/bin/python
 # coding: utf-8
- 
+
+import math
 import os
 import sys
-import math
- 
- 
+
+
 def slice(mink, maxk):
     s = 0.0
     for k in range(int(mink), int(maxk)):
-        s += 1.0/(2*k+1)/(2*k+1)
+        s += 1.0 / (2 * k + 1) / (2 * k + 1)
     return s
- 
- 
+
+
 def pi(n):
     pids = []
     unit = n / 10
@@ -34,8 +34,8 @@ def pi(n):
             sums.append(float(f.read()))
         os.remove("%d" % pid)  # 删除通信的文件
     return math.sqrt(sum(sums) * 8)
- 
-if __name__ == '__main__': 
+
+
+if __name__ == '__main__':
     print("start")
     print(pi(10000000))
-

@@ -1,20 +1,19 @@
 from __future__ import print_function
-import httplib2
-import os
-import oauth2client
-from oauth2client import client, tools
+
 import base64
+import os
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
+
+import httplib2
+import oauth2client
 from apiclient import errors, discovery
-import mimetypes
-from email.mime.image import MIMEImage
-from email.mime.audio import MIMEAudio
-from email.mime.base import MIMEBase
+from oauth2client import client, tools
 
 SCOPES = 'https://www.googleapis.com/auth/gmail.send'
 CLIENT_SECRET_FILE = 'client_secret.json'
 APPLICATION_NAME = 'Gmail API Python Send Email'
+
 
 def get_credentials():
     home_dir = os.path.expanduser('~')
@@ -34,16 +33,18 @@ def get_credentials():
 
     return credentials
 
+
 def SendMessage(sender, to, subject, msgHtml, msgPlain, attachmentFile=None):
     credentials = get_credentials()
     http = credentials.authorize(httplib2.Http())
     service = discovery.build('gmail', 'v1', http=http)
     if attachmentFile:
         message1 = createMessageWithAttachment(sender, to, subject, msgHtml, msgPlain, attachmentFile)
-    else: 
+    else:
         message1 = CreateMessageHtml(sender, to, subject, msgHtml, msgPlain)
     result = SendMessageInternal(service, "me", message1)
     return result
+
 
 def SendMessageInternal(service, user_id, message):
     try:
@@ -57,9 +58,9 @@ def SendMessageInternal(service, user_id, message):
         return "Error"
     return "OK"
 
-#Create Mail With AttAchment Remove hash to make the code readable
-#def createMessageWithAttachment(
-#    sender, to, subject, msgHtml, msgPlain, attachmentFile):
+    # Create Mail With AttAchment Remove hash to make the code readable
+    # def createMessageWithAttachment(
+    #    sender, to, subject, msgHtml, msgPlain, attachmentFile):
     """Create a message for an email.
 
     Args:
@@ -73,6 +74,8 @@ def SendMessageInternal(service, user_id, message):
     Returns:
       An object containing a base64url encoded email object.
     """
+
+
 #    message = MIMEMultipart('mixed')
 #    message['to'] = to
 #    message['from'] = sender
@@ -125,6 +128,8 @@ def CreateMessageHtml(sender, to, subject, msgHtml, msgPlain):
     msg.attach(MIMEText(msgPlain, 'plain'))
     msg.attach(MIMEText(msgHtml, 'html'))
     return {'raw': base64.urlsafe_b64encode(msg.as_string())}
+
+
 def main():
     to = input("Enter Email Address: ")
     sender = input("Your Mail ID: ")
@@ -133,7 +138,8 @@ def main():
     msgPlain = "Hi\nPlain Email"
     SendMessage(sender, to, subject, msgHtml, msgPlain)
     # Send message with attachment: 
-    #SendMessage(sender, to, subject, msgHtml, msgPlain, '/path/to/file.pdf')
+    # SendMessage(sender, to, subject, msgHtml, msgPlain, '/path/to/file.pdf')
+
 
 if __name__ == '__main__':
     main()

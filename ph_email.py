@@ -1,18 +1,19 @@
 #!/usr/bin/python3
 
 # find phone numbers and email addresses
-#./ph_email.py searches for phone numbers and emails in the latest clipboard
-#entry and writes the matches into matches.txt
+# ./ph_email.py searches for phone numbers and emails in the latest clipboard
+# entry and writes the matches into matches.txt
 
-import pyperclip
 import re
 
-#Phone regex overview per line
-	#word boundary
-	#area code +91, 91, 0 
-	#optional space
-	#ten numbers
-	#word boundary
+import pyperclip
+
+# Phone regex overview per line
+# word boundary
+# area code +91, 91, 0
+# optional space
+# ten numbers
+# word boundary
 
 find_phone = re.compile(r'''\b
 							(\+?91|0)?
@@ -21,8 +22,7 @@ find_phone = re.compile(r'''\b
 							\b
 							''', re.X)
 
-
-#email regex source : http://www.regexlib.com/REDetails.aspx?regexp_id=26
+# email regex source : http://www.regexlib.com/REDetails.aspx?regexp_id=26
 find_email = re.compile(r'''(
 							([a-zA-Z0-9_\-\.]+)	
 							@
@@ -34,26 +34,26 @@ find_email = re.compile(r'''(
 							)
 							''', re.X)
 
-text = pyperclip.paste() #retrieve text from clipboard
+text = pyperclip.paste()  # retrieve text from clipboard
 
-matches = [] #list to store numbers and emails
+matches = []  # list to store numbers and emails
 
-	#ph[1] means second item of the group-wise tuple
-	#which is returned by findall function
-	#same applies to email
+# ph[1] means second item of the group-wise tuple
+# which is returned by findall function
+# same applies to email
 
 for ph in find_phone.findall(text):
-	matches.append(ph[1])
+    matches.append(ph[1])
 
 for em in find_email.findall(text):
-	matches.append(em[0])
+    matches.append(em[0])
 
-#display number of matches
+# display number of matches
 print(f"{len(matches)} matches found")
 
-#if matches are found add then to file
+# if matches are found add then to file
 if len(matches):
-	with open('matches.txt', 'a') as file:
-		for match in matches:	
-			file.write(match)
-			file.write('\n')
+    with open('matches.txt', 'a') as file:
+        for match in matches:
+            file.write(match)
+            file.write('\n')

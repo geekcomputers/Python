@@ -1,6 +1,5 @@
 # Writing to an excel
 # sheet using Python
-import xlwt
 from xlwt import Workbook
 
 # Workbook is created

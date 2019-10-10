@@ -14,10 +14,11 @@ def count_chars(filename):
 
     return count
 
+
 def main():
-    is_exist=True
-    #Try to open file if exist else raise exception and try again
-    while(is_exist):
+    is_exist = True
+    # Try to open file if exist else raise exception and try again
+    while (is_exist):
         try:
             inputFile = input("File Name / (0)exit : ").strip()
             if inputFile == "0":

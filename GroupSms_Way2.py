@@ -1,8 +1,10 @@
 from __future__ import print_function
-import urllib2
-import cookielib
-from getpass import getpass
+
 import sys
+from getpass import getpass
+
+import cookielib
+import urllib2
 
 try:
     input = raw_input

@@ -1,6 +1,7 @@
 import os
 import shutil
 import time
+
 from PIL import Image
 
 
@@ -75,6 +76,7 @@ class Wallpaper:
                     os.remove(w.file_urls["wall_dst"] + filename)
                 else:
                     im.close()
+
     # Arrange the wallpapers into the corresponding folders
     @staticmethod
     def arr_desk_wallpapers():
