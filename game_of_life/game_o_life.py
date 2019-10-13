@@ -31,6 +31,9 @@ import random
 import sys
 
 import numpy as np
+
+from matplotlib import use as mpluse
+mpluse('TkAgg')
 from matplotlib import pyplot as plt
 from matplotlib.colors import ListedColormap
 
