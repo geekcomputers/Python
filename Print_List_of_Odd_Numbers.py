@@ -15,8 +15,12 @@ if n < 0:
     print_error_messages()
 
 for i in range(n):
-    if (n == 0):
-        start += 1
-        print(start)
-    elif (n % 2 != 0):
-        print(start)
+    
+       if(n==0):
+  start+=2 #increases the value of start by 2 to get to the next even number	    print(start) #prints 0 first as it is an even number
+    start+=2 #increases the value of start by 2 to get to the next even number
+  elif(n%2==0):
+    print(start)
+  
+  
+
