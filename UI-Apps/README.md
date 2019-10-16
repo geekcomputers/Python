@@ -3,7 +3,7 @@
 ## Running instruction
 
 # windows user
-    run `py clock.py`
+    run `py filename.py`
 
 # linux user
-    run `python3 clock.py`
+    run `python3 filename.py`
