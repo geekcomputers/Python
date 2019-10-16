@@ -43,7 +43,7 @@ while True:
             except:
             	name = driver.find_element_by_class_name("_19vo_").text
             	print("{0} is {1}".format(name,"offline"))
-            	sleep(30)
+            	time.sleep(30)
 
 
     except:
