@@ -4,8 +4,11 @@ This function takes two variable and returns greatest common divisior
 
 
 def find_gcd(x, y):
-    while (y):
-        x, y = y, x % y
+    while (x!=y):
+        if x>y:
+            x=x-y
+        else:
+            y=y-x
 
     return x
 
