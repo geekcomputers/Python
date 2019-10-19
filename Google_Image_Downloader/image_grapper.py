@@ -1,5 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+#importing required libraries
 import json
 from os import chdir, system
 from os import walk
