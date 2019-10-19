@@ -23,7 +23,7 @@ Note:
 
 Let's code it:
 """
-if n>=0 and int(n)==n:
+if n>=0 :
     print(math.factorial(n))
 else:
     print("Value of n is inValid!")
