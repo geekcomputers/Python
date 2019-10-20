@@ -7,7 +7,7 @@ import simplegui
 
 def new_game():
     global num
-    print("new game")
+    print("new game starts")
 
 
 def range_of_100():
@@ -19,7 +19,7 @@ def range_of_100():
 def range_of_1000():
     global num
     num = random.randrange(0, 1000)
-    print("range is 0-1000")
+    print("Your range is 0-1000")
 
 
 def input_guess(guess):
