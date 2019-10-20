@@ -304,7 +304,7 @@ for x, y in enumerate(wordlist):
     except:
         continue
 
-wordfreq = [wordlist.count(w) for w in wordlist]  #counts frequency of a letter in the list
+wordfreq = [wordlist.count(w) for w in wordlist]  #counts frequency of a letter in the given list
 
 print("String\n {} \n".format(wordstring))
 print("List\n {} \n".format(str(wordlist)))
