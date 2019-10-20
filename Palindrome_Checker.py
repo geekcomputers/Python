@@ -29,3 +29,21 @@ for items in range(length_ // 2):
 
 if bol_ == True:
     print("\nWow!, The phrase is a Palindrome!")
+    
+    
+    
+    
+    
+    
+"""
+Method #2:
+
+A simple mmethod is , to reverse the string and and compare with original string.
+If both are same that's means string is pelindrome otherwise else. 
+"""
+if phrase==phrase[::-1]:#slicing technique
+    """phrase[::-1] this code is for reverse a string very smartly """
+    
+    print("\nBy Method 2: Wow!, The phrase is a Palindrome!")
+else:
+    print("\nBy Method 2: Sorry, The given phrase is not a Palindrome.")
