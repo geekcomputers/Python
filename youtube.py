@@ -3,14 +3,14 @@
 Author: Abhinav Anand
 git: github.com/ab-anand
 mail: abhinavanand1905@gmail.com
-Requirements: requests, BeautifulSoup
+Requirements: requests, BeautifulSoupd
 
 '''
-import os
 import webbrowser
 
 import requests
 from bs4 import BeautifulSoup
+
 '''
 headers = {
     'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36'}
@@ -25,7 +25,7 @@ query = input_func.replace(' ', '+')
 
 # search for the best similar matching video
 url = 'https://www.youtube.com/results?search_query=' + query
-source_code = requests.get(url,timeout=15)
+source_code = requests.get(url, timeout=15)
 plain_text = source_code.text
 soup = BeautifulSoup(plain_text, "html.parser")
 
@@ -41,5 +41,5 @@ try:
 except KeyError:
     print("Can't find any song,check your network or try a new word")
 
-
-#hey i'm learning  git. 
+# hey i'm learning  git.
+# i welcome you too to come and learn

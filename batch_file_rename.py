@@ -10,8 +10,8 @@ once you pass the current and new extensions
 __author__ = 'Craig Richards'
 __version__ = '1.0'
 
-import os
 import argparse
+import os
 
 
 def batch_rename(work_dir, old_ext, new_ext):
@@ -34,6 +34,8 @@ def batch_rename(work_dir, old_ext, new_ext):
                 os.path.join(work_dir, filename),
                 os.path.join(work_dir, newfile)
             )
+    print("rename is done!")
+    print(os.listdir(work_dir))
 
 
 def get_parser():

@@ -12,11 +12,10 @@ Modifications	: 1.1 Removed the static lines for the putty sessions, it now read
 
 Description	: This simple script loads everything I need to carry out the daily checks for our systems.
 """
-import platform  # Load Modules
 import os
+import platform  # Load Modules
 import subprocess
 import sys
-
 from time import strftime  # Load just the strftime Module from Time
 
 

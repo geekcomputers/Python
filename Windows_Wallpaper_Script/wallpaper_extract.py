@@ -1,6 +1,7 @@
 import os
 import shutil
 import time
+
 from PIL import Image
 
 
@@ -66,12 +67,16 @@ class Wallpaper:
         for filename in os.listdir(w.file_urls["wall_dst"]):
             base_file, ext = os.path.splitext(filename)
             if ext == ".jpg":
-                im = Image.open(w.file_urls["wall_dst"] + filename)
+                try:
+                    im = Image.open(w.file_urls["wall_dst"] + filename)
+                except IOError:
+                    print("This isn't a picture.", filename)
                 if list(im.size)[0] != 1920 and list(im.size)[0] != 1080:
                     im.close()
                     os.remove(w.file_urls["wall_dst"] + filename)
                 else:
                     im.close()
+
     # Arrange the wallpapers into the corresponding folders
     @staticmethod
     def arr_desk_wallpapers():
@@ -87,7 +92,7 @@ class Wallpaper:
                         im.close()
                         os.rename(w.file_urls["wall_dst"] + filename,
                                   w.file_urls["wall_desktop"] + filename)
-                    if list(im.size)[0] == 1080:
+                    elif list(im.size)[0] == 1080:
                         im.close()
                         os.rename(w.file_urls["wall_dst"] + filename,
                                   w.file_urls["wall_mobile"] + filename)

@@ -1,0 +1,3 @@
+# phone_and_email_regex
+Searches for phone numbers (india only) and email IDs from the most recent text in clipboard.
+Displays the number of matches and stores all the matches(both numbers and email IDs) in 'matches.txt'

@@ -1,6 +1,6 @@
 import argparse
+import hashlib  # hashlib is only used inside the Test class
 import struct
-import hashlib #hashlib is only used inside the Test class
 import unittest
 
 
@@ -8,6 +8,7 @@ class SHA1Hash:
     """
     Class to contain the entire pipeline for SHA1 Hashing Algorithm
     """
+
     def __init__(self, data):
         """
         Inititates the variables data and h. h is a list of 5 8-digit Hexadecimal
@@ -29,7 +30,7 @@ class SHA1Hash:
         """
         Pads the input message with zeros so that padded_data has 64 bytes or 512 bits
         """
-        padding = b'\x80' + b'\x00'*(63 - (len(self.data) + 8) % 64)
+        padding = b'\x80' + b'\x00' * (63 - (len(self.data) + 8) % 64)
         padded_data = self.data + padding + struct.pack('>Q', 8 * len(self.data))
         return padded_data
 
@@ -37,7 +38,7 @@ class SHA1Hash:
         """
         Returns a list of bytestrings each of length 64
         """
-        return [self.padded_data[i:i+64] for i in range(0, len(self.padded_data), 64)]
+        return [self.padded_data[i:i + 64] for i in range(0, len(self.padded_data), 64)]
 
     # @staticmethod
     def expand_block(self, block):
@@ -47,7 +48,7 @@ class SHA1Hash:
         """
         w = list(struct.unpack('>16L', block)) + [0] * 64
         for i in range(16, 80):
-            w[i] = self.rotate((w[i-3] ^ w[i-8] ^ w[i-14] ^ w[i-16]), 1)
+            w[i] = self.rotate((w[i - 3] ^ w[i - 8] ^ w[i - 14] ^ w[i - 16]), 1)
         return w
 
     def final_hash(self):
@@ -77,20 +78,21 @@ class SHA1Hash:
                 elif 60 <= i < 80:
                     f = b ^ c ^ d
                     k = 0xCA62C1D6
-                a, b, c, d, e = self.rotate(a, 5) + f + e + k + expanded_block[i] & 0xffffffff,\
+                a, b, c, d, e = self.rotate(a, 5) + f + e + k + expanded_block[i] & 0xffffffff, \
                                 a, self.rotate(b, 30), c, d
-        self.h = self.h[0] + a & 0xffffffff,\
-                 self.h[1] + b & 0xffffffff,\
-                 self.h[2] + c & 0xffffffff,\
-                 self.h[3] + d & 0xffffffff,\
+        self.h = self.h[0] + a & 0xffffffff, \
+                 self.h[1] + b & 0xffffffff, \
+                 self.h[2] + c & 0xffffffff, \
+                 self.h[3] + d & 0xffffffff, \
                  self.h[4] + e & 0xffffffff
-        return '%08x%08x%08x%08x%08x' %tuple(self.h)
+        return '%08x%08x%08x%08x%08x' % tuple(self.h)
 
 
 class SHA1HashTest(unittest.TestCase):
     """
     Test class for the SHA1Hash class. Inherits the TestCase class from unittest
     """
+
     def testMatchHashes(self):
         msg = bytes('Test String', 'utf-8')
         self.assertEqual(SHA1Hash(msg).final_hash(), hashlib.sha1(msg).hexdigest())
@@ -110,7 +112,7 @@ def main():
     parser.add_argument('--file', dest='input_file', help='Hash contents of a file')
     args = parser.parse_args()
     input_string = args.input_string
-    #In any case hash input should be a bytestring
+    # In any case hash input should be a bytestring
     if args.input_file:
         hash_input = open(args.input_file, 'rb').read()
     else:

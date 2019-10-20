@@ -12,8 +12,9 @@ Usage:
 
 Ask a question, and know the future.
 '''
-from time import sleep
 from random import randint
+from time import sleep
+
 from colorama import Fore, Style
 
 # response list..
@@ -39,17 +40,22 @@ response = [
     "Outlook not so good",
     "Very doubtful"]
 
+
 # core game...
 def game():
     ques = str(input("What is your question? \n").lower())
-    print ("thinking...")
+    print("thinking...")
     sleep(1)
-    idx = randint(0,20)
-    if idx <10: color = Fore.GREEN
-    elif idx>=10 and idx<15: color = Fore.YELLOW
-    else: color = Fore.RED
-    print (color+response[idx]+Style.RESET_ALL+'\n\n')
+    idx = randint(0, 20)
+    if idx < 10:
+        color = Fore.GREEN
+    elif idx >= 10 and idx < 15:
+        color = Fore.YELLOW
+    else:
+        color = Fore.RED
+    print(color + response[idx] + Style.RESET_ALL + '\n\n')
     playloop()
+
 
 # looping func...
 def playloop():
@@ -61,8 +67,9 @@ def playloop():
         print("Auf Wiedersehen!")
 
     else:
-        print ("What was that?/n")
+        print("What was that?/n")
         playloop()
 
-if __name__=='__main__':
+
+if __name__ == '__main__':
     game()

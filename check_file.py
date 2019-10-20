@@ -9,8 +9,9 @@
 
 # Description	: Check a file exists and that we can read the file
 from __future__ import print_function
-import sys  # Import the Modules
+
 import os  # Import the Modules
+import sys  # Import the Modules
 
 
 # Prints usage if not appropriate length of arguments are provided

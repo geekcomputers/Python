@@ -10,22 +10,22 @@ All the folder operations are done on home
 project directory.
 """
 
-from shutil import copytree
-from shutil import move
 from os import chdir
-from os.path import exists
-from os.path import pardir
 from os import makedirs
 from os import removedirs
 from os import rename
+from os.path import exists
+from os.path import pardir
+from shutil import copytree
+from shutil import move
 
 
 # Creates a directory
 def create_directory(name):
-    if exists(pardir+"\\"+name):
+    if exists(pardir + "\\" + name):
         print('Folder already exists... Cannot Overwrite this')
     else:
-        makedirs(pardir+"\\"+name)
+        makedirs(pardir + "\\" + name)
 
 
 # Deletes a directory
@@ -51,9 +51,9 @@ def backup_files(name_dir, folder):
 # Move folder to specific location
 # Overwrites the file if it already exists
 def move_folder(filename, name_dir, folder):
-    if not exists(name_dir+":\\"+folder):
-        makedirs(name_dir+':\\'+folder)
-    move(filename, name_dir+":\\"+folder+'\\')
+    if not exists(name_dir + ":\\" + folder):
+        makedirs(name_dir + ':\\' + folder)
+    move(filename, name_dir + ":\\" + folder + '\\')
 
 
 """

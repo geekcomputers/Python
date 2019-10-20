@@ -6,7 +6,10 @@ that number appears in the triple quoted string.
 Credit to William J. Turkel and Adam Crymble for the word
 frequency code used below. I just merged the two ideas.
 """
+import re
 
+pattern = re.compile("\W") #re is used to compile the expression more than once
+#wordstring consisting of a million characters
 wordstring = '''SCENE I. Yorkshire. Gaultree Forest.
 Enter the ARCHBISHOP OF YORK, MOWBRAY, LORD HASTINGS, and others
 ARCHBISHOP OF YORK
@@ -291,9 +294,17 @@ ARCHBISHOP OF YORK
 Before, and greet his grace: my lord, we come.
 Exeunt'''
 
-wordlist = wordstring.split()
+wordlist = wordstring.split() #splits each word with a space
 
-wordfreq = [wordlist.count(w) for w in wordlist]
+for x, y in enumerate(wordlist):
+    special_character = pattern.search(y[-1:]) #searches for a pattern in the string
+    try:
+        if special_character.group():  #returns all matching groups
+            wordlist[x] = y[:-1]
+    except:
+        continue
+
+wordfreq = [wordlist.count(w) for w in wordlist]  #counts frequency of a letter in the list
 
 print("String\n {} \n".format(wordstring))
 print("List\n {} \n".format(str(wordlist)))
