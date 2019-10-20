@@ -1,10 +1,12 @@
-# Python program for implementation of Quicksort Sort 
+# Python program for implementation of Quicksort Sort
 
-# This function takes last element as pivot, places 
-# the pivot element at its correct position in sorted 
-# array, and places all smaller (smaller than pivot) 
-# to left of pivot and all greater elements to right 
-# of pivot 
+# This function takes last element as pivot, places
+# the pivot element at its correct position in sorted
+# array, and places all smaller (smaller than pivot)
+# to left of pivot and all greater elements to right
+# of pivot
+
+
 def partition(arr, low, high):
     i = (low - 1)  # index of smaller element
     pivot = arr[high]  # pivot
@@ -22,12 +24,12 @@ def partition(arr, low, high):
     return (i + 1)
 
 
-# The main function that implements QuickSort 
-# arr[] --> Array to be sorted, 
-# low --> Starting index, 
-# high --> Ending index 
+# The main function that implements QuickSort
+# arr[] --> Array to be sorted,
+# low --> Starting index,
+# high --> Ending index
 
-# Function to do Quick sort 
+# Function to do Quick sort
 def quickSort(arr, low, high):
     if low < high:
         # pi is partitioning index, arr[p] is now
