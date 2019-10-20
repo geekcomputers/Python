@@ -2,19 +2,6 @@ from itertools import product
 
 
 def findPassword(chars, function, show=50, format_="%s"):
-    """
-    Essa função encontra e retorna uma senha e retorna o número de tentativas.
-    
-    Param chars: Dígitos que uma senha pode ter.
-    
-    Param function: Função que obrigatóriamente deve ter um parâmetro para
-    receber um senha. Caso o retorna dessa função seja True, a senha tentada
-    é considerada a correta.
-
-    Param show: Mostra uma tentativa a cada X tentativas.
-
-    Param format_: Formato em que a senha será impressa.
-    """
 
     password = None
     attempts = 0
@@ -79,12 +66,6 @@ if __name__ == "__main__":
 
 
     def testFunction(password):
-        """
-        Função que será usada para fazer o teste.
-        Podemos pensar nela por exemplo como uma função
-        que tenta se conectar a um site utilizando a
-        senha passada no parâmetro "password".
-        """
         global pw
         if password == pw:
             return True
