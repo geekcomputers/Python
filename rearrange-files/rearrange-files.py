@@ -9,8 +9,6 @@ import shutil
 class RearrangeFile(object):
     def __init__(self):
         self.folder_path = os.getcwd()
-
-    def all_files(self):
         self.list_of_all_files = os.listdir(self.folder_path)
 
     def make_folder_and_return_name(self, foldername):
@@ -38,5 +36,4 @@ class RearrangeFile(object):
 
 if __name__ == "__main__":
     re = RearrangeFile()
-    re.all_files()
     re.check_folder_existance()
