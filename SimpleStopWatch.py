@@ -11,7 +11,7 @@ while True:
         print('Started')
         while True:
             print('Time Elapsed: ', round(time.time() - starttime, 0), 'secs', end="\r")
-            time.sleep(1)
+            time.sleep(1) # 1 second delay
     except KeyboardInterrupt:
         print('Stopped')
         endtime = time.time()
