@@ -20,9 +20,12 @@ Functions available are:
                square root : sqrt(n)
   round to nearest integer : round(n)
 convert degrees to radians : rad(deg)
+absolute value             : aval(n)
 """
 
 import sys
+import math
+## Imported math library to run sin(), cos(), tan() and other such functions in the calculator 
 
 from fileinfo import raw_input
 
@@ -42,7 +45,8 @@ def calc(term):
     term = term.replace('%', '/100.00')
     term = term.replace('rad', 'radians')
     term = term.replace('mod', '%')
-
+    term = term.replace('aval', 'abs')
+    
     functions = ['sin', 'cos', 'tan', 'pow', 'cosh', 'sinh', 'tanh', 'sqrt', 'pi', 'radians', 'e']
 
     # This part is for reading and converting function expressions.
