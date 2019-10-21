@@ -74,3 +74,6 @@ Code documentation is aligned correctly when the files are viewed in [Notepad++]
 
 - [Changemac.py](https://github.com/geekcomputers/Python/blob/master/changemac.py) - This script change your MAC address , generate random MAC address or enter input as new MAC address in your linux(Successfully Tested in Ubuntu 18.04). 
 - [whatsapp-monitor.py](https://github.com/geekcomputers/Python/blob/master/whatsapp-monitor.py) - Uses Selenium to give online status about your contacts when your contacts become online in whatsapp you will get an update about it on terminal.
+
+- [whatsapp-chat-analyzer.py](https://github.com/subahanii/whatsapp-Chat-Analyzer) - This is whatsapp group/individual chat analyzer .
+This script is able to analyse all activity happened in whatsapp group and visualize all thing through matplotlib library(In Graph form).
