@@ -25,7 +25,7 @@ def binarySearch(arr, l, r, x):
 if __name__ == "__main__":
     # User input array
     print("Enter the array with comma separated in which element will be searched")
-    arr = map(int, input().split(",")) #the input array will of int type with each element seperated with a comma due to the split fucntion
+    arr =[int(x) for x in input().split(',')] #the input array will of int type with each element seperated with a comma due to the split fucntion
                                        #map function returns a list of results after applying the given function to each item
     x = int(input("Enter the element you want to search in given array"))
 
