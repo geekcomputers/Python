@@ -4,15 +4,29 @@
 # that can be root of given x systematically
 # Kinda brute forcing
 
-def find_cube_root(x):
-    if type(x) == str:
-        return "Expected an integer! Cannot find cube root of an string!"
-    for i in range(0, x):
-        if i ** 3 == x:
-            return i 
-    return "{} is not a perfect cube".format(x)
+
+def cubeRoot():
+    x = int(input("Enter an integer: "))
+    for ans in range(0, abs(x) + 1):
+        if ans ** 3 == abs(x):
+            break
+    if ans ** 3 != abs(x):
+        print(x, 'is not a perfect cube!')
+    else:
+        if x < 0:
+            ans = -ans
+    print('Cube root of ' + str(x) + ' is ' + str(ans))
     
-# Test 
-x = 27
-result = find_cube_root(x)
-print("Cube root of {} is {}".format(x, result))
+cubeRoot()
+
+cont = str(input("Would you like to continue: "))
+while cont == "yes":
+    cubeRoot()
+    cont = str(input("Would you like to continue: "))
+    if cont == "no":
+        exit()
+    else:
+        print("Enter a correct answer(yes or no)")
+        cont = str(input("Would you like to continue: "))
+
+
