@@ -40,3 +40,4 @@ def dtbconverter(num):  # Function inputs a float value and returns a list as ou
 # Test lines.
 number = float(input("Enter Any base-10 Number: "))
 print("The Binary Equivalant: ", *dtbconverter(number))
+print("Done")
