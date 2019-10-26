@@ -18,7 +18,7 @@ def division(num1, num2):
 			num2 = - num2 
 		else: 
 			negResult = true 
-				
+	# If num2 is negative, make it positive		
 	elif (num2 < 0): 
 		num2 = - num2 
 		negResult = true 
@@ -40,6 +40,7 @@ def division(num1, num2):
 
 # Driver program 
 num1 = 13; num2 = 2
+# Pass num1, num2 as arguments to function division
 print(division(num1, num2)) 
 
 
