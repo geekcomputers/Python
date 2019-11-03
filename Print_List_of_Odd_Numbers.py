@@ -5,7 +5,7 @@ def print_error_messages():
 
 
 try:
-    n = int(input('Amount: '))
+    n = int(input("Amount: "))
 except ValueError:
     print_error_messages()
 
@@ -15,12 +15,9 @@ if n < 0:
     print_error_messages()
 
 for i in range(n):
-    
-       if(n==0):
-  start+=2 #increases the value of start by 2 to get to the next even number	    print(start) #prints 0 first as it is an even number
-    start+=2 #increases the value of start by 2 to get to the next even number
-  elif(n%2==0):
-    print(start)
-  
-  
-
+    if n == 0:
+        start += 2  # increases the value of start by 2 to get to the next even number
+        print(start)  # prints 0 first as it is an even number
+        start += 2  # increases the value of start by 2 to get to the next even number
+    elif n % 2 == 0:
+        print(start)
