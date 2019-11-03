@@ -13,7 +13,7 @@ def size(stack):
 # Stack is empty if the size is 0 
 def isEmpty(stack): 
 	if size(stack) == 0: 
-		return true 
+		return True 
 
 # Function to add an item to stack . 
 # It increases size by 1 
