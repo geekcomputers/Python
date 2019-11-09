@@ -1,16 +1,20 @@
 #python program for counting sort (updated)
-#import some libraries
-import random, math
-def get_sortkey(n):
-    # Define the method to retrieve the key 
-    return n
+n=int(input("please give the number of elements\n"))
+tlist = list()
+print("okey now plase give the elemets")
+for i in range(n):
+  tlist.append(int(input("\n")))
+k = max(tlist)
+n = len(tlist)
 
-def counting_sort(tlist, k, get_sortkey):
+
+def counting_sort(tlist, k, n):
+ 
     """ Counting sort algo with sort in place.
         Args: 
             tlist: target list to sort
             k: max value assume known before hand
-            get_sortkey: function to retrieve the key that is apply to elements of tlist to be used in the count list index.
+            n: the length of the given list
             map info to index of the count list.
         Adv:
             The count (after cum sum) will hold the actual position of the element in sorted order
@@ -19,35 +23,24 @@ def counting_sort(tlist, k, get_sortkey):
     """
 
     # Create a count list and using the index to map to the integer in tlist.
-    count_list = [0]*(k)
+    count_list = [0]*(k+1)
 
     # iterate the tgt_list to put into count list
-    for n in tlist:
-        count_list[get_sortkey(n)] = count_list[get_sortkey(n)] + 1  
+    for i in range(0,n):
+        count_list[tlist[i]] += 1  
         
     # Modify count list such that each index of count list is the combined sum of the previous counts 
     # each index indicate the actual position (or sequence) in the output sequence.
-    for i in range(k):
-        if i ==0:
-            count_list[i] = count_list[i]
-        else:
-            count_list[i] += count_list[i-1]
+    for i in range(1,k+1):
+        count_list[i] = count_list[i] + count_list[i-1]
  
+    flist = [0]*(n)
+    for i in range(n-1,-1,-1):
+      count_list[tlist[i]] =count_list[tlist[i]]-1 
+      flist[count_list[tlist[i]]]=(tlist[i])
 
-    output = [None]*len(tlist)
-    for i in range(len(tlist)-1, -1, -1):
-        sortkey = get_sortkey(tlist[i])
-        output[count_list[sortkey]-1] = tlist[i]
-        count_list[sortkey] -=1
+    return flist
 
-    return output
-    
-#----- take list from user-----------
-li_st = [int(x) for x in input().split()]
-print("Unsorted List")
-print(li_st)
+flist = counting_sort(tlist, k, n)
+print(flist)
 
-##------working on our algo-----------
-print("\nSorted list using basic counting sort")
-output = counting_sort(li_st, max(li_st) +1, get_sortkey) 
-print(output)
