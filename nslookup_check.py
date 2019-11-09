@@ -6,7 +6,7 @@
 
 # Modifications		:
 
-# Description			: This very simple script opens the file server_list.txt and the does an nslookup for each one to check the DNS entry
+# Description			: This very simple script opens the file server_list.txt and then does a nslookup for each one to check the DNS entry
 
 import subprocess  # Import the subprocess module
 
