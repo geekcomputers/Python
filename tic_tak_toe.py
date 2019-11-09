@@ -16,7 +16,8 @@ def win(current_game):
     for row in game:
         if all_same(row):
             print("Player {} is the winner horizontally!".format(row[0]))
-            return True
+            print("Congrats")
+        return True
 
     # vertical
     for col in range(len(game)):
