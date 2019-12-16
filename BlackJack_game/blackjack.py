@@ -86,7 +86,7 @@ def dealer_choice():
 
 while sum(p_cards) < 21:
 
-    k = input('Want to hit or stay?\n Press 1 for hit and 0 for stay ')
+    k = int(input('Want to hit or stay?\n Press 1 for hit and 0 for stay '))
     if k == 1:
         random.shuffle(deck)
         p_cards.append(deck.pop())
