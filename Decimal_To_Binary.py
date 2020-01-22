@@ -38,5 +38,8 @@ def dtbconverter(num):  # Function inputs a float value and returns a list as ou
 
 
 # Test lines.
+# Converts user input to float which is a string initially
 number = float(input("Enter Any base-10 Number: "))
+# The * operator unpacks the list returned by dtbconverter(number)  
 print("The Binary Equivalant: ", *dtbconverter(number))
+print("Done")

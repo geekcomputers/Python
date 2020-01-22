@@ -10,8 +10,12 @@ from urllib.parse import urlencode
 from urllib.request import urlopen, Request
 
 import requests
+import ssl
 from bs4 import BeautifulSoup
 from create_dir import create_directory
+
+
+ssl._create_default_https_context = ssl._create_unverified_context
 
 GOOGLE_IMAGE = \
     'https://www.google.com/search?site=&tbm=isch&source=hp&biw=1873&bih=990&'

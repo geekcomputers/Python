@@ -68,15 +68,24 @@ def getDices():
     return dices
 
 
-dices = getDices()
 # =================================================================
 # Output section.
 
+def output():
+    dices = getDices()
+    input("Do you wanna roll? press enter")
+    cont = True
+    while cont:
+        rollOutput = ""
+        for dice in dices:
+            rollOutput = rollOutput + str(dice.roll()) + ", "
+        rollOutput = rollOutput[:-2]
+        print(rollOutput)
 
-rollOutput = ""
+        print("do you want to roll again?")
+        ans = input('press enter to continue, and [exit] to exit')
+        if ans == 'exit':
+            cont = False
 
-for dice in dices:
-    rollOutput = rollOutput + str(dice.roll()) + ", "
-
-rollOutput = rollOutput[:-2]
-print(rollOutput)
+if __name__ == "__main__":
+    output()

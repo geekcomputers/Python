@@ -1,16 +1,16 @@
 
 # My Python Examples
 
-I do not consider myself a programmer. I create these little programs as experiments to play with the language, or to solve problems for myself. I would gladly accept pointers from others to improve, simplify, or make the code more efficient. If you would like to make any comments then please feel free to email me at craig@geekcomputers.co.uk.
+I do not consider myself a programmer. I create these little programs as experiments to play with Python, or to solve problems for myself. I would gladly accept pointers from others to improve, simplify, or make the code more efficient. If you would like to make any comments then please feel free to email me at craig@geekcomputers.co.uk.
 
 These scripts contain important functions which help reduce human workload.
 Code documentation is aligned correctly when the files are viewed in [Notepad++](https://notepad-plus-plus.org/).
 
 - [batch_file_rename.py](https://github.com/geekcomputers/Python/blob/master/batch_file_rename.py) - This batch renames a group of files in a given directory, once you pass the current and the new extensions.
 
-- [create_dir_if_not_there.py](https://github.com/geekcomputers/Python/blob/master/create_dir_if_not_there.py) - Checks to see if a directory exists in the users home directory, if not then create it.
+- [create_dir_if_not_there.py](https://github.com/geekcomputers/Python/blob/master/create_dir_if_not_there.py) - Checks to see if a directory exists in the users home directory. If a directory does not exist, then one will be created.
 
-- [Fast Youtube Downloader](https://github.com/geekcomputers/Python/blob/master/youtube-downloader%20fast.py) - Downloads YouTube videos quickly with parallel threads using aria2c
+- [Fast Youtube Downloader](https://github.com/geekcomputers/Python/blob/master/youtube-downloader%20fast.py) - Downloads YouTube videos quickly with parallel threads using aria2c.
 
 - [Google Image Downloader](https://github.com/geekcomputers/Python/tree/master/Google_Image_Downloader) - Query a given term and retrieve images from the Google Image database.
 
@@ -42,7 +42,7 @@ Code documentation is aligned correctly when the files are viewed in [Notepad++]
 
 - [script_count.py](https://github.com/geekcomputers/Python/blob/master/script_count.py) - This file scans the scripts directory and gives a count of the different types of scripts.
 
-- [get_youtube_view.py] - This is very simple python script to get more views for your youtube videos.Some times I use for repeating my favorite songs by this scripts.
+- [get_youtube_view.py] - This is a simple python script used to get more views on your youtube videos. This script may also be used to repeat songs on Youtube. 
 
 - [script_listing.py](https://github.com/geekcomputers/Python/blob/master/script_listing.py) - This file will list all the files in the given directory, and go through all the subdirectories as well.
 
@@ -77,3 +77,5 @@ Code documentation is aligned correctly when the files are viewed in [Notepad++]
 
 - [whatsapp-chat-analyzer.py](https://github.com/subahanii/whatsapp-Chat-Analyzer) - This is whatsapp group/individual chat analyzer .
 This script is able to analyse all activity happened in whatsapp group and visualize all thing through matplotlib library(In Graph form).
+
+- [JARVIS.py](https://git.io/fjH8m) - Control windows programs with your voice.
