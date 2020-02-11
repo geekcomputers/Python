@@ -7,7 +7,7 @@ To start the program you will need to type
 
 
 After you hit 'enter' the program will interpret the source-code in 'code.txt'.
-You can use many texfiles as input. These will be interpreted one by one.
+You can use many textfiles as input. These will be interpreted one by one.
 
 You can find some examples in the directory 'examples'.
 
