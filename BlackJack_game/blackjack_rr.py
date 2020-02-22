@@ -149,6 +149,7 @@ def push(player, dealer):
 
 
 # GAMEPLAY
+player_chips = Chips()
 
 while True:
 
@@ -181,7 +182,6 @@ while True:
     dealer_hand.add_card(deck.deal())
     dealer_hand.add_card(deck.deal())
 
-    player_chips = Chips()
 
     take_bet(player_chips)
 
