@@ -1,10 +1,8 @@
 '''
-
 Author: Abhinav Anand
 git: github.com/ab-anand
 mail: abhinavanand1905@gmail.com
 Requirements: requests, BeautifulSoupd
-
 '''
 import webbrowser
 
@@ -18,8 +16,10 @@ headers = {
 input_func = None
 try:
     input_func = raw_input('Enter the song to be played: ')
+    input_func+=raw_input('Enter artist name: ')
 except NameError:
     input_func = input('Enter the song to be played: ')
+    input_func+=input('Enter artist name: ')
 
 query = input_func.replace(' ', '+')
 
