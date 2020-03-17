@@ -14,10 +14,9 @@ start = 1
 if n < 0:
     print_error_messages()
 
-for i in range(n):
-    if n == 0:
-        start += 2  # increases the value of start by 2 to get to the next even number
-        print(start)  # prints 0 first as it is an even number
-        start += 2  # increases the value of start by 2 to get to the next even number
-    elif n % 2 == 0:
-        print(start)
+result = "0\n"  # Number 0 is added to string
+if n == 0:
+    print(result)  # If number is equal to zero, output will be just "0"
+elif n > 0:
+    result += ''.join(str(i)+"\n" for i in range(1, n+1, 2))  # creating string with number "i"
+    print(result)                                             # in range from 1 till "n+1" with step 2;
