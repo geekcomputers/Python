@@ -1,3 +1,4 @@
+from __future__ import print_function
 # Created by sarathkaul on 11/11/19
 
 import requests
@@ -20,7 +21,7 @@ def fetch_bbc_news():
 
     for a_result in range(len(results)):
         # printing all trending news
-        print str(a_result + 1) + ".) ", results[a_result]['title']
+        print(str(a_result + 1) + ".) ", results[a_result]['title'])
 
 
 if __name__ == '__main__':

@@ -1,8 +1,16 @@
+def diff(a, b):
+    """
+    TODO: fix this function!!
+    """
+    return a - b
+
+
 def simpleColor(r,g,b):
-""" simpleColor obtiene el nombre del color mas general al cual se acerca su formato R G B """
+    """ simpleColor obtiene el nombre del color mas general al cual se acerca su formato R G B """
     r=int(r)
     g=int(g)
     b=int(b)
+    bg = ir = 0  # TODO: Fix these variables
     try:
         #ROJO --------------------------------------------------
         if r > g and r > b:
@@ -18,21 +26,21 @@ def simpleColor(r,g,b):
             if rg < rb: # Verde mayor que Azul
                 if gb < rg: #Verde mas cerca de Azul
                     if gb >=30 and rg >= 80:
-                       return "NARANJA"
+                        return "NARANJA"
                     elif gb<=20 and rg >= 80:
                         return "ROJO"
                     elif gb<=20 and b > 175:
                         return "CREMA"
 
                     else:
-                       return "CHOCOLATE"
+                        return "CHOCOLATE"
                 else: #Verde mas cerca de Rojo
-                        if rg > 60:
-                            return "NARANJA*"
-                        elif r > 125:
-                            return "AMARILLO"
-                        else:
-                            return  "COCHOLATE"
+                    if rg > 60:
+                        return "NARANJA*"
+                    elif r > 125:
+                        return "AMARILLO"
+                    else:
+                        return  "COCHOLATE"
             elif rg > rb: #Azul mayor que verde
                 if bg < rb: #Verde mas cerca de Azul
                     if gb < 60:
@@ -43,7 +51,7 @@ def simpleColor(r,g,b):
                     elif g > 125:
                         return "ROSADO"
                     else:
-                       return "ROJO 3"
+                        return "ROJO 3"
                 else: #Verde mas cerca de Rojo
                     if rb < 60:
                         if r > 160:
@@ -77,21 +85,21 @@ def simpleColor(r,g,b):
             if r > b: #ROJO > AZUL
                 if gr < gb: #Verde con Rojo
 
-                    if rb>=150 and gr <=20: 
+                    if rb>=150 and gr <=20:
                         return "AMARILLO"
                     else:
                         return "VERDE"
-                else: #...Verde 
+                else: #...Verde
                     return "VERDE"
 
             elif r < b: #AZUL > ROJO
                 if gb < gr: #Verde con Azul
 
-                    if gb<=20: 
+                    if gb<=20:
                         return "TURQUESA"
                     else:
                         return "VERDE"
-                else: #...Verde 
+                else: #...Verde
                     return "VERDE"
 
             else: #r y b iguales
@@ -112,12 +120,12 @@ def simpleColor(r,g,b):
             rg=diff(r,g) #distancia de rojo a verde
 
             if g < r: # ROJO  > VERDE
-               if bg < rg: #Azul con Verde  
-                    if bg<=20: 
+                if bg < rg: #Azul con Verde
+                    if bg<=20:
                         return "TURQUESA"
                     else:
                         return "CELESTE"
-               else: #...Azul
+                else: #...Azul
                     if rg <= 20:
                         if r >= 150:
                             return "LILA"
@@ -144,7 +152,7 @@ def simpleColor(r,g,b):
                         if bg <=20:
                             return "GRIS"
                         else:
-                             return "AZUL"
+                            return "AZUL"
             else: #r y g iguales
                 if bg > 20:
                     if r>=100 and b <60:
@@ -157,7 +165,7 @@ def simpleColor(r,g,b):
                     return "GRIS"
 
 
-        # IGUALES---------------------------------------    
+        # IGUALES---------------------------------------
         else:
             return "GRIS"
 
@@ -170,4 +178,5 @@ def simpleColor(r,g,b):
 # Puedes probar asi: python primary_colors.py 120,0,0   , esto resultara en un ROJO como respuesta
 #--------------------------------------------------------------------------------------------------
 if __name__=='__main__':
-        print(simpleColor(sys.argv[1],sys.argv[2],sys.argv[3]))
+    import sys
+    print(simpleColor(sys.argv[1],sys.argv[2],sys.argv[3]))

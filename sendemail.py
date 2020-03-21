@@ -1,7 +1,11 @@
 from __future__ import print_function
 
 import base64
+import mimetypes
 import os
+from email.mime.audio import MIMEAudio
+from email.mime.base import MIMEBase
+from email.mime.image import MIMEImage
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
@@ -58,66 +62,64 @@ def SendMessageInternal(service, user_id, message):
         return "Error"
     return "OK"
 
-    # Create Mail With AttAchment Remove hash to make the code readable
-    # def createMessageWithAttachment(
-    #    sender, to, subject, msgHtml, msgPlain, attachmentFile):
+
+def createMessageWithAttachment(
+    sender, to, subject, msgHtml, msgPlain, attachmentFile):
     """Create a message for an email.
 
     Args:
-      sender: Email address of the sender.
-      to: Email address of the receiver.
-      subject: The subject of the email message.
-      msgHtml: Html message to be sent
-      msgPlain: Alternative plain text message for older email clients          
-      attachmentFile: The path to the file to be attached.
+        sender: Email address of the sender.
+        to: Email address of the receiver.
+        subject: The subject of the email message.
+        msgHtml: Html message to be sent
+        msgPlain: Alternative plain text message for older email clients
+        attachmentFile: The path to the file to be attached.
 
     Returns:
-      An object containing a base64url encoded email object.
+        An object containing a base64url encoded email object.
     """
+    message = MIMEMultipart('mixed')
+    message['to'] = to
+    message['from'] = sender
+    message['subject'] = subject
 
+    messageA = MIMEMultipart('alternative')
+    messageR = MIMEMultipart('related')
 
-#    message = MIMEMultipart('mixed')
-#    message['to'] = to
-#    message['from'] = sender
-#    message['subject'] = subject
+    messageR.attach(MIMEText(msgHtml, 'html'))
+    messageA.attach(MIMEText(msgPlain, 'plain'))
+    messageA.attach(messageR)
 
-#    messageA = MIMEMultipart('alternative')
-#    messageR = MIMEMultipart('related')
+    message.attach(messageA)
 
-#    messageR.attach(MIMEText(msgHtml, 'html'))
-#    messageA.attach(MIMEText(msgPlain, 'plain'))
-#    messageA.attach(messageR)
+    print("create_message_with_attachment: file:", attachmentFile)
+    content_type, encoding = mimetypes.guess_type(attachmentFile)
 
-#    message.attach(messageA)
+    if content_type is None or encoding is not None:
+        content_type = 'application/octet-stream'
+    main_type, sub_type = content_type.split('/', 1)
+    if main_type == 'text':
+        fp = open(attachmentFile, 'rb')
+        msg = MIMEText(fp.read(), _subtype=sub_type)
+        fp.close()
+    elif main_type == 'image':
+        fp = open(attachmentFile, 'rb')
+        msg = MIMEImage(fp.read(), _subtype=sub_type)
+        fp.close()
+    elif main_type == 'audio':
+        fp = open(attachmentFile, 'rb')
+        msg = MIMEAudio(fp.read(), _subtype=sub_type)
+        fp.close()
+    else:
+        fp = open(attachmentFile, 'rb')
+        msg = MIMEBase(main_type, sub_type)
+        msg.set_payload(fp.read())
+        fp.close()
+    filename = os.path.basename(attachmentFile)
+    msg.add_header('Content-Disposition', 'attachment', filename=filename)
+    message.attach(msg)
 
-#    print "create_message_with_attachment: file:", attachmentFile
-#    content_type, encoding = mimetypes.guess_type(attachmentFile)
-
-#    if content_type is None or encoding is not None:
-#        content_type = 'application/octet-stream'
-#    main_type, sub_type = content_type.split('/', 1)
-#    if main_type == 'text':
-#        fp = open(attachmentFile, 'rb')
-#        msg = MIMEText(fp.read(), _subtype=sub_type)
-#        fp.close()
-#    elif main_type == 'image':
-#        fp = open(attachmentFile, 'rb')
-#        msg = MIMEImage(fp.read(), _subtype=sub_type)
-#        fp.close()
-#    elif main_type == 'audio':
-#        fp = open(attachmentFile, 'rb')
-#        msg = MIMEAudio(fp.read(), _subtype=sub_type)
-#        fp.close()
-#    else:
-#        fp = open(attachmentFile, 'rb')
-#        msg = MIMEBase(main_type, sub_type)
-#        msg.set_payload(fp.read())
-#        fp.close()
-#    filename = os.path.basename(attachmentFile)
-#    msg.add_header('Content-Disposition', 'attachment', filename=filename)
-#    message.attach(msg)
-
-#    return {'raw': base64.urlsafe_b64encode(message.as_string())}
+    return {'raw': base64.urlsafe_b64encode(message.as_string())}
 
 
 def CreateMessageHtml(sender, to, subject, msgHtml, msgPlain):

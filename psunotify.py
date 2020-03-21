@@ -10,7 +10,7 @@ br.addheaders = [('User-Agent',
                   'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/37.0.2062.120 Safari/537.36')]
 br.set_handle_robots(False)
 # For page exploration
-page = raw_input('Enter Page No:')
+page = input('Enter Page No:')
 # print type(page)
 p = urllib2.Request('https://www.google.co.in/search?q=gate+psu+2017+ext:pdf&start=' + page)
 ht = br.open(p)
