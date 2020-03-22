@@ -35,7 +35,7 @@ def get_app(Q):
         'paint': 'mspaint.exe',
         'shell': 'pwoershell.exe',
         'stikynot': 'StikyNot.exe',        
-    }.get(Q)
+    }.get(Q.lower())
     if cmd:
         subprocess.call([cmd])
     else:
