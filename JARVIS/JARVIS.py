@@ -27,25 +27,19 @@ print(Query)
 
 # Run Application with Voice Command Function
 def get_app(Q):
-    if Q == "time":
-        print(datetime.now())
-    elif Q == "notepad":
-        subprocess.call(['Notepad.exe'])
-    elif Q == "calculator":
-        subprocess.call(['calc.exe'])
-    elif Q == "stikynot":
-        subprocess.call(['StikyNot.exe'])
-    elif Q == "shell":
-        subprocess.call(['powershell.exe'])
-    elif Q == "paint":
-        subprocess.call(['mspaint.exe'])
-    elif Q == "cmd":
-        subprocess.call(['cmd.exe'])
-    elif Q == "browser":
-        subprocess.call(['C:\Program Files\Internet Explorer\iexplore.exe'])
+    cmd = {
+        'browser': 'C:\Program Files\Internet Explorer\iexplore.exe',
+        'calculator': 'calc.exe',
+        'cmd': 'cmd.exe',
+        'notepad': 'Notepad.exe',
+        'paint': 'mspaint.exe',
+        'shell': 'pwoershell.exe',
+        'stikynot': 'StikyNot.exe',        
+    }.get(Q)
+    if cmd:
+        subprocess.call([cmd])
     else:
-        print("Sorry ! Try Again")
-    return
+        print(datetime.now() if Q == "time" else "Sorry!  Try again.")
 
 
 # Call get_app(Query) Func.
