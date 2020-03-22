@@ -3,7 +3,7 @@ __version__ = 'v 0.1'
 
 """
 JARVIS:
-- Control windows programs with your voice
+- Control Windows programs with your voice
 """
 
 # import modules
