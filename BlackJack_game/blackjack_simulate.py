@@ -120,7 +120,7 @@ class Chips:
     def __bool__(self):
         if self._amount > 0:
             return True
-        return False
+        return self._amount > 0
 
     @staticmethod
     def get_tips(content):
@@ -194,7 +194,7 @@ class Chips:
     def can_double(self):
         if self.current_amount() - self.bet_amount >= 0:
             return True
-        return False
+        return self.current_amount() - self.bet_amount >= 0
 
 
 class User:
@@ -513,7 +513,8 @@ class BlackJack:
     def chips_manage(self):
         if self.choice == 'Insurance':
             err = 'The amount should under ' + \
-                  str(self.player.chips.current_amount())
+            err = ('The amount should under ' +
+                   str(self.player.chips.current_amount()))
             pay_ins = self.get_select(self.player.chips.current_amount(),
                                       prompt='Insurance amount >> ',
                                       general_err=err)
@@ -557,7 +558,7 @@ class BlackJack:
             if self.player.is_point('>', BLACK_JACK):
                 return 'Dealer'
             else:
-                return 'Player'
+            return 'Dealer' if self.player.is_point('>', BLACK_JACK) else 'Player'
 
         if self.choice == 'Surrender':
             return 'Dealer'
@@ -598,7 +599,7 @@ class BlackJack:
                 if 'Player' in content:
                     return COLOR.get('RED')
                 else:
-                    return COLOR.get('GREEN')
+                 return COLOR.get('RED' if 'Player' in content else 'GREEN')
             if self.winner == 'Player':
                 return COLOR.get('GREEN')
             elif self.winner == 'Dealer':
