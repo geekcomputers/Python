@@ -1,4 +1,4 @@
- Script Name       : fileinfo.py
+# Script Name       : fileinfo.py
 # Author            : Not sure where I got this from
 # Created           : 28th November 2011
 # Last Modified     : 23th March 2020
