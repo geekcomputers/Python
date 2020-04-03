@@ -8,7 +8,7 @@ style.use("ggplot")
 """reading data from SalesData.csv file
     and passing data to dataframe"""
 
-df = pd.read_csv("C:\\Users\Test\Desktop\SalesData.csv")  #Reading the csv file
+df = pd.read_csv("..\SalesData.csv")  #Reading the csv file
 x = df["SalesID"].as_matrix()  # casting SalesID to list #extracting the column with name SalesID
 y = df["ProductPrice"].as_matrix()  # casting ProductPrice to list
 plt.xlabel("SalesID")  # assigning X-axis label
