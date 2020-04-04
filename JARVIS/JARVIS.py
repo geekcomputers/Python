@@ -6,6 +6,9 @@ JARVIS:
 - Control windows programs with your voice
 """
 
+# pip install pyttsx3 
+#pyttsx is a cross-platform text to speech library which is platform independent
+
 # import modules
 from datetime import datetime          # datetime module supplies classes for manipulating dates and times
 import subprocess                      # subprocess module allows you to spawn new processes
@@ -13,11 +16,18 @@ import subprocess                      # subprocess module allows you to spawn n
 import speech_recognition as sr        # speech_recognition Library for performing speech recognition with support for Google Speech Recognition, etc..
 
 
+# importing the pyttsx library 
+import pyttsx3  
+
+# initialisation 
+engine = pyttsx3.init() 
+
 
 # obtain audio from the microphone
 r = sr.Recognizer()
 with sr.Microphone() as source:
-    print("Say something!")
+    engine.say("Say something")
+    engine.runAndWait()  # texts won’t be said unless the interpreter encounters runAndWait()
     audio = r.listen(source)
 
 # recognize speech using Google Speech Recognition
@@ -44,7 +54,8 @@ def get_app(Q):
     elif Q == "browser":
         subprocess.call(['C:\Program Files\Internet Explorer\iexplore.exe'])
     else:
-        print("Sorry ! Try Again")
+        engine.("Sorry Try Again")
+        engine.runAndWait() 
     return
 
 
