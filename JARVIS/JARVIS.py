@@ -12,12 +12,20 @@ import subprocess                      # subprocess module allows you to spawn n
 
 import speech_recognition as sr        # speech_recognition Library for performing speech recognition with support for Google Speech Recognition, etc..
 
+#pip install pyttsx3                   # need to run only once to install the library
+
+# importing the pyttsx3 library 
+import pyttsx3 
+  
+# initialisation 
+engine = pyttsx3.init() 
 
 
 # obtain audio from the microphone
 r = sr.Recognizer()
 with sr.Microphone() as source:
-    print("Say something!")
+    engine.say("Say something")
+    engine.runAndWait() 
     audio = r.listen(source)
 
 # recognize speech using Google Speech Recognition
@@ -44,7 +52,9 @@ def get_app(Q):
     elif Q == "browser":
         subprocess.call(['C:\Program Files\Internet Explorer\iexplore.exe'])
     else:
-        print("Sorry ! Try Again")
+        engine.say("Sorry Try Again")
+        engine.runAndWait() 
+    
     return
 
 
