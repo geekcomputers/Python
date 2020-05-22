@@ -1,9 +1,11 @@
-# INPUT NUMBER OF EVEN NUMBERS
+n = int(input("Enter the required range : "))  # user input
+list = []
 
-n = int(input("Enter the limit : "))  # user input
+if (n < 0):
+    print("Not a valid number, please enter a positive number!")
+else:
+    for i in range(0,n+1):
+        if(i%2==0):
+            list.append(i)          #appending items to the initialised list getting from the 'if' statement
 
-if n < 0:
-    print("Invalid number, please enter a Non-negative number!")
-else:    
-    even_list = [i for i in range(0,n+1,2)]         # creating string with number "i"
-    print(even_list)                                # in range from 0 till "n" with step 2
+print(list)
