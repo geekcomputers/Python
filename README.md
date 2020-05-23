@@ -42,8 +42,6 @@ Code documentation is aligned correctly when the files are viewed in [Notepad++]
 
 - [script_count.py](https://github.com/geekcomputers/Python/blob/master/script_count.py) - This file scans the scripts directory and gives a count of the different types of scripts.
 
-- [get_youtube_view.py] - This is a simple python script used to get more views on your youtube videos. This script may also be used to repeat songs on Youtube. 
-
 - [script_listing.py](https://github.com/geekcomputers/Python/blob/master/script_listing.py) - This file will list all the files in the given directory, and go through all the subdirectories as well.
 
 - [testlines.py](https://github.com/geekcomputers/Python/blob/master/testlines.py) - This simple script opens a file and prints out 100 lines of whatever is the set for the line variable.
