@@ -1,5 +1,5 @@
 # Python-Assembler
-#WE NEED A FREE T-SHIRT.
+# WE NEED A FREE T-SHIRT
 This program is a simple assembler-like (intel-syntax) interpreter language. The program is written in python 2. 
 To start the program you will need to type 
 
