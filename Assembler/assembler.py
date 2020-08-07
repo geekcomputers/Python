@@ -3,6 +3,7 @@ from __future__ import print_function
 import sys
 
 lines = []  # contains the lines of the file.
+
 tokens = []  # contains all tokens of the source code.
 
 # register eax, ebx,..., ecx
