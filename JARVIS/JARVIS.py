@@ -1,4 +1,4 @@
-__author__  = 'Mohammed Shokr <mohammedshokr2014@gmail.com>'
+__author__ = 'Mohammed Shokr <mohammedshokr2014@gmail.com>'
 __version__ = 'v 0.1'
 
 """
@@ -7,29 +7,28 @@ JARVIS:
 """
 
 # import modules
-from datetime import datetime          # datetime module supplies classes for manipulating dates and times
-import subprocess                      # subprocess module allows you to spawn new processes
+from datetime import datetime  # datetime module supplies classes for manipulating dates and times
+import subprocess  # subprocess module allows you to spawn new processes
 
-import speech_recognition as sr        # speech_recognition Library for performing speech recognition with support for Google Speech Recognition, etc..
+import speech_recognition as sr  # speech_recognition Library for performing speech recognition with support for Google Speech Recognition, etc..
 
-#pip install pyttsx3                   # need to run only once to install the library
+# pip install pyttsx3                   # need to run only once to install the library
 
 # importing the pyttsx3 library 
-import pyttsx3 
-  
-# initialisation 
-engine = pyttsx3.init() 
+import pyttsx3
 
+# initialisation 
+engine = pyttsx3.init()
 
 # obtain audio from the microphone
 r = sr.Recognizer()
 with sr.Microphone() as source:
     engine.say("Say something")
-    engine.runAndWait() 
+    engine.runAndWait()
     audio = r.listen(source)
 
 # recognize speech using Google Speech Recognition
-Query = r.recognize_google(audio)
+Query = r.recognize_google(audio, language = 'en-IN', show_all = True )
 print(Query)
 
 
@@ -53,8 +52,8 @@ def get_app(Q):
         subprocess.call(['C:\Program Files\Internet Explorer\iexplore.exe'])
     else:
         engine.say("Sorry Try Again")
-        engine.runAndWait() 
-    
+        engine.runAndWait()
+
     return
 
 
