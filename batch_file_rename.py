@@ -60,11 +60,11 @@ def main():
     work_dir = args['work_dir'][0]
     # Set the variable old_ext with the second argument passed
     old_ext = args['old_ext'][0]
-    if old_ext[0] != '.':
+    if old_ext and old_ext[0] != '.':
         old_ext = '.' + old_ext
     # Set the variable new_ext with the third argument passed
     new_ext = args['new_ext'][0]
-    if new_ext[0] != '.':
+    if new_ext and new_ext[0] != '.':
         new_ext = '.' + new_ext
 
     batch_rename(work_dir, old_ext, new_ext)
