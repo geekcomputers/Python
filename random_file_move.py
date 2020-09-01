@@ -23,14 +23,14 @@ desc = 'Script to move specified number of files(given in ratio) from the src di
 usage = 'python random_file_move.py -src [SRC] -dest [DEST] -ratio [RATIO]'
 
 parser = argparse.ArgumentParser(usage = usage, description = desc)
-parser.add_argument('-src', '--src', type=str, required=True, 
-	help='(REQUIRED) Path to directory from which we cut files. Space not allowed in path.')
-parser.add_argument('-dest', '--dest', type=str, required=True, 
-	help='(REQUIRED) Path to directory to which we move files. Space not allowed in path.')
-parser.add_argument('-ratio', '--ratio', type=check_ratio, required=True, 
-	help="(REQUIRED) Ratio of files in 'src' and 'dest' directory.")
+parser.add_argument('-src', '--src', type = str, required = True, 
+	help = '(REQUIRED) Path to directory from which we cut files. Space not allowed in path.')
+parser.add_argument('-dest', '--dest', type = str, required = True, 
+	help = '(REQUIRED) Path to directory to which we move files. Space not allowed in path.')
+parser.add_argument('-ratio', '--ratio', type = check_ratio, required = True, 
+	help = "(REQUIRED) Ratio of files in 'src' and 'dest' directory.")
 
-args=parser.parse_args()
+args = parser.parse_args()
 
 src = args.src
 dest = args.dest
