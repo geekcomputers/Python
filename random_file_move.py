@@ -15,7 +15,7 @@ def check_ratio(x):
 	except ValueError:
 		raise argparse.ArgumentTypeError("%r not a floating-point literal" % (x,))
 
-	if x < 0.0 or x > 1.0:
+	if (x < 0.0 or x > 1.0):
 		raise argparse.ArgumentTypeError("%r not in range [0.0, 1.0]" % (x))
 	return x
 
@@ -37,7 +37,7 @@ dest = args.dest
 ratio = args.ratio
 
 files = os.listdir(src)
-size = int(ratio*len(files))
+size = int(ratio * len(files))
 
 print('Move {} files from {} to {} ? [y/n]'.format(size, src, dest))
 if input().lower() == 'y':
