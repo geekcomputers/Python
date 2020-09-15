@@ -1,0 +1,9 @@
+#This program is to find the number of letters in a word with input from the user
+#This program has been created by divu050704
+message=input('Enter the message: ')
+count_of_letters=0
+letter=input('Enter the letter you want to count: ')
+for k in message:
+if k ==letter:
+count_of_letters=count_of_letters+1
+print('Number of',letter,'in',message,'=',str(count_of_letters))
