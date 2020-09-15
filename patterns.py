@@ -35,3 +35,30 @@ for i in range(1,6):
         print('*',end = " ")
 
     print("")
+
+
+# Let's say we want to print pattern which is opposite of above:
+#     *
+#    * *
+#   * * *
+#  * * * *
+# * * * * *
+#  * * * *
+#   * * *
+#    * *
+#     *
+
+num = 5
+star = '* '
+space = ' '
+spaces = 5
+for row in range(1, num + 1):
+    spaces = spaces - 1
+    print((space * spaces) + (star * row))
+
+# for second part of pattern
+spaces = 0
+for row in range(1, num):
+    num = num - 1
+    spaces = spaces + 1
+    print((space * spaces) + (star * num))
