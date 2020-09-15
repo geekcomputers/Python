@@ -2,9 +2,10 @@
 # Author		: Craig Richards
 # Created		: 08th December 2011
 # Last Modified		: 
-# Version		: 1.0
+# Version		: 1.1
 
 # Modifications		: beven nyamande
+#                  : Scott
 
 # Description		: This is a very simple script that opens up a file and writes whatever is set "
 import sys
