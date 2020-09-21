@@ -21,7 +21,7 @@ def dig_clock():
     # to update the time display as needed
     # could use >200 ms, but display gets jerky
     
-    label.after(200, clack)
+    label.pack()
 
 dig_clock()
 
