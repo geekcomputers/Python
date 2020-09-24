@@ -2,10 +2,10 @@ import turtle
 t= turtle.Turtle()
 turtle.title("I Love You")
 screen= turtle.Screen()
-screen.bgcolor("black")
+screen.bgcolor("white")
 t.color("red")
 t.begin_fill()
-t.fillcolor("red")
+t.fillcolor("black")
 
 t.left(140)
 t.forward(180)
