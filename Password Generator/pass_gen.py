@@ -82,5 +82,3 @@ commands to change the characters to be used to generate passwords:
 
 
 Run().run()
-#while True:
-#    print('Password generated is :', PasswordGenerator.secure_password_gen(int(input("Enter password lenght: "))))
