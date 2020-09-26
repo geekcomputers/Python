@@ -42,10 +42,14 @@ def bubbleSort(arr):
 				
 
 # Driver code to test above
-arr = [64, 34, 25, 12, 22, 11, 90]
-
+arr = []
+#user input
+n=int(input('Enter the total number of items'))
+for i in range(n):
+	x=int(input())
+	arr.append(x)
 bubbleSort(arr)
 
 print ("Sorted array is:")
-for i in range(len(arr)):
+for i in range(0,n):
 	print ("%d" %arr[i]),
