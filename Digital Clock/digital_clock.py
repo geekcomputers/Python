@@ -1,5 +1,8 @@
 # use Tkinter to show a digital clock
+# using python code base
+
 import time
+#because we need digital clock , so we are importing the time library.
 from tkinter import *
 
 root = Tk()
@@ -11,6 +14,9 @@ root.resizable(0,0)
 label = Label(root, font=("Arial", 30, 'bold'), bg="blue", fg="powder blue", bd =30)
 label.grid(row =0, column=1)
 
+
+
+#function to declare the tkniter clock
 def dig_clock():
     
     text_input = time.strftime("%H:%M:%S") # get the current local time from the PC
@@ -23,6 +29,9 @@ def dig_clock():
     
     label.after(200, dig_clock)
 
+    
+    
+# calling the function
 dig_clock()
 
 root.mainloop()
