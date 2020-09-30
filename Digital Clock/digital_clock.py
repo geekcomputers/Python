@@ -21,11 +21,7 @@ def dig_clock():
     # to update the time display as needed
     # could use >200 ms, but display gets jerky
     
- Heart-Turtle
-    label.after(200, dig_clock)  
-=======
     label.after(200, dig_clock)
-master
 
 dig_clock()
 
