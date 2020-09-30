@@ -10,7 +10,8 @@ import sys  # Load the Library Module
 # Last Modified		: 14th May 2012
 # Version				: 1.1
 # Modifications		: 1.1 - 14th May 2012 - CR Changed it to use the config directory to store the server files
-# Description			: This script will, depending on the arguments supplied will ping the servers associated with that application group.
+# Description	 : This script will, depending on the arguments supplied will ping the
+# servers associated with that application group.
 
 filename = sys.argv[0]  # Sets a variable for the script name
 if '-h' in sys.argv or '--h' in sys.argv or '-help' in sys.argv or '--help' in sys.argv:  # Help Menu if called
@@ -25,9 +26,11 @@ Followed by the site i.e.
     sys.exit(0)
 else:
 
-    if (len(sys.argv) < 3):  # If no arguments are passed,display the help/instructions on how to run the script
+    if len(sys.argv) < 3:  # If no arguments are passed,display the help/instructions on how to run the script
         sys.exit(
-            '\nYou need to supply the app group. Usage : ' + filename + ' followed by the application group i.e. \n \t dms or \n \t swaps \n then the site i.e. \n \t 155 or \n \t bromley')
+            '\nYou need to supply the app group. Usage : ' + filename +
+            ' followed by the application group i.e. \n \t dms or \n \t swaps \n '
+            'then the site i.e. \n \t 155 or \n \t bromley')
 
     appgroup = sys.argv[1]  # Set the variable appgroup as the first argument you supply
     site = sys.argv[2]  # Set the variable site as the second argument you supply

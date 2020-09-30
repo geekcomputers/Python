@@ -13,9 +13,8 @@
 
 
 import unittest
-from unittest import TestCase
+from unittest import TestCase, mock
 
-import mock
 from XOR_cipher import XORCipher
 
 

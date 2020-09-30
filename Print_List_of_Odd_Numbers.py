@@ -1,23 +1,9 @@
-# INPUT NUMBER OF ODD NUMBERS
-def print_error_messages():
-    print("Invalid number, please enter a Non-negative number!")
-    exit()
+# CALCULATE NUMBER OF ODD NUMBERS
 
+n = int(input("Enter the limit : "))  # user input
 
-try:
-    n = int(input("Amount: "))
-except ValueError:
-    print_error_messages()
-
-start = 1
-
-if n < 0:
-    print_error_messages()
-
-for i in range(n):
-    if n == 0:
-        start += 2  # increases the value of start by 2 to get to the next even number
-        print(start)  # prints 0 first as it is an even number
-        start += 2  # increases the value of start by 2 to get to the next even number
-    elif n % 2 == 0:
-        print(start)
+if n <= 0:
+    print("Invalid number, please enter a number greater than zero!")
+else:    
+    odd_list = [i for i in range(1,n+1,2)]      # creating string with number "i"
+    print(odd_list)                             # in range from 1 till "n".

@@ -1,5 +1,7 @@
-import random
 
+from __future__ import print_function
+import random
+import simplegui
 CARD_SIZE = (72, 96)
 CARD_CENTER = (36, 48)
 card_images = simplegui.load_image("http://storage.googleapis.com/codeskulptor-assets/cards_jfitz.png")
@@ -21,7 +23,7 @@ class Card:
         else:
             self.suit = None
             self.rank = None
-            print("Invalid card: ", suit, rank)
+            print(("Invalid card: ", suit, rank))
 
     def __str__(self):
         return self.suit + self.rank

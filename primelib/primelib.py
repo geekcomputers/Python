@@ -100,15 +100,16 @@ def sieveEr(N):
     # precondition
     assert isinstance(N, int) and (N > 2), "'N' must been an int and > 2"
 
-    primes = [True for x in xrange(N + 1)]
+    primes = [True for x in range(N + 1)]
 
-    for p in xrange(2, sqrt(N) + 1):
+    for p in range(2, int(sqrt(N)) + 1):
         if (primes[p]):
-            for i in xrange(p*p, N + 1, p):
+            for i in range(p*p, N + 1, p):
                 primes[i] = False
-
+    primes[0]=False
+    primes[1]=False
     ret = []
-    for p in xrange(N + 1):
+    for p in range(N + 1):
         if primes[p]:
             ret.append(p)
 

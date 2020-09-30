@@ -3,7 +3,8 @@
 def binarySearch(arr, l, r, x):
     while l <= r:
 
-        mid = l + (r - l) / 2; #extracting the middle element from the array
+        mid = l + (r - l) / 2 #extracting the middle element from the array
+        mid=int(mid) #it has to be integer
 
         # Check if x is present at mid 
         if arr[mid] == x:
