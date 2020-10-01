@@ -21,6 +21,7 @@ time.sleep(2)
 print('Still Loading---')
 time.sleep(2)
 print('So You Are Still Here Not Gone I Gave You Chance But No Problem May Be You Trust Your Fortune A Lot \n Lets Begin Then')
+time.sleep(2)
 d_cards = []  # Initialising dealer's cards
 p_cards = []  # Initialising player's cards
 
