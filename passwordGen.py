@@ -1,3 +1,6 @@
+#import random module
+
+from time import sleep
 import random
 
 lChars = 'abcdefghijklmnopqrstuvwxyz'
@@ -25,5 +28,6 @@ for i in range(passLen):
         index = random.randrange(len(uChars))
         myPass = myPass + uChars[index]
         myPassLen = len(myPass)
-
+print("Generating Password")
+sleep(5)
 print(myPass)
