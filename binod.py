@@ -1,6 +1,6 @@
 import os
 
-
+# function to check if 'binod' is present in the file.
 def checkBinod(file):
     with open(file, "r") as f:
         fileContent = f.read()
@@ -8,10 +8,11 @@ def checkBinod(file):
         print(
             f'**************Congratulations Binod found in {f}********************')
         return True
+    else:
+        return False
 
 
 if __name__ == '__main__':
-    ans = False
     print("************binod Detector********************")
     dir_contents = os.listdir()
     for item in dir_contents:
