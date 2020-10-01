@@ -29,8 +29,8 @@ def decryptChar(target):
 
 def encrypt(input_text):
     col_values = []
-    for i in range(len(input_text)):
-        current = ord(input_text[i])
+    for inp in input_text:
+        current = ord(inp)
         current = encryptChar(current)
         col_values.append(current)
     return col_values
@@ -38,8 +38,8 @@ def encrypt(input_text):
 
 def decrypt(enc_text):
     col_values = []
-    for i in range(len(enc_text)):
-        current = int(decryptChar(enc_text[i]))
+    for enc in enc_text:
+        current = int(decryptChar(enc))
         current = chr(current)
         col_values.append(current)
     return col_values
@@ -52,9 +52,9 @@ def readAndDecrypt(filename):
     actualdata = []
     datalist = data.split(" ")
     datalist.remove('')
-    datalistint = [float(datalist[i]) for i in range(len(datalist))]
-    for i in range(len(datalist)):
-        current1 = int(decryptChar(datalistint[i]))
+    datalistint = [float(data) for data in datalist]
+    for data in datalist:
+        current1 = int(decryptChar(data))
         current1 = chr(current1)
         actualdata.append(current1)
     file.close()
@@ -67,8 +67,8 @@ def readAndEncrypt(filename):
     datalist = list(data)
     encrypted_list = list()
     encrypted_list_str = list()
-    for i in range(len(datalist)):
-        current = ord(datalist[i])
+    for data in datalist:
+        current = ord(data)
         current = encryptChar(current)
         encrypted_list.append(current)
     file.close()
@@ -78,36 +78,36 @@ def readAndEncrypt(filename):
 def readAndEncryptAndSave(inp_file, out_file):
     enc_list = readAndEncrypt(inp_file)
     output = open(out_file, "w")
-    for i in range(len(enc_list)):
-        output.write(str(enc_list[i]) + " ")
+    for enc in enc_list:
+        output.write(str(enc) + " ")
     output.close()
 
 
 def readAndDecryptAndSave(inp_file, out_file):
     dec_list = readAndDecrypt(inp_file)
     output = open(out_file, "w")
-    for i in range(len(dec_list)):
-        output.write(str(dec_list[i]))
+    for dec in dec_list:
+        output.write(str(dec))
     output.close()
 
 
 # encryption
-for i in range(len(text)):
-    current = ord(text[i])
+for t in text:
+    current = ord(t)
     current = encryptChar(current)
     values.append(current)
 
 # decryption
-for i in range(len(text)):
-    current = int(decryptChar(values[i]))
+for v in values:
+    current = int(decryptChar(v))
     current = chr(current)
     reverse.append(current)
 print(reverse)
 
 # saves encrypted in txt file
 output = open("encrypted.txt", "w")
-for i in range(len(values)):
-    output.write(str(values[i]) + " ")
+for v in values:
+    output.write(str(v) + " ")
 output.close()
 
 # read and decrypts
