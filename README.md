@@ -83,3 +83,4 @@ This script is able to analyse all activity happened in whatsapp group and visua
 
 - [Images Downloader](https://git.io/JvnJh) - Download Images Form webpage Work on unix based systems.
 
+-[Newfeed_webapp](https://github.com/akshat3358/newsfeed_django.git)-A newsfeed webapp developed using django,python and html that shows you some news on browser
