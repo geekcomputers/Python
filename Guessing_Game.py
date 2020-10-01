@@ -14,13 +14,13 @@ while True:  # loop will run until encountered with the break statement(user ent
         print("Guess Higher")
         comGuess = random.randint(a, 100)
         a += 1
-        count++
+        count=1
 
     elif userGuess > comGuess:  # if number guessed by user is greater than the random number than the user is told to guess lower and the random number comGuess is changed to a new random number between 0 and a
         print("Guess Lower")
         comGuess = random.randint(0, a)
         a += 1
-        count++
+        count=1
 
    
     elif userGuess == comGuess and count==0 :#the player needs a special reward for perfect guess in the first try ;-)
