@@ -61,7 +61,7 @@ def get_app(Q):
             snapshot.save(folder_to_save_files)
      
     elif Q=="Jokes":
-        speak(pyjokes.get_joke())
+        print(pyjokes.get_joke())
 
     else:
         engine.say("Sorry Try Again")
