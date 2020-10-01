@@ -1,18 +1,26 @@
-# BLACK JACK - CASINO
-
+# BLACK JACK - CASINO A GAME OF FORTUNE!!!
+import time
 import random
 
 deck = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, 11] * 4
 
 random.shuffle(deck)
 
-print(
-    "                       **********************************************************                                    ")
-print(
-    "                                   Welcome to the game Casino - BLACK JACK !                                         ")
-print(
-    "                       **********************************************************                                    ")
 
+print('********************************************************** \n Welcome to the game Casino - BLACK JACK ! \n**********************************************************')
+time.sleep(2)
+print('So Finally You Are Here To Accept Your Fate') 
+time.sleep(2)
+print('I Mean Your Fortune') 
+time.sleep(2)
+print('Lets Check How Lucky You Are  Wish You All The Best')
+time.sleep(2)
+print('Loading---')
+time.sleep(2)
+
+print('Still Loading---')
+time.sleep(2)
+print('So You Are Still Here Not Gone I Gave You Chance But No Problem May Be You Trust Your Fortune A Lot \n Lets Begin Then')
 d_cards = []  # Initialising dealer's cards
 p_cards = []  # Initialising player's cards
 
