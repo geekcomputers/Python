@@ -7,7 +7,7 @@ name=input()
 time.sleep(1)
 print(f"Okay {name} Let's Begin The Guessing Game!")
 a = comGuess = random.randint(0, 100)  # a and comGuess is initialised with a random number between 0 and 100
-int count=0
+count=0
 while True:  # loop will run until encountered with the break statement(user enters the right answer)
     userGuess = int(input("Enter your guessed no. b/w 0-100:"))  # user input for guessing the number
     if userGuess < comGuess:  # if number guessed by user is lesser than the random number than the user is told to guess higher and the random number comGuess is changed to a new random number between a and 100
