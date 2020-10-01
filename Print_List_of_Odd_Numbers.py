@@ -1,3 +1,10 @@
+#Another best method to do this
+
+n=map(list(int,input().split()))
+odd_list=list(i for i in n if i%2!=0)
+print(odd_list)
+exit()
+
 # CALCULATE NUMBER OF ODD NUMBERS
 
 n = int(input("Enter the limit : "))  # user input
