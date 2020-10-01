@@ -20,7 +20,7 @@ default_app = initialize_app(cred)
 db = firestore.client()
 database_reference = db.collection('on_call')
 
-#Here the collection name is on_call which has documents with fields phone , from ( time to call the person) 
+#Here the collection name is on_call which has documents with fields phone , from ( time to call the person),date 
 
 #gets data from cloud database and calls 5 min prior the time (from time) alloted in the database
 def search():
