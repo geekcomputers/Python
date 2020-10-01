@@ -1,28 +1,31 @@
-# use Tkinter to show a digital clock
-import time
+# importing whole module 
 from tkinter import *
+from tkinter.ttk import *
 
-root = Tk()
+# importing strftime function to 
+# retrieve system's time 
+from time import strftime 
 
-root.title("Digital Clock")
-root.geometry("250x100+0+0")
-root.resizable(0,0)
+# creating tkinter window 
+root = Tk() 
+root.title('Clock') 
 
-label = Label(root, font=("Arial", 30, 'bold'), bg="blue", fg="powder blue", bd =30)
-label.grid(row =0, column=1)
+# This function is used to 
+# display time on the label 
+def time(): 
+	string = strftime('%H:%M:%S %p') 
+	lbl.config(text = string) 
+	lbl.after(1000, time) 
 
-def dig_clock():
-    
-    text_input = time.strftime("%H:%M:%S") # get the current local time from the PC
-    
-    label.config(text=text_input)
-    
-    # calls itself every 200 milliseconds
-    # to update the time display as needed
-    # could use >200 ms, but display gets jerky
-    
-    label.after(200, dig_clock)
+# Styling the label widget so that clock 
+# will look more attractive 
+lbl = Label(root, font = ('calibri', 40, 'bold', 'italic'), 
+			background = 'Black', 
+			foreground = 'Yellow') 
 
-dig_clock()
+# Placing clock at the centre 
+# of the tkinter window 
+lbl.pack(anchor = 'center') 
+time() 
 
-root.mainloop()
+mainloop() 
