@@ -18,7 +18,7 @@ import speech_recognition as sr  # speech_recognition Library for performing spe
 import pyttsx3
 
 # initialisation 
-engine = pyttsx3.init()
+engine = pyttsx3.init("sapi5") #sapi5 is the driver name of speech engine developed by Microsoft
 
 # obtain audio from the microphone
 r = sr.Recognizer()
