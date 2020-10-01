@@ -9,6 +9,7 @@ JARVIS:
 # import modules
 from datetime import datetime  # datetime module supplies classes for manipulating dates and times
 import subprocess  # subprocess module allows you to spawn new processes
+import wikipedia # Import wikipedia module
 
 import speech_recognition as sr  # speech_recognition Library for performing speech recognition with support for Google Speech Recognition, etc..
 
@@ -50,6 +51,14 @@ def get_app(Q):
         subprocess.call(['cmd.exe'])
     elif Q == "browser":
         subprocess.call(['C:\Program Files\Internet Explorer\iexplore.exe'])
+    elif wikipedia in Q:
+        engine.say('Searching Wikipedia...')
+        engine.runAndWait()
+        query = query.replace("wikipedia", "")
+        results = wikipedia.summary(query, sentences=2)
+        engine.say("According to Wikipedia")
+        engine.runAndWait()
+        print(results)
     else:
         engine.say("Sorry Try Again")
         engine.runAndWait()
