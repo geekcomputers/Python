@@ -31,6 +31,18 @@ with sr.Microphone() as source:
 Query = r.recognize_google(audio, language = 'en-IN', show_all = True )
 print(Query)
 
+# he/she wish me
+def wishMe():
+ hour = int(datetime.datetime.now().hour)
+ if hour>= 0 and hour<12:
+ speak("Good Morning Sir !")
+
+ elif hour>= 12 and hour<18: 
+ speak("Good Afternoon Sir !")
+
+ else:
+ speak("Good Evening Sir !") 
+
 
 # Run Application with Voice Command Function
 def get_app(Q):
