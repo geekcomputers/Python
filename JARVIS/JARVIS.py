@@ -16,6 +16,8 @@ import speech_recognition as sr  # speech_recognition Library for performing spe
 
 # importing the pyttsx3 library 
 import pyttsx3
+import smtplib
+import webbrowser
 
 # initialisation 
 engine = pyttsx3.init()
@@ -32,6 +34,14 @@ Query = r.recognize_google(audio, language = 'en-IN', show_all = True )
 print(Query)
 
 
+def sendEmail(do, content):
+    server = smtplib.SMTP('smtp.gmail.com', 587)
+    server.ehlo()
+    server.starttls()
+    server.login('youremail@gmail.com', 'yourr-password-here')
+    server.sendmail('youremail@gmail.com', to, content)
+    server.close()
+    
 # Run Application with Voice Command Function
 def get_app(Q):
     if Q == "time":
@@ -50,6 +60,23 @@ def get_app(Q):
         subprocess.call(['cmd.exe'])
     elif Q == "browser":
         subprocess.call(['C:\Program Files\Internet Explorer\iexplore.exe'])
+     elif Q == "open google":
+         webbrowser.open("https://www.google.com")
+     elif Q == "open youtube":
+        webbrowser.open("https://www.youtube.com/")
+     elif Q == "Email to person":
+            try: 
+                speak("What should I say?")
+                with sr.Microphone() as source:
+                print("Listening...")
+                r.pause_threshold = 1
+                audio = r.listen(source)
+                to = "harryyourEmail@gmail.com" 
+                sendEmail(to, content)
+                speak("Email has been sent!")
+            except Exception as e:
+                print(e)
+                speak("Sorray i am not send this mail")   
     else:
         engine.say("Sorry Try Again")
         engine.runAndWait()
