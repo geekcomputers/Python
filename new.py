@@ -124,8 +124,7 @@ if __name__ == "__main__":
                print("Sorry No news", "\N{expressionless face}")
             else:
                print("\nThank you", "\U0001f600")
-            else:
-               print("\nThank you", "\U0001f600")
+            
       elif say == 2:
          length = india_today(userInput, ua)
 
