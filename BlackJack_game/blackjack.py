@@ -24,7 +24,7 @@ print('So You Are Still Here Not Gone I Gave You Chance But No Problem May Be Yo
 time.sleep(2)
 d_cards = []  # Initialising dealer's cards
 p_cards = []  # Initialising player's cards
-
+time.sleep(2)
 while len(d_cards) != 2:
     random.shuffle(deck)
     d_cards.append(deck.pop())
