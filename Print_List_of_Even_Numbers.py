@@ -7,5 +7,5 @@ else:
     for i in range(0,n+1):
         if(i%2==0):
             list.append(i)          #appending items to the initialised list getting from the 'if' statement
-
-print(list)
+length = len(list)
+print(list, "\n Total count of even numbers:", length)(list)
