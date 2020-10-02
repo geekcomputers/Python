@@ -1,4 +1,4 @@
-# ImageDownloader - Muhammed Shokr
+# ImageDownloader - Muhammed Shokr its amazing
 
 def ImageDownloader(url):
     import os, re, requests
