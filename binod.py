@@ -1,7 +1,10 @@
+import time
 import os
-
-
-def checkBinod(file):
+#Importing our Bindoer
+print("To Kaise Hai Ap Log!")
+time.sleep(1)
+print("Chaliye Binod Karte Hai!")
+def checkBinod(file):#Trying to find Binod In File Insted Of Manohar Ka Kotha
     with open(file, "r") as f:
         fileContent = f.read()
     if 'binod' in fileContent.lower():
@@ -18,4 +21,4 @@ if __name__ == '__main__':
         if item.endswith('txt'):
             ans = checkBinod(item)
             if(ans is False):
-                print('Binod not found!')
+                print('Binod not found Try Looking In Manohar Ka Kotha!!')
