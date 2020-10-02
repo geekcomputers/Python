@@ -27,7 +27,7 @@ def main():
     print("4.Divide")
     print("5.Power")
 
-    choice = input("Enter Choice(+,-,*,/,**): ")
+    choice = input("Enter Choice(+,-,*,/,^): ")
     num1 = int(input("Enter first number: "))
     num2 = int(input("Enbter Second number:"))
 
