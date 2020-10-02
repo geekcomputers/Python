@@ -23,7 +23,7 @@ engine = pyttsx3.init()
 # obtain audio from the microphone
 r = sr.Recognizer()
 with sr.Microphone() as source:
-    engine.say("Say something")
+    engine.say("Say something")    
     engine.runAndWait()
     audio = r.listen(source)
 
@@ -36,6 +36,8 @@ print(Query)
 def get_app(Q):
     if Q == "time":
         print(datetime.now())
+    elif Q == "Hi":
+        engine.say("Welcome Sir, JARVIS at Your service")
     elif Q == "notepad":
         subprocess.call(['Notepad.exe'])
     elif Q == "calculator":
@@ -50,8 +52,11 @@ def get_app(Q):
         subprocess.call(['cmd.exe'])
     elif Q == "browser":
         subprocess.call(['C:\Program Files\Internet Explorer\iexplore.exe'])
+    elif Q == "code" :
+        subprocess.call(['visualstudiocode.exe'])
+    
     else:
-        engine.say("Sorry Try Again")
+        engine.say("Sorry Try Again") 
         engine.runAndWait()
 
     return
