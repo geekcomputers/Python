@@ -8,7 +8,7 @@ from fpdf import FPDF
 # Example to Append all the images inside a folder to pdf
 pdf = FPDF()
 
-# Size of a A4 Page in mm Where P is for Potrail and L is for Landscape
+# Size of a A4 Page in mm Where P is for Potrait and L is for Landscape
 A4_SIZE = {'P': {'w': 210, 'h': 297}, 'L': {'w': 297, 'h': 210}}
 # pdf may produce empty page so we need to set auto page break as false
 pdf.set_auto_page_break(0)
