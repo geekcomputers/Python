@@ -1,3 +1,5 @@
+#########
+
 __author__ = 'Mohammed Shokr <mohammedshokr2014@gmail.com>'
 __version__ = 'v 0.1'
 
@@ -14,10 +16,10 @@ import speech_recognition as sr  # speech_recognition Library for performing spe
 
 # pip install pyttsx3                   # need to run only once to install the library
 
-# importing the pyttsx3 library 
+# importing the pyttsx3 library
 import pyttsx3
 
-# initialisation 
+# initialisation
 engine = pyttsx3.init()
 
 # obtain audio from the microphone
@@ -34,28 +36,25 @@ print(Query)
 
 # Run Application with Voice Command Function
 def get_app(Q):
-    if Q == "time":
-        print(datetime.now())
-    elif Q == "notepad":
-        subprocess.call(['Notepad.exe'])
-    elif Q == "calculator":
-        subprocess.call(['calc.exe'])
-    elif Q == "stikynot":
-        subprocess.call(['StikyNot.exe'])
-    elif Q == "shell":
-        subprocess.call(['powershell.exe'])
-    elif Q == "paint":
-        subprocess.call(['mspaint.exe'])
-    elif Q == "cmd":
-        subprocess.call(['cmd.exe'])
-    elif Q == "browser":
-        subprocess.call(['C:\Program Files\Internet Explorer\iexplore.exe'])
+
+    apps = {
+    "time": datetime.now(),
+    "notepad": "Notepad.exe",
+    "calculator": "calc.exe",
+    "stikynot": "StikyNot.exe",
+    "shell": "powershell.exe",
+    "paint": "mspaint.exe",
+    "cmd": "cmd.exe",
+    "browser": "C:\Program Files\Internet Explorer\iexplore.exe"
+    }
+
+    for app in apps:
+        if app == Q.lower():
+            subprocess.call([apps[app]])
+            break
     else:
         engine.say("Sorry Try Again")
         engine.runAndWait()
-
     return
-
-
 # Call get_app(Query) Func.
 get_app(Query)
