@@ -70,7 +70,7 @@ perfect
 
 - [tweeter.py](https://github.com/geekcomputers/Python/blob/master/tweeter.py) - Allows you to tweet text or a picture from the terminal.
 
-- [serial_scanner.py](https://github.com/geekcomputers/Python/blob/master/serial_scanner.py) contains a method called ListAvailablePorts which returns a list with the names of the serial ports that are in use in the computer. This method works only on Linux and Windows (can be extended for mac osx). If no port is found, an empty list is returned.
+- [serial_scanner.py](https://github.com/geekcomputers/Python/blob/master/serial_scanner.py) contains a method called ListAvailablePorts which returns a list with the names of the serial ports that are in use in the computer. This method works only on Linux and Windows (can be extended for mac os). If no port is found, an empty list is returned.
 
 - [get_youtube_view.py](https://github.com/geekcomputers/Python/blob/master/get_youtube_view.py) - A simple python script to get more views for your YouTube videos. Useful for repeating songs on YouTube.
 
@@ -96,7 +96,7 @@ perfect
 - [whatsapp-monitor.py](https://github.com/geekcomputers/Python/blob/master/whatsapp-monitor.py) - Uses Selenium to give online status about your contacts when your contacts become online in whatsapp you will get an update about it on terminal.
 
 - [whatsapp-chat-analyzer.py](https://github.com/subahanii/whatsapp-Chat-Analyzer) - This is whatsapp group/individual chat analyzer .
-This script is able to analyse all activity happened in whatsapp group and visualize all thing through matplotlib library(In Graph form).
+This script is able to analyse all activity happened in whatsapp group and visualize all things through matplotlib library(In Graph form).
 
 - [JARVIS.py](https://git.io/fjH8m) - Control windows programs with your voice.
 
