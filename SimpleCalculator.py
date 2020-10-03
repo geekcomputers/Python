@@ -1,14 +1,12 @@
+#Simple Calculator
 def add(a, b):
     return a + b
-
 
 def subtract(a, b):
     return a - b
 
-
 def multiply(a, b):
     return a * b
-
 
 def divide(a, b):
     try:
@@ -25,7 +23,7 @@ def main():
 
     choice = input("Enter Choice(+,-,*,/): ")
     num1 = int(input("Enter first number: "))
-    num2 = int(input("Enbter Second number:"))
+    num2 = int(input("Enter Second number:"))
 
     if choice == '+':
         print(num1, "+", num2, "=", add(num1, num2))
