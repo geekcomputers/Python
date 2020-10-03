@@ -3,7 +3,7 @@ import utils
 import random
 
 print('Starting the Rock Paper Scissors game!')
-player_name = input('Please enter your name: ')
+player_name = input('Please enter your name: ') # Takes Input from the user
 
 print('Pick a hand: (0: Rock, 1: Paper, 2: Scissors)')
 player_hand = int(input('Please enter a number (0-2): '))

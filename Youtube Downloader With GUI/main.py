@@ -1,3 +1,6 @@
+
+#libraraies
+
 from pytube import *
 from tkinter import *
 from tkinter.filedialog import *
@@ -6,12 +9,16 @@ from threading import *
 file_size = 0
 
 
+
+#function progress to keep check of progress of function.
 def progress(stream=None, chunk=None,  remaining=None):
     file_downloaded = (file_size-remaining)
     per = round((file_downloaded/file_size)*100, 1)
     dBtn.config(text=f'{per}% downloaded')
 
 
+    
+#function start download to start the download of files
 def startDownload():
     global file_size
     try:
@@ -51,6 +58,13 @@ def startDownloadthread():
     thread.start()
 
 
+    
+    
+    
+    
+    
+    
+# main functions 
 main = Tk()
 
 main.title("My YouTube Downloader")

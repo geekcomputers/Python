@@ -1,10 +1,24 @@
 
-# My Python Examples
+master
+# My Python Examples :snake: :smile:
+<hr>
+I do not consider myself a programmer. I create these little programs as experiments to play with Python, or to solve problems for myself. I would gladly accept pointers from others to improve, simplify, or make the code more efficient. If you would like to make any comments then please feel free to email me:
 
-I do not consider myself a programmer. I create these little programs as experiments to play with Python, or to solve problems for myself. I would gladly accept pointers from others to improve, simplify, or make the code more efficient. If you would like to make any comments then please feel free to email me at craig@geekcomputers.co.uk.
+# My Best Python Examples
+master
 
+
+:email: craig@geekcomputers.co.uk.
+
+master
 These scripts contain important functions which help reduce human workload.
+Code documentation is aligned correctly when the files are viewed in [Notepad++](https://notepad-plus-plus.org/). :spiral_notepad:
+<hr>
+
+These scripts contain important functions which help reduce human workload.And also helps begineers to get started with python. 
 Code documentation is aligned correctly when the files are viewed in [Notepad++](https://notepad-plus-plus.org/).
+Jarvis is used as a google assistant.
+master
 
 - [batch_file_rename.py](https://github.com/geekcomputers/Python/blob/master/batch_file_rename.py) - This batch renames a group of files in a given directory, once you pass the current and the new extensions.
 
@@ -83,3 +97,7 @@ This script is able to analyse all activity happened in whatsapp group and visua
 
 - [Images Downloader](https://git.io/JvnJh) - Download Images Form webpage Work on unix based systems.
 
+master
+<hr>
+- [RandomNumberGame.py](---) - A Basic Game of Gussesing Numbers .
+master
