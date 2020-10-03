@@ -19,5 +19,5 @@ while True:  # loop will run until encountered with the break statement(user ent
 
     else:  # if guessed correctly the loop will break and the player will win
         print("Guessed Corectly")
-        print(f"You used {n} chances to guess it correctly."
+        print(f"You used {n} chances to guess it correctly.")
         break
