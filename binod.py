@@ -1,6 +1,10 @@
 patch-1
 import os    #The OS module in python provides functions for interacting with the operating system
 
+patch-3
+# function to check if 'binod' is present in the file.
+def checkBinod(file):
+=======
 
 def checkBinod(file):       #this function will check there is any 'Binod' text in file or not
     with open(file, "r") as f: #we are opening file in read mode and using 'with' so need to take care of close()
@@ -12,6 +16,7 @@ print("To Kaise Hai Ap Log!")
 time.sleep(1)
 print("Chaliye Binod Karte Hai!")
 def checkBinod(file):#Trying to find Binod In File Insted Of Manohar Ka Kotha
+    master
     with open(file, "r") as f:
         master
         fileContent = f.read()
@@ -19,10 +24,11 @@ def checkBinod(file):#Trying to find Binod In File Insted Of Manohar Ka Kotha
         print(
             f'**************Congratulations Binod found in {f}********************')
         return True
+    else:
+        return False
 
 
 if __name__ == '__main__':
-    ans = False
     print("************binod Detector********************")
     dir_contents = os.listdir()
     for item in dir_contents:
