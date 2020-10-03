@@ -24,10 +24,21 @@ import speech_recognition as sr  # speech_recognition Library for performing spe
 
 # importing the pyttsx3 library
 import pyttsx3
+import webbrowser
 
 # initialisation
 engine = pyttsx3.init()
 
+
+def sendEmail(do, content):
+    server = smtplib.SMTP('smtp.gmail.com', 587)
+    server.ehlo()
+    server.starttls()
+    server.login('youremail@gmail.com', 'yourr-password-here')
+    server.sendmail('youremail@gmail.com', to, content)
+    server.close()
+    
+    
 # obtain audio from the microphone
 r = sr.Recognizer()
 with sr.Microphone() as source:
@@ -68,6 +79,27 @@ def get_app(Q):
         subprocess.call(['cmd.exe'])
     elif Q == "browser":
         subprocess.call(['C:\Program Files\Internet Explorer\iexplore.exe'])
+patch-1
+    elif Q == "open youtube":
+        webbrowser.open("https://www.youtube.com/")   # open youtube
+    elif Q == "open google":
+        webbrowser.open("https://www.google.com")    # open google
+        
+    elif Q == "email to other":                     # here you want to change and input your mail and password whenver you implement 
+            try: 
+                speak("What should I say?")
+                r = sr.Recognizer()
+                with sr.Microphone() as source:
+                    print("Listening...")
+                    r.pause_threshold = 1
+                    audio = r.listen(source)
+                to = "abc@gmail.com" 
+                sendEmail(to, content)
+                speak("Email has been sent!")
+            except Exception as e:
+                print(e)
+                speak("Sorray i am not send this mail")
+=======
   master
     elif Q=="Take screenshot"
         snapshot=ImageGrab.grab()
@@ -81,6 +113,7 @@ def get_app(Q):
     elif Q=="Jokes":
         print(pyjokes.get_joke())
 
+master
     else:
         engine.say("Sorry Try Again")
         engine.runAndWait()
