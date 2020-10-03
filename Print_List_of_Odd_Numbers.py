@@ -1,3 +1,4 @@
+master
 #Another best method to do this
 
 n=map(list(int,input().split()))
@@ -6,6 +7,9 @@ print(odd_list)
 exit()
 
 # CALCULATE NUMBER OF ODD NUMBERS
+
+# CALCULATE NUMBER OF ODD NUMBERS WITHIN A GIVEN LIMIT
+master
 
 n = int(input("Enter the limit : "))  # user input
 
