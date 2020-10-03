@@ -4,7 +4,6 @@ import random
 
 import simplegui
 
-
 def new_game():
     global num
     print("new game starts")
@@ -35,8 +34,8 @@ def input_guess(guess):
 
 
 frame = simplegui.create_frame("Guess The Number", 200, 200)
-frame.add_button("range[0-1000)", range(1000))
-frame.add_button("range[0-100)", range(100))
+frame.add_button("range[0-1000)", range_of_1000)
+frame.add_button("range[0-100)", range_of_100)
 frame.add_input("enter your guess", input_guess, 200)
 frame.start()
 new_game()

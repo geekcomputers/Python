@@ -27,15 +27,15 @@ def crc_check(data, div):
 
 while 1 > 0:
     print("Enter data: ")
-    data = input()
+    data = input()  #can use it like int(input())
     print("Enter divisor")
-    div = input()
+    div = input() #can use it like int(input())
     original_data = data
     data = data + ("0" * (len(div) - 1))
     crc = crc_check(data, div)
     crc_str = ""
-    for i in range(len(crc)):
-        crc_str += str(crc[i])
+    for c in crc:
+        crc_str += c
     print("Sent data: ", original_data + crc_str)
     sent_data = original_data + crc_str
     print("If again applying CRC algorithm, the remainder/CRC must be zero if errorless.")

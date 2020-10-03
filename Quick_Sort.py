@@ -49,4 +49,3 @@ print("Initial array is:", arr)
 n = len(arr)
 quickSort(arr, 0, n - 1)
 print("Sorted array is:", arr)
-

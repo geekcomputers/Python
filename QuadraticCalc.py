@@ -3,8 +3,8 @@
 # Simple script to calculate the quadratic formula of a sequence of numbers and
 # recognises when the sequence isn't quadratic
 
-def findLinear(numbers):  ##find a & b of linear sequence
-    output = []
+
+def findLinear(numbers):  # find a & b of linear sequence
     a = numbers[1] - numbers[0]
     a1 = numbers[2] - numbers[1]
     if a1 == a:
@@ -37,6 +37,7 @@ if second_difference[0] == second_difference[1]:  # checks to see if consistent
         num = a * (n * n)
         subs_diff.append((sequence[i]) - num)
     b, c = findLinear(subs_diff)
-    print("Nth term: " + str(a) + "n^2 + " + str(b) + "n + " + str(c))  # outputs nth term
+    print("Nth term: " + str(a) + "n^2 + " +
+          str(b) + "n + " + str(c))  # outputs nth term
 else:
     print("Sequence is not quadratic")

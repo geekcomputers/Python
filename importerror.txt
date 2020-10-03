@@ -1,0 +1,6 @@
+In a normal python:
+
+pip install pywin32
+In anaconda:
+
+conda install pywin32

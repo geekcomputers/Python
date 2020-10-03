@@ -10,8 +10,12 @@ from urllib.parse import urlencode
 from urllib.request import urlopen, Request
 
 import requests
+import ssl
 from bs4 import BeautifulSoup
 from create_dir import create_directory
+
+
+ssl._create_default_https_context = ssl._create_unverified_context
 
 GOOGLE_IMAGE = \
     'https://www.google.com/search?site=&tbm=isch&source=hp&biw=1873&bih=990&'
@@ -154,8 +158,9 @@ while run:
     ''')
     choice = input()
     try:
-        fx = FX[int(choice)]
-        run = globals()[fx]()
+        # Via eval() let `str expression` to `function`
+        fx = eval(FX[int(choice)])
+        run = fx()
     except KeyError:
         system('clear')
         if count <= 5:
@@ -163,5 +168,5 @@ while run:
             print("----------enter proper key-------------")
         else:
             system('clear')
-            print("You have attemted 5 times , try again later")
+            print("You have attempted 5 times , try again later")
             run = False
