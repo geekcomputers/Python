@@ -82,4 +82,4 @@ if __name__ == "__main__":
     password, attempts = findPassword(chars, testFunction, show=1000, format_=" Trying %s")
 
     t = datetime.timedelta(seconds=int(time.process_time() - t))
-    input("\n\n Password found: {}\n Attempts: {}\n Time: {}\n".format(password, attempts, t))
+    input(f"\n\n Password found: {password}\n Attempts: {attempts}\n Time: {t}\n")
