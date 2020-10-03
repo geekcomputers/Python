@@ -1,4 +1,6 @@
 # BLACK JACK - CASINO
+# PYTHON CODE BASE
+
 
 import random
 
@@ -46,7 +48,7 @@ if sum(d_cards) == 21 and sum(p_cards) == 21:
     print("*****************The match is tie !!*************************")
     exit()
 
-
+# function to show the dealer's choice
 def dealer_choice():
     if sum(d_cards) < 17:
         while sum(d_cards) < 17:
@@ -85,7 +87,8 @@ def dealer_choice():
 
 
 while sum(p_cards) < 21:
-
+    
+#to continue the game again and again !!
     k = input('Want to hit or stay?\n Press 1 for hit and 0 for stay ')
     if k == 1:
         random.shuffle(deck)
