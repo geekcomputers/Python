@@ -11,7 +11,12 @@ JARVIS:
 # import modules
 from datetime import datetime  # datetime module supplies classes for manipulating dates and times
 import subprocess  # subprocess module allows you to spawn new processes
+master
+import pyjokes
+
+=======
 from playsound import *  #for sound output
+master
 import speech_recognition as sr  # speech_recognition Library for performing speech recognition with support for Google Speech Recognition, etc..
 
 # pip install pyttsx3                  
@@ -63,6 +68,24 @@ def get_app(Q):
         subprocess.call(['cmd.exe'])
     elif Q == "browser":
         subprocess.call(['C:\Program Files\Internet Explorer\iexplore.exe'])
+  master
+    elif Q=="Take screenshot"
+        snapshot=ImageGrab.grab()
+            drive_letter = "C:\\"
+            folder_name = r'downloaded-files'
+            folder_time = datetime.datetime.now().strftime("%Y-%m-%d_%I-%M-%S_%p")
+            extention = '.jpg'
+            folder_to_save_files = drive_letter + folder_name + folder_time + extention
+            snapshot.save(folder_to_save_files)
+     
+    elif Q=="Jokes":
+        print(pyjokes.get_joke())
+
+    else:
+        engine.say("Sorry Try Again")
+        engine.runAndWait()
+   
+=======
 =======
 
     apps = {
@@ -84,6 +107,7 @@ def get_app(Q):
     else:
         engine.say("Sorry Try Again")
         engine.runAndWait()
+master
     return
 # Call get_app(Query) Func.
 get_app(Query)
