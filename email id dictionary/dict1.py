@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 counts=dict()
 mails=list()
 fname=input('Enter file name:')
