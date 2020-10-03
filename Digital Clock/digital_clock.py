@@ -7,8 +7,8 @@ root = Tk()
 root.title("Digital Clock")
 root.geometry("250x100+0+0")
 root.resizable(0,0)
-
-label = Label(root, font=("Arial", 30, 'bold'), bg="blue", fg="powder blue", bd =30)
+root.config(bg="black")
+label = Label(root, font=("Heventica", 30, 'bold'), bg="black", fg="white", bd =30)
 label.grid(row =0, column=1)
 
 def dig_clock():
