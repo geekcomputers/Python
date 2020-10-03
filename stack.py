@@ -10,10 +10,9 @@ def createStack():
 def size(stack): 
 	return len(stack) 
 
-# Stack is empty if the size is 0 
-def isEmpty(stack): 
-	if size(stack) == 0: 
-		return True 
+# Stack is empty if it is equal to an empty list.
+def isEmpty(stack):
+	return stack == [] 
 
 # Function to add an item to stack . 
 # It increases size by 1 
@@ -46,7 +45,15 @@ def reverse(string):
 	for i in range(0,n,1): 
 		string+=pop(stack) 
 		
-	return string 
+	return string
+
+# A function to see the top of stack without removing it
+def peek(stack):
+    if isEmpty(stack):
+        return "Error : Underflow"
+    else:
+        top = len(stack) - 1
+        return stack[top]
 	
 # Driver program to test above functions 
 string="GeeksQuiz"
