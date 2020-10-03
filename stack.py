@@ -10,7 +10,7 @@ def createStack():
 def size(stack): 
 	return len(stack) 
 
-# Stack is empty if the size is 0 
+# Stack is empty if it is equal to an empty list.
 def isEmpty(stack):
 	return stack == [] 
 
