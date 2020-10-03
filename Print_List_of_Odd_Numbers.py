@@ -1,4 +1,4 @@
-# CALCULATE NUMBER OF ODD NUMBERS
+# CALCULATE NUMBER OF ODD NUMBERS WITHIN A GIVEN LIMIT
 
 n = int(input("Enter the limit : "))  # user input
 
