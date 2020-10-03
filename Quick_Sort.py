@@ -45,7 +45,7 @@ def quickSort(arr, low, high):
 
 
 arr = [10, 7, 8, 9, 1, 5]
-print("Initila array is:", arr)
+print("Initial array is:", arr)
 n = len(arr)
 quickSort(arr, 0, n - 1)
 print("Sorted array is:", arr)
