@@ -26,8 +26,13 @@ import speech_recognition as sr  # speech_recognition Library for performing spe
 import pyttsx3
 import webbrowser
 
+master
+# initialisation 
+engine = pyttsx3.init("sapi5") #sapi5 is the driver name of speech engine developed by Microsoft
+=======
 # initialisation
 engine = pyttsx3.init()
+master
 
 
 def sendEmail(do, content):
