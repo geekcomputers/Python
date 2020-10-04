@@ -28,6 +28,9 @@ import webbrowser
 
 # initialisation
 engine = pyttsx3.init()
+voices = engine.getProperty('voices')
+engine.setProperty('voice', voices[0].id)
+engine.setProperty('rate', 150)
 
 
 def sendEmail(do, content):
@@ -42,6 +45,7 @@ def sendEmail(do, content):
 # obtain audio from the microphone
 r = sr.Recognizer()
 with sr.Microphone() as source:
+    print('[JARVIS]:' + "Say something")
     engine.say("Say something")
     engine.runAndWait()
     audio = r.listen(source)
