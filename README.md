@@ -20,7 +20,7 @@ These scripts contain important functions which help reduce human workload.
 Code documentation is aligned correctly when the files are viewed in [Notepad++](https://notepad-plus-plus.org/). :spiral_notepad:
 <hr>
 
-These scripts contain important functions which help reduce human workload.And also helps begineers to get started with python. 
+These scripts contain important functions which help in reducing human workload.And also helps begineers to get started with python. 
 Code documentation is aligned correctly when the files are viewed in [Notepad++](https://notepad-plus-plus.org/).
 Jarvis is used as a google assistant.
 master
