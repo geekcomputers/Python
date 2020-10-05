@@ -1,0 +1,14 @@
+l = list(map(int, input().split())) #Enter the element of your choice
+print('Original list:',l) #List l will be printed
+
+print('After removing element from index 4:')
+ele=l.pop(4)
+print(l)
+
+print('After adding element at index:')
+l.insert(2, ele)
+print(l)
+
+print('Adding element to the end:')
+l.append(ele)
+print(l)
