@@ -6,6 +6,8 @@ Created on Thu Apr 27 16:28:36 2017
 # browser you're using.
 
 import time
+# Added pafy to get video length for the user
+import pafy
 
 # Changed the method of opening the browser.
 # Selenium allows for the page to be refreshed.
@@ -15,12 +17,23 @@ from selenium import webdriver
 count = int(input("Number of times to be repeated: "))
 # Same as before
 url = input("Enter the URL : ")
-print("Length of video:")
-minutes = int(input("Minutes "))
-seconds = int(input("Seconds "))
 
-# Calculating the refreshrate from the user input
-refreshrate = minutes * 60 + seconds
+refreshrate = None
+
+# tries to get video length using pafy
+try:
+	video = pafy.new(url)
+	if hasattr(video, 'length'):
+		refreshrate = video.length
+# if pafy fails to work, prints out error and asks for video length from the user
+except Exception as e:
+	print(e)
+	print("Length of video:")
+	minutes = int(input("Minutes "))
+	seconds = int(input("Seconds "))
+	# Calculating the refreshrate from the user input
+	refreshrate = minutes * 60 + seconds
+
 # Selecting Safari as the browser
 driver = webdriver.Safari()
 
