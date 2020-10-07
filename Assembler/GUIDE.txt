@@ -2,11 +2,6 @@
 
 ### Register
 
-In this programming language you can use four registers. 
-* eax
-* ebx
-* ecx
-* edx
 
 The register **eax** will be standard use for multiplication and division. 
 Commands for arithmetic are:
