@@ -1,9 +1,7 @@
 #python program for counting sort (updated)
 n=int(input("please give the number of elements\n"))
-tlist = list()
-print("okey now plase give the elemets")
-for i in range(n):
-  tlist.append(int(input("\n")))
+print("okey now plase enter n numbers seperated by spaces")
+tlist=list(map(int,input().split()))
 k = max(tlist)
 n = len(tlist)
 
