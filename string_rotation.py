@@ -1,3 +1,8 @@
+#This program rotates a given string letters by letters
+#for example:
+#input: "Tie"
+#Output: ["ieT", "eTi"]
+
 def rotate(n):
     a = list(n)
     if len(a) == 0:

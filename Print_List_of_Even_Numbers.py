@@ -1,3 +1,9 @@
+# Very sort method to creat list of even number form a given list
+#Advance-Python
+list_number=list(map(int,input().split()))
+even_list=[i for i in list_number if i%2==0]
+print(even_list)
+exit()# Another one
 n = int(input("Enter the required range : "))  # user input
 list = []
 
