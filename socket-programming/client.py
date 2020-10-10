@@ -1,3 +1,4 @@
+#Note :- Client and Server Must be connected to same Network
 # import socket  modules
 import socket
 

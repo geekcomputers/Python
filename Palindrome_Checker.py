@@ -15,7 +15,7 @@ if givenPhrase == "":
 else:
     phrase = givenPhrase
 
-phrase = phrase.lower() #converting all the characters of the phrase to the lowercase
+phrase = ''.join([c for c in phrase.lower() if c.isalpha() or c.isdigit()]) #converting all the characters of the phrase to the lowercase
 
 length_ = len(phrase) #returns the length of string
 bol_ = True
@@ -40,7 +40,7 @@ if bol_ == True:
 Method #2:
 
 A simple mmethod is , to reverse the string and and compare with original string.
-If both are same that's means string is pelindrome otherwise else. 
+If both are same that's means string is palindrome otherwise else. 
 """
 if phrase==phrase[::-1]:#slicing technique
     """phrase[::-1] this code is for reverse a string very smartly """
