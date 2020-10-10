@@ -15,4 +15,5 @@ def ImageDownloader(url):
     return 'DONE'
 
 # USAGE
+# Change the URL from where you have to download the image
 ImageDownloader("https://www.123rf.com/stock-photo/spring_color.html?oriSearch=spring&ch=spring&sti=oazo8ueuz074cdpc48|")
