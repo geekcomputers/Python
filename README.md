@@ -20,7 +20,7 @@ These scripts contain important functions which help reduce human workload.
 Code documentation is aligned correctly when the files are viewed in [Notepad++](https://notepad-plus-plus.org/). :spiral_notepad:
 <hr>
 
-These scripts contain important functions which help reduce human workload.And also helps begineers to get started with python. 
+These scripts contain important functions which help in reducing human workload.And also helps begineers to get started with python. 
 Code documentation is aligned correctly when the files are viewed in [Notepad++](https://notepad-plus-plus.org/).
 Jarvis is used as a google assistant.
 master
@@ -33,7 +33,7 @@ master
 
 - [Google Image Downloader](https://github.com/geekcomputers/Python/tree/master/Google_Image_Downloader) - Query a given term and retrieve images from the Google Image database.
 
-- [dir_test.py](https://github.com/geekcomputers/Python/blob/master/dir_test.py) - Tests to see if the directory `testdir` exists, if not it will create the directory for you.
+- [dir_test.py](https://github.com/geekcomputers/Python/blob/master/dir_test.py) - Tests to see if the directory `testdir` exists, if not it will create the directory for you if you want it created.
 
 - [env_check.py](https://github.com/geekcomputers/Python/blob/master/env_check.py) - This script will check to see if all of the environment variables required are set.
 
@@ -104,6 +104,11 @@ This script is able to analyse all activity happened in whatsapp group and visua
 - [Images Downloader](https://git.io/JvnJh) - Download Images Form webpage Work on unix based systems.
 
 master
+
+- You can have a data set example for practise : Laliga Data 
+=======
+master
 <hr>
 - [RandomNumberGame.py](---) - A Basic Game of Gussesing Numbers .
+master
 master
