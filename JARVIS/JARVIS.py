@@ -63,6 +63,54 @@ print(Query)
 
 
 # Run Application with Voice Command Function
+only_jarvis
+class Jarvis:
+    def __init__(self, Q):
+        self.query = Q
+
+    def sub_call(self, exe_file):
+        """
+        This method can directly use call method of subprocess module and according to the
+        argument(exe_file) passed it returns the output.
+        
+        exe_file:- must pass the exe file name as str object type.
+        
+        """
+        return subprocess.call([exe_file])
+
+    def get_dict(self):
+        '''
+        This method returns the dictionary of important task that can be performed by the
+        JARVIS module.
+        
+        Later on this can also be used by the user itself to add or update their preferred apps.
+        '''
+        _dict = dict(
+            time=datetime.now(),
+            notepad='Notepad.exe',
+            calculator='calc.exe',
+            stickynot='StickyNot.exe',
+            shell='powershell.exe',
+            paint='mspaint.exe',
+            cmd='cmd.exe',
+            browser='C:\Program Files\Internet Explorer\iexplore.exe',
+        )
+        return _dict
+
+    @property
+    def get_app(self):
+        task_dict = self.get_dict()
+        task = task_dict.get(self.query, None)
+        if task is None:
+            engine.say("Sorry Try Again")
+            engine.runAndWait()
+        else:
+            if 'exe' in str(task):
+                return self.sub_call(task)
+            print(task)
+            return
+
+=======
 def get_app(Q):
     master
     if Q == "time":
@@ -135,6 +183,7 @@ master
     "cmd": "cmd.exe",
     "browser": "C:\Program Files\Internet Explorer\iexplore.exe"
     }
+master
 
     for app in apps:
         if app == Q.lower():
@@ -147,4 +196,4 @@ master
 master
     return
 # Call get_app(Query) Func.
-get_app(Query)
+Jarvis(Query).get_app
