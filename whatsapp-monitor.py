@@ -1,7 +1,7 @@
 #! /usr/bin/python3
 
 '''
-Author- RIZWAN AHMAD
+Author- Tony Stark 
 
 download https://github.com/mozilla/geckodriver/releases
 
