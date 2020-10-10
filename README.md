@@ -46,6 +46,7 @@ master
 - [logs.py](https://github.com/geekcomputers/Python/blob/master/logs.py) - This script will search for all `*.log` files in the given directory, zip them using the program you specify, and then date stamp them.
 
 - [move_files_over_x_days.py](https://github.com/geekcomputers/Python/blob/master/move_files_over_x_days.py) - Moves all files over a specified age (in days) from the source directory to the destination directory.
+perfect 
 
 - [nslookup_check.py](https://github.com/geekcomputers/Python/blob/master/nslookup_check.py) - This simple script opens the file `server_list.txt` and then does an nslookup for each one to check the DNS entry.
 
@@ -69,7 +70,7 @@ master
 
 - [tweeter.py](https://github.com/geekcomputers/Python/blob/master/tweeter.py) - Allows you to tweet text or a picture from the terminal.
 
-- [serial_scanner.py](https://github.com/geekcomputers/Python/blob/master/serial_scanner.py) contains a method called ListAvailablePorts which returns a list with the names of the serial ports that are in use in the computer. This method works only on Linux and Windows (can be extended for mac osx). If no port is found, an empty list is returned.
+- [serial_scanner.py](https://github.com/geekcomputers/Python/blob/master/serial_scanner.py) contains a method called ListAvailablePorts which returns a list with the names of the serial ports that are in use in the computer. This method works only on Linux and Windows (can be extended for mac os). If no port is found, an empty list is returned.
 
 - [get_youtube_view.py](https://github.com/geekcomputers/Python/blob/master/get_youtube_view.py) - A simple python script to get more views for your YouTube videos. Useful for repeating songs on YouTube.
 
@@ -95,7 +96,7 @@ master
 - [whatsapp-monitor.py](https://github.com/geekcomputers/Python/blob/master/whatsapp-monitor.py) - Uses Selenium to give online status about your contacts when your contacts become online in whatsapp you will get an update about it on terminal.
 
 - [whatsapp-chat-analyzer.py](https://github.com/subahanii/whatsapp-Chat-Analyzer) - This is whatsapp group/individual chat analyzer .
-This script is able to analyse all activity happened in whatsapp group and visualize all thing through matplotlib library(In Graph form).
+This script is able to analyse all activity happened in whatsapp group and visualize all things through matplotlib library(In Graph form).
 
 - [JARVIS.py](https://git.io/fjH8m) - Control windows programs with your voice.
 
@@ -103,6 +104,11 @@ This script is able to analyse all activity happened in whatsapp group and visua
 - [Images Downloader](https://git.io/JvnJh) - Download Images Form webpage Work on unix based systems.
 
 master
+
+- You can have a data set example for practise : Laliga Data 
+=======
+master
 <hr>
 - [RandomNumberGame.py](---) - A Basic Game of Gussesing Numbers .
+master
 master
