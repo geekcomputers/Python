@@ -36,6 +36,23 @@ def getFibonacciRecursive(n: int) -> int:
     return step(n)
 
 
+def getFibonacciDynamic(n: int,fib: list) -> int:
+    '''
+    Calculate the fibonacci number at position n using dynamic programming to improve runtime
+    '''
+    
+    if n==0 or n==1:
+        return n
+    if fib[n]!=-1:
+        return fib[n]
+    fib[n]=getFibonacciDynamic(n-1,fib)+getFibonacciDynamic(n-2,fib)
+    return fib[n]
+
+def main():
+    n=int(input())
+    fib=[-1]*n
+    getFibonacciDynamic(n,fib)
+    
 def compareFibonacciCalculators(n: int) -> None:
     """
     Interactively compare both fibonacci generators
