@@ -1,6 +1,6 @@
 master
 #This document helps to understand python in detail.
-# My Python Examples
+# My Python Examples for everyone 
 =======
 
 master
@@ -9,7 +9,7 @@ master
 I do not consider myself a programmer. I create these little programs as experiments to play with Python, or to solve problems for myself. I would gladly accept pointers from others to improve, simplify, or make the code more efficient. If you would like to make any comments then please feel free to email me:
 master
 
-# My Best Python Examples
+# My Best Python Examples for education 
 master
 
 
