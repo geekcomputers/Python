@@ -1,45 +1,30 @@
 '''
-Author: Abhinav Anand
-git: github.com/ab-anand
-mail: abhinavanand1905@gmail.com
-Requirements: requests, BeautifulSoupd
+Author: Anshu Saini
+GitHub: https://github.com/anshu189
+mail: anshusaini189381@gmail.com
+Requirements: Selenium (pip install selenium), webdriver (https://sites.google.com/a/chromium.org/chromedriver/downloads)
 '''
-import webbrowser
 
-import requests
-from bs4 import BeautifulSoup
+from selenium import webdriver
+from time import sleep as s
 
-'''
-headers = {
-    'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36'}
-'''
-input_func = None
-try:
-    input_func = raw_input('Enter the song to be played: ')
-    input_func+=raw_input('Enter artist name: ')
-except NameError:
-    input_func = input('Enter the song to be played: ')
-    input_func+=input('Enter artist name: ')
+song_name = input("Enter your song name: ")
+artist_name = input("Enter the artist name(optional): ")
+add = song_name + artist_name
 
-query = input_func.replace(' ', '+')
+link = "https://www.youtube.com/results?search_query=" + add
 
-# search for the best similar matching video
-url = 'https://www.youtube.com/results?search_query=' + query
-source_code = requests.get(url, timeout=15)
-plain_text = source_code.text
-soup = BeautifulSoup(plain_text, "html.parser")
+driver_path = "C:/chromedriver.exe"  # Your Chromedriver.exe path here
 
-# fetches the url of the video
-songs = soup.findAll('div', {'class': 'yt-lockup-video'})
-song = songs[0].contents[0].contents[0].contents[0]
-# link = song['href']
-# webbrowser.open('https://www.youtube.com' + link)
+#  <---For Brave Browser--->
+# brave_path = "C:/Program Files (x86)/BraveSoftware/Brave-Browser/Application/brave.exe"  # Your Brave.exe path here
+# option = webdriver.ChromeOptions()
+# option.binary_location = brave_path
 
-try:
-    link = song['href']
-    webbrowser.open('https://www.youtube.com' + link)
-except KeyError:
-    print("Can't find any song,check your network or try a new word")
+# driv = webdriver.Chrome(executable_path=driver_path, options=option)
+driv = webdriver.Chrome(driver_path)
 
-# hey i'm learning  git.
-# i welcome you too to come and learn
+driv.maximize_window()
+driv.get(link)
+s(0.5)
+driv.find_element_by_xpath("//*[@id='video-title']").click()
