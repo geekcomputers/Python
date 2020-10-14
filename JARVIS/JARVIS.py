@@ -13,6 +13,8 @@ from datetime import datetime  # datetime module supplies classes for manipulati
 import subprocess  # subprocess module allows you to spawn new processes
 master
 import pyjokes
+import requests
+import json
 
 =======
 from playsound import *  #for sound output
@@ -32,7 +34,21 @@ voices = engine.getProperty('voices')
 engine.setProperty('voice', voices[0].id)
 engine.setProperty('rate', 150)
 
-
+def speak_news():
+    url = 'http://newsapi.org/v2/top-headlines?sources=the-times-of-india&apiKey=yourapikey'
+    news = requests.get(url).text
+    news_dict = json.loads(news)
+    arts = news_dict['articles']
+    speak('Source: The Times Of India')
+    speak('Todays Headlines are..')
+    for index, articles in enumerate(arts):
+        speak(articles['title'])
+        if index == len(arts)-1:
+            break
+        speak('Moving on the next news headline..')
+    speak('These were the top headlines, Have a nice day Sir!!..')
+    
+    
 def sendEmail(do, content):
     server = smtplib.SMTP('smtp.gmail.com', 587)
     server.ehlo()
@@ -117,6 +133,9 @@ def get_app(Q):
         print(datetime.now())
         x=datetime.now()
         voice(x)
+    elif Q=="news":
+        speak_news()
+            
     elif Q == "notepad":
         subprocess.call(['Notepad.exe'])
     elif Q == "calculator":
