@@ -37,7 +37,7 @@ class PasswordGenerator():
             print(f"{change} is now set to {cls.has_characters[change]}")
     @classmethod
     def show_has_characters(cls):
-        print(cls.has_characters)
+        print(cls.has_characters) # print the output
 
 
     def generate_password(self, lenght):
