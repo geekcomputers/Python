@@ -1,5 +1,5 @@
 
-patch-2
+# patch-255
 decimal_accuracy = 7
 
 def dtbconverter(num): 
@@ -40,6 +40,7 @@ dtbconverter(number)
 
 
 #i think this code have not proper comment and noe this is easy to understand
+'''
 =======
 Program: Decimal to Binary converter.
 
@@ -62,4 +63,4 @@ if __name__ == '__main__':
       
     # Calling function 
     DecimalToBinary(dec_val) 
-master
+# master

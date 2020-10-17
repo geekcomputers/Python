@@ -19,6 +19,7 @@ import pandas as pd
 from newspaper import Article
 import pickle
 import re
+import sys
 
 # Extracting links for all the pages (1 to 158) of boomlive fake news section
 fakearticle_links = []

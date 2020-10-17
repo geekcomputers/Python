@@ -1,14 +1,14 @@
-patch-1
+# patch-1
 import os    #The OS module in python provides functions for interacting with the operating system
 
-patch-3
+# patch-3
 # function to check if 'binod' is present in the file.
-def checkBinod(file):
-=======
+# def checkBinod(file):
+# =======
 
-def checkBinod(file):       #this function will check there is any 'Binod' text in file or not
-    with open(file, "r") as f: #we are opening file in read mode and using 'with' so need to take care of close()
-=======
+# def checkBinod(file):       #this function will check there is any 'Binod' text in file or not
+#     with open(file, "r") as f: #we are opening file in read mode and using 'with' so need to take care of close()
+# =======
 import time
 import os
 #Importing our Bindoer
@@ -16,9 +16,9 @@ print("To Kaise Hai Ap Log!")
 time.sleep(1)
 print("Chaliye Binod Karte Hai!")
 def checkBinod(file):#Trying to find Binod In File Insted Of Manohar Ka Kotha
-    master
+    # master
     with open(file, "r") as f:
-        master
+        # master
         fileContent = f.read()
     if 'binod' in fileContent.lower():
         print(
