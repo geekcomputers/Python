@@ -1,4 +1,4 @@
-String1 = 'Welcome to Malya's World'
+String1 = 'Welcome to Malya\'s World'
 print("String with the use of Single Quotes: ") 
 print(String1) 
   
