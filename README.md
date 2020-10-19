@@ -1,5 +1,5 @@
 master
-#This document helps to understand python in detail.
+#This document helps to understand python in detail.And tells you More Information
 # My Python Examples for everyone 
 =======
 
