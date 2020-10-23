@@ -14,7 +14,7 @@ def divide(a, b):
     except ZeroDivisionError:
         return "Zero Division Error"
     
- def power(a,b):
+def power(a,b):
     return a**b
 
 def main():

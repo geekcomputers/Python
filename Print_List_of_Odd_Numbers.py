@@ -1,4 +1,4 @@
-master
+# master
 #Another best method to do this
 
 n=map(list(int,input().split()))
@@ -9,7 +9,7 @@ exit()
 # CALCULATE NUMBER OF ODD NUMBERS
 
 # CALCULATE NUMBER OF ODD NUMBERS WITHIN A GIVEN LIMIT
-master
+# master
 
 n = int(input("Enter the limit : "))  # user input
 

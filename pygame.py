@@ -1,4 +1,4 @@
-author-slayking1965
+# author-slayking1965
 """
 This is a game very similar to stone paper scissor
 In this game :

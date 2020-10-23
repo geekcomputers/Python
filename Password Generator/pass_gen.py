@@ -19,7 +19,7 @@ class PasswordGenerator():
         password = ''.join((secrets.choice(sequence) for i in range(passlength)))
         return password
 
- class Interface():
+class Interface():
     has_characters={
     "lowercase":True,
     "uppercase":True,
