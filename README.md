@@ -1,12 +1,12 @@
 master
-#This document helps to understand python in detail.
+#This document helps to understand python in details.
 # My Python Examples for everyone 
 =======
 
 master
 # My Python Examples :snake: :smile:
 <hr>
-I do not consider myself a programmer. I create these little programs as experiments to play with Python, or to solve problems for myself. I would gladly accept pointers from others to improve, simplify, or make the code more efficient. If you would like to make any comments then please feel free to email me:
+I do not consider myself as a programmer. I create these little programs as experiments to play with Python, or to solve problems for myself. I would gladly accept pointers from others to improve, simplify, or make the code more efficient. If you would like to make any comments then please feel free to email me:
 master
 
 # My Best Python Examples for education 
@@ -16,11 +16,11 @@ master
 :email: craig@geekcomputers.co.uk.
 
 master
-These scripts contain important functions which help reduce human workload.
+This script contain important functions which help reduce human workload.
 Code documentation is aligned correctly when the files are viewed in [Notepad++](https://notepad-plus-plus.org/). :spiral_notepad:
 <hr>
 
-These scripts contain important functions which help in reducing human workload.And also helps begineers to get started with python. 
+This script contain important functions which help in reducing human workload.And also helps begineers to get started with python. 
 Code documentation is aligned correctly when the files are viewed in [Notepad++](https://notepad-plus-plus.org/).
 Jarvis is used as a google assistant.
 master
