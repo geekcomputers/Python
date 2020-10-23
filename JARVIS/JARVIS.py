@@ -11,12 +11,14 @@ JARVIS:
 # import modules
 from datetime import datetime  # datetime module supplies classes for manipulating dates and times
 import subprocess  # subprocess module allows you to spawn new processes
-master
+# master
 import pyjokes
+import requests
+import json
 
-=======
+# =======
 from playsound import *  #for sound output
-master
+# master
 import speech_recognition as sr  # speech_recognition Library for performing speech recognition with support for Google Speech Recognition, etc..
 
 # pip install pyttsx3                  
@@ -32,7 +34,21 @@ voices = engine.getProperty('voices')
 engine.setProperty('voice', voices[0].id)
 engine.setProperty('rate', 150)
 
-
+def speak_news():
+    url = 'http://newsapi.org/v2/top-headlines?sources=the-times-of-india&apiKey=yourapikey'
+    news = requests.get(url).text
+    news_dict = json.loads(news)
+    arts = news_dict['articles']
+    speak('Source: The Times Of India')
+    speak('Todays Headlines are..')
+    for index, articles in enumerate(arts):
+        speak(articles['title'])
+        if index == len(arts)-1:
+            break
+        speak('Moving on the next news headline..')
+    speak('These were the top headlines, Have a nice day Sir!!..')
+    
+    
 def sendEmail(do, content):
     server = smtplib.SMTP('smtp.gmail.com', 587)
     server.ehlo()
@@ -63,7 +79,7 @@ print(Query)
 
 
 # Run Application with Voice Command Function
-only_jarvis
+# only_jarvis
 class Jarvis:
     def __init__(self, Q):
         self.query = Q
@@ -110,13 +126,16 @@ class Jarvis:
             print(task)
             return
 
-=======
+# =======
 def get_app(Q):
-    master
+    # master
     if Q == "time":
         print(datetime.now())
         x=datetime.now()
         voice(x)
+    elif Q=="news":
+        speak_news()
+            
     elif Q == "notepad":
         subprocess.call(['Notepad.exe'])
     elif Q == "calculator":
@@ -131,7 +150,7 @@ def get_app(Q):
         subprocess.call(['cmd.exe'])
     elif Q == "browser":
         subprocess.call(['C:\Program Files\Internet Explorer\iexplore.exe'])
-patch-1
+# patch-1
     elif Q == "open youtube":
         webbrowser.open("https://www.youtube.com/")   # open youtube
     elif Q == "open google":
@@ -151,27 +170,27 @@ patch-1
             except Exception as e:
                 print(e)
                 speak("Sorray i am not send this mail")
-=======
-  master
-    elif Q=="Take screenshot"
+# =======
+#   master
+    elif Q=="Take screenshot":
         snapshot=ImageGrab.grab()
-            drive_letter = "C:\\"
-            folder_name = r'downloaded-files'
-            folder_time = datetime.datetime.now().strftime("%Y-%m-%d_%I-%M-%S_%p")
-            extention = '.jpg'
-            folder_to_save_files = drive_letter + folder_name + folder_time + extention
-            snapshot.save(folder_to_save_files)
+        drive_letter = "C:\\"
+        folder_name = r'downloaded-files'
+        folder_time = datetime.datetime.now().strftime("%Y-%m-%d_%I-%M-%S_%p")
+        extention = '.jpg'
+        folder_to_save_files = drive_letter + folder_name + folder_time + extention
+        snapshot.save(folder_to_save_files)
      
     elif Q=="Jokes":
         print(pyjokes.get_joke())
 
-master
+# master
     else:
         engine.say("Sorry Try Again")
         engine.runAndWait()
    
-=======
-=======
+# =======
+# =======
 
     apps = {
     "time": datetime.now(),
@@ -183,17 +202,17 @@ master
     "cmd": "cmd.exe",
     "browser": "C:\Program Files\Internet Explorer\iexplore.exe"
     }
-master
+# master
 
     for app in apps:
         if app == Q.lower():
             subprocess.call([apps[app]])
             break
-    master
+    # master
     else:
         engine.say("Sorry Try Again")
         engine.runAndWait()
-master
+# master
     return
 # Call get_app(Query) Func.
 Jarvis(Query).get_app

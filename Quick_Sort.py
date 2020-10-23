@@ -22,16 +22,16 @@ arr = [10, 7, 8, 9, 1, 5]
 print("Initial array is:", arr)
 n = len(arr)
 quickSort(arr, 0, n - 1)
-patch-1
-print("Sorted array is:", arr)
-=======
+# patch-1
+# print("Sorted array is:", arr)
+# =======
 print("Sorted array is:")
-patch-4
-for i in range(0,n):
-=======
+# patch-4
+# for i in range(0,n):
+# =======
 for i in range(0,len(arr)):
-master
+# master
     print(arr[i],end=" ")
 
 #your code is best but now it is easy to understand
-master
+# master

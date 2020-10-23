@@ -1,12 +1,16 @@
 master
+master
 #This document helps to understand python in detail.And tells you More Information
+=======
+#This document helps to understand python in details.
+master
 # My Python Examples for everyone 
 =======
 
 master
-# My Python Examples :snake: :smile:
+# My Python Egs :snake: :smile:
 <hr>
-I do not consider myself a programmer. I create these little programs as experiments to play with Python, or to solve problems for myself. I would gladly accept pointers from others to improve, simplify, or make the code more efficient. If you would like to make any comments then please feel free to email me:
+I do not consider myself as a programmer. I create these little programs as experiments to play with Python, or to solve problems for myself. I would gladly accept pointers from others to improve, simplify, or make the code more efficient. If you would like to make any comments then please feel free to email me:
 master
 
 # My Best Python Examples for education 
@@ -16,11 +20,11 @@ master
 :email: craig@geekcomputers.co.uk.
 
 master
-These scripts contain important functions which help reduce human workload.
+This script contain important functions which help reduce human workload.
 Code documentation is aligned correctly when the files are viewed in [Notepad++](https://notepad-plus-plus.org/). :spiral_notepad:
 <hr>
 
-These scripts contain important functions which help in reducing human workload.And also helps begineers to get started with python. 
+This script contain important functions which help in reducing human workload.And also helps begineers to get started with python. 
 Code documentation is aligned correctly when the files are viewed in [Notepad++](https://notepad-plus-plus.org/).
 Jarvis is used as a google assistant.
 master
@@ -56,7 +60,7 @@ perfect
 
 - [ping_subnet.py](https://github.com/geekcomputers/Python/blob/master/ping_subnet.py) - After supplying the first 3 octets this file scans the final range for available addresses.
 
-- [powerdown_startup.py](https://github.com/geekcomputers/Python/blob/master/powerdown_startup.py) - This file goes through the server list and pings the machine, if it is up it will load the putty session, if it is not it will notify you.
+- [powerdown_startup.py](https://github.com/geekcomputers/Python/blob/master/powerdown_startup.py) - This file goes through the server list and pings the machine, if it is up it will load the putty session, if it is not then it will notify you.
 
 - [puttylogs.py](https://github.com/geekcomputers/Python/blob/master/puttylogs.py) -  This file zips up all the logs in the given directory.
 
@@ -93,7 +97,7 @@ perfect
 - [SimpleStopWatch.py](https://github.com/geekcomputers/Python/blob/master/SimpleStopWatch.py) - Simple Stop Watch implementation using Python's time module. 
 
 - [Changemac.py](https://github.com/geekcomputers/Python/blob/master/changemac.py) - This script change your MAC address , generate random MAC address or enter input as new MAC address in your linux(Successfully Tested in Ubuntu 18.04). 
-- [whatsapp-monitor.py](https://github.com/geekcomputers/Python/blob/master/whatsapp-monitor.py) - Uses Selenium to give online status about your contacts when your contacts become online in whatsapp you will get an update about it on terminal.
+- [whatsapp-monitor.py](https://github.com/geekcomputers/Python/blob/master/whatsapp-monitor.py) - Uses Selenium to give online status about your contacts when your contacts become online in WA you will get an update about it on terminal.
 
 - [whatsapp-chat-analyzer.py](https://github.com/subahanii/whatsapp-Chat-Analyzer) - This is whatsapp group/individual chat analyzer .
 This script is able to analyse all activity happened in whatsapp group and visualize all things through matplotlib library(In Graph form).
@@ -101,7 +105,7 @@ This script is able to analyse all activity happened in whatsapp group and visua
 - [JARVIS.py](https://git.io/fjH8m) - Control windows programs with your voice.
 
 
-- [Images Downloader](https://git.io/JvnJh) - Download Images Form webpage Work on unix based systems.
+- [Images Downloader](https://git.io/JvnJh) - Download Image Form webpage Work on unix based systems.
 
 master
 

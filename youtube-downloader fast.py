@@ -1,18 +1,13 @@
-# Script Created by Yash Ladha
-# Requirements:
-#   youtube-dl
-#   aria2c
-# 10 Feb 2017
+'''
+Author: Anshu Saini
+GitHub: https://github.com/anshu189
+mail: anshusaini189381@gmail.com
+Requirements: pytube (pip install pytube)
+'''
 
-import subprocess
-import sys
+import pytube as py
 
-video_link, threads = sys.argv[1], sys.argv[2]
-subprocess.call([
-    "youtube-dl",
-    video_link,
-    "--external-downloader",
-    "aria2c",
-    "--external-downloader-args",
-    "-x" + threads
-])
+url = input("Enter your youtube video url: ")
+
+py.YouTube(url).streams.get_highest_resolution().download(
+    'C:/Users/user-name/Desktop')  # (PATH) Where you want to save your downloaded video

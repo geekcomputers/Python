@@ -1,4 +1,4 @@
-master
+# master
 # BLACK JACK - CASINO A GAME OF FORTUNE!!!
 import time
 
@@ -6,7 +6,7 @@ import time
 # PYTHON CODE BASE
 
 
-master
+# master
 import random
 
 deck = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, 11] * 4
