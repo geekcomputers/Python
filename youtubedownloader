@@ -1,0 +1,40 @@
+from tkinter import *
+root =Tk()
+root.title('Youtube Downloader...')
+root.geometry('780x500')
+root.iconbitmap('youtube.ico')
+root.configure(bg='olivedrab1')
+root.resizable(False,False)
+
+############################################################ scrollbar
+scrollbar = Scrollbar(root)
+scrollbar.place(x=477,y=230,height=193,width=20)
+
+##############################################################Labels
+introlable = Label(root,text='Welcome to Youtube Audio Video Downloader',width=36,relief='ridge',bd=4,
+                   font=('chiller',26,'italic bold'),fg='red')
+introlable.place(x=10,y=20)
+listbox = Listbox(root,yscrollcommand=scrollbar.set,width=50,height=10,font=('arial',12,'italic bold'),relief='ridge',bd=2,highlightcolor='blue',
+                  highlightbackground='orange',highlightthickness=2)
+listbox.place(x=20,y=230)
+
+DownloadingSizeLabel = Label(root,text='Total Size: ',font=('arial',15,'italic bold'),bg='olivedrab1')
+DownloadingSizeLabel.place(x=500,y=240)
+
+DownloadingLabel = Label(root,text='Recieved Size: ',font=('arial',15,'italic bold'),bg='olivedrab1')
+DownloadingLabel.place(x=500,y=290)
+
+DownloadingTime = Label(root,text='Time Left : ',font=('arial',15,'italic bold'),bg='olivedrab1')
+DownloadingTime.place(x=500,y=340)
+
+DownloadingSizeLabelResult = Label(root,text=' ',font=('arial',15,'italic bold'),bg='olivedrab1')
+DownloadingSizeLabelResult.place(x=650,y=240)
+
+DownloadingLabelResult = Label(root,text=' ',font=('arial',15,'italic bold'),bg='olivedrab1')
+DownloadingLabelResult.place(x=650,y=290)
+
+
+########################################progessBar
+
+
+root.mainloop()
