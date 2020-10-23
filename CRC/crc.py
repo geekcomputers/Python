@@ -23,6 +23,7 @@ def crc_check(data, div):
     crc = temp_data
     print("Quotient: ", result, "remainder", crc)
     return crc
+# returning crc value
 
 
 while 1 > 0:
