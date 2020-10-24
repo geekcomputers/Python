@@ -13,4 +13,5 @@ d=n+".png"
 url=pyqrcode.create(s)
 # Saving QR code as  a png file
 url.show()
+# Is saving in the current directory
 url.png(d, scale =6)
