@@ -1,6 +1,6 @@
 #Program to convert binary to decimal
 
-def binaryToDecimal(binary:int)->int: 
+def binaryToDecimal(binary): 
 	"""
 	>>> binaryToDecimal(111110000)
 	496
@@ -17,6 +17,4 @@ def binaryToDecimal(binary:int)->int:
 		i += 1
 	print(decimal)	 
 
-if __name__ == '__main__': 
-	import doctest
-	doctest.testmod()  
+binaryToDecimal(100)
