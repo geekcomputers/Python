@@ -1,5 +1,5 @@
 import pyqrcode
-import PIL
+import png
 from pyqrcode import QRCode
 # Text which is to be converted to QR code
 print("Enter text to convert")
@@ -12,4 +12,5 @@ d=n+".png"
 # Creating QR code
 url=pyqrcode.create(s)
 # Saving QR code as  a png file
+url.show()
 url.png(d, scale =6)
