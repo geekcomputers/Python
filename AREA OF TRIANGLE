@@ -1,5 +1,5 @@
 # Python Program to find the area of triangle
-
+#calculates area of traingle in efficient way!!
 a = 5
 b = 6
 c = 7
