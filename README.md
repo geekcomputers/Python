@@ -82,7 +82,7 @@ perfect
 
 - [xkcd_downloader.py](https://github.com/geekcomputers/Python/blob/master/xkcd_downloader.py) - Downloads the latest XKCD comic and places them in a new folder called "comics".
 
-- [timymodule.py](https://github.com/geekcomputers/Python/blob/master/timymodule.py) - A great alternative to Pythons 'timeit' module and easier to use.
+- [timymodule.py](https://github.com/geekcomputers/Python/blob/master/timymodule.py) - A great alternative to Python 'timeit' module and easier to use.
 
 - [calculator.py](https://github.com/geekcomputers/Python/blob/master/calculator.py) - Uses Python's eval() function to implement a calculator.
 
@@ -90,7 +90,7 @@ perfect
 
 - [cricket_live_score](https://github.com/geekcomputers/Python/blob/master/Cricket_score.py) - Uses BeautifulSoup to provide live cricket score.
 
-- [youtube.py](https://github.com/geekcomputers/Python/blob/master/youtube.py) - Takes a song name as input and fetches the YouTube URL of the best matching song and plays it.  
+- [youtube.py](https://github.com/geekcomputers/Python/blob/master/youtube.py) - It Takes a song name as input and fetches the YouTube URL of the best matching song and plays it.  
 
 - [site_health.py](https://github.com/geekcomputers/Python/blob/master/site_health.py) - Checks the health of a remote server
 
