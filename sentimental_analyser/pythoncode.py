@@ -1,13 +1,14 @@
 #punctuation_chars = ["'", '"', ",", ".", "!", ":", ";", '#', '@']
 # lists of words to use
 punctuation_chars = ['!', '"', '#', '$', '%', '&', "'", '(', ')', '*', '+', ',', '-', '.', '/', ':', ';', '<', '=', '>', '?', '@', '[', '\\', ']', '^', '_', '`', '{', '|', '}', '~', '#', 'å', '\x88', '¶', 'æ', '\x9c', '\x8d', 'ã', '\x82', '\x86', 'ã', '\x81', '«', 'ã', '\x81', '°']
+# this function helps to remove the unwanted char in the words and helps to analyse pos word or neg word
 def strip_punctuation(string):
     for char in punctuation_chars:
         c = string.replace(char , '')
         if c != string:
             string = c
     return string 
-
+# this function compares the word with the data base and gives the result 1 if the word is positive .
 def get_pos(sentence):
     lst_string = sentence.split()
     new_string =[]
@@ -22,7 +23,7 @@ def get_pos(sentence):
                 counter = counter+1
     return counter
 
-
+# this function compares the word with the data base and gives the result 1 if the word is negative .
 def get_neg(sentence):
     lst_string = sentence.split()
     new_string =[]
@@ -35,13 +36,14 @@ def get_neg(sentence):
                 
                 counter = counter+1
     return counter
+# this opnes the file and copies it contents to list 
 positive_words = []
 with open("positive-words.txt") as pos_f:
     for lin in pos_f:
         if lin[0] != ';' and lin[0] != '\n':
             positive_words.append(lin.strip())
 
-
+# this opnes the file and copies it contents to list 
 negative_words = []
 with open("negative-words.txt") as pos_f:
     for lin in pos_f:
@@ -49,7 +51,7 @@ with open("negative-words.txt") as pos_f:
             negative_words.append(lin.strip())
 
 
-
+# this  opens the file testdata and copies its content to list
 lst_string = []
 with open('test.csv', 'r') as twdata:
     twdata = twdata.readlines()
@@ -57,7 +59,7 @@ with open('test.csv', 'r') as twdata:
     field_names = header.strip().split(',')
     for row in twdata[1:]:
         lst_string.append(row.strip().split(','))
-
+# this loop iterates through each tweets 
 for each_tweet in lst_string:
     #print(each_tweet)
     c  = 0
@@ -74,6 +76,7 @@ for each_tweet in lst_string:
     each_tweet.append(net_score)
         
 #print(lst_string[:4])
+# this opens a output file and stores the result in form of csv 
 outfile = open("resulting_data.csv",'w')
 outfile.write('id,tweets, Positive Score, Negative Score, Net Score')
 outfile.write('\n')
@@ -85,7 +88,7 @@ for fin_lst in lst_string:
     outfile.write('\n')
 outfile.close()
 
-
+#this performs the same operation but dosent contains the tweet
 outfile = open("resulting_.csv",'w')
 outfile.write('id, Positive Score, Negative Score, Net Score')
 outfile.write('\n')
