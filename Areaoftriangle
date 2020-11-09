@@ -1,4 +1,4 @@
-# Python Program to find the area of triangle
+# Python Program to find the area of triangle when all three side-lengths are known!
 
 a = 5
 b = 6
