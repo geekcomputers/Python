@@ -1,13 +1,13 @@
-from pytube import YouTube
-import tqdm
-import os
+# libraraies
+
+import pytube
 import sys
 
 
 class YouTubeDownloder:
     def __init__(self):
         self.url = str(input("Enter the url of video : "))
-        self.youtube = YouTube(
+        self.youtube = pytube.YouTube(
             self.url, on_progress_callback=YouTubeDownloder.onProgress)
         self.showTitle()
 
@@ -18,7 +18,7 @@ class YouTubeDownloder:
     def showStreams(self):
         self.streamNo = 1
         for stream in self.youtube.streams:
-            print("{0} => resolation:{1}/fps:{2}/type:{3}".format(self.streamNo,
+            print("{0} => resolution:{1}/fps:{2}/type:{3}".format(self.streamNo,
                                                                   stream.resolution, stream.fps, stream.type))
             self.streamNo += 1
         self.chooseStream()
@@ -31,7 +31,7 @@ class YouTubeDownloder:
         if self.choose in range(1, self.streamNo):
             self.getStream()
         else:
-            print("please enter a currect option on the list.")
+            print("please enter a correct option on the list.")
             self.chooseStream()
 
     def getStream(self):
