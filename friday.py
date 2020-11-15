@@ -10,5 +10,5 @@ while var>0:
  if (("notepad" in x) or ("Notepad" in x)) and (("open" in x) or ("run" in x) or ("Open" in x) or ("Run" in x)) :
  	pyttsx3.speak("Here it is , sir")
  	os.system("notepad")
-        print("anything more")
+  print("anything more")
  	
