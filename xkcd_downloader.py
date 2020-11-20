@@ -11,30 +11,20 @@ NOTE:
 
 import os
 import urllib.request
-
+import json
 import requests
-from lxml import html
 
 
 def main():
     # opens xkcd.com
     try:
-        page = requests.get("https://www.xkcd.com")
+        page = requests.get("https://www.xkcd.com/info.0.json")
     except requests.exceptions.RequestException as e:
         print(e)
         exit()
-
-    # parses xkcd.com page
-    tree = html.fromstring(page.content)
-
-    # finds image src url
-    image_src = tree.xpath(".//*[@id='comic']/img/@src")[0]
-    image_src = "https:" + str(image_src)
-
-    # gets comic name from the image src url
-    comic_name = image_src.split('/')[-1]
-
+    data = json.loads(page.text)
     # save location of comic
+    image_src = data['img']
     comic_location = os.getcwd() + '/comics/'
 
     # checks if save location exists else creates
