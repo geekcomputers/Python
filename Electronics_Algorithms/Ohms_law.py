@@ -1,4 +1,4 @@
-def  ohms_law(v=0, i=0, r=0):
+def ohms_law(v=0, i=0, r=0):
     if(v == 0):
         result = i * r
         return result
