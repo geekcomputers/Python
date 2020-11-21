@@ -15,5 +15,5 @@ for char in ip_str:
    	else:
    		consonant_count +=1     	
 
-print "Total Vowels ", vowel_count
-print "Total consonant ", consonant_count
+print ("Total Vowels: ", vowel_count)
+print ("Total consonants: ", consonant_count)
