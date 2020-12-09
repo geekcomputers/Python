@@ -9,7 +9,6 @@ pip install -r /path/to/requirements.txt
 """
 
 import asyncio
-import concurrent.futures as cofu
 from os.path import basename
 
 import aiohttp
@@ -54,22 +53,9 @@ async def async_downloader(ways, loop, success_files=set(), failure_files=set())
                 url,
                 session=session,
             ) for url in ways]
-
-        completed, pending = await asyncio.wait(coroutines, return_when=cofu.FIRST_COMPLETED)
-        while pending:
-
-            for task in completed:
-                fail, url = task.result()
-
-                if fail:
-                    failure_files.add(url)
-                else:
-                    success_files.add(url)
-
-            completed, pending = await asyncio.wait(pending, return_when=cofu.FIRST_COMPLETED)
-
-        for task in completed:
-            fail, url = task.result()
+        
+        for task in asyncio.as_completed(coroutines):
+            fail, url = await task
             if fail:
                 failure_files.add(url)
             else:
