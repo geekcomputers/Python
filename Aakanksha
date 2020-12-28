@@ -2,23 +2,20 @@ import time
 pwd="AKS2608"     #any password u want to set
 
 def IInd_func():
-  count1=0
-  for j in range(5):
-    a=0
-    count=0
-    user_pwd = input("")        #password you remember
-    for i in range(len(pwd)):
-      if user_pwd[i] == pwd[a]:       #comparing remembered pwd with fixed pwd
-        a +=1
-        count+=1 
-    if count==len(pwd):
-      print("correct pwd")
-      break
-    else:
-      count1 += 1
-      print("not correct")
-  if count1==5:
-    time.sleep(30)
-    IInd_func()
+  count1=0 #initialising count variable
+  
+  while count1<5: # checking if count variable is less than 5 if it is equal to 5 the loop is broken
+   user_pwd=input("Enter the password: ")
+   if  user_pwd==pwd: # verifying the password
+      print("Correct Password") 
+      time.sleep(5)
+      break # breaks out of the while loop
+   else:
+    count1+= 1# increasing the count variable
+    if count1==5: # checking if maximum lmit has been reached
+            print("Maximum limit reached")
+    else:        
+       print("Try again")
+    
 
 IInd_func()
