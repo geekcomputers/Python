@@ -83,8 +83,8 @@ class ScrapperLogic:
 
         # Get only digits
         rating_count = ''.join(i for i in text if i.isdigit())
-        return rating_count
-
+        return rating_count      
+    
     @staticmethod
     def get_address(body):
         return body.find('span', {'class': 'mrehover'}).text.strip()
@@ -111,12 +111,12 @@ class ScrapperLogic:
         out_file = open('{0}.csv'.format(self.file_name), 'w')
         csvwriter = csv.DictWriter(out_file, delimiter=',', fieldnames=fields)
         csvwriter.writerow({
-            'Name': 'Name',
-            'Phone': 'Phone',
-            'Rating': 'Rating',
-            'Rating Count': 'Rating Count',
-            'Address': 'Address',
-            'Location': 'Location'
+            'Name': 'Name', #Shows the name
+            'Phone': 'Phone',#shows the phone 
+            'Rating': 'Rating',#shows the ratings
+            'Rating Count': 'Rating Count',#Shows the stars for ex: 4 stars
+            'Address': 'Address',#Shows the address of the place
+            'Location': 'Location'#shows the location
         })
 
         progress_value = 0
@@ -238,7 +238,7 @@ class JDScrapperGUI:
 
         self.progress = Progressbar(self.master, orient=HORIZONTAL, length=350, mode='determinate')
         self.progress.grid(row=4, columnspan=2)
-
+      #Above is the progress bar
 
 if __name__ == '__main__':
     root = Tk()
