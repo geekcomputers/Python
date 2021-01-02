@@ -49,7 +49,7 @@ def speak_news():
     speak('These were the top headlines, Have a nice day Sir!!..')
     
     
-def sendEmail(do, content):
+def sendEmail(to, content):
     server = smtplib.SMTP('smtp.gmail.com', 587)
     server.ehlo()
     server.starttls()
