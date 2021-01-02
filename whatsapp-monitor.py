@@ -1,13 +1,13 @@
 #! /usr/bin/python3
 
 '''
-Author- RIZWAN AHMAD
+Author- Tony Stark 
 
 download https://github.com/mozilla/geckodriver/releases
 
 set path paste binary file /usr/local/bin 
 
-install requirements: pip3 install selenium
+install requirements: python -m pip install selenium
 
 '''
 

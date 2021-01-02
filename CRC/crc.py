@@ -23,13 +23,14 @@ def crc_check(data, div):
     crc = temp_data
     print("Quotient: ", result, "remainder", crc)
     return crc
+# returning crc value
 
 
 while 1 > 0:
     print("Enter data: ")
-    data = input()
+    data = input()  #can use it like int(input())
     print("Enter divisor")
-    div = input()
+    div = input() #can use it like int(input())
     original_data = data
     data = data + ("0" * (len(div) - 1))
     crc = crc_check(data, div)

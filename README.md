@@ -1,10 +1,32 @@
+Master
+#This document helps to understand python in detail.And tells you More Information
+=======
+#This document helps to understand python in details.
+master
+# My Python Examples for everyone 
+=======
 
-# My Python Examples
+master
+# My Python Egs :snake: :smile:
+<hr>
+I do not consider myself as a programmer. I create these little programs as experiments to play with Python, or to solve problems for myself. I would gladly accept pointers from others to improve, simplify, or make the code more efficient. If you would like to make any comments then please feel free to email me:
+master
 
-I do not consider myself a programmer. I create these little programs as experiments to play with Python, or to solve problems for myself. I would gladly accept pointers from others to improve, simplify, or make the code more efficient. If you would like to make any comments then please feel free to email me at craig@geekcomputers.co.uk.
+# My Best Python Examples for education 
+master
 
-These scripts contain important functions which help reduce human workload.
+
+:email: craig@geekcomputers.co.uk.
+
+master
+This script contain important functions which help reduce human workload.
+Code documentation is aligned correctly when the files are viewed in [Notepad++](https://notepad-plus-plus.org/). :spiral_notepad:
+<hr>
+
+This script contain important functions which help in reducing human workload.And also helps begineers to get started with python. 
 Code documentation is aligned correctly when the files are viewed in [Notepad++](https://notepad-plus-plus.org/).
+Jarvis is used as a google assistant.
+master
 
 - [batch_file_rename.py](https://github.com/geekcomputers/Python/blob/master/batch_file_rename.py) - This batch renames a group of files in a given directory, once you pass the current and the new extensions.
 
@@ -14,7 +36,7 @@ Code documentation is aligned correctly when the files are viewed in [Notepad++]
 
 - [Google Image Downloader](https://github.com/geekcomputers/Python/tree/master/Google_Image_Downloader) - Query a given term and retrieve images from the Google Image database.
 
-- [dir_test.py](https://github.com/geekcomputers/Python/blob/master/dir_test.py) - Tests to see if the directory `testdir` exists, if not it will create the directory for you.
+- [dir_test.py](https://github.com/geekcomputers/Python/blob/master/dir_test.py) - Tests to see if the directory `testdir` exists, if not it will create the directory for you if you want it created.
 
 - [env_check.py](https://github.com/geekcomputers/Python/blob/master/env_check.py) - This script will check to see if all of the environment variables required are set.
 
@@ -27,6 +49,7 @@ Code documentation is aligned correctly when the files are viewed in [Notepad++]
 - [logs.py](https://github.com/geekcomputers/Python/blob/master/logs.py) - This script will search for all `*.log` files in the given directory, zip them using the program you specify, and then date stamp them.
 
 - [move_files_over_x_days.py](https://github.com/geekcomputers/Python/blob/master/move_files_over_x_days.py) - Moves all files over a specified age (in days) from the source directory to the destination directory.
+perfect 
 
 - [nslookup_check.py](https://github.com/geekcomputers/Python/blob/master/nslookup_check.py) - This simple script opens the file `server_list.txt` and then does an nslookup for each one to check the DNS entry.
 
@@ -36,7 +59,7 @@ Code documentation is aligned correctly when the files are viewed in [Notepad++]
 
 - [ping_subnet.py](https://github.com/geekcomputers/Python/blob/master/ping_subnet.py) - After supplying the first 3 octets this file scans the final range for available addresses.
 
-- [powerdown_startup.py](https://github.com/geekcomputers/Python/blob/master/powerdown_startup.py) - This file goes through the server list and pings the machine, if it is up it will load the putty session, if it is not it will notify you.
+- [powerdown_startup.py](https://github.com/geekcomputers/Python/blob/master/powerdown_startup.py) - This file goes through the server list and pings the machine, if it is up it will load the putty session, if it is not then it will notify you.
 
 - [puttylogs.py](https://github.com/geekcomputers/Python/blob/master/puttylogs.py) -  This file zips up all the logs in the given directory.
 
@@ -50,7 +73,7 @@ Code documentation is aligned correctly when the files are viewed in [Notepad++]
 
 - [tweeter.py](https://github.com/geekcomputers/Python/blob/master/tweeter.py) - Allows you to tweet text or a picture from the terminal.
 
-- [serial_scanner.py](https://github.com/geekcomputers/Python/blob/master/serial_scanner.py) contains a method called ListAvailablePorts which returns a list with the names of the serial ports that are in use in the computer. This method works only on Linux and Windows (can be extended for mac osx). If no port is found, an empty list is returned.
+- [serial_scanner.py](https://github.com/geekcomputers/Python/blob/master/serial_scanner.py) contains a method called ListAvailablePorts which returns a list with the names of the serial ports that are in use in the computer. This method works only on Linux and Windows (can be extended for mac os). If no port is found, an empty list is returned.
 
 - [get_youtube_view.py](https://github.com/geekcomputers/Python/blob/master/get_youtube_view.py) - A simple python script to get more views for your YouTube videos. Useful for repeating songs on YouTube.
 
@@ -58,7 +81,7 @@ Code documentation is aligned correctly when the files are viewed in [Notepad++]
 
 - [xkcd_downloader.py](https://github.com/geekcomputers/Python/blob/master/xkcd_downloader.py) - Downloads the latest XKCD comic and places them in a new folder called "comics".
 
-- [timymodule.py](https://github.com/geekcomputers/Python/blob/master/timymodule.py) - A great alternative to Pythons 'timeit' module and easier to use.
+- [timymodule.py](https://github.com/geekcomputers/Python/blob/master/timymodule.py) - A great alternative to Python 'timeit' module and easier to use.
 
 - [calculator.py](https://github.com/geekcomputers/Python/blob/master/calculator.py) - Uses Python's eval() function to implement a calculator.
 
@@ -66,20 +89,32 @@ Code documentation is aligned correctly when the files are viewed in [Notepad++]
 
 - [cricket_live_score](https://github.com/geekcomputers/Python/blob/master/Cricket_score.py) - Uses BeautifulSoup to provide live cricket score.
 
-- [youtube.py](https://github.com/geekcomputers/Python/blob/master/youtube.py) - Takes a song name as input and fetches the YouTube URL of the best matching song and plays it.  
+- [youtube.py](https://github.com/geekcomputers/Python/blob/master/youtube.py) - It Takes a song name as input and fetches the YouTube URL of the best matching song and plays it.  
 
 - [site_health.py](https://github.com/geekcomputers/Python/blob/master/site_health.py) - Checks the health of a remote server
 
 - [SimpleStopWatch.py](https://github.com/geekcomputers/Python/blob/master/SimpleStopWatch.py) - Simple Stop Watch implementation using Python's time module. 
 
 - [Changemac.py](https://github.com/geekcomputers/Python/blob/master/changemac.py) - This script change your MAC address , generate random MAC address or enter input as new MAC address in your linux(Successfully Tested in Ubuntu 18.04). 
-- [whatsapp-monitor.py](https://github.com/geekcomputers/Python/blob/master/whatsapp-monitor.py) - Uses Selenium to give online status about your contacts when your contacts become online in whatsapp you will get an update about it on terminal.
+- [whatsapp-monitor.py](https://github.com/geekcomputers/Python/blob/master/whatsapp-monitor.py) - Uses Selenium to give online status about your contacts when your contacts become online in WA you will get an update about it on terminal.
 
 - [whatsapp-chat-analyzer.py](https://github.com/subahanii/whatsapp-Chat-Analyzer) - This is whatsapp group/individual chat analyzer .
-This script is able to analyse all activity happened in whatsapp group and visualize all thing through matplotlib library(In Graph form).
+This script is able to analyse all activity happened in whatsapp group and visualize all things through matplotlib library(In Graph form).
 
 - [JARVIS.py](https://git.io/fjH8m) - Control windows programs with your voice.
 
 
-- [Images Downloader](https://git.io/JvnJh) - Download Images Form webpage Work on unix based systems.
+- [Images Downloader](https://git.io/JvnJh) - Download Image Form webpage Work on unix based systems.
 
+- [space_invader.py.py](https://github.com/meezan-mallick/space_invader_game) - Classical space invader 2D game. <br>
+Recall your old childhood memories, by playing the classic space invader game.
+
+
+master
+- You can have a data set example for practise : Laliga Data 
+=======
+master
+<hr>
+- [RandomNumberGame.py](---) - A Basic Game of Gussesing Numbers .
+master
+master

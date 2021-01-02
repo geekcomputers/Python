@@ -1,75 +1,26 @@
-'''Author Anurag Kumar(mailtoanuragkumarak95@gmail.com)
-Module for implementing the simpest Magic 8 Ball Game.
+import random
 
-Python:
-  - 3.5
+responses = ['It is certain','It is decidedly so','Without a doubt','Yes definitely ','You may rely on it','As I see it, yes','Most likely ','Outlook good','Yes','Signs point to yes','Do not count on it','My reply is no',' My sources say no',' Outlook not so good','Very doubtful', 'Reply hazy try again','Ask again later','Better not tell you now ','Cannot predict now ','Concentrate and ask again']
+print("Hi! I am the magic 8 ball, what's your name?")
+name = input()
+print("Hello!"+ name)
 
-Requirements:
-  - colorama
-
-Usage:
-  - $python3 magic8ball.py
-
-Ask a question, and know the future.
-'''
-from random import randint
-from time import sleep
-
-from colorama import Fore, Style
-
-# response list..
-response = [
-    "It is certain",
-    "It is decidedly so",
-    "Without a doubt",
-    "Yes, definitely",
-    "You may rely on it",
-    "As I see it, yes",
-    "Most likely",
-    "Outlook good",
-    "Yes",
-    "Signs point to yes",
-    "Quite possibly so",
-    "Ask again later",
-    "Better not tell you now",
-    "Cannot predict now",
-    "Concentrate and ask again",
-    "Don't count on it",
-    "My reply is no",
-    "My sources say no",
-    "Outlook not so good",
-    "Very doubtful"]
+def magic8Ball():
+    print("Whay's your question? ")
+    question = input()
+    answer = responses[random.randint(0,len(responses)-1)]
+    print(answer)
+    tryAgain()
 
 
-# core game...
-def game():
-    ques = str(input("What is your question? \n").lower())
-    print("thinking...")
-    sleep(1)
-    idx = randint(0, 20)
-    if idx < 10:
-        color = Fore.GREEN
-    elif idx >= 10 and idx < 15:
-        color = Fore.YELLOW
+def tryAgain():
+    print("Do you wanna ask any more questions? press Y for yes and any other key to exit ")
+    x = input()
+    if(x == 'Y'):
+        magic8Ball()
     else:
-        color = Fore.RED
-    print(color + response[idx] + Style.RESET_ALL + '\n\n')
-    playloop()
+        exit()
 
 
-# looping func...
-def playloop():
-    ques_again = str(input("Would you like to ask another question? (y/n)\n").lower())
-    if ques_again == 'y':
-        game()
 
-    elif ques_again == 'n':
-        print("Auf Wiedersehen!")
-
-    else:
-        print("What was that?/n")
-        playloop()
-
-
-if __name__ == '__main__':
-    game()
+magic8Ball()

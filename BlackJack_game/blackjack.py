@@ -1,21 +1,37 @@
-# BLACK JACK - CASINO
+# master
+# BLACK JACK - CASINO A GAME OF FORTUNE!!!
+import time
 
+# BLACK JACK - CASINO
+# PYTHON CODE BASE
+
+
+# master
 import random
 
 deck = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, 11] * 4
 
 random.shuffle(deck)
 
-print(
-    "                       **********************************************************                                    ")
-print(
-    "                                   Welcome to the game Casino - BLACK JACK !                                         ")
-print(
-    "                       **********************************************************                                    ")
 
+print('********************************************************** \n Welcome to the game Casino - BLACK JACK ! \n**********************************************************')
+time.sleep(2)
+print('So Finally You Are Here To Accept Your Fate') 
+time.sleep(2)
+print('I Mean Your Fortune') 
+time.sleep(2)
+print('Lets Check How Lucky You Are  Wish You All The Best')
+time.sleep(2)
+print('Loading---')
+time.sleep(2)
+
+print('Still Loading---')
+time.sleep(2)
+print('So You Are Still Here Not Gone I Gave You Chance But No Problem May Be You Trust Your Fortune A Lot \n Lets Begin Then')
+time.sleep(2)
 d_cards = []  # Initialising dealer's cards
 p_cards = []  # Initialising player's cards
-
+time.sleep(2)
 while len(d_cards) != 2:
     random.shuffle(deck)
     d_cards.append(deck.pop())
@@ -46,7 +62,7 @@ if sum(d_cards) == 21 and sum(p_cards) == 21:
     print("*****************The match is tie !!*************************")
     exit()
 
-
+# function to show the dealer's choice
 def dealer_choice():
     if sum(d_cards) < 17:
         while sum(d_cards) < 17:
@@ -85,7 +101,8 @@ def dealer_choice():
 
 
 while sum(p_cards) < 21:
-
+    
+#to continue the game again and again !!
     k = input('Want to hit or stay?\n Press 1 for hit and 0 for stay ')
     if k == 1:
         random.shuffle(deck)

@@ -1,15 +1,11 @@
 """
 It's example of usage asyncio+aiohttp to downloading.
-
 You should install aiohttp for using:
 (You can use virtualenv to testing)
-
 pip install -r /path/to/requirements.txt
-
 """
 
 import asyncio
-import concurrent.futures as cofu
 from os.path import basename
 
 import aiohttp
@@ -47,7 +43,7 @@ def download(ways):
             print(file)
 
 
-async def async_downloader(ways, loop, success_files=set(), failure_files=set()):
+async def async_downloader(ways, loop, success_files, failure_files):
     async with aiohttp.ClientSession() as session:
         coroutines = [
             download_file_by_url(
@@ -55,21 +51,9 @@ async def async_downloader(ways, loop, success_files=set(), failure_files=set())
                 session=session,
             ) for url in ways]
 
-        completed, pending = await asyncio.wait(coroutines, return_when=cofu.FIRST_COMPLETED)
-        while pending:
+        for task in asyncio.as_completed(coroutines):
+            fail, url = await task
 
-            for task in completed:
-                fail, url = task.result()
-
-                if fail:
-                    failure_files.add(url)
-                else:
-                    success_files.add(url)
-
-            completed, pending = await asyncio.wait(pending, return_when=cofu.FIRST_COMPLETED)
-
-        for task in completed:
-            fail, url = task.result()
             if fail:
                 failure_files.add(url)
             else:
@@ -85,11 +69,13 @@ async def download_file_by_url(url, session=None):
     try:
         async with session.get(url) as response:
             if response.status == 404:
-                print('\t{} from {} : Failed : {}'.format(file_name, url, '404 - Not found'))
+                print('\t{} from {} : Failed : {}'.format(
+                    file_name, url, '404 - Not found'))
                 return fail, url
 
             if not response.status == 200:
-                print('\t{} from {} : Failed : HTTP response {}'.format(file_name, url, response.status))
+                print('\t{} from {} : Failed : HTTP response {}'.format(
+                    file_name, url, response.status))
                 return fail, url
 
             data = await response.read()
@@ -97,11 +83,13 @@ async def download_file_by_url(url, session=None):
             with open(file_name, 'wb') as file:
                 file.write(data)
 
-    except asyncio.TimeoutError as err:
-        print('\t{} from {}: Failed : {}'.format(file_name, url, 'Timeout error'))
+    except asyncio.TimeoutError:
+        print('\t{} from {}: Failed : {}'.format(
+            file_name, url, 'Timeout error'))
 
-    except aiohttp.client_exceptions.ClientConnectionError as err:
-        print('\t{} from {}: Failed : {}'.format(file_name, url, 'Client connection error'))
+    except aiohttp.client_exceptions.ClientConnectionError:
+        print('\t{} from {}: Failed : {}'.format(
+            file_name, url, 'Client connection error'))
 
     else:
         print('\t{} from {} : Success'.format(file_name, url))

@@ -1,6 +1,6 @@
 import string as str
 import secrets
-
+import random #this is the module used to generate random numbers on your given range
 class PasswordGenerator():
 
     @staticmethod
@@ -14,12 +14,10 @@ class PasswordGenerator():
                 pass
         return sequence
 
-
     @staticmethod
     def gen_password(sequence, passlength=8):
         password = ''.join((secrets.choice(sequence) for i in range(passlength)))
         return password
-
 
 class Interface():
     has_characters={
@@ -39,7 +37,7 @@ class Interface():
             print(f"{change} is now set to {cls.has_characters[change]}")
     @classmethod
     def show_has_characters(cls):
-        print(cls.has_characters)
+        print(cls.has_characters) # print the output
 
 
     def generate_password(self, lenght):

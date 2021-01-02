@@ -2,8 +2,7 @@
 # -*- coding: utf-8 -*-
 # program to replace all the spaces in an entered string with a hyphen"-"
 def replacetext(string):
-    string = string.split(" ")
-    string = "-".join(string)
+    string = string.replace(" ", "-")
     return string
 
 
