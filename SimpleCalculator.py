@@ -1,3 +1,4 @@
+
 def add(a, b):
     return a + b
 
@@ -15,6 +16,7 @@ def divide(a, b):
         return a / b
     except ZeroDivisionError:
         return "Zero Division Error"
+
 
 def main():
     print("Select Operation")
@@ -41,4 +43,6 @@ def main():
     else:
         print("Invalid input")
         main()
+
+
 main()
