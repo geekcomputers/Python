@@ -1,1 +1,7 @@
 
+```python
+import math
+num=int(input("Enter any number: "))
+sqrt=math.sqrt(num)
+print("Square root of the given number is",sqrt)
+```
