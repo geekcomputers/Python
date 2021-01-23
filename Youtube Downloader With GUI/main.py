@@ -10,7 +10,7 @@ from threading import *
 file_size = 0
 
 q= input("")
-if a == "shutdown":
+if q == "shutdown":
     os.system("shutdown -s")
 #function progress to keep check of progress of function.
 def progress(stream=None, chunk=None,  remaining=None):
