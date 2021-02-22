@@ -27,26 +27,34 @@ while x < 10:
 
     com_choice = random.choice(list(choices.keys())).lower()
     user_choice = input('\n----->').lower()
+    print("Mr. Computer's choice is : " + com_choice)
 
     if user_choice == 's' and com_choice == 'w':
+        print("\n-------Mr. Computer won this round--------")
         com_win += 1
 
     elif user_choice == 's' and com_choice == 'g':
+        print("\n-------Mr. Computer won this round--------")
         com_win += 1
 
     elif user_choice == 'w' and com_choice == 's':
+        print("\n-------You won this round-------")
         user_win += 1
 
     elif user_choice == 'g' and com_choice == 's':
+        print("\n-------You won this round-------")
         user_win += 1
 
     elif user_choice == 'g' and com_choice == 'w':
+        print("\n-------Mr. Computer won this round--------")
         com_win += 1
 
     elif user_choice == 'w' and com_choice == 'g':
+        print("\n-------You won this round-------")
         user_win += 1
 
     elif user_choice == com_choice:
+        print("\n-------This round was a draw-------")
         match_draw += 1
 
     else:
@@ -74,10 +82,3 @@ elif com_win < user_win:
 
 else:
     print('\n----------Match Draw----------')
-
-
-
-
-
-
-
