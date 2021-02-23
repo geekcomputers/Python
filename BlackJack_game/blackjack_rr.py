@@ -1,12 +1,17 @@
 import random
 
-suits = ('Hearts', 'Diamonds', 'Spades', 'Clubs')
+class Colour:
+    BLACK = '\033[30m'
+    RED = '\033[91m'
+    GREEN = '\033[32m'
+    END = '\033[0m'
+
+suits = (Colour.RED +  'Hearts' + Colour.END, Colour.RED + 'Diamonds' + Colour.END, Colour.BLACK + 'Spades' + Colour.END, Colour.BLACK + 'Clubs' + Colour.END)
 ranks = ('Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Jack', 'Queen', 'King', 'Ace')
 values = {'Two': 2, 'Three': 3, 'Four': 4, 'Five': 5, 'Six': 6, 'Seven': 7, 'Eight': 8,
           'Nine': 9, 'Ten': 10, 'Jack': 10, 'Queen': 10, 'King': 10, 'Ace': 11}
 
 playing = True
-
 
 class Card:
 
@@ -157,7 +162,7 @@ while True:
     print(
         "\t                       Welcome to the game Casino - BLACK JACK !                                                     ")
     print("\t              **********************************************************")
-    print("\t                                   ***************")
+    print(Colour.BLACK + "\t                                   ***************")
     print("\t                                   * A           *")
     print("\t                                   *             *")
     print("\t                                   *      *      *")
@@ -167,7 +172,7 @@ while True:
     print("\t                                   *      *      *")
     print("\t                                   *             *")
     print("\t                                   *             *")
-    print("\t                                   ***************")
+    print("\t                                   ***************" + Colour.END)
 
     print('\nRULES: Get as close to 21 as you can but if you get more than 21 you will lose!\n  Aces count as 1 or 11.')
 
@@ -224,8 +229,7 @@ while True:
             continue
         else:
             print(
-                "Thanks for playing!\n \t$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$\n \t      Congratulations! You won {} coins!\n\t$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$\n ".format(
-                    player_chips.total))
+                "Thanks for playing!\n" + Colour.GREEN + "\t$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$\n \t      Congratulations! You won " + str(player_chips.total) + " coins!\n\t$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$\n " + Colour.END)
             break
     else:
         print(
