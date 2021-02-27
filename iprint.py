@@ -1,3 +1,5 @@
+text = input("")
+
 ap = ""
 
 for let in range(len(txt) - 1):
