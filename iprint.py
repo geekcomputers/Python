@@ -1,4 +1,6 @@
-text = input("")
+from time import sleep
+
+txt = input("")
 
 ap = ""
 
