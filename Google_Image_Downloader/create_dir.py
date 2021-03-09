@@ -28,19 +28,19 @@ def create_directory(name):
         makedirs(pardir + "\\" + name)
 
 
-# Deletes a directory
+# Deletes a directory:
 def delete_directory(name):
     removedirs(name)
 
 
 # Rename a directory
 def rename_directory(direct, name):
-    rename(direct, name)
+    rename(direct, name);
 
 
 # Sets the working directory
 def set_working_directory():
-    chdir(pardir)
+    chdir(pardir);
 
 
 # Backup the folder tree
