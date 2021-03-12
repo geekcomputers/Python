@@ -1,10 +1,11 @@
 import wikipedia
+from tkinter import ttk
 from tkinter import *
 from tkinter.messagebox import showinfo
 
 win = Tk() #objek
-win.title('WIKIPEDIA')
-win.geometry('200x70') #function
+win['background']='gray11'
+win.title('Wikipedia')
 
 #function
 def search_wiki() :
@@ -12,13 +13,13 @@ def search_wiki() :
     Hasil = wikipedia.summary(search)
     showinfo("Hasil Pencarian",Hasil)
 
-label = Label(win,text="Wikipedia Search :")
+label = Label(win,text="Wikipedia Search :",bg='gold',font=('georgia'),fg='blue')
 label.grid(row=0,column=0)
 
-entry = Entry(win)
-entry.grid(row=1,column=0)
+entry = ttk.Entry(win,font=('georgia'))
+entry.grid(row=0,column=1)
 
-button = Button(win,text="Search",command=search_wiki)
-button.grid(row=1,column=1,padx=10)
+button = ttk.Button(win,text="Search",command=search_wiki)
+button.grid(row=0,column=2,padx=10)
 
 win.mainloop()
