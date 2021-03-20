@@ -40,7 +40,9 @@ def translate(word):
     word = word.lower()
     if word in data:
         speak('Here is what I found in dictionary..')
-        speak(data[word])
+        d = data[word]
+        d = ''.join(str(e) for e in d)
+        speak(d)
     elif len(get_close_matches(word, data.keys())) > 0:
         x = get_close_matches(word, data.keys())[0]
         speak('Did you mean ' + x +
