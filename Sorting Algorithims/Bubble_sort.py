@@ -1,9 +1,9 @@
-def bubble_sort(nums):
-    for i in range(len(nums)):
-        for j in range(len(nums)-1):
+def bubble_sort(Lists):
+    for i in range(len(Lists)):
+        for j in range(len(Lists)-1):
             # We check whether the adjecent number is greater or not
-            if nums[j]>nums[j+1]:
-                nums[j], nums[j+1] = nums[j+1], nums[j]
+            if Lists[j]>Lists[j+1]:
+                Lists[j], Lists[j+1] = Lists[j+1], Lists[j]
 
 #Lets the user enter values of an array and verify by himself/herself
 array = []
