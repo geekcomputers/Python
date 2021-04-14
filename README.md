@@ -109,6 +109,8 @@ This script is able to analyze all activity happened in Whatsapp group and visua
 - [space_invader.py.py](https://github.com/meezan-mallick/space_invader_game) - Classical space invader 2D game. <br>
 Recall your old childhood memories, by playing the classic space invader game.
 
+- [Test Case Generator](https://github.com/Tanmay-901/test-case-generator/blob/master/test_case.py) - Generates different types of test cases with a clean and friendly UI, used in competitive programming and potentially for software testing.
+
 
 master
 - You can have a data set example for practice : Laliga Data 
