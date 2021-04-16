@@ -126,7 +126,7 @@ BSP-1415 New (Guest) user Notification
 This automatic notification message was sent by Sakai Collab (https://collab.sakaiproject.org/portal) from the Source site.
 You can modify how you receive notifications at My Workspace > Preferences.
 
-
+From cwen@iupui.edu
 
 From zqian@umich.edu Fri Jan  4 16:10:39 2008
 Return-Path: <postmaster@collab.sakaiproject.org>
