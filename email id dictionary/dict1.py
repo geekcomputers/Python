@@ -13,8 +13,8 @@ for line in fh:
     mail=id[1]
     mails.append(mail)
 
-freq_mail = max(mails, key=mails.count)  #To find frequent mail
-print(freq_mail,mails.count(freq_mail))  #To find countof frequent mail 
+freq_mail = max(mails, key=mails.count)  #to find frequent mail
+print(freq_mail,mails.count(freq_mail))  #to find countof frequent mail 
 
 
 
