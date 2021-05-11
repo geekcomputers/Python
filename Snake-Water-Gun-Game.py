@@ -6,6 +6,73 @@ If computer chooses gun and user chooses water, the gun gets drown into water an
 And so on for other cases
 """
 
+# you can use this code also, see this code is very short in compare to your code 
+# code starts here
+"""
+# Snake || Water || Gun __ Game
+
+import random
+
+times = 10 # times to play game
+
+comp_choice = ["s","w","g"] # output choice for computer
+
+user_point = 0 # user point is initially marked 0
+comp_point = 0 # computer point is initially marked 0
+
+
+while times >= 1:
+    comp_rand = random.choice(comp_choice) # output computer will give
+    # 
+    # print(comp_rand) # checking if the code is working or not
+
+    print(f"ROUND LEFT = {times}")
+
+# checking if the input is entered correct or not
+    try:
+        user_choice = input("Enter the input in lowercase ex. \n (snake- s) (water- w) (gun- w)\n:- ") # user choice, the user will input
+    except Exception as e:
+        print(e)
+
+# if input doen't match this will run
+    if user_choice != 's' and user_choice != 'w' and user_choice != 'g':
+            print("Invalid input, try again\n")
+            continue
+
+# checking the input and calculating score
+    if comp_rand == 's':
+        if user_choice == 'w':
+            comp_point += 1
+        elif user_choice == 'g':
+            user_point += 1
+ 
+    elif comp_rand == 'w':
+        if user_choice == 'g':
+            comp_point += 1
+        elif user_choice == 's':
+            user_point += 1
+ 
+    elif comp_rand == 'g':
+        if user_choice == 's':
+            comp_point += 1
+        elif user_choice == 'w':
+            user_point += 1
+    
+    times -=1 # reducing the number of rounds after each match
+
+if user_point>comp_point: # if user wins
+    print(f"WOOUUH! You have win \nYour_point = {user_point}\nComputer_point = {comp_point}")
+elif comp_point>user_point: # if computer wins
+    print(f"WE RESPECT YOUR HARD WORK, BUT YOU LOSE AND YOU ARE A LOSER NOW! \nYour_point = {user_point}\nComputer_point = {comp_point}")
+elif comp_point==user_point: # if match draw
+    print(f"MATCH DRAW\nYour_point = {user_point}\nComputer_point = {comp_point}")
+
+else: # just checked 
+    print("can't calculate score")
+
+exit = input("PRESS ENTER TO EXIT")
+
+""" # code ends here
 import random
 import time
 
@@ -28,42 +95,81 @@ while x < 10:
     com_choice = random.choice(list(choices.keys())).lower()
     user_choice = input('\n----->').lower()
     print("Mr. Computer's choice is : " + com_choice)
+    
+    # you can use this code to minimize your writing time for the code
+    """
+    if comp_rand == 's':
+        if user_choice == 'w':
+            print("\n-------Mr. Computer won this round--------")
+            comp_point += 1
+        elif user_choice == 'g':
+            print("\n-------You won this round-------")
+            user_point += 1
+        else:
+            match_draw +=1
+ 
+    elif comp_rand == 'w':
+        if user_choice == 'g':
+            print("\n-------Mr. Computer won this round--------")
+            comp_point += 1
+        elif user_choice == 's':
+            print("\n-------You won this round-------")
+            user_point += 1
+        else:
+            match_draw +=1
+ 
+    elif comp_rand == 'g':
+        if user_choice == 's':
+            print("\n-------Mr. Computer won this round--------")
+            comp_point += 1
+        elif user_choice == 'w':
+            print("\n-------You won this round-------")
+            user_point += 1
+        else:
+            match_draw +=1
+    
+    """
 
-    if user_choice == 's' and com_choice == 'w':
-        print("\n-------Mr. Computer won this round--------")
-        com_win += 1
-
-    elif user_choice == 's' and com_choice == 'g':
-        print("\n-------Mr. Computer won this round--------")
-        com_win += 1
-
-    elif user_choice == 'w' and com_choice == 's':
-        print("\n-------You won this round-------")
-        user_win += 1
-
-    elif user_choice == 'g' and com_choice == 's':
-        print("\n-------You won this round-------")
-        user_win += 1
-
-    elif user_choice == 'g' and com_choice == 'w':
-        print("\n-------Mr. Computer won this round--------")
-        com_win += 1
-
-    elif user_choice == 'w' and com_choice == 'g':
-        print("\n-------You won this round-------")
-        user_win += 1
-
-    elif user_choice == com_choice:
-        print("\n-------This round was a draw-------")
-        match_draw += 1
-
-    else:
-        print('\n\nYou entered wrong !!!!!!')
-        x = 0
-        print('Restarting the game')
-        print('')
-        time.sleep(1)
-        continue
+    if comp_rand == 's':
+        if user_choice == 'w':
+            print("\n-------Mr. Computer won this round--------")
+            comp_point += 1
+        elif user_choice == 'g':
+            print("\n-------You won this round-------")
+            user_point += 1
+        else:
+            match_draw +=1
+ 
+    elif comp_rand == 'w':
+        if user_choice == 'g':
+            print("\n-------Mr. Computer won this round--------")
+            comp_point += 1
+        elif user_choice == 's':
+            print("\n-------You won this round-------")
+            user_point += 1
+        else:
+            match_draw +=1
+ 
+    elif comp_rand == 'g':
+        if user_choice == 's':
+            print("\n-------Mr. Computer won this round--------")
+            comp_point += 1
+        elif user_choice == 'w':
+            print("\n-------You won this round-------")
+            user_point += 1
+        else:
+            match_draw +=1
+# You can use TRY-EXCEPT in here
+"""
+try:
+        user_choice = input("Enter the input in lowercase ex. \n (snake- s) (water- w) (gun- w)\n:- ") # user choice, the user will give the input
+    except Exception as e:
+        print(e)
+"""
+   try:
+        user_choice = input("Enter the input in lowercase ex. \n (snake- s) (water- w) (gun- w)\n:- ") # user choice, the user will input
+    except Exception as e:
+        print(e)
 
     x += 1
     print('\n')
