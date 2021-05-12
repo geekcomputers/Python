@@ -23,7 +23,7 @@ This script contain important functions which help reduce human workload.
 Code documentation is aligned correctly when the files are viewed in [Notepad++](https://notepad-plus-plus.org/). :spiral_notepad:
 <hr>
 
-This script contain important functions which help in reducing human workload.And also helps begineers to get started with python. 
+This script contain important functions which help in reducing human workload. And also helps beginners to get started with python. 
 Code documentation is aligned correctly when the files are viewed in [Notepad++](https://notepad-plus-plus.org/).
 Jarvis is used as a google assistant.
 master
@@ -51,7 +51,7 @@ master
 - [move_files_over_x_days.py](https://github.com/geekcomputers/Python/blob/master/move_files_over_x_days.py) - Moves all files over a specified age (in days) from the source directory to the destination directory.
 perfect 
 
-- [nslookup_check.py](https://github.com/geekcomputers/Python/blob/master/nslookup_check.py) - This simple script opens the file `server_list.txt` and then does an nslookup for each one to check the DNS entry.
+- [nslookup_check.py](https://github.com/geekcomputers/Python/blob/master/nslookup_check.py) - This simple script opens the file `server_list.txt` and then does a nslookup for each one to check the DNS entry.
 
 - [osinfo.py](https://github.com/geekcomputers/Python/blob/master/osinfo.py) - Displays some information about the OS on which you are running this script.
 
@@ -65,7 +65,7 @@ perfect
 
 - [script_count.py](https://github.com/geekcomputers/Python/blob/master/script_count.py) - This file scans the scripts directory and gives a count of the different types of scripts.
 
-- [get_youtube_view.py] - This is a simple python script used to get more views on your youtube videos. This script may also be used to repeat songs on Youtube. 
+- [get_youtube_view.py] - This is a simple python script used to get more views on your YouTube videos. This script may also be used to repeat songs on YouTube. 
 
 - [script_listing.py](https://github.com/geekcomputers/Python/blob/master/script_listing.py) - This file will list all the files in the given directory, and go through all the subdirectories as well.
 
@@ -73,7 +73,7 @@ perfect
 
 - [tweeter.py](https://github.com/geekcomputers/Python/blob/master/tweeter.py) - Allows you to tweet text or a picture from the terminal.
 
-- [serial_scanner.py](https://github.com/geekcomputers/Python/blob/master/serial_scanner.py) contains a method called ListAvailablePorts which returns a list with the names of the serial ports that are in use in the computer. This method works only on Linux and Windows (can be extended for mac os). If no port is found, an empty list is returned.
+- [serial_scanner.py](https://github.com/geekcomputers/Python/blob/master/serial_scanner.py) contains a method called ListAvailablePorts which returns a list with the names of the serial ports that are in use in the computer. This method works only on Linux and Windows (can be extended for mac OS). If no port is found, an empty list is returned.
 
 - [get_youtube_view.py](https://github.com/geekcomputers/Python/blob/master/get_youtube_view.py) - A simple python script to get more views for your YouTube videos. Useful for repeating songs on YouTube.
 
@@ -95,23 +95,25 @@ perfect
 
 - [SimpleStopWatch.py](https://github.com/geekcomputers/Python/blob/master/SimpleStopWatch.py) - Simple Stop Watch implementation using Python's time module. 
 
-- [Changemac.py](https://github.com/geekcomputers/Python/blob/master/changemac.py) - This script change your MAC address , generate random MAC address or enter input as new MAC address in your linux(Successfully Tested in Ubuntu 18.04). 
+- [Changemac.py](https://github.com/geekcomputers/Python/blob/master/changemac.py) - This script change your MAC address , generate random MAC address or enter input as new MAC address in your Linux(Successfully Tested in Ubuntu 18.04). 
 - [whatsapp-monitor.py](https://github.com/geekcomputers/Python/blob/master/whatsapp-monitor.py) - Uses Selenium to give online status about your contacts when your contacts become online in WA you will get an update about it on terminal.
 
-- [whatsapp-chat-analyzer.py](https://github.com/subahanii/whatsapp-Chat-Analyzer) - This is whatsapp group/individual chat analyzer .
-This script is able to analyse all activity happened in whatsapp group and visualize all things through matplotlib library(In Graph form).
+- [whatsapp-chat-analyzer.py](https://github.com/subahanii/whatsapp-Chat-Analyzer) - This is Whatsapp group/individual chat analyzer .
+This script is able to analyze all activity happened in Whatsapp group and visualize all things through matplotlib library(In Graph form).
 
 - [JARVIS.py](https://git.io/fjH8m) - Control windows programs with your voice.
 
 
-- [Images Downloader](https://git.io/JvnJh) - Download Image Form webpage Work on unix based systems.
+- [Images Downloader](https://git.io/JvnJh) - Download Image Form webpage Work on Unix based systems.
 
 - [space_invader.py.py](https://github.com/meezan-mallick/space_invader_game) - Classical space invader 2D game. <br>
 Recall your old childhood memories, by playing the classic space invader game.
 
+- [Test Case Generator](https://github.com/Tanmay-901/test-case-generator/blob/master/test_case.py) - Generates different types of test cases with a clean and friendly UI, used in competitive programming and potentially for software testing.
+
 
 master
-- You can have a data set example for practise : Laliga Data 
+- You can have a data set example for practice : Laliga Data 
 =======
 master
 <hr>
