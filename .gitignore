@@ -15,3 +15,11 @@ for i in string:
     else:
         odd+=i
 print(lower+upper+odd+even)
+
+# operating system-related files
+
+# file properties cache/storage on macOS
+*.DS_Store
+
+# thumbnail cache on Windows
+Thumbs.db
