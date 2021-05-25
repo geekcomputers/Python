@@ -15,7 +15,8 @@ import subprocess  # subprocess module allows you to spawn new processes
 import pyjokes
 import requests
 import json
-
+#for 30 seconds clip "Jarvis, clip that!" and discord ctrl+k quick-move (might not come to fruition)
+from pynut import keyboard
 # =======
 from playsound import *  #for sound output
 # master
@@ -136,26 +137,29 @@ def get_app(Q):
     elif Q=="news":
         speak_news()
             
-    elif Q == "notepad":
+    elif Q == "open notepad":
         subprocess.call(['Notepad.exe'])
-    elif Q == "calculator":
+    elif Q == "open calculator":
         subprocess.call(['calc.exe'])
-    elif Q == "stikynot":
+    elif Q == "open stikynot":
         subprocess.call(['StikyNot.exe'])
-    elif Q == "shell":
+    elif Q == "open shell":
         subprocess.call(['powershell.exe'])
-    elif Q == "paint":
+    elif Q == "open paint":
         subprocess.call(['mspaint.exe'])
-    elif Q == "cmd":
+    elif Q == "open cmd":
         subprocess.call(['cmd.exe'])
-    elif Q == "browser":
+    elif Q == "open discord":
+        subprocess.call(['discord.exe'])
+    elif Q == "open browser":
         subprocess.call(['C:\Program Files\Internet Explorer\iexplore.exe'])
 # patch-1
     elif Q == "open youtube":
         webbrowser.open("https://www.youtube.com/")   # open youtube
     elif Q == "open google":
-        webbrowser.open("https://www.google.com")    # open google
-        
+        webbrowser.open("https://www.google.com/") # open google
+    elif Q == "open github":
+        webbrowser.open
     elif Q == "email to other":                     # here you want to change and input your mail and password whenver you implement 
             try: 
                 speak("What should I say?")
@@ -169,7 +173,7 @@ def get_app(Q):
                 speak("Email has been sent!")
             except Exception as e:
                 print(e)
-                speak("Sorray i am not send this mail")
+                speak("Sorry, I can't send the email.")
 # =======
 #   master
     elif Q=="Take screenshot":
@@ -182,7 +186,25 @@ def get_app(Q):
         snapshot.save(folder_to_save_files)
      
     elif Q=="Jokes":
-        print(pyjokes.get_joke())
+        speak(pyjokes.get_joke())
+        
+    elif Q=="start recording":
+        current.add('Win', 'Alt', 'r')
+        speak("Started recording. just say stop recording to stop.")
+        
+    elif Q=="stop recording":
+        current.add('Win', 'Alt', 'r')
+        speak("Stopped recording. check your game bar folder for the video")
+        
+    elif Q=="clip that":
+         current.add('Win', 'Alt', 'g')
+            speak("Clipped. check you game bar file for the video")
+         with keyboard.Listener(on_press=on_press, on_release=on_release) as listener:
+              listener.join()
+                  
+    
+               
+              
 
 # master
     else:
