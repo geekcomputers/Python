@@ -198,7 +198,7 @@ def get_app(Q):
         
     elif Q=="clip that":
          current.add('Win', 'Alt', 'g')
-            speak("Clipped. check you game bar file for the video")
+         speak("Clipped. check you game bar file for the video")
          with keyboard.Listener(on_press=on_press, on_release=on_release) as listener:
               listener.join()
                   
