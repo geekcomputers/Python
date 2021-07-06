@@ -25,7 +25,7 @@ class Inside:
         self.cal_buttons()  # <---------- Buttons On Calculator
 
     def output_box(self):
-        show = ttk.Entry(self.cal_frame, textvariable=self.out_var, width=20, font=('calibri', 16), state='readonly')
+        show = ttk.Entry(self.cal_frame, textvariable=self.out_var, width=25, font=('calibri', 16), state='readonly')
         show.grid(row=0, column=0, sticky=tk.W, ipady=6, ipadx=1, columnspan=4)
         show.focus()
 
@@ -237,8 +237,8 @@ class Main(tk.Tk):
     def geometry_settings(self):
         _com_width = self.winfo_screenwidth()
         _com_height = self.winfo_screenheight()
-        _my_width = 450
-        _my_height = 450
+        _my_width = 360
+        _my_height = 350
         _x = int(_com_width/2 - _my_width/2)
         _y = int(_com_height/2 - _my_height/2)
         geo_string = str(_my_width)+"x"+str(_my_height)+"+"+str(_x)+"+"+str(_y)
