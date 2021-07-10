@@ -1,5 +1,6 @@
 # patch-1
-import os    #The OS module in python provides functions for interacting with the operating system
+# import os
+# The OS module in python provides functions for interacting with the operating system
 
 # patch-3
 # function to check if 'binod' is present in the file.
