@@ -6,7 +6,7 @@ example quote -Quote Author Name
 '''
 
 import requests
-import json
+from json import loads
 
 def return_quote():
   response = requests.get("https://zenquotes.io/api/random")
@@ -14,4 +14,5 @@ def return_quote():
   quote = json_data[0]['q'] + " -" + json_data[0]['a']  #aligning the quote and it's author name in one string
   return quote
 
-print(return_quote())
+quote = return_quote()
+print(quote)
