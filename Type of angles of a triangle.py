@@ -6,7 +6,7 @@ def angle_type():
     myDict = {"All angles are less than 90°.":"Acute Angle Triangle","Has a right angle (90°)":"Right Angle Triangle",
               "Has an angle more than 90°":"Obtuse Angle triangle"}
 
-    display = input("**************Enter the angles of your triangle to know it's type*********")
+    print("**************Enter the angles of your triangle to know it's type*********")
 
     angle1 = int(input("Enter angle1 : "))
     if(angle1 < 180 and angle1 > 0):
