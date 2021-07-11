@@ -78,7 +78,13 @@ def add():
     print("")
 
 
-    Payment=input("Mode of payment(Card/Cash/Online): ")
+    Payment=input("Mode of payment(Card/Cash/Online): ").capitalize()
+    if Payment == "Card":
+        print("Payment with card")
+    elif Payment == "Cash":
+        print("Payment with cash")
+    elif Payment == "Online":
+        print("Online payment")
     print("")
 
 
@@ -99,6 +105,10 @@ def add():
         Room_num=str(Room_num)
 
     print('You have been assigned Room Number',Room_num)
+    print(f"name : {Name1} {Name2}")
+    print(f"phone number : +91{Phone_Num}")
+    print(f"Room type : {Room_Type}")
+    print(f"Stay (day) : {Days}")
 
     dictionary['First_Name'].append(Name1)
     dictionary['Last_Name'].append(Name2)
@@ -365,5 +375,9 @@ def exit_menu():
         exit()
     elif user_input==1:
         menu()
-
-menu()
+try:
+    menu()
+except KeyboardInterrupt as exit:
+    print("\nexiting...!")
+    
+# menu()
