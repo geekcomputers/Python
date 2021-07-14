@@ -5,3 +5,8 @@ while num>0 :
     num = num//10
     rev=rev*10+Rem
 print("The Reverse of the number",rev)
+##################
+# could also simply do this another way
+
+num = input()
+print(int(num[::-1]))
