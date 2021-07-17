@@ -7,11 +7,18 @@
 from tkinter import *
 from random import randint, choices
 import webbrowser
+import os
 
 mycolor = '#262626'
 gui = Tk()
 gui.title('TEST CASE GENERATOR')
 gui.configure(bg=mycolor)
+
+if os.environ.get('DISPLAY', '') == '':
+    print('no display found, using:0,0')
+    os.environ.__setitem__('DISPLAY', ':0.0')
+else:
+    print('found display')
 
 
 class Case:

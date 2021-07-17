@@ -60,7 +60,7 @@ else: # just checked
 exit = input("PRESS ENTER TO EXIT")
 """ # code ends here
 import random
-import time
+# import time
 
 choices = {'S':'Snake','W':'Water','G':'Gun'}
 

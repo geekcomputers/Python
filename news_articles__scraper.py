@@ -88,7 +88,8 @@ for Url in fakearticle_links:
     article.download()
     article.parse()
     article.nlp()
-  except:
+  except Exception as error:
+    print(f"exception : {error}")
     pass
   
   # Scrape the contents of article
