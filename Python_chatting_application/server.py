@@ -23,7 +23,7 @@ def Client_Handler(cli):
                 print(f"Disconnected with f{nick}")
                 break
             BroadCasating(reply)
-        except:
+        except Exception:
             index_of_cli = clients.index(cli)
             print(index_of_cli)
             nick = nickename[index_of_cli]
@@ -38,6 +38,7 @@ def BroadCasating(msg):
     for client in clients:
         client.send(bytes(msg, "utf-8"))
 
+
 def recieve():
     while True:
         client_sckt, addr = s.accept()
@@ -48,7 +49,8 @@ def recieve():
         clients.append(client_sckt)
         print(f"{nick} has joined the chat room ")
         BroadCasating(f"{nick} has joined the chat room say hi !!!")
-        threading._start_new_thread(Client_Handler , (client_sckt , ))
+        threading._start_new_thread(Client_Handler, (client_sckt,))
+
 
 recieve()
 s.close()
