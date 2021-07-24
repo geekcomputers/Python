@@ -81,8 +81,9 @@ sketch.color("blue")
 sketch.penup()
 sketch.hideturtle()
 sketch.goto(0, 260)
-sketch.write("Left_player : 0    Right_player: 0",
-             align="center", font=("Courier", 24, "normal"))
+sketch.write(
+    "Left_player : 0    Right_player: 0", align="center", font=("Courier", 24, "normal")
+)
 
 
 # Functions to move paddle vertically
@@ -137,30 +138,34 @@ while True:
         hit_ball.dy *= -1
         left_player += 1
         sketch.clear()
-        sketch.write("Left_player : {}    Right_player: {}".format(
-            left_player, right_player), align="center",
-            font=("Courier", 24, "normal"))
+        sketch.write(
+            "Left_player : {}    Right_player: {}".format(left_player, right_player),
+            align="center",
+            font=("Courier", 24, "normal"),
+        )
 
     if hit_ball.xcor() < -500:
         hit_ball.goto(0, 0)
         hit_ball.dy *= -1
         right_player += 1
         sketch.clear()
-        sketch.write("Left_player : {}    Right_player: {}".format(
-            left_player, right_player), align="center",
-            font=("Courier", 24, "normal"))
+        sketch.write(
+            "Left_player : {}    Right_player: {}".format(left_player, right_player),
+            align="center",
+            font=("Courier", 24, "normal"),
+        )
 
     # Paddle ball collision
-    if ((hit_ball.xcor() > 360 and
-        hit_ball.xcor() < 370) and
-        (hit_ball.ycor() < right_pad.ycor() + 40 and
-         hit_ball.ycor() > right_pad.ycor() - 40)):
+    if (hit_ball.xcor() > 360 and hit_ball.xcor() < 370) and (
+        hit_ball.ycor() < right_pad.ycor() + 40
+        and hit_ball.ycor() > right_pad.ycor() - 40
+    ):
         hit_ball.setx(360)
         hit_ball.dx *= -1
 
-    if ((hit_ball.xcor() < -360 and
-        hit_ball.xcor() > -370) and
-        (hit_ball.ycor() < left_pad.ycor() + 40 and
-         hit_ball.ycor() > left_pad.ycor() - 40)):
+    if (hit_ball.xcor() < -360 and hit_ball.xcor() > -370) and (
+        hit_ball.ycor() < left_pad.ycor() + 40
+        and hit_ball.ycor() > left_pad.ycor() - 40
+    ):
         hit_ball.setx(-360)
         hit_ball.dx *= -1

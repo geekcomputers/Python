@@ -1,10 +1,11 @@
 import pygame
 
-'''
+"""
 Visualises how a floodfill algorithm runs and work using pygame
 Pass two int arguments for the window width and the window height
 `python floodfill.py <width> <height>`
-'''
+"""
+
 
 class FloodFill:
     def __init__(self, window_width, window_height):
@@ -17,16 +18,17 @@ class FloodFill:
         self.surface = pygame.Surface(self.display.get_size())
         self.surface.fill((0, 0, 0))
 
-        self.generateClosedPolygons() # for visualisation purposes
+        self.generateClosedPolygons()  # for visualisation purposes
 
         self.queue = []
 
     def generateClosedPolygons(self):
         if self.window_height < 128 or self.window_width < 128:
-            return # surface too small
+            return  # surface too small
 
         from random import randint, uniform
         from math import pi, sin, cos
+
         for n in range(0, randint(0, 5)):
             x = randint(50, self.window_width - 50)
             y = randint(50, self.window_height - 50)
@@ -37,13 +39,19 @@ class FloodFill:
 
             for i in range(0, randint(3, 7)):
                 dist = randint(10, 50)
-                vertices.append((int(x + cos(angle) * dist), int(y + sin(angle) * dist)))
-                angle += uniform(0, pi/2)
+                vertices.append(
+                    (int(x + cos(angle) * dist), int(y + sin(angle) * dist))
+                )
+                angle += uniform(0, pi / 2)
 
             for i in range(0, len(vertices) - 1):
-                pygame.draw.line(self.surface, (255, 0, 0), vertices[i], vertices[i + 1])
+                pygame.draw.line(
+                    self.surface, (255, 0, 0), vertices[i], vertices[i + 1]
+                )
 
-            pygame.draw.line(self.surface, (255, 0, 0), vertices[len(vertices) - 1], vertices[0])
+            pygame.draw.line(
+                self.surface, (255, 0, 0), vertices[len(vertices) - 1], vertices[0]
+            )
 
     def run(self):
         looping = True
@@ -53,7 +61,7 @@ class FloodFill:
                 if ev.type == pygame.QUIT:
                     looping = False
                 else:
-                    evsforturn.append(ev) # TODO: Maybe extend with more events
+                    evsforturn.append(ev)  # TODO: Maybe extend with more events
             self.update(evsforturn)
             self.display.blit(self.surface, (0, 0))
             pygame.display.flip()
@@ -82,15 +90,31 @@ class FloodFill:
         top = (point[0], point[1] + 1)
         bottom = (point[0], point[1] - 1)
 
-        if self.inBounds(left) and left not in self.queue and pixArr[left[0], left[1]] == self.surface.map_rgb((0, 0, 0)):
+        if (
+            self.inBounds(left)
+            and left not in self.queue
+            and pixArr[left[0], left[1]] == self.surface.map_rgb((0, 0, 0))
+        ):
             self.queue.append(left)
-        if self.inBounds(right) and right not in self.queue and pixArr[right[0], right[1]] == self.surface.map_rgb((0, 0, 0)):
+        if (
+            self.inBounds(right)
+            and right not in self.queue
+            and pixArr[right[0], right[1]] == self.surface.map_rgb((0, 0, 0))
+        ):
             self.queue.append(right)
-        if self.inBounds(top) and top not in self.queue and pixArr[top[0], top[1]] == self.surface.map_rgb((0, 0, 0)):
+        if (
+            self.inBounds(top)
+            and top not in self.queue
+            and pixArr[top[0], top[1]] == self.surface.map_rgb((0, 0, 0))
+        ):
             self.queue.append(top)
-        if self.inBounds(bottom) and bottom not in self.queue and pixArr[bottom[0], bottom[1]] == self.surface.map_rgb((0, 0, 0)):
+        if (
+            self.inBounds(bottom)
+            and bottom not in self.queue
+            and pixArr[bottom[0], bottom[1]] == self.surface.map_rgb((0, 0, 0))
+        ):
             self.queue.append(bottom)
-        
+
         del pixArr
 
     def inBounds(self, coord):
@@ -100,7 +124,9 @@ class FloodFill:
             return False
         return True
 
+
 if __name__ == "__main__":
     import sys
+
     floodfill = FloodFill(sys.argv[1], sys.argv[2])
     floodfill.run()

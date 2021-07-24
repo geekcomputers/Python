@@ -10,8 +10,10 @@ class Dice:
         if sides > 3:
             self.sides = sides
         else:
-            print("This absolutely shouldn't ever happen. The programmer sucks or someone "
-                  "has tweaked with code they weren't supposed to touch!")
+            print(
+                "This absolutely shouldn't ever happen. The programmer sucks or someone "
+                "has tweaked with code they weren't supposed to touch!"
+            )
 
     def roll(self):
         return random.randint(1, self.sides)
@@ -25,12 +27,14 @@ class Dice:
 def checkInput(sides):
     try:
         if int(sides) != 0:
-            if float(sides) % int(sides) == 0:  # excludes the possibility of inputted floats being rounded.
+            if (
+                float(sides) % int(sides) == 0
+            ):  # excludes the possibility of inputted floats being rounded.
                 return int(sides)
         else:
             return int(sides)
 
-    except:
+    except ValueError:
         print("Invalid input!")
         return None
 
@@ -58,7 +62,9 @@ def getDices():
     diceLowerLimit = 1  # Do Not Touch!
 
     sides = pickNumber(sides, "How many sides will the dices have?: ", sideLowerLimit)
-    diceAmount = pickNumber(diceAmount, "How many dices will do you want?: ", diceLowerLimit)
+    diceAmount = pickNumber(
+        diceAmount, "How many dices will do you want?: ", diceLowerLimit
+    )
 
     for i in range(0, diceAmount):
         d = Dice()
@@ -70,6 +76,7 @@ def getDices():
 
 # =================================================================
 # Output section.
+
 
 def output():
     dices = getDices()
@@ -83,9 +90,10 @@ def output():
         print(rollOutput)
 
         print("do you want to roll again?")
-        ans = input('press enter to continue, and [exit] to exit')
-        if ans == 'exit':
+        ans = input("press enter to continue, and [exit] to exit")
+        if ans == "exit":
             cont = False
+
 
 if __name__ == "__main__":
     output()

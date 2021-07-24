@@ -17,7 +17,7 @@ def getWeather():
     airqualitytitle = soup.find('span',class_='_1VMr2').text
     sunrise = soup.find('div',class_='_2ATeV').text
     sunset = soup.find('div',class_='_2_gJb _2ATeV').text
-    humidity = soup.find('div',class_='_23DP5').text
+    # humidity = soup.find('div',class_='_23DP5').text
     wind = soup.find('span',class_='_1Va1P undefined').text
     pressure = soup.find('span',class_='_3olKd undefined').text
     locationlabel.config(text=(location))
