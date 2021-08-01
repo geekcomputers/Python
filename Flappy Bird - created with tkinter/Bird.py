@@ -102,7 +102,7 @@ class Bird(Thread):
         for _id in ignored_collisions:
             try:
                 possible_collisions.remove(_id)
-            except:
+            except BaseException:
                 continue
 
         # Se houver alguma colisão o pássaro morre

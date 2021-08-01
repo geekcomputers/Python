@@ -50,7 +50,7 @@ class Tubes(Thread):
         # Cria uma lista para guardar imagens dos tubos
         try:
             self.deleteAll()
-        except:
+        except BaseException:
             self.__background.tubeImages = []
 
         # Cria uma lista somente para guardar as imagens futuras dos corpos dos tubos gerados
