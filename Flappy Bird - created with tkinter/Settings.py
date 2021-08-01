@@ -85,7 +85,7 @@ class Settings(object):
                     setattr(Settings, attr, data[attr])
 
         # Caso não exista um arquivo para obter as configurações, ele será criado
-        except:
+        except BaseException:
 
             # Caso não exista o diretório, o mesmo será criado.
             if not os.path.exists(os.path.split(self.settings_fp)[0]):

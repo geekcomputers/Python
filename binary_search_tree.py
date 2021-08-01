@@ -1,7 +1,6 @@
-import sys
-
 class Node:
     """Class for node of a tree"""
+
     def __init__(self, info):
         """Initialising a node"""
         self.info = info
@@ -18,6 +17,7 @@ class Node:
 
 class BinarySearchTree:
     """Class for BST"""
+
     def __init__(self):
         """Initialising a BST"""
         self.root = None
@@ -46,7 +46,7 @@ class BinarySearchTree:
                 else:
                     break
 
-    def search(self, val, to_delete = False):
+    def search(self, val, to_delete=False):
         current = self.root
         prev = -1
         while current:
@@ -58,12 +58,12 @@ class BinarySearchTree:
                 current = current.right
             elif current.info == val:
                 if not to_delete:
-                    return 'Match Found'
+                    return "Match Found"
                 return prev
             else:
                 break
         if not to_delete:
-            return 'Not Found' 
+            return "Not Found"
 
     # Method to delete a tree-node if it exists, else error message will be returned.
     def delete(self, val):
@@ -83,21 +83,21 @@ class BinarySearchTree:
                 else:
                     prev2.right = None
                     self.root.info = temp.info
-                print('Deleted Root ', val)
+                print("Deleted Root ", val)
             # Check if node is to left of its parent
             elif prev.left and prev.left.info == val:
                 # Check if node is leaf node
                 if prev.left.left is prev.left.right:
                     prev.left = None
-                    print('Deleted Node ', val)
+                    print("Deleted Node ", val)
                 # Check if node has child at left and None at right
                 elif prev.left.left and prev.left.right is None:
                     prev.left = prev.left.left
-                    print('Deleted Node ', val)
+                    print("Deleted Node ", val)
                 # Check if node has child at right and None at left
                 elif prev.left.left is None and prev.left.right:
                     prev.left = prev.left.right
-                    print('Deleted Node ', val)
+                    print("Deleted Node ", val)
                 # Here node to be deleted has 2 children
                 elif prev.left.left and prev.left.right:
                     temp = prev.left
@@ -106,10 +106,9 @@ class BinarySearchTree:
                         temp = temp.right
                     prev2.right = None
                     prev.left.info = temp.info
-                    print('Deleted Node ', val)
+                    print("Deleted Node ", val)
                 else:
-                    print('Error Left')
-
+                    print("Error Left")
 
             # Check if node is to right of its parent
             elif prev.right.info == val:
@@ -118,15 +117,15 @@ class BinarySearchTree:
                 if prev.right.left is prev.right.right:
                     prev.right = None
                     flag = 1
-                    print('Deleted Node ', val)
+                    print("Deleted Node ", val)
                 # Check if node has left child at None at right
                 if prev.right and prev.right.left and prev.right.right is None:
                     prev.right = prev.right.left
-                    print('Deleted Node ', val)
+                    print("Deleted Node ", val)
                 # Check if node has right child at None at left
                 elif prev.right and prev.right.left is None and prev.right.right:
                     prev.right = prev.right.right
-                    print('Deleted Node ', val)
+                    print("Deleted Node ", val)
                 elif prev.right and prev.right.left and prev.right.right:
                     temp = prev.right
                     while temp.left is not None:
@@ -134,7 +133,7 @@ class BinarySearchTree:
                         temp = temp.left
                     prev2.left = None
                     prev.right.info = temp.info
-                    print('Deleted Node ', val)
+                    print("Deleted Node ", val)
                 else:
                     if flag == 0:
                         print("Error")
@@ -142,7 +141,8 @@ class BinarySearchTree:
             print("Node doesn't exists")
 
     def __str__(self):
-        return 'Not able to print tree yet'
+        return "Not able to print tree yet"
+
 
 def is_bst(node, lower_lim=None, upper_lim=None):
     """Function to find is a binary tree is a binary search tree."""
@@ -157,6 +157,7 @@ def is_bst(node, lower_lim=None, upper_lim=None):
     if is_left_bst and node.right is not None:
         is_right_bst = is_bst(node.right, node.info, upper_lim)
     return is_left_bst and is_right_bst
+
 
 def postorder(node):
     # L R N : Left , Right, Node
@@ -179,6 +180,7 @@ def inorder(node):
     if node.right:
         inorder(node.right)
 
+
 def preorder(node):
     # N L R : Node , Left, Right
     if node is None:
@@ -188,6 +190,7 @@ def preorder(node):
         preorder(node.left)
     if node.right:
         preorder(node.right)
+
 
 # Levelwise
 def bfs(node):
@@ -201,6 +204,7 @@ def bfs(node):
             queue.append(temp.left)
         if temp.right:
             queue.append(temp.right)
+
 
 def preorder_itr(node):
     # N L R : Node, Left , Right
@@ -216,28 +220,30 @@ def preorder_itr(node):
             stack.append(temp.left)
     return values
 
+
 def inorder_itr(node):
     # L N R : Left, Node, Right
     # 1) Create an empty stack S.
     # 2) Initialize current node as root
     # 3) Push the current node to S and set current = current->left until current is NULL
-    # 4) If current is NULL and stack is not empty then 
+    # 4) If current is NULL and stack is not empty then
     #     a) Pop the top item from stack.
-    #     b) Print the popped item, set current = popped_item->right 
+    #     b) Print the popped item, set current = popped_item->right
     #     c) Go to step 3.
     # 5) If current is NULL and stack is empty then we are done.
     stack = []
     current = node
     while True:
         if current != None:
-            stack.append(current)       # L
+            stack.append(current)  # L
             current = current.left
         elif stack != []:
             temp = stack.pop()
-            print(temp.info)            # N
-            current = temp.right        # R
+            print(temp.info)  # N
+            current = temp.right  # R
         else:
             break
+
 
 def postorder_itr(node):
     # L R N
@@ -256,6 +262,7 @@ def postorder_itr(node):
             s1.append(temp.right)
     print(*(s2[::-1]))
 
+
 def bst_frm_pre(pre_list):
     box = Node(pre_list[0])
     if len(pre_list) > 1:
@@ -272,10 +279,11 @@ def bst_frm_pre(pre_list):
             else:
                 all_less = True
             if i != 1:
-                box.left = bst_frm_pre(pre_list[1 : i])
+                box.left = bst_frm_pre(pre_list[1:i])
             if not all_less:
                 box.right = bst_frm_pre(pre_list[i:])
     return box
+
 
 # Function to find the lowest common ancestor of nodes with values c1 and c2.
 # It return value in the lowest common ancestor, -1 indicates value returned for None.
@@ -293,9 +301,10 @@ def lca(t_node, c1, c2):
             return current.info
     return -1
 
+
 # Function to print element vertically which lie just below the root node
 def vertical_middle_level(t_node):
-    e = (t_node, 0)         # 0 indicates level 0, to left we have -ve and to right +ve
+    e = (t_node, 0)  # 0 indicates level 0, to left we have -ve and to right +ve
     queue = [e]
     ans = []
     # Do a level-order traversal and assign level-value to each node
@@ -307,7 +316,8 @@ def vertical_middle_level(t_node):
             queue.append((temp.left, level - 1))
         if temp.right:
             queue.append((temp.right, level + 1))
-    return ' '.join(ans)
+    return " ".join(ans)
+
 
 def get_level(n, val):
     c_level = 0
@@ -319,9 +329,10 @@ def get_level(n, val):
             n = n.right
         c_level += 1
         if n is None:
-            return -1 
+            return -1
 
     return c_level
+
 
 def depth(node):
     if node is None:

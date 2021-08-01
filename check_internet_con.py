@@ -1,4 +1,5 @@
 from sys import argv
+
 try:
     # For Python 3.0 and later
     from urllib.error import URLError
@@ -11,14 +12,14 @@ except ImportError:
 def checkInternetConnectivity():
     try:
         url = argv[1]
-        if 'https://' or 'http://' not in url:
-            url = 'https://' + url
-    except:
-        url = 'https://google.com'
+        if "https://" or "http://" not in url:
+            url = "https://" + url
+    except BaseException:
+        url = "https://google.com"
     try:
-         urlopen(url, timeout=2)
-         print("Connection to \""+ url + "\" is working")
-        
+        urlopen(url, timeout=2)
+        print(f'Connection to "{url}" is working')
+
     except URLError as E:
         print("Connection error:%s" % E.reason)
 
