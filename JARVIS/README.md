@@ -2,15 +2,15 @@
 patch-5
 Control windows programs with your voice.
 What can it do:
-1. It can tell you time.
-2. It can open:<br />
+1. It can tell you time.<br/>
+2. It can open, These of the following:<br/>
     1.) Notepad<br/>
-    2.) Calculator
-    3.) Sticky Note
-    4.) PowerShell
-    5.) MS Paint
-    6.) cmd
-    7.) Browser (Internet Explorer)
+    2.) Calculator<br/>
+    3.) Sticky Note<br/>
+    4.) PowerShell<br/>
+    5.) MS Paint<br/>
+    6.) cmd<br/>
+    7.) Browser (Internet Explorer)<br/>
     
 It will make your experience better while using the Windows computer.
 ===========================================================================
