@@ -2,8 +2,8 @@
 patch-5
 Control windows programs with your voice.
 What can it do:
-1. Can tell you time.
-2. Can open:
+1. It can tell you time.
+2. It can open:
     1.) Notepad
     2.) Calculator
     3.) Sticky Note
