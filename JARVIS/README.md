@@ -1,16 +1,16 @@
 # JARVIS
-patch-5<br>
-Control windows programs with your voice.<\r>
-What can it do:<\r>
+patch-5
+Control windows programs with your voice.
+What can it do:
 1. Can tell you time.
-2. Can open:<\r>
-    a) Notepad<\r>
-    b) Calculator<\r>
-    c) Sticky Note<\r>
-    d) PowerShell<\r>
-    e) MS Paint<\r>
-    f) cmd<\r>
-    g) Browser (Internet Explorer)<\r>
+2. Can open:
+    1.) Notepad
+    2.) Calculator
+    3.) Sticky Note
+    4.) PowerShell
+    5.) MS Paint
+    6.) cmd
+    7.) Browser (Internet Explorer)
     
 It will make your experience better while using the Windows computer.
 ===========================================================================
