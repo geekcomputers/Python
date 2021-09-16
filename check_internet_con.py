@@ -8,12 +8,14 @@ except ImportError:
     # Fall back to Python 2's urllib2
     from urllib2 import URLError, urlopen
 
-
 def checkInternetConnectivity():
     try:
         url = argv[1]
-        if "https://" or "http://" not in url:
+        print(url)
+        protocols = ["https://", "http://"]
+        if not any(x for x in protocols if x in url):
             url = "https://" + url
+        print("URL:" + url )
     except BaseException:
         url = "https://google.com"
     try:
@@ -22,6 +24,5 @@ def checkInternetConnectivity():
 
     except URLError as E:
         print("Connection error:%s" % E.reason)
-
 
 checkInternetConnectivity()
