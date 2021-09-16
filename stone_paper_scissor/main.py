@@ -10,7 +10,7 @@ print('Pick a hand: (0: Rock, 1: Paper, 2: Scissors)')
 while True:
     try:
         player_hand = int(input('Please enter a number (0-2): '))
-        if player_hand not in range(0, 3):
+        if player_hand not in range(3):
             raise ValueError
         else:
             break
