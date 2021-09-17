@@ -6,10 +6,11 @@ def nDigitCombinations(n):
         for code in range(npow):
             code = str(code).zfill(n)
             numbers.append(code)
-    except:
+    except Exception:
         # handle all other exceptions
         pass
-    return (numbers)
+    return numbers
+
 
 # An alternate solution:
 # from itertools import product

@@ -19,7 +19,8 @@ import urllib3
 
 try:
     import instagram_monitering.con_file as config
-except:
+except Exception as e:
+    print(e)
     import con_file as config
 
 
@@ -67,7 +68,8 @@ async def dataprocess(htmldata):
     for i in tofind:
         try:
             maindict[i] = datadict[i]
-        except:
+        except Exception as e:
+            print(e)
             pass
     return maindict
 
@@ -82,7 +84,8 @@ async def datapullpost(future, url):
             user_agent = {'User-agent': 'Mozilla/17.0'}
             try:
                 data = requests.get(url=url, headers=user_agent, timeout=10, verify=False).text
-            except:
+            except Exception as e:
+                print(e)
                 data = None
             finally:
                 return data
@@ -107,7 +110,8 @@ class MoniteringClass():
                 self._url = "https://www.instagram.com/explore/tags/" + tags + "/?__a=1"
             if type == "profile":
                 self._url = "https://www.instagram.com/" + tags + "/?__a=1"
-        except:
+        except Exception as err:
+            print(f"exception {err}")
             print("error::MointeringClass.__init__>>", sys.exc_info()[1])
 
     def _dataProcessing(self, data):
@@ -138,7 +142,8 @@ class MoniteringClass():
             loop.run_until_complete(asyncio.wait(futures))
             for i in userdata:
                 i["data"] = i["future"].result()
-        except:
+        except Exception as err:
+            print(f"Exception ! : {err}")
             print("error::Monitering.dataProcessing>>", sys.exc_info()[1])
         finally:
             # loop.close()
@@ -153,7 +158,8 @@ class MoniteringClass():
             if records.count() == 0:
                 # record["timestamp"] = time.time()
                 self._collection.insert(record)
-        except:
+        except Exception as err:
+            print(f"Execption : {err}")
             print("error::Monitering.insertFunction>>", sys.exc_info()[1])
 
     def _lastProcess(self, userdata, media_post, top_post):
@@ -167,7 +173,8 @@ class MoniteringClass():
                         for z in tofind:
                             try:
                                 tempdict[z + "data"] = i["data"][z]
-                            except:
+                            except Exception as e:
+                                print(f"exception : {e}")
                                 pass
                         mainlist.append(tempdict)
                         self._insertFunction(tempdict.copy())
@@ -178,11 +185,13 @@ class MoniteringClass():
                         for z in tofind:
                             try:
                                 tempdict[z + "data"] = i["data"][z]
-                            except:
+                            except Exception as err:
+                                print(f"Exception :{err}")
                                 pass
                         mainlist.append(tempdict)
                         self._insertFunction(tempdict.copy())
-        except:
+        except Exception as err:
+            print(f"Exception : {err}")
             print("error::lastProcess>>", sys.exc_info()[1])
 
     def request_data_from_instagram(self):
@@ -196,7 +205,8 @@ class MoniteringClass():
                     user_agent = {'User-agent': 'Mozilla/17.0'}
                     try:
                         data = requests.get(url=url, headers=user_agent, timeout=24, verify=False).text
-                    except:
+                    except Exception as err:
+                        print(f"Exception : {err}")
                         data = None
                     finally:
                         return data
@@ -208,7 +218,8 @@ class MoniteringClass():
             userdata, media_post, top_post = self._dataProcessing(datadict)
             finallydata = (self._lastProcess(userdata=userdata, media_post=media_post, top_post=top_post))
             # print(ujson.dumps(finallydata))
-        except:
+        except Exception as e:
+            print(f"exception : {e}\n")
             print("error::Monitering.request_data_from_instagram>>", sys.exc_info()[1])
 
     def __del__(self):
@@ -219,7 +230,8 @@ def hashtags(user, tags, type, productId):
     try:
         temp = MoniteringClass(user=user, tags=tags, type=type, productId=productId)
         temp.request_data_from_instagram()
-    except:
+    except Exception as err:
+        print(f"exception : {err} \n")
         print("error::hashtags>>", sys.exc_info()[1])
 
 
@@ -232,13 +244,15 @@ class theradPorcess(multiprocessing.Process):
             self.tags = tags
             self.type = type
             self.productId = productId
-        except:
+        except Exception as err:
+            print(f"exception : {err}\n")
             print("errorthreadPorcess:>>", sys.exc_info()[1])
 
     def run(self):
         try:
             hashtags(user=self.user, tags=self.tags, type=self.type, productId=self.productId)
-        except:
+        except Exception as err:
+            print(f"exception : {err}\n")
             print("error::run>>", sys.exc_info()[1])
 
 
@@ -258,7 +272,8 @@ class InstaPorcessClass():
             if records == 0:
                 raise Exception
             value = True
-        except:
+        except Exception as err:
+            print(f"exception : {err}\n")
             value = False
             print("error::dbProcessReader:>>", sys.exc_info()[1])
         finally:
@@ -275,7 +290,8 @@ class InstaPorcessClass():
             temp["tags"] = tags
             temp["productId"] = productId
             collection.insert(temp)
-        except:
+        except Exception as err:
+            print(f"execption : {err}\n")
             print("error::processstart>>", sys.exc_info()[1])
         finally:
             mon.close()
@@ -293,7 +309,8 @@ class InstaPorcessClass():
                     break
                 time.sleep(300)
                 # therad.join()
-        except:
+        except Exception as err:
+            print(f"exception : {err}\n")
             print("error::startPoress::>>", sys.exc_info()[1])
 
     def deletProcess(self, user, tags, productId):
@@ -306,7 +323,8 @@ class InstaPorcessClass():
             temp["tags"] = tags
             temp["productId"] = productId
             collection.delete_one(temp)
-        except:
+        except Exception as err:
+            print(f"exception : {err}\n")
             print("error::deletProcess:>>", sys.exc_info()[1])
         finally:
             mon.close()
@@ -327,7 +345,8 @@ class InstaPorcessClass():
                 result = False
             else:
                 result = True
-        except:
+        except Exception as err:
+            print(f"exception : {err}\n")
             print("error::dbProcessReader:>>", sys.exc_info()[1])
         finally:
             mon.close()
@@ -341,7 +360,8 @@ class DBDataFetcher():
             self.mon = pymongo.MongoClient(host=config.host, port=config.mongoPort)
             db = self.mon[productId + ":" + user + ":insta"]
             self._collection = db[tags]
-        except:
+        except Exception as err:
+            print(f"exception : {err}\n")
             print("error::DBDataFetcher.init>>", sys.exc_info()[1])
 
     def dbFetcher(self, limit=20):
@@ -351,7 +371,8 @@ class DBDataFetcher():
             for i in records:
                 del i["_id"]
                 mainlist.append(i)
-        except:
+        except Exception as err:
+            print(f"exception : {err}\n")
             print("error::dbFetcher>>", sys.exc_info()[1])
         finally:
             return ujson.dumps(mainlist)
@@ -374,7 +395,8 @@ class DBDataFetcher():
                 mainlist.append(i)
             postval["posts"] = mainlist
             postval["status"] = True
-        except:
+        except Exception as err:
+            print(f"exception : {err}\n")
             print("error::", sys.exc_info()[1])
             postval["status"] = False
         finally:
@@ -395,7 +417,8 @@ class DBDataFetcher():
                 mainlist.append(i)
             postval["posts"] = mainlist[::-1]
             postval["status"] = True
-        except:
+        except Exception as err:
+            print(f"error : {err}\n")
             print("error::", sys.exc_info()[1])
             postval["status"] = False
         finally:
@@ -413,7 +436,8 @@ def main():
         productId = sys.argv[4]
         obj = InstaPorcessClass()
         obj.startprocess(user=user, tags=tags, type=type, productId=productId)
-    except:
+    except Exception as err:
+        print(f"exception : {err}")
         print("error::main>>", sys.exc_info()[1])
 
 

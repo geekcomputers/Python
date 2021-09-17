@@ -305,7 +305,7 @@ class App(Tk, Settings):
             file.close()
 
         # Se não for possível, será criado um arquivo para guardar o placar
-        except:
+        except BaseException:
             file = open(self.score_fp, 'w')
             file.write(bin(self.__bestScore))
             file.close()

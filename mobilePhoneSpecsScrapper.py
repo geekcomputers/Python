@@ -1,8 +1,8 @@
 import requests
 from bs4 import BeautifulSoup
-import csv
+# import csv
 import os
-import time
+# import time
 import json
 
 
@@ -89,8 +89,8 @@ class Phonearena():
                 }
                 with open(obj.absolute_path+'-PhoneSpecs.json', 'w+') as of:
                     json.dump(phone_data, of)
-            except:
-                print("Exception happened!")
+            except Exception as error:
+                print(f"Exception happened : {error}")
                 continue
         return phone_data
 

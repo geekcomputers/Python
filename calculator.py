@@ -24,7 +24,6 @@ absolute value             : aval(n)
 """
 
 import sys
-import math
 ## Imported math library to run sin(), cos(), tan() and other such functions in the calculator 
 
 from fileinfo import raw_input

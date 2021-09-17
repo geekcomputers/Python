@@ -1,8 +1,8 @@
 
-# This program adds two numbers
+# User pick two numbers to sum
 
-num1 = 1.5
-num2 = 6.3
+num1 = float(input("Number 1:"))
+num2 = float(input("Number 2:"))
 
 # Add two numbers
 sum = num1 + num2

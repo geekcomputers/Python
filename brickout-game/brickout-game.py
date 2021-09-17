@@ -252,7 +252,7 @@ class BrickWall(pygame.sprite.Group):
 
         # removes the None-elements from the brick list.
         for brick in self._bricks:
-            if brick == None:
+            if brick is None:
                 self._bricks.remove(brick)
 
     def hasWin(self):

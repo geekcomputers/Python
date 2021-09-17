@@ -12,7 +12,7 @@ def getFibonacciIterative(n: int) -> int:
     a = 0
     b = 1
 
-    for i in range(n):
+    for _ in range(n):
         a, b = b, a + b
 
     return a

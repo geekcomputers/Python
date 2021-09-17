@@ -9,12 +9,11 @@ Created on Fri Mar 23 14:17:24 2019
 
 import math
 import os
+from collections import deque
+from random import randint
+
 import pygame
 from pygame.locals import *
-from random import randint
-from collections import deque
-
-
 
 FPS = 60
 ANI_SPEED = 0.18  # pixels per millisecond

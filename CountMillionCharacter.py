@@ -301,7 +301,7 @@ for x, y in enumerate(wordlist):
     try:
         if special_character.group():  #returns all matching groups
             wordlist[x] = y[:-1]
-    except:
+    except BaseException:
         continue
 
 wordfreq = [wordlist.count(w) for w in wordlist]  #counts frequency of a letter in the given list

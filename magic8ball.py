@@ -16,7 +16,7 @@ def magic8Ball():
 def tryAgain():
     print("Do you wanna ask any more questions? press Y for yes and any other key to exit ")
     x = input()
-    if(x == 'Y'):
+    if(x in ['Y', 'y'] ):
         magic8Ball()
     else:
         exit()
