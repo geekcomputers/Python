@@ -8,19 +8,37 @@ def tree(i):
         return
     else:
         t.forward(i)
-        t.left(10)
-        t.right(5)
-        t.left(2.5)
+        t.backward(i-2)
+        t.left(100)
+        t.right(50)
+        t.left(25)
         t.backward(20)
-        tree(3*i/4)
+        t.left(5)
+        tree(2*i/5)
         t.right(20)
-        tree(3*i/4)
+        tree(2*i/5)
         t.left(10)
         t.right(5)
-        t.left(2.5)
+        t.left(25)
         t.forward(15)
-        t.backward(i)
-tree(40)
-tree(30)
-tree(40)
+        t.right(50)
+        t.left(100)
+        t.backward(i-1)
+        t.forward(i+2)
+
+def cycle(i):
+    if i<100:
+        return 
+    else:
+        tree(50)
+        tree(40)
+        tree(35)
+        tree(5)
+        tree(35)
+        tree(40)
+        tree(50)
+
+cycle(1300)
+cycle(2600)
+cycle(1300)
 turtle.done()
