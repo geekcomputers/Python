@@ -38,7 +38,13 @@ def cycle(i):
         tree(40)
         tree(50)
 
+cycle(650)
 cycle(1300)
 cycle(2600)
+cycle(3900)
+tree(1200)
+cycle(2600)
 cycle(1300)
+cycle(650)
+
 turtle.done()
