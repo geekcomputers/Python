@@ -1,9 +1,10 @@
 import turtle
 import random
 t = turtle.Turtle()
-t.right(90)
-t.speed(100)
-t.left(90)
+num=random.randint(1,100)
+t.right(num)
+t.speed(num)
+t.left(num)
 
 def tree(i):
     if i<10:
@@ -11,22 +12,10 @@ def tree(i):
     else:
         t.forward(i)
         t.backward(i-2)
-        t.left(100)
-        t.right(50)
-        t.left(25)
-        t.backward(20)
-        t.left(5)
-        tree(2*i/5)
-        t.right(20)
-        tree(2*i/5)
-        t.left(10)
-        t.right(5)
-        t.left(25)
-        t.forward(15)
-        t.right(50)
-        t.left(100)
+        t.left(i+3)
         t.backward(i-1)
         t.forward(i+2)
+        t.right(i+3)
         print('tree execution complete')
 
 def cycle(i):
@@ -51,6 +40,6 @@ def fractal(i):
          cycle(random.randint(1,i-2))
          print('fractal execution complete')
 
-fractal(random.randint(1,20000))
+fractal(random.randint(1,2000))
 print('Execution complete')
 turtle.done()
