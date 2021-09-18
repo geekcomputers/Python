@@ -1,7 +1,7 @@
 import turtle
 import random
 t = turtle.Turtle()
-num=random.randint(1,100)
+num=random.randint(1,1000)
 t.right(num)
 t.speed(num)
 t.left(num)
@@ -10,22 +10,24 @@ def tree(i):
     if i<10:
         return
     else:
-        t.right(10)
-        tree(3*i/4)
+        t.right(15)
+        t.forward(15)
+        t.left(20)
         t.backward(20)
         tree(2*i/5)
-        tree(i/5)
-        t.forward(90)
-        t.left(20)
-        tree(i*2)
-        t.backward(100)
-        t.right(30)
-        tree(i/5)
-        t.forward(30)
-        t.left(40)
+        t.left(2)
         tree(3*i/4)
-        t.forward(90)
+        t.left(2)
+        tree(i/2)
+        t.right(2)
+        tree(3*i/4)
+        t.right(2)
         tree(2*i/5)
+        t.right(2)
+        t.left(10)
+        t.backward(10)
+        t.right(15)
+        t.forward(15)
         print('tree execution complete')
 
 def cycle(i):
