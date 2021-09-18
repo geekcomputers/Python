@@ -14,6 +14,8 @@ def tree(i):
         tree(3*i/4)
         t.backward(20)
         tree(2*i/5)
+        tree(i/5)
+        tree(i)
         t.forward(30)
         t.left(40)
         tree(3*i/4)
