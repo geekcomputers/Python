@@ -44,9 +44,11 @@ def fractal(i):
         return
     else:
          cycle(i+1)
-         tree(i)
-         tree(i+2)
-         cycle(i-1)
+         tree(i-1)
+         cycle(i-2)
+         tree(i-2)
+         tree(i-1)
+         cycle(i+1)
 
-fractal(111200)
+fractal(200000)
 turtle.done()
