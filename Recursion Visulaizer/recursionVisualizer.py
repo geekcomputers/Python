@@ -38,13 +38,23 @@ def cycle(i):
         tree(40)
         tree(50)
 
-cycle(650)
-cycle(1300)
-cycle(2600)
-cycle(3900)
-tree(1200)
-cycle(2600)
-cycle(1300)
-cycle(650)
 
+def fractal(i):
+    if i<100:
+        return
+    else:
+         cycle(650)
+         cycle(1300)
+         cycle(2600)
+         cycle(3900)
+         tree(1200)
+         cycle(2600)
+         tree(i)
+         tree(1300)
+         cycle(1300)
+         tree(650)
+         tree(i)
+         cycle(650)
+
+fractal(111200)
 turtle.done()
