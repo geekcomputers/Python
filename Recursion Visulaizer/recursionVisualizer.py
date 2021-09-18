@@ -15,10 +15,15 @@ def tree(i):
         t.backward(20)
         tree(2*i/5)
         tree(i/5)
-        tree(i)
+        t.forward(90)
+        tree(i*2)
+        t.backward(100)
+        tree(i/5)
         t.forward(30)
         t.left(40)
         tree(3*i/4)
+        t.forward(90)
+        tree(2*i/5)
         print('tree execution complete')
 
 def cycle(i):
