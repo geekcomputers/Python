@@ -1,4 +1,5 @@
 import turtle
+import random
 t = turtle.Turtle()
 t.left(90)
 t.speed(100)
@@ -41,10 +42,10 @@ def fractal(i):
     if i<100:
         return
     else:
-         cycle(i+1)
-         cycle(i)
-         cycle(i-1)
-         cycle(i-2)
+         cycle(random.randint(0,i+1))
+         cycle(random.randint(0,i))
+         cycle(random.randint(0,i-1))
+         cycle(random.randint(0,i-2))
 
-fractal(2000)
+fractal(200)
 turtle.done()
