@@ -19,6 +19,8 @@ def tree(i):
         tree(3*i/4)
         t.left(2)
         tree(i/2)
+        t.backward(num)
+        t.forward(num)
         t.right(2)
         tree(3*i/4)
         t.right(2)
