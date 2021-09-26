@@ -6,7 +6,16 @@ print('Starting the Rock Paper Scissors game!')
 player_name = input('Please enter your name: ') # Takes Input from the user
 
 print('Pick a hand: (0: Rock, 1: Paper, 2: Scissors)')
-player_hand = int(input('Please enter a number (0-2): '))
+
+while True:
+    try:
+        player_hand = int(input('Please enter a number (0-2): '))
+        if player_hand not in range(3):
+            raise ValueError
+        else:
+            break
+    except ValueError as e: 
+        print('Please input a correct number')
 
 if utils.validate(player_hand):
     # Assign a random number between 0 and 2 to computer_hand using randint
