@@ -1,7 +1,7 @@
 import pickle
 
 def binaryread():
-    B=open("D:\\12th File handle\\studrec.dat","rb")
+    B=open("studrec.dat","rb")
     stud=pickle.load(B)
     print(stud)
 
