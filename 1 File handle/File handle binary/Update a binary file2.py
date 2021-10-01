@@ -3,7 +3,7 @@
 import pickle
 
 def update():
-    F=open("D:\\12th File handle\\studrec.dat","rb+")
+    F=open("studrec.dat","rb+")
     value=pickle.load(F)
     found=0
     roll=int(input("Enter the roll number of the record"))
