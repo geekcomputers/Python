@@ -11,7 +11,7 @@ Write a function remcount( ) to count the number of students who need
 #also find no. of children who got top marks
 
 import pickle
-F=open("D:\\12th File handle\\class.dat",'ab')
+F=open("class.dat",'ab')
 list=[[1,"Ramya",30],[2,"vaishnavi",60],[3,"anuya",40],[4,"kamala",30],[5,"anuraag",10],[6,"Reshi",77],[7,"Biancaa.R",100],[8,"sandhya",65]]
 
 
@@ -19,7 +19,7 @@ pickle.dump(list,F)
 F.close()
 
 def remcount():
-    F=open("D:\\12th File handle\\class.dat","rb")
+    F=open("class.dat","rb")
     val=pickle.load(F)
     count=0
     
@@ -33,7 +33,7 @@ def remcount():
 remcount()
 
 def firstmark():
-    F=open("D:\\12th File handle\\class.dat",'rb')
+    F=open("class.dat",'rb')
     val=pickle.load(F)
     main=[]
     count=0
@@ -57,7 +57,7 @@ def firstmark():
     F.close()
 firstmark()
 
-F=open("D:\\12th File handle\\class.dat","rb")
+F=open("class.dat","rb")
 val=pickle.load(F)
 print(val)
 F.close()
