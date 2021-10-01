@@ -1,5 +1,5 @@
 def longlines():
-    F=open("D:\\12th File handle\\story.txt","r")
+    F=open("story.txt","r")
     line=F.readlines()
 
     for i in line:
