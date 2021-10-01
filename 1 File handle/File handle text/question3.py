@@ -4,7 +4,7 @@ the number of lines which starts with either “I‟ or “M‟."""
 
 #step1:
 def write_to_file():
-    F=open("D:\\12th file handle\\happy.txt","a")
+    F=open("happy.txt","a")
     while True:
         text=input("enter any text")
        
@@ -17,7 +17,7 @@ def write_to_file():
 
 #step2:
 def check_first_letter():
-    F=open("D:\\12th file handle\\happy.txt","r")
+    F=open("happy.txt","r")
     value=F.read()
     count=0
     line=value.split()
