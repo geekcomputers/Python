@@ -1,5 +1,5 @@
 # Author:       Tan Duc Mai
-# Email:        tanducwork@gmail.com
+# Email:        tan.duc.work@gmail.com
 # Description:  Three different functions to check whether a given number is a prime.
 #               Return True if it is a prime, False otherwise.
 #               Those three functions, from a to c, decreases in efficiency
