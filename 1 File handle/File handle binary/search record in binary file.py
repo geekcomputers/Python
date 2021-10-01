@@ -3,7 +3,7 @@
 import pickle
 
 def binary_search():
-    F=open("D:\\12th File handle\\studrec.dat",'rb')  
+    F=open("studrec.dat",'rb')  
     # your file path will be different
     value=pickle.load(F)
     search=0
