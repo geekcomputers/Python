@@ -21,3 +21,15 @@ print(List)
 List.insert(1 , 3)
 print(List)
 """
+
+list2 = [2, 3, 7, 5, 10, 17, 12, 4, 1, 13]
+for i in list2:
+    if i % 2 == 0:
+        print(i)
+'''
+Expected Output:
+2
+10
+12
+4
+'''
