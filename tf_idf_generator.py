@@ -69,7 +69,7 @@ def paint(str, color='r'):
 TAG = paint('TF-IDF-GENE/', 'b')
 
 
-def find_tf_idf(file_names=['./../test/testdata'], prev_file_path=None, dump_path=None):
+def find_tf_idf(file_names=None, prev_file_path=None, dump_path=None):
     '''Function to create a TF-IDF list of dictionaries for a corpus of docs.
     If you opt for dumping the data, you can provide a file_path with .tfidfpkl extension(standard made for better understanding)
     and also re-generate a new tfidf list which overrides over an old one by mentioning its path.
@@ -85,6 +85,8 @@ def find_tf_idf(file_names=['./../test/testdata'], prev_file_path=None, dump_pat
     idf : a dict of unique words in corpus,with their document frequency as values.
     tf_idf : the generated tf-idf list of dictionaries for mentioned docs.
     '''
+    if file_names is None:
+        file_names = ['./../test/testdata']
     tf_idf = []  # will hold a dict of word_count for every doc(line in a doc in this case)
     idf = {}
 
