@@ -1,7 +1,6 @@
 import time
 obj = time.localtime()
 time = time.asctime(obj)
-print(time)
 hello=time.split()
 day=hello[0]
 day_=hello[2]
