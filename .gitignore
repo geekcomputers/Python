@@ -1,0 +1,25 @@
+.idea
+*.pyc
+string=sorted(input())
+lower=""
+even=""
+odd=""
+upper=""
+for i in string:
+    if i.islower():
+        lower+=i
+    elif i.isupper():
+        upper+=i
+    elif int(i)%2==0:
+        even+=i
+    else:
+        odd+=i
+print(lower+upper+odd+even)
+
+# operating system-related files
+
+# file properties cache/storage on macOS
+*.DS_Store
+
+# thumbnail cache on Windows
+Thumbs.db

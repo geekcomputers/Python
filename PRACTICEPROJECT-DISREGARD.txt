@@ -1,0 +1,5 @@
+This is practice for my first time using GitHub
+
+Please disregard as I'm getting used to using CLI and GitHub
+
+Thanks!
