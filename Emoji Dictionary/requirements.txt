@@ -1,0 +1,3 @@
+libraries used : tkinter
+		 messagebox
+		 emoji
