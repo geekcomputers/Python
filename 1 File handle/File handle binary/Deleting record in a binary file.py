@@ -9,7 +9,7 @@ def Bdelete():
     rec= []
     for i in stud:
         if i[0] == rno:
-        continue
+            continue
         rec.append(i)
     pickle.dump(rec,F)
     F.close()
