@@ -32,27 +32,21 @@ sleep(2)
 d_cards = []  # Initialising dealer's cards
 p_cards = []  # Initialising player's cards
 sleep(2)
-while len(d_cards) != 2:
+for i in range(2):
     random.shuffle(deck)
     d_cards.append(deck.pop())
-    if len(d_cards) == 2:
-        print('The cards dealer has are X ', d_cards[1])
+
+print('The cards dealer has are X ', d_cards[1])
 
 # Displaying the Player's cards
-while len(p_cards) != 2:
+for i in range(2):
     random.shuffle(deck)
     p_cards.append(deck.pop())
-    if len(p_cards) == 2:
-        print("The total of player is ", sum(p_cards))
-        print("The cards Player has are  ", p_cards)
 
-if sum(p_cards) > 21:
-    print(f"You are BUSTED !\n  {'*'*14}Dealer Wins !!{'*'*14}\n")
-    exit()
+print("The total of player is ", sum(p_cards))
+print("The cards Player has are  ", p_cards)
 
-if sum(d_cards) > 21:
-    print(f"Dealer is BUSTED !\n   {'*'*14} You are the Winner !!{'*'*18}\n")
-    exit()
+#Blackjack is designed so that there will never be a starting hand higher than 21, so these two if statements don't have to be here :)
 
 if sum(d_cards) == 21:
     print(f"{'*'*24}Dealer is the Winner !!{'*'*14}")
@@ -67,8 +61,10 @@ if sum(d_cards) == 21 and sum(p_cards) == 21:
 def dealer_choice():
     if sum(d_cards) < 17:
         while sum(d_cards) < 17:
-            random.shuffle(deck)
+            #you only really have to shuffle once, but it's fine either way
             d_cards.append(deck.pop())
+            if sum(d_cards) > 21 and 11 in d_cards:
+                d_cards[d_cards.index(11)] = 1
 
     print("Dealer has total " + str(sum(d_cards)) + "with the cards ", d_cards)
 
@@ -105,13 +101,15 @@ while sum(p_cards) < 21:
 
     # to continue the game again and again !!
     k = input('Want to hit or stay?\n Press 1 for hit and 0 for stay ')
-    if k == 1:
-        random.shuffle(deck)
+    if k == "1":
         p_cards.append(deck.pop())
         print('You have a total of ' + str(sum(p_cards))
               + ' with the cards ', p_cards)
         if sum(p_cards) > 21:
-            print(f'{"*"*13}You are BUSTED !{"*"*13}\n Dealer Wins !!')
+            if 11 in p_cards:
+                pcards[pcards.index(11)] = 1
+            else:
+                print(f'{"*"*13}You are BUSTED !{"*"*13}\n Dealer Wins !!')
         if sum(p_cards) == 21:
             print(f'{"*"*19}You are the Winner !!{"*"*29}')
 
