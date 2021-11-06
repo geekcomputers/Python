@@ -5,13 +5,13 @@ import socket
 # create TCP/IP socket
 s = socket.socket()
 # get the according IP address
-ip_address = socket.gethostbyname(socket.gethostname())
+ip = socket.gethostbyname(socket.gethostname())
 # binding ip address and port 
-s.bind((ip_address, 12345))
+s.bind((ip, 12345))
 # listen for incoming connections (server mode) with 3 connection at a time
 s.listen(3)
 # print your ip address
-print("Server ip address:", ip_address)
+print("Server ip address:", ip)
 while True:
     # waiting for a connection establishment
     print('waiting for a connection')
