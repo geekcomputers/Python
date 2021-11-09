@@ -1,6 +1,6 @@
 # It returns location of x in given array arr  
 # if present, else returns -1 
-def binarySearch(arr, l, r, x):
+def binary_search(arr, l, r, x):
     if l <= r:
         
         mid = (l+r) // 2 #extracting the middle element from the array
@@ -31,7 +31,7 @@ if __name__ == "__main__":
     x = eval(input("Enter the element you want to search in given array"))
 
     # Function call
-    result = binarySearch(arr, 0, len(arr) - 1, x)
+    result = binary_search(arr, 0, len(arr) - 1, x)
      
     #printing the output
     if result != -1:
