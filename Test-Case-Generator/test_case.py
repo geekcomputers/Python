@@ -10,15 +10,6 @@ import webbrowser
 import os
 
 mycolor = '#262626'
-gui = Tk()
-gui.title('TEST CASE GENERATOR')
-gui.configure(bg=mycolor)
-
-if os.environ.get('DISPLAY', '') == '':
-    print('no display found, using:0,0')
-    os.environ.__setitem__('DISPLAY', ':0.0')
-else:
-    print('found display')
 
 
 class Case:
@@ -713,26 +704,37 @@ class Type10(Case):
             self.output.insert(END, '\n')
 
 
-t = IntVar()
-n_min = IntVar()
-n_max = IntVar()
-m_min = IntVar()
-m_max = IntVar()
-k_min = IntVar()
-k_max = IntVar()
-a_min = IntVar()
-a_max = IntVar()
-b_min = IntVar()
-b_max = IntVar()
-char_lis = StringVar()
+if __name__ == '__main__':
+    gui = Tk()
+    gui.title('TEST CASE GENERATOR')
+    gui.configure(bg=mycolor)
 
-Case.home(self=Case)
+    if os.environ.get('DISPLAY', '') == '':
+        print('no display found, using:0,0')
+        os.environ.__setitem__('DISPLAY', ':0.0')
+    else:
+        print('found display')
+    
+    t = IntVar()
+    n_min = IntVar()
+    n_max = IntVar()
+    m_min = IntVar()
+    m_max = IntVar()
+    k_min = IntVar()
+    k_max = IntVar()
+    a_min = IntVar()
+    a_max = IntVar()
+    b_min = IntVar()
+    b_max = IntVar()
+    char_lis = StringVar()
 
-gui.mainloop()
-gui.mainloop()
+    Case.home(self=Case)
 
-#  ------------------------------------------------- ###
-#  ------------------------------------------------- ###
-#  ### Developed by TANMAY KHANDELWAL (aka Dude901). ###
-#  _________________________________________________ ###
-#  _________________________________________________ ###
+    gui.mainloop()
+    gui.mainloop()
+
+    #  ------------------------------------------------- ###
+    #  ------------------------------------------------- ###
+    #  ### Developed by TANMAY KHANDELWAL (aka Dude901). ###
+    #  _________________________________________________ ###
+    #  _________________________________________________ ###
