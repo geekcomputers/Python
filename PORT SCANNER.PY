@@ -71,10 +71,11 @@ Open up an text editor, copy & paste the code below. Save the file as:
 import socket
 import subprocess
 import sys
-from datetime import datetime
+from time import time
+import platform
 
 # Clear the screen
-subprocess.call('clear', shell=True)
+subprocess.call('clear' if platform.platform() in ("Linux", "Darwin") else "cls", shell=True)
 
 # Ask for input
 remoteServer = input("Enter a remote host to scan: ")
@@ -86,7 +87,7 @@ print("Please wait, scanning remote host", remoteServerIP)
 print("-" * 60)
 
 # Check what time the scan started
-t1 = datetime.now()
+t1 = time()
 
 # Using the range function to specify ports (here it will scans all ports between 1 and 1024)
 
@@ -102,21 +103,21 @@ try:
 
 except KeyboardInterrupt:
     print("You pressed Ctrl+C")
-    sys.exit()
+    sys.exit(2)
 
 except socket.gaierror:
     print('Hostname could not be resolved. Exiting')
-    sys.exit()
+    sys.exit(1)
 
 except socket.error:
     print("Couldn't connect to server")
-    sys.exit()
+    sys.exit(3)
 
 # Checking the time again
-t2 = datetime.now()
+t2 = time()
 
 # Calculates the difference of time, to see how long it took to run the script
 total = t2 - t1
 
 # Printing the information to screen
-print('Scanning Completed in: ', total)
+print('Scanning Completed in about {total} seconds', total)
