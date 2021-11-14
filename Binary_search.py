@@ -12,11 +12,11 @@ def binary_search(arr, l, r, x):
         # If element is smaller than mid, then it can only
         # be present in left subarray
         elif arr[mid] > x:
-            return binarySearch(arr, l, mid - 1, x)
+            return binary_search(arr, l, mid - 1, x)
  
         # Else the element can only be present in right subarray
         else:
-            return binarySearch(arr, mid + 1, r, x)
+            return binary_search(arr, mid + 1, r, x)
             
     # If we reach here, then the element was not present 
     return -1
