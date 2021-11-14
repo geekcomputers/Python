@@ -19,7 +19,6 @@ jobs:
       - run: pip install -r requirements.txt || pip install --editable . || true
       - run: mkdir --parents --verbose .mypy_cache
       - run: mypy --ignore-missing-imports --install-types --non-interactive . || true
-      - run: pytest . || true
-      - run: pytest --doctest-modules . || true
+      - run: pytest . || pytest --doctest-modules .
       - run: shopt -s globstar && pyupgrade --py36-plus **/*.py || true
       - run: safety check
