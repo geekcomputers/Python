@@ -1,7 +1,7 @@
 #########
 
-__author__ = 'Mohammed Shokr <mohammedshokr2014@gmail.com>'
-__version__ = 'v 0.1'
+__author__ = "Mohammed Shokr <mohammedshokr2014@gmail.com>"
+__version__ = "v 0.1"
 
 """
 JARVIS:
@@ -11,21 +11,24 @@ JARVIS:
 # import modules
 import datetime  # datetime module supplies classes for manipulating dates and times
 import subprocess  # subprocess module allows you to spawn new processes
+
 # master
 import pyjokes
 import requests
 import json
 from PIL import Image, ImageGrab
 from gtts import gTTS
+
 # for 30 seconds clip "Jarvis, clip that!" and discord ctrl+k quick-move (might not come to fruition)
 from pynput import keyboard
 from pynput.keyboard import Key, Listener
 from pynput.mouse import Button, Controller
+
 # =======
 from playsound import *  # for sound output
+
 # master
-import \
-    speech_recognition as sr  # speech_recognition Library for performing speech recognition with support for Google Speech Recognition, etc..
+import speech_recognition as sr  # speech_recognition Library for performing speech recognition with support for Google Speech Recognition, etc..
 
 # pip install pyttsx3
 # need to run only once to install the library
@@ -37,60 +40,66 @@ import smtplib
 
 # initialisation
 engine = pyttsx3.init()
-voices = engine.getProperty('voices')
-engine.setProperty('voice', voices[0].id)
-engine.setProperty('rate', 150)
-exit_jarvis=False
+voices = engine.getProperty("voices")
+engine.setProperty("voice", voices[0].id)
+engine.setProperty("rate", 150)
+exit_jarvis = False
+
+
 def speak(audio):
     engine.say(audio)
     engine.runAndWait()
 
+
 def speak_news():
-    url = 'http://newsapi.org/v2/top-headlines?sources=the-times-of-india&apiKey=yourapikey'
+    url = "http://newsapi.org/v2/top-headlines?sources=the-times-of-india&apiKey=yourapikey"
     news = requests.get(url).text
     news_dict = json.loads(news)
-    arts = news_dict['articles']
-    speak('Source: The Times Of India')
-    speak('Todays Headlines are..')
+    arts = news_dict["articles"]
+    speak("Source: The Times Of India")
+    speak("Todays Headlines are..")
     for index, articles in enumerate(arts):
-        speak(articles['title'])
+        speak(articles["title"])
         if index == len(arts) - 1:
             break
-        speak('Moving on the next news headline..')
-    speak('These were the top headlines, Have a nice day Sir!!..')
+        speak("Moving on the next news headline..")
+    speak("These were the top headlines, Have a nice day Sir!!..")
 
 
 def sendEmail(to, content):
-    server = smtplib.SMTP('smtp.gmail.com', 587)
+    server = smtplib.SMTP("smtp.gmail.com", 587)
     server.ehlo()
     server.starttls()
-    server.login('youremail@gmail.com', 'yourr-password-here')
-    server.sendmail('youremail@gmail.com', to, content)
+    server.login("youremail@gmail.com", "yourr-password-here")
+    server.sendmail("youremail@gmail.com", to, content)
     server.close()
 
+
 def wishme():
-    #This function wishes user
-    hour=int(datetime.datetime.now().hour)
-    if(hour>=0 and hour<12):
+    # This function wishes user
+    hour = int(datetime.datetime.now().hour)
+    if hour >= 0 and hour < 12:
         speak("Good Morning!")
-    elif(hour>=12 and hour<18):
+    elif hour >= 12 and hour < 18:
         speak("Good Afternoon!")
     else:
         speak("Good Evening !")
     speak("I m Jarvis  ! how can I help you sir")
+
+
 # obtain audio from the microphone
 def takecommand():
-    #it takes user's command and returns string output
+    # it takes user's command and returns string output
     wishme()
-    r=sr.Recognizer()
+    r = sr.Recognizer()
     with sr.Microphone() as source:
         print("Listening...")
-        r.pause_threshold=1
-        r.dynamic_energy_threshold=500
-        audio=r.listen(source)
+        r.pause_threshold = 1
+        r.dynamic_energy_threshold = 500
+        audio = r.listen(source)
     try:
         print("Recognizing...")
-        query=r.recognize_google(audio,language="en-in")
+        query = r.recognize_google(audio, language="en-in")
         print(f"User said {query}\n")
     except Exception as e:
         print("Say that again please...")
@@ -100,9 +109,9 @@ def takecommand():
 
 # for audio output instead of print
 def voice(p):
-    myobj = gTTS(text=p, lang='en', slow=False)
-    myobj.save('try.mp3')
-    playsound('try.mp3')
+    myobj = gTTS(text=p, lang="en", slow=False)
+    myobj.save("try.mp3")
+    playsound("try.mp3")
 
 
 # recognize speech using Google Speech Recognition
@@ -115,15 +124,16 @@ def on_press(key):
         k = key.char  # single-char keys
     except:
         k = key.name  # other keys
-    if k in ['1', '2', 'left', 'right']:  # keys of interest
+    if k in ["1", "2", "left", "right"]:  # keys of interest
         # self.keys.append(k)  # store it in global-like variable
-        print('Key pressed: ' + k)
+        print("Key pressed: " + k)
         return False  # stop listener; remove this if want more keys
+
+
 # Run Application with Voice Command Function
 # only_jarvis
 def on_release(key):
-    print('{0} release'.format(
-        key))
+    print("{0} release".format(key))
     if key == Key.esc():
         # Stop listener
         return False
@@ -177,8 +187,10 @@ class Jarvis:
 
 # =======
 """
+
+
 def get_app(Q):
-    current=Controller()
+    current = Controller()
     # master
     if Q == "time":
         print(datetime.now())
@@ -188,21 +200,21 @@ def get_app(Q):
         speak_news()
 
     elif Q == "open notepad":
-        subprocess.call(['Notepad.exe'])
+        subprocess.call(["Notepad.exe"])
     elif Q == "open calculator":
-        subprocess.call(['calc.exe'])
+        subprocess.call(["calc.exe"])
     elif Q == "open stikynot":
-        subprocess.call(['StikyNot.exe'])
+        subprocess.call(["StikyNot.exe"])
     elif Q == "open shell":
-        subprocess.call(['powershell.exe'])
+        subprocess.call(["powershell.exe"])
     elif Q == "open paint":
-        subprocess.call(['mspaint.exe'])
+        subprocess.call(["mspaint.exe"])
     elif Q == "open cmd":
-        subprocess.call(['cmd.exe'])
+        subprocess.call(["cmd.exe"])
     elif Q == "open discord":
-        subprocess.call(['discord.exe'])
+        subprocess.call(["discord.exe"])
     elif Q == "open browser":
-        subprocess.call(['C:\Program Files\Internet Explorer\iexplore.exe'])
+        subprocess.call(["C:\Program Files\Internet Explorer\iexplore.exe"])
     # patch-1
     elif Q == "open youtube":
         webbrowser.open("https://www.youtube.com/")  # open youtube
@@ -210,7 +222,9 @@ def get_app(Q):
         webbrowser.open("https://www.google.com/")  # open google
     elif Q == "open github":
         webbrowser.open("https://github.com/")
-    elif Q == "email to other":  # here you want to change and input your mail and password whenver you implement
+    elif (
+        Q == "email to other"
+    ):  # here you want to change and input your mail and password whenver you implement
         try:
             speak("What should I say?")
             r = sr.Recognizer()
@@ -219,7 +233,7 @@ def get_app(Q):
                 r.pause_threshold = 1
                 audio = r.listen(source)
             to = "abc@gmail.com"
-            content=input("Enter content")
+            content = input("Enter content")
             sendEmail(to, content)
             speak("Email has been sent!")
         except Exception as e:
@@ -230,9 +244,9 @@ def get_app(Q):
     elif Q == "Take screenshot":
         snapshot = ImageGrab.grab()
         drive_letter = "C:\\"
-        folder_name = r'downloaded-files'
+        folder_name = r"downloaded-files"
         folder_time = datetime.datetime.now().strftime("%Y-%m-%d_%I-%M-%S_%p")
-        extention = '.jpg'
+        extention = ".jpg"
         folder_to_save_files = drive_letter + folder_name + folder_time + extention
         snapshot.save(folder_to_save_files)
 
@@ -240,15 +254,15 @@ def get_app(Q):
         speak(pyjokes.get_joke())
 
     elif Q == "start recording":
-        current.add('Win', 'Alt', 'r')
+        current.add("Win", "Alt", "r")
         speak("Started recording. just say stop recording to stop.")
 
     elif Q == "stop recording":
-        current.add('Win', 'Alt', 'r')
+        current.add("Win", "Alt", "r")
         speak("Stopped recording. check your game bar folder for the video")
 
     elif Q == "clip that":
-        current.add('Win', 'Alt', 'g')
+        current.add("Win", "Alt", "g")
         speak("Clipped. check you game bar file for the video")
         with keyboard.Listener(on_press=on_press, on_release=on_release) as listener:
             listener.join()
@@ -256,13 +270,7 @@ def get_app(Q):
     else:
         exit()
 
-
-
-
-
-
     # master
-
 
     apps = {
         "time": datetime.datetime.now(),
@@ -272,18 +280,15 @@ def get_app(Q):
         "shell": "powershell.exe",
         "paint": "mspaint.exe",
         "cmd": "cmd.exe",
-        "browser": "C:\Program Files\Internet Explorer\iexplore.exe"
+        "browser": "C:\Program Files\Internet Explorer\iexplore.exe",
     }
     # master
 
 
-
-
-
 # Call get_app(Query) Func.
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     while not exit_jarvis:
-        Query=takecommand().lower()
+        Query = takecommand().lower()
         get_app(Query)
-    exit_jarvis=True
+    exit_jarvis = True

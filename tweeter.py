@@ -26,7 +26,7 @@ def getStatus():
             lines.append(line)
         else:
             break
-    status = '\n'.join(lines)
+    status = "\n".join(lines)
     return status
 
 
