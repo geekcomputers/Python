@@ -1,6 +1,7 @@
 # this uses GPL V3 LICENSE
 # code by @JymPatel
 
+import sys
 
 binary = '$' # just starting var
 n = 15 # can get 2**16 numbers
