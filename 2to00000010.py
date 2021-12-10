@@ -17,7 +17,5 @@ while n >= 0:
         input = input - 2**n
     n = n - 1
 
-print(binary)
-
 # get it at https://github.com/JymPatel/Python3-FirstEdition
 print("get it at https://github.com/JymPatel/Python3-FirstEdition")
