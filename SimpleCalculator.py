@@ -1,4 +1,8 @@
+<<<<<<< HEAD
+
+=======
 #Simple Calculator
+>>>>>>> e0ba9de065f9f564499afeba0be80fa771b0648a
 def add(a, b):
     return a + b
 
@@ -16,6 +20,7 @@ def divide(a, b):
 
 def power(a,b):
     return a**b
+
 
 def main():
     print("Select Operation")
@@ -45,4 +50,6 @@ def main():
     else:
         print("Invalid input")
         main()
+
+
 main()
