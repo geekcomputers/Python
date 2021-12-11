@@ -1,0 +1,2 @@
+PyPDF2
+pyttsx3
