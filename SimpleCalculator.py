@@ -45,4 +45,5 @@ def main():
     else:
         print("Invalid input")
         main()
-main()
+if __name__ == "__main__":
+    main()
