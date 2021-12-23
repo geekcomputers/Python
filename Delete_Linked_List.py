@@ -9,6 +9,10 @@ class Linked_List:
         self.head = None
 
     def Insert_At_End(self, new_data):
+        """
+        Inserts a new node at the end of the list.
+        :param new_data: The data to be inserted into the list.
+        """
         new_node = Node(new_data)
         if self.head is None:
             self.head = new_node
@@ -19,6 +23,13 @@ class Linked_List:
         current.next = new_node
 
     def Delete(self, key):
+        """
+        Delete a node from the linked list.
+        :param self: The head of the linked list.
+        :type self: Node object or None
+        :param key: The data to be deleted from
+        the linked list.
+        """
         temp = self.head
         if temp is None:
             return "Can't Delete!"

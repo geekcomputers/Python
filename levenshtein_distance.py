@@ -1,5 +1,23 @@
 	
 def levenshtein_dis(wordA, wordB):
+     """
+     This function takes two words and returns the number of letters that needs to be added or deleted from the first word to match with
+     the second word.
+     The function also considers the case sensitivity, so it will not count upper case and lower case as different letters.
+     The function also consider if
+     one of the given words is longer than other, then it will take into account how many letter should be 
+     added or deleted from that word. If both given
+     words are same length then it will compare each letter in both words until they differ 
+     in a single letter. If there is no difference between them
+     then return 0 as result else return total number of differences between them  
+
+         :param str: First string input by user (wordA) 
+         :type str:
+     string
+
+         :param str: Second string input by user (wordB) 
+         :type str: string
+     """
     
     wordA = wordA.lower()                       #making the wordA lower case
     wordB = wordB.lower()                       #making the wordB lower case

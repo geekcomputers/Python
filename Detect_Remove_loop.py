@@ -9,6 +9,11 @@ class Linked_List:
         self.head = None
 
     def Insert_At_End(self, new_data):
+        """
+        Inserts a new node at the end of the list.
+        :param self: The object pointer.
+        :param new_data: The data to be inserted in the node.
+        """
         new_node = Node(new_data)
         if self.head is None:
             self.head = new_node
@@ -19,6 +24,15 @@ class Linked_List:
         current.next = new_node
 
     def Detect_and_Remove_Loop(self):
+        """
+        Detect and Remove Loop
+        Given a linked list, check if the linked list has loop or not. Below diagram shows a linked list with a loop.
+        LinkedList:
+        1->2->3->4->5->6-\ 
+                                      |---->6<--------| 
+        If loop is present then remove the loop and return true else return false.
+        NOTE : Try to solve without using extra space (Hint: Use System's Math library)
+        """
         slow = fast = self.head
         while(slow and fast and fast.next):
             slow = slow.next
@@ -30,6 +44,11 @@ class Linked_List:
         return 0
 
     def Remove_loop(self, Loop_node):
+        """
+        Removes the loop from the linked list if present.
+        Parameters: Loop_node - Node at which the loop is detected.
+        Returns: None
+        """
         ptr1 = self.head
         while(1):
             ptr2 = Loop_node

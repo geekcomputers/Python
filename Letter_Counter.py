@@ -5,6 +5,14 @@ root.title("Welcome to Letter Counter App")
 message1 = tk.StringVar()
 Letter1 = tk.StringVar()
 def printt():
+    """
+    Prints the number of times a specified letter is in a message.
+    :param message: The string to be searched for the letter.
+    :type message: str
+        :param
+    letter: The string to be counted in the given string.
+        :type letter: str
+    """
     message=message1.get()
     letter=Letter1.get()
     message = message.lower()

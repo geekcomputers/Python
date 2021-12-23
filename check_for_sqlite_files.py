@@ -14,6 +14,15 @@ import os
 
 
 def isSQLite3(filename):
+    """
+    Checks if the given file is a SQLite database.
+
+    :param filename: The name of the file to be checked.
+    :type filename: str
+
+        :returns bool -- True if
+    it's a SQLite database, False otherwise.
+    """
     from os.path import isfile, getsize
 
     if not isfile(filename):

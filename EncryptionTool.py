@@ -28,6 +28,9 @@ def decryptChar(target):
 
 
 def encrypt(input_text):
+    """
+    Encrypts a string of text by converting each character to its ASCII value and adding 1.
+    """
     col_values = []
     for inp in input_text:
         current = ord(inp)
@@ -37,6 +40,9 @@ def encrypt(input_text):
 
 
 def decrypt(enc_text):
+    """
+    This function takes a list of encrypted characters and returns the decrypted message.
+    """
     col_values = []
     for enc in enc_text:
         current = int(decryptChar(enc))
@@ -46,6 +52,10 @@ def decrypt(enc_text):
 
 
 def readAndDecrypt(filename):
+    """
+    This function takes a string of encrypted data and decrypts it using the given key.
+    It returns the decrypted message as a list of characters.
+    """
     file = open(filename, "r")
     data = file.read()
     datalistint = []
@@ -62,6 +72,13 @@ def readAndDecrypt(filename):
 
 
 def readAndEncrypt(filename):
+    """
+    Reads a file and encrypts each character in the file using the function `encryptChar`.
+
+    :param filename: The name of the file to be encrypted.
+    :type
+    filename: str.
+    """
     file = open(filename, "r")
     data = file.read()
     datalist = list(data)
@@ -76,6 +93,23 @@ def readAndEncrypt(filename):
 
 
 def readAndEncryptAndSave(inp_file, out_file):
+    """
+    Reads a file and encrypts its contents.
+
+    :param inp_file: The name of the input file to be encrypted.
+    :type inp_file: str
+
+        :param out_file: The
+    name of the output file to write the encrypted text.
+        :type out_file: str
+
+        Reads a given input file, encrypts its contents using AES encryption
+    with 128 bit key and writes them into an output 
+            text file named as specified by `out_file`. Returns None if successful else raises an
+    exception on failure. 
+
+            .. note :: This function is not tested yet! (TODO)
+    """
     enc_list = readAndEncrypt(inp_file)
     output = open(out_file, "w")
     for enc in enc_list:
@@ -84,6 +118,19 @@ def readAndEncryptAndSave(inp_file, out_file):
 
 
 def readAndDecryptAndSave(inp_file, out_file):
+    """
+    Reads a file and decrypts the contents.
+
+    :param inp_file: The name of the input file to be decrypted.
+    :type inp_file: str
+
+        :param out_file: The
+    name of the output file to be created with decrypted contents.
+        :type out_file: str
+
+        :returns list -- A list containing all of the lines from
+    ``inp_file`` that have been decrypted using ``decrypt()`` function from this module, as strings.
+    """
     dec_list = readAndDecrypt(inp_file)
     output = open(out_file, "w")
     for dec in dec_list:

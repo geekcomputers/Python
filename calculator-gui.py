@@ -26,6 +26,31 @@ class Inside:
         self.cal_buttons()  # <---------- Buttons On Calculator
 
     def output_box(self):
+        """
+        Displays the output of the calculation in a readonly text box.
+
+        :param self: Instance of CalcFrame class.
+        :type self: CalcFrame object.
+
+        :param show:
+        Text to be displayed in the output box, defaults to None. 
+                     If no value is passed, it displays "0". 
+                     This parameter is
+        optional and can be omitted from call statement using *args syntax (see example).  
+
+        :type show: str, int or float, optional
+
+         .. note :: The default
+        value for this parameter is set to None because if we want to display an empty string as output instead of 0 then we have two options - either pass an
+        empty string ("") or leave this argument out completely (as shown below).  
+
+                    Example 1 - passing "" as default argument value when
+        function called without any arguments at all will result in displaying an empty string as output instead of 0;  ::     
+
+                        def
+        calc_output(self):                         # Function definition with no arguments passed during call statement execution...         # ...and hence
+        default values for all parameters are used by function during its execution...        return ttk.Entry(self.cal_frame, textvariable
+        """
         show = ttk.Entry(
             self.cal_frame,
             textvariable=self.out_var,
@@ -38,6 +63,17 @@ class Inside:
 
     # ========== * Button Events * ========== < --- Sequence 789456123
     def press_7(self):
+        """
+        Adds the number 7 to the output variable.
+
+        If no value is in the output variable, it adds 7 to an empty string. Otherwise, it adds a new character (7)
+        to 
+        whatever is already in the output variable.
+
+        Args: None
+
+        Returns: None
+        """
         current = self.out_var.get()
         if current == "":
             self.out_var.set(7)
@@ -46,6 +82,12 @@ class Inside:
             self.out_var.set(current)
 
     def press_8(self):
+        """
+        Prints the number 8 to the output field.
+        If no number is present in the output field, it prints 8.
+        Otherwise, it concatenates a string of numbers with
+        8 and prints that value to the output field.
+        """
         current = self.out_var.get()
         if current == "":
             self.out_var.set(8)
@@ -54,6 +96,9 @@ class Inside:
             self.out_var.set(current)
 
     def press_9(self):
+        """
+        This function is used to add 9 to the current value of the output variable.
+        """
         current = self.out_var.get()
         if current == "":
             self.out_var.set(9)
@@ -62,6 +107,10 @@ class Inside:
             self.out_var.set(current)
 
     def press_4(self):
+        """
+        This function is used to add the number 4 to the current value in out_var.
+        If there is no current value, it will set the output variable equal to 4.
+        """
         current = self.out_var.get()
         if current == "":
             self.out_var.set(4)
@@ -70,6 +119,12 @@ class Inside:
             self.out_var.set(current)
 
     def press_5(self):
+        """
+        This function is used to add the number 5 to the current value in out_var.
+        If there is no current value, it will set a new one with 5.
+        Otherwise, it
+        will concatenate the string of numbers with "5".
+        """
         current = self.out_var.get()
         if current == "":
             self.out_var.set(5)
@@ -78,6 +133,9 @@ class Inside:
             self.out_var.set(current)
 
     def press_6(self):
+        """
+        This function is used to add the number 6 to the output box.
+        """
         current = self.out_var.get()
         if current == "":
             self.out_var.set(6)
@@ -86,6 +144,9 @@ class Inside:
             self.out_var.set(current)
 
     def press_1(self):
+        """
+        This function takes a string and adds the number 1 to it. If no string is present, then it will set the output variable to 1.
+        """
         current = self.out_var.get()
         if current == "":
             self.out_var.set(1)
@@ -94,6 +155,14 @@ class Inside:
             self.out_var.set(current)
 
     def press_2(self):
+        """
+        Adds a 2 to the output.
+
+        If no number is present in the output, it adds a 2. Otherwise, it appends an additional 2 to the current value in the output.
+        :param self: The object itself (always required)
+
+        :returns: None
+        """
         current = self.out_var.get()
         if current == "":
             self.out_var.set(2)
@@ -102,6 +171,13 @@ class Inside:
             self.out_var.set(current)
 
     def press_3(self):
+        """
+        This function is used to add the number 3 to the current value of self.out_var, which is a StringVar object that stores
+        the output string. If there's
+        no current value in self.out_var, then it will set its initial value as 3; otherwise,
+        it will concatenate the new digit with the existing digits in
+        self.out_var and update its current value accordingly.
+        """
         current = self.out_var.get()
         if current == "":
             self.out_var.set(3)
@@ -110,6 +186,22 @@ class Inside:
             self.out_var.set(current)
 
     def press_0(self):
+        """
+        Adds a 0 to the output string.
+
+        :param self: The object itself.
+
+        :returns: None. 
+
+            >>> press_0(self)
+
+            Adds a 0 to the output string. 
+
+            >>>
+        press_0(self)()
+
+            Returns None, as it is not meant to be called directly by the user.
+        """
         current = self.out_var.get()
         if current == "":
             self.out_var.set(0)
@@ -125,6 +217,9 @@ class Inside:
         self.out_var.set("")
 
     def press_plus(self):
+        """
+        This function is used to add two numbers.
+        """
         self.value1 = self.out_var.get()
         if self.value1 == "":
             messagebox.showwarning(
@@ -135,6 +230,11 @@ class Inside:
             self.opr = "+"
 
     def press_min(self):
+        """
+        This function is used to subtract two numbers.
+        It takes the first number as input and sets it to self.value1 variable, then clears the output screen
+        and sets operator as '-'.
+        """
         self.value1 = self.out_var.get()
         if self.value1 == "":
             messagebox.showwarning(
@@ -145,6 +245,12 @@ class Inside:
             self.opr = "-"
 
     def press_mul(self):
+        """
+        This function is used to multiply the number.
+        It takes two arguments, one is self and other one is none.
+        If the value of first variable(self.value1)is
+        empty then it will show warning message "Please Enter Number Before Operator" else it will set the operator as * and clear out_var(self.out_var).
+        """
         self.value1 = self.out_var.get()
         if self.value1 == "":
             messagebox.showwarning(
@@ -155,6 +261,13 @@ class Inside:
             self.opr = "*"
 
     def press_div(self):
+        """
+        This function is used to divide the numbers.
+        It takes two inputs value1 and value2.
+        If the first input is empty it shows a warning message box saying
+        "Operator Before Number".
+        Otherwise, it sets an operator as "/" and clears out_var.
+        """
         self.value1 = self.out_var.get()
         if self.value1 == "":
             messagebox.showwarning(
@@ -167,6 +280,11 @@ class Inside:
     # ==============================================
     # ========== ***** Equal Button Function ***** ==========
     def press_equal(self):
+        """
+        This function is used to perform calculation on two numbers.
+        It takes the first number and second number as input from user and performs operation
+        based on operator selected by user.
+        """
         self.value2 = self.out_var.get()
         if self.value2 == "":
             messagebox.showerror(
@@ -202,6 +320,14 @@ class Inside:
                 )
 
     def cal_buttons(self):
+        """
+        This function creates a frame that contains the calculator buttons.
+
+        :param self: The object itself.
+        :type self: tkinter object.
+
+        :returns: None.
+        """
         # ===== Row 1 =====
         btn_c = tk.Button(
             self.cal_frame,
@@ -390,6 +516,22 @@ class Main(tk.Tk):
         # -----------------------------
 
     def geometry_settings(self):
+        """
+        This function is used to set the geometry of the window.
+        It takes 4 arguments:
+            1. self - The current instance of the class.
+            2. _com_width -
+        The width of the computer screen in pixels (int).
+            3. _com_height - The height of the computer screen in pixels (int). 
+            4._my_width - The
+        desired width for our window (int). 
+
+        It returns nothing, but sets a string that contains all this information and sets it as our windows geometry
+        using self's built-in method 'geometry'.
+
+        Note: We use int() to convert these values from floats into integers because we cannot pass floats into
+        tkinter's 'geometry' method, which accepts strings only!
+        """
         _com_width = self.winfo_screenwidth()
         _com_height = self.winfo_screenheight()
         _my_width = 360

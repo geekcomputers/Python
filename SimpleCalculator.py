@@ -18,6 +18,11 @@ def power(a,b):
     return a**b
 
 def main():
+    """
+    This function adds two numbers
+    :param num1: int, first number to be added
+    :param num2: int, second number to be added
+    """
     print("Select Operation")
     print("1.Add")
     print("2.Subtract")

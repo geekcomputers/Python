@@ -15,6 +15,17 @@ def speak(audio):
 
 
 def takeCommand():
+    """
+    Recognizes the user's speech and returns a string output.
+
+    Parameters: 
+        source (Microphone): The microphone that picks up the audio. 
+
+    Returns:
+    str : Output of the speech to text function.
+
+    Raises: None
+    """
     r = sr.Recognizer()
     with sr.Microphone() as source:
         print('Listening...')
@@ -37,6 +48,11 @@ def takeCommand():
 
 
 def translate(word):
+    """
+    This function takes a word as input and returns the meaning of that word from the dictionary.
+    If no such word exists, it suggests similar words to
+    enter instead.
+    """
     word = word.lower()
     if word in data:
         speak('Here is what I found in dictionary..')

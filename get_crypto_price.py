@@ -2,6 +2,15 @@ import ccxt
 
 
 def getprice(symbol, exchange_id):
+    """
+    :param symbol: The cryptocurrency symbol.
+    :type symbol: str
+        :param exchange_id: The exchange ID.
+        :type exchange_id: str
+
+        :returns v_price
+    -- the price of the cryptocurrency in USD or BTC, depending on whether it is a fiat currency or not (float)
+    """
     symbol = symbol.upper()  # BTC/USDT, LTC/USDT, ETH/BTC, LTC/BTC
     exchange_id = exchange_id.lower()  # binance, #bitmex
     symbol_1 = symbol.split("/")

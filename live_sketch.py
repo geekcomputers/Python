@@ -2,6 +2,13 @@ import cv2
 
 
 def sketch(image):
+    """
+    Converts the input image to grayscale, applies a Gaussian blur and then uses Canny edge detection.
+
+    :param img_gray: The input image converted to
+    grayscale.
+    :type img_gray: numpy array of 2 dimensions (a matrix) with 8-bit or floating-point elements.
+    """
     img_gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
     img_gray_blur = cv2.GaussianBlur(img_gray, (5, 5), 0)
     canny_edges = cv2.Canny(img_gray_blur, 10, 70)

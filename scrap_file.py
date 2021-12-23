@@ -9,6 +9,9 @@ import requests
 # Function for download file parameter taking as url
 
 def download(url):
+    """
+    Downloads a file from the given url and saves it in the current directory.
+    """
     f = open('file_name.jpg', 'wb')  # opening file in write binary('wb') mode with file_name.ext ext=extension
     f.write(requests.get(url).content)  # Writing File Content in file_name.jpg
     f.close()
@@ -17,6 +20,21 @@ def download(url):
 
 # Function is do same thing as method(download) do,but more strict
 def download_2(url):
+    """
+    Downloads a file from the internet.
+
+    Parameters:
+        url (str): The URL of the file to be downloaded.
+
+        Returns: None if there is an exception,
+    otherwise nothing.
+
+        Raises: Nothing!  This function will never raise an exception because it uses try/except to handle exceptions rather than
+    raising them itself.  It also does not return anything, so it cannot raise a TypeError by returning the wrong type of value in its return statement
+    (e.g., `return "hello"`).  
+
+        Examples: See above!
+    """
     try:
         response = requests.get(url)
     except Exception:

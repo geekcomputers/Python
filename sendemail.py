@@ -20,6 +20,16 @@ APPLICATION_NAME = 'Gmail API Python Send Email'
 
 
 def get_credentials():
+    """
+    Gets valid user credentials from storage.
+
+    If nothing has been stored, or if the stored credentials are invalid,
+    the OAuth2 flow is completed to
+    obtain the new credentials.
+
+    Returns:
+        Credentials, the obtained credential.
+    """
     home_dir = os.path.expanduser('~')
     credential_dir = os.path.join(home_dir, '.credentials')
     if not os.path.exists(credential_dir):
@@ -51,6 +61,9 @@ def SendMessage(sender, to, subject, msgHtml, msgPlain, attachmentFile=None):
 
 
 def SendMessageInternal(service, user_id, message):
+    """
+    Send an email message from the user's account.
+    """
     try:
         message = (service.users().messages().send(userId=user_id, body=message).execute())
 
@@ -123,6 +136,22 @@ def createMessageWithAttachment(
 
 
 def CreateMessageHtml(sender, to, subject, msgHtml, msgPlain):
+    """
+    Create a message for an email.
+    Args:
+        sender: Email address of the sender.
+        to: Email address of the receiver.
+        subject: The subject of the
+    email message.
+        msgHtml: Html message to be sent in html body (optional).  Can be plain text if msgPlain is specified and not empty string ("").
+    If both are empty strings, then this function returns an error because it will not have any content in which to base a MIME object on, and therefore
+    cannot create a valid MIME object that can be used by other functions such as CreateMessageWithAttachment().  This behavior is intended so that you
+    must either specify one or both arguments explicitly or provide some content in them implicitly via another argument like msgPlain or
+    attachmentFilePaths (see below).   You could also use None instead of "" for these two values but I think using explicit values makes it more obvious
+    what this function does when used by other code modules rather than silently doing something unexpected because you didn't read all the way down here
+    and accidentally passed None instead of "" for one or both arguments even though there was no mention at all above that passing None would cause this
+    desired behavior.   It's just good practice when
+    """
     msg = MIMEMultipart('alternative')
     msg['Subject'] = subject
     msg['From'] = sender
@@ -133,6 +162,9 @@ def CreateMessageHtml(sender, to, subject, msgHtml, msgPlain):
 
 
 def main():
+    """
+    Send an email message from the user's account.
+    """
     to = input("Enter Email Address: ")
     sender = input("Your Mail ID: ")
     subject = input("Enter your Subject: ")

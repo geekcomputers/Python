@@ -9,6 +9,12 @@ class Reverse_Linked_List:
         self.head = None
 
     def Insert_At_End(self, new_data):
+        """
+        Inserts a new node at the end of the list.
+        Parameters:
+        new_data (int): The data to be inserted in the new node.
+        Returns: None
+        """
         new_node = Node(new_data)
         if self.head is None:
             self.head = new_node
@@ -19,6 +25,11 @@ class Reverse_Linked_List:
         current.next = new_node
 
     def Reverse_list_Groups(self, head, k):
+        """
+        This function takes in a linked list and an integer k. It reverses the nodes of the linked list in groups of size k.
+        It returns the head of the
+        modified linked list.
+        """
         count = 0
         previous = None
         current = head

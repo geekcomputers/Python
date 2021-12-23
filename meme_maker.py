@@ -4,6 +4,10 @@ from PIL import ImageDraw, ImageFont, Image
 
 
 def input_par():
+    """
+    This function takes the text to be inserted in image and size of the text as input.
+    It also takes color value for the text as an input.
+    """
     print('Enter the text to insert in image: ')
     text = str(input())
     print('Enter the desired size of the text: ')
@@ -15,6 +19,20 @@ def input_par():
 
 
 def main():
+    """
+    This function takes the input from the user and saves it in a variable.
+    It then converts that image into RGBA format.
+    Then, it loads all of its pixels
+    and checks if the color value is not equal to white, then changes background to be white.
+    If text color is white then background is said to be black.
+    Then we load our font file and draw text on picture using ImageDraw module of PIL library which takes parameters as image object,text ,color value
+    ,font type . 
+
+        :param path_to_image: The path where you want your new photo to be saved (String)
+
+        :returns: None -- this function doesn't
+    return anything it just saves an image in specified directory with given name
+    """
     path_to_image = sys.argv[1]
     image_file = Image.open(path_to_image + '.jpg')
     image_file = image_file.convert("RGBA")

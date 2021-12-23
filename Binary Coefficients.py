@@ -1,4 +1,11 @@
 def pascal_triangle(lineNumber):
+    """
+    This function returns the list of numbers in a given line number of Pascal's triangle.
+    The first line is always 1, and each subsequent line consists
+    of the sum of the two numbers above it in the triangle.
+    The function takes one argument: an integer that represents which row to return (the first row
+    is row 0).
+    """
     list1 = list()
     list1.append([1])
     i = 1

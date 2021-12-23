@@ -28,6 +28,11 @@ import sys
 
 
 def find_prime(num):
+    """
+    Finds all prime numbers up to a given number.
+    :param num: The upper limit of the range to look for primes. All primes less than or equal to this will
+    be returned.
+    """
     res_list = []
     for i in range(2, num + 1):
         if res_list != [] and any(i % l == 0 for l in res_list):

@@ -78,6 +78,11 @@ def get():
     b = txt1.get()
 
 def equals():
+    """
+    This function is used to calculate the result of the previous operation.
+    It takes in no parameters and returns nothing. It uses a global variable x
+    which stores the value of last operation performed by user and performs that operation on it with current input from txt1 widget.
+    """
     global x
     if x == 1:
         c = (eval(txt1.get())) + add.b

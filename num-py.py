@@ -2,6 +2,9 @@ import numpy as np
 
 # to check if shape are equal and find there power
 def get_array(x, y):
+    """
+    This function takes two arrays as input and returns the array of powers of first array to second array.
+    """
     a = np.shape(x)
     b = np.shape(y)
 

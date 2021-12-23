@@ -4,6 +4,11 @@ import simplegui
 
 
 def new_game():
+    """
+    This function creates a list of 16 numbers, which are the same as the numbers in another list.
+    Then it shuffles these two lists and puts them together
+    to form one new list.
+    """
     global card3, po, state, exposed, card1
 
     def create(card):
@@ -28,6 +33,11 @@ def new_game():
 
 
 def mouseclick(pos):
+    """
+    This function takes a mouse click position and determines if the card at that position is exposed. If it is not,
+    the card will be exposed and the
+    state of the game will increase by 1. If it is already exposed, nothing happens.
+    """
     global card3, po, state, exposed, card1
     if state == 2:
         if card3[0] != card3[1]:
@@ -45,6 +55,9 @@ def mouseclick(pos):
 
 
 def draw(canvas):
+    """
+    Draws a green square with a black outline and text inside of it.
+    """
     global card1
     gap = 0
     for i in range(0, 16, 1):

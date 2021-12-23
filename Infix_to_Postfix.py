@@ -42,6 +42,9 @@ class Conversion:
     # Check if the precedence of operator is strictly
     # less than top of stack or not
     def notGreater(self, i):
+        """
+        Returns True if the precedence of i is less than or equal to that of the top element on the stack.
+        """
         try:
             a = self.precedence[i]
             b = self.precedence[self.peek()]
@@ -52,6 +55,24 @@ class Conversion:
     # The main function that converts given infix expression
     # to postfix expression
     def infixToPostfix(self, exp):
+ """
+ This function takes an infix expression and converts it to postfix.
+ It uses a stack to store the operators and operands.
+ The precedence of the
+ operators is given as follows:
+
+     1) Parentheses have highest precedence followed by exponentiation, then multiplication/division,
+ addition/subtraction from left to right in decreasing order of precedence.
+     2) Operators with same precedences are evaluated from left-to-right
+ (except for exponentiation).  For example, `2 + 3 * 4` = 20 because multiplication has higher precedence than addition.  The expression `(2 + 3) * 4`
+ = 20 because parentheses have higher precendence than both addition and multiplication so evaluate first before evaluating other parts of the
+ expression; that is, `(2+3)*4`.
+
+     :param exp: A string containing an infix arithmetic expression where tokens are space separated (e.g., "1 + 2").
+ Tokens can be either numbers or strings representing mathematical operations (+ - / *)^ . Parentheses may also appear in the input but they do not
+ affect how this function operates on any individual token within exp; i.e., this function will always evaluate expressions according to operator
+ precedences regardless of whether
+ """
 
         # Iterate over the expression for conversion
         for i in exp:

@@ -14,6 +14,13 @@ archive_url = "http://www-personal.umich.edu/~csev/books/py4inf/media/"
 
 
 def get_video_links():
+    """
+    Finds all links on a given web page and returns them as a list.
+
+    :param str archive_url: The URL of the web page to be scraped.
+    :returns: A list of
+    strings containing the URLs found by BeautifulSoup4.
+    """
     # create response object
     r = requests.get(archive_url)
 
@@ -30,6 +37,11 @@ def get_video_links():
 
 
 def download_video_series(video_links):
+    """
+    Downloads all videos from a given playlist.
+
+    :param video_links: A list of links to the videos that need to be downloaded.
+    """
     for link in video_links:
 
         '''iterate through all links in video_links

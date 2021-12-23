@@ -16,6 +16,23 @@ class Main(tk.Tk):
         self.geometry_settings()
 
     def geometry_settings(self):
+        """
+        This function is used to set the geometry of the window.
+        It takes 4 arguments:
+        1) self - The first argument is always the object itself (in this case
+        it's a Tkinter object).
+        2) _com_scr_w - This variable stores the width of computer screen. It's value will be obtained by calling winfo_screenwidth()
+        method on our Tkinter object. 
+        3) _com_scr_h - This variable stores the height of computer screen. It's value will be obtained by calling
+        winfo_screenheight() method on our Tkinter object. 
+        4) _my__w, _my__h, and so on are variables that store values for width and height of our window
+        respectively which we want to set as 300x450 pixels in size using x-coordinate and y-coordinate system respectively with respect to center position of
+        computer screen (which has dimensions equal to those passed into above two variables).
+
+                Note: We have divided both width and height by 2
+        because we want them centered at half positions i.e., if a monitor has resolution 1920x1080 then passing any integer greater than 1080 or less than
+        1080 in these methods would result in placing windows
+        """
         _com_scr_w = self.winfo_screenwidth()
         _com_scr_h = self.winfo_screenheight()
         _my_w = 300
@@ -117,6 +134,11 @@ class Notebook:
         self.page2_inside()
 
     def page1_inside(self):
+        """
+        Encrypts the text entered by the user.
+        :param self: The object itself.
+        :type self: ttk.Frame
+        """
         style = ttk.Style()
         user_text_label = ttk.Label(
             self.page1_main_label, text="Enter Your Text Here : ", font=("", 14)
@@ -144,6 +166,11 @@ class Notebook:
     # ---------- Page1 Button Binding Function ----------
 
     def encrypt_now(self):
+        """
+        Encrypts the user text using the encryption function.
+        :param self: The object itself.
+        :type self: Text_Editor_Class
+        """
         user_text = self.user_text.get()
         if user_text == "":
             showerror(
@@ -157,6 +184,9 @@ class Notebook:
     # --------------------------------------------------Binding Functions of Page1 End Here
     # Page2 ------------------>
     def page2_inside(self):
+        """
+        Binds the buttons on the page2 to their respective functions.
+        """
         style = ttk.Style()
         user_text_label = ttk.Label(
             self.page2_main_label, text="Enter Decrypted Text Here : ", font=("", 14)
@@ -183,6 +213,11 @@ class Notebook:
         # ---------- Page1 Button Binding Function ----------
 
     def decrypt_now(self):
+        """
+        This function is used to decrypt the text that was encrypted using the encrypt_now() function.
+        It takes a string as an argument and returns a string
+        which is decrypted from the given string.
+        """
         user_text = self.user_text2.get()
         if user_text == "":
             showerror(
@@ -194,6 +229,14 @@ class Notebook:
             self.text_box.insert(tk.INSERT, self.real_text, tk.END)
 
     def backend_work(self, todo, text_coming):
+        """
+        This function is used to encrypt and decrypt the text.
+        It takes two parameters, one is string(text_coming) and other is string(todo).
+        If todo ==
+        "Encrypt" then it will encrypt the given text using data_dic dictionary.
+        If todo == "Decrypt" then it will decrypt the given text using data_dic
+        dictionary.
+        """
         text_to_return = ""
         if todo == "Encrypt":
             try:

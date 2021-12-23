@@ -46,6 +46,12 @@ label.grid(row =0, column=1)
 
 #function to declare the tkniter clock
 def dig_clock():
+     """
+     This function prints the current time on a digital clock.
+
+     :param label: A tkinter widget that displays text.
+     :type label: tkinter.Label() object
+     """
     
     text_input = time.strftime("%H : %M : %S") # get the current local time from the PC
     

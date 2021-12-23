@@ -22,6 +22,12 @@ def range_of_1000():
 
 
 def input_guess(guess):
+    """
+    This function takes a number as input and checks if it is equal to the random number generated.
+    If the guess is correct, then it prints "Correct" else
+    if greater or lower than the random number, 
+    it prints accordingly.
+    """
     global num
     print("Your Guess is ", guess)
     num1 = int(guess)

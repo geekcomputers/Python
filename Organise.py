@@ -23,6 +23,10 @@ except IndexError:
 # When we make a folder that already exist then WindowsError happen
 # Changing directory may give WindowsError
 def ChangeDirectory(dir):
+    """
+    ChangeDirectory(dir)
+        Changes the current working directory to dir.
+    """
     try:
         os.chdir(dir)
     except WindowsError:
@@ -35,6 +39,17 @@ ChangeDirectory(destLocation)
 
 
 def Organize(dirs, name):
+    """
+    Organize(dirs, name)
+        - Organizes the files in a directory into folders by type.
+        - dirs is the name of the folder to be organized.
+        - name
+    is the new folder that will contain all of dirs' contents.
+
+            >>> Organize('test', 'Test') # doctest: +SKIP
+
+            Folder Created
+    """
     try:
         os.mkdir(name)
         print('{} Folder Created'.format(name))

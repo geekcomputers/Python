@@ -10,6 +10,9 @@ def hit(key):
 
 
 def isCollide(data):
+ """
+ This function checks if the bird is colliding with any of the pipes.
+ """
 
     # for cactus
     for i in range(329, 425):

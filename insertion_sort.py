@@ -4,6 +4,9 @@ list = []  # declaring list
 
 
 def input_list():
+    """
+    This function takes a number n as input and returns a list of n integers.
+    """
     #taking length and then values of list as input from user
     n = int(input("Enter number of elements in the list: "))  # taking value from user
     for i in range(n):

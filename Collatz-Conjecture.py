@@ -60,6 +60,12 @@ input('Press ENTER to begin.')
 print('BEGIN COLLATZ SEQUENCE')
 
 def modulo():
+    """
+    This function modulo() takes a number and returns the result of that number modulo 2.
+    If the result is 0, then it divides that number by 2.
+    Otherwise,
+    it multiplies the number by 3 and adds 1 to get a new value for `number`.
+    """
     global number
     modulo = number % 2 # Modulo the number by 2
     if modulo == 0: # If the result is 0,

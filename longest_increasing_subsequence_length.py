@@ -5,6 +5,9 @@ find lenth Longest increasing subsequence of given array.
 
 
 def lis(a):
+ """
+ This function takes an array as input and returns the length of the longest increasing subsequence in that array.
+ """
 	n=len(a)
 	#initialize ans array same lenth as 1
 	ans=[1]*n

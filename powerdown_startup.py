@@ -26,6 +26,10 @@ def windows():  # This is the function to run if it detects the OS is windows.
 
 
 def linux():
+    """
+    This function checks if a server is online or not.
+    It takes the name of the server as an argument and returns True if it's online, False otherwise.
+    """
     f = open('server_startup_' + strftime("%Y-%m-%d") + '.log', 'a')  # Open the logfile
     for server in open('startup_list.txt'):  # Read the list of servers from the list
         ret = subprocess.call("ping -c 3 %s" % server, shell=True, stdout=open('/dev/null', 'w'),
