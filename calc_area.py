@@ -3,6 +3,17 @@
 import math as m
 
 def main():
+    """
+    This function calculates the area of a square, rectangle, circle, triangle or cylinder.
+
+    :param shape: The type of object to calculate the area for.
+    Valid values are 1 (square), 2 (rectangle), 3 (circle), 4 (triangle) and 5(cylinder). Any other value will result in an error message being displayed.
+    :type shape: int
+    :param side/l/b : These parameters are used only when calculating the area of a square or rectangle respectively. They can be omitted
+    if not required by the user but cannot be included if they are required by the function body as it will result in an error message being displayed
+    instead. 
+        :type side/l/b : float
+    """
     shape = int(input("Enter 1 for square, 2 for rectangle, 3 for circle, 4 for triangle, 5 for cylinder, 6 for cone, or 7 for sphere: "))
     if shape == 1:
       side = float(input("Enter length of side: "))

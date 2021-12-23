@@ -15,6 +15,10 @@ import serial
 
 
 def ListAvailablePorts():
+    """
+    This function returns a list of the available ports in use.
+    The function is platform independent and works for linux and windows.
+    """
     # This function return a list containing the string names for Virtual Serial Ports
     # availables in the computer (this function works only for Windows & Linux Platforms but you can extend it)
     # if there isn't available ports, returns an empty List

@@ -9,6 +9,11 @@ class Linked_List:
         self.head = None
 
     def Insert_At_Beginning(self, new_data):
+        """
+        Inserts a new node at the beginning of the list.
+        :param self: The object instance reference.
+        :param new_data: The data to be inserted into the list.
+        """
         new_node = Node(new_data)
         if self.head is None:
             self.head = new_node
@@ -17,6 +22,12 @@ class Linked_List:
         self.head = new_node
 
     def Add_two_no(self, First, Second):
+        """
+        This function adds two numbers represented by a linked list.
+        The first number is stored in the First argument and second number is stored in Second
+        argument.
+        It returns the sum of both numbers as a linked list.
+        """
         prev = None
         temp = None
         carry = 0

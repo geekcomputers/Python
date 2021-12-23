@@ -24,6 +24,12 @@ class Die(object):
     """
 
     def set_sides(self, sides_change):
+        """
+        Sets the number of sides for a die.
+
+        :param sides_change: The new number of sides to set the die to. Must be 4 or greater, otherwise it will be set to
+        6.
+        """
         if sides_change >= 4:
             if sides_change != 6:
                 print("change sides from 6 to ", sides_change, " !")

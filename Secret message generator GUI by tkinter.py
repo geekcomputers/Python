@@ -21,6 +21,9 @@ t1.place(x=10,y=0)
 t2.place(x=10,y=220)
 
 def show1():
+    """
+    The function 'show1' takes the input from the entry box and converts it into a secret message.
+    """
     data1=name1.get()
     codes={'b':'a','c':'b','d':'c','e':'d','f':'e','g':'f','h':'g','i':'h','j':'i','k':'j','l':'k','m':'l','n':'m','o':'n','p':'o','q':'p','r':'q','s':'r','t':'s','u':'t','v':'u','w':'v','x':'w','y':'x','z':'y','a':'z',' ':" ",'B':'A','C':'B','D':'C','E':'D','F':'E','G':'F','H':'G','I':'H','J':'I','K':'J','L':'K','M':'L','N':'M','O':'N','P':'O','Q':'P','R':'Q','S':'R','T':'S','U':'T','V':'U','W':'V','X':'W','Y':'X','Z':'Y','A':'Z'}
     lol1=""
@@ -33,6 +36,9 @@ def show1():
 bt1=tkinter.Button(root,text="OK",bg="white",fg="black",bd=5,command=show1,font=('calibri',15,'bold','underline'))
 bt1.place(x=10,y=100)
 def show2():
+    """
+    This function takes a string as input and converts it into another string by using the codes dictionary.
+    """
     data2=name2.get()
     codes={'a':'b','b':'c','c':'d','d':'e','e':'f','f':'g','g':'h','h':'i','i':'j','j':'k','k':'l','l':'m','m':'n','n':'o','o':'p','p':'q','q':'r','r':'s','s':'t','t':'u','u':'v','v':'w','w':'x','x':'y','y':'z','z':'a'," ":' ','A':'B','B':'C','C':'D','D':'E','E':'F','F':'G','G':'H','H':'I','I':'J','J':'K','K':'L','L':'M','M':'N','N':'O','O':'P','P':'Q','Q':'R','R':'S','S':'T','T':'U','U':'V','V':'W','W':'X','X':'Y','Y':'Z','Z':'A'}
     lol2=""

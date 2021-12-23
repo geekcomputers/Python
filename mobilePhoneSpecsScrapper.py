@@ -20,6 +20,9 @@ class Phonearena():
         self.absolute_path = os.getcwd().strip() + '/' + self.new_folder_name
 
     def crawl_html_page(self, sub_url):
+ """
+ This function takes a url as an argument and returns the html content of that url.
+ """
 
         url = sub_url  # Url for html content parsing.
 
@@ -39,6 +42,9 @@ class Phonearena():
             exit()
 
     def crawl_phone_urls(self):
+        """
+        This function returns a list of all the urls for phones on the website.
+        """
         phones_urls = []
         for i in range(1, 238):  # Right now they have 237 page of phone data.
             print(self.url+"page/"+str(i))
@@ -51,6 +57,11 @@ class Phonearena():
         return phones_urls
 
     def crawl_phones_models_specification(self, li):
+        """
+        This function takes a list of links as input and crawls the phone specifications page for each link.
+        It then stores the data in a dictionary which is
+        later dumped into a json file.
+        """
         phone_data = {}
         for link in li:
             print(link)

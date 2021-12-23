@@ -22,6 +22,12 @@ paddle2_vel = 0
 
 
 def spawn_ball(direction):
+    """
+    This function spawns a ball in the middle of the canvas with vertical velocity between 60 and 180 pixels per second and horizontal velocity between
+    120 and 240 pixels per second.
+    The direction of the ball is determined by whether or not it was served to either player. If it was, then it will go
+    towards that player's side; if not, then it will be served randomly to one of them.
+    """
     global ball_pos, ball_vel  # these are vectors stored as lists
     ball_pos = [WIDTH / 2, HEIGHT / 2]
     if direction == RIGHT:
@@ -45,6 +51,25 @@ def new_game():
 
 
 def draw(canvas):
+    """
+    Draws the game arena and updates the ball position.
+
+    Parameters:
+
+        canvas: Canvas, on which we draw all elements of the game.
+        paddle1_pos:
+    float, vertical coordinate of left paddle's top edge.
+        paddle2_pos: float, vertical coordinate of right paddle's top edge. 
+        ball_pos : list
+    (float), coordinates [x, y] of a center point for a ball object in pixels from upper left corner  .                              The list contains two
+    floats - x and y coordinates respectively .                  The function draws a white circle with radius BALL_RADIUS at these coordinates on canvas
+    .      Paddle positions are updated by changing their values within this function as well as in move paddles functions below , so that they can be
+    used to check if paddles are inside an area where they can hit the ball without going out of bounds or crossing over each other during gameplay .
+    Ball velocity is also updated here using random module to make it look like real pong gameplay when computer player hits randomly but consistently
+    towards one side making it harder for user to return it back consistently into middle zone between paddles , while still allowing some room for user
+    error when returning balls into middle zone between padsles .      Finally score is displayed by drawing text strings next to each other near upper
+    part fo screen above both padsles using draw text method from simplegui module with font size 40px and color White
+    """
     global paddle1_pos, paddle2_pos, ball_pos, ball_vel, paddle1_vel, paddle2_vel, BALL_RADIUS
     global score1, score2
 
@@ -97,6 +122,10 @@ def draw(canvas):
 
 
 def keydown(key):
+    """
+    This function is called when the user presses a key.
+    The paddle velocity is changed according to which key was pressed.
+    """
     global paddle1_vel, paddle2_vel
     if key == simplegui.KEY_MAP["down"]:
         paddle1_vel = 2
@@ -110,6 +139,10 @@ def keydown(key):
 
 
 def keyup(key):
+    """
+    This function is called when a key is released.
+    It sets the velocity of the paddle to zero if either w or s are released.
+    """
     global paddle1_vel, paddle2_vel
     if key == simplegui.KEY_MAP["down"] or key == simplegui.KEY_MAP["up"]:
         paddle1_vel = 0

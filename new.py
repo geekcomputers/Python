@@ -14,6 +14,9 @@ import time
 
 
 def Times_of_India(userInput, ua):
+   """
+   This function takes two arguments as input and returns the news of timesofindia.com
+   """
    bold_start = "\033[1m"
    bold_end = "\033[0m"
 
@@ -45,6 +48,9 @@ def Times_of_India(userInput, ua):
 
 
 def india_today(userInput, ua):
+   """
+   This function takes a string as input and prints the news available on India Today website.
+   """
    bold_start = "\033[1m"
    bold_end = "\033[0m"
 

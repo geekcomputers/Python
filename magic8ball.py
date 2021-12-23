@@ -14,6 +14,11 @@ def magic8Ball():
 
 
 def tryAgain():
+    """
+    This function is used to ask questions from the magic 8 ball and get an answer.
+    It takes no input but asks user for a question and gives a random
+    answer.
+    """
     print("Do you wanna ask any more questions? press Y for yes and any other key to exit ")
     x = input()
     if(x in ['Y', 'y'] ):

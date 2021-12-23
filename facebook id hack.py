@@ -24,6 +24,20 @@ payload={}
 cookie={}
 
 def create_form():
+ """
+ Creates a dictionary of form data and cookies required to login to Facebook.
+
+ :param requests.cookies cookie: A RequestsCookieJar object containing
+ cookies used for the login process.
+ :return dict form: A dictionary containing all of the information needed to log into Facebook via a mobile device
+ (phone).  The dictionary contains two keys, ``lsd`` and ``m_ts``, which are both required for logging in with mobile devices.  The value associated
+ with each key is stored as plain text, so it's not hidden from view by default when printing out this function's return value or calling
+ :func`pprint`.  
+
+         The values stored under these keys can be copied directly into an HTTP request sent through Python's Requests library;
+ however, there are other methods that make this process easier by hiding some details away behind helper functions like :func`create_form()`.
+ For example usage of these functions see :ref:`login-example`.
+ """
 	form=dict()
 	cookie={'fr':'0ZvhC3YwYm63ZZat1..Ba0Ipu.Io.AAA.0.0.Ba0Ipu.AWUPqDLy'}
 

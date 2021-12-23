@@ -14,6 +14,10 @@ class YouTubeDownloder:
         self.showStreams()
 
     def showStreams(self):
+        """
+        Show the available streams of a video.
+        :param self: The object that is calling this function.
+        """
         self.streamNo = 1
         for stream in self.youtube.streams:
             print("{0} => resolation:{1}/fps:{2}/type:{3}".format(self.streamNo,
@@ -26,6 +30,26 @@ class YouTubeDownloder:
         self.validateChooseValue()
 
     def validateChooseValue(self):
+        """
+        Validates the user input for choosing a stream.
+
+        :param self: The object that this method is bound to. 
+                     This parameter must be given as a
+        keyword argument, like so: `self=<obj>`.
+
+        :returns: None if the input is valid, otherwise it prints an error message and calls itself again.
+
+        .. note
+        :: This function uses recursion to call itself until it gets a valid answer from the user. 
+                   It also uses exception handling to catch any
+        errors that may occur during execution of this function or others called by it in its stack trace (e.g., ValueError).  
+
+                    # TODO add more
+        examples here?  Or maybe just link to another docstring? I'm not sure how much detail we want here... -kmp 27-Jun-2020
+
+                    # TODO add some
+        doctests too! -kmp 27-Jun-2020
+        """
         if self.choose in range(1, self.streamNo):
             self.getStream()
         else:
@@ -42,6 +66,17 @@ class YouTubeDownloder:
         self.getPermisionToContinue()
 
     def getPermisionToContinue(self):
+        """
+        getPermisionToContinue(self)
+            Prints information about the video to be downloaded.
+            Asks user if he wants to download it.
+
+            Parameters:
+        self (YoutubeDownloader): YoutubeDownloader object that contains all the information needed for downloading a video from youtube.
+
+            Returns:
+        None : If user doesn't want to download it, function returns nothing and exits program.
+        """
         print("\n title : {0} \n author : {1} \n size : {2:.2f}MB \n resolution : {3} \n fps : {4} \n ".format(
             self.youtube.title, self.youtube.author, file_size, self.stream.resolution, self.stream.fps))
         if input("do you want it ?(defualt = (y)es) or (n)o ") == "n":

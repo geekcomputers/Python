@@ -19,6 +19,10 @@ def is_prime_a(n):
 
 
 def is_prime_b(n):
+    """
+    This function checks if a number is prime or not.
+    It returns True if the number is prime, and False otherwise.
+    """
     if n > 1:
         if n == 2:
             return True

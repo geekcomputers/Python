@@ -1,5 +1,12 @@
 
 def soundex_al(word):
+    """
+    This function takes a word as an input and returns the soundex code for that word.
+    The first letter of the return value is always capitalized.
+    The
+    rest of the letters are converted to uppercase and then returned.
+    If there are any 0's in the return value, they will be removed from it.
+    """
     cap_word = word.upper()                         #convert the word to uppercase
 
     return_val = ""

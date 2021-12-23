@@ -1,4 +1,7 @@
 def lcm(x, y):
+    """
+    This function takes two numbers as input and returns the least common multiple of those two numbers.
+    """
     if x > y:
         greater_number = x
     else:

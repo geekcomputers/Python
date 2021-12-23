@@ -19,6 +19,13 @@ def is_prime_a(n):
 
 
 def is_prime_b(n):
+    """
+    This function checks if a number is prime or not.
+
+    :param n: The number to be checked for primality.
+    :returns: True if the input is prime, False
+    otherwise.
+    """
     if n > 1:
         if n == 2:
             return True

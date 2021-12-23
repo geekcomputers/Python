@@ -5,6 +5,15 @@
 # patch-3
 # function to check if 'binod' is present in the file.
 # def checkBinod(file):
+"""
+Checks if the given file contains Binod.
+
+:param file: File to be checked for Binod.
+:returns bool : True if binod found in the given file, False
+otherwise. 
+
+    >>> checkBinod('binods') # This will return false since there is no such file named as 'binods'
+"""
 # =======
 
 # def checkBinod(file):       #this function will check there is any 'Binod' text in file or not

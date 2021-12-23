@@ -18,6 +18,9 @@ class Stack:
         return self.items
         
 def is_same(p1, p2):
+        """
+        This function checks if the parenthesis are balanced or not.
+        """
         if p1 == '(' and p2 == ')':
                 return True
         elif p1 == '[' and p2 == ']':
@@ -28,6 +31,10 @@ def is_same(p1, p2):
                 return False
 
 def is_balanced(check_string):
+        """
+        This function checks if the string is balanced or not.
+        It uses a stack to check this.
+        """
         s = Stack()
         index = 0
         is_bal = True

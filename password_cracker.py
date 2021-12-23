@@ -35,6 +35,11 @@ def testPass(cryptPass):  # Start the function
 
 
 def main():
+    """
+    This function takes a string of encrypted text and tests it against the list of words in passwords.txt to determine if it is a valid password.
+    :param
+    cryptPass: The encrypted password read from the file
+    """
     passFile = open('passwords.txt')  # Open the password file
     for line in passFile.readlines():  # Read through the file
         if ":" in line:

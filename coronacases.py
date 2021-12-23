@@ -29,6 +29,9 @@ DateUpdate = india[76]['Date']
 
 
 def world():
+    """
+    Prints the current status of all the countries
+    """
     world = f'''
 ▀▀█▀▀ █▀▀█ ▀▀█▀▀ █▀▀█ █░░ 　 ▒█▀▀█ █▀▀█ █▀▀ █▀▀ █▀▀ 　 ▀█▀ █▀▀▄ 　 ▒█░░▒█ █▀▀█ █▀▀█ █░░ █▀▀▄ 
 ░▒█░░ █░░█ ░░█░░ █▄▄█ █░░ 　 ▒█░░░ █▄▄█ ▀▀█ █▀▀ ▀▀█ 　 ▒█░ █░░█ 　 ▒█▒█▒█ █░░█ █▄▄▀ █░░ █░░█ 
@@ -44,6 +47,12 @@ Total Recovered :- {TotalRecovered}
 
 
 def indiac():
+    """
+    Prints the details of the COVID-19 cases in India.
+
+    :param name: Name of the country.
+    :type name: str, optional
+    """
     cases = f'''
 ██╗███╗░░██╗██████╗░██╗░█████╗░
 ██║████╗░██║██╔══██╗██║██╔══██╗
@@ -75,6 +84,9 @@ print("\nDeveloped By @TheDarkW3b")
 
 
 def choices():
+    """
+    Prints the corona virus updates across world and India.
+    """
     print("\n1 - To Know Corona Virus Update Across World")
     print("\n2 - To Know Corona Virus Update In India")
     choice = input("Enter 1 Or 2 :- ")

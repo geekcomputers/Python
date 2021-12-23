@@ -14,6 +14,11 @@ class Linked_List:
         self.head = new_node
 
     def Insert_After(self, node, new_data):
+        """
+        Inserts a new node after the given prev_node.
+        :param node: Node object after which new node is to be inserted.
+        :type node: Node object
+        """
         if node is None:
             return "Alert!, Node must be in Linked List"
         new_node = Node(new_data)
@@ -21,6 +26,12 @@ class Linked_List:
         node.next = new_node
 
     def Insert_At_End(self, new_data):
+        """
+        Inserts a new node at the end of the list.
+        Parameters:
+        new_data (int): The data to be inserted in the new node.
+        Returns: None.
+        """
         new_node = Node(new_data)
         if self.head is None:
             self.head = new_node

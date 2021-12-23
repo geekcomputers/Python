@@ -15,6 +15,12 @@ def cret(command):
 
 # function for genrate mac address random
 def randmac():
+    """
+    Generates a random MAC address.
+
+    :returns: A list of 6 bytes in the form [0x00, 0x16, 0x3e, <random>, <random>, <random>] where each byte is
+    represented as an integer between 0 and 255.
+    """
     return [
         0x00,
         0x16,

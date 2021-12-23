@@ -9,6 +9,9 @@ import pprint
 
 
 def main():
+    """
+    This function takes a file name as an input and counts the number of times each letter appears in the text.
+    """
     file_input = input('File Name: ')
     try:
         with open(file_input, 'r') as info:

@@ -9,6 +9,11 @@ class Linked_List:
         self.head = None
 
     def Insert_At_Beginning(self, new_data):
+        """
+        Inserts a new node at the beginning of the list.
+        :param self: The object instance reference.
+        :param new_data: The data to be inserted into the list.
+        """
         new_node = Node(new_data)
         if self.head is None:
             self.head = new_node
@@ -17,6 +22,25 @@ class Linked_List:
         self.head = new_node
 
     def Rotation(self, key):
+        """
+        Rotate the linked list counter-clockwise by k nodes, where k is a given integer.
+
+        :param self: The head of the linked list to be rotated.
+        :type self:
+        Node object or NoneType
+        :param key: The number of rotations to be made. If key is greater than length of LL, then make a single rotation around the
+        entire LL. 
+                    If key is 0, do nothing and return None as per problem statement. 
+                    Else if less than zero or not an int type
+        return TypeError exception with message "Key must be an integer". 
+
+                     Note that you have to rotate the list counter-clockwise and can't
+        reverse it in place (why?).
+
+                     You may use only constant extra space and O(1) extra time except for printing intermediate steps!
+        For example if there are 7 nodes in Linked List then after 4 rotations we get following structure (7 -> 6 -> 5 -> 4 -> 3).   # noQA E501 line too long
+        >80 characters; pylint disable=C0301    # noQA E501 line too long >80 characters; pylint disable=C0301    # noQA E501 line
+        """
         if key == 0:
             return
         current = self.head

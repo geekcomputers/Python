@@ -23,6 +23,9 @@ def usage():
 
 # Readfile Functions which open the file that is passed to the script
 def readfile(filename):
+    """
+    Reads a file and prints the contents of the file to stdout.
+    """
     with open(filename, 'r') as f:  # Ensure file is correctly closed under
         read_file = f.read()  # all circumstances
     print(read_file)
@@ -32,6 +35,10 @@ def readfile(filename):
 
 
 def main():
+    """
+    :param filename: The name of the file to read
+    :returns: The contents of the file
+    """
     # Check the arguments passed to the script
     if len(sys.argv) >= 2:
         file_names = sys.argv[1:]

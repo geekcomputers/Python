@@ -2,6 +2,29 @@
 #User has to enter the angles of the triangle in degrees.
 
 def angle_type():
+    """
+    This function takes three angles as input and returns the type of triangle based on the sum of angles.
+    It has two cases:
+    1) If any angle is 90°, it
+    prints that it is a right angle triangle.
+    2) Else if all the angles are less than 90°, it prints that they form an acute angled triangle.
+    3) Else if
+    any one angle is greater than 90°, then it prints that they form an obtuse angled triangle.
+
+        Args: 
+
+            Three integer values for each Angle
+    between 0 to 180 degrees (inclusive).
+
+        Returns: 
+
+            A string stating whether its a Right Angle Triangle or Acute Angled Triangle or Obtuse
+    Angled Triangle based on sum of all 3 given angles being either equal to 180 or not(i.e., <180). It also returns -1 when invalid inputs are given
+    i.e., when sum >180 . 
+
+        Examples:   # doctest will be added soon! :)   # doctest will be added soon! :)     # doctest will be added soon! :)
+    # doctest will be added soon! :)       # doctest will be added soon! :)         >>>angle_type()
+    """
     angles = []
 
     myDict = {"All angles are less than 90°.":"Acute Angle Triangle","Has a right angle (90°)":"Right Angle Triangle",

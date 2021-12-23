@@ -1,6 +1,21 @@
 # It returns location of x in given array arr  
 # if present, else returns -1 
 def binary_search(arr, l, r, x):
+    """
+    Binary search algorithm.
+
+    :param arr: The array to be searched.
+    :type arr: list of ints or floats (numbers)
+
+    :param l, r : The left and right indices
+    of the subarray that is to be searched for x. These are passed as arguments so that binary_search() can use them in recursive calls, without having to
+    recompute them itself. They must satisfy l <= r .  In other words, if x is present in the array A[l..r], then l <= r . Also note that we do not assume
+    anything about the relative order of elements inside A[l..r]. This means that if there are multiple occurrences of x in A[l..r] , then binary_search()
+    will return any one of these occurrences; it won’t necessarily return the first occurrence (which would be a violation of basic definition). If you
+    want this behavior instead, you can use linear_search(). However, since binary search runs faster than linear search on average even for this simple
+    example where we don’t assume anything about element ordering, I decided it was better not to make any assumptions here and follow a more general
+    approach instead. Note also that while searching an
+    """
     if l <= r:
         
         mid = (l+r) // 2 #extracting the middle element from the array

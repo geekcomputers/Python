@@ -12,6 +12,11 @@ board = [
 
 
 def solve(bo):
+    """
+    This function solves a sudoku board using backtracking.
+    The function takes in the board as an argument and returns True if the solution is found else
+    False.
+    """
     find = find_empty(bo)
     if not find:
         return True
@@ -31,6 +36,10 @@ def solve(bo):
 
 
 def valid(bo, num, pos):
+    """
+    This function checks if the number is valid in the given position.
+    It returns True if it is valid and False otherwise.
+    """
     # Check row
     for i in range(len(bo[0])):
         if bo[pos[0]][i] == num and pos[1] != i:
@@ -54,6 +63,11 @@ def valid(bo, num, pos):
 
 
 def print_board(bo):
+    """
+    Prints the board.
+
+    :param bo: A list of lists representing the sudoku board.
+    """
     for i in range(len(bo)):
         if i % 3 == 0 and i != 0:
             print("- - - - - - - - - - - - - ")

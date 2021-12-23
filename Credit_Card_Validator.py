@@ -7,6 +7,13 @@ class CreditCard:
 
     @property
     def company(self):
+        """
+        Returns the company name of a credit card.
+
+        :param self: The object
+        :type self: CreditCard
+        :returns: Company name of a credit card.
+        """
         comp = None
         if str(self.card_no).startswith('4'):
             comp = 'Visa Card'
@@ -28,6 +35,18 @@ class CreditCard:
         return 'Company : ' + comp
 
     def first_check(self):
+        """
+        :param card_no:
+            A string of characters representing a credit/debit card number.
+        :returns message:
+            A string stating whether the input is valid
+        or not.
+
+            If the length of the input is 13 to 19 characters long, it returns "First check : Valid in terms of length."
+
+            Else, it returns "First
+        check : Check Card number once again it must be of 13 or 16 digits long."
+        """
         if 13 <= len(self.card_no) <= 19:
             message = "First check : Valid in terms of length."
 
@@ -36,6 +55,15 @@ class CreditCard:
         return message
 
     def validate(self):
+        """
+        This function takes a credit card number as input and returns whether it is valid or not.
+        The code first reverses the credit card number, then
+        iterates through each digit in the reversed list.
+        If the index of that digit is odd, then we double it and sum all digits if there are two digits
+        after doubling (e.g., 4 becomes 8 which is 2 + 6). 
+        Otherwise, we just add that digit to our sum_ variable. We return 'Valid Card' if sum_ % 10 == 0
+        else 'Invalid Card'.
+        """
         # double every second digit from right to left
         sum_ = 0
         crd_no = self.card_no[::-1]

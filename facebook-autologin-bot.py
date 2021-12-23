@@ -6,6 +6,9 @@ rate = tts.getProperty('rate')
 newVoiceRate = 160
 tts.setProperty('rate', newVoiceRate)
 def welcome():
+    """
+    This function is used to welcome the user.
+    """
     print('>')
     print("Welcome to Autobot created by Vijay.Use exit or quite to exit.")
     text="Welcome to Autobot created by Vijay"

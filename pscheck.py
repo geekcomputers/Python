@@ -20,6 +20,15 @@ except NameError:
 
 
 def ps():
+    """
+    Prints information about a running program.
+
+    :param program: The name of the program to check
+    :type progam: str
+
+    :raises ValueError: If no such
+    process exists.
+    """
     program = input("Enter the name of the program to check: ")
 
     try:
@@ -39,6 +48,9 @@ def ps():
 
 
 def main():
+    """
+    Prints the current process ID and name of user for each running process on Linux or Unix.
+    """
     if os.name == "posix":  # Unix/Linux/MacOS/BSD/etc
         ps()  # Call the function
     elif os.name in ("nt", "dos", "ce"):  # if the OS is windows

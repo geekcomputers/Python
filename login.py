@@ -3,6 +3,9 @@ from getpass import getpass
 #Devloped By Black_angel
 #This is Logo Function
 def logo():
+    """
+    Prints a logo in ASCII art.
+    """
     print(" ──────────────────────────────────────────────────────── ")
     print(" |                                                        | ")
     print(" |   ########    ##  #########  ##       ##      ###      | ")
@@ -19,6 +22,9 @@ def logo():
     print('\033[1;36;49m')
 #This is Login Funtion    
 def login():
+    """
+    This function is used to login into the system.
+    """
     #for clear the screen 
     os.system('clear')
     print('\033[1;36;49m')

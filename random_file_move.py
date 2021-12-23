@@ -10,6 +10,9 @@ import os, random
 import argparse
 
 def check_ratio(x):
+ """
+ Checks that the ratio is a floating-point literal in the range [0.0, 1.0]
+ """
 	try:
 		x = float(x)
 	except ValueError:

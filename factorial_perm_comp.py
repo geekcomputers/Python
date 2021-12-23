@@ -27,6 +27,12 @@ def combination(n, r):
 
 
 def main():
+    """
+    This function computes the factorial of a given number.
+    :param n: The input value for which the factorial is to be computed.
+    :returns : The factorial
+    of n.
+    """
     print('choose between operator 1,2,3')
     print('1) Factorial')
     print('2) Permutation')

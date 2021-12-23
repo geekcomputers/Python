@@ -1,6 +1,13 @@
 #This program will return the type of the triangle.
 #User has to enter the angles of the triangle in degrees.
 def angle_type():
+    """
+    This function takes in the angles of a triangle and returns it's type.
+    The function checks if the sum of all angles is 180 or not,if not then it
+    prints that it is not a triangle.
+    If the sum of all angles is 180 then,it checks for each angle if they are greater than 90 or less than 90 and
+    accordingly returns their types.
+    """
     angles = []
 
     myDict = {"All angles are less than 90°.":"Acute Angle Triangle","Has a right angle (90°)":"Right Angle Triangle",

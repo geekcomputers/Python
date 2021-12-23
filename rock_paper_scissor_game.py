@@ -29,6 +29,12 @@ def number_to_name(number):
 
 
 def game(player_choice):
+    """
+    This function takes a player's choice of rock, paper or scissors and returns the computer's choice.
+    The function then compares the two choices to
+    determine who wins.
+    If the difference between comp_number and play is 1 or 3, then you win; if it is 0, then it is a draw; otherwise you lose.
+    """
     print()
     name = player_choice
     print(name)

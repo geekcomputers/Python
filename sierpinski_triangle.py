@@ -41,6 +41,22 @@ def getMid(p1, p2):
 
 
 def triangle(points, depth):
+    """
+    This function draws a Sierpinski triangle.
+
+    :param points: A list of 3 lists, each containing 2 coordinates for the three corners of the triangle.
+    :type points: list(list(int))
+        :param depth: The number of times to divide each side into smaller triangles.  If this is 0 or less, nothing will be
+    drawn and the function will return None.  If it's 1 or more, it'll draw a single triangle with sides that are half as long as `points`.  If it's 2 or
+    more, then those triangles will be divided into even smaller ones recursively until `depth` is 0 where they'll all finally be drawn on top of one
+    another forming one big equilateral triangle with sides that are twice as long as `points`.  
+        :type depth: int
+
+        .. note :: This function uses
+    some functions from my
+    [Sierpinski_Triangle](http://nbviewer.ipython.org/github/ehmatthes/intro_programming/blob/master/notebooks/_solved/_solved_chaos_game2d_.ipynb)
+    notebook in order to do its work so you should look at that notebook
+    """
     myPen.up()
     myPen.goto(points[0][0], points[0][1])
     myPen.down()

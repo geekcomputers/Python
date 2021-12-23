@@ -16,6 +16,9 @@ mycur = mycon.cursor()
 
 
 def DBZ():
+ """
+ This function is used to delete the book from the database if there are no copies of that particular book left.
+ """
 
     # IF  NO.  OF  BOOKS  IS     ZERO(0)     THAN  DELETE  IT  AUTOMATICALLY
 
@@ -44,6 +47,9 @@ def end_separator():
 
 
 def login():
+ """
+ This function is used to login into the system.
+ """
 
     user_name = input(" USER NAME  ---  ")
     passw = input(" PASSWORD  ---  ")
@@ -82,6 +88,9 @@ def login():
 
 
 def ViewAll():
+ """
+ This function prints all the books in the database.
+ """
 
     print("\u0332".join("BOOK NAMES~~"))
     print("------------------------------------")
@@ -98,6 +107,12 @@ def ViewAll():
 
 
 def CNB1():
+ """
+ This function prints the number of books left in the library.
+ If there are no books left, it will print a warning message.
+ If there are less than 8
+ copies of a book available, it will print another warning message.
+ """
 
     if y[6] == 0:
 
@@ -126,6 +141,9 @@ def CNB1():
 
 
 def CNB2():
+ """
+ This function prints the number of books left in the library.
+ """
 
     if y[6] <= 8:
 
