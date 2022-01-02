@@ -9,7 +9,7 @@ The Collatz conjecture, also known as the
 3x + 1 problem, is a mathematical conjecture
 concerning a certain sequence. This sequence
 operates on any input number in such a way
-hat the output will always reach 1.
+that the output will always reach 1.
 
 The Collatz conjecture is most famous for
 harboring one of the unsolved problems in
