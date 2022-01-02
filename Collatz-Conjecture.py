@@ -28,56 +28,62 @@ incalculable, by Python. This limitation
 was only observed in CPython, so other
 implementations may or may not differ.
 
-11/24/2021
+1/2/2022 - Revision 1 of Collatz-Conjecture
 David Costell (DontEatThemCookies on GitHub)
 """
 
 import math
 
-print("Collatz Conjecture")
-number = input('Enter a number to calculate: ')
-try:
-    number = float(number)
-except:
-    print('Error: Could not convert to integer.')
-    print('Only integers/floats can be entered as input.')
-    input()
-    exit()
+print('Collatz Conjecture (Revised)\n')
 
-# Checks to see if input is valid
-if number == 0:
-    input('Error: Zero is not calculable. ')
-    exit()
-if number < 0:
-    input('Error: Negative numbers are not calculable. ')
-    exit()
-if number == math.inf:
-    input('Error: Infinity is not calculable.')
-    exit()
+def main():
+    # Get the input
+    number = input('Enter a number to calculate: ')
+    try:
+        number = float(number)
+    except ValueError:
+        print('Error: Could not convert to integer.')
+        print('Only numbers (e.g. 42) can be entered as input.')
+        main()
 
-print('Number is', number)
-input('Press ENTER to begin.')
-print('BEGIN COLLATZ SEQUENCE')
+    # Prevent any invalid inputs
+    if number <= 0:
+        print('Error: Numbers zero and below are not calculable.')
+        main()
+    if number == math.inf:
+        print('Error: Infinity is not calculable.')
+        main()
 
-def modulo():
-    global number
-    modulo = number % 2 # Modulo the number by 2
-    if modulo == 0: # If the result is 0,
-        number = number / 2 # divide it by 2
-    else: # Otherwise,
-        number = number * 3 + 1 # multiply by 3 and add 1
-        
-def final():
+    # Confirmation before beginning
+    print('Number is:', number)
+    input('Press ENTER to begin.')
+    print('\nBEGIN COLLATZ SEQUENCE')
+
+    def sequence(number: float) -> float:
+        """
+        The core part of this program,
+        it performs the operations of
+        the Collatz sequence to the given
+        number (parameter number).
+        """
+        modulo = number % 2         # The number modulo'd by 2
+        if modulo == 0:             # If the result is 0,
+            number = number / 2     # divide it by 2
+        else:                       # Otherwise,
+            number = 3 * number + 1 # multiply by 3 and add 1 (3x + 1)
+        return number
+
+    # Execute the sequence    
+    while True:
+        number = sequence(number)
+        print(round(number))
+        if number == 1.0:
+            break
+
     print('END COLLATZ SEQUENCE')
     print('Sequence has reached a 4-2-1 loop.')
-    input()
-    exit()
-    
-while True:
-    # Execute the sequence
-    modulo()
-    print(number)
-    if number == 1.0:
-        break
+    exit(input('\nPress ENTER to exit.'))
 
-final()
+# Entry point of the program
+if __name__ == '__main__':
+    main()
