@@ -1,9 +1,5 @@
 # Returns the area of the square with given sides
-# Side length should eb given in input
-
-side = 2
-# side = float(input("Enter the side of the square: "))
-
-#calculate area
-area = side**2
-print(f"Area of the given square is {area}.")
+n=input("Enter the side of the square: ")  # Side length should be given in input
+side = float(n)
+area = side * side  #calculate area
+print("Area of the given square is ",area)
