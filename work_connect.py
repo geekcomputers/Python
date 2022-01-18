@@ -1,7 +1,7 @@
 # Script Name		: work_connect.py
-# Author				: Craig Richards
-# Created				: 11th May 2012
-# Last Modified		: 31st October 2012
+# Author				: Olawale Akomolafe
+# Created			: 16th January 2022
+# Last Modified		: 17st January 2022
 # Version				: 1.1
 
 # Modifications		: 1.1 - CR - Added some extra code, to check an argument is passed to the script first of all, then check it's a valid input
