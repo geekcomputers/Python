@@ -19,6 +19,8 @@ def write_to_file():
 def check_first_letter():
     F=open("happy.txt","r")
     value=F.read()
+    #closing the file happy.txt
+    F.close()
     count=0
     line=value.split()
     for i in line:
