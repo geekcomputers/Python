@@ -7,6 +7,8 @@ def lowercase():
     count=0
     count_=0
     value=F.read()
+    # after opening the we should close the file
+    F.close()
     for i in value:
         if i.islower():
             count+=1
