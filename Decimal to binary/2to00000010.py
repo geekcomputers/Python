@@ -3,13 +3,13 @@
 
 import sys
 
-binary = '$' # just starting var
-n = 15 # can get 2**16 numbers
+binary = "$"  # just starting var
+n = 15  # can get 2**16 numbers
 
 # get integer as output which is less than limit 2**16
-try: 
+try:
     input = int(input("What is your Decimal Number?"))
-    limit = 2**(n + 1)
+    limit = 2 ** (n + 1)
     input <= limit
 except ValueError:
     print("Please put integer in input! & less than", limit)
@@ -17,11 +17,11 @@ except ValueError:
 
 # main algorithm
 while n >= 0:
-    if input < 2**n:
-        binary = binary + '0'
+    if input < 2 ** n:
+        binary = binary + "0"
     else:
-        binary = binary + '1'
-        input = input - 2**n
+        binary = binary + "1"
+        input = input - 2 ** n
     n = n - 1
 
 print(binary)

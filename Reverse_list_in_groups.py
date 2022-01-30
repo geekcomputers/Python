@@ -14,7 +14,7 @@ class Reverse_Linked_List:
             self.head = new_node
             return
         current = self.head
-        while(current.next):
+        while current.next:
             current = current.next
         current.next = new_node
 
@@ -22,19 +22,19 @@ class Reverse_Linked_List:
         count = 0
         previous = None
         current = head
-        while (current is not None and count < k):
+        while current is not None and count < k:
             following = current.next
             current.next = previous
             previous = current
             current = following
-            count += 1 
+            count += 1
         if following is not None:
             head.next = self.Reverse_list_Groups(following, k)
         return previous
 
     def Display(self):
         temp = self.head
-        while(temp):
+        while temp:
             print(temp.data, "->", end=" ")
             temp = temp.next
         print("None")

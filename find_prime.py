@@ -1,4 +1,4 @@
-'''Author Anurag Kumar(mailto:anuragkumara95@gmail.com)
+"""Author Anurag Kumar(mailto:anuragkumara95@gmail.com)
 
 A prime number is a natural number that has exactly two distinct natural number divisors: 1 and itself.
 
@@ -23,7 +23,7 @@ A prime number is a natural number that has exactly two distinct natural number 
       - Find the first number greater than p in the list that is not marked. If there was no such number, stop. Otherwise, let 
         p now equal this new number (which is the next prime), and repeat from step 3.
       - When the algorithm terminates, the numbers remaining not marked in the list are all the primes below n.
-'''
+"""
 import sys
 
 
@@ -37,7 +37,8 @@ def find_prime(num):
 
 
 if __name__ == "__main__":
-    if len(sys.argv) != 2: raise Exception("usage - $python find_prime.py <num:int>")
+    if len(sys.argv) != 2:
+        raise Exception("usage - $python find_prime.py <num:int>")
     try:
         num = int(sys.argv[1])
     except ValueError:

@@ -25,7 +25,7 @@ def handler_thread(event):
 
 
 def handler(signum, frame):
-    handler_thread(frame.f_globals['event'])
+    handler_thread(frame.f_globals["event"])
 
 
 signal.signal(signal.SIGINT, handler)

@@ -14,16 +14,16 @@ class Linked_List:
             self.head = new_node
             return
         current = self.head
-        while(current.next):
+        while current.next:
             current = current.next
         current.next = new_node
 
     def Sort(self):
         temp = self.head
-        while(temp):
+        while temp:
             minn = temp
             after = temp.next
-            while(after):
+            while after:
                 if minn.data > after.data:
                     minn = after
                 after = after.next
@@ -34,7 +34,7 @@ class Linked_List:
 
     def Display(self):
         temp = self.head
-        while(temp):
+        while temp:
             print(temp.data, "->", end=" ")
             temp = temp.next
         print("None")

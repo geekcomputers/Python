@@ -58,28 +58,29 @@ elif comp_point==user_point: # if match draw
 else: # just checked
     print("can't calculate score")
 exit = input("PRESS ENTER TO EXIT")
-""" # code ends here
+"""  # code ends here
 import random
+
 # import time
 
-choices = {'S':'Snake','W':'Water','G':'Gun'}
+choices = {"S": "Snake", "W": "Water", "G": "Gun"}
 
 x = 0
 comp_point = 0
 user_point = 0
 match_draw = 0
 
-print('Welcome to the Snake-Water-Gun Game\n')
-print('I am Mr. Computer, We will play this game 10 times')
-print('Whoever wins more matches will be the winner\n')
+print("Welcome to the Snake-Water-Gun Game\n")
+print("I am Mr. Computer, We will play this game 10 times")
+print("Whoever wins more matches will be the winner\n")
 
 while x < 10:
-    print(f'Game No. {x+1}')
+    print(f"Game No. {x+1}")
     for key, value in choices.items():
-        print(f'Choose {key} for {value}')
+        print(f"Choose {key} for {value}")
 
     comp_rand = random.choice(list(choices.keys())).lower()
-    user_choice = input('\n----->').lower()
+    user_choice = input("\n----->").lower()
     print("Mr. Computer's choice is : " + comp_rand)
 
     # you can use this code to minimize your writing time for the code
@@ -116,58 +117,58 @@ while x < 10:
 
     """
 
-    if comp_rand == 's':
-        if user_choice == 'w':
+    if comp_rand == "s":
+        if user_choice == "w":
             print("\n-------Mr. Computer won this round--------")
             comp_point += 1
             x += 1
-        elif user_choice == 'g':
+        elif user_choice == "g":
             print("\n-------You won this round-------")
             user_point += 1
             x += 1
         else:
             print("\n-------Match draw-------")
-            match_draw +=1
+            match_draw += 1
             x += 1
 
-    elif comp_rand == 'w':
-        if user_choice == 'g':
+    elif comp_rand == "w":
+        if user_choice == "g":
             print("\n-------Mr. Computer won this round--------")
             comp_point += 1
             x += 1
-        elif user_choice == 's':
+        elif user_choice == "s":
             print("\n-------You won this round-------")
             user_point += 1
             x += 1
         else:
             print("\n-------Match draw-------")
-            match_draw +=1
+            match_draw += 1
             x += 1
 
-    elif comp_rand == 'g':
-        if user_choice == 's':
+    elif comp_rand == "g":
+        if user_choice == "s":
             print("\n-------Mr. Computer won this round--------")
             comp_point += 1
             x += 1
-        elif user_choice == 'w':
+        elif user_choice == "w":
             print("\n-------You won this round-------")
             user_point += 1
             x += 1
         else:
             print("\n-------Match draw-------")
-            match_draw +=1
+            match_draw += 1
             x += 1
 
-print('Here are final stats of the 10 matches : ')
-print(f'Mr. Computer won : {comp_point} matches')
-print(f'You won : {user_point} matches')
-print(f'Matches Drawn : {match_draw}')
+print("Here are final stats of the 10 matches : ")
+print(f"Mr. Computer won : {comp_point} matches")
+print(f"You won : {user_point} matches")
+print(f"Matches Drawn : {match_draw}")
 
 if comp_point > user_point:
-    print('\n-------Mr. Computer won-------')
+    print("\n-------Mr. Computer won-------")
 
 elif comp_point < user_point:
-    print('\n-----------You won-----------')
+    print("\n-----------You won-----------")
 
 else:
-    print('\n----------Match Draw----------')
+    print("\n----------Match Draw----------")

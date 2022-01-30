@@ -38,7 +38,7 @@ def kmp(pattern, text, len_p=None, len_t=None):
     return False
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     # Test 1)
     pattern = "abc1abc12"
     text1 = "alskfjaldsabc1abc1abc12k23adsfabcabc"

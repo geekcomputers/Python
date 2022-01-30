@@ -13,33 +13,33 @@ import random
 # In[ ]:
 
 
-#analysing tweets from the corpus
+# analysing tweets from the corpus
 
 
 # In[14]:
 
 
-positive_tweets=twitter_samples.strings('positive_tweets.json')
+positive_tweets = twitter_samples.strings("positive_tweets.json")
 
 
 # In[15]:
 
 
-negative_tweets=twitter_samples.strings('negative_tweets.json')
+negative_tweets = twitter_samples.strings("negative_tweets.json")
 
 
 # In[16]:
 
 
-all_tweets=positive_tweets+negative_tweets
+all_tweets = positive_tweets + negative_tweets
 
 
 # In[17]:
 
 
-#Analysing sampels tweets
+# Analysing sampels tweets
 
-print(positive_tweets[random.randint(0,5000)])
+print(positive_tweets[random.randint(0, 5000)])
 
 
 # In[19]:
@@ -53,8 +53,6 @@ print(positive_tweets[random.randint(0,5000)])
 5.steeming of the word"""
 
 
-
-
 import re
 import string
 
@@ -66,16 +64,16 @@ from nltk.tokenize import TweetTokenizer
 # In[20]:
 
 
-#Removing Hyper links
+# Removing Hyper links
 
-tweet=all_tweets[1]
+tweet = all_tweets[1]
 
-#removing RT words in the tweet
-tweet= re.sub(r'^RT[\s]+', '', tweet)
-#removing hyperlinks in the tweet
-tweet= re.sub(r'https?:\/\/.*[\r\n]*', '', tweet)
-#removing #symbol from the tweet
-tweet= re.sub(r'#', '', tweet)
+# removing RT words in the tweet
+tweet = re.sub(r"^RT[\s]+", "", tweet)
+# removing hyperlinks in the tweet
+tweet = re.sub(r"https?:\/\/.*[\r\n]*", "", tweet)
+# removing #symbol from the tweet
+tweet = re.sub(r"#", "", tweet)
 
 print(tweet)
 
@@ -83,11 +81,11 @@ print(tweet)
 # In[22]:
 
 
-#Tokenizing
+# Tokenizing
 
-tokenizer=TweetTokenizer(preserve_case=False, strip_handles=True,reduce_len=True)
+tokenizer = TweetTokenizer(preserve_case=False, strip_handles=True, reduce_len=True)
 
-tokens=tokenizer.tokenize(tweet)
+tokens = tokenizer.tokenize(tweet)
 
 print(tokens)
 
@@ -95,11 +93,11 @@ print(tokens)
 # In[23]:
 
 
-#Remving stop words and punctuation marks
+# Remving stop words and punctuation marks
 
-stoper=stopwords.words('english')
+stoper = stopwords.words("english")
 
-punct=string.punctuation
+punct = string.punctuation
 
 print(stoper)
 print(punct)
@@ -108,33 +106,29 @@ print(punct)
 # In[24]:
 
 
-cleaned=[]
+cleaned = []
 for i in tokens:
     if i not in stoper and i not in punct:
         cleaned.append(i)
-        
-        
+
+
 print(cleaned)
 
 
 # In[25]:
 
 
-#stemming
+# stemming
 
-stemmer=PorterStemmer()
+stemmer = PorterStemmer()
 
-processed=[]
+processed = []
 
 for i in cleaned:
-    st=stemmer.stem(i)
+    st = stemmer.stem(i)
     processed.append(st)
-    
+
 print(processed)
 
 
 # In[ ]:
-
-
-
-

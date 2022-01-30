@@ -23,7 +23,7 @@ class Linked_List:
         while First is not None or Second is not None:
             first_data = 0 if First is None else First.data
             second_data = 0 if Second is None else Second.data
-            Sum = carry+first_data+second_data
+            Sum = carry + first_data + second_data
             carry = 1 if Sum >= 10 else 0
             Sum = Sum if Sum < 10 else Sum % 10
             temp = Node(Sum)
@@ -41,7 +41,7 @@ class Linked_List:
 
     def Display(self):
         temp = self.head
-        while(temp):
+        while temp:
             print(temp.data, "->", end=" ")
             temp = temp.next
         print("None")

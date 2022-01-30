@@ -1,13 +1,13 @@
 def get_user_input(start, end):
     """
-        input: two integer values
-               lower limit 'start' and maximum 'end'
-               the arguments aren't inclusive.
+    input: two integer values
+           lower limit 'start' and maximum 'end'
+           the arguments aren't inclusive.
 
-        output: if reading successful then returns the read integer. 
+    output: if reading successful then returns the read integer.
 
-        purpose: reads from command-line a integer in the given bounds. 
-                 while input invalid asks user again
+    purpose: reads from command-line a integer in the given bounds.
+             while input invalid asks user again
     """
 
     loop = True  # controls while-loop
@@ -16,7 +16,7 @@ def get_user_input(start, end):
 
         try:
 
-            # reads and converts the input from the console. 
+            # reads and converts the input from the console.
             user_input = int(input("Enter Your choice: "))
 
             # checks whether input is in the given bounds.

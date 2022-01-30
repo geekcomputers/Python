@@ -20,13 +20,24 @@ class Bird(Thread):
     decends = 0.00390625
     climbsUp = 0.0911458333
 
-    def __init__(self, background, gameover_function, *screen_geometry, fp="bird.png", event="<Up>", descend_speed=5):
+    def __init__(
+        self,
+        background,
+        gameover_function,
+        *screen_geometry,
+        fp="bird.png",
+        event="<Up>",
+        descend_speed=5
+    ):
 
         # Verifica se "background" é uma instância de Background e se o "gamerover_method" é chamável
 
-        if not isinstance(background, Background): raise TypeError(
-            "The background argument must be an instance of Background.")
-        if not callable(gameover_function): raise TypeError("The gameover_method argument must be a callable object.")
+        if not isinstance(background, Background):
+            raise TypeError(
+                "The background argument must be an instance of Background."
+            )
+        if not callable(gameover_function):
+            raise TypeError("The gameover_method argument must be a callable object.")
 
         # Instância os parâmetros
         self.__canvas = background
@@ -52,10 +63,18 @@ class Bird(Thread):
         self.height = (self.__height // 100) * 11
 
         # Carrega e cria a imagem do pássaro no background
-        self.__canvas.bird_image = \
-        self.getPhotoImage(image_path=self.image_path, width=self.width, height=self.height, closeAfter=True)[0]
-        self.__birdID = self.__canvas.create_image(self.__width // 2, self.__height // 2,
-                                                   image=self.__canvas.bird_image, tag=self.__tag)
+        self.__canvas.bird_image = self.getPhotoImage(
+            image_path=self.image_path,
+            width=self.width,
+            height=self.height,
+            closeAfter=True,
+        )[0]
+        self.__birdID = self.__canvas.create_image(
+            self.__width // 2,
+            self.__height // 2,
+            image=self.__canvas.bird_image,
+            tag=self.__tag,
+        )
 
         # Define evento para fazer o pássaro subir
         self.__canvas.focus_force()
@@ -81,11 +100,11 @@ class Bird(Thread):
         if position[3] >= self.__height + 20:
             self.__isAlive = False
 
-        # Se o pássaro tiver ultrapassado a borda de cima do background, ele será declarado morto    
+        # Se o pássaro tiver ultrapassado a borda de cima do background, ele será declarado morto
         if position[1] <= -20:
             self.__isAlive = False
 
-        # Dá uma margem de erro ao pássaro de X pixels 
+        # Dá uma margem de erro ao pássaro de X pixels
         position[0] += int(25 / 78 * self.width)
         position[1] += int(25 / 77 * self.height)
         position[2] -= int(20 / 78 * self.width)
@@ -119,9 +138,11 @@ class Bird(Thread):
         return self.__tag
 
     @staticmethod
-    def getPhotoImage(image=None, image_path=None, width=None, height=None, closeAfter=False):
+    def getPhotoImage(
+        image=None, image_path=None, width=None, height=None, closeAfter=False
+    ):
         """
-        Retorna um objeto da classe PIL.ImageTk.PhotoImage de uma imagem e as imagens criadas de PIL.Image 
+        Retorna um objeto da classe PIL.ImageTk.PhotoImage de uma imagem e as imagens criadas de PIL.Image
         (photoImage, new, original)
 
         @param image: Instância de PIL.Image.open
@@ -132,14 +153,17 @@ class Bird(Thread):
         """
 
         if not image:
-            if not image_path: return
+            if not image_path:
+                return
 
             # Abre a imagem utilizando o caminho dela
             image = openImage(image_path)
 
         # Será redimesionada a imagem somente se existir um width ou height
-        if not width: width = image.width
-        if not height: height = image.height
+        if not width:
+            width = image.width
+        if not height:
+            height = image.height
 
         # Cria uma nova imagem já redimensionada
         newImage = image.resize([width, height])

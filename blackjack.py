@@ -7,11 +7,14 @@ deck = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, 11] * 4
 random.shuffle(deck)
 
 print(
-    "                       **********************************************************                                    ")
+    "                       **********************************************************                                    "
+)
 print(
-    "                                   Welcome to the game Casino - BLACK JACK !                                         ")
+    "                                   Welcome to the game Casino - BLACK JACK !                                         "
+)
 print(
-    "                       **********************************************************                                    ")
+    "                       **********************************************************                                    "
+)
 
 d_cards = []  # Initialising dealer's cards
 p_cards = []  # Initialising player's cards
@@ -20,7 +23,7 @@ while len(d_cards) != 2:
     random.shuffle(deck)
     d_cards.append(deck.pop())
     if len(d_cards) == 2:
-        print('The cards dealer has are X ', d_cards[1])
+        print("The cards dealer has are X ", d_cards[1])
 
 # Displaying the Player's cards
 while len(p_cards) != 2:
@@ -35,7 +38,9 @@ if sum(p_cards) > 21:
     exit()
 
 if sum(d_cards) > 21:
-    print("Dealer is BUSTED !\n   ************** You are the Winner !!******************\n")
+    print(
+        "Dealer is BUSTED !\n   ************** You are the Winner !!******************\n"
+    )
     exit()
 
 if sum(d_cards) == 21:
@@ -86,17 +91,17 @@ def dealer_choice():
 
 while sum(p_cards) < 21:
 
-    k = input('Want to hit or stay?\n Press 1 for hit and 0 for stay ')
+    k = input("Want to hit or stay?\n Press 1 for hit and 0 for stay ")
     if k == 1:
         random.shuffle(deck)
         p_cards.append(deck.pop())
-        print('You have a total of ' + str(sum(p_cards))
-              + ' with the cards ', p_cards)
+        print("You have a total of " + str(sum(p_cards)) + " with the cards ", p_cards)
         if sum(p_cards) > 21:
-            print('*************You are BUSTED !*************\n Dealer Wins !!')
+            print("*************You are BUSTED !*************\n Dealer Wins !!")
         if sum(p_cards) == 21:
-            print('*******************You are the Winner !!*****************************')
-
+            print(
+                "*******************You are the Winner !!*****************************"
+            )
 
     else:
         dealer_choice()

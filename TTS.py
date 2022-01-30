@@ -1,10 +1,12 @@
 from tkinter import *
 from platform import system
-if system() == 'Windows' or 'nt':
+
+if system() == "Windows" or "nt":
     import win32com.client as wincl
 else:
     print("Sorry, TTS client is not supported on Linux or MacOS")
     exit()
+
 
 def text2Speech():
     text = e.get()

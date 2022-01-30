@@ -13,10 +13,10 @@ try:
     n = int(input("Enter a number to calculate it's factorial: "))
 
 except ValueError:
-    print('Please enter an integer!')
+    print("Please enter an integer!")
     sys.exit()
 
 if n < 0:
-    print('Please enter a positive integer!')
+    print("Please enter a positive integer!")
 else:
     print(f"The factorial of {n} is: {factorial(n)}")

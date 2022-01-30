@@ -1,4 +1,4 @@
-'''@Author: Anurag Kumar(mailto:anuragkumarak95@gmail.com) 
+"""@Author: Anurag Kumar(mailto:anuragkumarak95@gmail.com) 
 This module is used for generating a TF-IDF file or values from a list of files that contains docs.
 
 What is TF-IDF : https://en.wikipedia.org/wiki/Tf%E2%80%93idf
@@ -30,26 +30,26 @@ sample file format of input:
 here, every line represents a document.
 
 have fun, cheers.
-'''
+"""
 import math
 import pickle
 
 from colorama import Fore, Style
 
 switcher = {
-    'r': Fore.RED,
-    'bk': Fore.BLACK,
-    'b': Fore.BLUE,
-    'g': Fore.GREEN,
-    'y': Fore.YELLOW,
-    'm': Fore.MAGENTA,
-    'c': Fore.CYAN,
-    'w': Fore.WHITE
+    "r": Fore.RED,
+    "bk": Fore.BLACK,
+    "b": Fore.BLUE,
+    "g": Fore.GREEN,
+    "y": Fore.YELLOW,
+    "m": Fore.MAGENTA,
+    "c": Fore.CYAN,
+    "w": Fore.WHITE,
 }
 
 
-def paint(str, color='r'):
-    '''Utility func, for printing colorful logs in console...
+def paint(str, color="r"):
+    """Utility func, for printing colorful logs in console...
 
     @args:
     --
@@ -60,17 +60,17 @@ def paint(str, color='r'):
     --
     str : final modified string with foreground color as per parameters.
 
-    '''
+    """
     if color in switcher:
         str = switcher[color] + str + Style.RESET_ALL
     return str
 
 
-TAG = paint('TF-IDF-GENE/', 'b')
+TAG = paint("TF-IDF-GENE/", "b")
 
 
 def find_tf_idf(file_names=None, prev_file_path=None, dump_path=None):
-    '''Function to create a TF-IDF list of dictionaries for a corpus of docs.
+    """Function to create a TF-IDF list of dictionaries for a corpus of docs.
     If you opt for dumping the data, you can provide a file_path with .tfidfpkl extension(standard made for better understanding)
     and also re-generate a new tfidf list which overrides over an old one by mentioning its path.
 
@@ -84,22 +84,26 @@ def find_tf_idf(file_names=None, prev_file_path=None, dump_path=None):
     --
     idf : a dict of unique words in corpus,with their document frequency as values.
     tf_idf : the generated tf-idf list of dictionaries for mentioned docs.
-    '''
+    """
     if file_names is None:
-        file_names = ['./../test/testdata']
-    tf_idf = []  # will hold a dict of word_count for every doc(line in a doc in this case)
+        file_names = ["./../test/testdata"]
+    tf_idf = (
+        []
+    )  # will hold a dict of word_count for every doc(line in a doc in this case)
     idf = {}
 
     # this statement is useful for altering existant tf-idf file and adding new docs in itself.(## memory is now the biggest issue)
     if prev_file_path:
-        print(TAG, 'modifying over exising file.. @', prev_file_path)
-        idf, tf_idf = pickle.load(open(prev_file_path, 'rb'))
+        print(TAG, "modifying over exising file.. @", prev_file_path)
+        idf, tf_idf = pickle.load(open(prev_file_path, "rb"))
         prev_doc_count = len(idf)
         prev_corpus_length = len(tf_idf)
 
     for f in file_names:
 
-        file1 = open(f, 'r')  # never use 'rb' for textual data, it creates something like,  {b'line-inside-the-doc'}
+        file1 = open(
+            f, "r"
+        )  # never use 'rb' for textual data, it creates something like,  {b'line-inside-the-doc'}
 
         # create word_count dict for all docs
         for line in file1:
@@ -127,15 +131,32 @@ def find_tf_idf(file_names=None, prev_file_path=None, dump_path=None):
             doc[key] = true_tf * true_idf
 
     # do not get overwhelmed, just for logging the quantity of words that have been processed.
-    print(TAG, 'Total number of unique words in corpus', len(idf),
-          '( ' + paint('++' + str(len(idf) - prev_doc_count), 'g') + ' )' if prev_file_path else '')
-    print(TAG, 'Total number of docs in corpus:', len(tf_idf),
-          '( ' + paint('++' + str(len(tf_idf) - prev_corpus_length), 'g') + ' )' if prev_file_path else '')
+    print(
+        TAG,
+        "Total number of unique words in corpus",
+        len(idf),
+        "( " + paint("++" + str(len(idf) - prev_doc_count), "g") + " )"
+        if prev_file_path
+        else "",
+    )
+    print(
+        TAG,
+        "Total number of docs in corpus:",
+        len(tf_idf),
+        "( " + paint("++" + str(len(tf_idf) - prev_corpus_length), "g") + " )"
+        if prev_file_path
+        else "",
+    )
 
     # dump if a dir-path is given
     if dump_path:
-        if dump_path[-8:] != 'tfidfpkl': raise Exception(
-            TAG + "Please provide a .tfidfpkl file_path, it is the standard format of this module.")
-        pickle.dump((idf, tf_idf), open(dump_path, 'wb'), protocol=pickle.HIGHEST_PROTOCOL)
-        print(TAG, 'Dumping TF-IDF vars @', dump_path)
+        if dump_path[-8:] != "tfidfpkl":
+            raise Exception(
+                TAG
+                + "Please provide a .tfidfpkl file_path, it is the standard format of this module."
+            )
+        pickle.dump(
+            (idf, tf_idf), open(dump_path, "wb"), protocol=pickle.HIGHEST_PROTOCOL
+        )
+        print(TAG, "Dumping TF-IDF vars @", dump_path)
     return idf, tf_idf

@@ -15,7 +15,8 @@ class Background(Canvas):
     def __init__(self, tk_instance, *geometry, fp="background.png", animation_speed=50):
 
         # Verifica se o parâmetro tk_instance é uma instância de Tk
-        if not isinstance(tk_instance, Tk): raise TypeError("The tk_instance argument must be an instance of Tk.")
+        if not isinstance(tk_instance, Tk):
+            raise TypeError("The tk_instance argument must be an instance of Tk.")
 
         # Recebe o caminho de imagem e a velocidade da animação
         self.image_path = fp
@@ -26,19 +27,36 @@ class Background(Canvas):
         self.__height = geometry[1]
 
         # Inicializa o construtor da classe Canvas
-        Canvas.__init__(self, master=tk_instance, width=self.__width, height=self.__height)
+        Canvas.__init__(
+            self, master=tk_instance, width=self.__width, height=self.__height
+        )
 
         # Carrega a imagem que será usada no plano de fundo
-        self.__bg_image = \
-        self.getPhotoImage(image_path=self.image_path, width=self.__width, height=self.__height, closeAfter=True)[0]
+        self.__bg_image = self.getPhotoImage(
+            image_path=self.image_path,
+            width=self.__width,
+            height=self.__height,
+            closeAfter=True,
+        )[0]
 
         # Cria uma imagem que será fixa, ou seja, que não fará parte da animação e serve em situações de bugs na animação
-        self.__background_default = self.create_image(self.__width // 2, self.__height // 2, image=self.__bg_image)
+        self.__background_default = self.create_image(
+            self.__width // 2, self.__height // 2, image=self.__bg_image
+        )
 
         # Cria as imagens que serão utilizadas na animação do background
-        self.__background.append(self.create_image(self.__width // 2, self.__height // 2, image=self.__bg_image))
         self.__background.append(
-            self.create_image(self.__width + (self.__width // 2), self.__height // 2, image=self.__bg_image))
+            self.create_image(
+                self.__width // 2, self.__height // 2, image=self.__bg_image
+            )
+        )
+        self.__background.append(
+            self.create_image(
+                self.__width + (self.__width // 2),
+                self.__height // 2,
+                image=self.__bg_image,
+            )
+        )
 
     def getBackgroundID(self):
         """
@@ -47,9 +65,11 @@ class Background(Canvas):
         return [self.__background_default, *self.__background]
 
     @staticmethod
-    def getPhotoImage(image=None, image_path=None, width=None, height=None, closeAfter=False):
+    def getPhotoImage(
+        image=None, image_path=None, width=None, height=None, closeAfter=False
+    ):
         """
-        Retorna um objeto da classe PIL.ImageTk.PhotoImage de uma imagem e as imagens criadas de PIL.Image 
+        Retorna um objeto da classe PIL.ImageTk.PhotoImage de uma imagem e as imagens criadas de PIL.Image
         (photoImage, new, original)
 
         @param image: Instância de PIL.Image.open
@@ -60,14 +80,17 @@ class Background(Canvas):
         """
 
         if not image:
-            if not image_path: return
+            if not image_path:
+                return
 
             # Abre a imagem utilizando o caminho dela
             image = openImage(image_path)
 
         # Será redimesionada a imagem somente se existir um width ou height
-        if not width: width = image.width
-        if not height: height = image.height
+        if not width:
+            width = image.width
+        if not height:
+            height = image.height
 
         # Cria uma nova imagem já redimensionada
         newImage = image.resize([width, height])
@@ -103,12 +126,23 @@ class Background(Canvas):
         self.__background.clear()
 
         # Cria uma imagem que será fixa, ou seja, que não fará parte da animação e serve em situações de bugs na animação
-        self.__background_default = self.create_image(self.__width // 2, self.__height // 2, image=self.__bg_image)
+        self.__background_default = self.create_image(
+            self.__width // 2, self.__height // 2, image=self.__bg_image
+        )
 
         # Cria as imagens que serão utilizadas na animação do background
-        self.__background.append(self.create_image(self.__width // 2, self.__height // 2, image=self.__bg_image))
         self.__background.append(
-            self.create_image(self.__width + (self.__width // 2), self.__height // 2, image=self.__bg_image))
+            self.create_image(
+                self.__width // 2, self.__height // 2, image=self.__bg_image
+            )
+        )
+        self.__background.append(
+            self.create_image(
+                self.__width + (self.__width // 2),
+                self.__height // 2,
+                image=self.__bg_image,
+            )
+        )
 
     def run(self):
         """
@@ -133,7 +167,9 @@ class Background(Canvas):
 
                 # Cria uma nova imagem a partir da última imagem da animação
                 width = self.bbox(self.__background[0])[2] + self.__width // 2
-                self.__background.append(self.create_image(width, self.__height // 2, image=self.__bg_image))
+                self.__background.append(
+                    self.create_image(width, self.__height // 2, image=self.__bg_image)
+                )
 
             # Executa novamente o método depois de um certo tempo
             self.after(self.animation_speed, self.run)

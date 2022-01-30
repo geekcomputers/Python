@@ -11,7 +11,7 @@ b = input("Enter 2nd Number:")
 sum = float (a) + int (b)
 print(sum)
 """
-student = 'ANKITASDFAHBVGASDNDSDNBFCZCXCNIGL'
+student = "ANKITASDFAHBVGASDNDSDNBFCZCXCNIGL"
 print(student.lower())
 
-print(student.find('ASDF'))
+print(student.find("ASDF"))

@@ -7,7 +7,17 @@ import sys
 def instasubprocess(user, tags, type, productId):
     try:
         child_env = sys.executable
-        file_pocessing = os.getcwd() + "/insta_datafetcher.py " + user + " " + tags + " " + type + " " + productId
+        file_pocessing = (
+            os.getcwd()
+            + "/insta_datafetcher.py "
+            + user
+            + " "
+            + tags
+            + " "
+            + type
+            + " "
+            + productId
+        )
         command = child_env + " " + file_pocessing
         result = subprocess.Popen(command, shell=True)
         result.wait()
@@ -15,5 +25,5 @@ def instasubprocess(user, tags, type, productId):
         print("error::instasubprocess>>", sys.exc_info()[1])
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     instasubprocess(user="u2", tags="food", type="hashtags", productId="abc")

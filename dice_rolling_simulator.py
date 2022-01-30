@@ -82,8 +82,10 @@ def dice12():
 
 def user_exit_checker():
     # Checking if the user would like to roll another die, or to exit the program
-    user_exit_checker_raw = input("\r\nIf you want to roll another die, type [roll]. To exit, type [exit].\r\n?>")
-    user_exit_checker = (user_exit_checker_raw.lower())
+    user_exit_checker_raw = input(
+        "\r\nIf you want to roll another die, type [roll]. To exit, type [exit].\r\n?>"
+    )
+    user_exit_checker = user_exit_checker_raw.lower()
     if user_exit_checker == "roll":
         start()
     else:

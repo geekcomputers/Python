@@ -7,7 +7,7 @@
 # CC BY 4.0
 #
 # Test XORCipher is the test automation suite for the XORCipher created by
-# Christian Bender. 
+# Christian Bender.
 # Usage: python test_XOR_cipher.py
 #
 
@@ -33,7 +33,7 @@ class TestXORCipher(TestCase):
         # self.XORCipher_1 = XORCipher(key)
         pass
 
-    @mock.patch('XOR_cipher.XORCipher.__init__')
+    @mock.patch("XOR_cipher.XORCipher.__init__")
     def test__init__(self, mock__init__):
         """
         Test the __init__ method with commented values in the event
@@ -49,7 +49,7 @@ class TestXORCipher(TestCase):
         # self.XORCipher_1.__init__.assert_called_with(1)
         XORCipher.__init__.assert_called()
 
-    @mock.patch('XOR_cipher.XORCipher.encrypt')
+    @mock.patch("XOR_cipher.XORCipher.encrypt")
     def test_encrypt(self, mock_encrypt):
         """
         Test the encrypt method with mocked values.
@@ -63,10 +63,10 @@ class TestXORCipher(TestCase):
 
         XORCipher.encrypt.assert_called_with(content, key)
 
-    @mock.patch('XOR_cipher.XORCipher.decrypt')
+    @mock.patch("XOR_cipher.XORCipher.decrypt")
     def test_decrypt(self, mock_decrypt):
         """
-        Test the decrypt method with mocked values. 
+        Test the decrypt method with mocked values.
         """
 
         ans = mock.MagicMock()
@@ -77,7 +77,7 @@ class TestXORCipher(TestCase):
 
         XORCipher.decrypt.assert_called_with(content, key)
 
-    @mock.patch('XOR_cipher.XORCipher.encrypt_string')
+    @mock.patch("XOR_cipher.XORCipher.encrypt_string")
     def test_encrypt_string(self, mock_encrypt_string):
         """
         Test the encrypt_string method with mocked values.
@@ -91,7 +91,7 @@ class TestXORCipher(TestCase):
 
         XORCipher.encrypt_string.assert_called_with(content, key)
 
-    @mock.patch('XOR_cipher.XORCipher.decrypt_string')
+    @mock.patch("XOR_cipher.XORCipher.decrypt_string")
     def test_decrypt_string(self, mock_decrypt_string):
         """
         Test the decrypt_string method with mocked values.
@@ -105,7 +105,7 @@ class TestXORCipher(TestCase):
 
         XORCipher.decrypt_string.assert_called_with(content, key)
 
-    @mock.patch('XOR_cipher.XORCipher.encrypt_file')
+    @mock.patch("XOR_cipher.XORCipher.encrypt_file")
     def test_encrypt_file(self, mock_encrypt_file):
         """
         Test the encrypt_file method with mocked values.
@@ -118,7 +118,7 @@ class TestXORCipher(TestCase):
 
         XORCipher.encrypt_file.assert_called_with(file, key)
 
-    @mock.patch('XOR_cipher.XORCipher.decrypt_file')
+    @mock.patch("XOR_cipher.XORCipher.decrypt_file")
     def test_decrypt_file(self, mock_decrypt_file):
         """
         Test the decrypt_file method with mocked values.
@@ -132,5 +132,5 @@ class TestXORCipher(TestCase):
         XORCipher.decrypt_string.assert_called_with(file, key)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

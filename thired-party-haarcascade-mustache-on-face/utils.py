@@ -44,9 +44,9 @@ class CFEVideoConf(object):
     # Video Encoding, might require additional installs
     # Types of Codes: http://www.fourcc.org/codecs.php
     VIDEO_TYPE = {
-        'avi': cv2.VideoWriter_fourcc(*'XVID'),
+        "avi": cv2.VideoWriter_fourcc(*"XVID"),
         # 'mp4': cv2.VideoWriter_fourcc(*'H264'),
-        'mp4': cv2.VideoWriter_fourcc(*'XVID'),
+        "mp4": cv2.VideoWriter_fourcc(*"XVID"),
     }
 
     width = 640
@@ -67,8 +67,8 @@ class CFEVideoConf(object):
         self.capture.set(3, width)
         self.capture.set(4, height)
 
-    def get_dims(self, res='480p'):
-        width, height = self.STD_DIMENSIONS['480p']
+    def get_dims(self, res="480p"):
+        width, height = self.STD_DIMENSIONS["480p"]
         if res in self.STD_DIMENSIONS:
             width, height = self.STD_DIMENSIONS[res]
         self.change_res(width, height)
@@ -79,4 +79,4 @@ class CFEVideoConf(object):
         filename, ext = os.path.splitext(self.filepath)
         if ext in self.VIDEO_TYPE:
             return self.VIDEO_TYPE[ext]
-        return self.VIDEO_TYPE['avi']
+        return self.VIDEO_TYPE["avi"]

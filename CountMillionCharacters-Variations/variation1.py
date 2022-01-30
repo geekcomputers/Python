@@ -18,7 +18,7 @@ def count_chars(filename):
 def main():
     is_exist = True
     # Try to open file if exist else raise exception and try again
-    while (is_exist):
+    while is_exist:
         try:
             inputFile = input("File Name / (0)exit : ").strip()
             if inputFile == "0":
@@ -28,5 +28,5 @@ def main():
             print("File not found...Try again!")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

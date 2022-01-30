@@ -17,7 +17,7 @@ if name_check.lower().startswith("n"):
 userList = name
 
 # Python & user dialoge
-print("Hello", name + ", my name is Python." )
+print("Hello", name + ", my name is Python.")
 time.sleep(0.8)
 print("The first letter of your name is", userList[0] + ".")
 time.sleep(0.8)
@@ -47,7 +47,3 @@ elif response2.lower().startswith("n"):
 else:
     print("You may have made an input error. Please restart and try again.")
     sys.exit()
-    
-
-
-

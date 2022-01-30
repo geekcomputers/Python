@@ -23,7 +23,7 @@ from shutil import move
 # Creates a directory
 def create_directory(name):
     if exists(pardir + "\\" + name):
-        print('Folder already exists... Cannot Overwrite this')
+        print("Folder already exists... Cannot Overwrite this")
     else:
         makedirs(pardir + "\\" + name)
 
@@ -45,15 +45,15 @@ def set_working_directory():
 
 # Backup the folder tree
 def backup_files(name_dir, folder):
-    copytree(pardir, name_dir + ':\\' + folder)
+    copytree(pardir, name_dir + ":\\" + folder)
 
 
 # Move folder to specific location
 # Overwrites the file if it already exists
 def move_folder(filename, name_dir, folder):
     if not exists(name_dir + ":\\" + folder):
-        makedirs(name_dir + ':\\' + folder)
-    move(filename, name_dir + ":\\" + folder + '\\')
+        makedirs(name_dir + ":\\" + folder)
+    move(filename, name_dir + ":\\" + folder + "\\")
 
 
 """

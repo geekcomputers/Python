@@ -51,14 +51,16 @@ class App(Tk, Settings):
         # Verifica se existem as imagens do jogo
         for file in self.images_fp:
             if not os.path.exists(file):
-                raise FileNotFoundError("The following file was not found:\n{}".format(file))
+                raise FileNotFoundError(
+                    "The following file was not found:\n{}".format(file)
+                )
 
         # Carrega a imagem do botão para começar o jogo
         self.__startButton_image = Background.getPhotoImage(
             image_path=self.startButton_fp,
             width=(self.__width // 100) * self.button_width,
             height=(self.__height // 100) * self.button_height,
-            closeAfter=True
+            closeAfter=True,
         )[0]
 
         # Carrega a imagem do botão para sair do jogo
@@ -66,7 +68,7 @@ class App(Tk, Settings):
             image_path=self.exitButton_fp,
             width=(self.__width // 100) * self.button_width,
             height=(self.__height // 100) * self.button_height,
-            closeAfter=True
+            closeAfter=True,
         )[0]
 
         # Carrega a imagem do título do jogo
@@ -74,7 +76,7 @@ class App(Tk, Settings):
             image_path=self.title_fp,
             width=(self.__width // 100) * self.title_width,
             height=(self.__height // 100) * self.title_height,
-            closeAfter=True
+            closeAfter=True,
         )[0]
 
         # Carrega a imagem do placar do jogo
@@ -82,7 +84,7 @@ class App(Tk, Settings):
             image_path=self.scoreboard_fp,
             width=(self.__width // 100) * self.scoreboard_width,
             height=(self.__height // 100) * self.scoreboard_height,
-            closeAfter=True
+            closeAfter=True,
         )[0]
 
         # Define a velocidade da animação do background com base na largura da janela
@@ -128,30 +130,46 @@ class App(Tk, Settings):
 
         # Cria um botão para começar o jogo
         startButton = Button(
-            self, image=self.__startButton_image, bd=0, command=self.start, cursor=self.button_cursor,
-            bg=self.button_bg, activebackground=self.button_activebackground
+            self,
+            image=self.__startButton_image,
+            bd=0,
+            command=self.start,
+            cursor=self.button_cursor,
+            bg=self.button_bg,
+            activebackground=self.button_activebackground,
         )
         # Coloca o botão dentro do background ( Canvas )
         self.__buttons.append(
-            self.__background.create_window((self.__width // 2) - width // 1.5,
-                                            int(self.__height / 100 * self.button_position_y),
-                                            window=startButton))
+            self.__background.create_window(
+                (self.__width // 2) - width // 1.5,
+                int(self.__height / 100 * self.button_position_y),
+                window=startButton,
+            )
+        )
 
         # Cria um botão para sair do jogo
         exitButton = Button(
-            self, image=self.__exitButton_image, bd=0, command=self.close, cursor=self.button_cursor,
-            bg=self.button_bg, activebackground=self.button_activebackground
+            self,
+            image=self.__exitButton_image,
+            bd=0,
+            command=self.close,
+            cursor=self.button_cursor,
+            bg=self.button_bg,
+            activebackground=self.button_activebackground,
         )
 
         # Coloca o botão dentro do background ( Canvas )
         self.__buttons.append(
-            self.__background.create_window((self.__width // 2) + width // 1.5,
-                                            int(self.__height / 100 * self.button_position_y),
-                                            window=exitButton))
+            self.__background.create_window(
+                (self.__width // 2) + width // 1.5,
+                int(self.__height / 100 * self.button_position_y),
+                window=exitButton,
+            )
+        )
 
     def createScoreBoard(self):
         """
-        Método para criar a imagem do placar do jogo no background 
+        Método para criar a imagem do placar do jogo no background
         junto com as informações do jogador.
         """
 
@@ -183,20 +201,29 @@ class App(Tk, Settings):
 
         # Cria texto para mostrar o score do último jogo
         self.__background.create_text(
-            score_x, score_y, text="Score: %s" % self.__score,
-            fill=self.text_fill, font=font
+            score_x,
+            score_y,
+            text="Score: %s" % self.__score,
+            fill=self.text_fill,
+            font=font,
         )
 
         # Cria texto para mostrar a melhor pontuação do jogador
         self.__background.create_text(
-            bestScore_x, bestScore_y, text="Best Score: %s" % self.__bestScore,
-            fill=self.text_fill, font=font
+            bestScore_x,
+            bestScore_y,
+            text="Best Score: %s" % self.__bestScore,
+            fill=self.text_fill,
+            font=font,
         )
 
         # Cria texto para mostrar o tempo de jogo
         self.__background.create_text(
-            time_x, time_y, text="Time: %s" % self.__time,
-            fill=self.text_fill, font=font
+            time_x,
+            time_y,
+            text="Time: %s" % self.__time,
+            fill=self.text_fill,
+            font=font,
         )
 
     def createTitleImage(self):
@@ -204,12 +231,15 @@ class App(Tk, Settings):
         Método para criar a imagem do título do jogo no background
         """
 
-        self.__background.create_image(self.__width // 2, (self.__height // 100) * self.title_position_y,
-                                       image=self.__title_image)
+        self.__background.create_image(
+            self.__width // 2,
+            (self.__height // 100) * self.title_position_y,
+            image=self.__title_image,
+        )
 
     def deleteMenuButtons(self):
         """
-        Método para deletar os botões de menu 
+        Método para deletar os botões de menu
         """
 
         # Deleta cada botão criado dentro do background
@@ -263,13 +293,19 @@ class App(Tk, Settings):
 
         # Cria o plano de fundo do jogo
         self.__background = Background(
-            self, self.__width, self.__height, fp=self.background_fp, animation_speed=self.__background_animation_speed
+            self,
+            self.__width,
+            self.__height,
+            fp=self.background_fp,
+            animation_speed=self.__background_animation_speed,
         )
 
         # Foca o plano de fundo para que seja possível definir os eventos
         self.__background.focus_force()
         # Define evento para trocar o modo de janela para "fullscreen" ou "window"
-        self.__background.bind(self.window_fullscreen_event, self.changeFullscreenOption)
+        self.__background.bind(
+            self.window_fullscreen_event, self.changeFullscreenOption
+        )
         # Define evento para começar o jogo
         self.__background.bind(self.window_start_event, self.start)
         # Define evento para sair do jogo
@@ -289,8 +325,13 @@ class App(Tk, Settings):
 
         # Cria um pássaro inicial no jogo
         self.__bird = Bird(
-            self.__background, self.gameOver, self.__width, self.__height,
-            fp=self.bird_fp, event=self.bird_event, descend_speed=self.__bird_descend_speed
+            self.__background,
+            self.gameOver,
+            self.__width,
+            self.__height,
+            fp=self.bird_fp,
+            event=self.bird_event,
+            descend_speed=self.__bird_descend_speed,
         )
 
     def loadScore(self):
@@ -306,7 +347,7 @@ class App(Tk, Settings):
 
         # Se não for possível, será criado um arquivo para guardar o placar
         except BaseException:
-            file = open(self.score_fp, 'w')
+            file = open(self.score_fp, "w")
             file.write(bin(self.__bestScore))
             file.close()
 
@@ -315,7 +356,7 @@ class App(Tk, Settings):
         Método para salvar a pontuação do jogador
         """
 
-        with open(self.score_fp, 'w') as file:
+        with open(self.score_fp, "w") as file:
             file.write(bin(self.__bestScore))
 
     def start(self, event=None):
@@ -324,7 +365,8 @@ class App(Tk, Settings):
         """
 
         # Este método é executado somente se o jogador não estiver já jogando
-        if self.__playing: return
+        if self.__playing:
+            return
 
         # Reinicia o placar
         self.__score = 0
@@ -342,14 +384,24 @@ class App(Tk, Settings):
 
         # Cria um pássaro no jogo
         self.__bird = Bird(
-            self.__background, self.gameOver, self.__width, self.__height,
-            fp=self.bird_fp, event=self.bird_event, descend_speed=self.__bird_descend_speed
+            self.__background,
+            self.gameOver,
+            self.__width,
+            self.__height,
+            fp=self.bird_fp,
+            event=self.bird_event,
+            descend_speed=self.__bird_descend_speed,
         )
 
         # Cria tubos no jogo
         self.__tubes = Tubes(
-            self.__background, self.__bird, self.increaseScore, self.__width, self.__height,
-            fp=self.tube_fp, animation_speed=self.__background_animation_speed
+            self.__background,
+            self.__bird,
+            self.increaseScore,
+            self.__width,
+            self.__height,
+            fp=self.tube_fp,
+            animation_speed=self.__background_animation_speed,
         )
 
         # Inicializa a animação do pássaro e dos tubos

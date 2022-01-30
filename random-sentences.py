@@ -19,13 +19,16 @@ def random_int():
 
 def random_sentence():
     """Creates random and return sentences."""
-    return ("{} {} {} {} {} {}"
-            .format(article[random_int()]
-                    , noun[random_int()]
-                    , verb[random_int()]
-                    , preposition[random_int()]
-                    , article[random_int()]
-                    , noun[random_int()])).capitalize()
+    return (
+        "{} {} {} {} {} {}".format(
+            article[random_int()],
+            noun[random_int()],
+            verb[random_int()],
+            preposition[random_int()],
+            article[random_int()],
+            noun[random_int()],
+        )
+    ).capitalize()
 
 
 # prints random sentences

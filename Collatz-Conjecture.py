@@ -34,30 +34,31 @@ David Costell (DontEatThemCookies on GitHub)
 
 import math
 
-print('Collatz Conjecture (Revised)\n')
+print("Collatz Conjecture (Revised)\n")
+
 
 def main():
     # Get the input
-    number = input('Enter a number to calculate: ')
+    number = input("Enter a number to calculate: ")
     try:
         number = float(number)
     except ValueError:
-        print('Error: Could not convert to integer.')
-        print('Only numbers (e.g. 42) can be entered as input.')
+        print("Error: Could not convert to integer.")
+        print("Only numbers (e.g. 42) can be entered as input.")
         main()
 
     # Prevent any invalid inputs
     if number <= 0:
-        print('Error: Numbers zero and below are not calculable.')
+        print("Error: Numbers zero and below are not calculable.")
         main()
     if number == math.inf:
-        print('Error: Infinity is not calculable.')
+        print("Error: Infinity is not calculable.")
         main()
 
     # Confirmation before beginning
-    print('Number is:', number)
-    input('Press ENTER to begin.')
-    print('\nBEGIN COLLATZ SEQUENCE')
+    print("Number is:", number)
+    input("Press ENTER to begin.")
+    print("\nBEGIN COLLATZ SEQUENCE")
 
     def sequence(number: float) -> float:
         """
@@ -66,24 +67,25 @@ def main():
         the Collatz sequence to the given
         number (parameter number).
         """
-        modulo = number % 2         # The number modulo'd by 2
-        if modulo == 0:             # If the result is 0,
-            number = number / 2     # divide it by 2
-        else:                       # Otherwise,
-            number = 3 * number + 1 # multiply by 3 and add 1 (3x + 1)
+        modulo = number % 2  # The number modulo'd by 2
+        if modulo == 0:  # If the result is 0,
+            number = number / 2  # divide it by 2
+        else:  # Otherwise,
+            number = 3 * number + 1  # multiply by 3 and add 1 (3x + 1)
         return number
 
-    # Execute the sequence    
+    # Execute the sequence
     while True:
         number = sequence(number)
         print(round(number))
         if number == 1.0:
             break
 
-    print('END COLLATZ SEQUENCE')
-    print('Sequence has reached a 4-2-1 loop.')
-    exit(input('\nPress ENTER to exit.'))
+    print("END COLLATZ SEQUENCE")
+    print("Sequence has reached a 4-2-1 loop.")
+    exit(input("\nPress ENTER to exit."))
+
 
 # Entry point of the program
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

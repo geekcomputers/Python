@@ -1,1 +1,1 @@
-connected_msg = 'DISCONNECTED'
+connected_msg = "DISCONNECTED"

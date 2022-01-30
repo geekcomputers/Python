@@ -1,5 +1,6 @@
 import pyautogui  # pip install pyautogui
 from PIL import Image, ImageGrab  # pip install pillow
+
 # from numpy import asarray
 import time
 
@@ -34,7 +35,7 @@ if __name__ == "__main__":
     # hit('up')
 
     while True:
-        image = ImageGrab.grab().convert('L')
+        image = ImageGrab.grab().convert("L")
         data = image.load()
         isCollide(data)
 

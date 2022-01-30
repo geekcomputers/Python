@@ -1,4 +1,5 @@
 from __future__ import print_function
+
 # Created by sarathkaul on 12/11/19
 
 
@@ -22,6 +23,6 @@ def convert_time(input_str):
         return str(int(input_str[:2]) + 12) + input_str[2:8]
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     input_time = input("Enter time you want to convert: ")
     print(convert_time(input_time))

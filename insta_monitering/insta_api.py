@@ -42,7 +42,11 @@ class StartHandlerinsta(tornado.web.RequestHandler):
         temp["userId"] = user
         temp["status"] = True
         temp["productId"] = productId
-        print("{0}, {1}, {2}, {3}".format(temp["userId"], temp["productId"], temp["query"], temp["status"]))
+        print(
+            "{0}, {1}, {2}, {3}".format(
+                temp["userId"], temp["productId"], temp["query"], temp["status"]
+            )
+        )
         self.write(ujson.dumps(temp))
 
 
@@ -62,7 +66,11 @@ class StopHandlerinsta(tornado.web.RequestHandler):
         temp["userId"] = user
         temp["productId"] = productId
         temp["status"] = result
-        print("{0}, {1}, {2}, {3}".format(temp["userId"], temp["productId"], temp["query"], temp["status"]))
+        print(
+            "{0}, {1}, {2}, {3}".format(
+                temp["userId"], temp["productId"], temp["query"], temp["status"]
+            )
+        )
         self.write(ujson.dumps(temp))
 
 
@@ -82,7 +90,11 @@ class StatusHandlerinsta(tornado.web.RequestHandler):
         temp["userId"] = user
         temp["status"] = result
         temp["productId"] = productId
-        print("{0}, {1}, {2}, {3}".format(temp["userId"], temp["productId"], temp["query"], temp["status"]))
+        print(
+            "{0}, {1}, {2}, {3}".format(
+                temp["userId"], temp["productId"], temp["query"], temp["status"]
+            )
+        )
         self.write(ujson.dumps(temp))
 
 
@@ -98,6 +110,7 @@ class StatusHandlerinsta(tornado.web.RequestHandler):
 #         recordsobj = DBDataFetcher(user=user, tags=q, type=type, productId=productId)
 #         data = recordsobj.dbFetcher()
 #         self.write(data)
+
 
 class SenderHandlerinstaLess(tornado.web.RequestHandler):
     def get(self):
@@ -133,12 +146,16 @@ class SenderHandlerinstaGreater(tornado.web.RequestHandler):
         self.write(data)
 
 
-if __name__ == '__main__':
-    application = tornado.web.Application([(r"/instagram/monitoring/start", StartHandlerinsta),
-                                           (r"/instagram/monitoring/stop", StopHandlerinsta),
-                                           (r"/instagram/monitoring/status", StatusHandlerinsta),
-                                           (r"/instagram/monitoring/less", SenderHandlerinstaLess),
-                                           (r"/instagram/monitoring/greater", SenderHandlerinstaGreater), ])
+if __name__ == "__main__":
+    application = tornado.web.Application(
+        [
+            (r"/instagram/monitoring/start", StartHandlerinsta),
+            (r"/instagram/monitoring/stop", StopHandlerinsta),
+            (r"/instagram/monitoring/status", StatusHandlerinsta),
+            (r"/instagram/monitoring/less", SenderHandlerinstaLess),
+            (r"/instagram/monitoring/greater", SenderHandlerinstaGreater),
+        ]
+    )
 
     application.listen(7074)
     print("server running")

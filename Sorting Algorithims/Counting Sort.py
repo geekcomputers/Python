@@ -1,4 +1,5 @@
-# Python program for counting sort 
+# Python program for counting sort
+
 
 def countingSort(array):
     size = len(array)

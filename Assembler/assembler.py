@@ -19,7 +19,7 @@ zeroFlag = False
 # pop --> pop
 stack = []
 
-# jump link table 
+# jump link table
 jumps = {}
 
 # variable table
@@ -29,14 +29,14 @@ variables = {}
 returnStack = []
 
 
-# simple exception class 
+# simple exception class
 class InvalidSyntax(Exception):
     def __init__(self):
         pass
 
 
 # class for represent a token
-class Token():
+class Token:
     def __init__(self, token, t):
         self.token = token
         self.t = t
@@ -47,9 +47,10 @@ class Token():
 #     for i in range(9):
 #         register.append(0)
 
+
 def loadFile(fileName):
     """
-        loadFile: This function loads the file and reads its lines.
+    loadFile: This function loads the file and reads its lines.
     """
     global lines
     fo = open(fileName)
@@ -60,8 +61,8 @@ def loadFile(fileName):
 
 def scanner(string):
     """
-        scanner: This function builds the tokens by the content of the file.
-        The tokens will be saved in list 'tokens'
+    scanner: This function builds the tokens by the content of the file.
+    The tokens will be saved in list 'tokens'
     """
     global tokens
     token = ""
@@ -71,65 +72,64 @@ def scanner(string):
 
         if state == 0:
 
-            if ch == 'm':  # catch mov-command
+            if ch == "m":  # catch mov-command
 
                 state = 1
-                token += 'm'
+                token += "m"
 
-            elif ch == 'e':  # catch register
+            elif ch == "e":  # catch register
 
                 state = 4
-                token += 'e'
+                token += "e"
 
-            elif (ch >= '1' and ch <= '9') or ch == '-':  # catch a number
+            elif (ch >= "1" and ch <= "9") or ch == "-":  # catch a number
 
                 state = 6
                 token += ch
 
-            elif ch == '0':  # catch a number or hex-code
+            elif ch == "0":  # catch a number or hex-code
 
                 state = 17
                 token += ch
 
-            elif ch == 'a':  # catch add-command
+            elif ch == "a":  # catch add-command
 
                 state = 7
                 token += ch
 
-            elif ch == 's':  # catch sub command
+            elif ch == "s":  # catch sub command
 
                 state = 10
                 token += ch
 
-            elif ch == 'i':  # capture int command
+            elif ch == "i":  # capture int command
 
                 state = 14
                 token += ch
 
-            elif ch == 'p':  # capture push or pop command
+            elif ch == "p":  # capture push or pop command
 
                 state = 19
                 token += ch
 
-            elif ch == 'l':  # capture label
+            elif ch == "l":  # capture label
 
                 state = 25
                 token += ch
 
-            elif ch == 'j':  # capture jmp command
+            elif ch == "j":  # capture jmp command
 
                 state = 26
                 token += ch
 
-            elif ch == 'c':  # catch cmp-command
+            elif ch == "c":  # catch cmp-command
 
                 state = 29
                 token += ch
 
-            elif ch == ';':  # capture comment
+            elif ch == ";":  # capture comment
 
                 state = 33
-
 
             elif ch == '"':  # catch a string
 
@@ -141,7 +141,7 @@ def scanner(string):
                 state = 35
                 token += ch
 
-            elif ch == 'd':  # capture db keyword
+            elif ch == "d":  # capture db keyword
 
                 state = 36
                 token += ch
@@ -151,12 +151,12 @@ def scanner(string):
                 state = 38
                 # not catching $
 
-            elif ch == '_':  # catch label for subprogram
+            elif ch == "_":  # catch label for subprogram
 
                 state = 40
                 # not catches the character _
 
-            elif ch == 'r':  # catch ret-command
+            elif ch == "r":  # catch ret-command
 
                 state = 44
                 token += ch
@@ -168,12 +168,12 @@ def scanner(string):
 
         elif state == 1:  # state 1
 
-            if ch == 'o':
+            if ch == "o":
 
                 state = 2
                 token += ch
 
-            elif ch == 'u':
+            elif ch == "u":
 
                 state = 47
                 token += ch
@@ -186,10 +186,10 @@ def scanner(string):
 
         elif state == 2:  # state 2
 
-            if ch == 'v':
+            if ch == "v":
 
                 state = 3
-                token += 'v'
+                token += "v"
 
             else:  # error case
                 state = 0
@@ -211,7 +211,7 @@ def scanner(string):
                 raise InvalidSyntax()
 
         elif state == 4:  # state 4
-            if (ch >= 'a' and ch <= 'd'):
+            if ch >= "a" and ch <= "d":
 
                 state = 5
                 token += ch
@@ -223,7 +223,7 @@ def scanner(string):
                 raise InvalidSyntax()
 
         elif state == 5:  # state 5
-            if ch == 'x':
+            if ch == "x":
                 state = 13
                 token += ch
 
@@ -254,7 +254,7 @@ def scanner(string):
 
         elif state == 7:  # state 7
 
-            if ch == 'd':
+            if ch == "d":
 
                 state = 8
                 token += ch
@@ -267,7 +267,7 @@ def scanner(string):
 
         elif state == 8:  # state 8
 
-            if ch == 'd':
+            if ch == "d":
 
                 state = 9
                 token += ch
@@ -294,7 +294,7 @@ def scanner(string):
 
         elif state == 10:  # state 10
 
-            if ch == 'u':
+            if ch == "u":
 
                 state = 11
                 token += ch
@@ -307,7 +307,7 @@ def scanner(string):
 
         elif state == 11:  # state 11
 
-            if ch == 'b':
+            if ch == "b":
 
                 state = 12
                 token += ch
@@ -334,7 +334,7 @@ def scanner(string):
 
         elif state == 13:  # state 13
 
-            if ch == ',' or ch.isspace():
+            if ch == "," or ch.isspace():
 
                 state = 0
                 tokens.append(Token(token, "register"))
@@ -348,7 +348,7 @@ def scanner(string):
 
         elif state == 14:  # state 14
 
-            if ch == 'n':
+            if ch == "n":
 
                 state = 15
                 token += ch
@@ -361,7 +361,7 @@ def scanner(string):
 
         elif state == 15:  # state 15
 
-            if ch == 't':
+            if ch == "t":
 
                 state = 16
                 token += ch
@@ -388,7 +388,7 @@ def scanner(string):
 
         elif state == 17:  # state 17
 
-            if ch == 'x':
+            if ch == "x":
 
                 state = 18
                 token += ch
@@ -407,7 +407,7 @@ def scanner(string):
 
         elif state == 18:  # state 18
 
-            if ch.isdigit() or (ch >= 'a' and ch <= 'f'):
+            if ch.isdigit() or (ch >= "a" and ch <= "f"):
 
                 state = 18
                 token += ch
@@ -426,12 +426,12 @@ def scanner(string):
 
         elif state == 19:  # state 19
 
-            if ch == 'u':
+            if ch == "u":
 
                 state = 20
                 token += ch
 
-            elif ch == 'o':
+            elif ch == "o":
 
                 state = 23
                 token += ch
@@ -444,7 +444,7 @@ def scanner(string):
 
         elif state == 20:  # state 20
 
-            if ch == 's':
+            if ch == "s":
 
                 state = 21
                 token += ch
@@ -457,7 +457,7 @@ def scanner(string):
 
         elif state == 21:  # state 21
 
-            if ch == 'h':
+            if ch == "h":
 
                 state = 22
                 token += ch
@@ -484,7 +484,7 @@ def scanner(string):
 
         elif state == 23:  # state 23
 
-            if ch == 'p':
+            if ch == "p":
 
                 state = 24
                 token += ch
@@ -516,7 +516,7 @@ def scanner(string):
                 state = 25
                 token += ch
 
-            elif ch == ':' or ch.isspace():
+            elif ch == ":" or ch.isspace():
 
                 state = 0
                 tokens.append(Token(token, "label"))
@@ -530,12 +530,12 @@ def scanner(string):
 
         elif state == 26:  # state 26
 
-            if ch == 'm':
+            if ch == "m":
 
                 state = 27
                 token += ch
 
-            elif ch == 'e':  # catch je command
+            elif ch == "e":  # catch je command
 
                 state = 32
                 token += ch
@@ -548,7 +548,7 @@ def scanner(string):
 
         elif state == 27:  # state 27
 
-            if ch == 'p':
+            if ch == "p":
 
                 state = 28
                 token += ch
@@ -575,12 +575,12 @@ def scanner(string):
 
         elif state == 29:  # state 29
 
-            if ch == 'm':
+            if ch == "m":
 
                 state = 30
                 token += ch
 
-            elif ch == 'a':  # catch call-command
+            elif ch == "a":  # catch call-command
 
                 state = 41
                 token += ch
@@ -591,10 +591,9 @@ def scanner(string):
                 token = ""
                 raise InvalidSyntax()
 
-
         elif state == 30:  # state 30
 
-            if ch == 'p':
+            if ch == "p":
 
                 state = 31
                 token += ch
@@ -619,7 +618,6 @@ def scanner(string):
                 token = ""
                 raise InvalidSyntax()
 
-
         elif state == 32:  # state 32
 
             if ch.isspace():
@@ -634,16 +632,18 @@ def scanner(string):
                 token = ""
                 raise InvalidSyntax()
 
-
         elif state == 33:  # state 33
 
-            if ch.isdigit() or ch.isalpha() or (ch.isspace() and ch != '\n') \
-                    or ch == '"':
+            if (
+                ch.isdigit()
+                or ch.isalpha()
+                or (ch.isspace() and ch != "\n")
+                or ch == '"'
+            ):
 
                 state = 33
 
-
-            elif ch == '\n':
+            elif ch == "\n":
 
                 state = 0
 
@@ -652,7 +652,6 @@ def scanner(string):
                 state = 0
                 token = ""
                 raise InvalidSyntax()
-
 
         elif state == 34:  # state 34
 
@@ -680,7 +679,7 @@ def scanner(string):
                 state = 35
                 token += ch
 
-            elif ch == ' ' or ch == '\n':
+            elif ch == " " or ch == "\n":
 
                 state = 0
                 tokens.append(Token(token, "identifier"))
@@ -692,15 +691,14 @@ def scanner(string):
                 token = ""
                 raise InvalidSyntax()
 
-
         elif state == 36:  # state 36
 
-            if ch == 'b':
+            if ch == "b":
 
                 state = 37
                 token += ch
 
-            elif ch == 'i':
+            elif ch == "i":
 
                 state = 49
                 token += ch
@@ -759,12 +757,16 @@ def scanner(string):
 
         elif state == 40:  # state 40
 
-            if (ch >= 'a' and ch <= 'z') or (ch >= 'A' and ch <= 'Z') or (ch >= '0' and ch <= '9'):
+            if (
+                (ch >= "a" and ch <= "z")
+                or (ch >= "A" and ch <= "Z")
+                or (ch >= "0" and ch <= "9")
+            ):
 
                 state = 40
                 token += ch
 
-            elif ch == ':' or ch.isspace():
+            elif ch == ":" or ch.isspace():
 
                 state = 0
                 tokens.append(Token(token, "subprogram"))
@@ -776,10 +778,9 @@ def scanner(string):
                 token = ""
                 raise InvalidSyntax()
 
-
         elif state == 41:  # state 41
 
-            if ch == 'l':
+            if ch == "l":
 
                 state = 42
                 token += ch
@@ -790,10 +791,9 @@ def scanner(string):
                 token = ""
                 raise InvalidSyntax()
 
-
         elif state == 42:  # state 42
 
-            if ch == 'l':
+            if ch == "l":
 
                 state = 43
                 token += ch
@@ -820,7 +820,7 @@ def scanner(string):
 
         elif state == 44:  # state 44
 
-            if ch == 'e':
+            if ch == "e":
 
                 state = 45
                 token += ch
@@ -833,7 +833,7 @@ def scanner(string):
 
         elif state == 45:  # state 45
 
-            if ch == 't':
+            if ch == "t":
 
                 state = 46
                 token += ch
@@ -843,7 +843,6 @@ def scanner(string):
                 state = 0
                 token = ""
                 raise InvalidSyntax()
-
 
         elif state == 46:  # state 46
 
@@ -861,7 +860,7 @@ def scanner(string):
 
         elif state == 47:  # state 47
 
-            if ch == 'l':
+            if ch == "l":
 
                 state = 48
                 token += ch
@@ -880,7 +879,6 @@ def scanner(string):
                 tokens.append(Token(token, "command"))
                 token = ""
 
-
             else:  # error case
 
                 state = 0
@@ -889,7 +887,7 @@ def scanner(string):
 
         elif state == 49:  # state 49
 
-            if ch == 'v':
+            if ch == "v":
 
                 state = 50
                 token += ch
@@ -900,7 +898,6 @@ def scanner(string):
                 token = ""
                 raise InvalidSyntax()
 
-
         elif state == 50:  # state 50
 
             if ch.isspace():
@@ -908,7 +905,6 @@ def scanner(string):
                 state = 0
                 tokens.append(Token(token, "command"))
                 token = ""
-
 
             else:  # error case
 
@@ -919,7 +915,7 @@ def scanner(string):
 
 def scan():
     """
-        scan: applys function scanner() to each line of the source code.
+    scan: applys function scanner() to each line of the source code.
     """
     global lines
     assert len(lines) > 0, "no lines"
@@ -932,7 +928,7 @@ def scan():
 
 def parser():
     """
-        parser: parses the tokens of the list 'tokens'
+    parser: parses the tokens of the list 'tokens'
     """
 
     global tokens
@@ -987,7 +983,7 @@ def parser():
                     pass
                 elif token.token.isdigit():
                     token.token = float(token.token)
-                elif token.token[0] == '-' and token.token[1:].isdigit():
+                elif token.token[0] == "-" and token.token[1:].isdigit():
                     token.token = float(token.token[1:])
                     token.token *= -1
                 elif token.t == "register":  # loads out of register
@@ -1045,7 +1041,7 @@ def parser():
 
                 elif token.token.isdigit():
                     token.token = float(token.token)
-                elif token.token[0] == '-' and token.token[1:].isdigit():
+                elif token.token[0] == "-" and token.token[1:].isdigit():
                     token.token = float(token.token[1:])
                     token.token *= -1
                 else:
@@ -1085,8 +1081,6 @@ def parser():
                     else:
                         zeroFlag = False
 
-
-
             else:
 
                 print("Error: Not found register!")
@@ -1125,7 +1119,7 @@ def parser():
                     pass
                 elif token.token.isdigit():
                     token.token = float(token.token)
-                elif token.token[0] == '-' and token.token[1:].isdigit():
+                elif token.token[0] == "-" and token.token[1:].isdigit():
                     token.token = float(token.token[1:])
                     token.token *= -1
                 else:
@@ -1200,7 +1194,6 @@ def parser():
 
                     print(ecx)
 
-
         elif token.token == "push":  # push commando
 
             tmpToken = token
@@ -1229,7 +1222,6 @@ def parser():
             elif token.token == "edx":
 
                 stack.append(edx)
-
 
         elif token.token == "pop":  # pop commando
 
@@ -1280,7 +1272,6 @@ def parser():
 
             else:
                 print("Error: expected a label!")
-
 
         elif token.token == "cmp":
             # TODO
@@ -1334,7 +1325,6 @@ def parser():
                         else:
                             zeroFlag = False
 
-
                 elif token.token == "ebx":
 
                     if tmpToken.token == "eax":
@@ -1364,7 +1354,6 @@ def parser():
                             zeroFlag = True
                         else:
                             zeroFlag = False
-
 
                 elif token.token == "ecx":
 
@@ -1396,7 +1385,6 @@ def parser():
                         else:
                             zeroFlag = False
 
-
                 elif token.token == "edx":
 
                     if tmpToken.token == "eax":
@@ -1427,11 +1415,9 @@ def parser():
                         else:
                             zeroFlag = False
 
-
             else:
                 print("Error: Not found register!")
                 return
-
 
         elif token.token == "je":
 
@@ -1454,7 +1440,6 @@ def parser():
 
                 print("Error: Not found label")
                 return
-
 
         elif token.t == "identifier":
 
@@ -1485,7 +1470,6 @@ def parser():
                             variables[token.token] = float(tmpToken.token)
                         elif tmpToken.t == "string":
                             variables[token.token] = tmpToken.token
-
 
                 else:
 
@@ -1521,7 +1505,6 @@ def parser():
                 print("Error: Not found subprogram")
                 return
 
-
         elif token.token == "ret":  # catch the ret-command
 
             if len(returnStack) >= 1:
@@ -1536,7 +1519,6 @@ def parser():
         elif token.t == "subprogram":
 
             pass
-
 
         elif token.token == "mul":  # catch mul-command
 
@@ -1570,8 +1552,6 @@ def parser():
 
                 print("Error: Not found register")
                 return
-
-
 
         elif token.token == "div":
 
@@ -1612,10 +1592,10 @@ def parser():
 
 def registerLabels():
     """
-        This function search for labels / subprogram-labels and registers this in the 'jumps' list.
+    This function search for labels / subprogram-labels and registers this in the 'jumps' list.
     """
     for i in range(len(tokens)):
-        if (tokens[i].t == "label"):
+        if tokens[i].t == "label":
             jumps[tokens[i].token] = i
         elif tokens[i].t == "subprogram":
             jumps[tokens[i].token] = i
@@ -1623,7 +1603,7 @@ def registerLabels():
 
 def resetInterpreter():
     """
-        resets the interpreter mind.
+    resets the interpreter mind.
     """
     global eax, ebx, ecx, edx, zeroFlag, stack
     global variables, jumps, lines, tokens, returnStack
@@ -1649,7 +1629,7 @@ def resetInterpreter():
 # main program
 def main():
     """
-        reads textfiles from the command-line and interprets them. 
+    reads textfiles from the command-line and interprets them.
     """
 
     # [1:] because the first argument is the program itself.

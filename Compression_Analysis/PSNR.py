@@ -1,11 +1,12 @@
 import math
-#using opencv3
+
+# using opencv3
 import cv2
 import numpy as np
 
 
 def Representational(r, g, b):
-    return (0.299 * r + 0.287 * g + 0.114 * b)
+    return 0.299 * r + 0.287 * g + 0.114 * b
 
 
 def calculate(img):
@@ -16,8 +17,8 @@ def calculate(img):
 
 def main():
     # Loading images (orignal image and compressed image)
-    orignal_image = cv2.imread('orignal_image.png', 1)
-    compressed_image = cv2.imread('compressed_image.png', 1)
+    orignal_image = cv2.imread("orignal_image.png", 1)
+    compressed_image = cv2.imread("compressed_image.png", 1)
 
     # Getting image height and width
     height, width = orignal_image.shape[:2]
@@ -36,5 +37,5 @@ def main():
     print("PSNR value is {}".format(PSNR))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

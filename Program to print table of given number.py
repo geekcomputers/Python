@@ -2,9 +2,9 @@ n = int(input("Enter the number to print the tables for:"))
 for i in range(1, 11):
     print(n, "x", i, "=", n * i)
 
-#Example
-#input: 2
-#output:
+# Example
+# input: 2
+# output:
 """
 2 x 1 = 2
 2 x 2 = 4

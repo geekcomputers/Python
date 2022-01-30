@@ -1,22 +1,20 @@
 #!/usr/bin/env python
 
-counts=dict()
-mails=list()
-fname=input('Enter file name:')
-fh=open(fname)
+counts = dict()
+mails = list()
+fname = input("Enter file name:")
+fh = open(fname)
 for line in fh:
-    if not line.startswith('From '):
+    if not line.startswith("From "):
         continue
-#   if line.startswith('From:'):
-#       continue
-    id=line.split()
-    mail=id[1]
+    #   if line.startswith('From:'):
+    #       continue
+    id = line.split()
+    mail = id[1]
     mails.append(mail)
 
-freq_mail = max(mails, key=mails.count)  #To find frequent mail
-print(freq_mail, mails.count(freq_mail))  #To find countof frequent mail 
-
-
+freq_mail = max(mails, key=mails.count)  # To find frequent mail
+print(freq_mail, mails.count(freq_mail))  # To find countof frequent mail
 
 
 """

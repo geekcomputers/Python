@@ -3,6 +3,7 @@
 # and places it at the end. We repeat the process until the list is sorted.
 # The sort algorithm has a time complexity of O(nlogn)
 
+
 def refineHeap(arr, n, i):
     # Initialize the largest entry as the root of the heap
     largest = i
@@ -30,7 +31,7 @@ def heapSort(arr):
     n = len(arr)
 
     # Make a heap
-    for i in range(n//2 - 1, -1, -1):
+    for i in range(n // 2 - 1, -1, -1):
         refineHeap(arr, n, i)
 
     # Extract elements individually
@@ -38,6 +39,7 @@ def heapSort(arr):
         # Fancy notation for swapping two values in an array
         arr[i], arr[0] = arr[0], arr[i]
         refineHeap(arr, i, 0)
+
 
 # Code that will run on start
 arr = [15, 29, 9, 3, 16, 7, 66, 4]

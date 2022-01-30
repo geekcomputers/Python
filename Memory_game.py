@@ -49,9 +49,14 @@ def draw(canvas):
     gap = 0
     for i in range(0, 16, 1):
         if exposed[i] == False:
-            canvas.draw_polygon([[0 + gap, 0], [0 + gap, 100], [50 + gap, 100], [50 + gap, 0]], 1, "Black", "Green")
+            canvas.draw_polygon(
+                [[0 + gap, 0], [0 + gap, 100], [50 + gap, 100], [50 + gap, 0]],
+                1,
+                "Black",
+                "Green",
+            )
         elif exposed[i] == True:
-            canvas.draw_text(str(card1[i]), [15 + gap, 65], 50, 'White')
+            canvas.draw_text(str(card1[i]), [15 + gap, 65], 50, "White")
         gap += 50
 
 

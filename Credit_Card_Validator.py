@@ -8,24 +8,31 @@ class CreditCard:
     @property
     def company(self):
         comp = None
-        if str(self.card_no).startswith('4'):
-            comp = 'Visa Card'
-        elif str(self.card_no).startswith(('50', '67', '58', '63',)):
-            comp = 'Maestro Card'
-        elif str(self.card_no).startswith('5'):
-            comp = 'Master Card'
-        elif str(self.card_no).startswith('37'):
-            comp = 'American Express Card'
-        elif str(self.card_no).startswith('62'):
-            comp = 'Unionpay Card'
-        elif str(self.card_no).startswith('6'):
-            comp = 'Discover Card'
-        elif str(self.card_no).startswith('35'):
-            comp = 'JCB Card'
-        elif str(self.card_no).startswith('7'):
-            comp = 'Gasoline Card'
+        if str(self.card_no).startswith("4"):
+            comp = "Visa Card"
+        elif str(self.card_no).startswith(
+            (
+                "50",
+                "67",
+                "58",
+                "63",
+            )
+        ):
+            comp = "Maestro Card"
+        elif str(self.card_no).startswith("5"):
+            comp = "Master Card"
+        elif str(self.card_no).startswith("37"):
+            comp = "American Express Card"
+        elif str(self.card_no).startswith("62"):
+            comp = "Unionpay Card"
+        elif str(self.card_no).startswith("6"):
+            comp = "Discover Card"
+        elif str(self.card_no).startswith("35"):
+            comp = "JCB Card"
+        elif str(self.card_no).startswith("7"):
+            comp = "Gasoline Card"
 
-        return 'Company : ' + comp
+        return "Company : " + comp
 
     def first_check(self):
         if 13 <= len(self.card_no) <= 19:
@@ -55,13 +62,13 @@ class CreditCard:
         if sum_ % 10 == 0:
             response = "Valid Card"
         else:
-            response = 'Invalid Card'
+            response = "Invalid Card"
 
         return response
 
     @property
     def checksum(self):
-        return '#CHECKSUM# : ' + self.card_no[-1]
+        return "#CHECKSUM# : " + self.card_no[-1]
 
     @classmethod
     def set_card(cls, card_to_check):
@@ -71,7 +78,7 @@ class CreditCard:
 card_number = input()
 card = CreditCard.set_card(card_number)
 print(card.company)
-print('Card : ', card.card_no)
+print("Card : ", card.card_no)
 print(card.first_check())
 print(card.checksum)
 print(card.validate())

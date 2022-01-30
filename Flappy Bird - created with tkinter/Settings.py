@@ -60,20 +60,28 @@ class Settings(object):
     background_animation = True
 
     # Junta todos os diretórios em uma lista
-    images_fp = [background_fp, bird_fp, startButton_fp, exitButton_fp, tube_fp[0], tube_fp[1], title_fp]
+    images_fp = [
+        background_fp,
+        bird_fp,
+        startButton_fp,
+        exitButton_fp,
+        tube_fp[0],
+        tube_fp[1],
+        title_fp,
+    ]
 
     def setOptions(self):
         """
-        Método para receber algumas configurações do jogo de um arquivo .json. 
+        Método para receber algumas configurações do jogo de um arquivo .json.
         Caso o arquivo não exista, será criado um com as configurações padrões.
         """
 
         # Alguns atributos que podem ser alterados
-        attributes = "window_fullscreen,window_width,window_height".split(',')
+        attributes = "window_fullscreen,window_width,window_height".split(",")
 
         # Tenta abrir o arquivo parar leitura
         try:
-            file = open(self.settings_fp, 'r')
+            file = open(self.settings_fp, "r")
             data = loads(file.read())
             file.close()
 
@@ -91,7 +99,7 @@ class Settings(object):
             if not os.path.exists(os.path.split(self.settings_fp)[0]):
                 os.mkdir(os.path.split(self.settings_fp)[0])
 
-            file = open(self.settings_fp, 'w')
+            file = open(self.settings_fp, "w")
 
             data = dict()
 
