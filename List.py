@@ -1,9 +1,9 @@
 List = []
 # List is Muteable
 # means value can be change
-List.insert(0 , 5)
-List.insert(1,10)
-List.insert(0,6)
+List.insert(0, 5)
+List.insert(1, 10)
+List.insert(0, 6)
 print(List)
 List.remove(6)
 List.append(9)
@@ -26,10 +26,10 @@ list2 = [2, 3, 7, 5, 10, 17, 12, 4, 1, 13]
 for i in list2:
     if i % 2 == 0:
         print(i)
-'''
+"""
 Expected Output:
 2
 10
 12
 4
-'''
+"""

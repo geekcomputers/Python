@@ -3,7 +3,7 @@ from getpass import getpass
 import os
 
 # set the environment variable ADMIN_PASS to your desired string, which will be your password.
-ADMIN_PASSWORD = os.environ['ADMIN_PASS']
+ADMIN_PASSWORD = os.environ["ADMIN_PASS"]
 connect = getpass("What is your admin  password?\n")
 
 while connect != ADMIN_PASSWORD:
@@ -11,7 +11,7 @@ while connect != ADMIN_PASSWORD:
     if connect == "q":
         break
 
-conn = sqlite3.connect('password_manager.db')
+conn = sqlite3.connect("password_manager.db")
 cursor_ = conn.cursor()
 
 
@@ -25,13 +25,27 @@ def get_password(service_):
 
 
 def add_password(service_, username_, password_):
-    command = 'INSERT INTO STORE (SERVICE,USERNAME,PASSWORD) VALUES("'+service_+'","'+username_+'","'+password_+'");'
+    command = (
+        'INSERT INTO STORE (SERVICE,USERNAME,PASSWORD) VALUES("'
+        + service_
+        + '","'
+        + username_
+        + '","'
+        + password_
+        + '");'
+    )
     conn.execute(command)
     conn.commit()
 
 
 def update_password(service_, password_):
-    command = 'UPDATE STORE set PASSWORD = "' + password_ + '" where SERVICE = "' + service_ + '"'
+    command = (
+        'UPDATE STORE set PASSWORD = "'
+        + password_
+        + '" where SERVICE = "'
+        + service_
+        + '"'
+    )
     conn.execute(command)
     conn.commit()
     print(service_ + " password updated successfully.")
@@ -48,7 +62,7 @@ def get_all():
     cursor_.execute("SELECT * from STORE")
     data = cursor_.fetchall()
     if len(data) == 0:
-        print('No Data')
+        print("No Data")
     else:
         for row in data:
             print("service = ", row[0])
@@ -61,7 +75,7 @@ def is_service_present(service_):
     cursor_.execute("SELECT SERVICE from STORE where SERVICE = ?", (service_,))
     data = cursor_.fetchall()
     if len(data) == 0:
-        print('There is no service named %s' % service_)
+        print("There is no service named %s" % service_)
         return False
     else:
         return True
@@ -69,11 +83,13 @@ def is_service_present(service_):
 
 if connect == ADMIN_PASSWORD:
     try:
-        conn.execute('''CREATE TABLE STORE
+        conn.execute(
+            """CREATE TABLE STORE
             (SERVICE TEXT PRIMARY KEY NOT NULL,
             USERNAME TEXT NOT NULL,
             PASSWORD TEXT NOT NULL);
-            ''')
+            """
+        )
         print("Your safe has been created!\nWhat would you like to store in it today?")
     except:
         print("You have a safe, what would you like to do today?")
@@ -102,7 +118,7 @@ if connect == ADMIN_PASSWORD:
             if len(data) == 0:
                 username = input("Enter username : ")
                 password = getpass("Enter password : ")
-                if username == '' or password == '':
+                if username == "" or password == "":
                     print("Your username or password is empty.")
                 else:
                     add_password(service, username, password)
@@ -121,8 +137,8 @@ if connect == ADMIN_PASSWORD:
 
         elif input_ == "update":
             service = input("What is the name of the service?\n")
-            if service == '':
-                print('Service is not entered.')
+            if service == "":
+                print("Service is not entered.")
             else:
                 flag = is_service_present(service)
                 if flag:
@@ -131,8 +147,8 @@ if connect == ADMIN_PASSWORD:
 
         elif input_ == "delete":
             service = input("What is the name of the service?\n")
-            if service == '':
-                print('Service is not entered.')
+            if service == "":
+                print("Service is not entered.")
             else:
                 flag = is_service_present(service)
                 if flag:

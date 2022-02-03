@@ -14,13 +14,13 @@ class Linked_List:
             self.head = new_node
             return
         current = self.head
-        while(current.next):
+        while current.next:
             current = current.next
         current.next = new_node
 
     def Detect_and_Remove_Loop(self):
         slow = fast = self.head
-        while(slow and fast and fast.next):
+        while slow and fast and fast.next:
             slow = slow.next
             fast = fast.next.next
             if slow == fast:
@@ -31,9 +31,9 @@ class Linked_List:
 
     def Remove_loop(self, Loop_node):
         ptr1 = self.head
-        while(1):
+        while 1:
             ptr2 = Loop_node
-            while(ptr2.next != Loop_node and ptr2.next != ptr1):
+            while ptr2.next != Loop_node and ptr2.next != ptr1:
                 ptr2 = ptr2.next
             if ptr2.next == ptr1:
                 break
@@ -42,7 +42,7 @@ class Linked_List:
 
     def Display(self):
         temp = self.head
-        while(temp):
+        while temp:
             print(temp.data, "->", end=" ")
             temp = temp.next
         print("None")

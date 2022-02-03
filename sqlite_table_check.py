@@ -14,15 +14,15 @@ import sqlite3
 
 dropbox = os.getenv("dropbox")
 config = os.getenv("my_config")
-dbfile = ("Databases\jarvis.db")
-listfile = ("sqlite_master_table.lst")
+dbfile = "Databases\jarvis.db"
+listfile = "sqlite_master_table.lst"
 master_db = os.path.join(dropbox, dbfile)
 config_file = os.path.join(config, listfile)
-tablelist = open(config_file, 'r');
+tablelist = open(config_file, "r")
 
 conn = sqlite3.connect(master_db)
 cursor = conn.cursor()
-cursor.execute('SELECT SQLITE_VERSION()')
+cursor.execute("SELECT SQLITE_VERSION()")
 data = cursor.fetchone()
 
 if str(data) == "(u'3.6.21',)":
@@ -36,10 +36,12 @@ print("\nCheckling " + master_db + " against " + config_file + "\n")
 for table in tablelist.readlines():
     conn = sqlite3.connect(master_db)
     cursor = conn.cursor()
-    cursor.execute("select count(*) from sqlite_master where name = ?", (table.strip(),))
+    cursor.execute(
+        "select count(*) from sqlite_master where name = ?", (table.strip(),)
+    )
     res = cursor.fetchone()
 
-    if (res[0]):
-        print('[+] Table : ' + table.strip() + ' exists [+]')
+    if res[0]:
+        print("[+] Table : " + table.strip() + " exists [+]")
     else:
-        print('[-] Table : ' + table.strip() + '  does not exist [-]')
+        print("[-] Table : " + table.strip() + "  does not exist [-]")

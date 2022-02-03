@@ -1,7 +1,7 @@
 # Script Name		: testlines.py
 # Author		: Craig Richards
 # Created		: 08th December 2011
-# Last Modified		: 
+# Last Modified		:
 # Version		: 1.0
 
 # Modifications		: beven nyamande
@@ -10,9 +10,9 @@
 
 
 def write_to_file(filename, txt):
-    with open(filename, 'w') as file_object:
+    with open(filename, "w") as file_object:
         s = file_object.write(txt)
 
 
-if __name__ == '__main__':
-    write_to_file('test.txt', 'I am beven')
+if __name__ == "__main__":
+    write_to_file("test.txt", "I am beven")

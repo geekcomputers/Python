@@ -24,7 +24,9 @@ for i in range(x):
     if num == 8:
         print("Have a good day.")
     if num == 9:
-        print("Upgrading Windows, your PC will restart several times. Sit back and relax.")
+        print(
+            "Upgrading Windows, your PC will restart several times. Sit back and relax."
+        )
     if num == 10:
         print("The architects are still drafting.")
     if num == 11:

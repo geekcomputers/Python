@@ -26,13 +26,13 @@ class Linked_List:
             self.head = new_node
             return
         current = self.head
-        while(current.next):
+        while current.next:
             current = current.next
         current.next = new_node
 
     def Display(self):
         temp = self.head
-        while(temp):
+        while temp:
             print(temp.data, "->", end=" ")
             temp = temp.next
         print("None")

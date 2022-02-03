@@ -26,7 +26,7 @@ def enter_number(p1_sign, p2_sign):
     global switch
     global j
     k = 9
-    while (j):
+    while j:
         if k == 0:
             break
 

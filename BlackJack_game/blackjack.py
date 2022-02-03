@@ -1,5 +1,5 @@
 # master
-#master
+# master
 # BLACK JACK - CASINO A GAME OF FORTUNE!!!
 from time import *
 
@@ -16,18 +16,20 @@ random.shuffle(deck)
 
 print(f'{"*"*58} \n Welcome to the game Casino - BLACK JACK ! \n{"*"*58}')
 sleep(2)
-print('So Finally You Are Here To Accept Your Fate')
+print("So Finally You Are Here To Accept Your Fate")
 sleep(2)
-print('I Mean Your Fortune')
+print("I Mean Your Fortune")
 sleep(2)
-print('Lets Check How Lucky You Are  Wish You All The Best')
+print("Lets Check How Lucky You Are  Wish You All The Best")
 sleep(2)
-print('Loading---')
+print("Loading---")
 sleep(2)
 
-print('Still Loading---')
+print("Still Loading---")
 sleep(2)
-print('So You Are Still Here Not Gone I Gave You Chance But No Problem May Be You Trust Your Fortune A Lot \n Lets Begin Then')
+print(
+    "So You Are Still Here Not Gone I Gave You Chance But No Problem May Be You Trust Your Fortune A Lot \n Lets Begin Then"
+)
 sleep(2)
 d_cards = []  # Initialising dealer's cards
 p_cards = []  # Initialising player's cards
@@ -36,7 +38,7 @@ while len(d_cards) != 2:
     random.shuffle(deck)
     d_cards.append(deck.pop())
     if len(d_cards) == 2:
-        print('The cards dealer has are X ', d_cards[1])
+        print("The cards dealer has are X ", d_cards[1])
 
 # Displaying the Player's cards
 while len(p_cards) != 2:
@@ -104,12 +106,11 @@ def dealer_choice():
 while sum(p_cards) < 21:
 
     # to continue the game again and again !!
-    k = input('Want to hit or stay?\n Press 1 for hit and 0 for stay ')
+    k = input("Want to hit or stay?\n Press 1 for hit and 0 for stay ")
     if k == 1:
         random.shuffle(deck)
         p_cards.append(deck.pop())
-        print('You have a total of ' + str(sum(p_cards))
-              + ' with the cards ', p_cards)
+        print("You have a total of " + str(sum(p_cards)) + " with the cards ", p_cards)
         if sum(p_cards) > 21:
             print(f'{"*"*13}You are BUSTED !{"*"*13}\n Dealer Wins !!')
         if sum(p_cards) == 21:

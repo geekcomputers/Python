@@ -13,31 +13,38 @@ Original file is located at
 from googletrans import Translator
 
 # make a simple function that will translate any language to english
-def text_translator(Text):         
-  translator = Translator()
-  translated = translator.translate(Text, dest='en')
-  return translated.text
+def text_translator(Text):
+    translator = Translator()
+    translated = translator.translate(Text, dest="en")
+    return translated.text
 
-text_translator('Cidades brasileiras integram programa de preservação de florestas')  # portuguese to english
 
-text_translator('Guten Morgen, wie gehts?')     # german to english
+text_translator(
+    "Cidades brasileiras integram programa de preservação de florestas"
+)  # portuguese to english
 
-text_translator('Ami tumake bhalobashi')        # bengali to english
+text_translator("Guten Morgen, wie gehts?")  # german to english
 
-text_translator('ਮੈਨੂੰ ਇੱਕ ਗੱਲ ਦੱਸੋ')         # punjabi to english
+text_translator("Ami tumake bhalobashi")  # bengali to english
 
-text_translator('I am fine')            # english text remains constant
+text_translator("ਮੈਨੂੰ ਇੱਕ ਗੱਲ ਦੱਸੋ")  # punjabi to english
 
-def eng2punj_translator(Text):                # english to punjabi translator
-  translator = Translator()
-  translated = translator.translate(Text, dest='pa')
-  return translated.text
+text_translator("I am fine")  # english text remains constant
 
-eng2punj_translator('Meet you soon')
 
-def eng2beng_translator(Text):               # english to bengali translator
-  translator = Translator()
-  translated = translator.translate(Text, dest='bn')
-  return translated.text
+def eng2punj_translator(Text):  # english to punjabi translator
+    translator = Translator()
+    translated = translator.translate(Text, dest="pa")
+    return translated.text
 
-eng2beng_translator('So happy to see you')
+
+eng2punj_translator("Meet you soon")
+
+
+def eng2beng_translator(Text):  # english to bengali translator
+    translator = Translator()
+    translated = translator.translate(Text, dest="bn")
+    return translated.text
+
+
+eng2beng_translator("So happy to see you")

@@ -1,4 +1,4 @@
-#Note :- Client and Server Must be connected to same Network
+# Note :- Client and Server Must be connected to same Network
 # import socket  modules
 import socket
 
@@ -6,7 +6,7 @@ import socket
 s = socket.socket()
 # take user input ip of server
 server = input("Enter Server IP: ")
-# bind the socket to the port 12345, and connect  
+# bind the socket to the port 12345, and connect
 s.connect((server, 12345))
 # receive message from server connection successfully established
 data = s.recv(1024).decode("utf-8")

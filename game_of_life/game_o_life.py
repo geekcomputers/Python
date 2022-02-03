@@ -1,4 +1,4 @@
-'''Conway's Game Of Life, Author Anurag Kumar(mailto:anuragkumarak95@gmail.com) 
+"""Conway's Game Of Life, Author Anurag Kumar(mailto:anuragkumarak95@gmail.com) 
 
 Requirements:
   - numpy
@@ -26,18 +26,19 @@ Game-Of-Life Rules:
  4.
  Any dead cell with exactly three live neighbours be-
  comes a live cell, as if by reproduction.
- '''
+ """
 import random
 import sys
 
 import numpy as np
 
 from matplotlib import use as mpluse
-mpluse('TkAgg')
+
+mpluse("TkAgg")
 from matplotlib import pyplot as plt
 from matplotlib.colors import ListedColormap
 
-usage_doc = 'Usage of script: script_nama <size_of_canvas:int>'
+usage_doc = "Usage of script: script_nama <size_of_canvas:int>"
 
 choice = [0] * 100 + [1] * 10
 random.shuffle(choice)
@@ -55,7 +56,7 @@ def seed(canvas):
 
 
 def run(canvas):
-    ''' This  function runs the rules of game through all points, and changes their status accordingly.(in the same canvas)
+    """This  function runs the rules of game through all points, and changes their status accordingly.(in the same canvas)
     @Args:
     --
     canvas : canvas of population to run the rules on.
@@ -63,13 +64,15 @@ def run(canvas):
     @returns:
     --
     None
-    '''
+    """
     canvas = np.array(canvas)
     next_gen_canvas = np.array(create_canvas(canvas.shape[0]))
     for r, row in enumerate(canvas):
         for c, pt in enumerate(row):
             # print(r-1,r+2,c-1,c+2)
-            next_gen_canvas[r][c] = __judge_point(pt, canvas[r - 1:r + 2, c - 1:c + 2])
+            next_gen_canvas[r][c] = __judge_point(
+                pt, canvas[r - 1 : r + 2, c - 1 : c + 2]
+            )
 
     canvas = next_gen_canvas
     del next_gen_canvas  # cleaning memory as we move on.
@@ -109,8 +112,9 @@ def __judge_point(pt, neighbours):
     return state
 
 
-if __name__ == '__main__':
-    if len(sys.argv) != 2: raise Exception(usage_doc)
+if __name__ == "__main__":
+    if len(sys.argv) != 2:
+        raise Exception(usage_doc)
 
     canvas_size = int(sys.argv[1])
     # main working structure of this module.
@@ -118,7 +122,7 @@ if __name__ == '__main__':
     seed(c)
     fig, ax = plt.subplots()
     fig.show()
-    cmap = ListedColormap(['w', 'k'])
+    cmap = ListedColormap(["w", "k"])
     try:
         while True:
             c = run(c)

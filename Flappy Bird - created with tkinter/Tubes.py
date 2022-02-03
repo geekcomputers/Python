@@ -16,16 +16,29 @@ class Tubes(Thread):
     __move = 10
     __pastTubes = []
 
-    def __init__(self, background, bird, score_function=None, *screen_geometry, fp=("tube.png", "tube_mourth"),
-                 animation_speed=50):
+    def __init__(
+        self,
+        background,
+        bird,
+        score_function=None,
+        *screen_geometry,
+        fp=("tube.png", "tube_mourth"),
+        animation_speed=50
+    ):
 
         # Verifica os parâmetros passados e lança um erro caso algo esteja incorreto
-        if not isinstance(background, Background): raise TypeError(
-            "The background argument must be an instance of Background.")
-        if not len(fp) == 2: raise TypeError(
-            "The parameter fp should be a sequence containing the path of the images of the tube body and the tube mouth.")
-        if not isinstance(bird, Bird): raise TypeError("The birdargument must be an instance of Bird.")
-        if not callable(score_function): raise TypeError("The score_function argument must be a callable object.")
+        if not isinstance(background, Background):
+            raise TypeError(
+                "The background argument must be an instance of Background."
+            )
+        if not len(fp) == 2:
+            raise TypeError(
+                "The parameter fp should be a sequence containing the path of the images of the tube body and the tube mouth."
+            )
+        if not isinstance(bird, Bird):
+            raise TypeError("The birdargument must be an instance of Bird.")
+        if not callable(score_function):
+            raise TypeError("The score_function argument must be a callable object.")
 
         Thread.__init__(self)
 
@@ -62,7 +75,8 @@ class Tubes(Thread):
                 image_path=self.image_path[1],
                 width=self.__imageWidth,
                 height=self.__imageHeight,
-                closeAfter=True)[0]
+                closeAfter=True,
+            )[0]
         )
 
         # Carrega imagem do corpo do tubo
@@ -70,7 +84,8 @@ class Tubes(Thread):
             self.getPhotoImage(
                 image_path=self.image_path[0],
                 width=self.__imageWidth,
-                height=self.__imageHeight)[1]
+                height=self.__imageHeight,
+            )[1]
         )
 
         # Calcula a distância mínima inicial entre os tubos
@@ -93,21 +108,38 @@ class Tubes(Thread):
         # Define uma posição Y para o tubo aleatóriamente respeitando algumas regras que são:
         # Espaço para o pássaro passar e espaço para adicionar o tubo de baixo.
 
-        height = randint(self.__imageHeight // 2, self.__height - (self.__bird_h * 2) - self.__imageHeight)
+        height = randint(
+            self.__imageHeight // 2,
+            self.__height - (self.__bird_h * 2) - self.__imageHeight,
+        )
 
         # Cria e adiciona à lista do corpo do tubo de cima, a boca do tubo
-        tube1.append(self.__background.create_image(width, height, image=self.__background.tubeImages[1]))
+        tube1.append(
+            self.__background.create_image(
+                width, height, image=self.__background.tubeImages[1]
+            )
+        )
 
         # Cria uma nova imagem na lista de imagens com a altura sendo igual a posição Y do tubo de cima
         self.__background.tubeImages[0].append(
-            [self.getPhotoImage(image=self.__background.tubeImages[2], width=self.__imageWidth, height=height)[0], ]
+            [
+                self.getPhotoImage(
+                    image=self.__background.tubeImages[2],
+                    width=self.__imageWidth,
+                    height=height,
+                )[0],
+            ]
         )
 
         # Define a posição Y do corpo do tubo de cima
         y = (height // 2) + 1 - (self.__imageHeight // 2)
 
         # Cria e adiciona à lista do corpo do tubo de cima, o corpo do tubo
-        tube1.append(self.__background.create_image(width, y, image=self.__background.tubeImages[0][-1][0]))
+        tube1.append(
+            self.__background.create_image(
+                width, y, image=self.__background.tubeImages[0][-1][0]
+            )
+        )
 
         ###############################################################################################################
         ###############################################################################################################
@@ -119,21 +151,33 @@ class Tubes(Thread):
         height = height + (self.__bird_h * 2) + self.__imageHeight - 1
 
         # Cria e adiciona à lista do corpo do tubo de baixo, a boca do tubo
-        tube2.append(self.__background.create_image(width, height, image=self.__background.tubeImages[1]))
+        tube2.append(
+            self.__background.create_image(
+                width, height, image=self.__background.tubeImages[1]
+            )
+        )
 
         # Define a altura da imagem do corpo do tubo de baixo
         height = self.__height - height
 
         # Cria uma nova imagem na lista de imagens com a altura sendo igual a posição Y do tubo de baixo
         self.__background.tubeImages[0][-1].append(
-            self.getPhotoImage(image=self.__background.tubeImages[2], width=self.__imageWidth, height=height)[0]
+            self.getPhotoImage(
+                image=self.__background.tubeImages[2],
+                width=self.__imageWidth,
+                height=height,
+            )[0]
         )
 
         # Define a posição Y do corpo do tubo de baixo
         y = (self.__height - (height // 2)) + self.__imageHeight // 2
 
         # Cria e adiciona à lista do corpo do tubo de baixo, o corpo do tubo
-        tube2.append(self.__background.create_image(width, y, image=self.__background.tubeImages[0][-1][1]))
+        tube2.append(
+            self.__background.create_image(
+                width, y, image=self.__background.tubeImages[0][-1][1]
+            )
+        )
 
         # Adiciona à lista de tubos os tubos de cima e de baixo da posição X
         self.__tubes.append([tube1, tube2])
@@ -156,9 +200,11 @@ class Tubes(Thread):
         self.__background.tubeImages.clear()
 
     @staticmethod
-    def getPhotoImage(image=None, image_path=None, width=None, height=None, closeAfter=False):
+    def getPhotoImage(
+        image=None, image_path=None, width=None, height=None, closeAfter=False
+    ):
         """
-        Retorna um objeto da classe PIL.ImageTk.PhotoImage de uma imagem e as imagens criadas de PIL.Image 
+        Retorna um objeto da classe PIL.ImageTk.PhotoImage de uma imagem e as imagens criadas de PIL.Image
         (photoImage, new, original)
 
         @param image: Instância de PIL.Image.open
@@ -169,14 +215,17 @@ class Tubes(Thread):
         """
 
         if not image:
-            if not image_path: return
+            if not image_path:
+                return
 
             # Abre a imagem utilizando o caminho dela
             image = openImage(image_path)
 
         # Será redimesionada a imagem somente se existir um width ou height
-        if not width: width = image.width
-        if not height: height = image.height
+        if not width:
+            width = image.width
+        if not height:
+            height = image.height
 
         # Cria uma nova imagem já redimensionada
         newImage = image.resize([width, height])
@@ -238,12 +287,16 @@ class Tubes(Thread):
         """
 
         # Se o método "stop" tiver sido chamado, a animação será encerrada
-        if self.__stop: return
+        if self.__stop:
+            return
 
         # Se os tubos ( cima e baixo ) de uma posição X tiverem sumido da área do background,
         # eles serão apagados juntamente com suas imagens e todos os seus dados.
 
-        if len(self.__tubes) >= 1 and self.__background.bbox(self.__tubes[0][0][0])[2] <= 0:
+        if (
+            len(self.__tubes) >= 1
+            and self.__background.bbox(self.__tubes[0][0][0])[2] <= 0
+        ):
 
             # Apaga todo o corpo do tubo dentro do background
             for tube in self.__tubes[0]:

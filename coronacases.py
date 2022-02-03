@@ -10,26 +10,26 @@ from time import sleep
 url = "https://api.covid19api.com/summary"
 visit = requests.get(url).json()
 
-NewConfirmed = visit['Global']['NewConfirmed']
-TotalConfirmed = visit['Global']['TotalConfirmed']
-NewDeaths = visit['Global']['NewDeaths']
-TotalDeaths = visit['Global']['TotalDeaths']
-NewRecovered = visit['Global']['NewRecovered']
-TotalRecovered = visit['Global']['TotalRecovered']
+NewConfirmed = visit["Global"]["NewConfirmed"]
+TotalConfirmed = visit["Global"]["TotalConfirmed"]
+NewDeaths = visit["Global"]["NewDeaths"]
+TotalDeaths = visit["Global"]["TotalDeaths"]
+NewRecovered = visit["Global"]["NewRecovered"]
+TotalRecovered = visit["Global"]["TotalRecovered"]
 
-india = visit['Countries']
-name = india[76]['Country']
-indiaconfirmed = india[76]['NewConfirmed']
-indiatotal = india[76]['TotalConfirmed']
-indiaDeaths = india[76]['NewDeaths']
-deathstotal = india[76]['TotalDeaths']
-indianewr = india[76]['NewRecovered']
-totalre = india[76]['TotalRecovered']
-DateUpdate = india[76]['Date']
+india = visit["Countries"]
+name = india[76]["Country"]
+indiaconfirmed = india[76]["NewConfirmed"]
+indiatotal = india[76]["TotalConfirmed"]
+indiaDeaths = india[76]["NewDeaths"]
+deathstotal = india[76]["TotalDeaths"]
+indianewr = india[76]["NewRecovered"]
+totalre = india[76]["TotalRecovered"]
+DateUpdate = india[76]["Date"]
 
 
 def world():
-    world = f'''
+    world = f"""
 ▀▀█▀▀ █▀▀█ ▀▀█▀▀ █▀▀█ █░░ 　 ▒█▀▀█ █▀▀█ █▀▀ █▀▀ █▀▀ 　 ▀█▀ █▀▀▄ 　 ▒█░░▒█ █▀▀█ █▀▀█ █░░ █▀▀▄ 
 ░▒█░░ █░░█ ░░█░░ █▄▄█ █░░ 　 ▒█░░░ █▄▄█ ▀▀█ █▀▀ ▀▀█ 　 ▒█░ █░░█ 　 ▒█▒█▒█ █░░█ █▄▄▀ █░░ █░░█ 
 ░▒█░░ ▀▀▀▀ ░░▀░░ ▀░░▀ ▀▀▀ 　 ▒█▄▄█ ▀░░▀ ▀▀▀ ▀▀▀ ▀▀▀ 　 ▄█▄ ▀░░▀ 　 ▒█▄▀▄█ ▀▀▀▀ ▀░▀▀ ▀▀▀ ▀▀▀░\n
@@ -39,12 +39,12 @@ New Deaths :- {NewDeaths}
 Total Deaths :- {TotalDeaths}
 New Recovered :- {NewRecovered}
 Total Recovered :- {TotalRecovered}
-    '''
+    """
     print(world)
 
 
 def indiac():
-    cases = f'''
+    cases = f"""
 ██╗███╗░░██╗██████╗░██╗░█████╗░
 ██║████╗░██║██╔══██╗██║██╔══██╗
 ██║██╔██╗██║██║░░██║██║███████║
@@ -60,17 +60,19 @@ Total Deaths :- {deathstotal}
 New Recovered :- {indianewr}
 Total Recovered :- {totalre}
 Information Till :- {DateUpdate}
-'''
+"""
     print(cases)
 
 
-print('''
+print(
+    """
 ░█████╗░░█████╗░██████╗░░█████╗░███╗░░██╗░█████╗░  ██╗░░░██╗██╗██████╗░██╗░░░██╗░██████╗
 ██╔══██╗██╔══██╗██╔══██╗██╔══██╗████╗░██║██╔══██╗  ██║░░░██║██║██╔══██╗██║░░░██║██╔════╝
 ██║░░╚═╝██║░░██║██████╔╝██║░░██║██╔██╗██║███████║  ╚██╗░██╔╝██║██████╔╝██║░░░██║╚█████╗░
 ██║░░██╗██║░░██║██╔══██╗██║░░██║██║╚████║██╔══██║  ░╚████╔╝░██║██╔══██╗██║░░░██║░╚═══██╗
 ╚█████╔╝╚█████╔╝██║░░██║╚█████╔╝██║░╚███║██║░░██║  ░░╚██╔╝░░██║██║░░██║╚██████╔╝██████╔╝
-░╚════╝░░╚════╝░╚═╝░░╚═╝░╚════╝░╚═╝░░╚══╝╚═╝░░╚═╝  ░░░╚═╝░░░╚═╝╚═╝░░╚═╝░╚═════╝░╚═════╝░''')
+░╚════╝░░╚════╝░╚═╝░░╚═╝░╚════╝░╚═╝░░╚══╝╚═╝░░╚═╝  ░░░╚═╝░░░╚═╝╚═╝░░╚═╝░╚═════╝░╚═════╝░"""
+)
 print("\nDeveloped By @TheDarkW3b")
 
 

@@ -1,4 +1,4 @@
-# Simple and efficient python program to check whether a number is series of power of two 
+# Simple and efficient python program to check whether a number is series of power of two
 # Example:
 # Input:
 # 8

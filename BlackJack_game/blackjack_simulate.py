@@ -1,7 +1,8 @@
 import os
 import random
 from functools import namedtuple
-'''
+
+"""
 Target: BlackJack 21 simulate
     - Role
         - Dealer: 1
@@ -18,30 +19,30 @@ Target: BlackJack 21 simulate
                            (Get one card)
             - Surrender: (only available as first decision of a hand)
                 - Dealer return 50% chips
-'''
+"""
 
-__author__ = 'Alopex Cheung'
-__version__ = '0.2'
+__author__ = "Alopex Cheung"
+__version__ = "0.2"
 
 BLACK_JACK = 21
 BASE_VALUE = 17
 
 COLOR = {
-    'PURPLE': '\033[1;35;48m',
-    'CYAN': '\033[1;36;48m',
-    'BOLD': '\033[1;37;48m',
-    'BLUE': '\033[1;34;48m',
-    'GREEN': '\033[1;32;48m',
-    'YELLOW': '\033[1;33;48m',
-    'RED': '\033[1;31;48m',
-    'BLACK': '\033[1;30;48m',
-    'UNDERLINE': '\033[4;37;48m',
-    'END': '\033[1;37;0m',
+    "PURPLE": "\033[1;35;48m",
+    "CYAN": "\033[1;36;48m",
+    "BOLD": "\033[1;37;48m",
+    "BLUE": "\033[1;34;48m",
+    "GREEN": "\033[1;32;48m",
+    "YELLOW": "\033[1;33;48m",
+    "RED": "\033[1;31;48m",
+    "BLACK": "\033[1;30;48m",
+    "UNDERLINE": "\033[4;37;48m",
+    "END": "\033[1;37;0m",
 }
 
 
 class Card:
-    __slots__ = 'suit', 'rank', 'is_face'
+    __slots__ = "suit", "rank", "is_face"
 
     def __init__(self, suit, rank, face=True):
         """
@@ -54,10 +55,10 @@ class Card:
         self.is_face = face
 
     def __repr__(self):
-        fmt_card = '\t<rank: {rank:2}, suit: {suit:8}>'
+        fmt_card = "\t<rank: {rank:2}, suit: {suit:8}>"
         if self.is_face:
             return fmt_card.format(suit=self.suit, rank=self.rank)
-        return fmt_card.format(suit='*-Back-*', rank='*-Back-*')
+        return fmt_card.format(suit="*-Back-*", rank="*-Back-*")
 
     def show(self):
         print(str(self))
@@ -73,7 +74,7 @@ class Deck:
         self.built()
 
     def __repr__(self):
-        return '\n'.join([str(card) for card in self.cards])
+        return "\n".join([str(card) for card in self.cards])
 
     def __len__(self):
         return len(self.cards)
@@ -81,7 +82,7 @@ class Deck:
     def built(self):
         for _ in range(self.num):
             ranks = [x for x in range(1, 14)]
-            suits = 'Spades Heart Clubs Diamonds'.split()
+            suits = "Spades Heart Clubs Diamonds".split()
             for suit in suits:
                 for rank in ranks:
                     card = Card(suit, rank)
@@ -91,8 +92,7 @@ class Deck:
         for _ in range(self.num):
             for index in range(len(self.cards)):
                 i = random.randint(0, 51)
-                self.cards[index], self.cards[i] = self.cards[i], self.cards[
-                    index]
+                self.cards[index], self.cards[i] = self.cards[i], self.cards[index]
 
     def rebuilt(self):
         self.cards.clear()
@@ -118,10 +118,10 @@ class Chips:
 
     @staticmethod
     def get_tips(content):
-        fmt_tips = '{color}** TIPS: {content}! **{end}'
-        return fmt_tips.format(color=COLOR.get('YELLOW'),
-                               content=content,
-                               end=COLOR.get('END'))
+        fmt_tips = "{color}** TIPS: {content}! **{end}"
+        return fmt_tips.format(
+            color=COLOR.get("YELLOW"), content=content, end=COLOR.get("END")
+        )
 
     @property
     def amount(self):
@@ -130,10 +130,10 @@ class Chips:
     @amount.setter
     def amount(self, value):
         if not isinstance(value, int):
-            type_tips = 'Please give a integer'
+            type_tips = "Please give a integer"
             raise ValueError(Chips.get_tips(type_tips))
         if value < 0:
-            amount_tips = 'Your integer should bigger than 0'
+            amount_tips = "Your integer should bigger than 0"
             raise ValueError(Chips.get_tips(amount_tips))
         self._amount = value
 
@@ -143,8 +143,8 @@ class Chips:
 
     @bet_amount.setter
     def bet_amount(self, value):
-        type_tips = 'Please give a integer'
-        amount_tips = 'Your chips should between 1 - ' + str(self.amount) + ' '
+        type_tips = "Please give a integer"
+        amount_tips = "Your chips should between 1 - " + str(self.amount) + " "
         try:
             value = int(value)
         except ValueError:
@@ -161,8 +161,8 @@ class Chips:
             self._bet_amount *= 2
             self.is_double = True
         else:
-            over_tips = 'Not enough chips || '
-            cannot_double = 'CAN\'T DO DOUBLE'
+            over_tips = "Not enough chips || "
+            cannot_double = "CAN'T DO DOUBLE"
             raise ValueError(Chips.get_tips(over_tips + cannot_double))
 
     @property
@@ -172,7 +172,7 @@ class Chips:
     @insurance.setter
     def insurance(self, value):
         if self.amount - value < 0:
-            over_tips = 'Not enough chips'
+            over_tips = "Not enough chips"
             raise ValueError(Chips.get_tips(over_tips))
         self._insurance = value
         self.is_insurance = True
@@ -191,14 +191,14 @@ class Chips:
 
 
 class User:
-    def __init__(self, name, role, chips_amount=None, color='END'):
+    def __init__(self, name, role, chips_amount=None, color="END"):
         """
         :param name: User name
         :param role: dealer or player
         :param chips_amount: Casino tokens equal money
         """
         self.name = name
-        self.prompt = '{role} >> ({name}) : '.format(role=role, name=self.name)
+        self.prompt = "{role} >> ({name}) : ".format(role=role, name=self.name)
         self.chips = Chips(chips_amount)
         self.color = color
         self.hand = []
@@ -217,7 +217,7 @@ class User:
         self.point = 0
 
     def show_card(self):
-        print('\t    ** Here is my card **')
+        print("\t    ** Here is my card **")
         for card in self.hand:
             card.show()
 
@@ -247,14 +247,17 @@ class User:
 
     def is_point(self, opt, point):
         self.calculate_point()
-        compare_fmt = '{user_point} {opt} {point}'.format(
-            user_point=self.point, opt=opt, point=point)
+        compare_fmt = "{user_point} {opt} {point}".format(
+            user_point=self.point, opt=opt, point=point
+        )
         return eval(compare_fmt)
 
-    def speak(self, content='', end_char='\n'):
-        print('')
-        print(COLOR.get(self.color) + self.prompt + COLOR.get('END') + content,
-              end=end_char)
+    def speak(self, content="", end_char="\n"):
+        print("")
+        print(
+            COLOR.get(self.color) + self.prompt + COLOR.get("END") + content,
+            end=end_char,
+        )
 
     def showing(self):
         self.speak()
@@ -262,24 +265,26 @@ class User:
 
     def unveiling(self):
         self.calculate_point()
-        points_fmt = 'My point is: {}'.format(str(self.point))
+        points_fmt = "My point is: {}".format(str(self.point))
         self.speak(points_fmt)
         self.unveil_card()
 
 
 class Dealer(User):
     def __init__(self, name):
-        super().__init__(name=name, role='Dealer', color='PURPLE')
+        super().__init__(name=name, role="Dealer", color="PURPLE")
         self.trigger = 0
 
     def ask_insurance(self):
-        buy_insurance = ("(Insurance pay 2 to 1)\n"
-                         "\tMy Face card is an Ace.\n"
-                         "\tWould your like buy a insurance ?")
+        buy_insurance = (
+            "(Insurance pay 2 to 1)\n"
+            "\tMy Face card is an Ace.\n"
+            "\tWould your like buy a insurance ?"
+        )
         self.speak(content=buy_insurance)
 
     def strategy_trigger(self, deck):
-        if self.is_point('<', BASE_VALUE):
+        if self.is_point("<", BASE_VALUE):
             self.obtain_card(deck)
         else:
             self.trigger += random.randint(0, 5)
@@ -289,30 +294,28 @@ class Dealer(User):
 
 class Player(User):
     def __init__(self, name, amount):
-        super().__init__(name=name,
-                         chips_amount=amount,
-                         role='Player',
-                         color='CYAN')
+        super().__init__(name=name, chips_amount=amount, role="Player", color="CYAN")
         self.refresh_prompt()
 
     def refresh_prompt(self):
-        self.prompt = '{role} [ ${remain} ] >> ({name}) : '.format(
-            role='Player', name=self.name, remain=self.chips.current_amount())
+        self.prompt = "{role} [ ${remain} ] >> ({name}) : ".format(
+            role="Player", name=self.name, remain=self.chips.current_amount()
+        )
 
     def select_choice(self, pattern):
-        my_turn = 'My turn now.'
+        my_turn = "My turn now."
         self.speak(content=my_turn)
         operation = {
-            'I': 'Insurance',
-            'H': 'Hit',
-            'S': 'Stand',
-            'D': 'Double-down',
-            'U': 'Surrender'
+            "I": "Insurance",
+            "H": "Hit",
+            "S": "Stand",
+            "D": "Double-down",
+            "U": "Surrender",
         }
         enu_choice = enumerate((operation.get(p) for p in pattern), 1)
         dict_choice = dict(enu_choice)
         for index, operator in dict_choice.items():
-            choice_fmt = '\t[{index}] {operation}'
+            choice_fmt = "\t[{index}] {operation}"
             print(choice_fmt.format(index=index, operation=operator))
         return dict_choice
 
@@ -332,29 +335,34 @@ class Recorder:
         self.rounds += 1
         self.remain_chips = chips
         self.winner = winner
-        if self.winner == 'Player':
+        if self.winner == "Player":
             self.player_win_count += 1
-        elif self.winner == 'Dealer':
+        elif self.winner == "Dealer":
             self.dealer_win_count += 1
         self.player_point = player_point
         self.dealer_point = dealer_point
 
     def record(self, winner, chips, player_point, dealer_point):
         self.update(winner, chips, player_point, dealer_point)
-        Row = namedtuple('Row', [
-            'rounds', 'player_point', 'dealer_point', 'winner', 'remain_chips'
-        ])
-        row = Row(self.rounds, self.player_point, self.dealer_point,
-                  self.winner, self.remain_chips)
+        Row = namedtuple(
+            "Row", ["rounds", "player_point", "dealer_point", "winner", "remain_chips"]
+        )
+        row = Row(
+            self.rounds,
+            self.player_point,
+            self.dealer_point,
+            self.winner,
+            self.remain_chips,
+        )
         self.data.append(row)
 
     def draw_diagram(self):
-        content = 'Record display'
-        bars = '--' * 14
+        content = "Record display"
+        bars = "--" * 14
         content_bar = bars + content + bars
-        base_bar = bars + '-' * len(content) + bars
+        base_bar = bars + "-" * len(content) + bars
 
-        os.system('clear')
+        os.system("clear")
         print(base_bar)
         print(content_bar)
         print(base_bar)
@@ -364,17 +372,23 @@ class Recorder:
         print(base_bar)
 
     def digram(self):
-        title = 'Round\tPlayer-Point\tDealer-Point\tWinner-is\tRemain-Chips'
-        row_fmt = '{}\t{}\t\t{}\t\t{}\t\t{}'
+        title = "Round\tPlayer-Point\tDealer-Point\tWinner-is\tRemain-Chips"
+        row_fmt = "{}\t{}\t\t{}\t\t{}\t\t{}"
 
         print(title)
         for row in self.data:
             print(
-                row_fmt.format(row.rounds, row.player_point, row.dealer_point,
-                               row.winner, row.remain_chips))
+                row_fmt.format(
+                    row.rounds,
+                    row.player_point,
+                    row.dealer_point,
+                    row.winner,
+                    row.remain_chips,
+                )
+            )
 
-        print('')
-        win_rate_fmt = '>> Player win rate: {}%\n>> Dealer win rate: {}%'
+        print("")
+        win_rate_fmt = ">> Player win rate: {}%\n>> Dealer win rate: {}%"
         try:
             player_rate = round(self.player_win_count / self.rounds * 100, 2)
             dealer_rate = round(self.dealer_win_count / self.rounds * 100, 2)
@@ -387,7 +401,7 @@ class Recorder:
 class BlackJack:
     def __init__(self, username):
         self.deck = Deck()
-        self.dealer = Dealer('Bob')
+        self.dealer = Dealer("Bob")
         self.player = Player(username.title(), 1000)
         self.recorder = Recorder()
         self.go_on = True
@@ -415,19 +429,23 @@ class BlackJack:
             if not self.bust:
                 self.is_surrender()
             self.winner = self.get_winner()
-            self.res = 'Winner is ' + self.winner
-            os.system('clear')
+            self.res = "Winner is " + self.winner
+            os.system("clear")
             self.calculate_chips()
             self.result_exhibit()
             self.dealer.unveiling()
             self.player.unveiling()
-            self.recorder.record(self.winner, self.player.chips.amount,
-                                 self.player.point, self.dealer.point)
+            self.recorder.record(
+                self.winner,
+                self.player.chips.amount,
+                self.player.point,
+                self.dealer.point,
+            )
 
         self.recorder.draw_diagram()
-        ending = '\n\tSorry I lost all chips!\n\tTime to say goodbye.'
+        ending = "\n\tSorry I lost all chips!\n\tTime to say goodbye."
         self.player.speak(ending)
-        print('\n' + '-' * 20 + ' End Game ' + '-' * 20)
+        print("\n" + "-" * 20 + " End Game " + "-" * 20)
 
     def initial_game(self):
         self.go_on = True
@@ -441,21 +459,21 @@ class BlackJack:
         self.player.drop_card()
         self.player.refresh_prompt()
         self.dealer.drop_card()
-        print('\n' + '-' * 20 + ' Start Game ' + '-' * 20)
+        print("\n" + "-" * 20 + " Start Game " + "-" * 20)
 
     def in_bet(self):
-        in_bet = '\n\tI want to bet: '
+        in_bet = "\n\tI want to bet: "
         not_invalid = True
-        self.player.speak(in_bet, end_char='')
+        self.player.speak(in_bet, end_char="")
         while not_invalid:
             try:
                 self.player.chips.bet_amount = input()
             except ValueError as e:
                 print(e)
-                self.player.speak(in_bet, end_char='')
+                self.player.speak(in_bet, end_char="")
                 continue
             except KeyboardInterrupt:
-                print('')
+                print("")
                 self.recorder.draw_diagram()
                 quit()
             else:
@@ -476,24 +494,21 @@ class BlackJack:
         self.player.showing()
 
     def menu(self):
-        pattern = 'HS'
+        pattern = "HS"
         if self.first_hand:
-            pattern += 'U'
-            if self.dealer.hand[
-                    1].rank == 1 and self.player.chips.current_amount():
-                pattern += 'I'
+            pattern += "U"
+            if self.dealer.hand[1].rank == 1 and self.player.chips.current_amount():
+                pattern += "I"
                 self.dealer.ask_insurance()
-            if self.player.is_point('>',
-                                    10) and self.player.chips.can_double():
-                pattern += 'D'
+            if self.player.is_point(">", 10) and self.player.chips.can_double():
+                pattern += "D"
             self.first_hand = False
         choices = self.player.select_choice(pattern)
-        select = self.get_select(len(choices),
-                                 general_err='Select above number.')
+        select = self.get_select(len(choices), general_err="Select above number.")
         return choices[select]
 
     @staticmethod
-    def get_select(select_max, prompt='>> ', general_err=''):
+    def get_select(select_max, prompt=">> ", general_err=""):
         while True:
             try:
                 value = input(prompt)
@@ -504,76 +519,76 @@ class BlackJack:
                 print(general_err)
                 continue
             except KeyboardInterrupt:
-                print('')
+                print("")
                 quit()
             else:
                 return select
 
     def chips_manage(self):
-        if self.choice == 'Insurance':
-            err = ('The amount should under ' +
-                   str(self.player.chips.current_amount()))
-            pay_ins = self.get_select(self.player.chips.current_amount(),
-                                      prompt='Insurance amount >> ',
-                                      general_err=err)
+        if self.choice == "Insurance":
+            err = "The amount should under " + str(self.player.chips.current_amount())
+            pay_ins = self.get_select(
+                self.player.chips.current_amount(),
+                prompt="Insurance amount >> ",
+                general_err=err,
+            )
             self.player.chips.insurance = pay_ins
 
-        if self.choice == 'Double-down':
+        if self.choice == "Double-down":
             try:
                 self.player.chips.double_bet()
             except ValueError as e:
                 print(e)
         self.player.refresh_prompt()
-        if self.choice in ('Insurance', 'Double-down', 'Surrender'):
+        if self.choice in ("Insurance", "Double-down", "Surrender"):
             self.go_on = False
 
     def card_manage(self):
-        if self.choice in ('Hit', 'Double-down'):
+        if self.choice in ("Hit", "Double-down"):
             self.player.obtain_card(self.deck)
-            if self.player.is_point('>', BLACK_JACK):
-                raise ValueError('Player BUST')
+            if self.player.is_point(">", BLACK_JACK):
+                raise ValueError("Player BUST")
             else:
                 self.dealer.strategy_trigger(self.deck)
-                if self.dealer.is_point('>', BLACK_JACK):
-                    raise ValueError('Dealer BUST')
-        elif self.choice != 'Surrender':
+                if self.dealer.is_point(">", BLACK_JACK):
+                    raise ValueError("Dealer BUST")
+        elif self.choice != "Surrender":
             if not self.player.chips.is_insurance:
                 self.dealer.strategy_trigger(self.deck)
-                if self.dealer.is_point('>', BLACK_JACK):
-                    raise ValueError('Dealer BUST')
+                if self.dealer.is_point(">", BLACK_JACK):
+                    raise ValueError("Dealer BUST")
 
         self.dealer.showing()
         self.player.showing()
-        if self.choice in ('Double-down', 'Stand'):
+        if self.choice in ("Double-down", "Stand"):
             self.go_on = False
 
     def is_surrender(self):
-        if self.choice == 'Surrender':
-            self.player.speak('Sorry, I surrender....\n')
+        if self.choice == "Surrender":
+            self.player.speak("Sorry, I surrender....\n")
 
     def get_winner(self):
         if self.bust:
-            return 'Dealer' if self.player.is_point('>',
-                                                    BLACK_JACK) else 'Player'
+            return "Dealer" if self.player.is_point(">", BLACK_JACK) else "Player"
 
-        if self.choice == 'Surrender':
-            return 'Dealer'
-        elif self.choice == 'Insurance':
-            if self.player.is_point('==', BLACK_JACK):
-                return 'Dealer'
-            return 'Player'
+        if self.choice == "Surrender":
+            return "Dealer"
+        elif self.choice == "Insurance":
+            if self.player.is_point("==", BLACK_JACK):
+                return "Dealer"
+            return "Player"
 
-        if self.choice in ('Double-down', 'Stand'):
+        if self.choice in ("Double-down", "Stand"):
             self.player.calculate_point()
             self.dealer.calculate_point()
             if self.player.point > self.dealer.point:
-                return 'Player'
-            return 'Dealer'
+                return "Player"
+            return "Dealer"
 
-        return 'Both'
+        return "Both"
 
     def calculate_chips(self):
-        if self.choice == 'Surrender':
+        if self.choice == "Surrender":
             if self.player.chips.bet_amount == 1:
                 if self.player.chips.current_amount() == 0:
                     self.player.chips.amount = 0
@@ -581,41 +596,43 @@ class BlackJack:
                 surrender_amount = self.player.chips.bet_amount // 2
                 self.player.chips.amount -= surrender_amount
 
-        elif self.choice in ('Double-down', 'Stand', 'Insurance', 'Hit'):
-            if self.winner == 'Player':
-                self.player.chips.amount += (self.player.chips.bet_amount +
-                                             self.player.chips.insurance * 2)
-            elif self.winner == 'Dealer':
-                self.player.chips.amount -= (self.player.chips.bet_amount +
-                                             self.player.chips.insurance)
+        elif self.choice in ("Double-down", "Stand", "Insurance", "Hit"):
+            if self.winner == "Player":
+                self.player.chips.amount += (
+                    self.player.chips.bet_amount + self.player.chips.insurance * 2
+                )
+            elif self.winner == "Dealer":
+                self.player.chips.amount -= (
+                    self.player.chips.bet_amount + self.player.chips.insurance
+                )
 
     def result_exhibit(self):
         def get_color():
-            if 'BUST' in content:
-                return COLOR.get('RED' if 'Player' in content else 'GREEN')
-            if self.winner == 'Player':
-                return COLOR.get('GREEN')
-            elif self.winner == 'Dealer':
-                return COLOR.get('RED')
+            if "BUST" in content:
+                return COLOR.get("RED" if "Player" in content else "GREEN")
+            if self.winner == "Player":
+                return COLOR.get("GREEN")
+            elif self.winner == "Dealer":
+                return COLOR.get("RED")
             else:
-                return COLOR.get('YELLOW')
+                return COLOR.get("YELLOW")
 
-        end = COLOR.get('END')
+        end = COLOR.get("END")
         content = str(self.res)
         color = get_color()
-        winner_fmt = color + '\n\t>> {content} <<\n' + end
+        winner_fmt = color + "\n\t>> {content} <<\n" + end
         print(winner_fmt.format(content=content))
 
 
 def main():
     try:
-        user_name = input('What is your name: ')
+        user_name = input("What is your name: ")
     except KeyboardInterrupt:
-        print('')
+        print("")
     else:
         black_jack = BlackJack(username=user_name)
         black_jack.play()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

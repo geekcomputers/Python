@@ -37,7 +37,7 @@ remaining = [split[0], split[2], split[4], split[6], split[8]]
 # Put the newly-doubled values in a new list
 newdoubled = []
 for i in tobedoubled:
-    i = i*2
+    i = i * 2
     newdoubled.append(i)
 tobedoubled = newdoubled
 
@@ -48,7 +48,7 @@ for i in tobedoubled:
     if i > 9:
         splitdigit = str(i)
         for index in range(0, len(splitdigit), 1):
-            newdoubled.append(splitdigit[index:index+1])
+            newdoubled.append(splitdigit[index : index + 1])
         tobedoubled.remove(i)
 newdoubled = [int(i) for i in newdoubled]
 
@@ -63,6 +63,6 @@ print("Final digit list:", luhnsum)
 print("Sum of all digits:", sum(luhnsum))
 checkdigit = 10 - sum(luhnsum) % 10
 print("Check digit:", checkdigit)
-finalcc = str(CC)+str(checkdigit)
+finalcc = str(CC) + str(checkdigit)
 print("Full valid number (11 digits):", finalcc)
 input()

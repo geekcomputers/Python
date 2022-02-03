@@ -35,7 +35,7 @@ class Linked_List:
 
     def Display(self):
         temp = self.head
-        while(temp):
+        while temp:
             print(temp.data, "->", end=" ")
             temp = temp.next
         print("None")

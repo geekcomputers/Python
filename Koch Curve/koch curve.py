@@ -20,7 +20,7 @@ def snowflake(lengthSide, levels):
 
 # main function
 if __name__ == "__main__":
-    t=turtle.Pen()
+    t = turtle.Pen()
     t.speed(0)  # defining the speed of the turtle
     length = 300.0  #
     t.penup()  # Pull the pen up – no drawing when moving.
@@ -33,5 +33,4 @@ if __name__ == "__main__":
         snowflake(length, 4)
         t.right(120)
     # To control the closing windows of the turtle
-    #mainloop()
-
+    # mainloop()

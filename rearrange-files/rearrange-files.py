@@ -21,17 +21,23 @@ class RearrangeFile(object):
 
     def check_folder_existance(self):
         for i in range(len(self.list_of_all_files)):
-            if self.list_of_all_files[i].endswith('.pdf'):
-                if os.path.exists('pdfs'):
-                    shutil.move(self.folder_path + '/' + self.list_of_all_files[i], self.folder_path + '/pdfs')
+            if self.list_of_all_files[i].endswith(".pdf"):
+                if os.path.exists("pdfs"):
+                    shutil.move(
+                        self.folder_path + "/" + self.list_of_all_files[i],
+                        self.folder_path + "/pdfs",
+                    )
                 else:
-                    os.mkdir('pdfs')
+                    os.mkdir("pdfs")
 
-            elif self.list_of_all_files[i].endswith('jpg'):
-                if os.path.exists('jpgs'):
-                    shutil.move(self.folder_path + '/' + self.list_of_all_files[i], self.folder_path + '/jpgs')
+            elif self.list_of_all_files[i].endswith("jpg"):
+                if os.path.exists("jpgs"):
+                    shutil.move(
+                        self.folder_path + "/" + self.list_of_all_files[i],
+                        self.folder_path + "/jpgs",
+                    )
                 else:
-                    os.mkdir('jpgs')
+                    os.mkdir("jpgs")
 
 
 if __name__ == "__main__":

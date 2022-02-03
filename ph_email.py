@@ -15,15 +15,19 @@ import pyperclip
 # ten numbers
 # word boundary
 
-find_phone = re.compile(r'''\b
+find_phone = re.compile(
+    r"""\b
 							(\+?91|0)?
 							\ ?
 							(\d{10})
 							\b
-							''', re.X)
+							""",
+    re.X,
+)
 
 # email regex source : http://www.regexlib.com/REDetails.aspx?regexp_id=26
-find_email = re.compile(r'''(
+find_email = re.compile(
+    r"""(
 							([a-zA-Z0-9_\-\.]+)	
 							@
 							((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)
@@ -32,7 +36,9 @@ find_email = re.compile(r'''(
 							([a-zA-Z]{2,4}|[0-9]{1,3})
 							(\]?)
 							)
-							''', re.X)
+							""",
+    re.X,
+)
 
 text = pyperclip.paste()  # retrieve text from clipboard
 
@@ -53,7 +59,7 @@ print(f"{len(matches)} matches found")
 
 # if matches are found add then to file
 if len(matches):
-    with open('matches.txt', 'a') as file:
+    with open("matches.txt", "a") as file:
         for match in matches:
             file.write(match)
-            file.write('\n')
+            file.write("\n")

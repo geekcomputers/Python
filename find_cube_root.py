@@ -1,4 +1,3 @@
-
 # This method is called exhaustive numeration!
 # I am checking every possible value
 # that can be root of given x systematically
@@ -11,12 +10,13 @@ def cubeRoot():
         if ans ** 3 == abs(x):
             break
     if ans ** 3 != abs(x):
-        print(x, 'is not a perfect cube!')
+        print(x, "is not a perfect cube!")
     else:
         if x < 0:
             ans = -ans
-    print('Cube root of ' + str(x) + ' is ' + str(ans))
-    
+    print("Cube root of " + str(x) + " is " + str(ans))
+
+
 cubeRoot()
 
 cont = str(input("Would you like to continue: "))
@@ -28,5 +28,3 @@ while cont == "yes":
     else:
         print("Enter a correct answer(yes or no)")
         cont = str(input("Would you like to continue: "))
-
-

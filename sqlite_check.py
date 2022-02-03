@@ -13,14 +13,14 @@ import sys
 # Description	: Runs checks to check my SQLITE database
 
 dropbox = os.getenv("dropbox")
-dbfile = ("Databases\jarvis.db")
+dbfile = "Databases\jarvis.db"
 master_db = os.path.join(dropbox, dbfile)
 con = None
 
 try:
     con = lite.connect(master_db)
     cur = con.cursor()
-    cur.execute('SELECT SQLITE_VERSION()')
+    cur.execute("SELECT SQLITE_VERSION()")
     data = cur.fetchone()
     print("SQLite version: %s" % data)
 

@@ -19,11 +19,10 @@
 
 
 class XORCipher(object):
-
     def __init__(self, key=0):
         """
-            simple constructor that receives a key or uses
-            default key = 0
+        simple constructor that receives a key or uses
+        default key = 0
         """
 
         # private field
@@ -31,19 +30,19 @@ class XORCipher(object):
 
     def encrypt(self, content, key):
         """
-            input: 'content' of type string and 'key' of type int
-            output: encrypted string 'content' as a list of chars
-            if key not passed the method uses the key by the constructor.
-            otherwise key = 1
+        input: 'content' of type string and 'key' of type int
+        output: encrypted string 'content' as a list of chars
+        if key not passed the method uses the key by the constructor.
+        otherwise key = 1
         """
 
         # precondition
-        assert (isinstance(key, int) and isinstance(content, str))
+        assert isinstance(key, int) and isinstance(content, str)
 
         key = key or self.__key or 1
 
         # make sure key can be any size
-        while (key > 255):
+        while key > 255:
             key -= 255
 
         # This will be returned
@@ -56,19 +55,19 @@ class XORCipher(object):
 
     def decrypt(self, content, key):
         """
-            input: 'content' of type list and 'key' of type int
-            output: decrypted string 'content' as a list of chars
-            if key not passed the method uses the key by the constructor.
-            otherwise key = 1
+        input: 'content' of type list and 'key' of type int
+        output: decrypted string 'content' as a list of chars
+        if key not passed the method uses the key by the constructor.
+        otherwise key = 1
         """
 
         # precondition
-        assert (isinstance(key, int) and isinstance(content, list))
+        assert isinstance(key, int) and isinstance(content, list)
 
         key = key or self.__key or 1
 
         # make sure key can be any size
-        while (key > 255):
+        while key > 255:
             key -= 255
 
         # This will be returned
@@ -81,19 +80,19 @@ class XORCipher(object):
 
     def encrypt_string(self, content, key=0):
         """
-            input: 'content' of type string and 'key' of type int
-            output: encrypted string 'content'
-            if key not passed the method uses the key by the constructor.
-            otherwise key = 1
+        input: 'content' of type string and 'key' of type int
+        output: encrypted string 'content'
+        if key not passed the method uses the key by the constructor.
+        otherwise key = 1
         """
 
         # precondition
-        assert (isinstance(key, int) and isinstance(content, str))
+        assert isinstance(key, int) and isinstance(content, str)
 
         key = key or self.__key or 1
 
         # make sure key can be any size
-        while (key > 255):
+        while key > 255:
             key -= 255
 
         # This will be returned
@@ -106,19 +105,19 @@ class XORCipher(object):
 
     def decrypt_string(self, content, key=0):
         """
-            input: 'content' of type string and 'key' of type int
-            output: decrypted string 'content'
-            if key not passed the method uses the key by the constructor.
-            otherwise key = 1
+        input: 'content' of type string and 'key' of type int
+        output: decrypted string 'content'
+        if key not passed the method uses the key by the constructor.
+        otherwise key = 1
         """
 
         # precondition
-        assert (isinstance(key, int) and isinstance(content, str))
+        assert isinstance(key, int) and isinstance(content, str)
 
         key = key or self.__key or 1
 
         # make sure key can be any size
-        while (key > 255):
+        while key > 255:
             key -= 255
 
         # This will be returned
@@ -131,15 +130,15 @@ class XORCipher(object):
 
     def encrypt_file(self, file, key=0):
         """
-            input: filename (str) and a key (int)
-            output: returns true if encrypt process was
-            successful otherwise false
-            if key not passed the method uses the key by the constructor.
-            otherwise key = 1
+        input: filename (str) and a key (int)
+        output: returns true if encrypt process was
+        successful otherwise false
+        if key not passed the method uses the key by the constructor.
+        otherwise key = 1
         """
 
         # precondition
-        assert (isinstance(file, str) and isinstance(key, int))
+        assert isinstance(file, str) and isinstance(key, int)
 
         try:
             with open(file, "r") as fin:
@@ -155,15 +154,15 @@ class XORCipher(object):
 
     def decrypt_file(self, file, key):
         """
-            input: filename (str) and a key (int)
-            output: returns true if decrypt process was
-            successful otherwise false
-            if key not passed the method uses the key by the constructor.
-            otherwise key = 1
+        input: filename (str) and a key (int)
+        output: returns true if decrypt process was
+        successful otherwise false
+        if key not passed the method uses the key by the constructor.
+        otherwise key = 1
         """
 
         # precondition
-        assert (isinstance(file, str) and isinstance(key, int))
+        assert isinstance(file, str) and isinstance(key, int)
 
         try:
             with open(file, "r") as fin:
@@ -176,6 +175,7 @@ class XORCipher(object):
             return False
 
         return True
+
 
 # Tests
 # crypt = XORCipher()

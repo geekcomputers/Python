@@ -14,18 +14,17 @@ import oauth2client
 from apiclient import errors, discovery
 from oauth2client import client, tools
 
-SCOPES = 'https://www.googleapis.com/auth/gmail.send'
-CLIENT_SECRET_FILE = 'client_secret.json'
-APPLICATION_NAME = 'Gmail API Python Send Email'
+SCOPES = "https://www.googleapis.com/auth/gmail.send"
+CLIENT_SECRET_FILE = "client_secret.json"
+APPLICATION_NAME = "Gmail API Python Send Email"
 
 
 def get_credentials():
-    home_dir = os.path.expanduser('~')
-    credential_dir = os.path.join(home_dir, '.credentials')
+    home_dir = os.path.expanduser("~")
+    credential_dir = os.path.join(home_dir, ".credentials")
     if not os.path.exists(credential_dir):
         os.makedirs(credential_dir)
-    credential_path = os.path.join(credential_dir,
-                                   'gmail-python-email-send.json')
+    credential_path = os.path.join(credential_dir, "gmail-python-email-send.json")
     store = oauth2client.file.Storage(credential_path)
     credentials = store.get()
     if not credentials or credentials.invalid:
@@ -33,7 +32,7 @@ def get_credentials():
         flow.user_agent = APPLICATION_NAME
         credentials = tools.run_flow(flow, store)
 
-        print('Storing credentials to ' + credential_path)
+        print("Storing credentials to " + credential_path)
 
     return credentials
 
@@ -41,9 +40,11 @@ def get_credentials():
 def SendMessage(sender, to, subject, msgHtml, msgPlain, attachmentFile=None):
     credentials = get_credentials()
     http = credentials.authorize(httplib2.Http())
-    service = discovery.build('gmail', 'v1', http=http)
+    service = discovery.build("gmail", "v1", http=http)
     if attachmentFile:
-        message1 = createMessageWithAttachment(sender, to, subject, msgHtml, msgPlain, attachmentFile)
+        message1 = createMessageWithAttachment(
+            sender, to, subject, msgHtml, msgPlain, attachmentFile
+        )
     else:
         message1 = CreateMessageHtml(sender, to, subject, msgHtml, msgPlain)
     result = SendMessageInternal(service, "me", message1)
@@ -52,19 +53,20 @@ def SendMessage(sender, to, subject, msgHtml, msgPlain, attachmentFile=None):
 
 def SendMessageInternal(service, user_id, message):
     try:
-        message = (service.users().messages().send(userId=user_id, body=message).execute())
+        message = (
+            service.users().messages().send(userId=user_id, body=message).execute()
+        )
 
-        print('Message Id: %s' % message['id'])
+        print("Message Id: %s" % message["id"])
 
         return message
     except errors.HttpError as error:
-        print('An error occurred: %s' % error)
+        print("An error occurred: %s" % error)
         return "Error"
     return "OK"
 
 
-def createMessageWithAttachment(
-    sender, to, subject, msgHtml, msgPlain, attachmentFile):
+def createMessageWithAttachment(sender, to, subject, msgHtml, msgPlain, attachmentFile):
     """Create a message for an email.
 
     Args:
@@ -78,16 +80,16 @@ def createMessageWithAttachment(
     Returns:
         An object containing a base64url encoded email object.
     """
-    message = MIMEMultipart('mixed')
-    message['to'] = to
-    message['from'] = sender
-    message['subject'] = subject
+    message = MIMEMultipart("mixed")
+    message["to"] = to
+    message["from"] = sender
+    message["subject"] = subject
 
-    messageA = MIMEMultipart('alternative')
-    messageR = MIMEMultipart('related')
+    messageA = MIMEMultipart("alternative")
+    messageR = MIMEMultipart("related")
 
-    messageR.attach(MIMEText(msgHtml, 'html'))
-    messageA.attach(MIMEText(msgPlain, 'plain'))
+    messageR.attach(MIMEText(msgHtml, "html"))
+    messageA.attach(MIMEText(msgPlain, "plain"))
     messageA.attach(messageR)
 
     message.attach(messageA)
@@ -96,40 +98,40 @@ def createMessageWithAttachment(
     content_type, encoding = mimetypes.guess_type(attachmentFile)
 
     if content_type is None or encoding is not None:
-        content_type = 'application/octet-stream'
-    main_type, sub_type = content_type.split('/', 1)
-    if main_type == 'text':
-        fp = open(attachmentFile, 'rb')
+        content_type = "application/octet-stream"
+    main_type, sub_type = content_type.split("/", 1)
+    if main_type == "text":
+        fp = open(attachmentFile, "rb")
         msg = MIMEText(fp.read(), _subtype=sub_type)
         fp.close()
-    elif main_type == 'image':
-        fp = open(attachmentFile, 'rb')
+    elif main_type == "image":
+        fp = open(attachmentFile, "rb")
         msg = MIMEImage(fp.read(), _subtype=sub_type)
         fp.close()
-    elif main_type == 'audio':
-        fp = open(attachmentFile, 'rb')
+    elif main_type == "audio":
+        fp = open(attachmentFile, "rb")
         msg = MIMEAudio(fp.read(), _subtype=sub_type)
         fp.close()
     else:
-        fp = open(attachmentFile, 'rb')
+        fp = open(attachmentFile, "rb")
         msg = MIMEBase(main_type, sub_type)
         msg.set_payload(fp.read())
         fp.close()
     filename = os.path.basename(attachmentFile)
-    msg.add_header('Content-Disposition', 'attachment', filename=filename)
+    msg.add_header("Content-Disposition", "attachment", filename=filename)
     message.attach(msg)
 
-    return {'raw': base64.urlsafe_b64encode(message.as_string())}
+    return {"raw": base64.urlsafe_b64encode(message.as_string())}
 
 
 def CreateMessageHtml(sender, to, subject, msgHtml, msgPlain):
-    msg = MIMEMultipart('alternative')
-    msg['Subject'] = subject
-    msg['From'] = sender
-    msg['To'] = to
-    msg.attach(MIMEText(msgPlain, 'plain'))
-    msg.attach(MIMEText(msgHtml, 'html'))
-    return {'raw': base64.urlsafe_b64encode(msg.as_string())}
+    msg = MIMEMultipart("alternative")
+    msg["Subject"] = subject
+    msg["From"] = sender
+    msg["To"] = to
+    msg.attach(MIMEText(msgPlain, "plain"))
+    msg.attach(MIMEText(msgHtml, "html"))
+    return {"raw": base64.urlsafe_b64encode(msg.as_string())}
 
 
 def main():
@@ -139,9 +141,9 @@ def main():
     msgHtml = input("Enter your Message: ")
     msgPlain = "Hi\nPlain Email"
     SendMessage(sender, to, subject, msgHtml, msgPlain)
-    # Send message with attachment: 
+    # Send message with attachment:
     # SendMessage(sender, to, subject, msgHtml, msgPlain, '/path/to/file.pdf')
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

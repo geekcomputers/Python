@@ -1,18 +1,18 @@
 ##author-slayking1965
-#"""
-#https://projecteuler.net/problem=10
-#Problem Statement:
-#The sum of the primes below 10 is 2 + 3 + 5 + 7 = 17.
-#Find the sum of all the primes below two million using Sieve_of_Eratosthenes:
-#The sieve of Eratosthenes is one of the most efficient ways to find all primes
-#smaller than n when n is smaller than 10 million.  Only for positive numbers.
-#Find the sum of all the primes below two million.
-#"""
+# """
+# https://projecteuler.net/problem=10
+# Problem Statement:
+# The sum of the primes below 10 is 2 + 3 + 5 + 7 = 17.
+# Find the sum of all the primes below two million using Sieve_of_Eratosthenes:
+# The sieve of Eratosthenes is one of the most efficient ways to find all primes
+# smaller than n when n is smaller than 10 million.  Only for positive numbers.
+# Find the sum of all the primes below two million.
+# """
 
 
-#def prime_sum(n: int) -> int:
+# def prime_sum(n: int) -> int:
 #    """Returns the sum of all the primes below n.
-#def solution(n: int = 2000000) -> int:
+# def solution(n: int = 2000000) -> int:
 #    """Returns the sum of all the primes below n using Sieve of Eratosthenes:
 #    https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes
 #    The sieve of Eratosthenes is one of the most efficient ways to find all primes
@@ -72,7 +72,7 @@
 #    return sum_of_primes
 
 
-#if __name__ == "__main__":
+# if __name__ == "__main__":
 #    # import doctest
 #    # doctest.testmod()
 #    print(prime_sum(int(input().strip())))

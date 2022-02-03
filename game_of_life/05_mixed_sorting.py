@@ -31,7 +31,7 @@ def mixed_sorting(nums):
     even = []
     sorted_list = []
     for i in nums:
-        if i%2 == 0:
+        if i % 2 == 0:
             even.append(i)
             positions.append("E")
         else:
@@ -40,7 +40,7 @@ def mixed_sorting(nums):
     even.sort()
     odd.sort()
     odd.reverse()
-    j,k = 0,0
+    j, k = 0, 0
     for i in range(len(nums)):
         if positions[i] == "E":
             while j < len(even):
@@ -52,7 +52,7 @@ def mixed_sorting(nums):
                 sorted_list.append(odd[k])
                 k += 1
                 break
-            
+
     return sorted_list
 
 
@@ -61,12 +61,11 @@ def mixed_sorting(nums):
 
 class TestMixedSorting(unittest.TestCase):
     def test_1(self):
-        self.assertEqual(mixed_sorting(
-            [8, 13, 11, 90, -5, 4]), [4, 13, 11, 8, -5, 90])
+        self.assertEqual(mixed_sorting([8, 13, 11, 90, -5, 4]), [4, 13, 11, 8, -5, 90])
 
     def test_2(self):
         self.assertEqual(mixed_sorting([1, 2, 3, 6, 5, 4]), [5, 2, 3, 4, 1, 6])
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main(verbosity=2)

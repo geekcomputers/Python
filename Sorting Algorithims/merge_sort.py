@@ -54,7 +54,7 @@ random_list_of_nums = [120, 45, 68, 250, 176]
 random_list_of_nums = merge_sort(random_list_of_nums)
 print(random_list_of_nums)
 
-'''
+"""
 Here merge_sort() function, unlike the previous sorting algorithms, returns a new list that is sorted, rather than sorting the existing list.
 Therefore, Merge Sort requires space to create a new list of the same size as the input list
-'''
+"""

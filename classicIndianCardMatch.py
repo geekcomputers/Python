@@ -1,9 +1,23 @@
 import random
 import time
 
-SUITS = ('C', 'S', 'H', 'D')
-RANKS = ('A', '2', '3', '4', '5', '6', '7', '8', '9', 'T', 'J', 'Q', 'K')
-VALUES = {'A': 1, '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9, 'T': 10, 'J': 10, 'Q': 10, 'K': 10}
+SUITS = ("C", "S", "H", "D")
+RANKS = ("A", "2", "3", "4", "5", "6", "7", "8", "9", "T", "J", "Q", "K")
+VALUES = {
+    "A": 1,
+    "2": 2,
+    "3": 3,
+    "4": 4,
+    "5": 5,
+    "6": 6,
+    "7": 7,
+    "8": 8,
+    "9": 9,
+    "T": 10,
+    "J": 10,
+    "Q": 10,
+    "K": 10,
+}
 
 
 class card:
@@ -46,8 +60,8 @@ print("Gathering brand new two decks of cards............\n")
 deck1 = deck()
 deck2 = deck()
 time.sleep(5)
-print('..........decks ready!!!\n')
-print('Combining and shuffling both the decks..')
+print("..........decks ready!!!\n")
+print("Combining and shuffling both the decks..")
 time.sleep(10)
 # Shuffle the decks
 deck1.shuffle()
@@ -61,7 +75,9 @@ print("------------------------------------------\n")
 input("Enter a key to cut the deck..\n")
 player1 = combinedDeck[0:52]
 player2 = combinedDeck[52:]
-print("Deck has been split into two and Human get a half and computer gets the other...\n")
+print(
+    "Deck has been split into two and Human get a half and computer gets the other...\n"
+)
 
 # Begin play:
 print("------------------------------------------\n")
@@ -73,7 +89,9 @@ print("player1 goes first...hit any key to place the card on the pile..\n")
 centerPile = []
 currentPlayer2Card = None
 
-while len(player1) != 0 and len(player2) != 0:  # this needs a fix as it goes on an infinite loop on a success.
+while (
+    len(player1) != 0 and len(player2) != 0
+):  # this needs a fix as it goes on an infinite loop on a success.
     switchPlayer = True
     while switchPlayer == True:
         for card in range(len(player1)):
@@ -85,7 +103,9 @@ while len(player1) != 0 and len(player2) != 0:  # this needs a fix as it goes on
             switchPlayer = False
             if currentPlayer2Card == currentPlayer1Card:
                 player1 = player1 + centerPile
-                print("The human got a match and takes all the cards from center pile..")
+                print(
+                    "The human got a match and takes all the cards from center pile.."
+                )
             break
     while switchPlayer == False:
         for card in range(len(player2)):

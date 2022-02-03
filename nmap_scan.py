@@ -17,17 +17,19 @@ import nmap  # Import the module
 def nmapScan(tgtHost, tgtPort):  # Create the function, this fucntion does the scanning
     nmScan = nmap.PortScanner()
     nmScan.scan(tgtHost, tgtPort)
-    state = nmScan[tgtHost]['tcp'][int(tgtPort)]['state']
+    state = nmScan[tgtHost]["tcp"][int(tgtPort)]["state"]
     print("[*] " + tgtHost + " tcp/" + tgtPort + " " + state)
 
 
 def main():  # Main Program
-    parser = optparse.OptionParser('usage%prog ' + '-H <host> -p <port>')  # Display options/help if required
-    parser.add_option('-H', dest='tgtHost', type='string', help='specify host')
-    parser.add_option('-p', dest='tgtPort', type='string', help='port')
+    parser = optparse.OptionParser(
+        "usage%prog " + "-H <host> -p <port>"
+    )  # Display options/help if required
+    parser.add_option("-H", dest="tgtHost", type="string", help="specify host")
+    parser.add_option("-p", dest="tgtPort", type="string", help="port")
     (options, args) = parser.parse_args()
     tgtHost = options.tgtHost
-    tgtPorts = str(options.tgtPort).split(',')
+    tgtPorts = str(options.tgtPort).split(",")
 
     if (tgtHost == None) | (tgtPorts[0] == None):
         print(parser.usage)
@@ -37,5 +39,5 @@ def main():  # Main Program
         nmapScan(tgtHost, tgtPort)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

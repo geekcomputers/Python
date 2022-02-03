@@ -15,15 +15,18 @@ done = False
 
 
 def animate(message="loading", endmessage="Done!"):
-    for c in itertools.cycle(['|', '/', '-', '\\']):
+    for c in itertools.cycle(["|", "/", "-", "\\"]):
         if done:
             break
-        sys.stdout.write(f'\r {message}' + c)
+        sys.stdout.write(f"\r {message}" + c)
         sys.stdout.flush()
         time.sleep(0.1)
-    sys.stdout.write(f'\r {endmessage} ')
+    sys.stdout.write(f"\r {endmessage} ")
 
-t = threading.Thread(target=lambda: animate(message="installing..",endmessage="Installation is done!!!"))
+
+t = threading.Thread(
+    target=lambda: animate(message="installing..", endmessage="Installation is done!!!")
+)
 t.start()
 
 # Code which you are running

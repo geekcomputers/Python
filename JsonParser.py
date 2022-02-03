@@ -26,7 +26,7 @@ class JsonParser:
         return: json string
         """
         if par_json_file:
-            with open(par_json_file, 'w') as outfile:
+            with open(par_json_file, "w") as outfile:
                 return json.dump(par_data_dic, outfile)
         else:
             return json.dump(par_data_dic)

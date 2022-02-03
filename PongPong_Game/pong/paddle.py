@@ -6,7 +6,6 @@ from typing import Tuple
 
 
 class Paddle(pyglet.shapes.Rectangle):
-
     def __init__(self, *args, **kwargs):
         super(Paddle, self).__init__(*args, **kwargs)
 
@@ -15,7 +14,7 @@ class Paddle(pyglet.shapes.Rectangle):
         self.key_handler = key.KeyStateHandler()
         self.event_handlers = [self, self.key_handler]
 
-    def update(self, win_size : Tuple, border : float, other_object, dt):
+    def update(self, win_size: Tuple, border: float, other_object, dt):
 
         newlx = self.x + self.acc_left
         newrx = self.x + self.acc_right
@@ -30,6 +29,6 @@ class Paddle(pyglet.shapes.Rectangle):
         if self.x < border:
             self.x = border
             self.rightx = self.x + self.width
-        elif self.rightx > win_size[0]-border:
-            self.x = win_size[0]-border-self.width
+        elif self.rightx > win_size[0] - border:
+            self.x = win_size[0] - border - self.width
             self.rightx = self.x + self.width

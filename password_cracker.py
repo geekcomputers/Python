@@ -18,16 +18,16 @@ elif _platform == "win32":
     try:
         import fcrypt  # Try importing the fcrypt module
     except ImportError:
-        print('Please install fcrypt if you are on Windows')
+        print("Please install fcrypt if you are on Windows")
 
 
 def testPass(cryptPass):  # Start the function
     salt = cryptPass[0:2]
-    dictFile = open('dictionary.txt', 'r')  # Open the dictionary file
+    dictFile = open("dictionary.txt", "r")  # Open the dictionary file
     for word in dictFile.readlines():  # Scan through the file
-        word = word.strip('\n')
+        word = word.strip("\n")
         cryptWord = crypt.crypt(word, salt)  # Check for password in the file
-        if (cryptWord == cryptPass):
+        if cryptWord == cryptPass:
             print("[+] Found Password: " + word + "\n")
             return
     print("[-] Password Not Found.\n")
@@ -35,11 +35,11 @@ def testPass(cryptPass):  # Start the function
 
 
 def main():
-    passFile = open('passwords.txt')  # Open the password file
+    passFile = open("passwords.txt")  # Open the password file
     for line in passFile.readlines():  # Read through the file
         if ":" in line:
-            user = line.split(':')[0]
-            cryptPass = line.split(':')[1].strip(' ')  # Prepare the user name etc
+            user = line.split(":")[0]
+            cryptPass = line.split(":")[1].strip(" ")  # Prepare the user name etc
             print("[*] Cracking Password For: " + user)
             testPass(cryptPass)  # Call it to crack the users password
 

@@ -5,7 +5,7 @@
 # Version				: 1.0
 # Modifications		:
 
-# Description			: Tests to see if the directory testdir exists, if not it will create the directory for you if you want it created. 
+# Description			: Tests to see if the directory testdir exists, if not it will create the directory for you if you want it created.
 from __future__ import print_function
 
 import os
@@ -26,10 +26,10 @@ def main():
         print("No directory found for " + CheckDir)  # Output if no directory
         print()
         option = input("Would you like this directory create? y/n: ")
-        if option == 'n':
+        if option == "n":
             print("Goodbye")
             exit()
-        if option == 'y':
+        if option == "y":
             os.makedirs(CheckDir)  # Creates a new dir for the given name
             print("Directory created for " + CheckDir)
         else:
@@ -37,5 +37,5 @@ def main():
             exit()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

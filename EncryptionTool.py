@@ -18,12 +18,12 @@ values = reverse = []
 
 def encryptChar(target):
     # encrytion algorithm
-    target = (((target + 42) * key) - 449)
+    target = ((target + 42) * key) - 449
     return target
 
 
 def decryptChar(target):
-    target = (((target + 449) / key) - 42)
+    target = ((target + 449) / key) - 42
     return target
 
 
@@ -51,7 +51,7 @@ def readAndDecrypt(filename):
     datalistint = []
     actualdata = []
     datalist = data.split(" ")
-    datalist.remove('')
+    datalist.remove("")
     datalistint = [float(data) for data in datalist]
     for data in datalist:
         current1 = int(decryptChar(data))

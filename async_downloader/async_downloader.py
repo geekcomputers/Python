@@ -13,10 +13,10 @@ import aiohttp
 
 def download(ways):
     if not ways:
-        print('Ways list is empty. Downloading is impossible')
+        print("Ways list is empty. Downloading is impossible")
         return
 
-    print('downloading..')
+    print("downloading..")
 
     success_files = set()
     failure_files = set()
@@ -29,16 +29,16 @@ def download(ways):
     finally:
         event_loop.close()
 
-    print('Download complete')
-    print('-' * 100)
+    print("Download complete")
+    print("-" * 100)
 
     if success_files:
-        print('success:')
+        print("success:")
         for file in success_files:
             print(file)
 
     if failure_files:
-        print('failure:')
+        print("failure:")
         for file in failure_files:
             print(file)
 
@@ -49,7 +49,9 @@ async def async_downloader(ways, loop, success_files, failure_files):
             download_file_by_url(
                 url,
                 session=session,
-            ) for url in ways]
+            )
+            for url in ways
+        ]
 
         for task in asyncio.as_completed(coroutines):
             fail, url = await task
@@ -69,41 +71,50 @@ async def download_file_by_url(url, session=None):
     try:
         async with session.get(url) as response:
             if response.status == 404:
-                print('\t{} from {} : Failed : {}'.format(
-                    file_name, url, '404 - Not found'))
+                print(
+                    "\t{} from {} : Failed : {}".format(
+                        file_name, url, "404 - Not found"
+                    )
+                )
                 return fail, url
 
             if not response.status == 200:
-                print('\t{} from {} : Failed : HTTP response {}'.format(
-                    file_name, url, response.status))
+                print(
+                    "\t{} from {} : Failed : HTTP response {}".format(
+                        file_name, url, response.status
+                    )
+                )
                 return fail, url
 
             data = await response.read()
 
-            with open(file_name, 'wb') as file:
+            with open(file_name, "wb") as file:
                 file.write(data)
 
     except asyncio.TimeoutError:
-        print('\t{} from {}: Failed : {}'.format(
-            file_name, url, 'Timeout error'))
+        print("\t{} from {}: Failed : {}".format(file_name, url, "Timeout error"))
 
     except aiohttp.client_exceptions.ClientConnectionError:
-        print('\t{} from {}: Failed : {}'.format(
-            file_name, url, 'Client connection error'))
+        print(
+            "\t{} from {}: Failed : {}".format(
+                file_name, url, "Client connection error"
+            )
+        )
 
     else:
-        print('\t{} from {} : Success'.format(file_name, url))
+        print("\t{} from {} : Success".format(file_name, url))
         fail = False
 
     return fail, url
 
 
 def test():
-    ways = ['https://www.wikipedia.org',
-            'https://www.ya.ru',
-            'https://www.duckduckgo.com',
-            'https://www.fail-path.unknown',
-            ]
+    ways = [
+        "https://www.wikipedia.org",
+        "https://www.ya.ru",
+        "https://www.duckduckgo.com",
+        "https://www.fail-path.unknown",
+    ]
 
     download(ways)
 

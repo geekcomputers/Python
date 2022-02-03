@@ -1,6 +1,6 @@
-# Python program to convert infix expression to postfix 
+# Python program to convert infix expression to postfix
 
-# Class to convert the expression 
+# Class to convert the expression
 class Conversion:
 
     # Constructor to initialize the class variables
@@ -11,7 +11,7 @@ class Conversion:
         self.array = []
         # Precedence setting
         self.output = []
-        self.precedence = {'+': 1, '-': 1, '*': 2, '/': 2, '^': 3}
+        self.precedence = {"+": 1, "-": 1, "*": 2, "/": 2, "^": 3}
 
     # check if the stack is empty
     def isEmpty(self):
@@ -61,23 +61,23 @@ class Conversion:
                 self.output.append(i)
 
             # If the character is an '(', push it to stack
-            elif i == '(':
+            elif i == "(":
                 self.push(i)
 
             # If the scanned character is an ')', pop and
             # output from the stack until and '(' is found
-            elif i == ')':
-                while ((not self.isEmpty()) and self.peek() != '('):
+            elif i == ")":
+                while (not self.isEmpty()) and self.peek() != "(":
                     a = self.pop()
                     self.output.append(a)
-                if (not self.isEmpty() and self.peek() != '('):
+                if not self.isEmpty() and self.peek() != "(":
                     return -1
                 else:
                     self.pop()
 
                 # An operator is encountered
             else:
-                while (not self.isEmpty() and self.notGreater(i)):
+                while not self.isEmpty() and self.notGreater(i):
                     self.output.append(self.pop())
                 self.push(i)
 

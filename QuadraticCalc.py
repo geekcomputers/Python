@@ -37,7 +37,8 @@ if second_difference[0] == second_difference[1]:  # checks to see if consistent
         num = a * (n * n)
         subs_diff.append((sequence[i]) - num)
     b, c = findLinear(subs_diff)
-    print("Nth term: " + str(a) + "n^2 + " +
-          str(b) + "n + " + str(c))  # outputs nth term
+    print(
+        "Nth term: " + str(a) + "n^2 + " + str(b) + "n + " + str(c)
+    )  # outputs nth term
 else:
     print("Sequence is not quadratic")

@@ -1,20 +1,18 @@
 start = [0, 0]
 end = [7, 7]
-taken = [
-    [1, 0], [1, 1], [1, 2], [1, 3]
-]
+taken = [[1, 0], [1, 1], [1, 2], [1, 3]]
 queue = []
 queue.append([start[0], start[1], -1])
 visited = []
 maze = []
 for i in range(8):
-    maze.append(['.', '.', '.', '.', '.', '.', '.', '.'])
+    maze.append([".", ".", ".", ".", ".", ".", ".", "."])
     visited.append([0, 0, 0, 0, 0, 0, 0, 0])
-maze[start[0]][start[1]] = 'S'
-maze[end[0]][end[1]] = 'E'
+maze[start[0]][start[1]] = "S"
+maze[end[0]][end[1]] = "E"
 for i in taken:
-    maze[i[0]][i[1]] = 'X'
-while (len(queue) > 0):
+    maze[i[0]][i[1]] = "X"
+while len(queue) > 0:
     point = queue.pop(0)
     if end[0] == point[0] and end[1] == point[1]:
         print(point[2] + 1)
@@ -45,5 +43,5 @@ while (len(queue) > 0):
 
 for i in maze:
     for j in i:
-        print(j, end='   ')
+        print(j, end="   ")
     print()

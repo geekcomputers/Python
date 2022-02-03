@@ -6,7 +6,7 @@ import socket
 s = socket.socket()
 # get the according IP address
 ip = socket.gethostbyname(socket.gethostname())
-# binding ip address and port 
+# binding ip address and port
 s.bind((ip, 12345))
 # listen for incoming connections (server mode) with 3 connection at a time
 s.listen(3)
@@ -14,15 +14,15 @@ s.listen(3)
 print("Server ip address:", ip)
 while True:
     # waiting for a connection establishment
-    print('waiting for a connection')
+    print("waiting for a connection")
     connection, client_address = s.accept()
     try:
-        # show connected client 
-        print('connected from', client_address)
+        # show connected client
+        print("connected from", client_address)
         # sending acknowledgement to client that you are connected
         connection.send(str("Now You are connected").encode("utf-8"))
 
-        # receiving the message 
+        # receiving the message
         while True:
             data = connection.recv(1024).decode("utf-8")
             if data:
