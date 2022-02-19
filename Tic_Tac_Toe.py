@@ -1,5 +1,10 @@
 import random
 
+#color lib
+from colored import fg
+coloredBlue = fg('blue')
+coloredRed = fg('red')
+
 # a python program for tic-tac-toe game
 # module intro for introduction
 # module show_board for values
@@ -14,17 +19,17 @@ def introduction():
 
 
 def draw_board(board):
-    print("    |    |")
-    print("  " + board[7] + " | " + board[8] + "  | " + board[9])
-    print("    |    |")
+    print(coloredBlue + "    |    |")
+    print(coloredBlue + "7 " + (coloredRed + board[7]) + coloredBlue + " |8 " + (coloredRed + board[8])  + coloredBlue + " |9 " + (coloredRed + board[9]))
+    print(coloredBlue + "    |    |")
     print("-------------")
-    print("    |    |")
-    print("  " + board[4] + " | " + board[5] + "  | " + board[6])
-    print("    |    |")
+    print(coloredBlue + "    |    |")
+    print(coloredBlue + "4 " + (coloredRed + board[4]) + coloredBlue + " |5 " + (coloredRed + board[5]) + coloredBlue + " |6 " + (coloredRed + board[6]))
+    print(coloredBlue + "    |    |")
     print("-------------")
-    print("    |    |")
-    print("  " + board[1] + " | " + board[2] + "  | " + board[3])
-    print("    |    |")
+    print(coloredBlue + "    |    |")
+    print(coloredBlue + "1 " + (coloredRed + board[1]) + coloredBlue + " |2 " + (coloredRed + board[2]) + coloredBlue + " |3 " + (coloredRed + board[3]))
+    print(coloredBlue + "    |    |")
 
 
 def input_player_letter():
