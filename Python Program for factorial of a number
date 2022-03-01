@@ -11,7 +11,7 @@ def factorial(n):
 # Driver Code 
 num = 5; 
 print("Factorial of",num,"is", 
-factorial(num)) 
+factorial((num)) 
 Iterative:
 # Python 3 program to find   
 # factorial of given number 
