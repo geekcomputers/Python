@@ -1,4 +1,14 @@
-from sys import argv  # import argment variable
+"""
+The 'multiplication table' Implemented in Python 3
+
+Syntax:
+python3 multiplication_table.py [rows columns]
+Separate filenames with spaces as usual.
+
+Updated by Borys Baczewski (BB_arbuz on GitHub) - 06/03/2022
+"""
+
+from sys import argv  # import argument variable
 
 (
     script,
@@ -8,24 +18,17 @@ from sys import argv  # import argment variable
 
 
 def table(rows, columns):
-    for i in range(
-        1, int(rows) + 1
-    ):  # it's safe to assume that the user would mean 12 rows when they provide 12 as an argument, b'coz 12 will produce 11 rows
-        print(
-            "\t",
-            i,
-        )
-
-    print("\n\n")  # add 3 lines
-
-    for i in range(1, int(columns) + 1):
-        print(i),
-        for j in range(1, int(rows) + 1):
-            print(
-                "\t",
-                i * j,
-            )
-        print("\n\n")  # add 3 lines
+    columns = int(columns)
+    rows = int(rows)
+    for r in range(1, rows+1):
+        c = r
+        print(r, end='\t')
+        i = 0
+        while columns-1 > i:
+            print(c+r, end='\t')
+            c = c+r
+            i += 1
+        print('\n')
 
 
 table(rows, columns)
