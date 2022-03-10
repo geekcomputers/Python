@@ -34,6 +34,7 @@ dictionary = dictionary.split('\n') # This returns a list of all the words in th
 
 # Choose a random word from the dictionary
 word = random.choice(dictionary)
+word = "lapse"
 print(word)
 
 # Get all the unique letters of the word
@@ -76,23 +77,25 @@ while True:
         print(f"You guessed the word in {tries} tries")
         break
 
-    # Get all the unique letters of the users input
-    dif_letters_user = list(set(user_inp))
-    print(dif_letters_user)
-
-    # Count how many times each letter occurs in the users input
-    count_letters_user = {}
-    for i in dif_letters_user:
-        count_letters_user[i] = user_inp.count(i)
-    print(count_letters_user)
-
     letter = 0
     letter_dict = {}
+    letters_checked = []
     for i in word:
+        counter = 0
+        for g in letters_checked:
+            if g == i:
+                counter += 1
+                if counter >= count_letters[i]:
+                    continue
+
         if user_inp[letter] in word:
             if user_inp[letter] == i:
                 print(f"{user_inp[letter]} is in the correct place")
-                letter_dict[user_inp] =  1
+            else:
+                if not user_inp[word.index(user_inp[letter])] == word[word.index(user_inp[letter])]:
+                    print(f"{user_inp[letter]} is in the word, but in the wrong place")
+            letters_checked.append(user_inp[letter])
+        letter += 1
 
 
 
