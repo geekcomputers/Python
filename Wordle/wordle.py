@@ -82,11 +82,15 @@ while True:
     letters_checked = []
     for i in word:
         counter = 0
+        cont = False
         for g in letters_checked:
             if g == i:
                 counter += 1
-                if counter >= count_letters[i]:
-                    continue
+                if counter > count_letters[i]:
+                    cont = True
+
+        if cont:
+            continue
 
         if user_inp[letter] in word:
             if user_inp[letter] == i:
