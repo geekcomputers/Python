@@ -92,7 +92,7 @@ while True:
                     cont = True
 
         if cont:
-            return_answer += "-"
+            #return_answer += "-"
             continue
 
         answer_given = False
