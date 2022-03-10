@@ -56,16 +56,21 @@ while True:
         break
     # Get user input
     user_inp = input(">>")
+
+    # Check if user wants to exit the program
+    if user_inp == "q":
+        break
+
     # Check if the word given by the user is 5 characters long
     if not len(user_inp) == 5:
         print("Your input must be 5 letters long")
         continue
-    
+
     # Check if the word given by the user is in the dictionary
     if not user_inp in dictionary:
         print("Your word is not in the dictionary")
         continue
-    
+
     # Check if the word given by the user is correct
     if user_inp == word:
         print(f"You guessed the word in {tries} tries")
@@ -73,7 +78,10 @@ while True:
 
     letter = 0
     for i in word:
-        pass
+        if user_inp[letter] in word:
+            if user_inp[letter] == i:
+                print(f"{user_inp[letter]} is in the correct place")
+
 
     """letter = 0
     for i in word:
@@ -82,6 +90,6 @@ while True:
         elif user_inp[letter] in word:
             print(f"{user_inp[letter]} is in the word, but not in the correct position")
         letter += 1"""
-    
+
     tries += 1
     print(tries)
