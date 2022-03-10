@@ -80,7 +80,9 @@ while True:
     letter = 0
     letter_dict = {}
     letters_checked = []
+    return_answer = ""
     for i in word:
+        print(i)
         counter = 0
         cont = False
         for g in letters_checked:
@@ -90,17 +92,26 @@ while True:
                     cont = True
 
         if cont:
+            return_answer += "-"
             continue
 
+        answer_given = False
         if user_inp[letter] in word:
+            answer_given = True
             if user_inp[letter] == i:
-                print(f"{user_inp[letter]} is in the correct place")
+                #print(f"{user_inp[letter]} is in the correct place")
+                return_answer += "G"
             else:
                 if not user_inp[word.index(user_inp[letter])] == word[word.index(user_inp[letter])]:
-                    print(f"{user_inp[letter]} is in the word, but in the wrong place")
-            letters_checked.append(user_inp[letter])
+                    #print(f"{user_inp[letter]} is in the word, but in the wrong place")
+                    return_answer += "Y"
+
+        if not answer_given:
+            return_answer += "-"
+        letters_checked.append(user_inp[letter])
         letter += 1
 
+    print(return_answer)
 
 
     """letter = 0
