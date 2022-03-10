@@ -1,37 +1,41 @@
-def partition(arr, low, high):
+def partition(nums, low, high):
+    # We select the middle element to be the pivot. Some implementations select
+    # the first element or the last element. Sometimes the median value becomes
+    # the pivot, or a random one. There are many more strategies that can be
+    # chosen or created.
+    pivot = nums[(low + high) // 2]
     i = low - 1
-    pivot = arr[high]
+    j = high + 1
+    while True:
+        i += 1
+        while nums[i] < pivot:
+            i += 1
 
-    for j in range(low, high):
-        if arr[j] <= pivot:
-            i = i + 1
-            arr[i], arr[j] = arr[j], arr[i]
+        j -= 1
+        while nums[j] > pivot:
+            j -= 1
 
-    arr[i + 1], arr[high] = arr[high], arr[i + 1]
-    return i + 1
+        if i >= j:
+            return j
 
-
-def quickSort(arr, low, high):
-    if low < high:
-        pi = partition(arr, low, high)
-        quickSort(arr, low, pi - 1)
-        quickSort(arr, pi + 1, high)
+        # If an element at i (on the left of the pivot) is larger than the
+        # element at j (on right right of the pivot), then swap them
+        nums[i], nums[j] = nums[j], nums[i]
 
 
-arr = [10, 7, 8, 9, 1, 5]
-print("Initial array is:", arr)
-n = len(arr)
-quickSort(arr, 0, n - 1)
-# patch-1
-# print("Sorted array is:", arr)
-# =======
-print("Sorted array is:")
-# patch-4
-# for i in range(0,n):
-# =======
-for i in range(0, len(arr)):
-    # master
-    print(arr[i], end=" ")
+def quick_sort(nums):
+    # Create a helper function that will be called recursively
+    def _quick_sort(items, low, high):
+        if low < high:
+            # This is the index after the pivot, where our lists are split
+            split_index = partition(items, low, high)
+            _quick_sort(items, low, split_index)
+            _quick_sort(items, split_index + 1, high)
 
-# your code is best but now it is easy to understand
-# master
+    _quick_sort(nums, 0, len(nums) - 1)
+
+
+# Verify it works
+random_list_of_nums = [22, 5, 1, 18, 99]
+quick_sort(random_list_of_nums)
+print(random_list_of_nums)
