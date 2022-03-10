@@ -34,18 +34,16 @@ dictionary = dictionary.split('\n') # This returns a list of all the words in th
 
 # Choose a random word from the dictionary
 word = random.choice(dictionary)
-print(word)
 
 # Get all the unique letters of the word
 dif_letters = list(set(word))
-print(dif_letters)
 
 # Count how many times each letter occurs in the word
 count_letters = {}
 for i in dif_letters:
     count_letters[i] = word.count(i)
-print(count_letters)
 
+# Set tries to 0
 tries = 0
 
 # Main loop
@@ -116,7 +114,7 @@ while True:
                 return_answer += "G"
             else:
                 if not user_inp[word.index(user_inp[letter])] == word[word.index(user_inp[letter])]:
-                    #print(f"{user_inp[letter]} is in the word, but in the wrong place")
+                    # Set return answer to Y
                     return_answer += "Y"
 
         # Check if there has already been an answer returned
@@ -129,17 +127,8 @@ while True:
         # Increase letters by 1
         letter += 1
 
-
+    # Print the return answer
     print(return_answer)
 
-
-    """letter = 0
-    for i in word:
-        if i == user_inp[letter]:
-            print(f"{user_inp[letter]} is in the correct place")
-        elif user_inp[letter] in word:
-            print(f"{user_inp[letter]} is in the word, but not in the correct position")
-        letter += 1"""
-
+    # Increase tries by 1
     tries += 1
-    #print(tries)
