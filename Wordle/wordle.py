@@ -34,7 +34,6 @@ dictionary = dictionary.split('\n') # This returns a list of all the words in th
 
 # Choose a random word from the dictionary
 word = random.choice(dictionary)
-word = "lapse"
 print(word)
 
 # Get all the unique letters of the word
@@ -77,39 +76,59 @@ while True:
         print(f"You guessed the word in {tries} tries")
         break
 
+    # Check guess
     letter = 0
     letter_dict = {}
     letters_checked = []
     return_answer = ""
     for i in word:
-        print(i)
+        # Check if letter is already checked
         counter = 0
         cont = False
         for g in letters_checked:
-            if g == i:
+            if g == user_inp[letter]:
                 counter += 1
-                if counter > count_letters[i]:
+                # Check if letter has been checkd more or equal to the ammount of these letters inside of the word
+                if counter >= count_letters[i]:
+                    # If so set cont to true
                     cont = True
 
+        # Check if cont is true
         if cont:
-            #return_answer += "-"
+            # Set return answer to -
+            return_answer += "-"
+            # Append checked letter to the list letters_checked
+            letters_checked.append(user_inp[letter])
+            # Increase letters by 1
+            letter += 1
+            # Go back to the beginning of the for loop (skipping everything that comes after this)
             continue
 
+
         answer_given = False
+        # Check if letter is in word
         if user_inp[letter] in word:
+            # Set answer_given to true
             answer_given = True
+            # Check if letter is in the correct position
             if user_inp[letter] == i:
-                #print(f"{user_inp[letter]} is in the correct place")
+                # Set return answer to G
                 return_answer += "G"
             else:
                 if not user_inp[word.index(user_inp[letter])] == word[word.index(user_inp[letter])]:
                     #print(f"{user_inp[letter]} is in the word, but in the wrong place")
                     return_answer += "Y"
 
+        # Check if there has already been an answer returned
         if not answer_given:
+            # Set return answer to -
             return_answer += "-"
+
+        # Append checked letter to the list letters_checked
         letters_checked.append(user_inp[letter])
+        # Increase letters by 1
         letter += 1
+
 
     print(return_answer)
 
