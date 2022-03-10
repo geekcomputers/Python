@@ -73,8 +73,7 @@ while True:
 
     letter = 0
     for i in word:
-
-
+        pass
 
     """letter = 0
     for i in word:
