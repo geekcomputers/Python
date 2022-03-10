@@ -1,3 +1,4 @@
+# Get all 5 letter words from the full English dictionary
 """
 # dictionary by http://www.gwicks.net/dictionaries.htm
 # Load full English dictionary
@@ -69,6 +70,10 @@ while True:
     if user_inp == word:
         print(f"You guessed the word in {tries} tries")
         break
+
+    letter = 0
+    for i in word:
+
 
 
     """letter = 0
