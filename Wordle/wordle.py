@@ -76,11 +76,24 @@ while True:
         print(f"You guessed the word in {tries} tries")
         break
 
+    # Get all the unique letters of the users input
+    dif_letters_user = list(set(user_inp))
+    print(dif_letters_user)
+
+    # Count how many times each letter occurs in the users input
+    count_letters_user = {}
+    for i in dif_letters_user:
+        count_letters_user[i] = user_inp.count(i)
+    print(count_letters_user)
+
     letter = 0
+    letter_dict = {}
     for i in word:
         if user_inp[letter] in word:
             if user_inp[letter] == i:
                 print(f"{user_inp[letter]} is in the correct place")
+                letter_dict[user_inp] =  1
+
 
 
     """letter = 0
@@ -92,4 +105,4 @@ while True:
         letter += 1"""
 
     tries += 1
-    print(tries)
+    #print(tries)
