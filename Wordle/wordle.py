@@ -52,8 +52,8 @@ while True:
     if tries == 6:
         print(f"You did not guess the word!\nThe word was {word}")
         break
-    # Get user input
-    user_inp = input(">>")
+    # Get user input and make it all lower case
+    user_inp = input(">>").lower()
 
     # Check if user wants to exit the program
     if user_inp == "q":
@@ -127,7 +127,7 @@ while True:
             return_answer += "-"
 
         # Append checked letter to the list letters_checked
-        if not do_not_add:   
+        if not do_not_add:
            letters_checked.append(user_inp[letter])
         # Increase letters by 1
         letter += 1
