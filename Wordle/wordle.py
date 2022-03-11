@@ -120,6 +120,7 @@ while True:
                     # Set return answer to Y
                     return_answer += "Y"
                 else:
+                    answer_given = False
                     do_not_add = True
 
         # Check if there has already been an answer returned
@@ -128,8 +129,8 @@ while True:
             return_answer += "-"
 
         # Append checked letter to the list letters_checked
-        if not do_not_add:
-            letters_checked.append(user_inp[letter])
+        if not do_not_add:   
+           letters_checked.append(user_inp[letter])
         # Increase letters by 1
         letter += 1
 
