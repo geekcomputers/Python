@@ -80,6 +80,7 @@ while True:
     letters_checked = []
     return_answer = ""
     for i in word:
+        print(i, user_inp[letter])
         # Check if letter is already checked
         counter = 0
         cont = False
