@@ -106,6 +106,7 @@ while True:
 
 
         answer_given = False
+        do_not_add = False
         # Check if letter is in word
         if user_inp[letter] in word:
             # Set answer_given to true
@@ -118,6 +119,8 @@ while True:
                 if not user_inp[word.index(user_inp[letter])] == word[word.index(user_inp[letter])]:
                     # Set return answer to Y
                     return_answer += "Y"
+                else:
+                    do_not_add = True
 
         # Check if there has already been an answer returned
         if not answer_given:
@@ -125,7 +128,8 @@ while True:
             return_answer += "-"
 
         # Append checked letter to the list letters_checked
-        letters_checked.append(user_inp[letter])
+        if not do_not_add:
+            letters_checked.append(user_inp[letter])
         # Increase letters by 1
         letter += 1
 
