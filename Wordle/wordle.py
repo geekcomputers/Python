@@ -78,7 +78,7 @@ while True:
     letter = 0
     letter_dict = {}
     letters_checked = []
-    return_answer = ""
+    return_answer = "  "
     for i in word:
         # Check if letter is already checked
         counter = 0
