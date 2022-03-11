@@ -34,6 +34,7 @@ dictionary = dictionary.split('\n') # This returns a list of all the words in th
 
 # Choose a random word from the dictionary
 word = random.choice(dictionary)
+word = "drone"
 
 # Get all the unique letters of the word
 dif_letters = list(set(word))
