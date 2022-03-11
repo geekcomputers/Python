@@ -34,7 +34,6 @@ dictionary = dictionary.split('\n') # This returns a list of all the words in th
 
 # Choose a random word from the dictionary
 word = random.choice(dictionary)
-word = "drone"
 
 # Get all the unique letters of the word
 dif_letters = list(set(word))
@@ -81,7 +80,6 @@ while True:
     letters_checked = []
     return_answer = ""
     for i in word:
-        print(i, user_inp[letter])
         # Check if letter is already checked
         counter = 0
         cont = False
