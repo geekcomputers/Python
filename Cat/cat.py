@@ -49,11 +49,11 @@ def no_files():
 
 def main():
     """Entry point of the cat program."""
-    try:
-        # Read the arguments passed to the program
-        with_files(sys.argv[1:])
-    except IndexError:
+    # Read the arguments passed to the program
+    if not sys.argv[1:]:
         no_files()
+    else:
+        with_files(sys.argv[1:])
 
 if __name__ == "__main__":
     main()
