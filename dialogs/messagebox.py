@@ -1,3 +1,5 @@
+# Use the MessageBox() function to display a simple message box.
+
 from quo.dialog import MessageBox
 
 MessageBox(
