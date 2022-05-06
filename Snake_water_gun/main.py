@@ -35,7 +35,7 @@ if b == "N":
     print("Ok bubyeee! See you later")
 elif b == "Y" or b == "y":
     print(
-        "There will be 10 matches and the one who won max matches will win Let's start"
+        "There will be 10 matches, and the one who wins more matches will win. Let's start."
     )
 
 i = 0
@@ -44,10 +44,10 @@ score = 0
 while run and i < 10:
 
     comp_choice = random.choice(li)
-    user_choice = input("Type s for snake,w for water or g for gun: ").lower()
+    user_choice = input("Type s for snake, w for water or g for gun: ").lower()
 
     if user_choice == comp_choice:
-        print(bcolors.HEADERS + "Game draws.Play again" + bcolors.ENDC)
+        print(bcolors.HEADERS + "Game draws. Play again" + bcolors.ENDC)
 
     elif user_choice == "s" and comp_choice == "g":
         print(bcolors.FAIL + "It's Snake v/s Gun You lose!" + bcolors.ENDC)
@@ -93,6 +93,6 @@ if run == True:
         print(
             bcolors.FAIL
             + bcolors.BOLD
-            + "You lose!!!.Better luck next time"
+            + "You lose!!!. Better luck next time"
             + bcolors.ENDC
         )
