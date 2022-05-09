@@ -3,16 +3,21 @@
  using read function
 and display those words, which are less than 4 characters. """
 
-F = open("story.txt", "r")
-value = F.read()
-lines = value.split()
-count = 0
+def display_words():
+    with open("story.txt") as F:
+        lines = F.read()
+        words = lines.split()
+        count = 0
+        for word in words:
+            if (len(word) < 4):
+                print(word)
+                count += 1
+    return count 
 
-for i in lines:
-    if len(i) < 4:
-        print(i)
-        count += 1
-    else:
-        pass
+if __name__ == "__main__":
+    print(display_words())
+                
 
-print("The total number of words with length less than 4 are", count)
+
+
+
