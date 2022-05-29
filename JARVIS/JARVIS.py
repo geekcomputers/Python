@@ -167,7 +167,7 @@ class Jarvis:
             shell='powershell.exe',
             paint='mspaint.exe',
             cmd='cmd.exe',
-            browser='C:\Program Files\Internet Explorer\iexplore.exe',
+            browser='C:\\Program Files\\Internet Explorer\\iexplore.exe',
         )
         return _dict
 
@@ -214,7 +214,7 @@ def get_app(Q):
     elif Q == "open discord":
         subprocess.call(["discord.exe"])
     elif Q == "open browser":
-        subprocess.call(["C:\Program Files\Internet Explorer\iexplore.exe"])
+        subprocess.call(["C:\\Program Files\\Internet Explorer\\iexplore.exe"])
     # patch-1
     elif Q == "open youtube":
         webbrowser.open("https://www.youtube.com/")  # open youtube
@@ -280,7 +280,8 @@ def get_app(Q):
         "shell": "powershell.exe",
         "paint": "mspaint.exe",
         "cmd": "cmd.exe",
-        "browser": "C:\Program Files\Internet Explorer\iexplore.exe",
+        "browser": "C:\\Program Files\Internet Explorer\iexplore.exe",
+        "vscode": "C:\\Users\\Users\\User\\AppData\\Local\\Programs\Microsoft VS Code"
     }
     # master
 
