@@ -1,6 +1,6 @@
 import pickle
 
-
+print("SDf")
 def binaryread():
     B = open("studrec.dat", "rb")
     stud = pickle.load(B)
