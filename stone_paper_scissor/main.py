@@ -18,14 +18,11 @@ while True:
     except ValueError as e:
         print("Please input a correct number")
 
-if utils.validate(player_hand):
-    # Assign a random number between 0 and 2 to computer_hand using randint
-    computer_hand = random.randint(0, 2)
+# Assign a random number between 0 and 2 to computer_hand using randint
+computer_hand = random.randint(0, 2)
 
-    utils.print_hand(player_hand, player_name)
-    utils.print_hand(computer_hand, "Computer")
+utils.print_hand(player_hand, player_name)
+utils.print_hand(computer_hand, "Computer")
 
-    result = utils.judge(player_hand, computer_hand)
-    print("Result: " + result)
-else:
-    print("Please enter a valid number")
+result = utils.judge(player_hand, computer_hand)
+print("Result: " + result)
