@@ -32,11 +32,11 @@ def mergeSort(a):
 
             # Merge call for each sub array
             merge(a, left, mid, right)
-            left = left + current_size * 2
+            left += current_size * 2
 
         # Increasing sub array size by
         # multiple of 2
-        current_size = 2 * current_size
+        current_size *= 2
 
 
 # Merge Function
@@ -45,9 +45,9 @@ def merge(a, l, m, r):
     n2 = r - m
     L = [0] * n1
     R = [0] * n2
-    for i in range(0, n1):
+    for i in range(n1):
         L[i] = a[l + i]
-    for i in range(0, n2):
+    for i in range(n2):
         R[i] = a[m + i + 1]
 
     i, j, k = 0, 0, l

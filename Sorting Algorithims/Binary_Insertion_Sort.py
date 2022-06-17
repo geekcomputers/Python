@@ -1,14 +1,13 @@
 def Binary_Search(Test_arr, low, high, k):
-    if high >= low:
-        Mid = (low + high) // 2
-        if Test_arr[Mid] < k:
-            return Binary_Search(Test_arr, Mid + 1, high, k)
-        elif Test_arr[Mid] > k:
-            return Binary_Search(Test_arr, low, Mid - 1, k)
-        else:
-            return Mid
-    else:
+    if high < low:
         return low
+    Mid = (low + high) // 2
+    if Test_arr[Mid] < k:
+        return Binary_Search(Test_arr, Mid + 1, high, k)
+    elif Test_arr[Mid] > k:
+        return Binary_Search(Test_arr, low, Mid - 1, k)
+    else:
+        return Mid
 
 
 def Insertion_Sort(Test_arr):

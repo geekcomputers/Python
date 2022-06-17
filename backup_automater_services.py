@@ -37,8 +37,7 @@ destdir = os.path.join(
 
 # the destination backup directory
 for file_name in open(conffilename):  # Walk through the configuration file
-    fname = file_name.strip()  # Strip out the blank lines from the configuration file
-    if fname:  # For the lines that are not blank
+    if fname := file_name.strip():
         sourcefile = os.path.join(
             sourcedir, fname
         )  # Get the name of the source files to backup

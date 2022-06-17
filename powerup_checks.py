@@ -45,37 +45,31 @@ def windows():  # This is the function to run if it detects the OS is windows.
     for server in open(serverfile, "r"):  # Read the list of servers from the list
         # ret = subprocess.call("ping -n 3 %s" % server.strip(), shell=True,stdout=open('NUL', 'w'),stderr=subprocess.STDOUT)	# Ping the servers in turn
         ret = subprocess.call(
-            "ping -n 3 %s" % server.strip(),
+            f"ping -n 3 {server.strip()}",
             stdout=open("NUL", "w"),
             stderr=subprocess.STDOUT,
-        )  # Ping the servers in turn
+        )
+
         if ret == 0:  # Depending on the response
-            f.write(
-                "%s: is alive" % server.strip().ljust(15) + "\n"
-            )  # Write out to the logfile is the server is up
+            f.write(f"{server.strip().ljust(15)}: is alive" + "\n")
         else:
-            f.write(
-                "%s: did not respond" % server.strip().ljust(15) + "\n"
-            )  # Write to the logfile if the server is down
+            f.write(f"{server.strip().ljust(15)}: did not respond" + "\n")
 
 
 def linux():  # This is the function to run if it detects the OS is nix.
     f = open("server_startup_" + strftime("%Y-%m-%d") + ".log", "a")  # Open the logfile
     for server in open(serverfile, "r"):  # Read the list of servers from the list
         ret = subprocess.call(
-            "ping -c 3 %s" % server,
+            f"ping -c 3 {server}",
             shell=True,
             stdout=open("/dev/null", "w"),
             stderr=subprocess.STDOUT,
-        )  # Ping the servers in turn
+        )
+
         if ret == 0:  # Depending on the response
-            f.write(
-                "%s: is alive" % server.strip().ljust(15) + "\n"
-            )  # Write out to the logfile is the server is up
+            f.write(f"{server.strip().ljust(15)}: is alive" + "\n")
         else:
-            f.write(
-                "%s: did not respond" % server.strip().ljust(15) + "\n"
-            )  # Write to the logfile if the server is down
+            f.write(f"{server.strip().ljust(15)}: did not respond" + "\n")
 
 
 def get_servers(query):  # Function to get the servers from the database
@@ -87,12 +81,11 @@ def get_servers(query):  # Function to get the servers from the database
     print("\nDisplaying Servers for : " + query + "\n")
     while True:  # While there are results
         row = cursor.fetchone()  # Return the results
-        if row == None:
+        if row is None:
             break
-        f = open(serverfile, "a")  # Open the serverfile
-        f.write("%s\n" % str(row[0]))  # Write the server out to the file
-        print(row[0])  # Display the server to the screen
-        f.close()  # Close the file
+        with open(serverfile, "a") as f:
+            f.write("%s\n" % str(row[0]))  # Write the server out to the file
+            print(row[0])  # Display the server to the screen
 
 
 def main():  # Main Function
@@ -111,18 +104,17 @@ def main():  # Main Function
     ):  # If the ask for help
         print(text)  # Display the help text if there isn't one passed
         sys.exit(0)  # Exit the script after displaying help
+    elif sys.argv[1].lower().startswith("-site1"):  # If the argument is site1
+        query = "site1"  # Set the variable to have the value site
+    elif (
+        sys.argv[1].lower().startswith("-site2")
+    ):  # Else if the variable is bromley
+        query = "site2"  # Set the variable to have the value bromley
     else:
-        if sys.argv[1].lower().startswith("-site1"):  # If the argument is site1
-            query = "site1"  # Set the variable to have the value site
-        elif (
-            sys.argv[1].lower().startswith("-site2")
-        ):  # Else if the variable is bromley
-            query = "site2"  # Set the variable to have the value bromley
-        else:
-            print(
-                "\n[-] Unknown option [-] " + text
-            )  # If an unknown option is passed, let the user know
-            sys.exit(0)
+        print(
+            "\n[-] Unknown option [-] " + text
+        )  # If an unknown option is passed, let the user know
+        sys.exit(0)
     get_servers(query)  # Call the get servers funtion, with the value from the argument
 
     if os.name == "posix":  # If the OS is linux.

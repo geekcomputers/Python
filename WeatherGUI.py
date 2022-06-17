@@ -22,7 +22,7 @@ def getWeather():
     wind = soup.find("span", class_="_1Va1P undefined").text
     pressure = soup.find("span", class_="_3olKd undefined").text
     locationlabel.config(text=(location))
-    templabel.config(text=temperature + "C")
+    templabel.config(text=f"{temperature}C")
     WeatherText = (
         "Sunrise : "
         + sunrise

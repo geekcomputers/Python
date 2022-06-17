@@ -8,9 +8,8 @@ with open(file.strip(), ) as F:
 
     while True:
         ch = F.readlines()
-        for (i) in ch:  # ch is the whole file,for i in ch gives lines, for j in i gives letters,for j in i.split gives words
+        for i in ch:
             print(i, end="")
-        else:
-            sys.stderr.write("End of file reached")
-            break
+        sys.stderr.write("End of file reached")
+        break
 

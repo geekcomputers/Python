@@ -12,10 +12,7 @@ charging = battery.power_plugged
 # notification to desktop
 # help(Notification)
 if charging:
-    if percent == 100:
-        charging_message = "Unplug your Charger"
-    else:
-        charging_message = "Charging"
+    charging_message = "Unplug your Charger" if percent == 100 else "Charging"
 else:
     charging_message = "Not Charging"
 message = str(percent) + "% Charged\n" + charging_message

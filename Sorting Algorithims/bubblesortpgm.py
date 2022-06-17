@@ -30,7 +30,7 @@ def bubbleSort(arr):
     for i in range(n):
         not_swap = True
         # Last i elements are already in place
-        for j in range(0, n - i - 1):
+        for j in range(n - i - 1):
 
             # traverse the array from 0 to n-i-1
             # Swap if the element found is greater
@@ -48,5 +48,5 @@ arr = [64, 34, 25, 12, 22, 11, 90]
 bubbleSort(arr)
 
 print("Sorted array is:")
-for i in range(len(arr)):
-    print("%d" % arr[i]),
+for item in arr:
+    (print("%d" % item), )

@@ -46,49 +46,45 @@ def decrypt(enc_text):
 
 
 def readAndDecrypt(filename):
-    file = open(filename, "r")
-    data = file.read()
-    datalistint = []
-    actualdata = []
-    datalist = data.split(" ")
-    datalist.remove("")
-    datalistint = [float(data) for data in datalist]
-    for data in datalist:
-        current1 = int(decryptChar(data))
-        current1 = chr(current1)
-        actualdata.append(current1)
-    file.close()
+    with open(filename, "r") as file:
+        data = file.read()
+        datalistint = []
+        actualdata = []
+        datalist = data.split(" ")
+        datalist.remove("")
+        datalistint = [float(data) for data in datalist]
+        for data in datalist:
+            current1 = int(decryptChar(data))
+            current1 = chr(current1)
+            actualdata.append(current1)
     return actualdata
 
 
 def readAndEncrypt(filename):
-    file = open(filename, "r")
-    data = file.read()
-    datalist = list(data)
-    encrypted_list = list()
-    encrypted_list_str = list()
-    for data in datalist:
-        current = ord(data)
-        current = encryptChar(current)
-        encrypted_list.append(current)
-    file.close()
+    with open(filename, "r") as file:
+        data = file.read()
+        datalist = list(data)
+        encrypted_list = []
+        encrypted_list_str = []
+        for data in datalist:
+            current = ord(data)
+            current = encryptChar(current)
+            encrypted_list.append(current)
     return encrypted_list
 
 
 def readAndEncryptAndSave(inp_file, out_file):
     enc_list = readAndEncrypt(inp_file)
-    output = open(out_file, "w")
-    for enc in enc_list:
-        output.write(str(enc) + " ")
-    output.close()
+    with open(out_file, "w") as output:
+        for enc in enc_list:
+            output.write(f"{str(enc)} ")
 
 
 def readAndDecryptAndSave(inp_file, out_file):
     dec_list = readAndDecrypt(inp_file)
-    output = open(out_file, "w")
-    for dec in dec_list:
-        output.write(str(dec))
-    output.close()
+    with open(out_file, "w") as output:
+        for dec in dec_list:
+            output.write(str(dec))
 
 
 # encryption
@@ -104,11 +100,8 @@ for v in values:
     reverse.append(current)
 print(reverse)
 
-# saves encrypted in txt file
-output = open("encrypted.txt", "w")
-for v in values:
-    output.write(str(v) + " ")
-output.close()
-
+with open("encrypted.txt", "w") as output:
+    for v in values:
+        output.write(f"{str(v)} ")
 # read and decrypts
 print(readAndDecrypt("encrypted.txt"))

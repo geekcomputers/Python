@@ -11,7 +11,7 @@ def ImageDownloader(url):
     img_addrs = re.findall(p, text)
 
     for i in img_addrs:
-        os.system("wget {}".format(i))
+        os.system(f"wget {i}")
 
     return "DONE"
 

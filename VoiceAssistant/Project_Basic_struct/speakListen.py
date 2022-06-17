@@ -30,7 +30,7 @@ def greet(g):
     Args:
         g (str): To decide whether to say hello or good bye
     """
-    if g == "start" or g == "s":
+    if g in ["start", "s"]:
         h = datetime.datetime.now().hour
         text = ''
         if h > 12 and h < 17:
@@ -41,8 +41,8 @@ def greet(g):
             text = "Hello! Good Evening "
         text += " I am Python, How may i help you ?"
         speak(text)    
-    
-    elif g == "quit" or g == "end" or g == "over" or g == "e":
+
+    elif g in ["quit", "end", "over", "e"]:
         text = 'Thank you!. Good Bye ! '
         speak(text)
 
@@ -72,7 +72,7 @@ def hear():
             recognizing()
             speech = r.recognize_google(speech)
             print(speech + "\n")
-        
+
         except Exception as exception:
             print(exception)
             return "None"
@@ -111,11 +111,11 @@ def long_hear(duration_time = 60):
         #speech = r.listen(source)
         # convert speech to text
         try:
-            print(Fore.RED +"Recognizing...")
+            print(f"{Fore.RED}Recognizing...")
             #recognizing()
             speech = r.recognize_google(speech)
-            #print(speech + "\n")
-        
+                    #print(speech + "\n")
+
         except Exception as exception:
             print(exception)            
             return "None"
@@ -145,11 +145,11 @@ def short_hear(duration_time = 5):
         #speech = r.listen(source)
         # convert speech to text
         try:
-            print(Fore.RED +"Recognizing...")
+            print(f"{Fore.RED}Recognizing...")
             #recognizing()
             speech = r.recognize_google(speech)
-            #print(speech + "\n")
-        
+                    #print(speech + "\n")
+
         except Exception as exception:
             print(exception)            
             return "None"
@@ -157,13 +157,7 @@ def short_hear(duration_time = 5):
 
         
 
-if __name__ == '__main__':
-    # print("Enter your name")
-    # name = hear()
-    # speak("Hello " + name)
-    # greet("s")
-    # greet("e")
-    pass
+pass
     #hear()
     #recognizing()
     

@@ -18,17 +18,11 @@ def isSQLite3(filename):
 
     if not isfile(filename):
         return False
-    if getsize(filename) < 100:  # SQLite database file header is 100 bytes
+    if getsize(filename) < 100:
         return False
-    else:
-        fd = open(filename, "rb")
+    with open(filename, "rb") as fd:
         header = fd.read(100)
-        fd.close()
-
-        if header[0:16] == "SQLite format 3\000":
-            return True
-        else:
-            return False
+    return header[:16] == "SQLite format 3\000"
 
 
 log = open("sqlite_audit.txt", "w")

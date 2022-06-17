@@ -16,13 +16,12 @@ def buildDeck():
     wilds = ["Wild", "Wild Draw Four"]
     for colour in colours:
         for value in values:
-            cardVal = "{} {}".format(colour, value)
+            cardVal = f"{colour} {value}"
             deck.append(cardVal)
             if value != 0:
                 deck.append(cardVal)
-    for i in range(4):
-        deck.append(wilds[0])
-        deck.append(wilds[1])
+    for _ in range(4):
+        deck.extend((wilds[0], wilds[1]))
     print(deck)
     return deck
 
@@ -48,10 +47,7 @@ Return: cardsDrawn -> list
 
 
 def drawCards(numCards):
-    cardsDrawn = []
-    for x in range(numCards):
-        cardsDrawn.append(unoDeck.pop(0))
-    return cardsDrawn
+    return [unoDeck.pop(0) for _ in range(numCards)]
 
 
 """
@@ -62,13 +58,11 @@ Return: None
 
 
 def showHand(player, playerHand):
-    print("Player {}'s Turn".format(players_name[player]))
+    print(f"Player {players_name[player]}'s Turn")
     print("Your Hand")
     print("------------------")
-    y = 1
-    for card in playerHand:
-        print("{}) {}".format(y, card))
-        y += 1
+    for y, card in enumerate(playerHand, start=1):
+        print(f"{y}) {card}")
     print("")
 
 
@@ -80,19 +74,15 @@ Return: boolean
 
 
 def canPlay(colour, value, playerHand):
-    for card in playerHand:
-        if "Wild" in card:
-            return True
-        elif colour in card or value in card:
-            return True
-    return False
+    return any(
+        "Wild" in card or colour in card or value in card
+        for card in playerHand
+    )
 
 
 unoDeck = buildDeck()
 unoDeck = shuffleDeck(unoDeck)
 unoDeck = shuffleDeck(unoDeck)
-discards = []
-
 players_name = []
 players = []
 colours = ["Red", "Green", "Yellow", "Blue"]
@@ -101,30 +91,26 @@ while numPlayers < 2 or numPlayers > 4:
     numPlayers = int(
         input("Invalid. Please enter a number between 2-4.\nHow many players?"))
 for player in range(numPlayers):
-    players_name.append(input("Enter player {} name: ".format(player+1)))
+    players_name.append(input(f"Enter player {player + 1} name: "))
     players.append(drawCards(5))
 
 
 playerTurn = 0
 playDirection = 1
 playing = True
-discards.append(unoDeck.pop(0))
+discards = [unoDeck.pop(0)]
 splitCard = discards[0].split(" ", 1)
 currentColour = splitCard[0]
-if currentColour != "Wild":
-    cardVal = splitCard[1]
-else:
-    cardVal = "Any"
-
+cardVal = splitCard[1] if currentColour != "Wild" else "Any"
 while playing:
     showHand(playerTurn, players[playerTurn])
-    print("Card on top of discard pile: {}".format(discards[-1]))
+    print(f"Card on top of discard pile: {discards[-1]}")
     if canPlay(currentColour, cardVal, players[playerTurn]):
         cardChosen = int(input("Which card do you want to play?"))
         while not canPlay(currentColour, cardVal, [players[playerTurn][cardChosen-1]]):
             cardChosen = int(
                 input("Not a valid card. Which card do you want to play?"))
-        print("You played {}".format(players[playerTurn][cardChosen-1]))
+        print(f"You played {players[playerTurn][cardChosen-1]}")
         discards.append(players[playerTurn].pop(cardChosen-1))
 
         # cheak if player won
@@ -136,13 +122,10 @@ while playing:
             # cheak for special cards
             splitCard = discards[-1].split(" ", 1)
             currentColour = splitCard[0]
-            if len(splitCard) == 1:
-                cardVal = "Any"
-            else:
-                cardVal = splitCard[1]
+            cardVal = "Any" if len(splitCard) == 1 else splitCard[1]
             if currentColour == "Wild":
                 for x in range(len(colours)):
-                    print("{}) {}".format(x+1, colours[x]))
+                    print(f"{x + 1}) {colours[x]}")
                 newColour = int(
                     input("What colour would you like to choose? "))
                 while newColour < 1 or newColour > 4:
@@ -183,4 +166,4 @@ while playing:
         playerTurn = numPlayers-1
 
 print("Game Over")
-print("{} is the Winner!".format(winner))
+print(f"{winner} is the Winner!")

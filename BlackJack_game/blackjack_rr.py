@@ -9,11 +9,12 @@ class Colour:
 
 
 suits = (
-    Colour.RED + "Hearts" + Colour.END,
-    Colour.RED + "Diamonds" + Colour.END,
-    Colour.BLACK + "Spades" + Colour.END,
-    Colour.BLACK + "Clubs" + Colour.END,
+    f"{Colour.RED}Hearts{Colour.END}",
+    f"{Colour.RED}Diamonds{Colour.END}",
+    f"{Colour.BLACK}Spades{Colour.END}",
+    f"{Colour.BLACK}Clubs{Colour.END}",
 )
+
 ranks = (
     "Two",
     "Three",
@@ -54,27 +55,23 @@ class Card:
         self.rank = rank
 
     def __str__(self):
-        return self.rank + " of " + self.suit
+        return f"{self.rank} of {self.suit}"
 
 
 class Deck:
     def __init__(self):
         self.deck = []
         for suit in suits:
-            for rank in ranks:
-                self.deck.append(Card(suit, rank))
+            self.deck.extend(Card(suit, rank) for rank in ranks)
 
     def __str__(self):
-        deck_comp = ""
-        for card in self.deck:
-            deck_comp += "\n " + card.__str__()
+        deck_comp = "".join("\n " + card.__str__() for card in self.deck)
 
     def shuffle(self):
         random.shuffle(self.deck)
 
     def deal(self):
-        single_card = self.deck.pop()
-        return single_card
+        return self.deck.pop()
 
 
 class Hand:

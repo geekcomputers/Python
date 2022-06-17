@@ -18,7 +18,7 @@ def nmapScan(tgtHost, tgtPort):  # Create the function, this fucntion does the s
     nmScan = nmap.PortScanner()
     nmScan.scan(tgtHost, tgtPort)
     state = nmScan[tgtHost]["tcp"][int(tgtPort)]["state"]
-    print("[*] " + tgtHost + " tcp/" + tgtPort + " " + state)
+    print(f"[*] {tgtHost} tcp/{tgtPort} {state}")
 
 
 def main():  # Main Program
@@ -31,7 +31,7 @@ def main():  # Main Program
     tgtHost = options.tgtHost
     tgtPorts = str(options.tgtPort).split(",")
 
-    if (tgtHost == None) | (tgtPorts[0] == None):
+    if (tgtHost is None) | (tgtPorts[0] is None):
         print(parser.usage)
         exit(0)
 

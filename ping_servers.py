@@ -59,16 +59,14 @@ else:
         site = "bromley"  # Set the variable site to bromley
 
 logdir = os.getenv("logs")  # Set the variable logdir by getting the OS environment logs
-logfile = (
-    "ping_" + appgroup + "_" + site + ".log"
-)  # Set the variable logfile, using the arguments passed to create the logfile
+logfile = f"ping_{appgroup}_{site}.log"
 logfilename = os.path.join(
     logdir, logfile
 )  # Set the variable logfilename by joining logdir and logfile together
 confdir = os.getenv(
     "my_config"
 )  # Set the variable confdir from the OS environment variable - 1.2
-conffile = appgroup + "_servers_" + site + ".txt"  # Set the variable conffile - 1.2
+conffile = f"{appgroup}_servers_{site}.txt"
 conffilename = os.path.join(
     confdir, conffile
 )  # Set the variable conffilename by joining confdir and conffile together - 1.2
@@ -79,13 +77,9 @@ for server in open(conffilename):  # Open the config file and read each line - 1
         myping + server, shell=True, stdout=f, stderr=subprocess.STDOUT
     )  # Run the ping command for each server in the list.
     if ret == 0:  # Depending on the response
-        f.write(
-            server.strip() + " is alive" + "\n"
-        )  # Write out that you can receive a reponse
+        f.write(f"{server.strip()} is alive" + "\n")
     else:
-        f.write(
-            server.strip() + " did not respond" + "\n"
-        )  # Write out you can't reach the box
+        f.write(f"{server.strip()} did not respond" + "\n")
 
 print("\n\tYou can see the results in the logfile : " + logfilename)
 # Show the location of the logfile

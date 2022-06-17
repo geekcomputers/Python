@@ -35,20 +35,12 @@ def getChars():
     Método para obter uma lista contendo todas as
     letras do alfabeto e números.
     """
-    chars = []
-
-    # Acrescenta à lista todas as letras maiúsculas
-    for id_ in range(ord("A"), ord("Z") + 1):
-        chars.append(chr(id_))
+    chars = [chr(id_) for id_ in range(ord("A"), ord("Z") + 1)]
 
     # Acrescenta à lista todas as letras minúsculas
-    for id_ in range(ord("a"), ord("z") + 1):
-        chars.append(chr(id_))
-
+    chars.extend(chr(id_) for id_ in range(ord("a"), ord("z") + 1))
     # Acrescenta à lista todos os números
-    for number in range(10):
-        chars.append(str(number))
-
+    chars.extend(str(number) for number in range(10))
     return chars
 
 
@@ -66,10 +58,7 @@ if __name__ == "__main__":
 
     def testFunction(password):
         global pw
-        if password == pw:
-            return True
-        else:
-            return False
+        return password == pw
 
     # Obtém os dígitos que uma senha pode ter
     chars = getChars()

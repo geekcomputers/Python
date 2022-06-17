@@ -26,5 +26,5 @@ except urllib.error.URLError:
 browser = webdriver.Firefox()
 browser.get(search)
 os.system("cls")  # os.system('clear') if Linux
-print("[+] Website " + search + " opened!")
+print(f"[+] Website {search} opened!")
 browser.close()

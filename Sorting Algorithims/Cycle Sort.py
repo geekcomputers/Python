@@ -5,7 +5,7 @@ def cycleSort(array):
     writes = 0
 
     # Loop through the array to find cycles to rotate.
-    for cycleStart in range(0, len(array) - 1):
+    for cycleStart in range(len(array) - 1):
         item = array[cycleStart]
 
         # Find where to put the item.
@@ -48,6 +48,6 @@ n = len(arr)
 cycleSort(arr)
 
 print("After sort : ")
-for i in range(0, n):
+for i in range(n):
     print(arr[i], end=" ")
 print()  # Print a newline

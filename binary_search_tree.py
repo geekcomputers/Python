@@ -57,9 +57,7 @@ class BinarySearchTree:
                 prev = current
                 current = current.right
             elif current.info == val:
-                if not to_delete:
-                    return "Match Found"
-                return prev
+                return prev if to_delete else "Match Found"
             else:
                 break
         if not to_delete:
@@ -69,76 +67,70 @@ class BinarySearchTree:
     def delete(self, val):
         prev = self.search(val, True)
         # Check if node exists
-        if prev is not None:
-            # Check if node is the Root node
-            if prev == -1:
-                temp = self.root.left
-                prev2 = None
-                while temp.right:
+        if prev is None:
+            print("Node doesn't exists")
+
+        elif prev == -1:
+            temp = self.root.left
+            prev2 = None
+            while temp.right:
+                prev2 = temp
+                temp = temp.right
+            if prev2 is None:
+                self.root.left = temp.left
+            else:
+                prev2.right = None
+            self.root.info = temp.info
+            print("Deleted Root ", val)
+        elif prev.left and prev.left.info == val:
+            # Check if node is leaf node
+            if prev.left.left is prev.left.right:
+                prev.left = None
+                print("Deleted Node ", val)
+            # Check if node has child at left and None at right
+            elif prev.left.left and prev.left.right is None:
+                prev.left = prev.left.left
+                print("Deleted Node ", val)
+            # Check if node has child at right and None at left
+            elif prev.left.left is None and prev.left.right:
+                prev.left = prev.left.right
+                print("Deleted Node ", val)
+            # Here node to be deleted has 2 children
+            elif prev.left.left and prev.left.right:
+                temp = prev.left
+                while temp.right is not None:
                     prev2 = temp
                     temp = temp.right
-                if prev2 is None:
-                    self.root.left = temp.left
-                    self.root.info = temp.info
-                else:
-                    prev2.right = None
-                    self.root.info = temp.info
-                print("Deleted Root ", val)
-            # Check if node is to left of its parent
-            elif prev.left and prev.left.info == val:
-                # Check if node is leaf node
-                if prev.left.left is prev.left.right:
-                    prev.left = None
-                    print("Deleted Node ", val)
-                # Check if node has child at left and None at right
-                elif prev.left.left and prev.left.right is None:
-                    prev.left = prev.left.left
-                    print("Deleted Node ", val)
-                # Check if node has child at right and None at left
-                elif prev.left.left is None and prev.left.right:
-                    prev.left = prev.left.right
-                    print("Deleted Node ", val)
-                # Here node to be deleted has 2 children
-                elif prev.left.left and prev.left.right:
-                    temp = prev.left
-                    while temp.right is not None:
-                        prev2 = temp
-                        temp = temp.right
-                    prev2.right = None
-                    prev.left.info = temp.info
-                    print("Deleted Node ", val)
-                else:
-                    print("Error Left")
+                prev2.right = None
+                prev.left.info = temp.info
+                print("Deleted Node ", val)
+            else:
+                print("Error Left")
 
-            # Check if node is to right of its parent
-            elif prev.right.info == val:
-                flag = 0
-                # Check is node is a leaf node
-                if prev.right.left is prev.right.right:
-                    prev.right = None
-                    flag = 1
-                    print("Deleted Node ", val)
+        elif prev.right.info == val:
+            flag = 0
+            # Check is node is a leaf node
+            if prev.right.left is prev.right.right:
+                prev.right = None
+                flag = 1
+                print("Deleted Node ", val)
                 # Check if node has left child at None at right
-                if prev.right and prev.right.left and prev.right.right is None:
-                    prev.right = prev.right.left
-                    print("Deleted Node ", val)
-                # Check if node has right child at None at left
-                elif prev.right and prev.right.left is None and prev.right.right:
-                    prev.right = prev.right.right
-                    print("Deleted Node ", val)
-                elif prev.right and prev.right.left and prev.right.right:
-                    temp = prev.right
-                    while temp.left is not None:
-                        prev2 = temp
-                        temp = temp.left
-                    prev2.left = None
-                    prev.right.info = temp.info
-                    print("Deleted Node ", val)
-                else:
-                    if flag == 0:
-                        print("Error")
-        else:
-            print("Node doesn't exists")
+            if prev.right and prev.right.left and prev.right.right is None:
+                prev.right = prev.right.left
+                print("Deleted Node ", val)
+            elif prev.right and prev.right.left is None and prev.right.right:
+                prev.right = prev.right.right
+                print("Deleted Node ", val)
+            elif prev.right and prev.right.left and prev.right.right:
+                temp = prev.right
+                while temp.left is not None:
+                    prev2 = temp
+                    temp = temp.left
+                prev2.left = None
+                prev.right.info = temp.info
+                print("Deleted Node ", val)
+            elif flag == 0:
+                print("Error")
 
     def __str__(self):
         return "Not able to print tree yet"

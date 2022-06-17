@@ -50,7 +50,7 @@ def play():
         print("/"*20)
 
         for i in players:
-            n = input("{}'s turn: ".format(i)) or 1
+            n = input(f"{i}'s turn: ") or 1
             n = int(n)
 
             if players[i] < 100:

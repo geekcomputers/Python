@@ -39,14 +39,10 @@ def wiki():
         print("Page Id = ", pageId)
         print(page.summary)
         print("Page Link = ", url)
-    # print "References : ",references
-
-    pass
 
 
 def fullPage(page):
-    soup = BeautifulSoup(page.content, "lxml")
-    return soup
+    return BeautifulSoup(page.content, "lxml")
 
 
 def randomWiki():
@@ -80,9 +76,6 @@ def randomWiki():
         print("Page Id = ", pageId)
         print(page.summary)
         print("Page Link = ", url)
-    # print "References : ",references
-
-    pass
 
 
 # if __name__=="__main__":

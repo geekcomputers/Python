@@ -26,6 +26,6 @@ if utils.validate(player_hand):
     utils.print_hand(computer_hand, "Computer")
 
     result = utils.judge(player_hand, computer_hand)
-    print("Result: " + result)
+    print(f"Result: {result}")
 else:
     print("Please enter a valid number")

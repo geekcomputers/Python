@@ -22,7 +22,7 @@ for env_check in open(conffilename):  # Open the config file and read all the se
     env_check = (
         env_check.strip()
     )  # Set the variable as itself, but strip the extra text out
-    print("[{}]".format(env_check))  # Format the Output to be in Square Brackets
+    print(f"[{env_check}]")
     newenv = os.getenv(
         env_check
     )  # Set the variable newenv to get the settings from the OS what is currently set for the settings out the configfile
@@ -30,6 +30,4 @@ for env_check in open(conffilename):  # Open the config file and read all the se
     if newenv is None:  # If it doesn't exist
         print(env_check, "is not set")  # Print it is not set
     else:  # Else if it does exist
-        print(
-            "Current Setting for {}={}\n".format(env_check, newenv)
-        )  # Print out the details
+        print(f"Current Setting for {env_check}={newenv}\n")

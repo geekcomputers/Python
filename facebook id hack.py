@@ -27,7 +27,7 @@ cookie = {}
 
 
 def create_form():
-    form = dict()
+    form = {}
     cookie = {"fr": "0ZvhC3YwYm63ZZat1..Ba0Ipu.Io.AAA.0.0.Ba0Ipu.AWUPqDLy"}
 
     data = requests.get(post_url, headers=headers)
@@ -67,6 +67,6 @@ while file:
     i += 1
     if len(passw) < 6:
         continue
-    print(str(i) + " : ", passw)
+    print(f"{i} : ", passw)
     if function(email, passw, i):
         break

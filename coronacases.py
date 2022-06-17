@@ -84,14 +84,13 @@ def choices():
     if choice == "1":
         world()
         sleep(1)
-        choices()
     elif choice == "2":
         indiac()
         sleep(1)
-        choices()
     else:
         print("\nYou Have Entered Something Wrong, Please Enter Again")
-        choices()
+
+    choices()
 
 
 choices()

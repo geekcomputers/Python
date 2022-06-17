@@ -15,7 +15,7 @@ class Conversion:
 
     # check if the stack is empty
     def isEmpty(self):
-        return True if self.top == -1 else False
+        return self.top == -1
 
     # Return the value of the top of the stack
     def peek(self):
@@ -23,11 +23,10 @@ class Conversion:
 
     # Pop the element from the stack
     def pop(self):
-        if not self.isEmpty():
-            self.top -= 1
-            return self.array.pop()
-        else:
+        if self.isEmpty():
             return "$"
+        self.top -= 1
+        return self.array.pop()
 
     # Push the element to the stack
     def push(self, op):
@@ -45,7 +44,7 @@ class Conversion:
         try:
             a = self.precedence[i]
             b = self.precedence[self.peek()]
-            return True if a <= b else False
+            return a <= b
         except KeyError:
             return False
 

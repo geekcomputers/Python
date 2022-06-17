@@ -31,8 +31,7 @@ class SHA1Hash:
         Pads the input message with zeros so that padded_data has 64 bytes or 512 bits
         """
         padding = b"\x80" + b"\x00" * (63 - (len(self.data) + 8) % 64)
-        padded_data = self.data + padding + struct.pack(">Q", 8 * len(self.data))
-        return padded_data
+        return self.data + padding + struct.pack(">Q", 8 * len(self.data))
 
     def split_blocks(self):
         """
@@ -67,7 +66,7 @@ class SHA1Hash:
         for block in self.blocks:
             expanded_block = self.expand_block(block)
             a, b, c, d, e = self.h
-            for i in range(0, 80):
+            for i in range(80):
                 if 0 <= i < 20:
                     f = (b & c) | ((~b) & d)
                     k = 0x5A827999

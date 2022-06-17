@@ -19,7 +19,7 @@ def text_file_replace(file, encoding, old, new):
             lines.append(line.replace(old, new))
     with open(file=file, mode="w", encoding=encoding) as fd:
         fd.writelines(lines)
-    print('{} occurence(s) of "{}" have been replaced with "{}"'.format(cnt, old, new))
+    print(f'{cnt} occurence(s) of "{old}" have been replaced with "{new}"')
     return cnt
 
 

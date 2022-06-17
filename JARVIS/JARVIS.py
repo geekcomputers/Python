@@ -126,7 +126,7 @@ def on_press(key):
         k = key.name  # other keys
     if k in ["1", "2", "left", "right"]:  # keys of interest
         # self.keys.append(k)  # store it in global-like variable
-        print("Key pressed: " + k)
+        print(f"Key pressed: {k}")
         return False  # stop listener; remove this if want more keys
 
 

@@ -38,8 +38,8 @@ infname = cret('ifconfig -a  | egrep "^[wl-wl]+" | sed "s/: .*//" | grep -v "lo"
 infname = infname[:6]
 infname = infname.decode("utf-8")
 # GETTING MAC Address from /sys/class/net/wlan0/address directory
-cmdgetmac = "cat /sys/class/net/" + infname + "/address"
-crrntmac = cret("cat /sys/class/net/" + infname + "/address")
+cmdgetmac = f"cat /sys/class/net/{infname}/address"
+crrntmac = cret(f"cat /sys/class/net/{infname}/address")
 crrntmac = crrntmac.decode("utf-8")
 print(
     "Your Current mac address = "
@@ -57,13 +57,13 @@ if opt == 1:
     # first turn off wifi
     cret("nmcli radio wifi off")
 
-    changemaccmd = "sudo ip link set dev " + infname + " address " + newmac
+    changemaccmd = f"sudo ip link set dev {infname} address {newmac}"
     # executing command with new mac address
     cret(changemaccmd)
     # turning on wifi
     cret("nmcli radio wifi on")
     # GETTING MAC Address from /sys/class/net/wlan0/address directory
-    cr = cret("cat /sys/class/net/" + infname + "/address")
+    cr = cret(f"cat /sys/class/net/{infname}/address")
     cr = cr.decode("utf-8")
 
     print("\nNow Your Current mac address = " + cr)
@@ -73,12 +73,12 @@ elif opt == 2:
     genmac = retrandmac(randmac())
     print("Please wait generating new mac address.....................")
     cret("nmcli radio wifi off")
-    changemaccmd = "sudo ip link set dev " + infname + " address " + genmac
+    changemaccmd = f"sudo ip link set dev {infname} address {genmac}"
     cret(changemaccmd)
     cret("nmcli radio wifi on")
-    cr = cret("cat /sys/class/net/" + infname + "/address")
+    cr = cret(f"cat /sys/class/net/{infname}/address")
     cr = cr.decode("utf-8")
-    print("Now Your Current mac address = " + cr)
+    print(f"Now Your Current mac address = {cr}")
 
 else:
     print("You Have Selected wrong Option")

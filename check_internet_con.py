@@ -15,8 +15,8 @@ def checkInternetConnectivity():
         print(url)
         protocols = ["https://", "http://"]
         if not any(x for x in protocols if x in url):
-            url = "https://" + url
-        print("URL:" + url)
+            url = f"https://{url}"
+        print(f"URL:{url}")
     except BaseException:
         url = "https://google.com"
     try:
@@ -24,7 +24,7 @@ def checkInternetConnectivity():
         print(f'Connection to "{url}" is working')
 
     except URLError as E:
-        print("Connection error:%s" % E.reason)
+        print(f"Connection error:{E.reason}")
 
 
 checkInternetConnectivity()

@@ -37,16 +37,14 @@ else:
 
 # special condition below :
 if Ht < 10:
-    h = "0" + str(Ht)
+    h = f"0{str(Ht)}"
     Ht = h
 if Mt < 10:
-    m = "0" + str(Mt)
+    m = f"0{str(Mt)}"
     Mt = m
 if St < 10:
-    s = "0" + str(St)
+    s = f"0{str(St)}"
     St = s
 # add '0' to the empty spaces (caused by previous operations) in the final result!
 
-print(
-    "final result is :", str(Ht) + ":" + str(Mt) + ":" + str(St)
-)  # final result (formatted in clock)
+print("final result is :", f"{str(Ht)}:{str(Mt)}:{str(St)}")

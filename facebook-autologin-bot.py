@@ -38,31 +38,27 @@ while t == 1:
         )
         speak(text)
         continue
-    if "facebook" or "fb" in text:
-        print("Opening Your Facebook Account")
-        text = "Opening Your Facebook Account"
-        speak(text)
-        # your username and password here
-        username = "your username"
-        password = "yourpassword"
-        # download webdriver of suitable version by link below
-        # https://sites.google.com/a/chromium.org/chromedriver/downloads
-        # locate your driver
-        driver = webdriver.Chrome("C:\\Users\\AJAY\\Desktop\\chromedriver.exe")
-        url = "https://www.facebook.com"
-        print("Opening facebook...")
-        driver.get(url)
-        driver.find_element_by_id("email").send_keys(username)
-        print("Entering Your Username...")
-        time.sleep(1)
-        driver.find_element_by_id("pass").send_keys(password)
-        print("Entering Your password...")
-        driver.find_element_by_name("login").click()
-        time.sleep(4)
-        print("Login Successful")
-        text = "Login Successful Enjoy your day sir"
-        speak(text)
-        continue
-    else:
-        print("input valid statement")
-        continue
+    print("Opening Your Facebook Account")
+    text = "Opening Your Facebook Account"
+    speak(text)
+    # your username and password here
+    username = "your username"
+    password = "yourpassword"
+    # download webdriver of suitable version by link below
+    # https://sites.google.com/a/chromium.org/chromedriver/downloads
+    # locate your driver
+    driver = webdriver.Chrome("C:\\Users\\AJAY\\Desktop\\chromedriver.exe")
+    url = "https://www.facebook.com"
+    print("Opening facebook...")
+    driver.get(url)
+    driver.find_element_by_id("email").send_keys(username)
+    print("Entering Your Username...")
+    time.sleep(1)
+    driver.find_element_by_id("pass").send_keys(password)
+    print("Entering Your password...")
+    driver.find_element_by_name("login").click()
+    time.sleep(4)
+    print("Login Successful")
+    text = "Login Successful Enjoy your day sir"
+    speak(text)
+    continue

@@ -6,15 +6,14 @@
 
 def cubeRoot():
     x = int(input("Enter an integer: "))
-    for ans in range(0, abs(x) + 1):
+    for ans in range(abs(x) + 1):
         if ans ** 3 == abs(x):
             break
     if ans ** 3 != abs(x):
         print(x, "is not a perfect cube!")
-    else:
-        if x < 0:
-            ans = -ans
-    print("Cube root of " + str(x) + " is " + str(ans))
+    elif x < 0:
+        ans = -ans
+    print(f"Cube root of {x} is {str(ans)}")
 
 
 cubeRoot()

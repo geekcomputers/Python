@@ -9,7 +9,7 @@ s = input(": ")
 print("Enter image name to save")
 n = input(": ")
 # Adding extension as .pnf
-d = n + ".png"
+d = f"{n}.png"
 # Creating QR code
 url = pyqrcode.create(s)
 # Saving QR code as  a png file

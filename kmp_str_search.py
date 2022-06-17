@@ -13,7 +13,7 @@ def kmp(pattern, text, len_p=None, len_t=None):
     # 1) Construct the failure array
     failure = [0]
     i = 0
-    for index, char in enumerate(pattern[1:]):
+    for char in pattern[1:]:
         if pattern[i] == char:
             i += 1
         else:

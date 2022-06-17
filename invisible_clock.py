@@ -14,7 +14,7 @@ time.sleep(2)  # 2 sec time to adjust cam with time
 background = 0
 
 # capturing the background
-for i in range(30):  # 30 times
+for _ in range(30):
     ret, background = cap.read()
 
 while cap.isOpened():

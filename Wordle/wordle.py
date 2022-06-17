@@ -22,6 +22,7 @@ for i in dictionary_content:
 new_dictionary.close()
 """
 
+
 # import the library random
 import random
 
@@ -37,10 +38,7 @@ word = random.choice(dictionary)
 dif_letters = list(set(word))
 
 # Count how many times each letter occurs in the word
-count_letters = {}
-for i in dif_letters:
-    count_letters[i] = word.count(i)
-
+count_letters = {i: word.count(i) for i in dif_letters}
 # Set tries to 0
 tries = 0
 
@@ -58,12 +56,12 @@ while True:
         break
 
     # Check if the word given by the user is 5 characters long
-    if not len(user_inp) == 5:
+    if len(user_inp) != 5:
         print("Your input must be 5 letters long")
         continue
 
     # Check if the word given by the user is in the dictionary
-    if not user_inp in dictionary:
+    if user_inp not in dictionary:
         print("Your word is not in the dictionary")
         continue
 
@@ -104,13 +102,15 @@ while True:
             # Check if letter is in the correct position
             if user_inp[letter] == i:
                 return_answer += "G"
-            else:
-                if not user_inp[word.index(user_inp[letter])] == word[word.index(user_inp[letter])]:
-                    return_answer += "Y"
-                else:
-                    answer_given = False
-                    do_not_add = True
+            elif (
+                user_inp[word.index(user_inp[letter])]
+                == word[word.index(user_inp[letter])]
+            ):
+                answer_given = False
+                do_not_add = True
 
+            else:
+                return_answer += "Y"
         # Check if there has already been an answer returned
         if not answer_given:
             return_answer += "-"
