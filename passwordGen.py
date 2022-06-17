@@ -8,10 +8,10 @@ specialChars = "!@#$%^&*-_+="
 passLen = 10  # actual generated password length will be this length + 1
 myPass = ""
 
-for i in range(passLen):
+for _ in range(passLen):
     while (len(myPass)) <= 2:
         index = random.randrange(len(lChars))
-        myPass = myPass + lChars[index]
+        myPass += lChars[index]
         myPassLen = len(myPass)
     while (len(myPass)) <= 5:
         index = random.randrange(len(digits))

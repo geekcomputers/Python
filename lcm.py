@@ -29,11 +29,7 @@ def lcm(x, y):
     if x <= 0 or y <= 0:
         return -1
 
-    if x > y:
-        greater_number = x
-    else:
-        greater_number = y
-
+    greater_number = x if x > y else y
     while True:
         if (greater_number % x == 0) and (greater_number % y == 0):
             lcm = greater_number

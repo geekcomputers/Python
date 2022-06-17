@@ -24,7 +24,7 @@ def ps():
 
     try:
         # perform a ps command and assign results to a list
-        output = commands.getoutput("ps -f|grep " + program)
+        output = commands.getoutput(f"ps -f|grep {program}")
         proginfo = string.split(output)
 
         # display results

@@ -65,9 +65,9 @@ class Card:
 
 
 def string_list_join(string, string_list):
-    ans = string + " contains "
+    ans = f"{string} contains "
     for i in range(len(string_list)):
-        ans += str(string_list[i]) + " "
+        ans += f"{str(string_list[i])} "
     return ans
 
 
@@ -91,10 +91,7 @@ class Hand:
                 var.append(card[1])
         if "A" not in var:
             return self.hand_value
-        if self.hand_value + 10 <= 21:
-            return self.hand_value + 10
-        else:
-            return self.hand_value
+        return self.hand_value + 10 if self.hand_value <= 11 else self.hand_value
 
     def draw(self, canvas, pos):
         for card in self.hand:
@@ -123,7 +120,7 @@ def deal():
     player_card = Hand()
     dealer_card = Hand()
     deck = Deck()
-    for i in range(2):
+    for _ in range(2):
         player_card.add_card(deck.deal_card())
         dealer_card.add_card(deck.deal_card())
 

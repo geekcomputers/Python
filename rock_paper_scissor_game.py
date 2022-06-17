@@ -37,13 +37,13 @@ def game(player_choice):
     comp_choice = number_to_name(comp_number)
     print(comp_choice)
 
-    comp = -int(comp_number)
+    comp = -comp_number
     play = int(number)
     diff = (comp + play) % 5
 
-    if diff == 1 or diff == 3:
+    if diff in [1, 3]:
         print("you won!!!")
     elif diff == 0:
         print("draw")
-    elif diff == 2 or diff == 4:
+    elif diff in [2, 4]:
         print("you lose!!!")

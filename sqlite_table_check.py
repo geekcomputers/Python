@@ -26,7 +26,13 @@ cursor.execute("SELECT SQLITE_VERSION()")
 data = cursor.fetchone()
 
 if str(data) == "(u'3.6.21',)":
-    print("\nCurrently " + master_db + " is on SQLite version: %s" % data + " - OK -\n")
+    print(
+        "\nCurrently "
+        + master_db
+        + f" is on SQLite version: {data}"
+        + " - OK -\n"
+    )
+
 else:
     print("\nDB On different version than master version - !!!!! \n")
 conn.close()
@@ -42,6 +48,6 @@ for table in tablelist.readlines():
     res = cursor.fetchone()
 
     if res[0]:
-        print("[+] Table : " + table.strip() + " exists [+]")
+        print(f"[+] Table : {table.strip()} exists [+]")
     else:
-        print("[-] Table : " + table.strip() + "  does not exist [-]")
+        print(f"[-] Table : {table.strip()}  does not exist [-]")

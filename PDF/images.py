@@ -40,6 +40,6 @@ for filename in os.listdir("images"):
         pdf.image("images\\" + filename, 0, 0, width, height)
 
     except OSError:
-        print("Skipped : " + filename)
+        print(f"Skipped : {filename}")
 
 pdf.output("output.pdf", "F")

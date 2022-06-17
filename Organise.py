@@ -64,15 +64,15 @@ ChangeDirectory(destLocation)
 def Organize(dirs, name):
     try:
         os.mkdir(name)
-        print("{} Folder Created".format(name))
+        print(f"{name} Folder Created")
     except WindowsError:
-        print("{} Folder Exist".format(name))
+        print(f"{name} Folder Exist")
 
-    src = "{}\\{}".format(destLocation, dirs)
-    dest = "{}\{}".format(destLocation, name)
+    src = f"{destLocation}\\{dirs}"
+    dest = f"{destLocation}\{name}"
 
     os.chdir(dest)
-    shutil.move(src, "{}\\{}".format(dest, dirs))
+    shutil.move(src, f"{dest}\\{dirs}")
 
     print(os.getcwd())
     os.chdir(destLocation)
@@ -88,23 +88,18 @@ TYPES_LIST = [
     "Compressed",
 ]
 for dirs in os.listdir(os.getcwd()):
-    if 1:
-        for name, extensions_list in zip(
-            TYPES_LIST,
-            [
-                EXT_VIDEO_LIST,
-                EXT_IMAGE_LIST,
-                EXT_DOCUMENT_LIST,
-                EXT_MUSIC_LIST,
-                EXT_CODE_LIST,
-                EXT_EXECUTABLE_LIST,
-                EXT_COMPRESSED_LIST,
-            ],
-        ):
-            if dirs.split(".")[-1].upper() in extensions_list:
-                Organize(dirs, name)
-    else:
-        if dirs not in TYPES_LIST:
-            Organize(dirs, "Folders")
-
+    for name, extensions_list in zip(
+        TYPES_LIST,
+        [
+            EXT_VIDEO_LIST,
+            EXT_IMAGE_LIST,
+            EXT_DOCUMENT_LIST,
+            EXT_MUSIC_LIST,
+            EXT_CODE_LIST,
+            EXT_EXECUTABLE_LIST,
+            EXT_COMPRESSED_LIST,
+        ],
+    ):
+        if dirs.split(".")[-1].upper() in extensions_list:
+            Organize(dirs, name)
 print("Done Arranging Files and Folder in your specified directory")

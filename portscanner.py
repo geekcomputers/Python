@@ -23,7 +23,7 @@ def connScan(tgtHost, tgtPort):  # Start of the function
         results = connSkt.recv(100)
         screenLock.acquire()  # Acquire the lock
         print("[+] %d/tcp open" % tgtPort)
-        print("[+] " + str(results))
+        print(f"[+] {str(results)}")
     except:
         screenLock.acquire()
         print("[-] %d/tcp closed " % tgtPort)
@@ -61,7 +61,7 @@ def main():
     (options, args) = parser.parse_args()
     tgtHost = options.tgtHost
     tgtPorts = str(options.tgtPort).split(",")
-    if (tgtHost == None) | (tgtPorts[0] == None):
+    if (tgtHost is None) | (tgtPorts[0] is None):
         print(parser.usage)
         exit(0)
     portScan(tgtHost, tgtPorts)

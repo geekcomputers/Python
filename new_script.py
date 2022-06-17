@@ -25,22 +25,21 @@ if len(sys.argv) < 3:
 if "-h" in sys.argv or "--h" in sys.argv or "-help" in sys.argv or "--help" in sys.argv:
     print(text)
     sys.exit()
+elif "-python" in sys.argv[1]:
+    config_file = "python.cfg"
+    extension = ".py"
+elif "-bash" in sys.argv[1]:
+    config_file = "bash.cfg"
+    extension = ".bash"
+elif "-ksh" in sys.argv[1]:
+    config_file = "ksh.cfg"
+    extension = ".ksh"
+elif "-sql" in sys.argv[1]:
+    config_file = "sql.cfg"
+    extension = ".sql"
 else:
-    if "-python" in sys.argv[1]:
-        config_file = "python.cfg"
-        extension = ".py"
-    elif "-bash" in sys.argv[1]:
-        config_file = "bash.cfg"
-        extension = ".bash"
-    elif "-ksh" in sys.argv[1]:
-        config_file = "ksh.cfg"
-        extension = ".ksh"
-    elif "-sql" in sys.argv[1]:
-        config_file = "sql.cfg"
-        extension = ".sql"
-    else:
-        print("Unknown option - " + text)
-        sys.exit()
+    print(f"Unknown option - {text}")
+    sys.exit()
 
 confdir = os.getenv("my_config")
 scripts = os.getenv("scripts")

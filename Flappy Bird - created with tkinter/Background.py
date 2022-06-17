@@ -150,29 +150,29 @@ class Background(Canvas):
         """
 
         # Enquanto o atributo "stop" for False, a animação continuará em um loop infinito
-        if not self.__stop:
+        if self.__stop:
+            return
+        # Move as imagens de background na posição X
+        self.move(self.__background[0], -10, 0)
+        self.move(self.__background[1], -10, 0)
+        self.tag_lower(self.__background[0])
+        self.tag_lower(self.__background[1])
+        self.tag_lower(self.__background_default)
 
-            # Move as imagens de background na posição X
-            self.move(self.__background[0], -10, 0)
-            self.move(self.__background[1], -10, 0)
-            self.tag_lower(self.__background[0])
-            self.tag_lower(self.__background[1])
-            self.tag_lower(self.__background_default)
+        # Se a primeira imagem da lista tiver saído da área do widget, uma nova será criada depois da segunda imagem
+        if self.bbox(self.__background[0])[2] <= 0:
+            # Deleta a primeira imagem da lista (imagem que saiu da área do widget)
+            self.delete(self.__background[0])
+            self.__background.remove(self.__background[0])
 
-            # Se a primeira imagem da lista tiver saído da área do widget, uma nova será criada depois da segunda imagem
-            if self.bbox(self.__background[0])[2] <= 0:
-                # Deleta a primeira imagem da lista (imagem que saiu da área do widget)
-                self.delete(self.__background[0])
-                self.__background.remove(self.__background[0])
+            # Cria uma nova imagem a partir da última imagem da animação
+            width = self.bbox(self.__background[0])[2] + self.__width // 2
+            self.__background.append(
+                self.create_image(width, self.__height // 2, image=self.__bg_image)
+            )
 
-                # Cria uma nova imagem a partir da última imagem da animação
-                width = self.bbox(self.__background[0])[2] + self.__width // 2
-                self.__background.append(
-                    self.create_image(width, self.__height // 2, image=self.__bg_image)
-                )
-
-            # Executa novamente o método depois de um certo tempo
-            self.after(self.animation_speed, self.run)
+        # Executa novamente o método depois de um certo tempo
+        self.after(self.animation_speed, self.run)
 
     def stop(self):
         """

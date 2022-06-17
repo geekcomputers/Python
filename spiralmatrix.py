@@ -2,11 +2,8 @@ n = int(input("Enter the size of matrix:"))
 t = 1
 r = 0  # r stands for row
 c = 0  # c stands for column
-matrix = [[0 for x in range(n)] for y in range(n)]  # to initialise the matrix
-if n % 2 == 0:
-    k = n // 2
-else:
-    k = int((n / 2) + 1)
+matrix = [[0 for _ in range(n)] for _ in range(n)]
+k = n // 2 if n % 2 == 0 else int((n / 2) + 1)
 for i in range(k):
     while c < n:
         matrix[r][c] = t

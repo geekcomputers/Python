@@ -45,13 +45,7 @@ class XORCipher(object):
         while key > 255:
             key -= 255
 
-        # This will be returned
-        ans = []
-
-        for ch in content:
-            ans.append(chr(ord(ch) ^ key))
-
-        return ans
+        return [chr(ord(ch) ^ key) for ch in content]
 
     def decrypt(self, content, key):
         """
@@ -70,13 +64,7 @@ class XORCipher(object):
         while key > 255:
             key -= 255
 
-        # This will be returned
-        ans = []
-
-        for ch in content:
-            ans.append(chr(ord(ch) ^ key))
-
-        return ans
+        return [chr(ord(ch) ^ key) for ch in content]
 
     def encrypt_string(self, content, key=0):
         """
@@ -95,13 +83,7 @@ class XORCipher(object):
         while key > 255:
             key -= 255
 
-        # This will be returned
-        ans = ""
-
-        for ch in content:
-            ans += chr(ord(ch) ^ key)
-
-        return ans
+        return "".join(chr(ord(ch) ^ key) for ch in content)
 
     def decrypt_string(self, content, key=0):
         """
@@ -120,13 +102,7 @@ class XORCipher(object):
         while key > 255:
             key -= 255
 
-        # This will be returned
-        ans = ""
-
-        for ch in content:
-            ans += chr(ord(ch) ^ key)
-
-        return ans
+        return "".join(chr(ord(ch) ^ key) for ch in content)
 
     def encrypt_file(self, file, key=0):
         """

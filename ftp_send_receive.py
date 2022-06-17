@@ -22,7 +22,7 @@ ftp.cwd("/Enter the directory here/")
 
 def receive_file(filename="example.txt"):
     with open(filename, "wb") as out_file:
-        ftp.retrbinary("RETR " + filename, out_file.write, 1024)
+        ftp.retrbinary(f"RETR {filename}", out_file.write, 1024)
         ftp.quit()
 
 
@@ -34,5 +34,5 @@ def receive_file(filename="example.txt"):
 
 def send_file(filename="example.txt"):
     with open(filename, "rb") as in_file:
-        ftp.storbinary("STOR " + filename, in_file)
+        ftp.storbinary(f"STOR {filename}", in_file)
         ftp.quit()

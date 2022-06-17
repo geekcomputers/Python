@@ -9,7 +9,7 @@ def countingSort(array):
     count = [0] * 10
 
     # Store the count of each elements in count array
-    for i in range(0, size):
+    for i in range(size):
         count[array[i]] += 1
 
     # Store the cummulative count
@@ -25,7 +25,7 @@ def countingSort(array):
         i -= 1
 
     # Copy the sorted elements into original array
-    for i in range(0, size):
+    for i in range(size):
         array[i] = output[i]
 
 

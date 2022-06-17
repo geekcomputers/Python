@@ -5,7 +5,7 @@ from random import *
 
 x = 1
 
-for i in range(x):
+for _ in range(x):
     num = randint(1, 80)
     if num == 1:
         print("Reticulating splines...")

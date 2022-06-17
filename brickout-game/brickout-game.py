@@ -199,16 +199,13 @@ class Brick(pygame.sprite.Sprite):
         ballXVel = ball.getXVel()
         ballYVel = ball.getYVel()
 
-        if (
+        return (
             (ballX + ball._radius) >= brickX
             and (ballX + ball._radius) <= (brickX + brickW)
         ) and (
             (ballY - ball._radius) >= brickY
             and (ballY - ball._radius) <= (brickY + brickH)
-        ):
-            return True
-        else:
-            return False
+        )
 
 
 """
@@ -228,8 +225,8 @@ class BrickWall(pygame.sprite.Group):
 
         X = x
         Y = y
-        for i in range(3):
-            for j in range(4):
+        for _ in range(3):
+            for _ in range(4):
                 self._bricks.append(Brick(screen, width, height, X, Y))
                 X += width + (width / 7.0)
             Y += height + (height / 7.0)
@@ -279,10 +276,7 @@ class BrickWall(pygame.sprite.Group):
         check collisions between the ball and
         any of the bricks.
         """
-        for brick in self._bricks:
-            if brick.collide(ball):
-                return True
-        return False
+        return any(brick.collide(ball) for brick in self._bricks)
 
 
 # The game objects ball, paddle and brick wall
@@ -318,7 +312,7 @@ mgScore = pygame.font.SysFont("Comic Sans MS", 40)
 
 textsurfaceGameOver = mgGameOver.render("Game Over!", False, (0, 0, 0))
 textsurfaceWin = mgWin.render("You win!", False, (0, 0, 0))
-textsurfaceScore = mgScore.render("score: " + str(score), False, (0, 0, 0))
+textsurfaceScore = mgScore.render(f"score: {score}", False, (0, 0, 0))
 
 # -------- Main Program Loop -----------
 while not done:
@@ -352,7 +346,7 @@ while not done:
         # for counting and displaying the score
         if brickWall.collide(ball):
             score += 10
-        textsurfaceScore = mgScore.render("score: " + str(score), False, (0, 0, 0))
+        textsurfaceScore = mgScore.render(f"score: {str(score)}", False, (0, 0, 0))
         screen.blit(textsurfaceScore, (300, 0))
 
         # after scoring. because hit bricks are removed in the update-method
@@ -370,15 +364,14 @@ while not done:
 
         ball.draw()
 
-    else:  # game isn't running.
-        if isGameOver:  # player lose
-            screen.blit(textsurfaceGameOver, (0, 0))
-            textsurfaceScore = mgScore.render("score: " + str(score), False, (0, 0, 0))
-            screen.blit(textsurfaceScore, (300, 0))
-        elif brickWall.hasWin():  # player win
-            screen.blit(textsurfaceWin, (0, 0))
-            textsurfaceScore = mgScore.render("score: " + str(score), False, (0, 0, 0))
-            screen.blit(textsurfaceScore, (300, 0))
+    elif isGameOver:  # player lose
+        screen.blit(textsurfaceGameOver, (0, 0))
+        textsurfaceScore = mgScore.render(f"score: {str(score)}", False, (0, 0, 0))
+        screen.blit(textsurfaceScore, (300, 0))
+    elif brickWall.hasWin():  # player win
+        screen.blit(textsurfaceWin, (0, 0))
+        textsurfaceScore = mgScore.render(f"score: {str(score)}", False, (0, 0, 0))
+        screen.blit(textsurfaceScore, (300, 0))
 
     # --- Go ahead and update the screen with what we've drawn.
     pygame.display.flip()

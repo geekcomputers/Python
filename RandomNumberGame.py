@@ -6,6 +6,7 @@
     Thank you
 """
 
+
 import os
 import random
 
@@ -23,13 +24,13 @@ os.system("cls")
 n = int(input("Enter number of players : "))
 print()
 
-for i in range(0, n):
+for _ in range(n):
     name = input("Enter name of player : ")
     players.append(name)
 
 os.system("cls")
 
-for i in range(0, n):
+for i in range(n):
     orignum = random.randint(1, 100)
     print(players[i], "your turn :", end="\n\n")
     count = 0
@@ -49,11 +50,11 @@ for i in range(0, n):
     score.append(count + 1)
     os.system("cls")
 print("players :\n")
-for i in range(0, n):
+for i in range(n):
     print(players[i], "-", score[i])
 
 print("\n\nwinner is :\n")
-for i in range(0, n):
+for i in range(n):
     if score[i] == min(score):
         print(players[i])
 x = input()

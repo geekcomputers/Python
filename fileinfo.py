@@ -26,16 +26,14 @@ t_char = 0
 try:
     with open(file_name) as f:
         # Source: https://stackoverflow.com/a/1019572
-        count = sum(1 for line in f)
+        count = sum(1 for _ in f)
         f.seek(0)
-        t_char = sum([len(line) for line in f])
+        t_char = sum(len(line) for line in f)
 except FileNotFoundError as e:
     print(e)
     sys.exit(1)
-# When open item is a directory (python2)
 except IOError:
     pass
-# When open item is a directory (python3)
 except IsADirectoryError:
     pass
 

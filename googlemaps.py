@@ -18,7 +18,7 @@ url = (
     + "radius=1000"
 )
 
-r = requests.get(url + "query=" + query + "&key=" + key)
+r = requests.get(f"{url}query={query}&key={key}")
 
 x = r.json()
 y = x["results"]

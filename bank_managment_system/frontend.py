@@ -9,8 +9,7 @@ backend.connect_database()
 
 # A function for check that acc_no is integer or not
 def check_string_in_account_no(check_acc_no):
-    r = check_acc_no.isdigit()
-    return r
+    return check_acc_no.isdigit()
 
 
 # all buttons of page2
@@ -292,8 +291,7 @@ def withdraw():
 
                 def deduct_money():
                     new_money = entry12.get()
-                    result = backend.deduct_balance(new_money, acc_no)
-                    if result:
+                    if result := backend.deduct_balance(new_money, acc_no):
                         add_frame.grid_forget()
                         page2()
                     else:
@@ -457,14 +455,12 @@ def update():
                 if len(new_name) != 0:
                     # function in backend that updates name in table
                     backend.update_name_in_bank_table(new_name, acc_no)
-                    entry_name.destroy()
-                    submit_button.destroy()
-                    name_label.destroy()
                 else:
                     tkinter.messagebox.showinfo("Error", "Please fill blanks")
-                    entry_name.destroy()
-                    submit_button.destroy()
-                    name_label.destroy()
+
+                entry_name.destroy()
+                submit_button.destroy()
+                name_label.destroy()
 
             global entry_name
             global name_label
@@ -487,14 +483,12 @@ def update():
                 if len(new_age) != 0 and r:
                     # function in backend that updates name in table
                     backend.update_age_in_bank_table(new_age, acc_no)
-                    entry_name.destroy()
-                    submit_button.destroy()
-                    age_label.destroy()
                 else:
                     tkinter.messagebox.showinfo("Error", "Please enter age")
-                    entry_name.destroy()
-                    submit_button.destroy()
-                    age_label.destroy()
+
+                entry_name.destroy()
+                submit_button.destroy()
+                age_label.destroy()
 
             global age_label
             age_label = Label(update_customer_frame, text="Enter new Age:")
@@ -516,14 +510,12 @@ def update():
                 if len(new_address) != 0:
                     # function in backend that updates name in table
                     backend.update_address_in_bank_table(new_address, acc_no)
-                    entry_name.destroy()
-                    submit_button.destroy()
-                    address_label.destroy()
                 else:
                     tkinter.messagebox.showinfo("Error", "Please fill address")
-                    entry_name.destroy()
-                    submit_button.destroy()
-                    address_label.destroy()
+
+                entry_name.destroy()
+                submit_button.destroy()
+                address_label.destroy()
 
             global address_label
 

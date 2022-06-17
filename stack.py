@@ -3,8 +3,7 @@
 # Function to create an empty stack.
 # It initializes size of stack as 0
 def createStack():
-    stack = []
-    return stack
+    return []
 
 
 # Function to determine the size of the stack
@@ -40,17 +39,12 @@ def reverse(string):
     stack = createStack()
 
     # Push all characters of string to stack
-    for i in range(0, n, 1):
+    for i in range(n):
         push(stack, string[i])
 
     # Making the string empty since all
     # characters are saved in stack
-    string = ""
-
-    # Pop all characters of string and
-    # put them back to string
-    for i in range(0, n, 1):
-        string += pop(stack)
+    string = "".join(pop(stack) for _ in range(n))
 
     return string
 
@@ -58,6 +52,6 @@ def reverse(string):
 # Driver program to test above functions
 string = "GeeksQuiz"
 string = reverse(string)
-print("Reversed string is " + string)
+print(f"Reversed string is {string}")
 
 # This code is contributed by Yash

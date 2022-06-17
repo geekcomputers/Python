@@ -16,5 +16,5 @@ for number in range(1,a + 1) :
 print('\nthe number ' + number_to_divide + ' can be divided by:')
 for item in list_number_divided :
      print(f'{item}')
-if len(list_number_divided) <= 2 :
-    print(number_to_divide + ' is a prime number')
+if len(list_number_divided) <= 2:
+    print(f'{number_to_divide} is a prime number')

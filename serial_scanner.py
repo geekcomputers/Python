@@ -31,24 +31,23 @@ def ListAvailablePorts():
                 ser.close()
 
     elif platform == "linux":
-        for i in range(0, 255):
+        for i in range(255):
             try:
-                ser = serial.Serial("/dev/ttyUSB" + str(i))
+                ser = serial.Serial(f"/dev/ttyUSB{str(i)}")
             except serial.serialutil.SerialException:
                 pass
             else:
-                AvailablePorts.append("/dev/ttyUSB" + str(i))
+                AvailablePorts.append(f"/dev/ttyUSB{str(i)}")
                 ser.close()
     else:
         print(
             """This method was developed only for linux and windows
                 the current platform isn't recognised"""
         )
-    if len(AvailablePorts) == 0:
-        print("NO port in use")
-        return 0
-    else:
+    if AvailablePorts:
         return AvailablePorts
+    print("NO port in use")
+    return 0
 
 
 #  EXAMPLE OF HOW IT WORKS

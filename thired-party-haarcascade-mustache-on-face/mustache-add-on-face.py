@@ -29,8 +29,8 @@ while True:
             mustache2 = image_resize(mustache.copy(), width=nw)
 
             mw, mh, mc = mustache2.shape
-            for i in range(0, mw):
-                for j in range(0, mh):
+            for i in range(mw):
+                for j in range(mh):
 
                     if mustache2[i, j][3] != 0:  # alpha 0
                         roi_color[ny + int(nh / 2.0) + i, nx + j] = mustache2[i, j]

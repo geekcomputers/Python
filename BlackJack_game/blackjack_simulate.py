@@ -61,7 +61,7 @@ class Card:
         return fmt_card.format(suit="*-Back-*", rank="*-Back-*")
 
     def show(self):
-        print(str(self))
+        print(self)
 
 
 class Deck:
@@ -80,9 +80,9 @@ class Deck:
         return len(self.cards)
 
     def built(self):
+        suits = "Spades Heart Clubs Diamonds".split()
+        ranks = list(range(1, 14))
         for _ in range(self.num):
-            ranks = [x for x in range(1, 14)]
-            suits = "Spades Heart Clubs Diamonds".split()
             for suit in suits:
                 for rank in ranks:
                     card = Card(suit, rank)
@@ -144,7 +144,7 @@ class Chips:
     @bet_amount.setter
     def bet_amount(self, value):
         type_tips = "Please give a integer"
-        amount_tips = "Your chips should between 1 - " + str(self.amount) + " "
+        amount_tips = f"Your chips should between 1 - {str(self.amount)} "
         try:
             value = int(value)
         except ValueError:
@@ -157,13 +157,10 @@ class Chips:
             self._bet_amount = value
 
     def double_bet(self):
-        if self.can_double():
-            self._bet_amount *= 2
-            self.is_double = True
-        else:
-            over_tips = "Not enough chips || "
-            cannot_double = "CAN'T DO DOUBLE"
-            raise ValueError(Chips.get_tips(over_tips + cannot_double))
+        if not self.can_double():
+            raise ValueError(Chips.get_tips("Not enough chips || " + "CAN'T DO DOUBLE"))
+        self._bet_amount *= 2
+        self.is_double = True
 
     @property
     def insurance(self):
@@ -229,12 +226,11 @@ class User:
     def calculate_point(self):
         def _extract_rank():
             raw_ranks = [card.rank for card in self.hand]
-            cook_ranks = [10 if rank > 10 else rank for rank in raw_ranks]
-            return cook_ranks
+            return [min(rank, 10) for rank in raw_ranks]
 
         def _sum_up(ranks):
             rank_one = sum(ranks)
-            rank_eleven = sum([11 if rank == 1 else rank for rank in ranks])
+            rank_eleven = sum(11 if rank == 1 else rank for rank in ranks)
             # Over or has 2 Ace
             if (ranks[::-1] == ranks) and (1 in ranks):
                 return 11 + len(ranks) - 1
@@ -265,7 +261,7 @@ class User:
 
     def unveiling(self):
         self.calculate_point()
-        points_fmt = "My point is: {}".format(str(self.point))
+        points_fmt = f"My point is: {str(self.point)}"
         self.speak(points_fmt)
         self.unveil_card()
 
@@ -314,8 +310,8 @@ class Player(User):
         }
         enu_choice = enumerate((operation.get(p) for p in pattern), 1)
         dict_choice = dict(enu_choice)
+        choice_fmt = "\t[{index}] {operation}"
         for index, operator in dict_choice.items():
-            choice_fmt = "\t[{index}] {operation}"
             print(choice_fmt.format(index=index, operation=operator))
         return dict_choice
 
@@ -429,7 +425,7 @@ class BlackJack:
             if not self.bust:
                 self.is_surrender()
             self.winner = self.get_winner()
-            self.res = "Winner is " + self.winner
+            self.res = f"Winner is {self.winner}"
             os.system("clear")
             self.calculate_chips()
             self.result_exhibit()
@@ -526,7 +522,7 @@ class BlackJack:
 
     def chips_manage(self):
         if self.choice == "Insurance":
-            err = "The amount should under " + str(self.player.chips.current_amount())
+            err = f"The amount should under {str(self.player.chips.current_amount())}"
             pay_ins = self.get_select(
                 self.player.chips.current_amount(),
                 prompt="Insurance amount >> ",
@@ -548,10 +544,9 @@ class BlackJack:
             self.player.obtain_card(self.deck)
             if self.player.is_point(">", BLACK_JACK):
                 raise ValueError("Player BUST")
-            else:
-                self.dealer.strategy_trigger(self.deck)
-                if self.dealer.is_point(">", BLACK_JACK):
-                    raise ValueError("Dealer BUST")
+            self.dealer.strategy_trigger(self.deck)
+            if self.dealer.is_point(">", BLACK_JACK):
+                raise ValueError("Dealer BUST")
         elif self.choice != "Surrender":
             if not self.player.chips.is_insurance:
                 self.dealer.strategy_trigger(self.deck)

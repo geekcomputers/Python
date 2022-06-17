@@ -42,7 +42,7 @@ else:
     elif os.name in ("nt", "dos", "ce"):  # Check the os, if it's windows then
         myping = "ping -n 2 "  # This is the ping command
 
-    f = open("ping_" + subnet + ".log", "w")  # Open a logfile
+    f = open(f"ping_{subnet}.log", "w")
     for ip in range(2, 255):  # Set the ip variable for the range of numbers
         ret = subprocess.call(
             myping + str(subnet) + "." + str(ip),
@@ -51,10 +51,6 @@ else:
             stderr=subprocess.STDOUT,
         )  # Run the command pinging the servers
         if ret == 0:  # Depending on the response
-            f.write(
-                subnet + "." + str(ip) + " is alive" + "\n"
-            )  # Write out that you can receive a reponse
+            f.write(f"{subnet}.{str(ip)} is alive" + "\n")
         else:
-            f.write(
-                subnet + "." + str(ip) + " did not respond" + "\n"
-            )  # Write out you can't reach the box
+            f.write(f"{subnet}.{str(ip)} did not respond" + "\n")

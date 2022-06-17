@@ -81,10 +81,8 @@ class Settings(object):
 
         # Tenta abrir o arquivo parar leitura
         try:
-            file = open(self.settings_fp, "r")
-            data = loads(file.read())
-            file.close()
-
+            with open(self.settings_fp, "r") as file:
+                data = loads(file.read())
             # Define os atributos com os valores obtidos do arquivo desde que sejam
             # referentes à eventos ou estejam na lista de atributos permitidos.
 
@@ -92,24 +90,21 @@ class Settings(object):
                 if "event" in attr or attr in attributes:
                     setattr(Settings, attr, data[attr])
 
-        # Caso não exista um arquivo para obter as configurações, ele será criado
         except BaseException:
 
             # Caso não exista o diretório, o mesmo será criado.
             if not os.path.exists(os.path.split(self.settings_fp)[0]):
                 os.mkdir(os.path.split(self.settings_fp)[0])
 
-            file = open(self.settings_fp, "w")
+            with open(self.settings_fp, "w") as file:
+                data = {}
 
-            data = dict()
+                # Armazena no arquivo atributos com seus valores padrões desde que sejam
+                # referentes à eventos ou estejam na lista de atributos permitidos.
 
-            # Armazena no arquivo atributos com seus valores padrões desde que sejam
-            # referentes à eventos ou estejam na lista de atributos permitidos.
+                for attr in Settings.__dict__:
+                    if "event" in attr or attr in attributes:
+                        data[attr] = Settings.__dict__[attr]
 
-            for attr in Settings.__dict__:
-                if "event" in attr or attr in attributes:
-                    data[attr] = Settings.__dict__[attr]
-
-            # Coloca as informações no arquivo e o fecha
-            file.write(dumps(data, indent=2))
-            file.close()
+                # Coloca as informações no arquivo e o fecha
+                file.write(dumps(data, indent=2))

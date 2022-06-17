@@ -24,7 +24,7 @@ def counting_sort(tlist, k, n):
     count_list = [0] * (k + 1)
 
     # iterate the tgt_list to put into count list
-    for i in range(0, n):
+    for i in range(n):
         count_list[tlist[i]] += 1
 
     # Modify count list such that each index of count list is the combined sum of the previous counts

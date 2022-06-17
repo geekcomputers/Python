@@ -14,10 +14,10 @@ def merge(arr, l, m, r):
     R = [0] * (n2)
 
     # Copy data to temp arrays L[] and R[]
-    for i in range(0, n1):
+    for i in range(n1):
         L[i] = arr[l + i]
 
-    for j in range(0, n2):
+    for j in range(n2):
         R[j] = arr[m + 1 + j]
 
     # Merge the temp arrays back into arr[l..r]

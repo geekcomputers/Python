@@ -125,7 +125,7 @@ class Bird(Thread):
                 continue
 
         # Se houver alguma colisão o pássaro morre
-        if len(possible_collisions) >= 1:
+        if possible_collisions:
             self.__isAlive = False
 
         return not self.__isAlive

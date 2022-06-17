@@ -11,19 +11,15 @@ print("")
 import pickle
 import os
 
-# get array from pickle data
-infile = open('data/pickle-main', 'rb')
-# defining array
-array = pickle.load(infile)
-infile.close()
-
+with open('data/pickle-main', 'rb') as infile:
+    # defining array
+    array = pickle.load(infile)
 # get key if path exists
 keyacess = False
 path = 'data/pickle-key'
 if os.path.isfile('data/pickle-key'):
-    pklekey = open('data/pickle-key', 'rb')
-    key = pickle.load(pklekey)
-    pklekey.close()
+    with open('data/pickle-key', 'rb') as pklekey:
+        key = pickle.load(pklekey)
     if key == 'SKD0DW99SAMXI19#DJI9':
         keyacess = True
         print("key found & is correct")
@@ -70,18 +66,22 @@ while loopvar < 1:
     arraylen = len(array[fname])
 
     # if option 1 is selected
-    if a == 1:
+    if a == 0:
+        print("Saving your Data ...")
+        with open('data/pickle-main', 'wb') as outfile:
+            pickle.dump(array, outfile)
+        print("YOUR DATA HAS BEEN SAVED SUCESSFULLY!")
+        loopvar += 1
+
+    elif a == 1:
         print("")
         print("== YOUR CONTACT LIST ==")
         print("")
-        i1 = 0
         # print all names
-        while i1 < arraylen:
+        for i1 in range(arraylen):
             print(f"{array[fname][i1]} {array[lname][i1]},  {array[number][i1]}  {array[email][i1]}")
-            i1 += 1
         print("=======================")
 
-    # option 2 is selected
     elif a == 2:
         # get a new contact
         array[fname].append(input("First Name: "))
@@ -90,7 +90,6 @@ while loopvar < 1:
         array[email].append(input("email ID: "))
         arraylen += 1
 
-    # option 3
     elif a == 3:
         print("which contact would you like to delete? (enter first name)")
         print("enter '\nSTOP' to STOP deleting contact")
@@ -105,28 +104,21 @@ while loopvar < 1:
             # if no cotacts found
             if tempvar == 0:
                 print("no cantact matches first name provided")
-            # if only one contact is found
             elif tempvar == 1:
                 print("DO YOU WANT TO DELETE CONTACT")
                 for i in range(4):
                     print(array[i][rmvar])
                 tempinp = input("y/n?  ")
-                if tempinp == 'y' or tempinp == 'Y':
+                if tempinp in ['y', 'Y']:
                     for i in range(4):
                         del array[i][rmvar]
                     print("contact REMOVED.")
                 else:
                     print("failed to REMOVE contact")
-            # if more than one contact is found
             else:
                 print("there are more than one contact with same name")
-                # TODO
-
-
-
-    # if option 4 is selected
     elif a == 4:
-        if keyacess == True:
+        if keyacess:
             sortcounter = 1
             while sortcounter != 0:
                 # reset counter
@@ -140,21 +132,22 @@ while loopvar < 1:
                             array[j][i + 1] = temp
                         # add one for changing values
                         sortcounter += 1
-                    if array[fname][i].upper() == array[fname][i + 1].upper():
-                        # if first name are same, compare last
-                        if array[lname][i].upper() > array[lname][i + 1].upper():
-                            for j in range(4):
-                                temp = array[j][i]
-                                array[j][i] = array[j][i + 1]
-                                array[j][i + 1] = temp
-                            # add one for changing values
-                            sortcounter += 1
+                    if (
+                        array[fname][i].upper() == array[fname][i + 1].upper()
+                        and array[lname][i].upper()
+                        > array[lname][i + 1].upper()
+                    ):
+                        for j in range(4):
+                            temp = array[j][i]
+                            array[j][i] = array[j][i + 1]
+                            array[j][i + 1] = temp
+                        # add one for changing values
+                        sortcounter += 1
             # if no values are swapped, sortcounter = 0; no next loop
             print("CONTACTS ARE NOW SORTED")
         else:
             print("NEED CORRECT KEY TO ENABLE THIS FEATURE")
 
-    # option 9
     elif a == 9:
         if keyacess:
             # change prompt settings
@@ -168,16 +161,6 @@ while loopvar < 1:
             print("NEED CORRECT KEY TO ENABLE THIS FEATURE")
 
 
-    # if option 0 is selected
-    elif a == 0:
-        print("Saving your Data ...")
-        outfile = open('data/pickle-main', 'wb')
-        pickle.dump(array, outfile)
-        outfile.close()
-        print("YOUR DATA HAS BEEN SAVED SUCESSFULLY!")
-        loopvar += 1
-
-    # if no true option is selected
     else:
         print("!! PLEASE ENTER VALUE FROM GIVEN INTEGER")
 

@@ -23,7 +23,7 @@ def find_Triplets_with_zero_sum(arr, num):
     arr.sort()
 
     # Run a loop until l is less than r, if the sum of array[l], array[r] is equal to zero then print the triplet and break the loop
-    for index in range(0, num - 1):
+    for index in range(num - 1):
 
         # initialize left and right
         left = index + 1

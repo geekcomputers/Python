@@ -20,15 +20,14 @@ while True:
         # show connected client
         print("connected from", client_address)
         # sending acknowledgement to client that you are connected
-        connection.send(str("Now You are connected").encode("utf-8"))
+        connection.send("Now You are connected".encode("utf-8"))
 
         # receiving the message
         while True:
-            data = connection.recv(1024).decode("utf-8")
-            if data:
+            if data := connection.recv(1024).decode("utf-8"):
                 # message from client
                 print(list(client_address)[0], end="")
-                print(": %s" % data)
+                print(f": {data}")
                 # Enter your message to send to client
                 new_data = str(input("You: ")).encode("utf-8")
                 connection.send(new_data)

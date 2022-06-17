@@ -24,11 +24,10 @@ def checkBinod(file):  # Trying to find Binod In File Insted Of Manohar Ka Kotha
     with open(file, "r") as f:
         # master
         fileContent = f.read()
-    if "binod" in fileContent.lower():
-        print(f"**************Congratulations Binod found in {f}********************")
-        return True
-    else:
+    if "binod" not in fileContent.lower():
         return False
+    print(f"**************Congratulations Binod found in {f}********************")
+    return True
 
 
 if __name__ == "__main__":

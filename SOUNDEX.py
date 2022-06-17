@@ -68,7 +68,6 @@ def SOUNDEX(TERM: str):
     while len(Characters) < 4:
         Characters.append(0)
     if len(Characters) > 4:
-        Characters = Characters[0:4]
+        Characters = Characters[:4]
 
-    INDEX = "".join([str(C) for C in Characters])
-    return INDEX
+    return "".join([str(C) for C in Characters])

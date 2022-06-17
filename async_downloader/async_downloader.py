@@ -71,19 +71,11 @@ async def download_file_by_url(url, session=None):
     try:
         async with session.get(url) as response:
             if response.status == 404:
-                print(
-                    "\t{} from {} : Failed : {}".format(
-                        file_name, url, "404 - Not found"
-                    )
-                )
+                print(f"\t{file_name} from {url} : Failed : 404 - Not found")
                 return fail, url
 
-            if not response.status == 200:
-                print(
-                    "\t{} from {} : Failed : HTTP response {}".format(
-                        file_name, url, response.status
-                    )
-                )
+            if response.status != 200:
+                print(f"\t{file_name} from {url} : Failed : HTTP response {response.status}")
                 return fail, url
 
             data = await response.read()
@@ -92,17 +84,13 @@ async def download_file_by_url(url, session=None):
                 file.write(data)
 
     except asyncio.TimeoutError:
-        print("\t{} from {}: Failed : {}".format(file_name, url, "Timeout error"))
+        print(f"\t{file_name} from {url}: Failed : Timeout error")
 
     except aiohttp.client_exceptions.ClientConnectionError:
-        print(
-            "\t{} from {}: Failed : {}".format(
-                file_name, url, "Client connection error"
-            )
-        )
+        print(f"\t{file_name} from {url}: Failed : Client connection error")
 
     else:
-        print("\t{} from {} : Success".format(file_name, url))
+        print(f"\t{file_name} from {url} : Success")
         fail = False
 
     return fail, url

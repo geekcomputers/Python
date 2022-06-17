@@ -31,7 +31,7 @@ def load():
         jsonData = response.json()["query"]["random"]
         print("10 Random generted WIKI pages...")
         for idx, j in enumerate(jsonData):
-            print(str(idx) + ": ", j["title"])
+            print(f"{str(idx)}: ", j["title"])
         i = input(
             "Which page you want to see, enter index..[r: for retry,n: exit]?"
         ).lower()

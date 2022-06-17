@@ -15,7 +15,7 @@ def square(x, y):
     down()
     color("black", "white")
     begin_fill()
-    for count in range(4):
+    for _ in range(4):
         forward(50)
         left(90)
     end_fill()

@@ -9,6 +9,7 @@ Original file is located at
 ***Uncomment the line to install newspaper3k first***
 """
 
+
 # ! pip install newspaper3k
 
 import pickle
@@ -26,7 +27,7 @@ from newspaper import Article
 # Extracting links for all the pages (1 to 158) of boomlive fake news section
 fakearticle_links = []
 for i in range(1, 159):
-    url = "https://www.boomlive.in/fake-news/" + str(i)
+    url = f"https://www.boomlive.in/fake-news/{str(i)}"
     try:
         # this might throw an exception if something goes wrong.
         page = requests.get(url)
@@ -100,8 +101,6 @@ for Url in fakearticle_links:
         article.nlp()
     except Exception as error:
         print(f"exception : {error}")
-        pass
-
     # Scrape the contents of article
     title.append(article.title)  # extracts the title of the article
     text.append(article.text)  # extracts the whole text of article
@@ -155,7 +154,7 @@ TOIarticle_links = (
 
 # Extracting links for all the pages (2 to 125) of boomlive fake news section
 for i in range(2, 126):
-    url = "https://timesofindia.indiatimes.com/news/" + str(i)
+    url = f"https://timesofindia.indiatimes.com/news/{str(i)}"
 
     try:
         # send requests

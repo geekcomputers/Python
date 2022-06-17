@@ -37,7 +37,7 @@ def Times_of_India(userInput, ua):
         bol = input("For more details ->(y) (y/n) :: ")
         if bol == "y":
             url += data1.get("href")
-            print("%s" % url)
+            print(f"{url}")
 
             webbrowser.open(url)
 
@@ -65,7 +65,7 @@ def india_today(userInput, ua):
             k += 1
             print(bold_start, data1[j].get_text(), bold_end)
             bol = input("\nFor more details ->(y) (y/n) :: ")
-            if bol == "y" or bol == "Y":
+            if bol in ["y", "Y"]:
                 data2 = data[i].find("a")
                 url = data2.get("href")
                 webbrowser.open(url)
@@ -126,12 +126,5 @@ if __name__ == "__main__":
                 else:
                     print("\nThank you", "\U0001f600")
 
-        elif say == 2:
-            length = india_today(userInput, ua)
-
-            if length == 0:
-                print("Sorry No news")
-            else:
-                print("\nThank you", "\U0001f600")
     else:
         print("Sorry", "\N{expressionless face}")

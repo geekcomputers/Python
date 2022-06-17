@@ -24,7 +24,7 @@ def guessing_game(GUESS_RANGE, GUESS_LIMIT):
                 ATTEMPTS_TOOK = ATTEMPTS_ALLOWED - GUESS_LIMIT
                 print(f"You nailed it! And it only took you {ATTEMPTS_TOOK} attempts.")
                 done = True
-            if GUESS_LIMIT > 0 and not done:
+            if not done:
                 print(f"You still have {GUESS_LIMIT} chances left.\n")
                 GUESS = int(input("Try a new guess: "))
                 # Another input validation loop.
