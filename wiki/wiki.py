@@ -3,7 +3,7 @@
 
 import wikipedia
 import tkinter as tk
-from tkinter import *
+from tkinter import Label, Button, Entry, Text, messagebox, SOLID, GROOVE, StringVar, WORD, END
 #import PIL as ImageTK
 from tkinter import messagebox
 
@@ -64,20 +64,22 @@ class main():
         self.root.bind("<Return>", self.summary)
 
     def summary(self, event):
-        #self.searchbtn["text"] = "Searching..."
+        self.searchbtn["text"] = "Searching..."
         try:
-            self.query = wikipedia.page(self.question.get())
-        except:
-            self.query = wikipedia.page(self.question.get())[0]
+            self.query = wikipedia.page(self.question.get(), auto_suggest=True)
+            self.quesbox.delete(0, 'end')
+            self.answer.delete('1.0', END)
+            self.answer.insert(END, (self.query.summary))
+
+            self.answer.pack()
+        except Exception as e:
+            error_msg = f"{e}"
+            messagebox.showerror("Error", error_msg)
+
+        self.searchbtn["text"] = "Search"
+
 
         # Wikipeida page returns to many pages
-
-        self.quesbox.delete(0, 'end')
-        self.answer.delete('1.0', END)
-        self.answer.insert(END, (self.query.summary))
-
-        self.answer.pack()
-        #self.searchbtn["text"] = "Search"
 
 if __name__ == "__main__":
     root = tk.Tk()
