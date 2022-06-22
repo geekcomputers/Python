@@ -64,10 +64,14 @@ class main():
         self.root.bind("<Return>", self.summary)
 
     def summary(self, event):
+        #self.searchbtn["text"] = "Searching..."
         self.query = wikipedia.page(self.question.get())
+        self.quesbox.delete(0, 'end')
         self.answer.delete('1.0', END)
         self.answer.insert(END, (self.query.summary))
+
         self.answer.pack()
+        #self.searchbtn["text"] = "Search"
 
 if __name__ == "__main__":
     root = tk.Tk()
