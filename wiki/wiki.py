@@ -61,6 +61,8 @@ class main():
             fg="black",
         )
 
+        self.root.bind("<Return>", self.summary)
+
     def summary(self):
         self.query = wikipedia.page(self.question.get())
         self.answer.delete('1.0', END)
