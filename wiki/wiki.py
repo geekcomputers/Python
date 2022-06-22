@@ -65,7 +65,13 @@ class main():
 
     def summary(self, event):
         #self.searchbtn["text"] = "Searching..."
-        self.query = wikipedia.page(self.question.get())
+        try:
+            self.query = wikipedia.page(self.question.get())
+        except:
+            self.query = wikipedia.page(self.question.get())[0]
+
+        # Wikipeida page returns to many pages
+
         self.quesbox.delete(0, 'end')
         self.answer.delete('1.0', END)
         self.answer.insert(END, (self.query.summary))
