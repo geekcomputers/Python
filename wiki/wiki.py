@@ -63,7 +63,8 @@ class main():
 
     def summary(self):
         self.query = wikipedia.page(self.question.get())
-        self.answer.insert(END, (query.summary))
+        self.answer.delete('1.0', END)
+        self.answer.insert(END, (self.query.summary))
         self.answer.pack()
 
 if __name__ == "__main__":
