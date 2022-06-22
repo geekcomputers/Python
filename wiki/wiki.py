@@ -4,7 +4,7 @@
 import wikipedia
 import tkinter as tk
 from tkinter import *
-import PIL as ImageTK
+#import PIL as ImageTK
 from tkinter import messagebox
 
 
@@ -47,7 +47,7 @@ class main():
             relief=GROOVE,
             bg="#4cd137",
             bd=3,
-            command=self.summary,
+            command=lambda:self.summary("None"),
         )
         self.searchbtn.pack()
 
@@ -63,7 +63,7 @@ class main():
 
         self.root.bind("<Return>", self.summary)
 
-    def summary(self):
+    def summary(self, event):
         self.query = wikipedia.page(self.question.get())
         self.answer.delete('1.0', END)
         self.answer.insert(END, (self.query.summary))
