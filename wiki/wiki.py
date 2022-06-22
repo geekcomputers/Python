@@ -1,4 +1,3 @@
-# Made by abhra kanti Dubey
 # In this program you ask it about any topic and it will show you the data from wikipedia
 # pip install wikipedia
 
@@ -9,59 +8,65 @@ import PIL as ImageTK
 from tkinter import messagebox
 
 
-root = tk.Tk()
-root.title("WIKIPEDIA SEARCH")
-root.geometry("1920x1080")
+class main():
+    def __init__(self, root):
+        self.root = root
 
+        self.root.title("WIKIPEDIA SEARCH")
+        self.root.geometry("1920x1080")
 
-def summary():
-    query = wikipedia.page(question.get())
-    answer = Text(
-        root,
-        height=100,
-        width=160,
-        font=("Arial", 14),
-        wrap=WORD,
-        bg="#7CEBC6",
-        fg="black",
-    )
-    answer.insert(END, (query.summary))
-    answer.pack()
+        self.lbl1 = Label(
+                root,
+                text="WIKIPEDIA SUMMARY",
+                font=("Verdana", 25, "bold"),
+                width=50,
+                bg="yellow",
+                fg="red",
+                relief=SOLID,
+        )
+        self.lbl1.pack(padx=10, pady=15)
 
+        self.question = StringVar()
 
-lbl1 = Label(
-    root,
-    text="WIKIPEDIA SUMMARY TELLER BY ABHRA ",
-    font=("Verdana", 25, "bold"),
-    width=50,
-    bg="yellow",
-    fg="red",
-    relief=SOLID,
-)
-lbl1.pack(padx=10, pady=15)
+        self.quesbox = Entry(
+            root,
+            text="TELL ME YOUR QUESTION",
+            font=("Verdana", 20, "italic"),
+            width=80,
+            textvariable=self.question,
+            relief=GROOVE,
+            bd=10,
+        )
+        self.quesbox.pack()
 
-question = StringVar()
+        self.searchbtn = Button(
+            root,
+            text="SEARCH",
+            font=("Callibri", 18, "bold"),
+            width=30,
+            relief=GROOVE,
+            bg="#4cd137",
+            bd=3,
+            command=self.summary,
+        )
+        self.searchbtn.pack()
 
-quesbox = Entry(
-    root,
-    text="TELL ME YOUR QUESTION",
-    font=("Verdana", 20, "italic"),
-    width=80,
-    textvariable=question,
-    relief=GROOVE,
-    bd=10,
-).pack()
+        self.answer = Text(
+            root,
+            height=100,
+            width=160,
+            font=("Arial", 14),
+            wrap=WORD,
+            bg="#7CEBC6",
+            fg="black",
+        )
 
-searchbtn = Button(
-    root,
-    text="SEARCH",
-    font=("Callibri", 18, "bold"),
-    width=30,
-    relief=GROOVE,
-    bg="#4cd137",
-    bd=3,
-    command=summary,
-).pack()
+    def summary(self):
+        self.query = wikipedia.page(self.question.get())
+        self.answer.insert(END, (query.summary))
+        self.answer.pack()
 
-
-root.mainloop()
+if __name__ == "__main__":
+    root = tk.Tk()
+    main(root)
+    root.mainloop()
