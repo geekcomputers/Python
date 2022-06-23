@@ -10,10 +10,10 @@ take it to the store!'''
 #Methods = addToList, Total, Subtotal, returnList
 
 class GroceryList(dict):
-    def __init__(self):
-        self = {}
+	def __init__(self):
+		self = {}
                 
-    def addToList(self, item, price):
+    	def addToList(self, item, price):
 		self.update({item:price})
 	
 	def Total(self):
