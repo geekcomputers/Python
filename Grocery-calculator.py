@@ -15,22 +15,23 @@ class GroceryList(dict):
     	self = {}
 
     def addToList(self, item, price):
-            self.update({item:price})
+	self.update({item:price})
 
     def Total(self):
-		total = 0
-		for items in self:
-			total += (self[items])*.07 + (self[items])
-		return total
+	
+	total = 0
+	for items in self:
+		total += (self[items])*.07 + (self[items])
+	return total
 
     def Subtotal(self):
-		subtotal = 0
-		for items in self:
-			subtotal += self[items]
-		return subtotal
+	subtotal = 0
+	for items in self:
+		subtotal += self[items]
+	return subtotal
 
     def returnList(self):
-		return self
+	return self
 
 '''Test list should return:
 Total = 10.70
