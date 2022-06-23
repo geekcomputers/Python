@@ -10,28 +10,27 @@ take it to the store!'''
 #Methods = addToList, Total, Subtotal, returnList
 
 class GroceryList(dict):
+	def __init__(self):
+		self = {}
 
-    def __init__(self):
-    	self = {}
+	def addToList(self, item, price):
+		self.update({item:price})
 
-    def addToList(self, item, price):
-	self.update({item:price})
-
-    def Total(self):
+    	def Total(self):
 	
-	total = 0
-	for items in self:
-		total += (self[items])*.07 + (self[items])
-	return total
+		total = 0
+		for items in self:
+			total += (self[items])*.07 + (self[items])
+		return total
+	
+	def Subtotal(self):
+		subtotal = 0
+		for items in self:
+			subtotal += self[items]
+		return subtotal
 
-    def Subtotal(self):
-	subtotal = 0
-	for items in self:
-		subtotal += self[items]
-	return subtotal
-
-    def returnList(self):
-	return self
+	def returnList(self):
+		return self
 
 '''Test list should return:
 Total = 10.70
