@@ -11,7 +11,7 @@ take it to the store!'''
 
 class GroceryList(dict):
     def __init__(self):
-        self = {}]
+        self = {}
                 
     def addToList(self, item, price):
 		self.update({item:price})
