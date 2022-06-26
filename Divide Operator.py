@@ -3,17 +3,14 @@
 
 # Function to find division without 
 # using '/' operator 
-def division(num1, num2): 
-	
+def division(num1, num2): 	
 	if (num1 == 0): return 0
-	if (num2 == 0): return INT_MAX 
-	
+	if (num2 == 0): return INT_MAX 	
 	negResult = 0
 	
 	# Handling negative numbers 
 	if (num1 < 0): 
-		num1 = - num1 
-		
+		num1 = - num1 	
 		if (num2 < 0): 
 			num2 = - num2 
 		else: 
