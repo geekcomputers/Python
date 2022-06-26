@@ -5,7 +5,7 @@
 # using '/' operator 
 def division(num1, num2): 	
 	if (num1 == 0): return 0
-	if (num2 == 0): return INT_MAX 	
+	if (num2 == 0): return 2147483647 	
 	negResult = 0
 	
 	# Handling negative numbers 
@@ -14,11 +14,11 @@ def division(num1, num2):
 		if (num2 < 0): 
 			num2 = - num2 
 		else: 
-			negResult = true 
+			negResult = True 
 	# If num2 is negative, make it positive		
 	elif (num2 < 0): 
 		num2 = - num2 
-		negResult = true 
+		negResult = True 
 	
 	# if num1 is greater than equal to num2 
 	# subtract num2 from num1 and increase 
