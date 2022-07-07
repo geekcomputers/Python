@@ -197,15 +197,17 @@ def show2():
     result2.set("MESSAGE IS:-\n" + lol2)
     return
 
+if __name__ == "__main__":
+    main()
 
-bt2 = tkinter.Button(
-    root,
-    text="OK",
-    bg="white",
-    fg="black",
-    bd=5,
-    command=show2,
-    font=("calibri", 15, "bold", "underline"),
-)
-bt2.place(x=10, y=320)
-root.mainloop()
+    bt2 = tkinter.Button(
+        root,
+        text="OK",
+        bg="white",
+        fg="black",
+        bd=5,
+        command=show2,
+        font=("calibri", 15, "bold", "underline"),
+    )
+    bt2.place(x=10, y=320)
+    root.mainloop()
