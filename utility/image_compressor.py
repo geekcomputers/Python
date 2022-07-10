@@ -4,7 +4,6 @@ This script can also be used used as png to jpg converter
 """
 from PIL import Image
 
-# get the image
 # add the png image path here
 image = Image.open('utility\demo_files\mario.png')
 
