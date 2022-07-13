@@ -10,4 +10,5 @@ def is_armstrong_number(number):
         temp += rem ** length
     return temp == number
 
+number = int(input("Enter the number"))
 is_armstrong_number(number)
