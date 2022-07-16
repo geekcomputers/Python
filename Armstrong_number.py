@@ -11,5 +11,3 @@ def is_armstrong_number(number):
     return temp == number
 
 
-if __name__ == "__main__":
-    is_armstrong_number(int(input("Get an int input: ")))
