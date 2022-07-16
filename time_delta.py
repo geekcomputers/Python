@@ -1,8 +1,8 @@
 """Time Delta Solution """
 
 
-# -----------------------------------------------------------------------------
-# You are givent two timestams in the format: Day dd Mon yyyy hh:mm:ss +xxxx
+# ------------------------------------------------------------------------
+# You are given two timestamp in the format: Day dd Mon yyyy hh:mm:ss +xxxx
 # where +xxxx represents the timezone.
 
 # Input Format:
@@ -14,7 +14,7 @@
 # year is  < 3000.
 
 # Output Format:
-# Print the absoulte diffrence (t2 - t1) in seconds.
+# Print the absolute difference (t2 - t1) in seconds.
 
 # Sample Input:
 # 2
@@ -26,17 +26,15 @@
 # Sample Output:
 # 25200
 # 88200
-#------------------------------------------------------------------------------
+# ----------------------------------------------------------------------------
 
 # Imports
-import math
-import os 
-import random
-import re
-import sys
+
 import datetime
 
 # Complete the time_delta function below.
+
+
 def time_delta(t1, t2):
     """
     Calculate the time delta between two timestamps in seconds.
@@ -46,7 +44,6 @@ def time_delta(t1, t2):
     t2 = datetime.datetime.strptime(t2, '%a %d %b %Y %H:%M:%S %z')
 
     return (t1 - t2)
-
 
 
 if __name__ == '__main__':
@@ -61,7 +58,3 @@ if __name__ == '__main__':
         delta = time_delta(t1, t2)
         # print Delta with 1 Decimal Place
         print(round(delta.total_seconds(), 1))
-
-
-
-
