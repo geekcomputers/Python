@@ -1,7 +1,5 @@
 """Cartesian Product of Two Lists."""
 
-# Import
-
 
 # Cartesian Product of Two Lists
 def cartesian_product(list1, list2):
@@ -21,5 +19,3 @@ if __name__ == '__main__':
     list2 = [int(i) for i in list2]
 
     cartesian_product(list1, list2)
-
-
