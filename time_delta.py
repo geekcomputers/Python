@@ -1,4 +1,4 @@
-"""Time Delta Solution """
+"""Time Delta Solution."""
 
 
 # ------------------------------------------------------------------------
@@ -36,9 +36,7 @@ import datetime
 
 
 def time_delta(t1, t2):
-    """
-    Calculate the time delta between two timestamps in seconds.
-    """
+    """Calculate the time delta between two timestamps in seconds."""
     # Convert the timestamps to datetime objects
     t1 = datetime.datetime.strptime(t1, '%a %d %b %Y %H:%M:%S %z')
     t2 = datetime.datetime.strptime(t2, '%a %d %b %Y %H:%M:%S %z')
