@@ -21,4 +21,5 @@ def jpeg_res(filename):
 
    print("The resolution of the image is",width,"x",height)
 
+# Give the name of the image file name below
 jpeg_res("img1.jpg")
