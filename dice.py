@@ -1,17 +1,3 @@
-# Script Name	: dice.py
-# Author		: Craig Richards
-# Created		: 05th February 2017
-# Last Modified	:
-# Version		: 1.0
-
-# Modifications	:
-
-# Description	: This will randomly select two numbers,
-# like throwing dice, you can change the sides of the dice if you wish
-
-import random
-
-
 class Die(object):
     # A dice has a feature of number about how many sides it has when it's
     # established,like 6.
