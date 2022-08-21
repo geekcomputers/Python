@@ -1,41 +1,68 @@
+#TODO - refactor & clean code
 import csv
+import time
 from datetime import datetime
+from datetime import date
+from selenium import webdriver
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.common.action_chains import ActionChains
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.by import By
 
-import requests
-from bs4 import BeautifulSoup
+#TODO - Add input checking
+city = input("City >")
+state = input("State >")
 
-city = input("Enter City")
-url = "https://www.wunderground.com/weather/in/" + city
+url = 'https://www.wunderground.com'
 
-try:
-    response = requests.get(url)
-except requests.exceptions.RequestException as e:
-    print(e)
-    exit(1)
+#Supresses warnings and specifies the webdriver to run w/o a GUI
+options = Options()
+options.headless = True
+options.add_argument('log-level=3')
+driver = webdriver.Chrome(options=options)
 
-try:
-    response.raise_for_status()
-except Exception as e:
-    print(e)
-    exit(1)
+driver.get(url)
+#-----------------------------------------------------
+# Connected successfully to the site
+#Passes the city and state input to the weather sites search box
 
-html = response.text
-soup = BeautifulSoup(html, "lxml")
-out2 = soup.find(class_="small-12 medium-4 large-3 columns forecast-wrap")
-out3 = out2.find(class_="columns small-12")
-out4 = soup.find(class_="data-module additional-conditions")
+searchBox = driver.find_element(By.XPATH, '//*[@id="wuSearch"]')
+location = city + " " + state
 
-Time = datetime.now().strftime("%H:%M")
-Date = out2.find("span", attrs={"class": "date"}).get_text()
-Temperature = out2.find("span", attrs={"class": "temp"}).get_text()
-Temperature = " ".join(Temperature.split())
-Precipitation = (
-    "Precipitate:" + out3.find("a", attrs={"class": "hook"}).get_text().split(" ", 1)[0]
+action = ActionChains(driver)
+searchBox.send_keys(location)
+element = WebDriverWait(driver, 10).until(
+    EC.presence_of_element_located((By.XPATH, '//*[@id="wuForm"]/search-autocomplete/ul/li[2]/a/span[1]'))
 )
-other = out3.find("a", attrs={"class": "module-link"}).get_text().split(".")
-sky = other[0]
-Wind = other[2].strip()
+searchBox.send_keys(Keys.RETURN)
+#-----------------------------------------------------
+#Gather weather data
+#City - Time - Date - Temperature - Precipitation - Sky - Wind
+
+#waits till the page loads to begin gathering data
+precipitationElem = WebDriverWait(driver, 10).until(
+    EC.presence_of_element_located((By.XPATH, '//*[@id="inner-content"]/div[3]/div[1]/div/div[3]/div/lib-city-today-forecast/div/div[1]/div/div/div/a[1]'))
+)
+precipitationElem = driver.find_element(By.XPATH, '//*[@id="inner-content"]/div[3]/div[1]/div/div[3]/div/lib-city-today-forecast/div/div[1]/div/div/div/a[1]')
+precip = "Precipitation:" + precipitationElem.text.split()[0]
+
+windAndSkyElem = driver.find_element(By.XPATH, '//*[@id="inner-content"]/div[3]/div[1]/div/div[3]/div/lib-city-today-forecast/div/div[1]/div/div/div/a[2]')
+description = windAndSkyElem.text.split(". ")
+sky = description[0]
+temp = description[1]
+wind = description[2]
+
+#Format the date and time
+time = datetime.now().strftime("%H:%M")
+today = date.today()
+date = today.strftime("%b-%d-%Y")
+
+print(city, time, date, temp, precip, sky, wind)
 
 with open("weather.csv", "a") as new_file:
     csv_writer = csv.writer(new_file)
-    csv_writer.writerow([city, Time, Date, Temperature, Precipitation, sky, Wind])
+    csv_writer.writerow([city, time, date, temp, precip, sky, wind])
+
+driver.close()
