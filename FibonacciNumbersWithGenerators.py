@@ -1,4 +1,4 @@
-def fibonacciGenerator(n = None):
+def fibonacci_generator(n = None):
     """
         Generating function up to n fibonacci numbers iteratively
         Params:
