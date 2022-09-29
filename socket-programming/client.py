@@ -10,7 +10,7 @@ server = input("Enter Server IP: ")
 s.connect((server, 12345))
 # receive message from server connection successfully established
 data = s.recv(1024).decode("utf-8")
-print(server + ": " + data)
+print(f"{server}: {data}")
 
 while True:
     # send message to server
@@ -18,7 +18,7 @@ while True:
     s.sendall(new_data)
     # receive message from server
     data = s.recv(1024).decode("utf-8")
-    print(server + ": " + data)
+    print(f"{server}: {data}")
 
 # close connection
 s.close()

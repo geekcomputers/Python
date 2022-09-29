@@ -14,9 +14,8 @@ class producer(threading.Thread):
         while self.event.is_set():
             print("sub thread")
             sleep(2)
-        else:
-            print("sub thread end")
-            exit()
+        print("sub thread end")
+        exit()
 
 
 def handler_thread(event):

@@ -23,7 +23,7 @@ class Main(tk.Tk):
         # ----- Now Getting X and Y Coordinates
         _x = int(_com_scr_w / 2 - _my_w / 2)
         _y = int(_com_scr_h / 2 - _my_h / 2)
-        _geo_string = str(_my_w) + "x" + str(_my_h) + "+" + str(_x) + "+" + str(_y)
+        _geo_string = f"{_my_w}x{_my_h}+{_x}+{_y}"
         self.geometry(_geo_string)
         # ----- Geometry Setting Completed Now Disabling Resize Screen Button -----
         self.resizable(width=False, height=False)

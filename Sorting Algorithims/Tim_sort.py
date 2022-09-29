@@ -32,9 +32,9 @@ def merge(arr, l, m, r):
     # left and right array
     len1, len2 = m - l + 1, r - m
     left, right = [], []
-    for i in range(0, len1):
+    for i in range(len1):
         left.append(arr[l + i])
-    for i in range(0, len2):
+    for i in range(len2):
         right.append(arr[m + 1 + i])
 
     i, j, k = 0, 0, l
@@ -100,7 +100,7 @@ def timSort(arr, n):
 # utility function to print the Array
 def printArray(arr, n):
 
-    for i in range(0, n):
+    for i in range(n):
         print(arr[i], end=" ")
     print()
 

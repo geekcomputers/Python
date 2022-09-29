@@ -66,7 +66,7 @@ def calc(term):
 
     for func in functions:
         if func in term:
-            withmath = "math." + func
+            withmath = f"math.{func}"
             term = term.replace(func, withmath)
 
     try:
@@ -114,19 +114,14 @@ def main():
         + "- 12mod3\n\nEnter quit to exit"
     )
 
-    if sys.version_info.major >= 3:
-        while True:
+    while True:
+        if sys.version_info.major >= 3:
             k = input("\nWhat is ")
-            if k == "quit":
-                break
-            result(k)
-
-    else:
-        while True:
+        else:
             k = raw_input("\nWhat is ")
-            if k == "quit":
-                break
-            result(k)
+        if k == "quit":
+            break
+        result(k)
 
 
 if __name__ == "__main__":

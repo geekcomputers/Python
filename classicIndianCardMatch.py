@@ -73,7 +73,7 @@ random.shuffle(combinedDeck)
 print("....decks have been combined and shuffled...\n")
 print("------------------------------------------\n")
 input("Enter a key to cut the deck..\n")
-player1 = combinedDeck[0:52]
+player1 = combinedDeck[:52]
 player2 = combinedDeck[52:]
 print(
     "Deck has been split into two and Human get a half and computer gets the other...\n"
@@ -93,11 +93,11 @@ while (
     len(player1) != 0 and len(player2) != 0
 ):  # this needs a fix as it goes on an infinite loop on a success.
     switchPlayer = True
-    while switchPlayer == True:
+    while switchPlayer:
         for card in range(len(player1)):
             input("Enter any key to place a card!!!\n")
             currentPlayer1Card = player1[card].rank
-            print("Your current card's rank: {}".format(currentPlayer1Card))
+            print(f"Your current card's rank: {currentPlayer1Card}")
             centerPile.append(player1[card])
             player1.pop(card)
             switchPlayer = False
@@ -108,12 +108,12 @@ while (
                 )
             break
     while switchPlayer == False:
+        switchPlayer = True
         for card in range(len(player2)):
             currentPlayer2Card = player2[card].rank
-            print("Computer's current card's rank: {}".format(currentPlayer2Card))
+            print(f"Computer's current card's rank: {currentPlayer2Card}")
             centerPile.append(player2[card])
             player2.pop(card)
-            switchPlayer = True
             if currentPlayer1Card == currentPlayer2Card:
                 player2 = player2 + centerPile
                 print("Computer got a match and takes all the cards from center pile..")
@@ -121,4 +121,4 @@ while (
 
 print("GAME OVER!!!\n")
 
-print("Human has {} cards and computer has {}..".format(len(player1), len(player2)))
+print(f"Human has {len(player1)} cards and computer has {len(player2)}..")

@@ -11,12 +11,11 @@ def input_par():
     print("Enter the color for the text(r, g, b): ")
     color_value = [int(i) for i in input().split(" ")]
     return text, size, color_value
-    pass
 
 
 def main():
     path_to_image = sys.argv[1]
-    image_file = Image.open(path_to_image + ".jpg")
+    image_file = Image.open(f"{path_to_image}.jpg")
     image_file = image_file.convert("RGBA")
     pixdata = image_file.load()
 
@@ -47,8 +46,7 @@ def main():
 
     print("Enter the file name: ")
     file_name = str(input())
-    image_file.save(file_name + ".jpg")
-    pass
+    image_file.save(f"{file_name}.jpg")
 
 
 if __name__ == "__main__":

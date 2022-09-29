@@ -88,7 +88,7 @@ def score(source_data: list, weights: list, *args) -> list:
     final_scores = [0 for i in range(len(score_lists[0]))]
 
     # generate final scores
-    for i, slist in enumerate(score_lists):
+    for slist in score_lists:
         for j, ele in enumerate(slist):
             final_scores[j] = final_scores[j] + ele
 
@@ -118,10 +118,7 @@ def score_columns(source_data: list, columns: list, weights: list) -> list:
         list: Source data with the score of the set appended at as the last element.
     """
 
-    temp_data = []
-    for item in source_data:
-        temp_data.append([item[c] for c in columns])
-
+    temp_data = [[item[c] for c in columns] for item in source_data]
     if len(weights) > len(columns):
         weights = [weights[item] for item in columns]
 

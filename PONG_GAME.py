@@ -99,17 +99,11 @@ def draw(canvas):
         or ball_pos[1] >= (paddle1_pos + PAD_HEIGHT / 2 + HEIGHT / 2)
     ) and ball_pos[0] == (PAD_WIDTH + BALL_RADIUS):
         score2 += 1
-    else:
-        pass
-
     if (
         ball_pos[1] <= (paddle2_pos + HEIGHT / 2 - PAD_HEIGHT / 2)
         or ball_pos[1] >= (paddle2_pos + PAD_HEIGHT / 2 + HEIGHT / 2)
     ) and ball_pos[0] == (WIDTH - PAD_WIDTH - BALL_RADIUS):
         score1 += 1
-    else:
-        pass
-
     canvas.draw_text(str(score1), (250, 30), 40, "White")
     canvas.draw_text(str(score2), (330, 30), 40, "White")
 
@@ -129,9 +123,9 @@ def keydown(key):
 
 def keyup(key):
     global paddle1_vel, paddle2_vel
-    if key == simplegui.KEY_MAP["down"] or key == simplegui.KEY_MAP["up"]:
+    if key in [simplegui.KEY_MAP["down"], simplegui.KEY_MAP["up"]]:
         paddle1_vel = 0
-    if key == simplegui.KEY_MAP["w"] or key == simplegui.KEY_MAP["s"]:
+    if key in [simplegui.KEY_MAP["w"], simplegui.KEY_MAP["s"]]:
         paddle2_vel = 0
 
 

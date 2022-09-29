@@ -21,11 +21,11 @@ class image2pdf:
         if self.isEmpty(pictures):
             print(" [Error] there are no pictrues in the directory ! ")
             raise Exception(" [Error] there are no pictrues in the directory !")
-        print("pictures are : \n {}".format(pictures))
+        print(f"pictures are : \n {pictures}")
         return pictures
 
     def isEmpty(self, items):
-        return True if len(items) == 0 else False
+        return len(items) == 0
 
     def convertPictures(self):
         for picture in self.getPictures():

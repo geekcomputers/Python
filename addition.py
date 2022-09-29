@@ -3,7 +3,7 @@ print()
 
 a = True
 
-while a == True:
+while a:
 
     number1 = int(input("enter first number:"))
     number2 = int(input("enter second number:"))

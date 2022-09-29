@@ -23,7 +23,7 @@ def main():
     if os.path.exists(CheckDir):  # Checks if the dir exists
         print("The directory exists")
     else:
-        print("No directory found for " + CheckDir)  # Output if no directory
+        print(f"No directory found for {CheckDir}")
         print()
         option = input("Would you like this directory create? y/n: ")
         if option == "n":
@@ -31,7 +31,7 @@ def main():
             exit()
         if option == "y":
             os.makedirs(CheckDir)  # Creates a new dir for the given name
-            print("Directory created for " + CheckDir)
+            print(f"Directory created for {CheckDir}")
         else:
             print("Not an option. Exiting")
             exit()

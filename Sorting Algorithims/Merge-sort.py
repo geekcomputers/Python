@@ -5,19 +5,17 @@ lst = []  # declaring list l
 n = int(input("Enter number of elements in the list: "))  # taking value from user
 
 for i in range(n):
-    temp = int(input("Enter element" + str(i + 1) + ": "))
+    temp = int(input(f"Enter element{str(i + 1)}: "))
     lst.append(temp)
 
 
 def merge(ori_lst, left, mid, right):
     L, R = [], []  # PREPARE TWO TEMPORARY LIST TO HOLD ELEMENTS
-    for i in range(left, mid):  # LOADING
-        L.append(ori_lst[i])
-    for i in range(mid, right):  # LOADING
-        R.append(ori_lst[i])
+    L.extend(ori_lst[i] for i in range(left, mid))
+    R.extend(ori_lst[i] for i in range(mid, right))
     base = left  # FILL ELEMENTS BACK TO ORIGINAL LIST START FROM INDEX LEFT
     # EVERY LOOP CHOOSE A SMALLER ELEMENT FROM EITHER LIST
-    while len(L) > 0 and len(R) > 0:
+    while L and R:
         if L[0] < R[0]:
             ori_lst[base] = L[0]
             L.remove(L[0])
@@ -26,11 +24,11 @@ def merge(ori_lst, left, mid, right):
             R.remove(R[0])
         base += 1
     # UNLOAD THE REMAINER
-    while len(L) > 0:
+    while L:
         ori_lst[base] = L[0]
         L.remove(L[0])
         base += 1
-    while len(R) > 0:
+    while R:
         ori_lst[base] = R[0]
         R.remove(R[0])
         base += 1

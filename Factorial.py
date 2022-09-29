@@ -2,11 +2,7 @@ import sys
 
 
 def factorial(num: int):
-    if num >= 1:
-        return num * factorial(num - 1)
-
-    else:
-        return 1
+    return num * factorial(num - 1) if num >= 1 else 1
 
 
 try:

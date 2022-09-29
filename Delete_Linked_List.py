@@ -22,10 +22,9 @@ class Linked_List:
         temp = self.head
         if temp is None:
             return "Can't Delete!"
-        else:
-            if temp.data == key:
-                self.head = temp.next
-                temp = None
+        if temp.data == key:
+            self.head = temp.next
+            temp = None
         while temp is not None:
             prev = temp
             temp = temp.next

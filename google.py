@@ -16,14 +16,8 @@ import requests
 
 
 def main():
-    if len(sys.argv) > 1:
-        keyword = " ".join(sys.argv[1:])
-    else:
-        # if no keyword is entered, the script would search for the keyword
-        # copied in the clipboard
-        keyword = pyperclip.paste()
-
-    res = requests.get("http://google.com/search?q=" + keyword)
+    keyword = " ".join(sys.argv[1:]) if len(sys.argv) > 1 else pyperclip.paste()
+    res = requests.get(f"http://google.com/search?q={keyword}")
     res.raise_for_status()
     soup = bs4.BeautifulSoup(res.text)
     linkElems = soup.select(".r a")

@@ -24,7 +24,7 @@ responses = [
 ]
 print("Hi! I am the magic 8 ball, what's your name?")
 name = input()
-print("Hello!" + name)
+print(f"Hello!{name}")
 
 
 def magic8Ball():

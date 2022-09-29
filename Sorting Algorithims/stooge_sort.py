@@ -14,7 +14,7 @@ def stooge_sort_(arr, l, h):
         arr[h] = t
 
     # If there are more than 2 elements in array
-    if h - l + 1 > 2:
+    if h - l > 1:
         t = (int)((h - l + 1) / 3)
 
         # Recursively sort first 2 / 3 elements

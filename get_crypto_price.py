@@ -14,12 +14,12 @@ def getprice(symbol, exchange_id):
     try:
         v_price = exchange.fetch_ticker(symbol)
         r_price = v_price["info"]["lastPrice"]
-        if symbol_1[1] == "USD" or symbol_1[1] == "USDT":
-            v_return = "{:.2f} {}".format(float(r_price), symbol_1[1])
-            return v_return
-        else:
-            v_return = "{:.8f} {}".format(float(r_price), symbol_1[1])
-            return v_return
+        return (
+            "{:.2f} {}".format(float(r_price), symbol_1[1])
+            if symbol_1[1] in ["USD", "USDT"]
+            else "{:.8f} {}".format(float(r_price), symbol_1[1])
+        )
+
     except (ccxt.ExchangeError, ccxt.NetworkError) as error:
         # add necessary handling or rethrow the exception
         return "Got an error", type(error).__name__, error.args

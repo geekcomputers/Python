@@ -23,7 +23,7 @@ def new_game():
     random.shuffle(card1)
     state = 0
     exposed = []
-    for i in range(0, 16, 1):
+    for i in range(16):
         exposed.insert(i, False)
 
 
@@ -47,7 +47,7 @@ def mouseclick(pos):
 def draw(canvas):
     global card1
     gap = 0
-    for i in range(0, 16, 1):
+    for i in range(16):
         if exposed[i] == False:
             canvas.draw_polygon(
                 [[0 + gap, 0], [0 + gap, 100], [50 + gap, 100], [50 + gap, 0]],

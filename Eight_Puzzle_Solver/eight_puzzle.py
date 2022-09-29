@@ -25,10 +25,7 @@ class Node:
         self.size = len(state)
         self.depth = depth
         self.optimizer = optimizer
-        if moves is None:
-            self.moves = list()
-        else:
-            self.moves = moves
+        self.moves = [] if moves is None else moves
 
     def getAvailableActions(self):
         """
@@ -37,7 +34,7 @@ class Node:
         0 - Left    1 - Right   2 - Top     3 - Bottom
         Restrictions: state is self.size x self.size Array
         """
-        action = list()
+        action = []
         for i in range(self.size):
             for j in range(self.size):
                 if self.state[i][j] == 0:
@@ -121,7 +118,7 @@ class Node:
         """
         for i in range(self.size):
             for j in range(self.size):
-                if i == j and j == self.size - 1:
+                if i == j == self.size - 1:
                     continue
                 if self.state[i][j] != (i) * self.size + (j + 1):
                     return False
@@ -149,7 +146,7 @@ class Node:
         ans = 0
         for i in range(self.size):
             for j in range(self.size):
-                if self.state[i][j] != 0 and self.state[i][j] != i * 3 + (j + 1):
+                if self.state[i][j] not in [0, i * 3 + (j + 1)]:
                     ans = ans + 1
         return ans
 
@@ -160,107 +157,67 @@ class Node:
 
     def __gt__(self, other):
         if self.optimizer == 0:
-            if self.getManhattanDistance() > other.getManhattanDistance():
-                return True
-            else:
-                return False
+            return self.getManhattanDistance() > other.getManhattanDistance()
         elif self.optimizer == 1:
-            if self.getHammingDistance() > other.getHammingDistance():
-                return True
-            else:
-                return False
+            return self.getHammingDistance() > other.getHammingDistance()
         elif self.optimizer == 2:
-            if (
+            return (
                 self.getHammingDistance() + self.getManhattanDistance()
                 > other.getHammingDistance() + self.getManhattanDistance()
-            ):
-                return True
-            else:
-                return False
+            )
+
         return True
 
     def __ge__(self, other):
         if self.optimizer == 0:
-            if self.getManhattanDistance() >= other.getManhattanDistance():
-                return True
-            else:
-                return False
+            return self.getManhattanDistance() >= other.getManhattanDistance()
         elif self.optimizer == 1:
-            if self.getHammingDistance() >= other.getHammingDistance():
-                return True
-            else:
-                return False
+            return self.getHammingDistance() >= other.getHammingDistance()
         elif self.optimizer == 2:
-            if (
+            return (
                 self.getHammingDistance() + self.getManhattanDistance()
                 >= other.getHammingDistance() + self.getManhattanDistance()
-            ):
-                return True
-            else:
-                return False
+            )
+
         return True
 
     def __lt__(self, other):
         if self.optimizer == 0:
-            if self.getManhattanDistance() < other.getManhattanDistance():
-                return True
-            else:
-                return False
+            return self.getManhattanDistance() < other.getManhattanDistance()
         elif self.optimizer == 1:
-            if self.getHammingDistance() < other.getHammingDistance():
-                return True
-            else:
-                return False
+            return self.getHammingDistance() < other.getHammingDistance()
         elif self.optimizer == 2:
-            if (
+            return (
                 self.getHammingDistance() + self.getManhattanDistance()
                 < other.getHammingDistance() + self.getManhattanDistance()
-            ):
-                return True
-            else:
-                return False
+            )
+
         return True
 
     def __le__(self, other):
         if self.optimizer == 0:
-            if self.getManhattanDistance() <= other.getManhattanDistance():
-                return True
-            else:
-                return False
+            return self.getManhattanDistance() <= other.getManhattanDistance()
         elif self.optimizer == 1:
-            if self.getHammingDistance() <= other.getHammingDistance():
-                return True
-            else:
-                return False
+            return self.getHammingDistance() <= other.getHammingDistance()
         elif self.optimizer == 2:
-            if (
+            return (
                 self.getHammingDistance() + self.getManhattanDistance()
                 <= other.getHammingDistance() + self.getManhattanDistance()
-            ):
-                return True
-            else:
-                return False
+            )
+
         return True
 
     def __eq__(self, other):
         if self.optimizer == 0:
-            if self.getManhattanDistance() == other.getManhattanDistance():
-                return True
-            else:
-                return False
+            return self.getManhattanDistance() == other.getManhattanDistance()
         elif self.optimizer == 1:
-            if self.getHammingDistance() == other.getHammingDistance():
-                return True
-            else:
-                return False
+            return self.getHammingDistance() == other.getHammingDistance()
         elif self.optimizer == 2:
-            if (
+            return (
                 self.getHammingDistance() + self.getManhattanDistance()
                 == other.getHammingDistance() + self.getManhattanDistance()
-            ):
-                return True
-            else:
-                return False
+            )
+
         return True
 
 
@@ -293,7 +250,7 @@ class Solver:
         if self.isSolvable() == False:
             return (None, None)
 
-        closed = list()
+        closed = []
         q = deque()
         q.append(Node(state=self.state, depth=0))
         while q:
@@ -315,17 +272,18 @@ class Solver:
         """
         if self.isSolvable() == False:
             return (None, None)
-        closed = list()
-        q = list()
-        q.append(Node(state=self.state, depth=0))
+        closed = []
+        q = [Node(state=self.state, depth=0)]
         while q:
             node = q.pop()
             if node.isGoalState():
                 return (node.moves, len(closed))
             if node.state not in closed:
                 closed.append(node.state)
-                for action in node.getAvailableActions():
-                    q.append(node.getResultFromAction(action))
+                q.extend(
+                    node.getResultFromAction(action)
+                    for action in node.getAvailableActions()
+                )
 
         return (None, None)
 
@@ -336,7 +294,7 @@ class Solver:
         """
         if self.isSolvable() == False:
             return (None, None)
-        closed = list()
+        closed = []
         q = PriorityQueue()
         q.put(Node(state=self.state, depth=0, optimizer=optimizer))
         while q:
@@ -357,7 +315,7 @@ class Solver:
         """
         if self.isSolvable() == False:
             return (None, None)
-        closed = dict()
+        closed = {}
         q = PriorityQueue()
         node = Node(state=self.state, depth=0)
         q.put((node.getManhattanDistance(), node))

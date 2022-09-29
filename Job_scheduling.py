@@ -72,10 +72,7 @@ class Scheduling:
 
         while k < len(self.tmp):
             self.job = self.tmp[k]
-            if self.job in self.jobs:
-                self.jobindex = self.jobs.index(self.job)
-            else:
-                self.jobindex = 0
+            self.jobindex = self.jobs.index(self.job) if self.job in self.jobs else 0
             self.dlineval = deadline[self.jobindex]
             self.ftest = k + 1
             k += 1
@@ -98,9 +95,8 @@ def main():
     ]
     # midresult stores jobs in sorting order of deadline
     midresult = []
-    for i in range(len(jobs)):
-        current_job = []
-        current_job.extend((jobs[i].deadline, jobs[i].profit, jobs[i].job_id))
+    for job_ in jobs:
+        current_job = [job_.deadline, job_.profit, job_.job_id]
         midresult.append(current_job)
     midresult.sort(key=lambda k: (k[0], -k[1]))
     (deadline, profit, jobs) = map(list, zip(*midresult))
@@ -112,7 +108,7 @@ def main():
     finalprofit = []
     finaldl = []
 
-    for i, item in enumerate(scheduled_jobs):
+    for item in scheduled_jobs:
         jobsindex = jobs.index(item)
         finalprofit.append(profit[jobsindex])
         finaldl.append(deadline[jobsindex])

@@ -16,10 +16,7 @@ def possibilities(board):
     l = []
 
     for i in range(len(board)):
-        for j in range(len(board)):
-
-            if board[i][j] == 0:
-                l.append((i, j))
+        l.extend((i, j) for j in range(len(board)) if board[i][j] == 0)
     return l
 
 
@@ -35,14 +32,8 @@ def random_place(board, player):
 # of their marks in a horizontal row
 def row_win(board, player):
     for x in range(len(board)):
-        win = True
-
-        for y in range(len(board)):
-            if board[x, y] != player:
-                win = False
-                continue
-
-        if win == True:
+        win = all(board[x, y] == player for y in range(len(board)))
+        if win:
             return win
     return win
 
@@ -51,14 +42,8 @@ def row_win(board, player):
 # of their marks in a vertical row
 def col_win(board, player):
     for x in range(len(board)):
-        win = True
-
-        for y in range(len(board)):
-            if board[y][x] != player:
-                win = False
-                continue
-
-        if win == True:
+        win = all(board[y][x] == player for y in range(len(board)))
+        if win:
             return win
     return win
 
@@ -66,11 +51,8 @@ def col_win(board, player):
 # Checks whether the player has three
 # of their marks in a diagonal row
 def diag_win(board, player):
-    win = True
     y = 0
-    for x in range(len(board)):
-        if board[x, x] != player:
-            win = False
+    win = all(board[x, x] == player for x in range(len(board)))
     if win:
         return win
     win = True
@@ -106,7 +88,7 @@ def play_game():
     while winner == 0:
         for player in [1, 2]:
             board = random_place(board, player)
-            print("Board after " + str(counter) + " move")
+            print(f"Board after {str(counter)} move")
             print(board)
             sleep(2)
             counter += 1
@@ -117,4 +99,4 @@ def play_game():
 
 
 # Driver Code
-print("Winner is: " + str(play_game()))
+print(f"Winner is: {str(play_game())}")

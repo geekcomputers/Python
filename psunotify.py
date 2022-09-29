@@ -17,8 +17,9 @@ br.set_handle_robots(False)
 page = input("Enter Page No:")
 # print type(page)
 p = urllib2.Request(
-    "https://www.google.co.in/search?q=gate+psu+2017+ext:pdf&start=" + page
+    f"https://www.google.co.in/search?q=gate+psu+2017+ext:pdf&start={page}"
 )
+
 ht = br.open(p)
 text = '<cite\sclass="_Rm">(.+?)</cite>'
 patt = re.compile(text)
@@ -28,7 +29,7 @@ int = 0
 while int < len(urls):
     urls[int] = urls[int].replace("<b>", "")
     urls[int] = urls[int].replace("</b>", "")
-    int = int + 1
+    int += 1
 
 print(urls)
 
@@ -36,14 +37,9 @@ for url in urls:
     try:
         temp = url.split("/")
         q = temp[len(temp) - 1]
-        if "http" in url:
-            r = urllib2.urlopen(url)
-        else:
-            r = urllib2.urlopen("http://" + url)
-        file = open("psu2" + q + ".pdf", "wb")
-        file.write(r.read())
-        file.close()
-
+        r = urllib2.urlopen(url) if "http" in url else urllib2.urlopen(f"http://{url}")
+        with open(f"psu2{q}.pdf", "wb") as file:
+            file.write(r.read())
         print("Done")
     except urllib2.URLError as e:
         print(

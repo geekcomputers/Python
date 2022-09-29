@@ -16,8 +16,7 @@ def SearchResults():
     for i in f:
         singleLink=[]
         singleRatio=[]
-        singleWrite=[]
-        singleWrite.append(i.strip("\n"))
+        singleWrite = [i.strip("\n")]
         checkString=i.replace("+","")
         searchString=i.replace("+","%2B")
         searchString=searchString.replace(" ","+")
@@ -25,11 +24,10 @@ def SearchResults():
         r = requests.get(searchString, headers=header)
         soup = bs4.BeautifulSoup(r.text, features="html.parser")
         elements = soup.select(".r a")
-        for g in elements:
-            lis.append(g.get("href"))
+        lis.extend(g.get("href") for g in elements)
         for k in lis:
             sentence=""
-            if (k[0] != "#") and k[0] != "/":
+            if k[0] not in ["#", "/"]:
                 checker = k[8:16]
                 if (checker != "webcache"):
                     rr = requests.get(k, headers=header, verify=False)
@@ -41,25 +39,24 @@ def SearchResults():
                     if(ratio>80):
                         singleLink.append(k)
                         singleRatio.append(ratio)
-        if(len(singleLink)>=4):
+        if (len(singleLink)>=4):
             singleLink=np.array(singleLink)
             singleRatio=np.array(singleRatio)
             inds=singleRatio.argsort()
             sortedLink=singleLink[inds]
             sortedFinalList=list(sortedLink[::-1])
             sortedFinalList=sortedFinalList[:4]
-            FinalResult.append(singleWrite+sortedFinalList)
-        elif(len(singleLink)<4) and len(singleLink)>0:
+        elif len(singleLink) > 0:
             singleLink = np.array(singleLink)
             singleRatio = np.array(singleRatio)
             inds = singleRatio.argsort()
             sortedLink = singleLink[inds]
             sortedFinalList = list(sortedLink[::-1])
-            sortedFinalList=sortedFinalList+(4-len(sortedFinalList))*[[" "]]
-            FinalResult.append(singleWrite + sortedFinalList)
+            sortedFinalList += (4-len(sortedFinalList))*[[" "]]
         else:
             sortedFinalList=[[" "]]*4
-            FinalResult.append(singleWrite+sortedFinalList)
+
+        FinalResult.append(singleWrite+sortedFinalList)
 
 
 SearchResults()

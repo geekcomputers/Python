@@ -3,8 +3,6 @@
 
 
 def angle_type():
-    angles = []
-
     myDict = {
         "All angles are less than 90°.": "Acute Angle Triangle",
         "Has a right angle (90°)": "Right Angle Triangle",
@@ -17,38 +15,24 @@ def angle_type():
 
     angle1 = int(input("Enter angle 1 : "))
 
-    if angle1 < 180 and angle1 > 0:
-        angles.append(angle1)
-
-    else:
+    if angle1 >= 180 or angle1 <= 0:
         print("Please enter a value less than 180°")
         angle1 = int(input())
-        angles.append(angle1)
-
     # Taking Angle 2
 
     angle2 = int(input("Enter angle2 : "))
 
-    if angle2 < 180 and angle2 > 0:
-        angles.append(angle2)
-
-    else:
+    if angle2 >= 180 or angle2 <= 0:
         print("Please enter a value less than 180°")
         angle2 = int(input("Enter angle 2 :"))
-        angles.append(angle2)
-
     # Taking Angle 3
 
     angle3 = int(input("Enter angle3 : "))
 
-    if angle3 < 180 and angle3 > 0:
-        angles.append(angle3)
-
-    else:
+    if angle3 >= 180 or angle3 <= 0:
         print("Please enter a value less than 180°")
         angle3 = int(input("Enter angle3 : "))
-        angles.append(angle3)
-
+    angles = [angle1, angle2, angle3]
     # Answer
 
     sum_of_angles = angle1 + angle2 + angle3
@@ -56,7 +40,7 @@ def angle_type():
         print("It is not a triangle!Please enter valid angles.")
         return -1
 
-    print("You have entered : " + str(angles))
+    print(f"You have entered : {angles}")
 
     if angle1 == 90 or angle2 == 90 or angle3 == 90:
         print(myDict.get("Has a right angle (90°)"))

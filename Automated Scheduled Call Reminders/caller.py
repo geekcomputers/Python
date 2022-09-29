@@ -42,7 +42,7 @@ def search():
         timestamp = datetime.now().strftime("%H:%M")
         five_minutes_prior = (timestamp + timedelta(minutes=5)).strftime("%H:%M")
         for doc in list_of_docs:
-            if doc["from"][0:5] == five_minutes_prior:
+            if doc["from"][:5] == five_minutes_prior:
                 phone_number = doc["phone"]
                 call = client.calls.create(
                     to=phone_number,

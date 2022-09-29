@@ -18,6 +18,7 @@ Full valid number (11 digits): 79927398713
 David Costell (DontEatThemCookies on GitHub)
 """
 
+
 # Input
 CC = input("Enter number to validate (e.g. 7992739871): ")
 if len(CC) < 10 or len(CC) > 10:
@@ -47,14 +48,15 @@ newdoubled = []
 for i in tobedoubled:
     if i > 9:
         splitdigit = str(i)
-        for index in range(0, len(splitdigit), 1):
-            newdoubled.append(splitdigit[index : index + 1])
+        newdoubled.extend(
+            splitdigit[index : index + 1] for index in range(len(splitdigit))
+        )
+
         tobedoubled.remove(i)
 newdoubled = [int(i) for i in newdoubled]
 
 # Unify all lists into one (luhnsum)
-luhnsum = []
-luhnsum.extend(tobedoubled)
+luhnsum = list(tobedoubled)
 luhnsum.extend(newdoubled)
 luhnsum.extend(remaining)
 

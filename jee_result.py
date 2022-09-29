@@ -26,7 +26,7 @@ while currentdate <= enddate:
     ct = 0
     # print currentdate
     yyyymmdd = currentdate.strftime("%Y/%m/%d")
-    ddmmyyyy = yyyymmdd[8:] + "/" + yyyymmdd[5:7] + "/" + yyyymmdd[:4]
+    ddmmyyyy = f"{yyyymmdd[8:]}/{yyyymmdd[5:7]}/{yyyymmdd[:4]}"
     print(ddmmyyyy)
     b.open("http://cbseresults.nic.in/jee/jee_2015.htm")
     b.select_form(nr=0)
@@ -37,7 +37,7 @@ while currentdate <= enddate:
     # print(fd.read())
     soup = BeautifulSoup(fd.read(), "html.parser")
 
-    for writ in soup.find_all("table"):
+    for _ in soup.find_all("table"):
         ct = ct + 1
     # print (ct)
     if ct == 6:

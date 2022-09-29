@@ -32,10 +32,9 @@ def local_weight(
     Return the weighted matrix.
     """
     weight = weighted_matrix(point, training_data_x, bandwidth)
-    W = (training_data.T * (weight * training_data)).I * (
+    return (training_data.T * (weight * training_data)).I * (
         training_data.T * weight * training_data_y.T
     )
-    return W
 
 
 def local_weight_regression(
@@ -81,8 +80,7 @@ def get_preds(training_data: np.mat, mcol_b: np.mat, tau: float) -> np.ndarray:
     """
     Get predictions with minimum error for each training data
     """
-    ypred = local_weight_regression(training_data, mcol_b, tau)
-    return ypred
+    return local_weight_regression(training_data, mcol_b, tau)
 
 
 def plot_preds(

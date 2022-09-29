@@ -123,7 +123,7 @@ def search_button(p1):
     try:
         cursor.execute(sql_command)
         results = cursor.fetchall()
-        w.errorOutput.configure(text=str(len(results)) + " results")
+        w.errorOutput.configure(text=f"{len(results)} results")
         index = 0
         if index >= 0 and index < len(results):
             w.outputNotice.delete(1.0, END)

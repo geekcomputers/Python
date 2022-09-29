@@ -53,7 +53,7 @@ if __name__ == '__main__':
 
     t = int(input())
 
-    for itr_t in range(t):
+    for _ in range(t):
         t1 = input()
 
         t2 = input()

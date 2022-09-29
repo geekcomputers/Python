@@ -22,10 +22,9 @@ def print_help():
 def mem():
     pattern = re.compile('^(\d*)([M|G]B)$')
     size = sys.argv[2].upper()
-    match = pattern.match(size)
-    if match:
-        num = int(match.group(1))
-        unit = match.group(2)
+    if match := pattern.match(size):
+        num = int(match[1])
+        unit = match[2]
         if unit == 'MB':
             s = ' ' * (num * 1024 * 1024)
         else:
@@ -54,13 +53,13 @@ def cpu():
         return
 
     if cores > cpu_num:
-        print("Invalid CPU Num(cpu_count="+str(cpu_num)+")")
+        print(f"Invalid CPU Num(cpu_count={str(cpu_num)})")
         return
 
     if cores is None or cores < 1:
         cores = 1
 
-    for i in range(cores):
+    for _ in range(cores):
         Process(target=deadloop).start()
 
 

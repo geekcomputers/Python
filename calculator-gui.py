@@ -396,9 +396,7 @@ class Main(tk.Tk):
         _my_height = 350
         _x = int(_com_width / 2 - _my_width / 2)
         _y = int(_com_height / 2 - _my_height / 2)
-        geo_string = (
-            str(_my_width) + "x" + str(_my_height) + "+" + str(_x) + "+" + str(_y)
-        )
+        geo_string = f"{_my_width}x{_my_height}+{_x}+{_y}"
         # ----- Setting Now -----
         self.geometry(geo_string)
         self.resizable(width=False, height=False)
