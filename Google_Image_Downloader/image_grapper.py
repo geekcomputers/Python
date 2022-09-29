@@ -63,7 +63,7 @@ def search_for_image():
     counter = 0
     for re in images:
         rs = requests.get(re)
-        with open("img" + str(counter) + ".jpg", "wb") as file:
+        with open(f"img{str(counter)}.jpg", "wb") as file:
             file.write(rs.content)
 
             # urlretrieve(re, 'img' + str(count) + '.jpg')
@@ -73,9 +73,6 @@ def search_for_image():
 
 
 def download_wallpapers_1080p():
-    cont = set()  # Stores the links of images
-    temp = set()  # Refines the links to download images
-
     print("Enter data to download wallpapers: ")
     data = input()
     search_query = {"q": data}
@@ -85,28 +82,23 @@ def download_wallpapers_1080p():
     request = Request(g, headers=usr_agent)
     r = urlopen(request).read()
     sew = BeautifulSoup(r, "html.parser")
-    count = 0
-    for links in sew.find_all("a"):
-        if "wallpaperscraft.com/download" in links.get("href"):
-            cont.add(links.get("href"))
-    for re in cont:
-        # print all valid links
-        # print('https://wallpaperscraft.com/image/' + re[31:-10] + '_' + re[-9:] + '.jpg')
+    cont = {
+        links.get("href")
+        for links in sew.find_all("a")
+        if "wallpaperscraft.com/download" in links.get("href")
+    }
 
-        temp.add(
-            "https://wallpaperscraft.com/image/" + re[31:-10] + "_" + re[-9:] + ".jpg"
-        )
+    temp = {
+        f"https://wallpaperscraft.com/image/{re[31:-10]}_{re[-9:]}.jpg"
+        for re in cont
+    }
 
     # Goes to Each link and downloads high resolution images
 
-    for re in temp:
+    for count, re in enumerate(temp):
         rs = requests.get(re)
-        with open("img" + str(count) + ".jpg", "wb") as file:
+        with open(f"img{str(count)}.jpg", "wb") as file:
             file.write(rs.content)
-
-        # urlretrieve(re, 'img' + str(count) + '.jpg')
-
-        count += 1
 
     return True
 

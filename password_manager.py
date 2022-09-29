@@ -48,14 +48,14 @@ def update_password(service_, password_):
     )
     conn.execute(command)
     conn.commit()
-    print(service_ + " password updated successfully.")
+    print(f"{service_} password updated successfully.")
 
 
 def delete_service(service_):
     command = 'DELETE from STORE where SERVICE = "' + service_ + '"'
     conn.execute(command)
     conn.commit()
-    print(service_ + " deleted from the database successfully.")
+    print(f"{service_} deleted from the database successfully.")
 
 
 def get_all():
@@ -74,11 +74,10 @@ def get_all():
 def is_service_present(service_):
     cursor_.execute("SELECT SERVICE from STORE where SERVICE = ?", (service_,))
     data = cursor_.fetchall()
-    if len(data) == 0:
-        print("There is no service named %s" % service_)
-        return False
-    else:
+    if len(data) != 0:
         return True
+    print(f"There is no service named {service_}")
+    return False
 
 
 if connect == ADMIN_PASSWORD:
@@ -124,14 +123,13 @@ if connect == ADMIN_PASSWORD:
                     add_password(service, username, password)
                     print("\n" + service.capitalize() + " password stored\n")
             else:
-                print("Service named {} already exists.".format(service))
+                print(f"Service named {service} already exists.")
 
         elif input_ == "get":
             service = input("What is the name of the service?\n")
-            flag = is_service_present(service)
-            if flag:
+            if flag := is_service_present(service):
                 username, password = get_password(service)
-                print(service.capitalize() + " Details")
+                print(f"{service.capitalize()} Details")
                 print("Username : ", username)
                 print("Password : ", password)
 
@@ -139,20 +137,16 @@ if connect == ADMIN_PASSWORD:
             service = input("What is the name of the service?\n")
             if service == "":
                 print("Service is not entered.")
-            else:
-                flag = is_service_present(service)
-                if flag:
-                    password = getpass("Enter new password : ")
-                    update_password(service, password)
+            elif flag := is_service_present(service):
+                password = getpass("Enter new password : ")
+                update_password(service, password)
 
         elif input_ == "delete":
             service = input("What is the name of the service?\n")
             if service == "":
                 print("Service is not entered.")
-            else:
-                flag = is_service_present(service)
-                if flag:
-                    delete_service(service)
+            elif flag := is_service_present(service):
+                delete_service(service)
 
         elif input_ == "getall":
             get_all()

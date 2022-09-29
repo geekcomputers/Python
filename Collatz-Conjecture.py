@@ -69,7 +69,7 @@ def main():
         """
         modulo = number % 2  # The number modulo'd by 2
         if modulo == 0:  # If the result is 0,
-            number = number / 2  # divide it by 2
+            number /= 2
         else:  # Otherwise,
             number = 3 * number + 1  # multiply by 3 and add 1 (3x + 1)
         return number

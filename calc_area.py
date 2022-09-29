@@ -11,29 +11,29 @@ def main():
     )
     if shape == 1:
         side = float(input("Enter length of side: "))
-        print("Area of square = " + str(side ** 2))
+        print(f"Area of square = {str(side**2)}")
     elif shape == 2:
         l = float(input("Enter length: "))
         b = float(input("Enter breadth: "))
-        print("Area of rectangle = " + str(l * b))
+        print(f"Area of rectangle = {str(l * b)}")
     elif shape == 3:
         r = float(input("Enter radius: "))
-        print("Area of circle = " + str(m.pi * r * r))
+        print(f"Area of circle = {str(m.pi * r * r)}")
     elif shape == 4:
         base = float(input("Enter base: "))
         h = float(input("Enter height: "))
-        print("Area of rectangle = " + str(0.5 * base * h))
+        print(f"Area of rectangle = {str(0.5 * base * h)}")
     elif shape == 5:
         r = float(input("Enter radius: "))
         h = float(input("Enter height: "))
-        print("Area of cylinder = " + str(m.pow(r, 2) * h * m.pi))
+        print(f"Area of cylinder = {str(m.pow(r, 2) * h * m.pi)}")
     elif shape == 6:
         r = float(input("Enter radius: "))
         h = float(input("Enter height: "))
-        print("Area of cone = " + str(m.pow(r, 2) * h * 1 / 3 * m.pi))
+        print(f"Area of cone = {str(m.pow(r, 2) * h * 1 / 3 * m.pi)}")
     elif shape == 7:
         r = float(input("Enter radius: "))
-        print("Area of sphere = " + str(m.pow(r, 3) * 4 / 3 * m.pi))
+        print(f"Area of sphere = {str(m.pow(r, 3) * 4 / 3 * m.pi)}")
     else:
         print("You have selected wrong choice.")
 

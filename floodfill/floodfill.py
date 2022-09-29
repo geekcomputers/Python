@@ -29,7 +29,7 @@ class FloodFill:
         from random import randint, uniform
         from math import pi, sin, cos
 
-        for n in range(0, randint(0, 5)):
+        for _ in range(randint(0, 5)):
             x = randint(50, self.window_width - 50)
             y = randint(50, self.window_height - 50)
 
@@ -37,21 +37,19 @@ class FloodFill:
             angle += uniform(0, 0.7)
             vertices = []
 
-            for i in range(0, randint(3, 7)):
+            for _ in range(randint(3, 7)):
                 dist = randint(10, 50)
                 vertices.append(
                     (int(x + cos(angle) * dist), int(y + sin(angle) * dist))
                 )
                 angle += uniform(0, pi / 2)
 
-            for i in range(0, len(vertices) - 1):
+            for i in range(len(vertices) - 1):
                 pygame.draw.line(
                     self.surface, (255, 0, 0), vertices[i], vertices[i + 1]
                 )
 
-            pygame.draw.line(
-                self.surface, (255, 0, 0), vertices[len(vertices) - 1], vertices[0]
-            )
+            pygame.draw.line(self.surface, (255, 0, 0), vertices[-1], vertices[0])
 
     def run(self):
         looping = True

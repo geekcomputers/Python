@@ -37,29 +37,26 @@ if (
 ):  # Help Menu if called
     print(text)  # Print the text, stored in the text variable - 1.2
     sys.exit(0)  # Exit the program
+elif sys.argv[1].lower().startswith("-c"):  # If the first argument is -c then
+    passwd = sys.argv[
+        2
+    ]  # Set the variable passwd as the second argument passed, in this case my login password
+    subprocess.Popen(
+        (
+            r"c:\Program Files\Checkpoint\Endpoint Connect\trac.exe connect -u username -p "
+            + passwd
+        )
+    )
+    subprocess.Popen((r"c:\geektools\puttycm.exe"))
+    time.sleep(
+        15
+    )  # Sleep for 15 seconds, so the checkpoint software can connect before opening mstsc
+    subprocess.Popen([remote, conffilename])
+elif (
+    sys.argv[1].lower().startswith("-d")
+):  # If the first argument is -d then disconnect my checkpoint session.
+    subprocess.Popen(
+        (r"c:\Program Files\Checkpoint\Endpoint Connect\trac.exe disconnect ")
+    )
 else:
-    if sys.argv[1].lower().startswith("-c"):  # If the first argument is -c then
-        passwd = sys.argv[
-            2
-        ]  # Set the variable passwd as the second argument passed, in this case my login password
-        subprocess.Popen(
-            (
-                r"c:\Program Files\Checkpoint\Endpoint Connect\trac.exe connect -u username -p "
-                + passwd
-            )
-        )
-        subprocess.Popen((r"c:\geektools\puttycm.exe"))
-        time.sleep(
-            15
-        )  # Sleep for 15 seconds, so the checkpoint software can connect before opening mstsc
-        subprocess.Popen([remote, conffilename])
-    elif (
-        sys.argv[1].lower().startswith("-d")
-    ):  # If the first argument is -d then disconnect my checkpoint session.
-        subprocess.Popen(
-            (r"c:\Program Files\Checkpoint\Endpoint Connect\trac.exe disconnect ")
-        )
-    else:
-        print(
-            "Unknown option - " + text
-        )  # If any other option is passed, then print Unknown option and the text from above - 1.2
+    print(f"Unknown option - {text}")

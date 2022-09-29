@@ -37,6 +37,6 @@ if __name__ == "__main__":
 
     # printing the output
     if result != -1:
-        print("Element is present at index {}".format(result))
+        print(f"Element is present at index {result}")
     else:
         print("Element is not present in array")

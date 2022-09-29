@@ -9,8 +9,7 @@ backend.connect_database()
 
 # A function for check that acc_no is integer or not
 def check_string_in_account_no(check_acc_no):
-    r = check_acc_no.isdigit()
-    return r
+    return check_acc_no.isdigit()
 
 
 # all buttons of page2

@@ -7,8 +7,8 @@ coloumns = int(input("Enter the coloumns of the matrice 1"))
 matrice = []
 rowan = []
 
-for i in range(0, rows):
-    for j in range(0, coloumns):
+for _ in range(rows):
+    for _ in range(coloumns):
         element = int(input("enter the element"))
         rowan.append(element)
     print("one row completed")
@@ -27,8 +27,8 @@ coloumns_ = int(input("Enter the coloumns of the matrice 2"))
 rowan = []
 matrix = []
 
-for i in range(0, rows_):
-    for j in range(0, coloumns_):
+for _ in range(rows_):
+    for _ in range(coloumns_):
         element = int(input("enter the element"))
         rowan.append(element)
     print("one row completed")
@@ -44,8 +44,8 @@ B = matrix
 # creating empty frame:
 
 result = []
-for i in range(0, rows):
-    for j in range(0, coloumns_):
+for _ in range(rows):
+    for _ in range(coloumns_):
         rowan.append(0)
     result.append(rowan)
     rowan = []

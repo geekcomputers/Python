@@ -49,8 +49,7 @@ class checker:
         piece = self.board.get_piece(row, col)
         if (self.select) and (piece == 0) and (row, col) in self.valid_moves:
             self.board.move(self.select, row, col)
-            skip = self.valid_moves[(row, col)]
-            if skip:
+            if skip := self.valid_moves[(row, col)]:
                 self.board.remove(skip)
             self.chg_turn()
         else:
@@ -71,7 +70,4 @@ class checker:
     # for changing the turn
     def chg_turn(self):
         self.valid_moves = {}
-        if self.turn == black:
-            self.turn = white
-        else:
-            self.turn = black
+        self.turn = white if self.turn == black else black

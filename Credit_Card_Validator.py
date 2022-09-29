@@ -32,15 +32,14 @@ class CreditCard:
         elif str(self.card_no).startswith("7"):
             comp = "Gasoline Card"
 
-        return "Company : " + comp
+        return f"Company : {comp}"
 
     def first_check(self):
-        if 13 <= len(self.card_no) <= 19:
-            message = "First check : Valid in terms of length."
-
-        else:
-            message = "First check : Check Card number once again it must be of 13 or 16 digits long."
-        return message
+        return (
+            "First check : Valid in terms of length."
+            if 13 <= len(self.card_no) <= 19
+            else "First check : Check Card number once again it must be of 13 or 16 digits long."
+        )
 
     def validate(self):
         # double every second digit from right to left
@@ -51,7 +50,7 @@ class CreditCard:
                 double_it = int(crd_no[i]) * 2
 
                 if len(str(double_it)) == 2:
-                    sum_ += sum([eval(i) for i in str(double_it)])
+                    sum_ += sum(eval(i) for i in str(double_it))
 
                 else:
                     sum_ += double_it
@@ -59,16 +58,11 @@ class CreditCard:
             else:
                 sum_ += int(crd_no[i])
 
-        if sum_ % 10 == 0:
-            response = "Valid Card"
-        else:
-            response = "Invalid Card"
-
-        return response
+        return "Valid Card" if sum_ % 10 == 0 else "Invalid Card"
 
     @property
     def checksum(self):
-        return "#CHECKSUM# : " + self.card_no[-1]
+        return f"#CHECKSUM# : {self.card_no[-1]}"
 
     @classmethod
     def set_card(cls, card_to_check):

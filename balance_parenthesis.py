@@ -19,14 +19,14 @@ class Stack:
 
 
 def is_same(p1, p2):
-    if p1 == "(" and p2 == ")":
-        return True
-    elif p1 == "[" and p2 == "]":
-        return True
-    elif p1 == "{" and p2 == "}":
-        return True
-    else:
-        return False
+    return (
+        p1 == "("
+        and p2 == ")"
+        or p1 == "["
+        and p2 == "]"
+        or p1 == "{"
+        and p2 == "}"
+    )
 
 
 def is_balanced(check_string):
@@ -37,19 +37,15 @@ def is_balanced(check_string):
         paren = check_string[index]
         if paren in "{[(":
             s.push(paren)
+        elif s.is_empty():
+            is_bal = False
         else:
-            if s.is_empty():
+            top = s.pop()
+            if not is_same(top, paren):
                 is_bal = False
-            else:
-                top = s.pop()
-                if not is_same(top, paren):
-                    is_bal = False
         index += 1
 
-    if s.is_empty() and is_bal:
-        return True
-    else:
-        return False
+    return bool(s.is_empty() and is_bal)
 
 
 print(is_balanced("[((())})]"))

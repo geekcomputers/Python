@@ -31,7 +31,7 @@ class checker_board:
             self.board[piece.row][piece.col],
         )
         piece.move(row, col)
-        if row == rows - 1 or row == 0:
+        if row in [rows - 1, 0]:
             piece.make_king()
             if piece.color == white:
                 self.white_k += 1
@@ -71,9 +71,7 @@ class checker_board:
         row = piece.row
 
         if piece.color == black or piece.king:
-            moves.update(
-                self._traverse_l(row - 1, max(row - 3, -1), -1, piece.color, l)
-            )
+            moves |= self._traverse_l(row - 1, max(row - 3, -1), -1, piece.color, l)
             moves.update(
                 self._traverse_r(row - 1, max(row - 3, -1), -1, piece.color, r)
             )
@@ -121,13 +119,8 @@ class checker_board:
                     moves[(r, l)] = last
 
                 if last:
-                    if step == -1:
-                        row = max(r - 3, 0)
-                    else:
-                        row = min(r + 3, rows)
-                    moves.update(
-                        self._traverse_l(r + step, row, step, color, l - 1, skip=last)
-                    )
+                    row = max(r - 3, 0) if step == -1 else min(r + 3, rows)
+                    moves |= self._traverse_l(r + step, row, step, color, l - 1, skip=last)
                     moves.update(
                         self._traverse_r(r + step, row, step, color, l + 1, skip=last)
                     )
@@ -157,15 +150,11 @@ class checker_board:
                     moves[(r, right)] = last
 
                 if last:
-                    if step == -1:
-                        row = max(r - 3, 0)
-                    else:
-                        row = min(r + 3, rows)
-                    moves.update(
-                        self._traverse_l(
-                            r + step, row, step, color, right - 1, skip=last
-                        )
+                    row = max(r - 3, 0) if step == -1 else min(r + 3, rows)
+                    moves |= self._traverse_l(
+                        r + step, row, step, color, right - 1, skip=last
                     )
+
                     moves.update(
                         self._traverse_r(
                             r + step, row, step, color, right + 1, skip=last

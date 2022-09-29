@@ -12,7 +12,7 @@ def print_rangoli(n):
 
     # Loop to print the rangoli
     for i in range(1, n + 1):
-        for j in range(0, i):
+        for j in range(i):
             string += chr(96 + n - j)
             if len(string) < width:
                 string += "-"
@@ -26,7 +26,7 @@ def print_rangoli(n):
         string = ""
 
     for i in range(n - 1, 0, -1):
-        for j in range(0, i):
+        for j in range(i):
             string += chr(96 + n - j)
             if len(string) < width:
                 string += "-"

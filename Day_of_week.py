@@ -25,4 +25,4 @@ def find_day(date):
 # To overcome those we have to process user input and make it standard to accept as defined by  calender and time module
 user_input = str(input("Enter date     "))
 date = process_date(user_input)
-print("Day on " + user_input + "  is " + find_day(date))
+print(f"Day on {user_input}  is {find_day(date)}")

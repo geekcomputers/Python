@@ -25,10 +25,7 @@ def DrawBoard():
 
 # This Function Checks position is empty or not
 def CheckPosition(x):
-    if board[x] == " ":
-        return True
-    else:
-        return False
+    return board[x] == " "
 
 
 # This Function Checks player has won or not

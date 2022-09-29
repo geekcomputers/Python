@@ -8,7 +8,7 @@ trials = int(argv[3])
 wins = 0
 bets = 0
 
-for i in range(trials):
+for _ in range(trials):
     cash = stake
     while cash > 0 and cash < goals:
         bets += 1
@@ -18,5 +18,5 @@ for i in range(trials):
             cash -= 1
     if cash == goals:
         wins += 1
-print("Your won: " + str(100 * wins // trials) + "$")
-print("Your bets: " + str(bets // trials))
+print(f"Your won: {str(100 * wins // trials)}$")
+print(f"Your bets: {str(bets // trials)}")

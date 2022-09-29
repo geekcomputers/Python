@@ -14,11 +14,11 @@ print(img_.headers)
 print(img_.headers["content-type"], img_.headers["content-length"])
 content_type = img_.headers["content-type"]
 
-if img_.status_code == 200 and (
-    content_type == "image/jpeg"
-    or content_type == "image/gif"
-    or content_type == "image/png"
-):
+if img_.status_code == 200 and content_type in [
+    "image/jpeg",
+    "image/gif",
+    "image/png",
+]:
     ext = img_.headers["content-type"][6:]
     if not os.path.exists("img/"):
         os.mkdir("img/")

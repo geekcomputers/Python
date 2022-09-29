@@ -30,9 +30,8 @@ import sys
 def find_prime(num):
     res_list = []
     for i in range(2, num + 1):
-        if res_list != [] and any(i % l == 0 for l in res_list):
-            continue
-        res_list.append(i)
+        if not res_list or all(i % l != 0 for l in res_list):
+            res_list.append(i)
     return res_list
 
 

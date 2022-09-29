@@ -1,36 +1,29 @@
 def base_check(xnumber, xbase):
-    for char in xnumber[len(xnumber ) -1]:
-        if int(char) >= int(xbase):
-            return False
-    return True
+    return all(int(char) < int(xbase) for char in xnumber[len(xnumber ) -1])
 
 def convert_from_10(xnumber, xbase, arr, ybase):
-    if int(xbase) == 2 or int(xbase) == 4 or int(xbase) == 6 or int(xbase) == 8:
+    if int(xbase) in {2, 4, 6, 8}:
 
         if xnumber == 0:
             return arr
-        else:
-            quotient = int(xnumber) // int(xbase)
-            remainder = int(xnumber) % int(xbase)
-            arr.append(remainder)
-            dividend = quotient
-            convert_from_10(dividend, xbase, arr, base)
+        quotient, remainder = divmod(int(xnumber), int(xbase))
+        arr.append(remainder)
+        dividend = quotient
+        convert_from_10(dividend, xbase, arr, base)
     elif int(xbase) == 16:
         if int(xnumber) == 0:
             return arr
-        else:
-            quotient = int(xnumber) // int(xbase)
-            remainder = int(xnumber) % int(xbase)
-            if remainder > 9:
-                if remainder == 10: remainder = 'A'
-                if remainder == 11: remainder = 'B'
-                if remainder == 12: remainder = 'C'
-                if remainder == 13: remainder = 'D'
-                if remainder == 14: remainder = 'E'
-                if remainder == 15: remainder = 'F'
-            arr.append(remainder)
-            dividend = quotient
-            convert_from_10(dividend, xbase, arr, ybase)
+        quotient, remainder = divmod(int(xnumber), int(xbase))
+        if remainder > 9:
+            if remainder == 10: remainder = 'A'
+            if remainder == 11: remainder = 'B'
+            if remainder == 12: remainder = 'C'
+            if remainder == 13: remainder = 'D'
+            if remainder == 14: remainder = 'E'
+            if remainder == 15: remainder = 'F'
+        arr.append(remainder)
+        dividend = quotient
+        convert_from_10(dividend, xbase, arr, ybase)
 def convert_to_10(xnumber, xbase, arr, ybase):
     if int(xbase) == 10:
         for char in xnumber:

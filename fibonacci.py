@@ -41,7 +41,7 @@ def getFibonacciDynamic(n: int, fib: list) -> int:
     Calculate the fibonacci number at position n using dynamic programming to improve runtime
     """
 
-    if n == 0 or n == 1:
+    if n in {0, 1}:
         return n
     if fib[n] != -1:
         return fib[n]

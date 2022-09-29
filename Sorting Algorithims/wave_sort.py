@@ -7,5 +7,5 @@ def sortInWave(arr, n):
 arr = []
 arr = input("Enter the arr")
 sortInWave(arr, len(arr))
-for i in range(0, len(arr)):
+for i in range(len(arr)):
     print(arr[i], " ")

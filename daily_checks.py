@@ -43,7 +43,7 @@ def putty_sessions(conffilename):  # Function to load the putty sessions I need
     # Open the file server_list.txt, loop through reading each line
     #  1.1 -Changed - 1.3 Changed name to use variable conffilename
     for server in open(conffilename):
-        subprocess.Popen(("putty -load " + server))  # Open the PuTTY sessions - 1.1
+        subprocess.Popen(f"putty -load {server}")
 
 
 def rdp_sessions():

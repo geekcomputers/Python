@@ -63,7 +63,7 @@ class LinkedList():
         curr = self.head
         prev = None
         while True:
-            if curr.next == None:
+            if curr.next is None:
                 prev.next = None
                 del curr
                 break

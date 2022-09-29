@@ -49,6 +49,6 @@ images = np.vstack([x])
 classes = model.predict(images, batch_size=10)
 print(classes[0])
 if classes[0] > 0.5:
-    print(filename + " is a human")
+    print(f"{filename} is a human")
 else:
-    print(filename + " is a horse")
+    print(f"{filename} is a horse")

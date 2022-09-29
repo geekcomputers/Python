@@ -10,11 +10,7 @@ def bdelete():
     # Deleting the Roll no. entered by user
     rno = int(input("Enter the Roll no. to be deleted: "))
     with open("studrec.dat") as F:
-        rec = []
-        for i in stud:
-            if i[0] == rno:
-                continue
-            rec.append(i)
+        rec = [i for i in stud if i[0] != rno]
         pickle.dump(rec, F)
 
 

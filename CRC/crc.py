@@ -36,9 +36,7 @@ while 1 > 0:
     original_data = data
     data = data + ("0" * (len(div) - 1))
     crc = crc_check(data, div)
-    crc_str = ""
-    for c in crc:
-        crc_str += c
+    crc_str = "".join(crc)
     print("Sent data: ", original_data + crc_str)
     sent_data = original_data + crc_str
     print(
@@ -49,7 +47,7 @@ while 1 > 0:
     print("Receiver side remainder: ", remainder)
     print("Continue [Y/N]:")
     ch = input()
-    if ch == "N" or ch == "n":
+    if ch in ["N", "n"]:
         break
     else:
         continue

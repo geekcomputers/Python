@@ -34,7 +34,7 @@ f = open("C:/Users/prath/Desktop/Currency-Calculator-Dynamic/country.txt", "r")
 
 window.dropDown1.addItem("Select")
 window.dropDown2.addItem("Select")
-for i in f.readlines():
+for i in f:
     window.dropDown1.addItem(i)
     window.dropDown2.addItem(i)
 intOnly = QDoubleValidator()

@@ -2,7 +2,7 @@ list = []
 
 N = int(input("Enter The Size Of List"))
 
-for i in range(0, N):
+for _ in range(N):
     a = int(input("Enter The number"))
     list.append(a)
 
@@ -11,7 +11,7 @@ for i in range(0, N):
 # Every time The Element Of List is fetched and the smallest element in remaining list is found and if it comes out
 # to be smaller than the element fetched then it is swapped with smallest number.
 
-for i in range(0, len(list) - 1):
+for i in range(len(list) - 1):
     smallest = list[i + 1]
     k = 0
     for j in range(i + 1, len(list)):

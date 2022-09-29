@@ -16,7 +16,7 @@ def pattern(lines):
     for i in reversed(range(lines+1)):
         t = ""
         k = 1
-        for m in range(i):
+        for _ in range(i):
             if k == 10:
                 k = 0
             t = str(t) + str(k)

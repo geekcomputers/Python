@@ -18,8 +18,7 @@ class MyPdf(FPDF):
         # Arial italic 8
         self.set_font("Arial", "I", 8)
         # set Page number at the bottom
-        self.cell(0, 10, "Page No {}".format(self.page_no()), 0, 0, "C")
-        pass
+        self.cell(0, 10, f"Page No {self.page_no()}", 0, 0, "C")
 
 
 pdf = MyPdf()

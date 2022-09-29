@@ -12,10 +12,10 @@ speeches = []
 
 
 def callback(recognizer, audio):
-    with open("spoken/" + str(len(speeches)) + ".wav", "wb") as file:
+    with open(f"spoken/{len(speeches)}.wav", "wb") as file:
         file.write(audio.get_wav_data())
 
-    playsound.playsound("spoken/" + str(len(speeches)) + ".wav")
+    playsound.playsound(f"spoken/{len(speeches)}.wav")
     speeches.append(1)
     print("____")
 

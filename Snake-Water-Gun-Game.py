@@ -6,6 +6,7 @@ If computer chooses gun and user chooses water, the gun gets drown into water an
 And so on for other cases
 """
 
+
 # you can use this code also, see this code is very short in compare to your code
 # code starts here
 """
@@ -121,44 +122,35 @@ while x < 10:
         if user_choice == "w":
             print("\n-------Mr. Computer won this round--------")
             comp_point += 1
-            x += 1
         elif user_choice == "g":
             print("\n-------You won this round-------")
             user_point += 1
-            x += 1
         else:
             print("\n-------Match draw-------")
             match_draw += 1
-            x += 1
-
+        x += 1
     elif comp_rand == "w":
         if user_choice == "g":
             print("\n-------Mr. Computer won this round--------")
             comp_point += 1
-            x += 1
         elif user_choice == "s":
             print("\n-------You won this round-------")
             user_point += 1
-            x += 1
         else:
             print("\n-------Match draw-------")
             match_draw += 1
-            x += 1
-
+        x += 1
     elif comp_rand == "g":
         if user_choice == "s":
             print("\n-------Mr. Computer won this round--------")
             comp_point += 1
-            x += 1
         elif user_choice == "w":
             print("\n-------You won this round-------")
             user_point += 1
-            x += 1
         else:
             print("\n-------Match draw-------")
             match_draw += 1
-            x += 1
-
+        x += 1
 print("Here are final stats of the 10 matches : ")
 print(f"Mr. Computer won : {comp_point} matches")
 print(f"You won : {user_point} matches")

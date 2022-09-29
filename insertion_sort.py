@@ -7,7 +7,7 @@ def input_list():
     # taking length and then values of list as input from user
     n = int(input("Enter number of elements in the list: "))  # taking value from user
     for i in range(n):
-        temp = int(input("Enter element " + str(i + 1) + ": "))
+        temp = int(input(f"Enter element {str(i + 1)}: "))
         list.append(temp)
 
 
@@ -22,7 +22,7 @@ def insertion_sort(list, n):
     OUTPUT:
         list of sorted values in assending order
     """
-    for i in range(0, n):
+    for i in range(n):
         key = list[i]
         j = i - 1
         # Swap elements witth key iff they are
@@ -45,7 +45,7 @@ def insertion_sort_desc(list, n):
     OUTPUT:
         list of sorted values in desending order
     """
-    for i in range(0, n):
+    for i in range(n):
         key = list[i]
         j = i - 1
         # Swap elements witth key iff they are

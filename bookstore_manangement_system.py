@@ -54,12 +54,7 @@ def login():
 
     for y in data2:
 
-        if y[1] == user_name and y[2] == passw:
-
-            pass
-
-        else:
-
+        if y[1] != user_name or y[2] != passw:
             separator()
 
             print(" Username  or  Password  is  Incorrect  Try Again")
@@ -69,16 +64,11 @@ def login():
             user_name = input(" USER NAME  ---  ")
             passw = input(" PASSWORD  ---  ")
 
-            if y[1] == user_name and y[2] == passw:
+        if y[1] != user_name or y[2] != passw:
+            separator()
 
-                pass
-
-            else:
-
-                separator()
-
-                print(" Username  or  Password  is  Again  Incorrect")
-                exit()
+            print(" Username  or  Password  is  Again  Incorrect")
+            exit()
 
 
 def ViewAll():
