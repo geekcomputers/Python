@@ -21,28 +21,18 @@ except NameError:
 def getStatus():
     lines = []
     while True:
-        line = input()
-        if line:
+        if line := input():
             lines.append(line)
         else:
             break
-    status = "\n".join(lines)
-    return status
+    return "\n".join(lines)
 
 
 def tweetthis(type):
-    if type == "text":
-        print("Enter your tweet " + user.name)
-        tweet = getStatus()
-        try:
-            api.update_status(tweet)
-        except Exception as e:
-            print(e)
-            return
-    elif type == "pic":
-        print("Enter pic path " + user.name)
+    if type == "pic":
+        print(f"Enter pic path {user.name}")
         pic = os.path.abspath(input())
-        print("Enter status " + user.name)
+        print(f"Enter status {user.name}")
         title = getStatus()
         try:
             api.update_with_media(pic, status=title)
@@ -50,6 +40,14 @@ def tweetthis(type):
             print(e)
             return
 
+    elif type == "text":
+        print(f"Enter your tweet {user.name}")
+        tweet = getStatus()
+        try:
+            api.update_status(tweet)
+        except Exception as e:
+            print(e)
+            return
     print("\n\nDONE!!")
 
 

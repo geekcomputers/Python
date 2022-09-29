@@ -34,17 +34,13 @@ def main():
     )
 
     # check input
-    while answer != "m" and answer != "p":
+    while answer not in ["m", "p"]:
         answer = input("please enter again ('m' or 'p'): ")
 
     # set turn
-    if answer == 'm':
-        turn = "player"
-    else:
-        turn = "pc"
-
+    turn = "player" if answer == 'm' else "pc"
     # game starts
-    while numOfRounds != 0 and (pc == False and player == False):
+    while numOfRounds != 0 and not pc and not player:
         print(f"\nRound number {numOfRounds}/6")
         time.sleep(1)
         print("the gun is being loaded")
@@ -73,11 +69,7 @@ def main():
                 pc = True
         else:
             print("nothing happened phew!")
-            if turn == "player":  # flip the turn
-                turn = "pc"
-            else:
-                turn = "player"
-
+            turn = "pc" if turn == "player" else "player"
         time.sleep(2)
         numOfRounds -= 1
 

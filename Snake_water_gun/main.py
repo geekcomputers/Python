@@ -33,7 +33,7 @@ b = input(
 if b == "N":
     run = False
     print("Ok bubyeee! See you later")
-elif b == "Y" or b == "y":
+elif b in ["Y", "y"]:
     print(
         "There will be 10 matches, and the one who wins more matches will win. Let's start."
     )
@@ -47,7 +47,7 @@ while run and i < 10:
     user_choice = input("Type s for snake, w for water or g for gun: ").lower()
 
     if user_choice == comp_choice:
-        print(bcolors.HEADERS + "Game draws. Play again" + bcolors.ENDC)
+        print(f"{bcolors.HEADERS}Game draws. Play again{bcolors.ENDC}")
 
     elif user_choice == "s" and comp_choice == "g":
         print(bcolors.FAIL + "It's Snake v/s Gun You lose!" + bcolors.ENDC)
@@ -77,7 +77,7 @@ while run and i < 10:
     i += 1
     print(f"{10-i} matches left")
 
-if run == True:
+if run:
     print(f"Your score is {score} and the final result is...")
     time.sleep(3)
     if score > 5:

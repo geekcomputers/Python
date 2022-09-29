@@ -6,8 +6,7 @@ from sys import maxsize
 
 # Function to create a stack. It initializes size of stack as 0
 def createStack():
-    stack = []
-    return stack
+    return []
 
 
 # Stack is empty when stack size is 0
@@ -18,22 +17,17 @@ def isEmpty(stack):
 # Function to add an item to stack. It increases size by 1
 def push(stack, item):
     stack.append(item)
-    print(item + " pushed to stack ")
+    print(f"{item} pushed to stack ")
 
 
 # Function to remove an item from stack. It decreases size by 1
 def pop(stack):
-    if isEmpty(stack):
-        return str(-maxsize - 1)  # return minus infinite
-
-    return stack.pop()
+    return str(-maxsize - 1) if isEmpty(stack) else stack.pop()
 
 
 # Function to return the top from stack without removing it
 def peek(stack):
-    if isEmpty(stack):
-        return str(-maxsize - 1)  # return minus infinite
-    return stack[len(stack) - 1]
+    return str(-maxsize - 1) if isEmpty(stack) else stack[len(stack) - 1]
 
 
 # Driver program to test above functions
@@ -41,4 +35,4 @@ stack = createStack()
 push(stack, str(10))
 push(stack, str(20))
 push(stack, str(30))
-print(pop(stack) + " popped from stack")
+print(f"{pop(stack)} popped from stack")

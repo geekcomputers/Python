@@ -20,7 +20,7 @@ scripts = os.getenv("scripts")
 dbfile = "database/maindatabase.db"
 master_db = os.path.join(dropbox, dbfile)
 
-f = open(scripts + "/output/student.txt", "a")
+f = open(f"{scripts}/output/student.txt", "a")
 
 tdate = strftime("%d-%m")
 
@@ -30,7 +30,7 @@ loc_stmt = "SELECT name, number from table"
 cursor.execute(loc_stmt)
 while True:
     row = cursor.fetchone()
-    if row == None:
+    if row is None:
         break
     sname = row[0]
     snumber = row[1]

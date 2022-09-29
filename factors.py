@@ -6,5 +6,5 @@ b = 1
 while b <= math.sqrt(a):
     if a % b == 0:
         print("A factor of the number is ", b)
-        print("A factor of the number is ", int(a / b))
+        print("A factor of the number is ", a // b)
     b += 1

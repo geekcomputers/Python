@@ -43,7 +43,7 @@ class App(Tk, Settings):
 
         # Configura a janela do programa
         self.title(self.window_name)
-        self.geometry("{}x{}".format(self.__width, self.__height))
+        self.geometry(f"{self.__width}x{self.__height}")
         self.resizable(*self.window_rz)
         self.attributes("-fullscreen", self.window_fullscreen)
         self["bg"] = "black"
@@ -51,9 +51,7 @@ class App(Tk, Settings):
         # Verifica se existem as imagens do jogo
         for file in self.images_fp:
             if not os.path.exists(file):
-                raise FileNotFoundError(
-                    "The following file was not found:\n{}".format(file)
-                )
+                raise FileNotFoundError(f"The following file was not found:\n{file}")
 
         # Carrega a imagem do botão para começar o jogo
         self.__startButton_image = Background.getPhotoImage(
@@ -196,32 +194,32 @@ class App(Tk, Settings):
         # Define a fonte dos textos
         font = (self.text_font, int(0.02196 * self.__width + 0.5))
 
-        # Cria a imagem do placar no background
-        self.__background.create_image(x, y, image=self.__scoreboard_image)
-
+        self.__background.create_image(time_x, y, image=self.__scoreboard_image)
         # Cria texto para mostrar o score do último jogo
         self.__background.create_text(
             score_x,
             score_y,
-            text="Score: %s" % self.__score,
+            text=f"Score: {self.__score}",
             fill=self.text_fill,
             font=font,
         )
+
 
         # Cria texto para mostrar a melhor pontuação do jogador
         self.__background.create_text(
             bestScore_x,
             bestScore_y,
-            text="Best Score: %s" % self.__bestScore,
+            text=f"Best Score: {self.__bestScore}",
             fill=self.text_fill,
             font=font,
         )
+
 
         # Cria texto para mostrar o tempo de jogo
         self.__background.create_text(
             time_x,
             time_y,
-            text="Time: %s" % self.__time,
+            text=f"Time: {self.__time}",
             fill=self.text_fill,
             font=font,
         )
@@ -341,15 +339,11 @@ class App(Tk, Settings):
 
         # Tenta carregar o placar do usuário
         try:
-            file = open(self.score_fp)
-            self.__bestScore = int(file.read(), 2)
-            file.close()
-
-        # Se não for possível, será criado um arquivo para guardar o placar
+            with open(self.score_fp) as file:
+                self.__bestScore = int(file.read(), 2)
         except BaseException:
-            file = open(self.score_fp, "w")
-            file.write(bin(self.__bestScore))
-            file.close()
+            with open(self.score_fp, "w") as file:
+                file.write(bin(self.__bestScore))
 
     def saveScore(self):
         """

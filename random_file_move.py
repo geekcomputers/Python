@@ -56,7 +56,7 @@ ratio = args.ratio
 files = os.listdir(src)
 size = int(ratio * len(files))
 
-print("Move {} files from {} to {} ? [y/n]".format(size, src, dest))
+print(f"Move {size} files from {src} to {dest} ? [y/n]")
 if input().lower() == "y":
     for f in random.sample(files, size):
         try:

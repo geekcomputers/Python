@@ -1,6 +1,6 @@
 list = []
 num = int(input("Enter size of list: \t"))
-for n in range(num):
+for _ in range(num):
     numbers = int(input("Enter any number: \t"))
     list.append(numbers)
 

@@ -7,7 +7,7 @@ from colorama import Fore, Back, Style
 def big_text():
     print("By default, I will record your voice for 60 seconds.\nDo you want to change this default timing?")
     speak("By default, I will record your voice for 60 seconds.\nDo you want to change this default timing?")
-    print(Fore.YELLOW + "Yes or No")
+    print(f"{Fore.YELLOW}Yes or No")
     query = hear().lower()
 
     duration_time = 0

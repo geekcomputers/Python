@@ -5,7 +5,7 @@ import requests
 from bs4 import BeautifulSoup
 
 city = input("Enter City")
-url = "https://www.wunderground.com/weather/in/" + city
+url = f"https://www.wunderground.com/weather/in/{city}"
 
 try:
     response = requests.get(url)

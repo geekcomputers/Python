@@ -40,20 +40,14 @@ def encode():
     text = text.upper()
     for char in text:
         ascii = ord(char)
-        if ascii > 90:
+        if ascii <= 90 and ascii < 65 or ascii > 90:
             new_ascii = ascii
         else:
-            if ascii < 65:
-                new_ascii = ascii
-            else:
-                new_ascii = ascii + key
-                if  new_ascii > 90:
-                    new_ascii = new_ascii - 26
-                else:
-                    new_ascii = new_ascii
+            new_ascii = ascii + key
+            new_ascii = new_ascii - 26 if new_ascii > 90 else new_ascii
         encoded = chr(new_ascii)
         encoded_cipher = encoded_cipher + encoded
-    print("Encoded text: " + encoded_cipher)
+    print(f"Encoded text: {encoded_cipher}")
 
 
 
@@ -61,24 +55,17 @@ def decode():
     cipher = input("\n[>] Enter your cipher text: ")
     print("Posiblities of cipher text are: \n")
     cipher = cipher.lower()
+    decoded = ""
     for i in range(1, 26):
-        decoded = ""
         decoded_cipher = ""
         for char in cipher:
             ascii = ord(char)
-            if ascii < 97:
+            if ascii >= 97 and ascii > 122 or ascii < 97:
                 new_ascii = ascii
             else:
-                if ascii > 122:
-                    new_ascii = ascii
-                else:
-                    new_ascii = ascii - int(i)
-                    if new_ascii < 97:
-                      new_ascii = new_ascii + 26
-                    else:
-                        new_ascii = new_ascii
-            decoded = chr(new_ascii)
-            decoded_cipher = decoded_cipher + decoded
+                new_ascii = ascii - int(i)
+                new_ascii = new_ascii + 26 if new_ascii < 97 else new_ascii
+            decoded_cipher = decoded_cipher + chr(new_ascii)
         print("\n" + decoded_cipher)
 
 

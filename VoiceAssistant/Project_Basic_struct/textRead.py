@@ -14,13 +14,11 @@ def ms_word():
     try:
         speak("Enter the document's location - ")
         location = input("Enter the document's location - ")
-        
+
         file_loc = doubleslash(location) 
-       
+
         doc = docx.Document(file_loc)
-        fullText = []
-        for para in doc.paragraphs:
-            fullText.append(para.text)
+        fullText = [para.text for para in doc.paragraphs]
         #print(fullText)
         doc_file = '\n'.join(fullText)
         print(doc_file)
@@ -37,7 +35,7 @@ def pdf_read():
     try:
         speak("Enter the document's location - ")
         location = input("Enter the document's location - ")
-        
+
         path = doubleslash(location) 
         pdf = fitz.open(path)
         details = pdf.metadata # Stores the meta-data which generally includes Author name and Title of book/document.
@@ -47,32 +45,40 @@ def pdf_read():
         print(f"ERROR - {exp}")
         print(Fore.YELLOW + "I could'nt locate the file!\nIf you didn't specify the extension of the file, please specify it.")
         return "None"
-    try :
+    try:
         """     1. Author
                 2. Creator
                 3. Producer
                 4. Title  """   
-        
+
         author =  details["author"]
         #print("Author : ",author)
-        
+
         title = details["title"]
         #print("Title : ",title) 
-            
+
         #print(details)
         #print("Total Pages : ",total_pages)
         book_details(author, title, total_pages)
         speak(f" Title {title}")
         speak(f" Author {author}")
         speak(f" Total Pages {total_pages}")
-        
+
         # TODO : Deal with the Index
         toc = pdf.get_toc()
         print("Say 1 or \"ONLY PRINT INDEX\" - if you want me to print the book's index.\nSay 2 if you want me to print and make me speak out the book's index.\nSay any key if you don't want to print the index.'")
         speak("Say 1 or only print index if you want me to print the book's index.\nSay 2 if you want me to print and make me speak out the book's index.\nSay any key if you don't want to print the index.'")
         q = hear().lower()
 
-        if "only print" in q or "1" in q or "one" in q or "vone" in q or 'only' in q or "index only" in q or 'only' in q or "print only" in q: 
+        if (
+            "only print" in q
+            or "1" in q
+            or "one" in q
+            or "vone" in q
+            or 'only' in q
+            or "index only" in q
+            or "print only" in q
+        ): 
             print_index(toc)
             time.sleep(15)
         elif "speak" in q or "2" in q or 'two' in q: 
@@ -84,18 +90,15 @@ def pdf_read():
             time.sleep(4)
         else: 
             time.sleep(4)
-            pass
-
-    
         """Allow the user to do the following
         1. Read/speak a page
         2. Read/speak a range of pages
         3. Lesson
         4. Read/speak a whole book
         """  
-        
+
         #time.sleep(5)
-  
+
         print("____________________________________________________________________________________________________________")
         print("1. Print/speak a single page\n2. Print/speak a range of pages\n3. Print/speak a Lesson\n4. Read/speak a whole book")
         speak("1. Print/speak a single page\n2. Print/speak a range of pages\n3. Print/speak a Lesson\n4. Read/speak a whole book")
@@ -118,7 +121,7 @@ def pdf_read():
                 print(text.replace('\t',' '))
                 speak(text.replace('\t',' '))
 
-        
+
         elif 'range' in q or "multiple" in q:
             try:
                 start_pg_no = int(input("Starting Page Number - "))
@@ -143,15 +146,7 @@ def pdf_read():
             try:
                 key = input("Lesson name - ")
                 start_pg_no, end_pg_no = search_in_toc(toc, key, total_pages)
-                if start_pg_no != None and end_pg_no != None:
-                    start_pg_no, end_pg_no = map(int,search_in_toc(toc, key, total_pages))
-                
-                    for i in range(start_pg_no - 1, end_pg_no):
-                        page = pdf.load_page(i)
-                        text = page.get_text('text')
-                        print(text.replace('\t',' '))
-                        speak(text.replace('\t',' '))
-                else: 
+                if start_pg_no is None or end_pg_no is None: 
                     print("Try Again.")
                     speak("Try Again.")
                     speak("Lesson name")
@@ -163,7 +158,15 @@ def pdf_read():
                             text = page.get_text('text')
                             print(text.replace('\t',' '))
                             speak(text.replace('\t',' '))
-                    
+
+                else:
+                    start_pg_no, end_pg_no = map(int,search_in_toc(toc, key, total_pages))
+
+                    for i in range(start_pg_no - 1, end_pg_no):
+                        page = pdf.load_page(i)
+                        text = page.get_text('text')
+                        print(text.replace('\t',' '))
+                        speak(text.replace('\t',' '))
             except Exception:
                 print("Try Again! Lesson could not be found.")
                 speak("Try Again.Lesson could not be found")
@@ -172,7 +175,7 @@ def pdf_read():
                 start_pg_no, end_pg_no = search_in_toc(toc, key, total_pages)
                 if start_pg_no != None and end_pg_no != None:
                     start_pg_no, end_pg_no = map(int,search_in_toc(toc, key, total_pages))
-                
+
                     for i in range(start_pg_no - 1, end_pg_no):
                         page = pdf.load_page(i)
                         text = page.get_text('text')
@@ -197,7 +200,6 @@ def pdf_read():
             time.sleep(5)
     except Exception as e: 
         print(e)
-    pass
     pdf.close()
 
 def doubleslash(text):
@@ -257,19 +259,18 @@ def search_in_toc(toc, key, totalpg):
     """
     for i in range(len(toc) - 1):
         topic = toc[i]
-        if i != len(toc) - 2:
-            if topic[1] == key:
-                nexttopic = toc[i + 1]
-                return (topic[2], nexttopic[2])
-            elif topic[1].lower() == key:
-                nexttopic = toc[i + 1]
-                return (topic[2], nexttopic[2])
-        else:
+        if i == len(toc) - 2:
             if topic[1] == key:
                 return (topic[2], totalpg)
             elif topic[1].lower() == key:
-               
+
                 return (topic[2], totalpg)
+        elif topic[1] == key:
+            nexttopic = toc[i + 1]
+            return (topic[2], nexttopic[2])
+        elif topic[1].lower() == key:
+            nexttopic = toc[i + 1]
+            return (topic[2], nexttopic[2])
     return None,None
 
 def book_details(author, title, total_pages):

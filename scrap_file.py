@@ -10,11 +10,10 @@ import requests
 
 
 def download(url):
-    f = open(
+    with open(
         "file_name.jpg", "wb"
-    )  # opening file in write binary('wb') mode with file_name.ext ext=extension
-    f.write(requests.get(url).content)  # Writing File Content in file_name.jpg
-    f.close()
+    ) as f:
+        f.write(requests.get(url).content)  # Writing File Content in file_name.jpg
     print("Succesfully Downloaded")
 
 

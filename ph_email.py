@@ -42,18 +42,9 @@ find_email = re.compile(
 
 text = pyperclip.paste()  # retrieve text from clipboard
 
-matches = []  # list to store numbers and emails
+matches = [ph[1] for ph in find_phone.findall(text)]
 
-# ph[1] means second item of the group-wise tuple
-# which is returned by findall function
-# same applies to email
-
-for ph in find_phone.findall(text):
-    matches.append(ph[1])
-
-for em in find_email.findall(text):
-    matches.append(em[0])
-
+matches.extend(em[0] for em in find_email.findall(text))
 # display number of matches
 print(f"{len(matches)} matches found")
 

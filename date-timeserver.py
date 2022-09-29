@@ -8,7 +8,7 @@ while True:
 
     clientsocket, addr = soc.accept()
 
-    print("estavlishes  a connection from %s" % str(addr))
+    print(f"estavlishes  a connection from {str(addr)}")
     currentTime = time.ctime(time.time()) + "\r\n"
     clientsocket.send(currentTime.encode("ascii"))
     clientsocket.close()

@@ -29,11 +29,7 @@ while True:
         data[0] = normalized_image_array
         prediction = model.predict(data)
         print(prediction)
-        if prediction[0][0] > prediction[0][1]:
-            str = "Mask"
-        else:
-            str = "Without-mask"
-
+        str = "Mask" if prediction[0][0] > prediction[0][1] else "Without-mask"
         cv2.rectangle(img, (x, y), (x + w, y + h), (255, 0, 0), 2)
         cv2.putText(img, str, (x, y), cv2.FONT_HERSHEY_COMPLEX, 1, (0, 150, 0), 1)
         cv2.imshow("Result", img)

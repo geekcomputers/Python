@@ -5,7 +5,7 @@ from getpass import getuser
 
 # user puts in their name
 name = getuser()
-name_check = input("Is your name " + name + "? → ")
+name_check = input(f"Is your name {name}? → ")
 if name_check.lower().startswith("y"):
     print("Okay.")
     time.sleep(1)
@@ -16,10 +16,9 @@ if name_check.lower().startswith("n"):
 # Python lists their name
 userList = name
 
-# Python & user dialoge
-print("Hello", name + ", my name is Python.")
+print("Hello", userList + ", my name is Python.")
 time.sleep(0.8)
-print("The first letter of your name is", userList[0] + ".")
+print("The first letter of your name is", f"{userList[0]}.")
 time.sleep(0.8)
 print("Nice to meet you. :)")
 time.sleep(0.8)

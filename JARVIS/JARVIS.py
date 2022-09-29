@@ -126,7 +126,7 @@ def on_press(key):
         k = key.name  # other keys
     if k in ["1", "2", "left", "right"]:  # keys of interest
         # self.keys.append(k)  # store it in global-like variable
-        print("Key pressed: " + k)
+        print(f"Key pressed: {k}")
         return False  # stop listener; remove this if want more keys
 
 
@@ -215,7 +215,6 @@ def get_app(Q):
         subprocess.call(["discord.exe"])
     elif Q == "open browser":
         subprocess.call(["C:\\Program Files\\Internet Explorer\\iexplore.exe"])
-    # patch-1
     elif Q == "open youtube":
         webbrowser.open("https://www.youtube.com/")  # open youtube
     elif Q == "open google":
@@ -239,15 +238,11 @@ def get_app(Q):
         except Exception as e:
             print(e)
             speak("Sorry, I can't send the email.")
-    # =======
-    #   master
     elif Q == "Take screenshot":
         snapshot = ImageGrab.grab()
         drive_letter = "C:\\"
-        folder_name = r"downloaded-files"
         folder_time = datetime.datetime.now().strftime("%Y-%m-%d_%I-%M-%S_%p")
-        extention = ".jpg"
-        folder_to_save_files = drive_letter + folder_name + folder_time + extention
+        folder_to_save_files = f"{drive_letter}downloaded-files{folder_time}.jpg"
         snapshot.save(folder_to_save_files)
 
     elif Q == "Jokes":

@@ -13,7 +13,7 @@ def get_wan_ip():
     try:
         # get ip from http://ipecho.net/plain as text
         wan_ip = urlopen('http://ipecho.net/plain').read().decode('utf-8')
-        res.configure(text='Wan IP is : ' + wan_ip, fg='#600')
+        res.configure(text=f'Wan IP is : {wan_ip}', fg='#600')
     except:
         res.configure(text='Problem in source : http://ipecho.net/plain', fg='red')
 
@@ -22,7 +22,7 @@ def get_wan_ip():
 def get_local_ip():
     try:
         lan_ip = (socket.gethostbyname(socket.gethostname()))
-        res.configure(text='Local IP is : ' + lan_ip, fg='#600')
+        res.configure(text=f'Local IP is : {lan_ip}', fg='#600')
     except:
         res.configure(text='Unkown Error', fg='#red')
     # **************** about control button *****************#

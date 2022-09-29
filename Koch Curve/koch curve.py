@@ -28,7 +28,7 @@ if __name__ == "__main__":
     # Do not change the turtle’s heading.
     t.backward(length / 2.0)
     t.pendown()
-    for i in range(3):
+    for _ in range(3):
         # Pull the pen down – drawing when moving.
         snowflake(length, 4)
         t.right(120)

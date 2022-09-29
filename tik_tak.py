@@ -26,10 +26,7 @@ def enter_number(p1_sign, p2_sign):
     global switch
     global j
     k = 9
-    while j:
-        if k == 0:
-            break
-
+    while j and k != 0:
         if switch == "p1":
             p1_input = int(input("\nplayer 1 :- "))
             if p1_input <= 0:

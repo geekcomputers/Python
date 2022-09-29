@@ -15,7 +15,7 @@ def main():
 def pattern(lines):
     t = 0
     m = lines + 1
-    for i in reversed(range(lines+1)):
+    for _ in reversed(range(lines+1)):
         pattern = "@"*(m)
         format = " "*t
         t = t + 1

@@ -19,25 +19,16 @@ def random_int():
 
 def random_sentence():
     """Creates random and return sentences."""
-    return (
-        "{} {} {} {} {} {}".format(
-            article[random_int()],
-            noun[random_int()],
-            verb[random_int()],
-            preposition[random_int()],
-            article[random_int()],
-            noun[random_int()],
-        )
-    ).capitalize()
+    return f"{article[random_int()]} {noun[random_int()]} {verb[random_int()]} {preposition[random_int()]} {article[random_int()]} {noun[random_int()]}".capitalize()
 
 
 # prints random sentences
-for sentence in list(map(lambda x: random_sentence(), range(0, 20))):
+for sentence in list(map(lambda x: random_sentence(), range(20))):
     print(sentence)
 
 print("\n")
 
-story = (". ").join(list(map(lambda x: random_sentence(), range(0, 20))))
+story = (". ").join(list(map(lambda x: random_sentence(), range(20))))
 
 # prints random sentences story
-print("{}".format(story))
+print(f"{story}")

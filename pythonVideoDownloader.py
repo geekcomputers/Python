@@ -23,12 +23,11 @@ def get_video_links():
     # find all links on web-page
     links = soup.findAll("a")
 
-    # filter the link sending with .mp4
-    video_links = [
-        archive_url + link["href"] for link in links if link["href"].endswith("mp4")
+    return [
+        archive_url + link["href"]
+        for link in links
+        if link["href"].endswith("mp4")
     ]
-
-    return video_links
 
 
 def download_video_series(video_links):
@@ -41,7 +40,7 @@ def download_video_series(video_links):
         # last string
         file_name = link.split("/")[-1]
 
-        print("Downloading the file:%s" % file_name)
+        print(f"Downloading the file:{file_name}")
 
         # create response object
         r = requests.get(link, stream=True)

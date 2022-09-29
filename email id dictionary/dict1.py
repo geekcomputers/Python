@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
-counts = dict()
-mails = list()
+counts = {}
+mails = []
 fname = input("Enter file name:")
 fh = open(fname)
 for line in fh:

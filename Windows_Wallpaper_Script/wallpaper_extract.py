@@ -57,12 +57,11 @@ class Wallpaper:
         # Look into all the files in the executing folder and change extension
         for filename in os.listdir(w.file_urls["wall_dst"]):
             base_file, ext = os.path.splitext(filename)
-            if ext == "":
-                if not os.path.isdir(w.file_urls["wall_dst"] + filename):
-                    os.rename(
-                        w.file_urls["wall_dst"] + filename,
-                        w.file_urls["wall_dst"] + filename + ".jpg",
-                    )
+            if ext == "" and not os.path.isdir(w.file_urls["wall_dst"] + filename):
+                os.rename(
+                    w.file_urls["wall_dst"] + filename,
+                    w.file_urls["wall_dst"] + filename + ".jpg",
+                )
 
     # Remove all files Not having Wallpaper Resolution
     @staticmethod
@@ -76,7 +75,7 @@ class Wallpaper:
                     im = Image.open(w.file_urls["wall_dst"] + filename)
                 except IOError:
                     print("This isn't a picture.", filename)
-                if list(im.size)[0] != 1920 and list(im.size)[0] != 1080:
+                if list(im.size)[0] not in [1920, 1080]:
                     im.close()
                     os.remove(w.file_urls["wall_dst"] + filename)
                 else:

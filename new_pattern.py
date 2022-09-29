@@ -17,7 +17,7 @@ def pattern(lines):
     for i in reversed(range(lines)):
         nxt_pattern = "$"*t
         pattern = "@"*(i+1)
-        final_pattern = pattern + "   n " + nxt_pattern
+        final_pattern = f"{pattern}   n {nxt_pattern}"
         print(final_pattern)
         t = t +1
 

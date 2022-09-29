@@ -45,7 +45,7 @@ def translate(word):
         speak(d)
     elif len(get_close_matches(word, data.keys())) > 0:
         x = get_close_matches(word, data.keys())[0]
-        speak("Did you mean " + x + " instead,  respond with Yes or No.")
+        speak(f"Did you mean {x} instead,  respond with Yes or No.")
         ans = takeCommand().lower()
         if "yes" in ans:
             speak("ok " + "It means.." + data[x])

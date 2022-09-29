@@ -18,7 +18,7 @@ def instasubprocess(user, tags, type, productId):
             + " "
             + productId
         )
-        command = child_env + " " + file_pocessing
+        command = f"{child_env} {file_pocessing}"
         result = subprocess.Popen(command, shell=True)
         result.wait()
     except:

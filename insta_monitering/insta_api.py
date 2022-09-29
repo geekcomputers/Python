@@ -37,11 +37,7 @@ class StartHandlerinsta(tornado.web.RequestHandler):
         if " " in q:
             q = q.replace(" ", "")
         self.background_task(user=user, tags=q, type=type, productId=productId)
-        temp = {}
-        temp["query"] = q
-        temp["userId"] = user
-        temp["status"] = True
-        temp["productId"] = productId
+        temp = {"query": q, "userId": user, "status": True, "productId": productId}
         print(
             "{0}, {1}, {2}, {3}".format(
                 temp["userId"], temp["productId"], temp["query"], temp["status"]
@@ -61,11 +57,7 @@ class StopHandlerinsta(tornado.web.RequestHandler):
             self.send_error(400)
         obj = InstaPorcessClass()
         result = obj.deletProcess(tags=q, user=user, productId=productId)
-        temp = {}
-        temp["query"] = q
-        temp["userId"] = user
-        temp["productId"] = productId
-        temp["status"] = result
+        temp = {"query": q, "userId": user, "productId": productId, "status": result}
         print(
             "{0}, {1}, {2}, {3}".format(
                 temp["userId"], temp["productId"], temp["query"], temp["status"]
@@ -85,11 +77,7 @@ class StatusHandlerinsta(tornado.web.RequestHandler):
             self.send_error(400)
         obj = InstaPorcessClass()
         result = obj.statusCheck(tags=q, user=user, productId=productId)
-        temp = {}
-        temp["query"] = q
-        temp["userId"] = user
-        temp["status"] = result
-        temp["productId"] = productId
+        temp = {"query": q, "userId": user, "status": result, "productId": productId}
         print(
             "{0}, {1}, {2}, {3}".format(
                 temp["userId"], temp["productId"], temp["query"], temp["status"]

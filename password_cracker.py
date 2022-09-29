@@ -22,13 +22,13 @@ elif _platform == "win32":
 
 
 def testPass(cryptPass):  # Start the function
-    salt = cryptPass[0:2]
+    salt = cryptPass[:2]
     dictFile = open("dictionary.txt", "r")  # Open the dictionary file
-    for word in dictFile.readlines():  # Scan through the file
+    for word in dictFile:
         word = word.strip("\n")
         cryptWord = crypt.crypt(word, salt)  # Check for password in the file
         if cryptWord == cryptPass:
-            print("[+] Found Password: " + word + "\n")
+            print(f"[+] Found Password: {word}" + "\n")
             return
     print("[-] Password Not Found.\n")
     return
@@ -36,11 +36,11 @@ def testPass(cryptPass):  # Start the function
 
 def main():
     passFile = open("passwords.txt")  # Open the password file
-    for line in passFile.readlines():  # Read through the file
+    for line in passFile:
         if ":" in line:
             user = line.split(":")[0]
             cryptPass = line.split(":")[1].strip(" ")  # Prepare the user name etc
-            print("[*] Cracking Password For: " + user)
+            print(f"[*] Cracking Password For: {user}")
             testPass(cryptPass)  # Call it to crack the users password
 
 

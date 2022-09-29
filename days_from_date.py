@@ -29,7 +29,7 @@ def find_day(date):
 def printt():
     user_input = user_input1.get()
     date = process_date(user_input)
-    c = "Day on " + user_input + "  is " + find_day(date)
+    c = f"Day on {user_input}  is {find_day(date)}"
     label2 = tk.Label(root, text=c, font=("Times new roman", 20), fg="black").place(
         x=20, y=200
     )
