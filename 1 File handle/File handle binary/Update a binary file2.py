@@ -4,8 +4,8 @@ import pickle
 
 
 def update():
-    F = open("studrec.dat", "rb+")
-    value = pickle.load(F)
+    File = open("studrec.dat", "rb+")
+    value = pickle.load(File)
     found = 0
     roll = int(input("Enter the roll number of the record"))
     for i in value:
@@ -20,12 +20,12 @@ def update():
         print("Record not found")
 
     else:
-        pickle.dump(value, F)
-        F.seek(0)
-        newval = pickle.load(F)
+        pickle.dump(value, File)
+        File.seek(0)
+        newval = pickle.load(File)
         print(newval)
 
-    F.close()
+    File.close()
 
 
 update()
