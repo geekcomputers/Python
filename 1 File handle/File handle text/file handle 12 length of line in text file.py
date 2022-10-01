@@ -1,10 +1,10 @@
 def longlines():
     with open('story.txt', encoding='utf-8') as F:
-        line = F.readlines()
+        lines = F.readlines()
 
-        for i in line:
+        for i in lines:
             if len(i) < 50:
-                print(i, end="   ")
+                print(i, end="\t")
 
 
 longlines()
