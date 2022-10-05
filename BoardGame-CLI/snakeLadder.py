@@ -14,15 +14,15 @@ def player_input():
     global current_loc
     global isReady
 
-    y = True
-    while y:
+    x = True
+    while x:
         player_num = int(input("Enter the number of players: "))
         if player_num > 0:
             for i in range(player_num):
                 name = input(f"Enter player {i+1} name: ")
                 players[name] = current_loc
                 isReady[name] = False
-            y = False
+            x = False
             play()  # play funtion call
 
         else:
