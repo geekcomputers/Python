@@ -1,6 +1,6 @@
-# This is an editied version
+# This is an edited version
 # Made the code much more easier to read
-# Used better naming for variable
+# Used better naming for variables
 # There were few inconsistencies in the outputs of the first if/else/if ladder \
 # inside the while loop. That is solved.
 import random
