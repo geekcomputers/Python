@@ -1,8 +1,9 @@
 def base_check(xnumber, xbase):
-    for char in xnumber[len(xnumber ) -1]:
+    for char in xnumber[len(xnumber) - 1]:
         if int(char) >= int(xbase):
             return False
     return True
+
 
 def convert_from_10(xnumber, xbase, arr, ybase):
     if int(xbase) == 2 or int(xbase) == 4 or int(xbase) == 6 or int(xbase) == 8:
@@ -22,15 +23,23 @@ def convert_from_10(xnumber, xbase, arr, ybase):
             quotient = int(xnumber) // int(xbase)
             remainder = int(xnumber) % int(xbase)
             if remainder > 9:
-                if remainder == 10: remainder = 'A'
-                if remainder == 11: remainder = 'B'
-                if remainder == 12: remainder = 'C'
-                if remainder == 13: remainder = 'D'
-                if remainder == 14: remainder = 'E'
-                if remainder == 15: remainder = 'F'
+                if remainder == 10:
+                    remainder = "A"
+                if remainder == 11:
+                    remainder = "B"
+                if remainder == 12:
+                    remainder = "C"
+                if remainder == 13:
+                    remainder = "D"
+                if remainder == 14:
+                    remainder = "E"
+                if remainder == 15:
+                    remainder = "F"
             arr.append(remainder)
             dividend = quotient
             convert_from_10(dividend, xbase, arr, ybase)
+
+
 def convert_to_10(xnumber, xbase, arr, ybase):
     if int(xbase) == 10:
         for char in xnumber:
@@ -43,6 +52,8 @@ def convert_to_10(xnumber, xbase, arr, ybase):
             ans = ans + (int(i) * (int(ybase) ** j))
             j = j + 1
         return ans
+
+
 arrayfrom = []
 arrayto = []
 is_base_possible = False
@@ -61,7 +72,7 @@ if int(base) == 10:
     convert_from_10(number, dBase, arrayfrom, base)
     answer = arrayfrom[::-1]  # reverses the array
     print(f"In base {dBase} this number is: ")
-    print(*answer, sep='')
+    print(*answer, sep="")
 elif int(dBase) == 10:
     answer = convert_to_10(number, dBase, arrayto, base)
     print(f"In base {dBase} this number is: {answer} ")
@@ -70,5 +81,4 @@ else:
     convert_from_10(number, dBase, arrayfrom, base)
     answer = arrayfrom[::-1]
     print(f"In base {dBase} this number is: ")
-    print(*answer, sep='')
-© 2020 GitHub, Inc.
+    print(*answer, sep="")
