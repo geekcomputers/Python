@@ -1,1 +1,1 @@
-This is a GUI to show drop menu and build list.
+The code is to show using tkinter GUI to creat droplist and calender, and using .place() manage the positions.
