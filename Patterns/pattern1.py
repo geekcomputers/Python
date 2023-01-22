@@ -12,7 +12,6 @@ def main():
 
 def pattern(lines):
     m = lines + 1
-    l = 1
     for i in reversed(range(lines+1)):
         t = ""
         k = 1
