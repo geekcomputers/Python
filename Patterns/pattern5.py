@@ -6,19 +6,14 @@
 #54321
 
 def main():
-    lines = int(input("Enter number of lines: "))
+    lines = int(input("Enter the number of lines: "))
     pattern(lines)
 
 def pattern(rows):
-
-
-    for row in range(1, rows):
-        for column in range(row, 0, -1):
-            print(column, end=' ')
-        print("")
-
-
-
+    for i in range(1, rows+1):
+        for j in range(i, 0, -1):
+            print(j, end="")
+        print()
 
 if __name__ == "__main__":
     main()
