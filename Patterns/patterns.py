@@ -6,15 +6,6 @@
 # * * * *
 # * * * * *
 
-for i in range(1, 6):
-    for j in range(0, i):
-        print("*", end=" ")
-
-    for j in range(1, (2 * (5 - i)) + 1):
-        print(" ", end="")
-
-    print("")
-
 
 # Let's say we want to print pattern which is opposite of above:
 #  * * * * *
@@ -23,14 +14,26 @@ for i in range(1, 6):
 #        * *
 #          *
 
-print(" ")
+def main():
+    lines = int(input("Enter no.of lines: "))
+    pattern(lines)
 
-for i in range(1, 6):
+def pattern(lines):
+    for i in range(lines):
+        for j in range(i+1):
+            print("* ", end="")
+        print("")
+    print(" ")
 
-    for j in range(0, (2 * (i - 1)) + 1):
-        print(" ", end="")
+    for i in range(0,lines):
+    
+        for j in range(0, (2 * (i - 1)) + 1):
+            print(" ", end="")
+    
+        for j in range(0, lines - i):
+            print("*", end=" ")
+    
+        print("")    
 
-    for j in range(0, 6 - i):
-        print("*", end=" ")
-
-    print("")
+if __name__ == "__main__":
+    main()    
