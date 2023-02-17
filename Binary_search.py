@@ -1,36 +1,33 @@
 # It returns location of x in given array arr
 # if present, else returns -1
 def binary_search(arr, l, r, x):
-    if l <= r:
+    # Base case: if left index is greater than right index, element is not present
+    if l > r:
+        return -1
 
-        mid = (l + r) // 2  # extracting the middle element from the array
+    # Calculate the mid index
+    mid = (l + r) // 2
 
-        # If element is present at the middle itself
-        if arr[mid] == x:
-            return mid
+    # If element is present at the middle itself
+    if arr[mid] == x:
+        return mid
 
-        # If element is smaller than mid, then it can only
-        # be present in left subarray
-        elif arr[mid] > x:
-            return binary_search(arr, l, mid - 1, x)
+    # If element is smaller than mid, then it can only be present in left subarray
+    elif arr[mid] > x:
+        return binary_search(arr, l, mid - 1, x)
 
-        # Else the element can only be present in right subarray
-        else:
-            return binary_search(arr, mid + 1, r, x)
-
-    # If we reach here, then the element was not present
-    return -1
+    # Else the element can only be present in right subarray
+    else:
+        return binary_search(arr, mid + 1, r, x)
 
 
 # Main Function
 if __name__ == "__main__":
     # User input array
-    print("Enter the array with comma separated in which element will be searched")
-    arr = [
-        int(x) for x in input().split(",")
-    ]  # the input array will of int type with each element seperated with a comma due to the split fucntion
-    # map function returns a list of results after applying the given function to each item
-    x = eval(input("Enter the element you want to search in given array"))
+    arr = [int(x) for x in input("Enter the array with elements separated by commas: ").split(",")]
+
+    # User input element to search for
+    x = int(input("Enter the element you want to search for: "))
 
     # Function call
     result = binary_search(arr, 0, len(arr) - 1, x)
