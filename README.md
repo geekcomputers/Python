@@ -19,7 +19,7 @@ master
 :email: craig@geekcomputers.co.uk.
 
 master
-This script contain important functions which help reduce human workload.
+These scripts contain important functions which help reduce human workload.
 Code documentation is aligned correctly when the files are viewed in [Notepad++](https://notepad-plus-plus.org/). :spiral_notepad:
 <hr>
 
