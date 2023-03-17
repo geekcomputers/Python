@@ -1,11 +1,13 @@
-num=int(input("Enter a number:"))
-sum=0
-temp=num
-   while temp>0:
-     digit=temp%10
-     sum+=digit**3
-     temp//=10
-if num==sum:
-   print(num,"is an Armstrong number")
-else:
-   print(num,"is not an Armstrong number")
+def is_armstrong_number(number):
+    numberstr = str(number)
+    length = len(numberstr)
+    num = number
+    rev = 0
+    temp = 0
+    while num != 0:
+        rem = num % 10
+        num //=  10
+        temp += rem ** length
+    return temp == number
+    
+is_armstrong_number(5)

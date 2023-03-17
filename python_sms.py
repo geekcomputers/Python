@@ -36,10 +36,7 @@ while True:
     snumber = row[1]
 
     message = (
-        sname
-        + " There will be NO training tonight on the "
-        + tdate
-        + " Sorry for the late notice, I have sent a mail as well, just trying to reach everyone, please do not reply to this message as this is automated"
+        f"{sname} There will be NO training tonight on the {tdate}. Sorry for the late notice, I have sent a mail as well, just trying to reach everyone, please do not reply to this message as this is automated"
     )
 
     username = "YOUR_USERNAME"
@@ -70,9 +67,9 @@ while True:
     postdata = urllib.urlencode(values)
     req = urllib2.Request(url, postdata)
 
-    print("Attempting to send SMS to " + sname + " at " + snumber + " on " + tdate)
+    print( f"Attempting to send SMS to {sname} at {snumber} on {tdate}")
     f.write(
-        "Attempting to send SMS to " + sname + " at " + snumber + " on " + tdate + "\n"
+        f"Attempting to send SMS to {sname} at {snumber} on {tdate}"
     )
 
     try:

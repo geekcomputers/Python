@@ -3,18 +3,18 @@ alphabets present in a text file “happy.txt"""
 
 
 def lowercase():
-    F = open("happy.txt", "r")
-    count = 0
-    count_ = 0
-    value = F.read()
-    for i in value:
-        if i.islower():
-            count += 1
-        elif i.isupper():
-            count_ += 1
-    print("The total number of lower case letters are", count)
-    print("The total number of upper case letters are", count_)
-    print("The total number of letters are", count + count_)
+    with open("happy.txt") as F:
+        count_lower = 0
+        count_upper = 0
+        value = F.read()
+        for i in value:
+            if i.islower():
+                count_lower += 1
+            elif i.isupper():
+                count_upper += 1
+        print("The total number of lower case letters are", count_lower)
+        print("The total number of upper case letters are", count_upper)
+        print("The total number of letters are", count_lower + count_upper)
 
-
-lowercase()
+if __name__ == "__main__":
+    lowercase()

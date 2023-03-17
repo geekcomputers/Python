@@ -19,7 +19,7 @@ master
 :email: craig@geekcomputers.co.uk.
 
 master
-This script contain important functions which help reduce human workload.
+These scripts contain important functions which help reduce human workload.
 Code documentation is aligned correctly when the files are viewed in [Notepad++](https://notepad-plus-plus.org/). :spiral_notepad:
 <hr>
 
@@ -111,12 +111,3 @@ Recall your old childhood memories, by playing the classic space invader game.
 
 - [Test Case Generator](https://github.com/Tanmay-901/test-case-generator/blob/master/test_case.py) - Generates different types of test cases with a clean and friendly UI, used in competitive programming and potentially for software testing.
 
-
-master
-- You can have a data set example for practice : Laliga Data 
-=======
-master
-<hr>
-- [RandomNumberGame.py](---) - A Basic Game of Gussesing Numbers .
-master
-master

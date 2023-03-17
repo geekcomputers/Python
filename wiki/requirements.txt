@@ -1,3 +1,2 @@
 wikipedia
 tkinter
-PIL

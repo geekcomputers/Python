@@ -28,13 +28,21 @@ from pynput.mouse import Button, Controller
 from playsound import *  # for sound output
 
 # master
-import speech_recognition as sr  # speech_recognition Library for performing speech recognition with support for Google Speech Recognition, etc..
+# auto install for pyttsx3 and speechRecognition
+import os
+try:
+    import pyttsx3 #Check if already installed
+except:# If not installed give exception
+    os.system('pip install pyttsx3')#install at run time
+    import pyttsx3 #import again for speak function
 
-# pip install pyttsx3
-# need to run only once to install the library
+try :
+    import speech_recognition as sr
+except:
+    os.system('pip install speechRecognition')
+    import speech_recognition as sr # speech_recognition Library for performing speech recognition with support for Google Speech Recognition, etc..
 
 # importing the pyttsx3 library
-import pyttsx3
 import webbrowser
 import smtplib
 
@@ -167,7 +175,7 @@ class Jarvis:
             shell='powershell.exe',
             paint='mspaint.exe',
             cmd='cmd.exe',
-            browser='C:\Program Files\Internet Explorer\iexplore.exe',
+            browser='C:\\Program Files\\Internet Explorer\\iexplore.exe',
         )
         return _dict
 
@@ -214,7 +222,7 @@ def get_app(Q):
     elif Q == "open discord":
         subprocess.call(["discord.exe"])
     elif Q == "open browser":
-        subprocess.call(["C:\Program Files\Internet Explorer\iexplore.exe"])
+        subprocess.call(["C:\\Program Files\\Internet Explorer\\iexplore.exe"])
     # patch-1
     elif Q == "open youtube":
         webbrowser.open("https://www.youtube.com/")  # open youtube
@@ -280,7 +288,8 @@ def get_app(Q):
         "shell": "powershell.exe",
         "paint": "mspaint.exe",
         "cmd": "cmd.exe",
-        "browser": "C:\Program Files\Internet Explorer\iexplore.exe",
+        "browser": "C:\\Program Files\Internet Explorer\iexplore.exe",
+        "vscode": "C:\\Users\\Users\\User\\AppData\\Local\\Programs\Microsoft VS Code"
     }
     # master
 

@@ -1,12 +1,18 @@
-# checking for armstrong number
-a = input("Enter a number")
-n = int(a)
-S = 0
-while n > 0:
-    d = n % 10
-    S = S + d * d * d
-    n = n / 10
-if int(a) == S:
-    print("Armstrong Number")
-else:
-    print("Not an Armstrong Number")
+def is_armstrong_number(number):
+    sum = 0
+
+    # find the sum of the cube of each digit
+    temp = number
+    while temp > 0:
+       digit = temp % 10
+       sum += digit ** 3
+       temp //= 10
+    
+    # display the result
+    if number == sum:
+       print(number,"is an Armstrong number")
+    else:
+       print(number,"is not an Armstrong number")
+
+number = int(input("Enter the number : "))
+is_armstrong_number(number)

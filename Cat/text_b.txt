@@ -5,3 +5,4 @@ The knights who say ni!
 Lines
 of
 Text!
+This file does not end with a newline.

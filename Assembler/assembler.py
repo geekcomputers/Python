@@ -6,7 +6,7 @@ lines = []  # contains the lines of the file.
 tokens = []  # contains all tokens of the source code.
 
 # register eax, ebx,..., ecx
-eax = 0
+eax = 1
 ebx = 0
 ecx = 0
 edx = 0
@@ -1644,9 +1644,9 @@ def main():
             registerLabels()
             parser()
 
-        except:
+        except Exception as e:
 
-            print("Error: File %s not found!" % (arg))
+            print(f"Error: {e}")
 
 
 if __name__ == "__main__":
