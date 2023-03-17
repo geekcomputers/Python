@@ -6,8 +6,7 @@
 # If none of the given conditions are true then just print the number!
 
 
-def FizzBuzz():
-    num = int(input("Enter the number here: "))
+def FizzBuzz(num):
     for i in range(1, num + 1):
         if i % 3 == 0 and i % 5 == 0:
             print("FizzBuzz")
@@ -19,4 +18,5 @@ def FizzBuzz():
             print(i)
 
 
-FizzBuzz()
+
+FizzBuzz(20)  # prints FizzBuzz up to 20
