@@ -3,7 +3,7 @@ Master
 =======
 #This document helps to understand python in details.
 master
-# My Python Examples for everyone 
+# My Python Examples for all
 =======
 
 master
