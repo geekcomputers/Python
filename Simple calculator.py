@@ -1,4 +1,4 @@
-# Program make a simple calculator
+# Program to make a simple calculator
 
 # This function adds two numbers
 def add(x, y):
@@ -14,6 +14,8 @@ def multiply(x, y):
 
 # This function divides two numbers
 def divide(x, y):
+    if(y==0):
+        raise Exception("Divisor cannot be zero")
     return x / y
 
 
