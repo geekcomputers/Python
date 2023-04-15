@@ -1,5 +1,6 @@
 #find documentation for ezgmail module at https://pypi.org/project/EZGmail/
 #simple simon says module that interacts with google API to read the subject line of an email and respond to "Simon says:"
+#DO NOT FORGET TO ADD CREDENTIALS.JSON AND TOKEN.JSON TO .GITIGNORE!!!
 
 import ezgmail, re, time
 
