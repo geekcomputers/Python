@@ -49,7 +49,6 @@ master
 - [logs.py](https://github.com/geekcomputers/Python/blob/master/logs.py) - This script will search for all `*.log` files in the given directory, zip them using the program you specify, and then date stamp them.
 
 - [move_files_over_x_days.py](https://github.com/geekcomputers/Python/blob/master/move_files_over_x_days.py) - Moves all files over a specified age (in days) from the source directory to the destination directory.
-perfect 
 
 - [nslookup_check.py](https://github.com/geekcomputers/Python/blob/master/nslookup_check.py) - This simple script opens the file `server_list.txt` and then does a nslookup for each one to check the DNS entry.
 
@@ -91,11 +90,12 @@ perfect
 
 - [youtube.py](https://github.com/geekcomputers/Python/blob/master/youtube.py) - It Takes a song name as input and fetches the YouTube URL of the best matching song and plays it.  
 
-- [site_health.py](https://github.com/geekcomputers/Python/blob/master/site_health.py) - Checks the health of a remote server
+- [site_health.py](https://github.com/geekcomputers/Python/blob/master/site_health.py) - Checks the health of a remote server.
 
 - [SimpleStopWatch.py](https://github.com/geekcomputers/Python/blob/master/SimpleStopWatch.py) - Simple Stop Watch implementation using Python's time module. 
 
 - [Changemac.py](https://github.com/geekcomputers/Python/blob/master/changemac.py) - This script change your MAC address , generate random MAC address or enter input as new MAC address in your Linux(Successfully Tested in Ubuntu 18.04). 
+- 
 - [whatsapp-monitor.py](https://github.com/geekcomputers/Python/blob/master/whatsapp-monitor.py) - Uses Selenium to give online status about your contacts when your contacts become online in WA you will get an update about it on terminal.
 
 - [whatsapp-chat-analyzer.py](https://github.com/subahanii/whatsapp-Chat-Analyzer) - This is Whatsapp group/individual chat analyzer .
