@@ -49,7 +49,6 @@ master
 - [logs.py](https://github.com/geekcomputers/Python/blob/master/logs.py) - This script will search for all `*.log` files in the given directory, zip them using the program you specify, and then date stamp them.
 
 - [move_files_over_x_days.py](https://github.com/geekcomputers/Python/blob/master/move_files_over_x_days.py) - Moves all files over a specified age (in days) from the source directory to the destination directory.
-perfect 
 
 - [nslookup_check.py](https://github.com/geekcomputers/Python/blob/master/nslookup_check.py) - This simple script opens the file `server_list.txt` and then does a nslookup for each one to check the DNS entry.
 
@@ -65,15 +64,13 @@ perfect
 
 - [script_count.py](https://github.com/geekcomputers/Python/blob/master/script_count.py) - This file scans the scripts directory and gives a count of the different types of scripts.
 
-- [get_youtube_view.py] - This is a simple python script used to get more views on your YouTube videos. This script may also be used to repeat songs on YouTube. 
-
 - [script_listing.py](https://github.com/geekcomputers/Python/blob/master/script_listing.py) - This file will list all the files in the given directory, and go through all the subdirectories as well.
 
 - [testlines.py](https://github.com/geekcomputers/Python/blob/master/testlines.py) - This simple script opens a file and prints out 100 lines of whatever is the set for the line variable.
 
 - [tweeter.py](https://github.com/geekcomputers/Python/blob/master/tweeter.py) - Allows you to tweet text or a picture from the terminal.
 
-- [serial_scanner.py](https://github.com/geekcomputers/Python/blob/master/serial_scanner.py) contains a method called ListAvailablePorts which returns a list with the names of the serial ports that are in use in the computer. This method works only on Linux and Windows (can be extended for mac OS). If no port is found, an empty list is returned.
+- [serial_scanner.py](https://github.com/geekcomputers/Python/blob/master/serial_scanner.py) - Contains a method called ListAvailablePorts which returns a list with the names of the serial ports that are in use in the computer. This method works only on Linux and Windows (can be extended for mac OS). If no port is found, an empty list is returned.
 
 - [get_youtube_view.py](https://github.com/geekcomputers/Python/blob/master/get_youtube_view.py) - A simple python script to get more views for your YouTube videos. Useful for repeating songs on YouTube.
 
@@ -96,13 +93,13 @@ perfect
 - [SimpleStopWatch.py](https://github.com/geekcomputers/Python/blob/master/SimpleStopWatch.py) - Simple Stop Watch implementation using Python's time module. 
 
 - [Changemac.py](https://github.com/geekcomputers/Python/blob/master/changemac.py) - This script change your MAC address , generate random MAC address or enter input as new MAC address in your Linux(Successfully Tested in Ubuntu 18.04). 
+
 - [whatsapp-monitor.py](https://github.com/geekcomputers/Python/blob/master/whatsapp-monitor.py) - Uses Selenium to give online status about your contacts when your contacts become online in WA you will get an update about it on terminal.
 
 - [whatsapp-chat-analyzer.py](https://github.com/subahanii/whatsapp-Chat-Analyzer) - This is Whatsapp group/individual chat analyzer .
 This script is able to analyze all activity happened in Whatsapp group and visualize all things through matplotlib library(In Graph form).
 
 - [JARVIS.py](https://git.io/fjH8m) - Control windows programs with your voice.
-
 
 - [Images Downloader](https://git.io/JvnJh) - Download Image Form webpage Work on Unix based systems.
 
