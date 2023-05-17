@@ -39,7 +39,6 @@ class LinkedList:
         if carry > 0:
             temp.next = Node(carry)
 
-
     def __str__(self):
         temp = self.head
         while temp:
