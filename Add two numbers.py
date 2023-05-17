@@ -7,4 +7,4 @@ num2 = float(input("Number 2: "))
 sum = num1 + num2
 
 # Display the sum
-print("The sum of",num1,'and2',num2,'is',sum)
+print("The sum of", num1, "and2", num2, "is", sum)
