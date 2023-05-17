@@ -4,11 +4,11 @@ class Node:
         self.next = None
 
 
-class Linked_List:
+class LinkedList:
     def __init__(self):
         self.head = None
 
-    def Insert_At_Beginning(self, new_data):
+    def insert_at_beginning(self, new_data):
         new_node = Node(new_data)
         if self.head is None:
             self.head = new_node
@@ -16,13 +16,13 @@ class Linked_List:
         new_node.next = self.head
         self.head = new_node
 
-    def Add_two_no(self, First, Second):
+    def add_two_no(self, first, second):
         prev = None
         temp = None
         carry = 0
-        while First is not None or Second is not None:
-            first_data = 0 if First is None else First.data
-            second_data = 0 if Second is None else Second.data
+        while first is not None or second is not None:
+            first_data = 0 if first is None else first.data
+            second_data = 0 if second is None else second.data
             Sum = carry + first_data + second_data
             carry = 1 if Sum >= 10 else 0
             Sum = Sum if Sum < 10 else Sum % 10
@@ -32,37 +32,38 @@ class Linked_List:
             else:
                 prev.next = temp
             prev = temp
-            if First is not None:
-                First = First.next
-            if Second is not None:
-                Second = Second.next
+            if first is not None:
+                first = first.next
+            if second is not None:
+                second = second.next
         if carry > 0:
             temp.next = Node(carry)
 
-    def Display(self):
+
+    def __str__(self):
         temp = self.head
         while temp:
             print(temp.data, "->", end=" ")
             temp = temp.next
-        print("None")
+        return "None"
 
 
 if __name__ == "__main__":
-    First = Linked_List()
-    Second = Linked_List()
-    First.Insert_At_Beginning(6)
-    First.Insert_At_Beginning(4)
-    First.Insert_At_Beginning(9)
+    first = LinkedList()
+    second = LinkedList()
+    first.insert_at_beginning(6)
+    first.insert_at_beginning(4)
+    first.insert_at_beginning(9)
 
-    Second.Insert_At_Beginning(2)
-    Second.Insert_At_Beginning(2)
+    second.insert_at_beginning(2)
+    second.insert_at_beginning(2)
 
     print("First Linked List: ")
-    First.Display()
+    print(first)
     print("Second Linked List: ")
-    Second.Display()
+    print(second)
 
-    Result = Linked_List()
-    Result.Add_two_no(First.head, Second.head)
+    result = LinkedList()
+    result.add_two_no(first.head, second.head)
     print("Final Result: ")
-    Result.Display()
+    print(result)
