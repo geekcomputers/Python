@@ -43,7 +43,7 @@ class Interface:
         except Exception as err:
             print(f"Invalid \nan Exception: {err}")
         else:
-            cls.has_characters[change] = not cls.has_characters[change]  # automaticly changres to the oppesite value already there
+            cls.has_characters[change] = not cls.has_characters[change]  #automaticly changres to the oppesite value already there
             print(f"{change} is now set to {cls.has_characters[change]}")
 
     @classmethod
