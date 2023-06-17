@@ -39,15 +39,11 @@ class Interface:
     @classmethod
     def change_has_characters(cls, change):
         try:
-            cls.has_characters[
-                change
-            ]  # to check if the specified key exists in the dicitonary
+            cls.has_characters[change]  # to check if the specified key exists in the dicitonary
         except Exception as err:
             print(f"Invalid \nan Exception: {err}")
         else:
-            cls.has_characters[change] = not cls.has_characters[
-                change
-            ]  # automaticly changres to the oppesite value already there
+            cls.has_characters[change] = not cls.has_characters[change]  #automaticly changres to the oppesite value already there
             print(f"{change} is now set to {cls.has_characters[change]}")
 
     @classmethod
