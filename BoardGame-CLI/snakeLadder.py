@@ -64,10 +64,15 @@ def play():
 
                     if isReady[i]:
                         looproll = temp1
+                        counter_6 = 0
                         while looproll == 6:
+                            counter_6 += 1
                             looproll = roll()
                             temp1 += looproll
                             print(f"you got {looproll} ")
+                            if counter_6 = 3 :
+                                temp1 -= 18
+                                print("Three consectutives 6 got cancelled")
                             print("")
                         # print(temp1)
                         if (players[i] + temp1) > 100:
