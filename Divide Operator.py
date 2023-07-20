@@ -1,46 +1,49 @@
-# Python3 program to divide a number 
-# by other without using / operator 
+class DivisionOperation:
+    INT_MAX = float('inf')
 
-# Function to find division without 
-# using '/' operator 
-def division(num1, num2): 
-	
-	if (num1 == 0): return 0
-	if (num2 == 0): return INT_MAX 
-	
-	negResult = 0
-	
-	# Handling negative numbers 
-	if (num1 < 0): 
-		num1 = - num1 
-		
-		if (num2 < 0): 
-			num2 = - num2 
-		else: 
-			negResult = true 
-	# If num2 is negative, make it positive		
-	elif (num2 < 0): 
-		num2 = - num2 
-		negResult = true 
-	
-	# if num1 is greater than equal to num2 
-	# subtract num2 from num1 and increase 
-	# quotient by one. 
-	quotient = 0
+    def __init__(self, num1, num2):
+        self.num1 = num1
+        self.num2 = num2
 
-	while (num1 >= num2): 
-		num1 = num1 - num2 
-		quotient += 1
-	
-	# checking if neg equals to 1 then 
-	# making quotient negative 
-	if (negResult): 
-			quotient = - quotient 
-	return quotient 
+    def perform_division(self):
+        if self.num1 == 0:
+            return 0
+        if self.num2 == 0:
+            return self.INT_MAX
 
-# Driver program 
-num1 = 13; num2 = 2
-# Pass num1, num2 as arguments to function division
-print(division(num1, num2)) 
+        neg_result = False
+
+        # Handling negative numbers
+        if self.num1 < 0:
+            self.num1 = -self.num1
+
+            if self.num2 < 0:
+                self.num2 = -self.num2
+            else:
+                neg_result = True
+        elif self.num2 < 0:
+            self.num2 = -self.num2
+            neg_result = True
+
+        quotient = 0
+
+        while self.num1 >= self.num2:
+            self.num1 -= self.num2
+            quotient += 1
+
+        if neg_result:
+            quotient = -quotient
+        return quotient
 
 
+# Driver program
+num1 = 13
+num2 = 2
+
+# Create a DivisionOperation object and pass num1, num2 as arguments
+division_op = DivisionOperation(num1, num2)
+
+# Call the perform_division method of the DivisionOperation object
+result = division_op.perform_division()
+
+print(result)
