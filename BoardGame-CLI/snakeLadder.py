@@ -70,7 +70,7 @@ def play():
                             looproll = roll()
                             temp1 += looproll
                             print(f"you got {looproll} ")
-                            if counter_6 = 3 :
+                            if counter_6 == 3 :
                                 temp1 -= 18
                                 print("Three consectutives 6 got cancelled")
                             print("")
