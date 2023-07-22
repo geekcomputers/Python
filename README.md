@@ -45,9 +45,7 @@ Feel free to explore the scripts and use them for your learning and automation n
 31. [youtube.py](https://github.com/geekcomputers/Python/blob/master/youtube.py) - Take a song name as input and fetch the YouTube URL of the best matching song and play it.
 32. [site_health.py](https://github.com/geekcomputers/Python/blob/master/site_health.py) - Check the health of a remote server.
 33. [SimpleStopWatch.py](https://github.com/geekcomputers/Python/blob/master/SimpleStopWatch.py) - Simple stop watch implementation using Python's time module.
-34. [Changemac.py](https://github.com/geekcomputers/Python/blob/master/changemac.py) -
-
- Change your MAC address, generate a random MAC address, or enter input as a new MAC address on Linux (Successfully Tested in Ubuntu 18.04).
+34. [Changemac.py](https://github.com/geekcomputers/Python/blob/master/changemac.py) - Change your MAC address, generate a random MAC address, or enter input as a new MAC address on Linux (Successfully Tested in Ubuntu 18.04).
 35. [whatsapp-monitor.py](https://github.com/geekcomputers/Python/blob/master/whatsapp-monitor.py) - Use Selenium to give online status updates about your contacts in WhatsApp on the terminal.
 36. [whatsapp-chat-analyzer.py](https://github.com/subahanii/whatsapp-Chat-Analyzer) - WhatsApp group/individual chat analyzer that visualizes chat activity using matplotlib.
 37. [JARVIS.py](https://git.io/fjH8m) - Control Windows programs with your voice.
