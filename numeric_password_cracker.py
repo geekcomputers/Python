@@ -28,9 +28,3 @@ if __name__ == "__main__":
     else:
         print("Password not found. Try increasing the max_length or target a different password.")
 
-
-# Will have to make improvements, It lacks.
-# The upper length to test for permutations should be 10 digits of numbers.
-# Also, using the generator and ... permutations.
-# Somehow apply gpu's power also for cracking it.
-# Somehoe should ask for password input and then crack it.
