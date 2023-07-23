@@ -1,6 +1,6 @@
 import os
 
-repository_path = r"D:\coding\Python-Programs"
+repository_path = r"D:\coding\Python-Programs\sorting_algorithms"
 
 def rename_files_and_folders(directory):
     for name in os.listdir(directory):
