@@ -70,847 +70,868 @@ def scanner(string):
 
     for ch in string:
 
-        if state == 0:
+        match state:
 
-            if ch == "m":  # catch mov-command
+            case 0:
+            
+                match ch:
 
-                state = 1
-                token += "m"
+                    case "m":  # catch mov-command
 
-            elif ch == "e":  # catch register
+                        state = 1
+                        token += "m"
 
-                state = 4
-                token += "e"
+                    case "e":  # catch register
 
-            elif (ch >= "1" and ch <= "9") or ch == "-":  # catch a number
+                        state = 4
+                        token += "e"
 
-                state = 6
-                token += ch
+                    case "1":  # catch a number
 
-            elif ch == "0":  # catch a number or hex-code
+                        if ch <= "9" or ch == "-":
+                            state = 6
+                            token += ch
 
-                state = 17
-                token += ch
+                    case "0":  # catch a number or hex-code
 
-            elif ch == "a":  # catch add-command
+                        state = 17
+                        token += ch
 
-                state = 7
-                token += ch
+                    case "a":  # catch add-command
 
-            elif ch == "s":  # catch sub command
+                        state = 7
+                        token += ch
 
-                state = 10
-                token += ch
+                    case "s":  # catch sub command
 
-            elif ch == "i":  # capture int command
+                        state = 10
+                        token += ch
 
-                state = 14
-                token += ch
+                    case "i":  # capture int command
 
-            elif ch == "p":  # capture push or pop command
+                        state = 14
+                        token += ch
 
-                state = 19
-                token += ch
+                    case "p":  # capture push or pop command
 
-            elif ch == "l":  # capture label
+                        state = 19
+                        token += ch
 
-                state = 25
-                token += ch
+                    case "l":  # capture label
 
-            elif ch == "j":  # capture jmp command
+                        state = 25
+                        token += ch
 
-                state = 26
-                token += ch
+                    case "j":  # capture jmp command
 
-            elif ch == "c":  # catch cmp-command
+                        state = 26
+                        token += ch
 
-                state = 29
-                token += ch
+                    case "c":  # catch cmp-command
 
-            elif ch == ";":  # capture comment
+                        state = 29
+                        token += ch
 
-                state = 33
+                    case ";":  # capture comment
 
-            elif ch == '"':  # catch a string
+                        state = 33
 
-                state = 34
-                # without "
+                    case '"':  # catch a string
 
-            elif ch.isupper():  # capture identifier
+                        state = 34
+                        # without "
 
-                state = 35
-                token += ch
+                    case ch.isupper():  # capture identifier
 
-            elif ch == "d":  # capture db keyword
+                        state = 35
+                        token += ch
 
-                state = 36
-                token += ch
+                    case "d":  # capture db keyword
 
-            elif ch == "$":  # catch variable with prefix $
+                        state = 36
+                        token += ch
 
-                state = 38
-                # not catching $
+                    case "$":  # catch variable with prefix $
 
-            elif ch == "_":  # catch label for subprogram
+                        state = 38
+                        # not catching $
 
-                state = 40
-                # not catches the character _
+                    case "_":  # catch label for subprogram
 
-            elif ch == "r":  # catch ret-command
+                        state = 40
+                        # not catches the character _
 
-                state = 44
-                token += ch
+                    case "r":  # catch ret-command
 
-            else:  # other characters like space-characters etc.
+                        state = 44
+                        token += ch
 
-                state = 0
-                token = ""
-
-        elif state == 1:  # state 1
+                    case _:  # other characters like space-characters etc
 
-            if ch == "o":
+                        state = 0
+                        token = ""
 
-                state = 2
-                token += ch
+            case 1:  # state 1
 
-            elif ch == "u":
+                match ch:
 
-                state = 47
-                token += ch
+                    case "o":
 
-            else:  # error case
+                        state = 2
+                        token += ch
 
-                state = 0
-                token = ""
-                raise InvalidSyntax()
+                    case "u":
 
-        elif state == 2:  # state 2
+                        state = 47
+                        token += ch
 
-            if ch == "v":
+                    case _:# error case
 
-                state = 3
-                token += "v"
+                        state = 0
+                        token = ""
+                        raise InvalidSyntax()
+            
+            case 2:  # state 2
 
-            else:  # error case
-                state = 0
-                token = ""
-                raise InvalidSyntax()
+                match ch:
 
-        elif state == 3:  # state 3
+                    case "v":
 
-            if ch.isspace():
+                        state = 3
+                        token += "v"
 
-                state = 0
-                tokens.append(Token(token, "command"))
-                token = ""
+                    case _:# error case
 
-            else:  # error case
+                        state = 0
+                        token = ""
+                        raise InvalidSyntax()
 
-                state = 0
-                token = ""
-                raise InvalidSyntax()
+            case 3:  # state 3
 
-        elif state == 4:  # state 4
-            if ch >= "a" and ch <= "d":
+                if ch.isspace():
 
-                state = 5
-                token += ch
+                    state = 0
+                    tokens.append(Token(token, "command"))
+                    token = ""
 
-            else:  # error case
+                else:  # error case
 
-                state = 0
-                token = ""
-                raise InvalidSyntax()
+                    state = 0
+                    token = ""
+                    raise InvalidSyntax()
 
-        elif state == 5:  # state 5
-            if ch == "x":
-                state = 13
-                token += ch
+            case 4:  # state 4
 
-            else:  # error case
+                if ch >= "a" and ch <= "d":
 
-                state = 0
-                token = ""
-                raise InvalidSyntax()
+                    state = 5
+                    token += ch
 
-        elif state == 6:  # state 6
+                else:  # error case
 
-            if ch.isdigit():
+                    state = 0
+                    token = ""
+                    raise InvalidSyntax()
 
-                state = 6
-                token += ch
+            case 5:  # state 5
 
-            elif ch.isspace():
+                match ch:
 
-                state = 0
-                tokens.append(Token(token, "value"))
-                token = ""
+                    case "x":
 
-            else:  # error case
+                        state = 13
+                        token += ch
 
-                state = 0
-                token = ""
-                raise InvalidSyntax()
+                    case _:
 
-        elif state == 7:  # state 7
+                        state = 0
+                        token = ""
+                        raise InvalidSyntax()
 
-            if ch == "d":
+            case 6:  # state 6
+            
+                if ch.isdigit():
 
-                state = 8
-                token += ch
+                    state = 6
+                    token += ch
 
-            else:  # error case
+                elif ch.isspace():
 
-                state = 0
-                token = ""
-                raise InvalidSyntax()
+                    state = 0
+                    tokens.append(Token(token, "value"))
+                    token = ""
 
-        elif state == 8:  # state 8
+                else:  # error case
 
-            if ch == "d":
+                    state = 0
+                    token = ""
+                    raise InvalidSyntax()
 
-                state = 9
-                token += ch
+            case 7:  # state 7
+            
+                match ch:
 
-            else:  # error case
+                    case "d":
 
-                state = 0
-                token = ""
-                raise InvalidSyntax()
+                        state = 8
+                        token += ch
 
-        elif state == 9:  # state 9
+                    case _: # error case
 
-            if ch.isspace():
+                        state = 0
+                        token = ""
+                        raise InvalidSyntax()
 
-                state = 0
-                tokens.append(Token(token, "command"))
-                token = ""
+            case 8:  # state 8
 
-            else:  # error case
+                match ch:
+                    case "d":
 
-                state = 0
-                token = ""
-                raise InvalidSyntax()
+                        state = 9
+                        token += ch
 
-        elif state == 10:  # state 10
+                    case _:# error case
 
-            if ch == "u":
+                        state = 0
+                        token = ""
+                        raise InvalidSyntax()
 
-                state = 11
-                token += ch
+            case 9:  # state 9
 
-            else:  # error case
+                if ch.isspace():
 
-                state = 0
-                token = ""
-                raise InvalidSyntax()
+                    state = 0
+                    tokens.append(Token(token, "command"))
+                    token = ""
 
-        elif state == 11:  # state 11
+                else:  # error case
 
-            if ch == "b":
+                    state = 0
+                    token = ""
+                    raise InvalidSyntax()
 
-                state = 12
-                token += ch
+            case 10:  # state 10
 
-            else:  # error case
+                match ch:
+                    case "u":
 
-                state = 0
-                token = ""
-                raise InvalidSyntax()
+                        state = 11
+                        token += ch
 
-        elif state == 12:  # state 12
+                    case _:# error case
 
-            if ch.isspace():
+                        state = 0
+                        token = ""
+                        raise InvalidSyntax()
 
-                state = 0
-                tokens.append(Token(token, "command"))
-                token = ""
+            case 11:  # state 11
 
-            else:  # error case
+                match ch:
+                    case "b":
 
-                state = 0
-                token = ""
-                raise InvalidSyntax()
+                        state = 12
+                        token += ch
 
-        elif state == 13:  # state 13
+                    case _:# error case
 
-            if ch == "," or ch.isspace():
+                        state = 0
+                        token = ""
+                        raise InvalidSyntax()
 
-                state = 0
-                tokens.append(Token(token, "register"))
-                token = ""
+            case 12:  # state 12
 
-            else:  # error case
+                if ch.isspace():
 
-                state = 0
-                token = ""
-                raise InvalidSyntax()
+                    state = 0
+                    tokens.append(Token(token, "command"))
+                    token = ""
 
-        elif state == 14:  # state 14
+                else:  # error case
 
-            if ch == "n":
+                    state = 0
+                    token = ""
+                    raise InvalidSyntax()
 
-                state = 15
-                token += ch
+            case 13:  # state 13
 
-            else:  # error case
+                if ch == "," or ch.isspace():
 
-                state = 0
-                token = ""
-                raise InvalidSyntax()
+                    state = 0
+                    tokens.append(Token(token, "register"))
+                    token = ""
 
-        elif state == 15:  # state 15
+                else:  # error case
 
-            if ch == "t":
+                    state = 0
+                    token = ""
+                    raise InvalidSyntax()
 
-                state = 16
-                token += ch
+            case 14:  # state 14
 
-            else:  # error case
+                if ch == "n":
 
-                state = 0
-                token = ""
-                raise InvalidSyntax()
+                    state = 15
+                    token += ch
 
-        elif state == 16:  # state 16
+                else:  # error case
 
-            if ch.isspace():
+                    state = 0
+                    token = ""
+                    raise InvalidSyntax()
 
-                state = 0
-                tokens.append(Token(token, "command"))
-                token = ""
+            case 15:  # state 15
 
-            else:  # error case
+                if ch == "t":
 
-                state = 0
-                token = ""
-                raise InvalidSyntax()
+                    state = 16
+                    token += ch
 
-        elif state == 17:  # state 17
+                else:  # error case
 
-            if ch == "x":
+                    state = 0
+                    token = ""
+                    raise InvalidSyntax()
 
-                state = 18
-                token += ch
+            case 16:  # state 16
 
-            elif ch.isspace():
+                if ch.isspace():
 
-                state = 0
-                tokens.append(Token(token, "value"))
-                token = ""
+                    state = 0
+                    tokens.append(Token(token, "command"))
+                    token = ""
 
-            else:  # error case
+                else:  # error case
 
-                state = 0
-                token = ""
-                raise InvalidSyntax()
+                    state = 0
+                    token = ""
+                    raise InvalidSyntax()
 
-        elif state == 18:  # state 18
+            case 17:  # state 17
 
-            if ch.isdigit() or (ch >= "a" and ch <= "f"):
+                if ch == "x":
 
-                state = 18
-                token += ch
+                    state = 18
+                    token += ch
 
-            elif ch.isspace():
+                elif ch.isspace():
 
-                state = 0
-                tokens.append(Token(token, "value"))
-                token = ""
+                    state = 0
+                    tokens.append(Token(token, "value"))
+                    token = ""
 
-            else:  # error case
+                else:  # error case
 
-                state = 0
-                token = ""
-                raise InvalidSyntax()
+                    state = 0
+                    token = ""
+                    raise InvalidSyntax()
 
-        elif state == 19:  # state 19
+            case 18:  # state 18
 
-            if ch == "u":
+                if ch.isdigit() or (ch >= "a" and ch <= "f"):
 
-                state = 20
-                token += ch
+                    state = 18
+                    token += ch
 
-            elif ch == "o":
+                elif ch.isspace():
 
-                state = 23
-                token += ch
+                    state = 0
+                    tokens.append(Token(token, "value"))
+                    token = ""
 
-            else:  # error case
+                else:  # error case
 
-                state = 0
-                token = ""
-                raise InvalidSyntax()
+                    state = 0
+                    token = ""
+                    raise InvalidSyntax()
 
-        elif state == 20:  # state 20
+            case 19:  # state 19
 
-            if ch == "s":
+                if ch == "u":
 
-                state = 21
-                token += ch
+                    state = 20
+                    token += ch
 
-            else:  # error case
+                elif ch == "o":
 
-                state = 0
-                token = ""
-                raise InvalidSyntax()
+                    state = 23
+                    token += ch
 
-        elif state == 21:  # state 21
+                else:  # error case
 
-            if ch == "h":
+                    state = 0
+                    token = ""
+                    raise InvalidSyntax()
 
-                state = 22
-                token += ch
+            case 20:  # state 20
 
-            else:  # error case
+                if ch == "s":
 
-                state = 0
-                token = ""
-                raise InvalidSyntax()
+                    state = 21
+                    token += ch
 
-        elif state == 22:  # state 22
+                else:  # error case
 
-            if ch.isspace():
+                    state = 0
+                    token = ""
+                    raise InvalidSyntax()
 
-                state = 0
-                tokens.append(Token(token, "command"))
-                token = ""
+            case 21:  # state 21
 
-            else:  # error case
+                if ch == "h":
 
-                state = 0
-                token = ""
-                raise InvalidSyntax()
+                    state = 22
+                    token += ch
 
-        elif state == 23:  # state 23
+                else:  # error case
 
-            if ch == "p":
+                    state = 0
+                    token = ""
+                    raise InvalidSyntax()
 
-                state = 24
-                token += ch
+            case 22:  # state 22
 
-            else:  # error case
+                if ch.isspace():
 
-                state = 0
-                token = ""
-                raise InvalidSyntax()
+                    state = 0
+                    tokens.append(Token(token, "command"))
+                    token = ""
 
-        elif state == 24:  # state 24
+                else:  # error case
 
-            if ch.isspace():
+                    state = 0
+                    token = ""
+                    raise InvalidSyntax()
 
-                state = 0
-                tokens.append(Token(token, "command"))
-                token = ""
+            case 23:  # state 23
 
-            else:  # error case
+                if ch == "p":
 
-                state = 0
-                token = ""
-                raise InvalidSyntax()
+                    state = 24
+                    token += ch
 
-        elif state == 25:  # state 25
+                else:  # error case
 
-            if ch.isdigit():
+                    state = 0
+                    token = ""
+                    raise InvalidSyntax()
 
-                state = 25
-                token += ch
+            case 24:  # state 24
 
-            elif ch == ":" or ch.isspace():
+                if ch.isspace():
 
-                state = 0
-                tokens.append(Token(token, "label"))
-                token = ""
+                    state = 0
+                    tokens.append(Token(token, "command"))
+                    token = ""
 
-            else:  # error case
+                else:  # error case
 
-                state = 0
-                token = ""
-                raise InvalidSyntax()
+                    state = 0
+                    token = ""
+                    raise InvalidSyntax()
 
-        elif state == 26:  # state 26
+            case 25:  # state 25
 
-            if ch == "m":
+                if ch.isdigit():
 
-                state = 27
-                token += ch
+                    state = 25
+                    token += ch
 
-            elif ch == "e":  # catch je command
+                elif ch == ":" or ch.isspace():
 
-                state = 32
-                token += ch
+                    state = 0
+                    tokens.append(Token(token, "label"))
+                    token = ""
 
-            else:  # error case
+                else:  # error case
 
-                state = 0
-                token = ""
-                raise InvalidSyntax()
+                    state = 0
+                    token = ""
+                    raise InvalidSyntax()
 
-        elif state == 27:  # state 27
+            case 26:  # state 26
 
-            if ch == "p":
+                if ch == "m":
 
-                state = 28
-                token += ch
+                    state = 27
+                    token += ch
 
-            else:  # error case
+                elif ch == "e":  # catch je command
 
-                state = 0
-                token = ""
-                raise InvalidSyntax()
+                    state = 32
+                    token += ch
 
-        elif state == 28:  # state 28
+                else:  # error case
 
-            if ch.isspace():
+                    state = 0
+                    token = ""
+                    raise InvalidSyntax()
 
-                state = 0
-                tokens.append(Token(token, "command"))
-                token = ""
+            case 27:  # state 27
 
-            else:  # error case
+                if ch == "p":
 
-                state = 0
-                token = ""
-                raise InvalidSyntax()
+                    state = 28
+                    token += ch
 
-        elif state == 29:  # state 29
+                else:  # error case
 
-            if ch == "m":
+                    state = 0
+                    token = ""
+                    raise InvalidSyntax()
 
-                state = 30
-                token += ch
+            case 28:  # state 28
 
-            elif ch == "a":  # catch call-command
+                if ch.isspace():
 
-                state = 41
-                token += ch
+                    state = 0
+                    tokens.append(Token(token, "command"))
+                    token = ""
 
-            else:  # error case
+                else:  # error case
 
-                state = 0
-                token = ""
-                raise InvalidSyntax()
+                    state = 0
+                    token = ""
+                    raise InvalidSyntax()
 
-        elif state == 30:  # state 30
+            case 29:  # state 29
+                
+                match ch:
+                    case "m":
 
-            if ch == "p":
+                        state = 30
+                        token += ch
 
-                state = 31
-                token += ch
+                    case "a":  # catch call-command
 
-            else:  # error case
+                        state = 41
+                        token += ch
 
-                state = 0
-                token = ""
-                raise InvalidSyntax()
+                    case _:  # error case
 
-        elif state == 31:  # state 31
+                        state = 0
+                        token = ""
+                        raise InvalidSyntax()
 
-            if ch.isspace():
+            case 30:  # state 30
 
-                state = 0
-                tokens.append(Token(token, "command"))
-                token = ""
+                if ch == "p":
 
-            else:  # error case
+                    state = 31
+                    token += ch
 
-                state = 0
-                token = ""
-                raise InvalidSyntax()
+                else:  # error case
 
-        elif state == 32:  # state 32
+                    state = 0
+                    token = ""
+                    raise InvalidSyntax()
 
-            if ch.isspace():
+            case 31:  # state 31
 
-                state = 0
-                tokens.append(Token(token, "command"))
                 token = ""
 
-            else:  # error case
+                if ch.isspace():
 
-                state = 0
-                token = ""
-                raise InvalidSyntax()
+                    state = 0
+                    tokens.append(Token(token, "command"))
 
-        elif state == 33:  # state 33
+                else:  # error case
 
-            if (
-                ch.isdigit()
-                or ch.isalpha()
-                or (ch.isspace() and ch != "\n")
-                or ch == '"'
-            ):
+                    state = 0
+                    raise InvalidSyntax()
 
-                state = 33
+            case 32:  # state 32
 
-            elif ch == "\n":
+                token = ""
 
-                state = 0
+                if ch.isspace():
 
-            else:  # error case
+                    state = 0
+                    tokens.append(Token(token, "command"))
 
-                state = 0
-                token = ""
-                raise InvalidSyntax()
+                else:  # error case
 
-        elif state == 34:  # state 34
+                    state = 0
+                    raise InvalidSyntax()
 
-            if ch.isdigit() or ch.isalpha() or ch.isspace():
+            case 33:  # state 33
 
-                state = 34
-                token += ch
+                if (
+                    ch.isdigit()
+                    or ch.isalpha()
+                    or (ch.isspace() and ch != "\n")
+                    or ch == '"'
+                ):
 
-            elif ch == '"':
+                    state = 33
 
-                state = 0
-                tokens.append(Token(token, "string"))
-                token = ""
+                elif ch == "\n":
 
-            else:  # error case
+                    state = 0
 
-                state = 0
-                token = ""
-                raise InvalidSyntax()
+                else:  # error case
 
-        elif state == 35:  # state 35
+                    state = 0
+                    token = ""
+                    raise InvalidSyntax()
 
-            if ch.isdigit() or ch.isupper():
+            case 34:  # state 34
 
-                state = 35
-                token += ch
+                if ch.isdigit() or ch.isalpha() or ch.isspace():
 
-            elif ch == " " or ch == "\n":
+                    state = 34
+                    token += ch
 
-                state = 0
-                tokens.append(Token(token, "identifier"))
-                token = ""
+                elif ch == '"':
 
-            else:  # error case
+                    state = 0
+                    tokens.append(Token(token, "string"))
+                    token = ""
 
-                state = 0
-                token = ""
-                raise InvalidSyntax()
+                else:  # error case
 
-        elif state == 36:  # state 36
+                    state = 0
+                    token = ""
+                    raise InvalidSyntax()
 
-            if ch == "b":
+            case 35:  # state 35
 
-                state = 37
-                token += ch
+                if ch.isdigit() or ch.isupper():
 
-            elif ch == "i":
+                    state = 35
+                    token += ch
 
-                state = 49
-                token += ch
+                elif ch == " " or ch == "\n":
 
-            else:  # error case
+                    state = 0
+                    tokens.append(Token(token, "identifier"))
+                    token = ""
 
-                state = 0
-                token = ""
-                raise InvalidSyntax()
+                else:  # error case
 
-        elif state == 37:  # state 37
+                    state = 0
+                    token = ""
+                    raise InvalidSyntax()
 
-            if ch.isspace():
+            case 36:  # state 36
 
-                state = 0
-                tokens.append(Token(token, "command"))
-                token = ""
+                if ch == "b":
 
-            else:  # error case
+                    state = 37
+                    token += ch
 
-                state = 0
-                token = ""
-                raise InvalidSyntax()
+                elif ch == "i":
 
-        elif state == 38:  # state 38
+                    state = 49
+                    token += ch
 
-            if ch.isalpha():
+                else:  # error case
 
-                state = 39
-                token += ch
+                    state = 0
+                    token = ""
+                    raise InvalidSyntax()
 
-            else:  # error case
+            case 37:  # state 37
 
-                state = 0
-                token = ""
-                raise InvalidSyntax()
+                if ch.isspace():
 
-        elif state == 39:  # state 39
+                    state = 0
+                    tokens.append(Token(token, "command"))
+                    token = ""
 
-            if ch.isalpha() or ch.isdigit():
+                else:  # error case
 
-                state = 39
-                token += ch
+                    state = 0
+                    token = ""
+                    raise InvalidSyntax()
 
-            elif ch.isspace():
+            case 38:  # state 38
 
-                state = 0
-                tokens.append(Token(token, "identifier"))
-                token = ""
+                if ch.isalpha():
 
-            else:  # error case
+                    state = 39
+                    token += ch
 
-                state = 0
-                token = ""
-                raise InvalidSyntax()
+                else:  # error case
 
-        elif state == 40:  # state 40
+                    state = 0
+                    token = ""
+                    raise InvalidSyntax()
 
-            if (
-                (ch >= "a" and ch <= "z")
-                or (ch >= "A" and ch <= "Z")
-                or (ch >= "0" and ch <= "9")
-            ):
+            case 39:  # state 39
 
-                state = 40
-                token += ch
+                if ch.isalpha() or ch.isdigit():
 
-            elif ch == ":" or ch.isspace():
+                    state = 39
+                    token += ch
 
-                state = 0
-                tokens.append(Token(token, "subprogram"))
-                token = ""
+                elif ch.isspace():
 
-            else:  # error case
+                    state = 0
+                    tokens.append(Token(token, "identifier"))
+                    token = ""
 
-                state = 0
-                token = ""
-                raise InvalidSyntax()
+                else:  # error case
 
-        elif state == 41:  # state 41
+                    state = 0
+                    token = ""
+                    raise InvalidSyntax()
 
-            if ch == "l":
+            case 40:  # state 40
 
-                state = 42
-                token += ch
+                if (
+                    (ch >= "a" and ch <= "z")
+                    or (ch >= "A" and ch <= "Z")
+                    or (ch >= "0" and ch <= "9")
+                ):
 
-            else:  # error case
+                    state = 40
+                    token += ch
 
-                state = 0
-                token = ""
-                raise InvalidSyntax()
+                elif ch == ":" or ch.isspace():
 
-        elif state == 42:  # state 42
+                    state = 0
+                    tokens.append(Token(token, "subprogram"))
+                    token = ""
 
-            if ch == "l":
+                else:  # error case
 
-                state = 43
-                token += ch
+                    state = 0
+                    token = ""
+                    raise InvalidSyntax()
 
-            else:  # error case
+            case 41:  # state 41
 
-                state = 0
-                token = ""
-                raise InvalidSyntax()
+                match ch:
+                    case "l":
 
-        elif state == 43:  # state 43
+                        state = 42
+                        token += ch
+                    case _:# error case
 
-            if ch.isspace():
+                        state = 0
+                        token = ""
+                        raise InvalidSyntax()
 
-                state = 0
-                tokens.append(Token(token, "command"))
-                token = ""
+            case 42:  # state 42
 
-            else:  # error case
+                match ch:
+                    case "l":
 
-                state = 0
-                token = ""
-                raise InvalidSyntax()
+                        state = 43
+                        token += ch
+                    case _:# error case
 
-        elif state == 44:  # state 44
+                        state = 0
+                        token = ""
+                        raise InvalidSyntax()
 
-            if ch == "e":
+            case 43:  # state 43
 
-                state = 45
-                token += ch
+                if ch.isspace():
 
-            else:  # error case
+                    state = 0
+                    tokens.append(Token(token, "command"))
+                    token = ""
 
-                state = 0
-                token = ""
-                raise InvalidSyntax()
+                else:  # error case
 
-        elif state == 45:  # state 45
+                    state = 0
+                    token = ""
+                    raise InvalidSyntax()
 
-            if ch == "t":
+            case 44:  # state 44
 
-                state = 46
-                token += ch
+                match ch:
+                    case "e":
 
-            else:  # error case
+                        state = 45
+                        token += ch
+                    case _:# error case
 
-                state = 0
-                token = ""
-                raise InvalidSyntax()
+                        state = 0
+                        token = ""
+                        raise InvalidSyntax()
 
-        elif state == 46:  # state 46
+            case 45:  # state 45
 
-            if ch.isspace():
+                match ch:
+                    case "t":
 
-                state = 0
-                tokens.append(Token(token, "command"))
-                token = ""
+                        state = 46
+                        token += ch
+                    case _:# error case
 
-            else:  # error case
+                        state = 0
+                        token = ""
+                        raise InvalidSyntax()
 
-                state = 0
-                token = ""
-                raise InvalidSyntax()
+            case 46:  # state 46
 
-        elif state == 47:  # state 47
+                if ch.isspace():
 
-            if ch == "l":
+                    state = 0
+                    tokens.append(Token(token, "command"))
+                    token = ""
 
-                state = 48
-                token += ch
+                else:  # error case
 
-            else:  # error case
+                    state = 0
+                    token = ""
+                    raise InvalidSyntax()
 
-                state = 0
-                token = ""
-                raise InvalidSyntax()
+            case 47:  # state 47
 
-        elif state == 48:  # state 48
+                match ch:
+                    case "l":
 
-            if ch.isspace():
+                        state = 48
+                        token += ch
+                    case _:# error case
 
-                state = 0
-                tokens.append(Token(token, "command"))
-                token = ""
+                        state = 0
+                        token = ""
+                        raise InvalidSyntax()
 
-            else:  # error case
+            case 48:  # state 48
 
-                state = 0
-                token = ""
-                raise InvalidSyntax()
+                if ch.isspace():
 
-        elif state == 49:  # state 49
+                    state = 0
+                    tokens.append(Token(token, "command"))
+                    token = ""
 
-            if ch == "v":
+                else:  # error case
 
-                state = 50
-                token += ch
+                    state = 0
+                    token = ""
+                    raise InvalidSyntax()
 
-            else:  # error case
+            case 49:  # state 49
 
-                state = 0
-                token = ""
-                raise InvalidSyntax()
+                match ch:
+                    case "v":
 
-        elif state == 50:  # state 50
+                        state = 50
+                        token += ch
+                    case _:# error case
 
-            if ch.isspace():
+                        state = 0
+                        token = ""
+                        raise InvalidSyntax()
 
-                state = 0
-                tokens.append(Token(token, "command"))
-                token = ""
+            case 50:  # state 50
 
-            else:  # error case
+                if ch.isspace():
 
-                state = 0
-                token = ""
-                raise InvalidSyntax()
+                    state = 0
+                    tokens.append(Token(token, "command"))
+                    token = ""
+
+                else:  # error case
+
+                    state = 0
+                    token = ""
+                    raise InvalidSyntax()
 
 
 def scan():
@@ -987,23 +1008,25 @@ def parser():
                     token.token = float(token.token[1:])
                     token.token *= -1
                 elif token.t == "register":  # loads out of register
-                    if token.token == "eax":
-                        token.token = eax
-                    elif token.token == "ebx":
-                        token.token = ebx
-                    elif token.token == "ecx":
-                        token.token = ecx
-                    elif token.token == "edx":
-                        token.token = edx
+                    match token.token:
+                        case "eax":
+                            token.token = eax
+                        case "ebx":
+                            token.token = ebx
+                        case "ecx":
+                            token.token = ecx
+                        case "edx":
+                            token.token = edx
 
-                if tmpToken.token == "eax":
-                    eax = token.token
-                elif tmpToken.token == "ebx":
-                    ebx = token.token
-                elif tmpToken.token == "ecx":
-                    ecx = token.token
-                elif tmpToken.token == "edx":
-                    edx = token.token
+                match tmpToken.token:
+                    case "eax":
+                        eax = token.token
+                    case "ebx":
+                        ebx = token.token
+                    case "ecx":
+                        ecx = token.token
+                    case "edx":
+                        edx = token.token
 
             else:
 
@@ -1030,14 +1053,15 @@ def parser():
                 if token.t == "register":
 
                     # for the case that token is register
-                    if token.token == "eax":
-                        token.token = eax
-                    elif token.token == "ebx":
-                        token.token = ebx
-                    elif token.token == "ecx":
-                        token.token = ecx
-                    elif token.token == "edx":
-                        token.token = edx
+                    match token.token:
+                        case "eax":
+                            token.token = eax
+                        case "ebx":
+                            token.token = ebx
+                        case "ecx":
+                            token.token = ecx
+                        case "edx":
+                            token.token = edx
 
                 elif token.token.isdigit():
                     token.token = float(token.token)
@@ -1048,38 +1072,39 @@ def parser():
                     print("Error: ", token, " is not a number!")
                     return
 
-                if tmpToken.token == "eax":
-                    eax += token.token
+                match tmpToken.token:
 
-                    # update zero flag
-                    if eax == 0:
-                        zeroFlag = True
-                    else:
-                        zeroFlag = False
-                elif tmpToken.token == "ebx":
-                    ebx += token.token
+                    case "eax":
+                        eax += token.token
 
-                    # update zero flag
-                    if ebx == 0:
-                        zeroFlag = True
-                    else:
+                        # update zero flag
                         zeroFlag = False
-                elif tmpToken.token == "ecx":
-                    ecx += token.token
+                        if eax == 0:
+                            zeroFlag = True
+                    
+                    case "ebx":
+                        ebx += token.token
 
-                    # update zero flag
-                    if ecx == 0:
-                        zeroFlag = True
-                    else:
+                        # update zero flag
                         zeroFlag = False
-                elif tmpToken.token == "edx":
-                    edx += token.token
+                        if ebx == 0:
+                            zeroFlag = True
+                    
+                    case "ecx":
+                        ecx += token.token
 
-                    # update zero flag
-                    if edx == 0:
-                        zeroFlag = True
-                    else:
+                        # update zero flag
                         zeroFlag = False
+                        if ecx == 0:
+                            zeroFlag = True
+                    
+                    case "edx":
+                        edx += token.token
+
+                        # update zero flag
+                        zeroFlag = False
+                        if edx == 0:
+                            zeroFlag = True
 
             else:
 
@@ -1207,21 +1232,7 @@ def parser():
                 return
 
             # pushing register on the stack
-            if token.token == "eax":
-
-                stack.append(eax)
-
-            elif token.token == "ebx":
-
-                stack.append(ebx)
-
-            elif token.token == "ecx":
-
-                stack.append(ecx)
-
-            elif token.token == "edx":
-
-                stack.append(edx)
+            stack.append(token.token)
 
         elif token.token == "pop":  # pop commando
 
@@ -1236,21 +1247,15 @@ def parser():
                 return
 
             # pop register from stack
-            if token.token == "eax":
-
-                eax = stack.pop()
-
-            elif token.token == "ebx":
-
-                ebx = stack.pop()
-
-            elif token.token == "ecx":
-
-                ecx = stack.pop()
-
-            elif token.token == "edx":
-
-                edx = stack.pop()
+            match token.token:
+                case "eax":
+                    eax = stack.pop()
+                case "ebx":
+                    ebx = stack.pop()
+                case "ecx":
+                    ecx = stack.pop()
+                case "edx":
+                    edx = stack.pop()
 
         elif token.t == "label":  # capture label
 
@@ -1295,129 +1300,8 @@ def parser():
                     return
 
                 # actual comparing
-                if token.token == "eax":
-
-                    if tmpToken.token == "eax":
-
-                        if eax == eax:
-                            zeroFlag = True
-                        else:
-                            zeroFlag = False
-
-                    elif tmpToken.token == "ebx":
-
-                        if eax == ebx:
-                            zeroFlag = True
-                        else:
-                            zeroFlag = False
-
-                    elif tmpToken.token == "ecx":
-
-                        if eax == ecx:
-                            zeroFlag = True
-                        else:
-                            zeroFlag = False
-
-                    elif tmpToken.token == "edx":
-
-                        if eax == edx:
-                            zeroFlag = True
-                        else:
-                            zeroFlag = False
-
-                elif token.token == "ebx":
-
-                    if tmpToken.token == "eax":
-
-                        if ebx == eax:
-                            zeroFlag = True
-                        else:
-                            zeroFlag = False
-
-                    elif tmpToken.token == "ebx":
-
-                        if ebx == ebx:
-                            zeroFlag = True
-                        else:
-                            zeroFlag = False
-
-                    elif tmpToken.token == "ecx":
-
-                        if ebx == ecx:
-                            zeroFlag = True
-                        else:
-                            zeroFlag = False
-
-                    elif tmpToken.token == "edx":
-
-                        if ebx == edx:
-                            zeroFlag = True
-                        else:
-                            zeroFlag = False
-
-                elif token.token == "ecx":
-
-                    if tmpToken.token == "eax":
-
-                        if ecx == eax:
-                            zeroFlag = True
-                        else:
-                            zeroFlag = False
-
-                    elif tmpToken.token == "ebx":
-
-                        if ecx == ebx:
-                            zeroFlag = True
-                        else:
-                            zeroFlag = False
-
-                    elif tmpToken.token == "ecx":
-
-                        if ecx == ecx:
-                            zeroFlag = True
-                        else:
-                            zeroFlag = False
-
-                    elif tmpToken.token == "edx":
-
-                        if ecx == edx:
-                            zeroFlag = True
-                        else:
-                            zeroFlag = False
-
-                elif token.token == "edx":
-
-                    if tmpToken.token == "eax":
-
-                        if edx == eax:
-                            zeroFlag = True
-                        else:
-                            zeroFlag = False
-
-                    elif tmpToken.token == "ebx":
-
-                        if edx == ebx:
-                            zeroFlag = True
-                        else:
-                            zeroFlag = False
-
-                    elif tmpToken.token == "ecx":
-
-                        if edx == ecx:
-                            zeroFlag = True
-                        else:
-                            zeroFlag = False
-
-                    elif tmpToken.token == "edx":
-
-                        if edx == edx:
-                            zeroFlag = True
-                        else:
-                            zeroFlag = False
-
-            else:
-                print("Error: Not found register!")
-                return
+                zeroFlag = setZeroFlag(token.token, tmpToken.token)
+                
 
         elif token.token == "je":
 
@@ -1564,22 +1448,19 @@ def parser():
                 return
 
             if token.t == "register":
+                
+                match token.token:
+                    case "eax":
+                        eax /= eax
 
-                if token.token == "eax":
+                    case "ebx":
+                        eax /= ebx
 
-                    eax /= eax
+                    case "ecx":
+                        eax /= ecx
 
-                elif token.token == "ebx":
-
-                    eax /= ebx
-
-                elif token.token == "ecx":
-
-                    eax /= ecx
-
-                elif token.token == "edx":
-
-                    eax /= edx
+                    case "edx":
+                        eax /= edx
 
             else:
 
@@ -1589,6 +1470,42 @@ def parser():
         # increment pointer for fetching next token.
         pointer += 1
 
+def setZeroFlag(token, tmpToken):
+    """ return bool for zero flag based on the regToken """
+    global eax, ebx, ecx, edx
+
+    # Register in string
+    registers = {
+        "eax": eax,
+        "ebx": ebx,
+        "ecx": ecx,
+        "edx": edx,
+    }
+
+    zeroFlag = False
+
+    match tmpToken:
+        case "eax":
+            if registers.get(token) == registers.get(tmpToken):
+                zeroFlag = True
+
+        case "ebx":
+            if registers.get(token) == registers.get(tmpToken):
+                zeroFlag = True
+
+        case "ecx":
+            if registers.get(token) == registers.get(tmpToken):
+                zeroFlag = True
+
+        case "edx":
+            if registers.get(token) == registers.get(tmpToken):
+                zeroFlag = True
+
+        case _:
+            print("Error: Not found register!")
+            return
+
+    return zeroFlag
 
 def registerLabels():
     """
