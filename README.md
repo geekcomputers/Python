@@ -14,7 +14,7 @@ Feel free to explore the scripts and use them for your learning and automation n
 
 1. [batch_file_rename.py](https://github.com/geekcomputers/Python/blob/master/batch_file_rename.py) - Batch rename a group of files in a specified directory, changing their extensions.
 2. [create_dir_if_not_there.py](https://github.com/geekcomputers/Python/blob/master/create_dir_if_not_there.py) - Check if a directory exists in the user's home directory. Create it if it doesn't exist.
-3. [Fast Youtube Downloader](https://github.com/geekcomputers/Python/blob/master/youtube-downloader%20fast.py) - Download YouTube videos quickly with parallel threads using aria2c.
+3. [Fast Youtube Downloader](https://github.com/geekcomputers/Python/blob/master/youtubedownloader.py) - Download YouTube videos quickly with parallel threads using aria2c.
 4. [Google Image Downloader](https://github.com/geekcomputers/Python/tree/master/Google_Image_Downloader) - Query a given term and retrieve images from the Google Image database.
 5. [dir_test.py](https://github.com/geekcomputers/Python/blob/master/dir_test.py) - Test if the directory `testdir` exists. If not, create it.
 6. [env_check.py](https://github.com/geekcomputers/Python/blob/master/env_check.py) - Check if all the required environment variables are set.
