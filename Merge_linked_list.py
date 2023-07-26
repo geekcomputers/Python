@@ -14,6 +14,7 @@ class LinkedList:
     # Function to initialize head
     def __init__(self):
         self.head = None
+        self.tail = None
 
     # Method to print linked list
     def printList(self):
@@ -29,12 +30,10 @@ class LinkedList:
 
         if self.head is None:
             self.head = new_node
+            self.tail = new_node
             return
-        last = self.head
-
-        while last.next:
-            last = last.next
-        last.next = new_node
+        self.tail.next = new_node
+        self.tail = self.tail.next
 
 
 # Function to merge two sorted linked list.
