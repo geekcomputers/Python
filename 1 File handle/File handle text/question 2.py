@@ -8,17 +8,15 @@ print("Hey!! You can print the word which are less then 4 characters")
 
 def display_words(file_path):
 
-
     try:
-        with open(file_path, 'r') as F:
-            lines = F.read()
-            words = lines.split()
-            count = 0
-            for word in words:
-                if (len(word) < 4):
-                    print(word)
-                    count += 1
-        return "The total number of the word's count which has less than 4 characters", (count) 
+        with open(file_path) as F:
+            words = F.read().split()
+            words_less_than_40 = list( filter(lambda word: len(word) < 4, words) )
+
+            for word in words_less_than_40:
+                print(word)
+        
+        return "The total number of the word's count which has less than 4 characters", (len(words_less_than_40)) 
     
     except FileNotFoundError:
         print("File not found")

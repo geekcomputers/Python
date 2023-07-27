@@ -12,7 +12,6 @@ Write a function remcount( ) to count the number of students who need
 
 import pickle
 
-F = open("class.dat", "ab")
 list = [
     [1, "Ramya", 30],
     [2, "vaishnavi", 60],
@@ -24,54 +23,46 @@ list = [
     [8, "sandhya", 65],
 ]
 
-
-pickle.dump(list, F)
-F.close()
+with open("class.dat", "ab") as F:
+    pickle.dump(list, F)
+    F.close()
 
 
 def remcount():
-    F = open("class.dat", "rb")
-    val = pickle.load(F)
-    count = 0
+    with open("class.dat", "rb") as F:
+        val = pickle.load(F)
+        count = 0
 
-    for i in val:
-        if i[2] <= 40:
-            print(i, "eligible for remedial")
-            count += 1
-    print("the total number of students are", count)
-    F.close()
+        for i in val:
+            if i[2] <= 40:
+                print(f"{i} eligible for remedial")
+                count += 1
+        print(f"the total number of students are {count}")
 
 
 remcount()
 
 
 def firstmark():
-    F = open("class.dat", "rb")
-    val = pickle.load(F)
-    main = []
-    count = 0
+    with open("class.dat", "rb") as F:
+        val = pickle.load(F)
+        count = 0
+        main = [i[2] for i in val]
 
-    for i in val:
-        data = i[2]
-        main.append(data)
+        top = max(main)
+        print(top, "is the first mark")
 
-    top = max(main)
-    print(top, "is the first mark")
+        F.seek(0)
+        for i in val:
+            if top == i[2]:
+                print(f"{i}\ncongrats")
+                count += 1
 
-    F.seek(0)
-    for i in val:
-        if top == i[2]:
-            print(i)
-            print("congrats")
-            count += 1
-
-    print("the total number of students who secured top marks are", count)
-    F.close()
+        print("the total number of students who secured top marks are", count)
 
 
 firstmark()
 
-F = open("class.dat", "rb")
-val = pickle.load(F)
-print(val)
-F.close()
+with open("class.dat", "rb") as F:
+    val = pickle.load(F)
+    print(val)
