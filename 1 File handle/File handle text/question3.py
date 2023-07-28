@@ -18,28 +18,26 @@ def write_to_file(file_name):
 
     else:
         with open(file_name, "a") as F:
+
             while True:
                 text = input("enter any text")
-                F.write(
-                    text + "\n"
-                )  # write function takes exactly 1 arguement so concatenation
-                choice = input("do you want to enter more, y/n")
-                if choice == "n":
+                F.write(f"{text}\n") 
+
+                if input("do you want to enter more, y/n").lower() == "n":
                     break
         
-# write_to_file()
-
 # step2:
 def check_first_letter():
     with open(file_name) as F:
-        value = F.read()
-        count = 0
-        line = value.split()
-        for i in line:
-            if i[0] in ["m", "M", "i", "I"]:
-                count += 1
-                print(i)
-        print("The total number of sentences starting with I or M are", count)
+        lines = F.read().split()
+
+        # store all starting letters from each line in one string after converting to lower case
+        first_letters = "".join([line[0].lower() for line in lines])
+
+        count_i = first_letters.count("i")
+        count_m = first_letters.count("m")
+
+        print(f"The total number of sentences starting with I or M are {count_i + count_m}")
 
 if __name__ == "__main__":
     

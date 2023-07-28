@@ -9,28 +9,28 @@ def write_to_file(file_name):
 
     if os.path.exists(file_name):
         print(f"Error: {file_name} already exists.")
+        return
 
-    else:
-        with open(file_name, "a") as F:
-            while True:
-                text = input("enter any text to add in the file:- ")
-                F.write(
-                    text + "\n"
-                )  # write function takes exactly 1 arguement so concatenation
-                choice = input("Do you want to enter more, y/n")
-                if choice == "n":
-                    break
-        
+    with open(file_name, "a") as F:
+
+        while True:
+            text = input("enter any text to add in the file:- ")
+            F.write( f"{text}\n" )
+            choice = input("Do you want to enter more, y/n").lower()
+            if choice == "n":
+                break
+    
 def longlines():
+
     with open(file_name, encoding='utf-8') as F:
         lines = F.readlines()
+        lines_less_than_50 = list( filter(lambda line: len(line) < 50, lines ) )
 
-        for i in lines:
-            if len(i) < 50:
+        if not lines_less_than_50:
+            print("There is no line which is less than 50")
+        else:
+            for i in lines_less_than_50:
                 print(i, end="\t")
-            else: 
-                print("There is no line which is less than 50 ")
-
 
 if __name__ == "__main__":
     write_to_file(file_name)
