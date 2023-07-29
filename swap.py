@@ -27,7 +27,7 @@ class Swapper:
             The second value to be swapped.
 
         """
-        if not isinstance(x, int) or not isinstance(y, int):
+        if not isinstance(x, (int, float)) or not isinstance(y, (float, int)):
             raise ValueError("Both x and y should be integers.")
         
         self.x = x
