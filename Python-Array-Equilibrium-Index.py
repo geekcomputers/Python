@@ -1,4 +1,4 @@
-Array Equilibrium Index
+"""Array Equilibrium Index
 Send Feedback
 Find and return the equilibrium index of an array. Equilibrium index of an array is an index i such that the sum of elements at indices less than i is equal to the sum of elements at indices greater than i.
 Element at index i is not included in either part.
@@ -13,7 +13,7 @@ Sample Input :
 7
 -7 1 5 2 -4 3 0
 Sample Output :
-3 
+3 """
 def equilibrium(arr): 
   
     # finding the sum of whole array 
