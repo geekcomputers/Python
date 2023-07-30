@@ -5,4 +5,4 @@ from quo.console import Console
 
 console = Console()
 
-console.rule(multiclored=true)
+console.rule(multiclored=True)

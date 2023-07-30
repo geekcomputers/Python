@@ -18,7 +18,7 @@ for i in link:
 
 	d_video = yt.get(mp4files[-1].extension,mp4files[-1].resolution) 
 	try: 
-		d_video.download(__PATH) 
+		d_video.download(PATH) 
 	except: 
 		print("Some Error!") 
 print('Task Completed!') 
