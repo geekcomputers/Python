@@ -4,8 +4,8 @@ from itertools import product
 def findPassword(chars, function, show=50, format_="%s"):
 
     password = None
-    attempts = 00
-    size = 01
+    attempts = 0
+    size = 1
     stop = False
 
     while not stop:
