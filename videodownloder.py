@@ -1,25 +1,35 @@
 from pytube import YouTube
 
-# location where you save.
-PATH = "E:/"  # to_do
+# Location where you save the videos.
+SAVE_PATH = "E:/"
 
-# link of video.
-link = [
+# List of video links.
+links = [
     "https://www.youtube.com/watch?v=p8FuTenSWPI",
     "https://www.youtube.com/watch?v=JWbnEt3xuos",
-]  # list of video links.
-for i in link:
-    try:
-        yt = YouTube(i)
-    except:
-        print("Connection Error")  # to handle exception
+]
 
-    # check files with "mp4" extension
-    mp4files = yt.filter("mp4")
 
-    d_video = yt.get(mp4files[-1].extension, mp4files[-1].resolution)
-    try:
-        d_video.download(__PATH)
-    except:
-        print("Some Error!")
-print("Task Completed!")
+def download_videos(links):
+    for link in links:
+        try:
+            yt = YouTube(link)
+        except Exception as e:
+            print(f"Connection Error: {e}")
+            continue
+
+        # Check files with "mp4" extension
+        mp4files = yt.filter(file_extension="mp4")
+        video_resolution = mp4files[-1].resolution
+
+        try:
+            video_stream = yt.streams.get_by_resolution(video_resolution)
+            video_stream.download(SAVE_PATH)
+        except Exception as e:
+            print(f"Download Error: {e}")
+            continue
+
+    print("Task Completed!")
+
+
+download_videos(links)

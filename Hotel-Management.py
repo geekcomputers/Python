@@ -1,6 +1,7 @@
 import json
 import sys
 
+
 def menu():
     options = {
         1: {"title": "Add new customer details", "method": add},
@@ -37,7 +38,7 @@ def add():
         1: ("Normal", 500),
         2: ("Deluxe", 1000),
         3: ("Super Deluxe", 1500),
-        4: ("Premium Deluxe", 2000)
+        4: ("Premium Deluxe", 2000),
     }
 
     Room_Type, x = room_types.get(Room_Type, ("Unknown", 0))

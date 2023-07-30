@@ -7,6 +7,7 @@ def fibonacci_generator(n=None):
         int
     """
 
+
 def fibonacci_generator(n=None):
     """
     Generating function for up to n Fibonacci numbers iteratively.
@@ -23,6 +24,7 @@ def fibonacci_generator(n=None):
         f0, f1 = f1, fn
         if n is not None:
             n -= 1
+
 
 if __name__ == "__main__":
     for n_fibo in fibonacci_generator(7):

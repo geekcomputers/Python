@@ -9,11 +9,15 @@ this scripts only works for number in base 10
 
 def is_armstrong_number(number: str):
     total: int = 0
-    exp: int = len(number)  # get the number of digits, this will determinate the exponent
+    exp: int = len(
+        number
+    )  # get the number of digits, this will determinate the exponent
 
     digits: list[int] = []
-    for digit in number: digits.append(int(digit))  # get the single digits
-    for x in digits: total += x ** exp  # get the power of each digit and sum it to the total
+    for digit in number:
+        digits.append(int(digit))  # get the single digits
+    for x in digits:
+        total += x**exp  # get the power of each digit and sum it to the total
 
     # display the result
     if int(number) == total:
