@@ -29,7 +29,6 @@ class Bird(Thread):
         event="<Up>",
         descend_speed=5
     ):
-
         # Verifica se "background" é uma instância de Background e se o "gamerover_method" é chamável
 
         if not isinstance(background, Background):
@@ -203,7 +202,6 @@ class Bird(Thread):
 
         # Move o pássaro enquanto o limite de subida por animação não tiver excedido
         if self.__times_skipped < self.climbsUp:
-
             # Move o pássaro para cima
             self.__canvas.move(self.__tag, 0, -1)
             self.__times_skipped += 1
@@ -212,7 +210,6 @@ class Bird(Thread):
             self.__canvas.after(3, self.jumps)
 
         else:
-
             # Declara que o pássaro não está mais subindo
             self.__going_up = False
             self.__times_skipped = 0
@@ -240,7 +237,6 @@ class Bird(Thread):
 
         # Executa a animação de descida somente se o pássaro estiver vivo
         if self.__isAlive:
-
             # Executa a animação de descida somente se o pássaro não estiver subindo
             if not self.__going_up:
                 # Move o pássaro para baixo

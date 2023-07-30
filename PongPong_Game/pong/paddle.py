@@ -1,8 +1,9 @@
 # ./PongPong/pong/paddle.py
 
+from typing import Tuple
+
 import pyglet
 from pyglet.window import key
-from typing import Tuple
 
 
 class Paddle(pyglet.shapes.Rectangle):
@@ -15,7 +16,6 @@ class Paddle(pyglet.shapes.Rectangle):
         self.event_handlers = [self, self.key_handler]
 
     def update(self, win_size: Tuple, border: float, other_object, dt):
-
         newlx = self.x + self.acc_left
         newrx = self.x + self.acc_right
 

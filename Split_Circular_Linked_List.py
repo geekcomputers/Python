@@ -48,7 +48,6 @@ class Circular_Linked_List:
 
 
 if __name__ == "__main__":
-
     L_list = Circular_Linked_List()
     head1 = Circular_Linked_List()
     head2 = Circular_Linked_List()

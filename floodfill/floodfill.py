@@ -26,8 +26,8 @@ class FloodFill:
         if self.window_height < 128 or self.window_width < 128:
             return  # surface too small
 
+        from math import cos, pi, sin
         from random import randint, uniform
-        from math import pi, sin, cos
 
         for n in range(0, randint(0, 5)):
             x = randint(50, self.window_width - 50)

@@ -1,6 +1,7 @@
-import requests
 import json
+
 import geocoder
+import requests
 
 g = geocoder.ip("me")
 

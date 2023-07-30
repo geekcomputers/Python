@@ -1,4 +1,5 @@
 import math
+
 import numpy as NP
 
 LC1 = eval(input("Enter DRs of Line 1 : "))

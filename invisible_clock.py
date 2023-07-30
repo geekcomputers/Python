@@ -1,11 +1,11 @@
 # Hey you need red color cloak
+import time
+
 import cv2
+import numpy as np
 
 # superinposing two images
 
-import numpy as np
-
-import time
 
 cap = cv2.VideoCapture(0)
 

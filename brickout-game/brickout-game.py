@@ -345,7 +345,6 @@ while not done:
         are both in the same section.
     """
     if gameStatus:
-
         # first draws ball for appropriate displaying the score.
         brickWall.draw()
 

@@ -4,7 +4,6 @@ import os  # Load the Module
 
 from _winreg import *  # Load the Module
 
-
 # Script Name		: recyclebin.py
 # Author				: Craig Richards
 # Created				: 07th June 2013

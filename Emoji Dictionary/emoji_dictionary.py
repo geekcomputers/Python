@@ -2,16 +2,16 @@
 
 # -----------------------------------------------------------------------------------------------------
 import io  # used for dealing with input and output
-from tkinter import *  # importing the necessary libraries
-import tkinter.messagebox as mbox
 import tkinter as tk  # imported tkinter as tk
+import tkinter.messagebox as mbox
+from tkinter import *  # importing the necessary libraries
+
 import emoji
 
 # -----------------------------------------------------------------------------------------------
 
 
 class Keypad(tk.Frame):
-
     cells = [
         ["😀", "🥰", "😴", "🤓", "🤮", "🤬", "😨", "🤑", "😫", "😎"],
         [
@@ -313,6 +313,7 @@ outputtxt = tk.Text(
     relief="solid",
 )
 outputtxt.place(x=120, y=400)
+
 
 # function for exiting
 def exit_win():

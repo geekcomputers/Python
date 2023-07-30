@@ -1,6 +1,7 @@
-from sys import stdin, setrecursionlimit
+from sys import setrecursionlimit, stdin
 
-setrecursionlimit(10 ** 6)
+setrecursionlimit(10**6)
+
 
 # Following is the Node class already written for the Linked List
 class Node:
@@ -56,7 +57,6 @@ def printLinkedList(head):
 t = int(stdin.readline().rstrip())
 
 while t > 0:
-
     head = takeInput()
 
     newHead = reverseLinkedListRec(head)

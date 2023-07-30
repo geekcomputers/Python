@@ -11,7 +11,7 @@ from email.mime.text import MIMEText
 
 import httplib2
 import oauth2client
-from apiclient import errors, discovery
+from apiclient import discovery, errors
 from oauth2client import client, tools
 
 SCOPES = "https://www.googleapis.com/auth/gmail.send"

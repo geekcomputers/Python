@@ -42,7 +42,6 @@ i = 0
 score = 0
 
 while run and i < 10:
-
     comp_choice = random.choice(li)
     user_choice = input("Type s for snake, w for water or g for gun: ").lower()
 

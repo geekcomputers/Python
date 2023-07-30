@@ -46,12 +46,13 @@ def pi(maxK=70, prec=1008, disp=1007):
     prec: precision of decimal places
     disp: number of decimal places shown
     """
-    from decimal import Decimal as Dec, getcontext as gc
+    from decimal import Decimal as Dec
+    from decimal import getcontext as gc
 
     gc().prec = prec
     K, M, L, X, S = 6, 1, 13591409, 1, 13591409
     for k in range(1, maxK + 1):
-        M = Dec((K ** 3 - (K << 4)) * M / k ** 3)
+        M = Dec((K**3 - (K << 4)) * M / k**3)
         L += 545140134
         X *= -262537412640768000
         S += Dec(M * L) / X
@@ -138,7 +139,6 @@ def getPrimeNumbers(N):
     # iterates over all numbers between 2 up to N+1
     # if a number is prime then appends to list 'ans'
     for number in range(2, N + 1):
-
         if isPrime(number):
             ans.append(number)
 
@@ -169,14 +169,11 @@ def primeFactorization(number):
     quotient = number
 
     if number == 0 or number == 1:
-
         ans.append(number)
 
     # if 'number' not prime then builds the prime factorization of 'number'
     elif not isPrime(number):
-
         while quotient != 1:
-
             if isPrime(factor) and (quotient % factor == 0):
                 ans.append(factor)
                 quotient /= factor
@@ -307,11 +304,9 @@ def goldbach(number):
     loop = True
 
     while i < lenPN and loop:
-
         j = i + 1
 
         while j < lenPN and loop:
-
             if primeNumbers[i] + primeNumbers[j] == number:
                 loop = False
                 ans.append(primeNumbers[i])
@@ -388,13 +383,11 @@ def kgV(number1, number2):
 
     # for kgV (x,1)
     if number1 > 1 and number2 > 1:
-
         # builds the prime factorization of 'number1' and 'number2'
         primeFac1 = primeFactorization(number1)
         primeFac2 = primeFactorization(number2)
 
     elif number1 == 1 or number2 == 1:
-
         primeFac1 = []
         primeFac2 = []
         ans = max(number1, number2)
@@ -406,11 +399,8 @@ def kgV(number1, number2):
 
     # iterates through primeFac1
     for n in primeFac1:
-
         if n not in done:
-
             if n in primeFac2:
-
                 count1 = primeFac1.count(n)
                 count2 = primeFac2.count(n)
 
@@ -418,7 +408,6 @@ def kgV(number1, number2):
                     ans *= n
 
             else:
-
                 count1 = primeFac1.count(n)
 
                 for i in range(count1):
@@ -428,9 +417,7 @@ def kgV(number1, number2):
 
     # iterates through primeFac2
     for n in primeFac2:
-
         if n not in done:
-
             count2 = primeFac2.count(n)
 
             for i in range(count2):
@@ -463,7 +450,6 @@ def getPrime(n):
     ans = 2  # this variable holds the answer
 
     while index < n:
-
         index += 1
 
         ans += 1  # counts to the next number
@@ -507,7 +493,6 @@ def getPrimesBetween(pNumber1, pNumber2):
         number += 1
 
     while number < pNumber2:
-
         ans.append(number)
 
         number += 1
@@ -540,7 +525,6 @@ def getDivisors(n):
     ans = []  # will be returned.
 
     for divisor in range(1, n + 1):
-
         if n % divisor == 0:
             ans.append(divisor)
 

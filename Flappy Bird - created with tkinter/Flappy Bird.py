@@ -4,7 +4,7 @@ __version__ = "1.0"
 import os.path
 from datetime import timedelta
 from time import time
-from tkinter import Tk, Button
+from tkinter import Button, Tk
 
 from Background import Background
 from Bird import Bird
@@ -27,7 +27,6 @@ class App(Tk, Settings):
     __time = "%H:%M:%S"
 
     def __init__(self):
-
         Tk.__init__(self)
         self.setOptions()
 

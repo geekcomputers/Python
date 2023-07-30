@@ -1,5 +1,6 @@
-from pytube import *
 import sys
+
+from pytube import *
 
 
 class YouTubeDownloder:

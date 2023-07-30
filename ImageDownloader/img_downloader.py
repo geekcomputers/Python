@@ -2,7 +2,10 @@
 
 
 def ImageDownloader(url):
-    import os, re, requests
+    import os
+    import re
+
+    import requests
 
     response = requests.get(url)
     text = response.text
@@ -18,7 +21,7 @@ def ImageDownloader(url):
 
 # USAGE
 print("Hey!! Welcome to the Image downloader...")
-link=input("Please enter the url from where you want to download the image..")
+link = input("Please enter the url from where you want to download the image..")
 # now you can give the input at run time and get download the images.
 # https://www.123rf.com/stock-photo/spring_color.html?oriSearch=spring&ch=spring&sti=oazo8ueuz074cdpc48
 ImageDownloader(link)

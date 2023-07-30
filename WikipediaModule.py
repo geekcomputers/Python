@@ -5,8 +5,9 @@ Created on Sat Jul 15 01:41:31 2017
 """
 from __future__ import print_function
 
-import wikipedia as wk
 from bs4 import BeautifulSoup
+
+import wikipedia as wk
 
 
 def wiki():

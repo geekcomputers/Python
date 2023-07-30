@@ -35,7 +35,6 @@ def menu():
 
 
 def add():
-
     print("")
     Name1 = input("Enter your first name: ")
     print("")
@@ -124,8 +123,8 @@ def add():
     exit_menu()
 
 
-import os
 import json
+import os
 
 filecheck = os.path.isfile("Management.txt")
 if filecheck == False:
@@ -144,7 +143,6 @@ if filecheck == False:
 
 
 def modify():
-
     File = open("Management.txt", "r")
     string = File.read()
     string = string.replace("'", '"')
@@ -210,7 +208,6 @@ def modify():
 
 
 def search():
-
     File = open("Management.txt", "r")
     string = File.read()
     string = string.replace("'", '"')
@@ -321,7 +318,6 @@ def remove():
 
 
 def view():
-
     File = open("Management.txt", "r")
     string = File.read()
     string = string.replace("'", '"')

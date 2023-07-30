@@ -1,10 +1,11 @@
 # its very amazing
 import os
+from tkinter import *
 from tkinter.filedialog import askdirectory
 
-import pygame
 from mutagen.id3 import ID3
-from tkinter import *
+
+import pygame
 
 root = Tk()
 root.minsize(300, 300)
@@ -20,13 +21,11 @@ index = 0
 
 
 def directorychooser():
-
     directory = askdirectory()
     os.chdir(directory)
 
     for files in os.listdir(directory):
         if files.endswith(".mp3"):
-
             realdir = os.path.realpath(files)
             audio = ID3(realdir)
             realnames.append(audio["TIT2"].text[0])

@@ -1,6 +1,5 @@
 # master
 def num(a):
-
     # initialising starting number
 
     num = 1
@@ -8,7 +7,6 @@ def num(a):
     # outer loop to handle number of rows
 
     for i in range(0, a):
-
         # re assigning num
 
         num = 1
@@ -18,7 +16,6 @@ def num(a):
         # values changing acc. to outer loop
 
         for k in range(0, i + 1):
-
             # printing number
 
             print(num, end=" ")

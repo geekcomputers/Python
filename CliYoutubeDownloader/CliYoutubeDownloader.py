@@ -1,7 +1,8 @@
 # libraraies
 
-import pytube
 import sys
+
+import pytube
 
 
 class YouTubeDownloder:

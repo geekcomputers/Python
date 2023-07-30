@@ -100,7 +100,6 @@ def find_tf_idf(file_names=None, prev_file_path=None, dump_path=None):
         prev_corpus_length = len(tf_idf)
 
     for f in file_names:
-
         file1 = open(
             f, "r"
         )  # never use 'rb' for textual data, it creates something like,  {b'line-inside-the-doc'}

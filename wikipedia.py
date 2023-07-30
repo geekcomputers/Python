@@ -1,10 +1,12 @@
-import wikipedia
 from tkinter import *
 from tkinter.messagebox import showinfo
+
+import wikipedia
 
 win = Tk()  # objek
 win.title("WIKIPEDIA")
 win.geometry("200x70")  # function
+
 
 # function
 def search_wiki():

@@ -10,41 +10,42 @@ JARVIS:
 
 # import modules
 import datetime  # datetime module supplies classes for manipulating dates and times
+import json
+
+# master
+# auto install for pyttsx3 and speechRecognition
+import os
 import subprocess  # subprocess module allows you to spawn new processes
 
 # master
-import pyjokes # for generating random jokes
+import pyjokes  # for generating random jokes
 import requests
-import json
-from PIL import Image, ImageGrab
 from gtts import gTTS
+from PIL import Image, ImageGrab
+
+# =======
+from playsound import *  # for sound output
 
 # for 30 seconds clip "Jarvis, clip that!" and discord ctrl+k quick-move (might not come to fruition)
 from pynput import keyboard
 from pynput.keyboard import Key, Listener
 from pynput.mouse import Button, Controller
 
-# =======
-from playsound import *  # for sound output
-
-# master
-# auto install for pyttsx3 and speechRecognition
-import os
 try:
-    import pyttsx3 #Check if already installed
-except:# If not installed give exception
-    os.system('pip install pyttsx3')#install at run time
-    import pyttsx3 #import again for speak function
+    import pyttsx3  # Check if already installed
+except:  # If not installed give exception
+    os.system("pip install pyttsx3")  # install at run time
+    import pyttsx3  # import again for speak function
 
-try :
+try:
     import speech_recognition as sr
 except:
-    os.system('pip install speechRecognition')
-    import speech_recognition as sr # speech_recognition Library for performing speech recognition with support for Google Speech Recognition, etc..
+    os.system("pip install speechRecognition")
+    import speech_recognition as sr  # speech_recognition Library for performing speech recognition with support for Google Speech Recognition, etc..
 
 # importing the pyttsx3 library
-import webbrowser
 import smtplib
+import webbrowser
 
 # initialisation
 engine = pyttsx3.init()
@@ -289,7 +290,7 @@ def get_app(Q):
         "paint": "mspaint.exe",
         "cmd": "cmd.exe",
         "browser": "C:\\Program Files\Internet Explorer\iexplore.exe",
-        "vscode": "C:\\Users\\Users\\User\\AppData\\Local\\Programs\Microsoft VS Code"
+        "vscode": "C:\\Users\\Users\\User\\AppData\\Local\\Programs\Microsoft VS Code",
     }
     # master
 

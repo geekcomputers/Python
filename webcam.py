@@ -24,7 +24,6 @@ while True:
     ret, frame = cap.read()
 
     if ret == True:
-
         # Write frame to recording.avi
         out.write(frame)
 

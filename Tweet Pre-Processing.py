@@ -4,11 +4,11 @@
 # In[10]:
 
 
-import numpy as np
-from nltk.corpus import twitter_samples
-import matplotlib.pyplot as plt
 import random
 
+import matplotlib.pyplot as plt
+import numpy as np
+from nltk.corpus import twitter_samples
 
 # In[ ]:
 
@@ -59,7 +59,6 @@ import string
 from nltk.corpus import stopwords
 from nltk.stem import PorterStemmer
 from nltk.tokenize import TweetTokenizer
-
 
 # In[20]:
 

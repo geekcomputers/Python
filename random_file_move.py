@@ -6,8 +6,9 @@
 # Description   : This will move specified number of files(given in ratio) from the src directory to dest directory.
 
 
-import os, random
 import argparse
+import os
+import random
 
 
 def check_ratio(x):

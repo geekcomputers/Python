@@ -1,8 +1,8 @@
-#PROJECT1
-#CAESAR CIPHER DECODER 
+# PROJECT1
+# CAESAR CIPHER DECODER
 
-#Author: InTruder
-#Cloned from: https://github.com/InTruder-Sec/caesar-cipher
+# Author: InTruder
+# Cloned from: https://github.com/InTruder-Sec/caesar-cipher
 
 
 def main():
@@ -22,6 +22,7 @@ def main():
         else:
             print("\n[>] Invalid input")
         exit()
+
 
 def encode():
     text = input("Enter text to encode: ")
@@ -47,14 +48,13 @@ def encode():
                 new_ascii = ascii
             else:
                 new_ascii = ascii + key
-                if  new_ascii > 90:
+                if new_ascii > 90:
                     new_ascii = new_ascii - 26
                 else:
                     new_ascii = new_ascii
         encoded = chr(new_ascii)
         encoded_cipher = encoded_cipher + encoded
     print("Encoded text: " + encoded_cipher)
-
 
 
 def decode():
@@ -74,7 +74,7 @@ def decode():
                 else:
                     new_ascii = ascii - int(i)
                     if new_ascii < 97:
-                      new_ascii = new_ascii + 26
+                        new_ascii = new_ascii + 26
                     else:
                         new_ascii = new_ascii
             decoded = chr(new_ascii)
@@ -82,5 +82,5 @@ def decode():
         print("\n" + decoded_cipher)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

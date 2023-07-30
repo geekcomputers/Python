@@ -25,7 +25,6 @@ class Tubes(Thread):
         fp=("tube.png", "tube_mourth"),
         animation_speed=50
     ):
-
         # Verifica os parâmetros passados e lança um erro caso algo esteja incorreto
         if not isinstance(background, Background):
             raise TypeError(
@@ -257,10 +256,8 @@ class Tubes(Thread):
         # Move os tubos gerados no background
         for tubes in self.__tubes:
             for tube in tubes:
-
                 # Verifica se o pássaro passou do tubo. Caso sim, o método para pontuar será executado
                 if not scored:
-
                     # Recebe a posição do cano
                     x2 = self.__background.bbox(tube[0])[2]
 
@@ -269,7 +266,6 @@ class Tubes(Thread):
 
                     if (self.__width / 2) - (self.__bird_w / 2) - self.__move < x2:
                         if x2 <= (self.__width / 2) - (self.__bird_w / 2):
-
                             # Verifica se o tubo está na lista de tubos passados
                             if not tube[0] in self.__pastTubes:
                                 # Chama o método para pontuar e adiciona o tubo pontuado à lista de tubos passados
@@ -297,7 +293,6 @@ class Tubes(Thread):
             len(self.__tubes) >= 1
             and self.__background.bbox(self.__tubes[0][0][0])[2] <= 0
         ):
-
             # Apaga todo o corpo do tubo dentro do background
             for tube in self.__tubes[0]:
                 for body in tube:

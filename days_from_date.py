@@ -1,6 +1,6 @@
-import re  # regular expressions
 import calendar  # module of python to provide useful fucntions related to calendar
 import datetime  # module of python to get the date and time
+import re  # regular expressions
 import tkinter as tk
 
 root = tk.Tk()

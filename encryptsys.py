@@ -37,7 +37,6 @@ def decrypt():
 
 
 def encrypt():
-
     texto = input("Input the text to encrypt : ")
     abecedario = string.printable + "áéíóúÁÉÍÚÓàèìòùÀÈÌÒÙäëïöüÄËÏÖÜñÑ´"
     abecedario2 = []

@@ -57,9 +57,8 @@ len(fakearticle_links)
 fakearticle_links[1888:]
 
 import matplotlib.pyplot as plt
-import pandas as pd
-
 import numpy as np
+import pandas as pd
 
 """We have to modify the links so that the links actually work as we can see that the string extracted is the last part of the url!
 

@@ -1,23 +1,28 @@
 # Program make a simple calculator
 
+
 # This function adds two numbers
 def add(x, y):
     return x + y
+
 
 # This function subtracts two numbers
 def subtract(x, y):
     return x - y
 
+
 # This function multiplies two numbers
 def multiply(x, y):
     return x * y
+
 
 # This function divides two numbers
 def divide(x, y):
     return x / y
 
+
 # This function gives the remainder of two numbers
-def mod(x,y):
+def mod(x, y):
     return x % y
 
 
@@ -33,23 +38,23 @@ while True:
     choice = input("Enter choice(1/2/3/4/5): ")
 
     # Check if choice is one of the four options
-    if choice in ('1', '2', '3', '4','5'):
+    if choice in ("1", "2", "3", "4", "5"):
         num1 = float(input("Enter first number: "))
         num2 = float(input("Enter second number: "))
 
-        if choice == '1':
+        if choice == "1":
             print(num1, "+", num2, "=", add(num1, num2))
 
-        elif choice == '2':
+        elif choice == "2":
             print(num1, "-", num2, "=", subtract(num1, num2))
 
-        elif choice == '3':
+        elif choice == "3":
             print(num1, "*", num2, "=", multiply(num1, num2))
 
-        elif choice == '4':
+        elif choice == "4":
             print(num1, "/", num2, "=", divide(num1, num2))
-        
-        elif choice == '5':
+
+        elif choice == "5":
             print(num1, "%", num2, "=", mod(num1, num2))
         break
     else:

@@ -1,4 +1,5 @@
 import random
+
 attempts_list = []
 def show_score():
     if len(attempts_list) <= 0:

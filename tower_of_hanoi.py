@@ -30,7 +30,6 @@ def toh(n, s, t, d):
 
 if __name__ == "__main__":
     while 1:
-
         n = int(input("""Enter number of disks:"""))
 
         if n < 0:

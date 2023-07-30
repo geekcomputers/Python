@@ -4,7 +4,6 @@ import optparse  # Import the module
 
 import nmap  # Import the module
 
-
 # Script Name		: nmap_scan.py
 # Author				: Craig Richards
 # Created				: 24th May 2013

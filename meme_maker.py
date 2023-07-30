@@ -1,6 +1,6 @@
 import sys
 
-from PIL import ImageDraw, ImageFont, Image
+from PIL import Image, ImageDraw, ImageFont
 
 
 def input_par():

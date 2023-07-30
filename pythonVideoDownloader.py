@@ -33,7 +33,6 @@ def get_video_links():
 
 def download_video_series(video_links):
     for link in video_links:
-
         """iterate through all links in video_links
         and download them one by one"""
 

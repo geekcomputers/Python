@@ -1,6 +1,5 @@
 import os
 
-
 import mysql.connector as mys
 
 mycon = mys.connect(
@@ -16,7 +15,6 @@ mycur = mycon.cursor()
 
 
 def DBZ():
-
     # IF  NO.  OF  BOOKS  IS     ZERO(0)     THAN  DELETE  IT  AUTOMATICALLY
 
     display = "select * from books"
@@ -24,9 +22,7 @@ def DBZ():
     data2 = mycur.fetchall()
 
     for y in data2:
-
         if y[6] <= 0:
-
             delete = "delete from books where  Numbers_of_book<=0"
             mycur.execute(delete)
             mycon.commit()
@@ -44,7 +40,6 @@ def end_separator():
 
 
 def login():
-
     user_name = input(" USER NAME  ---  ")
     passw = input(" PASSWORD  ---  ")
 
@@ -53,13 +48,10 @@ def login():
     data2 = mycur.fetchall()
 
     for y in data2:
-
         if y[1] == user_name and y[2] == passw:
-
             pass
 
         else:
-
             separator()
 
             print(" Username  or  Password  is  Incorrect  Try Again")
@@ -70,11 +62,9 @@ def login():
             passw = input(" PASSWORD  ---  ")
 
             if y[1] == user_name and y[2] == passw:
-
                 pass
 
             else:
-
                 separator()
 
                 print(" Username  or  Password  is  Again  Incorrect")
@@ -82,7 +72,6 @@ def login():
 
 
 def ViewAll():
-
     print("\u0332".join("BOOK NAMES~~"))
     print("------------------------------------")
 
@@ -92,21 +81,17 @@ def ViewAll():
     c = 0
 
     for y in data2:
-
         c = c + 1
         print(c, "-->", y[1])
 
 
 def CNB1():
-
     if y[6] == 0:
-
         separator()
 
         print(" NOW  THIS  BOOK  IS  NOT  AVAILABLE ")
 
     elif y[6] > 0 and y[6] <= 8:
-
         separator()
 
         print("WARNING!!!!!!!!!!!!!!!!!!!!!!!")
@@ -116,7 +101,6 @@ def CNB1():
         print()
 
     elif y[6] > 8:
-
         separator()
 
         print("NO.  OF  BOOKS  LEFT  IS ", y[6] - 1)
@@ -126,16 +110,13 @@ def CNB1():
 
 
 def CNB2():
-
     if y[6] <= 8:
-
         separator()
 
         print("WARNING!!!!!!!!!!!!!!!!!!!!!!!")
         print("NO.  OF THIS BOOK IS LOW", "\tONLY", y[6], "LEFT")
 
     else:
-
         separator()
 
         print("NO.  OF  BOOKS  LEFT  IS ", y[6])
@@ -151,18 +132,14 @@ display12 = "select * from visit"
 mycur.execute(display12)
 data2222 = mycur.fetchall()
 for m in data2222:
-
     if m[0] == 0:
-
         c = m[0]
         display11 = "select * from login"
         mycur.execute(display11)
         data222 = mycur.fetchall()
 
         if c == 0:
-
             if c == 0:
-
                 print("\t\t\t\t REGESTER     ")
                 print("\t\t\t\t----------------------------")
 
@@ -174,7 +151,6 @@ for m in data2222:
                 lenght = len(passw)
 
                 if lenght >= 8 and lenght <= 20:
-
                     c = c + 1
                     insert55 = (c, user_name, passw)
                     insert22 = "insert into login values(%s,%s,%s)"
@@ -186,9 +162,7 @@ for m in data2222:
                     login()
 
                 else:
-
                     if lenght < 8:
-
                         separator()
 
                         print(" Password Is less than  8  Characters  Enter Again")
@@ -200,7 +174,6 @@ for m in data2222:
                         lenght1 = len(passw2)
 
                         if lenght1 >= 8 and lenght1 <= 20:
-
                             c = c + 1
                             insert555 = (c, user_name2, passw2)
                             insert222 = "insert into login values(%s,%s,%s)"
@@ -212,7 +185,6 @@ for m in data2222:
                             login()
 
                         elif lenght > 20:
-
                             separator()
 
                             print(
@@ -226,7 +198,6 @@ for m in data2222:
                             lenght = len(passw)
 
                             if lenght >= 8 and lenght >= 20:
-
                                 c = c + 1
                                 insert55 = (c, user_name, passw)
                                 insert22 = "insert into login values(%s,%s,%s)"
@@ -242,9 +213,7 @@ for m in data2222:
         mycon.commit()
 
     elif m[0] == 1:
-
         if m[0] == 1:
-
             login()
 
 
@@ -261,7 +230,6 @@ a = True
 
 
 while a == True:
-
     # PROGRAM STARTED
 
     print("     *TO VIEW ALL ENTER 1")
@@ -280,7 +248,6 @@ while a == True:
     # VIEW
 
     if choice == 1:
-
         print()
 
         ViewAll()
@@ -290,7 +257,6 @@ while a == True:
         rep = input("Do  You  Want  To  Restart  ??    yes / no  --  ").lower()
 
         if rep == "yes":
-
             end_separator()
 
             separator()
@@ -300,7 +266,6 @@ while a == True:
             continue
 
         else:
-
             end_separator()
 
             DBZ()
@@ -312,7 +277,6 @@ while a == True:
     # SEARCH / BUY
 
     if choice == 2:
-
         book_name = input("ENTER BOOK NAME ---- ")
 
         separator()
@@ -322,7 +286,6 @@ while a == True:
         data2 = mycur.fetchone()
 
         if data2 != None:
-
             print("BOOK IS AVAILABLE")
 
             # BUY OR NOT
@@ -336,7 +299,6 @@ while a == True:
             choice2 = int(input("ENTER YOUR CHOICE -- "))
 
             if choice2 == 1:
-
                 # BUY 1 OR MORE
 
                 separator()
@@ -348,17 +310,13 @@ while a == True:
                 choice3 = int(input("ENTER YOUR CHOICE -- "))
 
                 if choice3 == 1:
-
                     display = "select * from books"
                     mycur.execute(display)
                     data2 = mycur.fetchall()
 
                     for y in data2:
-
                         if y[1] == book_name:
-
                             if y[6] > 0:
-
                                 separator()
 
                                 u = (
@@ -383,7 +341,6 @@ while a == True:
                                 ).lower()
 
                                 if rep == "yes":
-
                                     end_separator()
 
                                     separator()
@@ -393,7 +350,6 @@ while a == True:
                                     continue
 
                                 else:
-
                                     end_separator()
 
                                     DBZ()
@@ -401,7 +357,6 @@ while a == True:
                                     os._exit(0)
 
                 if choice3 == 2:
-
                     separator()
 
                     wb = int(input("ENTER NO. OF BOOKS -- "))
@@ -413,13 +368,9 @@ while a == True:
                     data2 = mycur.fetchall()
 
                     for y in data2:
-
                         if y[1] == book_name:
-
                             if wb > y[6]:
-
                                 if y[6] > 0:
-
                                     print("YOU CAN'T  BUT  THAT  MUCH  BOOKS")
 
                                     separator()
@@ -437,7 +388,6 @@ while a == True:
                                     k = y[6]
 
                                     if choice44 == "y" or choice44 == "Y":
-
                                         u2 = (
                                             "update books set numbers_of_book=numbers_of_book -%s where name='%s'"
                                             % (k, book_name)
@@ -458,11 +408,8 @@ while a == True:
                                         data2 = mycur.fetchall()
 
                                         for y in data2:
-
                                             if y[1] == book_name:
-
                                                 if y[6] <= 8:
-
                                                     print(
                                                         "WARNING!!!!!!!!!!!!!!!!!!!!!!!"
                                                     )
@@ -484,7 +431,6 @@ while a == True:
                                         ).lower()
 
                                         if rep == "yes":
-
                                             end_separator()
 
                                             separator()
@@ -494,7 +440,6 @@ while a == True:
                                             continue
 
                                         else:
-
                                             end_separator()
 
                                             DBZ()
@@ -502,7 +447,6 @@ while a == True:
                                             os._exit(0)
 
                                     elif choice44 == "n" or choice44 == "N":
-
                                         print(
                                             "SORRY  FOR  INCONVENIENCE  WE  WILL  TRY  TO  FULLFILL  YOUR  REQUIREMENT  AS  SOON  AS  POSSIBLE"
                                         )
@@ -516,7 +460,6 @@ while a == True:
                                         ).lower()
 
                                         if rep == "yes":
-
                                             separator()
 
                                             DBZ()
@@ -524,7 +467,6 @@ while a == True:
                                             continue
 
                                         else:
-
                                             end_separator()
 
                                             DBZ()
@@ -532,7 +474,6 @@ while a == True:
                                             os._exit(0)
 
                                 elif y[6] == 0:
-
                                     print(
                                         "SORRY  NO  BOOK  LEFT  WE  WILL  TRY  TO  FULLFILL  YOUR  REQUIREMENT  AS  SOON  AS  POSSIBLE"
                                     )
@@ -546,7 +487,6 @@ while a == True:
                                     ).lower()
 
                                     if rep == "yes":
-
                                         separator()
 
                                         DBZ()
@@ -554,7 +494,6 @@ while a == True:
                                         continue
 
                                     else:
-
                                         end_separator()
 
                                         DBZ()
@@ -562,7 +501,6 @@ while a == True:
                                         os._exit(0)
 
                             else:
-
                                 u2 = (
                                     "update books set numbers_of_book=numbers_of_book -%s where name='%s'"
                                     % (wb, book_name)
@@ -581,9 +519,7 @@ while a == True:
                                 data2 = mycur.fetchall()
 
                                 for y in data2:
-
                                     if y[1] == book_name:
-
                                         CNB2()
 
                                         separator()
@@ -593,7 +529,6 @@ while a == True:
                                         ).lower()
 
                                         if rep == "yes":
-
                                             separator()
 
                                             DBZ()
@@ -601,7 +536,6 @@ while a == True:
                                             continue
 
                                         else:
-
                                             end_separator()
 
                                             DBZ()
@@ -609,7 +543,6 @@ while a == True:
                                             os._exit(0)
 
             else:
-
                 separator()
 
                 print("NO BOOK IS BOUGHT")
@@ -621,7 +554,6 @@ while a == True:
                 rep = input("Do  You  Want  To  Restart  ??    yes / no  --  ").lower()
 
                 if rep == "yes":
-
                     separator()
 
                     DBZ()
@@ -629,7 +561,6 @@ while a == True:
                     continue
 
                 else:
-
                     end_separator()
 
                     DBZ()
@@ -637,7 +568,6 @@ while a == True:
                     os._exit(0)
 
         else:
-
             separator()
 
             print("SORRY NO BOOK WITH THIS NAME EXIST / NAME IS INCORRECT")
@@ -649,7 +579,6 @@ while a == True:
             rep = input("Do  You  Want  To  Restart  ??    yes / no  --  ").lower()
 
             if rep == "yes":
-
                 separator()
 
                 DBZ()
@@ -657,7 +586,6 @@ while a == True:
                 continue
 
             else:
-
                 end_separator()
 
                 DBZ()
@@ -667,13 +595,11 @@ while a == True:
     # ADDING BOOK
 
     if choice == 3:
-
         q10 = int(input("ENTER NO. OF BOOKS TO ADD -- "))
 
         separator()
 
         for k in range(q10):
-
             SNo10 = int(input("ENTER SNo OF BOOK -- "))
             name10 = input("ENTER NAME OF BOOK --- ")
             author10 = input("ENTER NAME OF AUTHOR -- ")
@@ -687,13 +613,11 @@ while a == True:
             data20 = mycur.fetchone()
 
             if data20 != None:
-
                 print("This  ISBN Already Exists")
 
                 os._exit(0)
 
             else:
-
                 insert = (SNo10, name10, author10, year10, ISBN10, price10, nob10)
                 insert20 = "insert into books values(%s,%s,%s,%s,%s,%s,%s)"
                 mycur.execute(insert20, insert)
@@ -708,7 +632,6 @@ while a == True:
         rep = input("Do  You  Want  To  Restart  ??    yes / no  --  ").lower()
 
         if rep == "yes":
-
             separator()
 
             DBZ()
@@ -716,7 +639,6 @@ while a == True:
             continue
 
         else:
-
             end_separator()
 
             DBZ()
@@ -726,7 +648,6 @@ while a == True:
     # UPDATING BOOK
 
     if choice == 4:
-
         choice4 = input("ENTER ISBN OF BOOK -- ")
 
         separator()
@@ -736,7 +657,6 @@ while a == True:
         data2 = mycur.fetchone()
 
         if data2 != None:
-
             SNo1 = int(input("ENTER NEW SNo OF BOOK -- "))
             name1 = input("ENTER NEW NAME OF BOOK --- ")
             author1 = input("ENTER NEW NAME OF AUTHOR -- ")
@@ -758,7 +678,6 @@ while a == True:
             rep = input("Do  You  Want  To  Restart  ??    yes / no  --  ").lower()
 
             if rep == "yes":
-
                 separator()
 
                 DBZ()
@@ -766,7 +685,6 @@ while a == True:
                 continue
 
             else:
-
                 end_separator()
 
                 DBZ()
@@ -774,7 +692,6 @@ while a == True:
                 os._exit(0)
 
         else:
-
             print("SORRY NO BOOK WITH THIS ISBN IS EXIST  /  INCORRECT ISBN")
 
             print()
@@ -785,7 +702,6 @@ while a == True:
             rep = input("Do  You  Want  To  Restart  ??    yes / no  --  ").lower()
 
             if rep == "yes":
-
                 separator()
 
                 DBZ()
@@ -793,7 +709,6 @@ while a == True:
                 continue
 
             else:
-
                 end_separator()
 
                 DBZ()
@@ -803,20 +718,17 @@ while a == True:
     # DELETING A BOOK
 
     if choice == 5:
-
         ISBN1 = input("ENTER ISBN OF THAT BOOK THAT YOU WANT TO DELETE -- ")
         display = "select * from books where ISBN='%s'" % (ISBN1)
         mycur.execute(display)
         data2 = mycur.fetchone()
 
         if data2 != None:
-
             separator()
 
             choice5 = input("ARE YOU SURE TO DELETE THIS BOOK ENTER Y/N -- ")
 
             if choice5 == "Y" or choice5 == "y":
-
                 separator()
 
                 ISBN2 = input("PLEASE ENTER ISBN AGAIN -- ")
@@ -836,7 +748,6 @@ while a == True:
                 rep = input("Do  You  Want  To  Restart  ??    yes / no  --  ").lower()
 
                 if rep == "yes":
-
                     separator()
 
                     DBZ()
@@ -844,7 +755,6 @@ while a == True:
                     continue
 
                 else:
-
                     end_separator()
 
                     DBZ()
@@ -852,7 +762,6 @@ while a == True:
                     os._exit(0)
 
             else:
-
                 separator()
 
                 print("NO BOOK IS DELETED")
@@ -865,7 +774,6 @@ while a == True:
                 rep = input("Do  You  Want  To  Restart  ??    yes / no  --  ").lower()
 
                 if rep == "yes":
-
                     separator()
 
                     DBZ()
@@ -873,7 +781,6 @@ while a == True:
                     continue
 
                 else:
-
                     end_separator()
 
                     DBZ()
@@ -881,7 +788,6 @@ while a == True:
                     os._exit(0)
 
         else:
-
             separator()
 
             print("SORRY NO BOOK WITH THIS ISBN AVAILABLE / ISBN IS INCORRECT")
@@ -894,7 +800,6 @@ while a == True:
             rep = input("Do  You  Want  To  Restart  ??    yes / no  --  ").lower()
 
             if rep == "yes":
-
                 separator()
 
                 DBZ()
@@ -902,7 +807,6 @@ while a == True:
                 continue
 
             else:
-
                 end_separator()
 
                 DBZ()
@@ -912,7 +816,6 @@ while a == True:
     # CLOSE
 
     if choice == 6:
-
         exit()
         os._exit(0)
 
@@ -926,9 +829,7 @@ data2 = mycur.fetchall()
 
 
 for y in data2:
-
     if y[6] <= 0:
-
         delete = "delete from books where  Numbers_of_book<=0"
         mycur.execute(delete)
         mycon.commit()

@@ -7,10 +7,11 @@ site used :
    link : https://www.indiatoday.in/topic/
 """
 
+import time
+import webbrowser
+
 import requests
 from bs4 import BeautifulSoup
-import webbrowser
-import time
 
 
 def Times_of_India(userInput, ua):

@@ -5,17 +5,18 @@ def is_armstrong_number(number):
     temp = number
     while temp > 0:
         digit = temp % 10
-        total += digit ** 3
+        total += digit**3
         temp //= 10
-    
+
     # return the result
     if number == total:
         return True
     else:
         return False
 
+
 number = int(input("Enter the number: "))
 if is_armstrong_number(number):
-    print(number,"is an Armstrong number")
+    print(number, "is an Armstrong number")
 else:
-    print(number,"is not an Armstrong number")
+    print(number, "is not an Armstrong number")

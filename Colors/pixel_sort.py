@@ -1,17 +1,18 @@
 """Pixel Sorting"""
 
 # Importing Libraries
+import argparse
+import colorsys
+import math
+import os
+
 import cv2
 import numpy as np
-import math
-import colorsys
 import pandas as pd
-import os
-import argparse
-from tqdm import tqdm
 
 # Importing the external file Library
 import sound
+from tqdm import tqdm
 
 # Taking arguments from command line
 parser = argparse.ArgumentParser()  # you iniatize as such
@@ -29,6 +30,7 @@ print(str(args.f).capitalize() + " directory is created.")
 df = []
 total = 0
 dict, final, img_list = {}, [], []
+
 
 # Create dataframe and save it as an excel file
 def createDataSet(val=0, data=[]):

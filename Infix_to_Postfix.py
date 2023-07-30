@@ -1,8 +1,8 @@
 # Python program to convert infix expression to postfix
 
+
 # Class to convert the expression
 class Conversion:
-
     # Constructor to initialize the class variables
     def __init__(self, capacity):
         self.top = -1
@@ -52,7 +52,6 @@ class Conversion:
     # The main function that converts given infix expression
     # to postfix expression
     def infixToPostfix(self, exp):
-
         # Iterate over the expression for conversion
         for i in exp:
             # If the character is an operand,

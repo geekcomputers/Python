@@ -1,6 +1,7 @@
 # Python3 program merge two sorted linked
 # in third linked list using recursive.
 
+
 # Node class
 class Node:
     def __init__(self, data):
@@ -10,7 +11,6 @@ class Node:
 
 # Constructor to initialize the node object
 class LinkedList:
-
     # Function to initialize head
     def __init__(self):
         self.head = None
@@ -38,7 +38,6 @@ class LinkedList:
 
 # Function to merge two sorted linked list.
 def mergeLists(head1, head2):
-
     # create a temp node NULL
     temp = None
 
@@ -53,7 +52,6 @@ def mergeLists(head1, head2):
     # If List1's data is smaller or
     # equal to List2's data
     if head1.data <= head2.data:
-
         # assign temp to List1's data
         temp = head1
 
@@ -76,7 +74,6 @@ def mergeLists(head1, head2):
 
 # Driver Function
 if __name__ == "__main__":
-
     # Create linked list :
     # 10->20->30->40->50
     list1 = LinkedList()

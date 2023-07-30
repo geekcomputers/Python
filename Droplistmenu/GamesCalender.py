@@ -1,34 +1,28 @@
-
-from tkinter import *
-from tkcalendar import Calendar
 import tkinter as tk
+from tkinter import *
 
+from tkcalendar import Calendar
 
 window = tk.Tk()
 
 # Adjust size
 window.geometry("600x500")
 
-gameList =["Game List:"]
+gameList = ["Game List:"]
+
+
 # Change the label text
 def show():
-    game = selected1.get() + " vs " + selected2.get()+" on "+cal.get_date()
+    game = selected1.get() + " vs " + selected2.get() + " on " + cal.get_date()
     gameList.append(game)
-    #print(gameList)
+    # print(gameList)
     gameListshow = "\n".join(gameList)
-    #print(gameList)
+    # print(gameList)
     label.config(text=gameListshow)
 
 
 # Dropdown menu options
-options = [
-    "Team 1",
-    "Team 2",
-    "Team 3",
-    "Team 4",
-    "Team 5",
-    "Team 6"
-]
+options = ["Team 1", "Team 2", "Team 3", "Team 4", "Team 5", "Team 6"]
 
 # datatype of menu text
 selected1 = StringVar()
@@ -53,16 +47,13 @@ drop2 = OptionMenu(window, selected2, *options)
 drop2.place(x=100, y=110)
 
 # Add Calendar
-cal = Calendar(window, selectmode='day',
-               year=2022, month=12,
-               day=1)
+cal = Calendar(window, selectmode="day", year=2022, month=12, day=1)
 
 cal.place(x=300, y=20)
 
 
-
 # Create button, it will change label text
-button = Button( window, text="Add to calender", command=show).place(x=100,y=200)
+button = Button(window, text="Add to calender", command=show).place(x=100, y=200)
 
 # Create Label
 label = Label(window, text=" ")

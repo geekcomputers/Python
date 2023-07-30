@@ -22,7 +22,6 @@ W_HEIGHT = 512
 
 
 class Bird(pygame.sprite.Sprite):
-
     WIDTH = 32  #   bird image width
     HEIGHT = 32  #   bird image height
     DOWN_SPEED = 0.18  #   pix per ms  -y
@@ -30,7 +29,6 @@ class Bird(pygame.sprite.Sprite):
     UP_DURATION = 150  #   time for which bird go up
 
     def __init__(self, x, y, ms_to_up, images):
-
         super(Bird, self).__init__()
         self.x, self.y = x, y
         self.ms_to_up = ms_to_up
@@ -39,7 +37,6 @@ class Bird(pygame.sprite.Sprite):
         self._mask_wingdown = pygame.mask.from_surface(self._img_wingdown)
 
     def update(self, delta_frames=1):
-
         if self.ms_to_up > 0:
             frac_climb_done = 1 - self.ms_to_up / Bird.UP_DURATION
             self.y -= (
@@ -74,13 +71,11 @@ class Bird(pygame.sprite.Sprite):
 
 
 class PipePair(pygame.sprite.Sprite):
-
     WIDTH = 80  #    width of pipe
     PIECE_HEIGHT = 32
     ADD_INTERVAL = 3000
 
     def __init__(self, pipe_end_img, pipe_body_img):
-
         self.x = float(W_WIDTH - 1)
         self.score_counted = False
 
@@ -126,7 +121,6 @@ class PipePair(pygame.sprite.Sprite):
 
     @property
     def bottom_height_px(self):
-
         return self.bottom_pieces * PipePair.PIECE_HEIGHT
 
     @property
@@ -140,17 +134,14 @@ class PipePair(pygame.sprite.Sprite):
         return Rect(self.x, 0, PipePair.WIDTH, PipePair.PIECE_HEIGHT)
 
     def update(self, delta_frames=1):
-
         self.x -= ANI_SPEED * frames_to_msec(delta_frames)
 
     def collides_with(self, bird):
-
         return pygame.sprite.collide_mask(self, bird)
 
 
 def load_images():
     def load_image(img_file_name):
-
         file_name = os.path.join(".", "images", img_file_name)
         img = pygame.image.load(file_name)
         img.convert()
@@ -168,12 +159,10 @@ def load_images():
 
 
 def frames_to_msec(frames, fps=FPS):
-
     return 1000.0 * frames / fps
 
 
 def msec_to_frames(milliseconds, fps=FPS):
-
     return fps * milliseconds / 1000.0
 
 
@@ -185,7 +174,6 @@ def gameover(display, score):
 
 
 def main():
-
     pygame.init()
 
     display_surface = pygame.display.set_mode((W_WIDTH, W_HEIGHT))
