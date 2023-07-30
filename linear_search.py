@@ -1,17 +1,11 @@
-list = []
 num = int(input("Enter size of list: \t"))
-for n in range(num):
-    numbers = int(input("Enter any number: \t"))
-    list.append(numbers)
+list = [int(input("Enter any number: \t")) for _ in range(num)]
 
 x = int(input("\nEnter number to search: \t"))
 
-found = False
-
-for i in range(len(list)):
-    if list[i] == x:
-        found = True
-        print("\n%d found at position %d" % (x, i))
-        break
-if not found:
-    print("\n%d is not in list" % x)
+for position, number in enumerate(list):
+    if number == x:
+        print(f"\n{x} found at position {position}")
+else:
+    print(f"list: {list}")
+    print(f"{x} is not in list")
