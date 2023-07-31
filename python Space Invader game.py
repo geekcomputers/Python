@@ -1,7 +1,6 @@
-import math
-import random
-
 import pygame
+import random
+import math
 
 # Initialization
 pygame.init()
@@ -40,7 +39,6 @@ game_over_font = pygame.font.Font("freesansbold.ttf", 64)
 bullet_sound = pygame.mixer.Sound("laser.wav")
 explosion_sound = pygame.mixer.Sound("explosion.wav")
 
-
 # Player class
 class Player:
     def __init__(self):
@@ -64,7 +62,6 @@ class Player:
 
     def draw(self):
         screen.blit(self.image, self.rect)
-
 
 # Bullet class
 class Bullet:
@@ -91,7 +88,6 @@ class Bullet:
         if self.state == "fire":
             screen.blit(self.image, self.rect)
 
-
 # Enemy class
 class Enemy:
     def __init__(self, x, y):
@@ -111,24 +107,16 @@ class Enemy:
     def draw(self):
         screen.blit(self.image, self.rect)
 
-
 # Collision function
 def is_collision(obj1, obj2):
-    distance = math.sqrt(
-        (obj1.rect.centerx - obj2.rect.centerx) ** 2
-        + (obj1.rect.centery - obj2.rect.centery) ** 2
-    )
+    distance = math.sqrt((obj1.rect.centerx - obj2.rect.centerx) ** 2 + (obj1.rect.centery - obj2.rect.centery) ** 2)
     return distance < 27
-
 
 # Game loop
 def game_loop():
     player = Player()
     bullet = Bullet()
-    enemies = [
-        Enemy(random.randint(0, SCREEN_WIDTH), random.randint(50, 150))
-        for _ in range(NUMBER_OF_ENEMIES)
-    ]
+    enemies = [Enemy(random.randint(0, SCREEN_WIDTH), random.randint(50, 150)) for _ in range(NUMBER_OF_ENEMIES)]
     score = 0
 
     running = True
@@ -166,7 +154,6 @@ def game_loop():
 
     pygame.quit()
 
-
 # Show score function
 def show_score(x, y):
     score_surface = font.render("Score: " + str(score), True, WHITE)
@@ -174,12 +161,10 @@ def show_score(x, y):
 
     pygame.display.update()
 
-
 # Game over function
 def game_over_text():
     over_surface = game_over_font.render("GAME OVER", True, WHITE)
     screen.blit(over_surface, (200, 250))
     pygame.display.update()
-
 
 game_loop()

@@ -9,7 +9,6 @@ links = [
     "https://www.youtube.com/watch?v=JWbnEt3xuos",
 ]
 
-
 def download_videos(links):
     for link in links:
         try:
@@ -30,6 +29,5 @@ def download_videos(links):
             continue
 
     print("Task Completed!")
-
 
 download_videos(links)
