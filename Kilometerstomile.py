@@ -6,9 +6,8 @@ def kilometers_to_miles(kilometers):
     Return:
         float
     """
-    conv_fac = 0.621371
-    miles = kilometers * conv_fac
-    return miles
+    conv_fac = 0.621371 
+    return kilometers * conv_fac
 
 
 if __name__ == "__main__":
