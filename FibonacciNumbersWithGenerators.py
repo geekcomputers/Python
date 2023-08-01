@@ -14,5 +14,5 @@ def fibonacci_generator(n = None):
         f0, f1 = f1, fn
         n -= 1
 
-for n_fibo in fibonacci(7):
+for n_fibo in fibonacci_generator(7):
     print(n_fibo)

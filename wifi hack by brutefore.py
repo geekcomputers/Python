@@ -70,7 +70,7 @@ def getwifi(wifilist, wificount):
     sorted(allwifilist, key=lambda st: st[1], reverse=True)
     time.sleep(1)
     n = 0
-    if len(allwifilist) is not 0:
+    if len(allwifilist) != 0:
         for item in allwifilist:
             if (item[0] not in ssidlist) & (item[0] not in wifilist):
                 n = n + 1
