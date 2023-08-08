@@ -9,7 +9,3 @@
 ### And plays it!
 
 ### Requirements: Python, SpeechRecognition and playsound
-
-
-
-I am just trying to contribute please let me do this.....thank you :)
