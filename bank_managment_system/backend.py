@@ -3,6 +3,8 @@ import sqlite3
 # Adding new text here-----
 #657 added more 
 
+# SEcond comment - 654421
+
 # making connection with database
 def connect_database():
     global conn
