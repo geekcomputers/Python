@@ -1,5 +1,9 @@
 import sqlite3
 
+# Adding new text here-----
+#657 added more 
+
+# SEcond comment - 654421
 
 # making connection with database
 def connect_database():
@@ -72,7 +76,7 @@ def create_customer(name, age, address, balance, acc_type, mobile_number):
     return acc_no - 1
 
 
-# check account in database
+# check account in database 
 def check_acc_no(acc_no):
     cur.execute("select acc_no from bank")
     list_acc_no = cur.fetchall()
