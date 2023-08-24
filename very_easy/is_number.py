@@ -14,7 +14,7 @@ def check_number(input_value: Any) -> str:
 
     if isinstance(input_value, numbers.Number):
         return f"{input_value} is a number."
-    elif not isinstance(input, numbers.Number):
+    else:
         return f"{input_value} is not a number."
 
 
