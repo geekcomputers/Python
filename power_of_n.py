@@ -46,13 +46,12 @@ class Solution:
         return result
 
 
-if __name__ == "main":
-    obj = Solution() #Creating object of the class Solution
+obj = Solution() #Creating object of the class Solution
 
-    #Taking inouts from the user
-    x = float(input("Enter the base number: "))
-    n = int(input("Enter the power number: "))
+#Taking inouts from the user
+x = float(input("Enter the base number: "))
+n = int(input("Enter the power number: "))
 
-    #calling the function using object obj to calculate the power
-    answer = obj.binaryExponentiation(x, n)
-    print(answer) #answer
+#calling the function using object obj to calculate the power
+answer = obj.binaryExponentiation(x, n)
+print(answer) #answer
