@@ -1,4 +1,4 @@
-name: lint_python
+Name: bebo_python
 on: [pull_request, push]
 jobs:
   lint_python:
