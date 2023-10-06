@@ -1,7 +1,13 @@
 # Program make a simple calculator
 
-def add(x, y):
-    """
+class Calculator:
+
+    def __init__(self):
+       pass
+    
+    def add(self,num1, num2):
+        
+        """
     This function adds two numbers.
 
     Examples:
@@ -11,11 +17,12 @@ def add(x, y):
     14
     >>> add(-1, 2)
     1
-    """
-    return x + y
+        """
+        return num1 + num2
 
-def subtract(x, y):
-    """
+    def subtract(self,num1, num2):
+        
+        """
     This function subtracts two numbers.
 
     Examples:
@@ -25,11 +32,12 @@ def subtract(x, y):
     4
     >>> subtract(4, 9)
     -5
-    """
-    return x - y
+        """
+        return num1 - num2
 
-def multiply(x, y):
-    """
+    def multiply(self,num1, num2):
+        
+        """
     This function multiplies two numbers.
 
     Examples:
@@ -39,11 +47,12 @@ def multiply(x, y):
     9
     >>> multiply(9, 9)
     81
-    """
-    return x * y
+        """
+        return num1 * num2
 
-def divide(x, y):
-    """
+    def divide(self,num1, num2):
+        
+        """
     This function divides two numbers.
 
     Examples:
@@ -53,11 +62,15 @@ def divide(x, y):
     2
     >>> divide(9, 1)
     9
-    """
-    return x / y
+       """
+        if num2 == 0:
+            print("Cannot divide by zero")
+        else:
+            return num1 / num2
+calculator = Calculator()
 
 
-print("Select operation.")
+
 print("1.Add")
 print("2.Subtract")
 print("3.Multiply")
@@ -73,16 +86,16 @@ while True:
         num2 = float(input("Enter second number: "))
 
         if choice == '1':
-            print(num1, "+", num2, "=", add(num1, num2))
+            print(calculator.add(num1, num2))
 
         elif choice == '2':
-            print(num1, "-", num2, "=", subtract(num1, num2))
+            print(calculator.subtract(num1, num2))
 
         elif choice == '3':
-            print(num1, "*", num2, "=", multiply(num1, num2))
+            print(calculator.multiply(num1,num2))
 
         elif choice == '4':
-            print(num1, "/", num2, "=", divide(num1, num2))
+            print(calculator.divide(num1, num2))
         break
     else:
         print("Invalid Input")
