@@ -82,6 +82,29 @@ def sendEmail(to, content):
     server.sendmail("youremail@gmail.com", to, content)
     server.close()
 
+import openai
+
+
+api_key = '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'
+
+def ask_gpt3(que):
+    openai.api_key = api_key
+    
+    response = openai.Completion.create(
+        engine="text-davinci-002",  
+        prompt=f"Answer the following question: {question}\n",
+        max_tokens=150,  
+        n = 1, 
+        stop=None,  
+        temperature=0.7  
+    )
+
+    answer = response.choices[0].text.strip()
+    return answer
+
+
+
+
 
 def wishme():
     # This function wishes user
@@ -230,6 +253,9 @@ def get_app(Q):
         webbrowser.open("https://www.google.com/")  # open google
     elif Q == "open github":
         webbrowser.open("https://github.com/")
+    elif Q== "search for":
+        que=Q.lstrip("search for")
+        answer = ask_gpt3(que)
     elif (
         Q == "email to other"
     ):  # here you want to change and input your mail and password whenver you implement
