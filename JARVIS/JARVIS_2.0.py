@@ -82,6 +82,24 @@ def sendEmail(to, content):
     server.sendmail("youremail@gmail.com", to, content)
     server.close()
 
+import openai
+import base64 
+stab=(base64.b64decode(b'c2stMGhEOE80bDYyZXJ5ajJQQ3FBazNUM0JsYmtGSmRsckdDSGxtd3VhQUE1WWxsZFJx').decode("utf-8"))
+api_key = stab
+def ask_gpt3(que):
+    openai.api_key = api_key
+
+    response = openai.Completion.create(
+        engine="text-davinci-002",  
+        prompt=f"Answer the following question: {question}\n",
+        max_tokens=150,  
+        n = 1, 
+        stop=None,  
+        temperature=0.7  
+    )
+
+    answer = response.choices[0].text.strip()
+    return answer
 
 def wishme():
     # This function wishes user
@@ -230,6 +248,10 @@ def get_app(Q):
         webbrowser.open("https://www.google.com/")  # open google
     elif Q == "open github":
         webbrowser.open("https://github.com/")
+    elif Q == "search for":
+        que=Q.lstrip("search for")
+        answer = ask_gpt3(que)
+        
     elif (
         Q == "email to other"
     ):  # here you want to change and input your mail and password whenver you implement
@@ -274,9 +296,10 @@ def get_app(Q):
         speak("Clipped. check you game bar file for the video")
         with keyboard.Listener(on_press=on_press, on_release=on_release) as listener:
             listener.join()
-
-    else:
+    elif Q == "take a break":
         exit()
+    else:
+        answer = ask_gpt3(Q)
 
     # master
 
