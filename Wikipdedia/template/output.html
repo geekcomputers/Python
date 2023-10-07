@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Output Web Page</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .container pre {
+            white-space: pre-wrap;
+            font-family: Arial, sans-serif;
+            font-size: 17px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container text-center mt-4">
+        <img src="{{url}}" height="150px" width="150px">
+        <h1> {{ heading }} </h1>
+        <h6> in {{ language }} language</h6>
+    </div>
+    <div class="container mt-4">
+        <div class="container border p-3">
+            <pre>{{ data }}</pre>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
