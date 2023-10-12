@@ -24,7 +24,7 @@ port=587
 
 # Either write the email and password in the python script or use environment variables(MORE SECURE)
 sender_email = "sender_email@gmail.com"     # Write your email through which you want to send the mail 
-password= "XXXX"                            # Write your password for the above email
+password= "XXXX"                            # Generate and write your App password for the above email after enabling 2-factor authentication
 receiver_email = "recipient@test.com"       # Write the email of the receiving party
 
 
