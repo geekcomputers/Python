@@ -1,10 +1,10 @@
 ## News App
 
-- I have create News app using python  solara framework and yfinace for getting news.
+- I have create News app using python  solara framework and yfinace for getting news of stocks.
 
 Steps to run the app:
 
-1. Download the folder of News app or clone the whole repositery and go to the `python-beginner-projects/projects/News_App` and  Install all the requirements
+1. Clone the repositery and go to the `News_App` and  Install all the requirements
 
 ```
 pip install -r requirements.txt
