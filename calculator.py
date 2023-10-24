@@ -37,6 +37,9 @@ def calc(term):
     purpose: This function is the actual calculator and the heart of the application
     """
 
+    # This part is for reading and converting function expressions.
+    term = term.lower()
+
     # This part is for reading and converting arithmetic terms.
     term = term.replace(" ", "")
     term = term.replace("^", "**")
@@ -60,9 +63,6 @@ def calc(term):
         "radians",
         "e",
     ]
-
-    # This part is for reading and converting function expressions.
-    term = term.lower()
 
     for func in functions:
         if func in term:
