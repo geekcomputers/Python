@@ -52,8 +52,6 @@ Feel free to explore the scripts and use them for your learning and automation n
 38. [Images Downloader](https://git.io/JvnJh) - Download images from webpages on Unix-based systems.
 39. [space_invader.py.py](https://github.com/meezan-mallick/space_invader_game) - Classical 2D space invader game to recall your childhood memories.
 40. [Test Case Generator](https://github.com/Tanmay-901/test-case-generator/blob/master/test_case.py) - Generate different types of test cases with a clean and friendly UI, used in competitive programming and software testing.
-41. [Titc-Tac-Toe With AI](https://github.com/HVbajoria/Python/tree/master/AI%20Game/Tic-Tac-Toe-AI) - Play Tic-Tac-Toe Game with AI 
-
 <hr>
 
 _**Note**: The content in this repository belongs to the respective authors and creators. I'm just providing a formatted README.md for a better presentation._
