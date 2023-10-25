@@ -55,4 +55,4 @@ Feel free to explore the scripts and use them for your learning and automation n
 
 <hr>
 
-_**Note**: The content in this repository belongs to the respective authors and creators. I'm just providing formatted README.md for a better presentation._
+_**Note**: The content in this repository belongs to the respective authors and creators. I'm just providing a formatted README.md for better presentation._
