@@ -20,7 +20,7 @@ def logo():
     print("\033[1;36;49m")
 
 
-# This is Login Funtion
+# This is Login Function
 def login():
     # for clear the screen
     os.system("clear")
