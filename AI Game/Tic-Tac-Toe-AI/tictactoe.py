@@ -1,5 +1,5 @@
-import tkinter as tk
-from tkinter import messagebox
+import tkinter as tk #provides a library of basic elements of GUI widgets
+from tkinter import messagebox #provides a different set of dialogues that are used to display message boxes
 import random
 
 def check_winner(board, player):
@@ -19,30 +19,31 @@ def minimax(board, depth, is_maximizing):
         return -1
     if check_winner(board, 'O'):
         return 1
-    if is_board_full(board):
+    if is_board_full(board): #if game is full, terminate
         return 0
 
-    if is_maximizing:
+    if is_maximizing: #recursive approach that fills board with Os
         max_eval = float('-inf')
         for i in range(3):
             for j in range(3):
                 if board[i][j] == ' ':
                     board[i][j] = 'O'
-                    eval = minimax(board, depth + 1, False)
+                    eval = minimax(board, depth + 1, False) #recursion
                     board[i][j] = ' '
                     max_eval = max(max_eval, eval)
         return max_eval
-    else:
+    else: #recursive approach that fills board with Xs
         min_eval = float('inf')
         for i in range(3):
             for j in range(3):
                 if board[i][j] == ' ':
                     board[i][j] = 'X'
-                    eval = minimax(board, depth + 1, True)
+                    eval = minimax(board, depth + 1, True) #recursion
                     board[i][j] = ' '
                     min_eval = min(min_eval, eval)
         return min_eval
 
+#determines the best move for the current player and returns a tuple representing the position
 def best_move(board):
     best_val = float('-inf')
     best_move = None
@@ -74,6 +75,7 @@ def make_move(row, col):
     else:
         messagebox.showerror("Error", "Invalid move")
 
+#AI's turn to play
 def ai_move():
     row, col = best_move(board)
     board[row][col] = 'O'
@@ -88,7 +90,7 @@ def ai_move():
 root = tk.Tk()
 root.title("Tic-Tac-Toe")
 
-board = [[' ' for _ in range(3)] for _ in range(3]
+board = [[' ' for _ in range(3)] for _ in range(3)]
 buttons = []
 
 for i in range(3):
