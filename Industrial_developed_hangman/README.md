@@ -4,4 +4,9 @@ to install dependencies got to repository "Industrial_developed_hangman" by `cd 
 
 to start it use `make build` command
 
+example of programm run:
+
+
+![img.png](recorces/img.png)
+
 also makefile have lint command to lint source code
