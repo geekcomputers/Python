@@ -56,7 +56,7 @@ def test_parse_word_from_site() -> None:
 
 def test_parse_word_from_site_no_internet() -> None:
     with requests_mock.Mocker() as mock:
-        mock.get('https://randomword.com', text='<div id="random_word">some text</div>')
+        mock.get('https://random-word-api.herokuapp.com/word', text='["some text"]')
         assert parse_word_from_site() == 'some text'
 
 
