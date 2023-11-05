@@ -8,7 +8,7 @@ def bdelete():
         print(stud)
 
     # Deleting the Roll no. entered by user
-    rno = int(input("Enter the Roll no. to be deleted: "))
+    rno = int(input("Enter the Roll no. to be added: "))
     with open("studrec.dat") as F:
         rec = [i for i in stud if i[0] != rno]
         pickle.dump(rec, F)
