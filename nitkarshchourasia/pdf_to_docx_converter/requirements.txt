@@ -1,0 +1,4 @@
+python-docx==0.8.11
+PyMuPDF==1.18.17
+pytesseract==0.3.8
+Pillow==8.4.0
