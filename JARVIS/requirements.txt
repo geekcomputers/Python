@@ -16,3 +16,4 @@ pyttsx3
 webbrowser
 smtplib
 speech_recognition
+openai
