@@ -1,7 +1,6 @@
 datetime
 pyjokes
 requests
-json
 Pillow
 Image
 ImageGrab
