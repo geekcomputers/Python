@@ -9,7 +9,5 @@ keyboard
 key
 playsound
 pyttsx3
-webbrowser
-smtplib
 SpeechRecognition
 openai
