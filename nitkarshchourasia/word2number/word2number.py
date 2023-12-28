@@ -73,3 +73,11 @@ def word_to_number(word):
 number_str = "two trillion seven billion fifty crore thirty-four lakh seven thousand nine hundred"
 result = word_to_number(number_str)
 print(result)
+
+
+# Will make a tkinter application out of it.
+## It will have a slider to use the more efficient way or just the normal way.
+## More efficient way would have a library word2num to choose from.
+
+# The application would be good.
+# I want to make it more efficient and optimized.
