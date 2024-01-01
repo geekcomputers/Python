@@ -94,7 +94,7 @@ PyQRCode==1.2.1
 freegames==2.5.3
 pyperclip==1.8.2
 newspaper==0.1.0.7
-opencv-python==4.8.1.78
+opencv-python==4.9.0.80
 tensorflow==2.15.0.post1
 pandas==2.1.4
 pytest==7.4.4
