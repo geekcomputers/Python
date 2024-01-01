@@ -2,7 +2,7 @@ pafy==0.5.5
 aiohttp==3.9.1
 fuzzywuzzy==0.18.0
 hupper==1.12
-seaborn==0.13.0
+seaborn==0.13.1
 time==1.0.0
 simplegui==0.1.1
 utils==1.0.1
