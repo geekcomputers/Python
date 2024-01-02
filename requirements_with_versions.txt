@@ -31,7 +31,7 @@ pyserial==3.5
 twilio==8.11.0
 tabula==1.0.5
 nltk==3.8.1
-Pillow==10.1.0
+Pillow==10.2.0
 SocksiPy-branch==1.01
 xlrd==2.0.1
 fpdf==1.7.2
