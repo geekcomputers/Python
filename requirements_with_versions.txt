@@ -84,7 +84,7 @@ gTTS==2.5.0
 ccxt==4.2.3
 fitz==0.0.1.dev2
 fastapi==0.108.0
-Django==5.0
+Django==5.0.1
 docx==0.2.4
 matplotlib==3.8.2
 pyshorteners==1.0.1
