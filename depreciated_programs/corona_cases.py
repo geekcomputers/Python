@@ -43,7 +43,7 @@ Total Recovered :- {TotalRecovered}
     print(world)
 
 
-def indiac():
+def india():
     cases = f"""
 ██╗███╗░░██╗██████╗░██╗░█████╗░
 ██║████╗░██║██╔══██╗██║██╔══██╗
@@ -53,7 +53,7 @@ def indiac():
 ╚═╝╚═╝░░╚══╝╚═════╝░╚═╝╚═╝░░╚═╝
 
 Country Name :- {name}
-New Confirmed Cases :- {indiaconfirmed}
+New Confirmed Cases :- {indiaonfirmed}
 Total Confirmed Cases :- {indiatotal}
 New Deaths :- {indiaDeaths}
 Total Deaths :- {deathstotal}
@@ -86,7 +86,7 @@ def choices():
         sleep(1)
         choices()
     elif choice == "2":
-        indiac()
+        india()
         sleep(1)
         choices()
     else:

@@ -11,3 +11,5 @@ playsound
 pyttsx3
 SpeechRecognition
 openai
+pynput
+pyaudio
