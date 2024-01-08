@@ -34,6 +34,32 @@ class Notebook:
         self.parent = parent
         # ========== Data Key ==========
         self.data_dic = {
+            "A": "Q",
+            "B": "W",
+            "C": "E",
+            "D": "R",
+            "E": "T",
+            "F": "Y",
+            "G": "U",
+            "H": "I",
+            "I": "O",
+            "J": "P",
+            "K": "A",
+            "L": "S",
+            "M": "D",
+            "N": "F",
+            "O": "G",
+            "P": "H",
+            "Q": "J",
+            "R": "K",
+            "S": "L",
+            "T": "Z",
+            "U": "X",
+            "V": "C",
+            "W": "V",
+            "X": "B",
+            "Y": "N",
+            "Z": "M",
             "a": "q",
             "b": "w",
             "c": "e",
@@ -199,7 +225,7 @@ class Notebook:
             try:
                 text_coming = str(
                     text_coming
-                ).lower()  # <----- Lowering the letters as dic in lower letter
+                )  # <----- Lowering the letters as dic in lower letter
                 for word in text_coming:
                     for key, value in self.data_dic.items():
                         if word == key:
@@ -212,7 +238,7 @@ class Notebook:
             return text_to_return
         elif todo == "Decrypt":
             try:
-                text_coming = str(text_coming).lower()
+                text_coming = str(text_coming)
                 for word in text_coming:
                     for key, value in self.data_dic.items():
                         if word == value:
