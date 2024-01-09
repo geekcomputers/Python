@@ -6,8 +6,7 @@
 #54321
 
 def main():
-    lines = int(input("Enter the number of lines: "))
-    pattern(lines)
+    pattern(int(input("Enter the number of lines: ")))
 
 def pattern(rows):
     for i in range(1, rows+1):

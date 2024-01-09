@@ -7,8 +7,7 @@
 #1
 
 def main():
-    lines = int(input("Enter no.of lines: "))
-    pattern(lines)
+    pattern(int(input("Enter no.of lines: ")))
 
 def pattern(lines):
     m = lines + 1
