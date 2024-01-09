@@ -1,2 +1,2 @@
 gTTS==2.5.0
-pygame==2.2.0
+pygame==2.5.2
