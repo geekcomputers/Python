@@ -5,7 +5,7 @@ hupper==1.12
 seaborn==0.13.1
 time==1.0.0
 simplegui==0.1.1
-utils==1.0.1
+utils==1.0.2
 Tubes==0.2.1
 modules==1.0.0
 pdf2docx==0.5.6
