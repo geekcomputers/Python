@@ -1,9 +1,0 @@
-vowels = 'aeiou'
-ip_str = 'Hello, have you tried our tutorial section yet?'
-count = 0
-
-for char in ip_str:
-   if char in vowels:
-       count += 1
-
-print(count)
