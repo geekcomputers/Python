@@ -1,9 +1,10 @@
 # Requirements:
 #     pip install numpy
-#     sudo apt-get install python-openCV
+#     pip install opencv-python
 # Program:
-#     opens your webcam, and records.
+#     Opens your webcam and records.
 
+# Improve this program and make it suitable for general module like use in another programs
 import cv2
 
 cap = cv2.VideoCapture(0)
@@ -13,7 +14,7 @@ frames_width = int(cap.get(3))
 frames_height = int(cap.get(4))
 
 # Specify the video codec
-# FourCC is plateform dependent, however MJPG is a safe choice.
+# FourCC is platform dependent; however, MJPG is a safe choice.
 fourcc = cv2.VideoWriter_fourcc(*"MJPG")
 
 # Create video writer object. Save file to recording.avi
@@ -24,7 +25,6 @@ while True:
     ret, frame = cap.read()
 
     if ret == True:
-
         # Write frame to recording.avi
         out.write(frame)
 
@@ -36,7 +36,7 @@ while True:
         if cv2.waitKey(1) & 0xFF == ord("q"):
             break
 
-# When everything done, release the capture and video writer
+# When everything is done, release the capture and video writer
 cap.release()
 out.release()
 cv2.destroyAllWindows()
