@@ -57,7 +57,7 @@ pytesseract==0.3.10
 requests-mock==1.11.0
 pyglet==2.0.10
 urllib3==2.1.0
-thirdai==0.7.26
+thirdai==0.7.28
 google-api-python-client==2.113.0
 sound==0.1.0
 xlwt==1.3.0
