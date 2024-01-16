@@ -5,6 +5,8 @@ By building this project, you'll gain experience working with numerical computat
 
 """
 
+# TODO: To make it much more better and succint
+
 
 def verify_card_number(card_number):
     sum_of_odd_digits = 0
