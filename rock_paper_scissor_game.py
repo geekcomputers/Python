@@ -47,3 +47,6 @@ def game(player_choice):
         print("draw")
     elif diff == 2 or diff == 4:
         print("you lose!!!")
+
+
+# Also improve it
