@@ -1,37 +1,52 @@
-## Name - Soumyajit Chakraborty
-## place - kolkata
-## date - 10 / 08 / 2020
-
 import cv2 as cv
 
-face_cascade = cv.CascadeClassifier("..\libs\haarcascade_frontalface_default.xml")
-face_cascade_eye = cv.CascadeClassifier("..\libs\haarcascade_eye.xml")
-# face_glass = cv.CascadeClassifier('..\libs\haarcascade_eye_tree_eyeglasses.xml')
 
-cap = cv.VideoCapture(0)
-while cap.isOpened():
+def detect_faces_and_eyes():
+    """
+    Detects faces and eyes in real-time using the webcam.
 
-    falg, img = cap.read()  # start reading the camera output i mean frames
-    # cap.read() returning a bool value and a frame onject type value
+    Press 'q' to exit the program.
+    """
+    # Load the pre-trained classifiers for face and eye detection
+    face_cascade = cv.CascadeClassifier(r"..\libs\haarcascade_frontalface_default.xml")
+    eye_cascade = cv.CascadeClassifier(r"..\libs\haarcascade_eye.xml")
 
-    gray = cv.cvtColor(
-        img, cv.COLOR_BGR2GRAY
-    )  # converting to grayscale image to perform smoother
-    faces = face_cascade.detectMultiScale(
-        img, 1.1, 7
-    )  # we use detectMultiscale library function to detect the predefined structures of a face
-    eyes = face_cascade_eye.detectMultiScale(img, 1.1, 7)
-    # using for loops we are trying to read each and every frame and map
-    for (x, y, w, h) in faces:
-        cv.rectangle(img, (x, y), (x + w, y + h), (0, 255, 0), 1)
+    # Open the webcam
+    cap = cv.VideoCapture(0)
 
-    for (a, b, c, d) in eyes:
-        cv.rectangle(img, (a, b), (a + c, b + d), (255, 0, 0), 1)
+    while cap.isOpened():
+        # Read a frame from the webcam
+        flag, img = cap.read()
 
-    cv.imshow("img", img)
-    c = cv.waitKey(1)
-    if c == ord("q"):
-        break
+        # Convert the frame to grayscale for better performance
+        gray = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
 
-cv.release()
-cv.destroyAllWindows()
+        # Detect faces in the frame
+        faces = face_cascade.detectMultiScale(gray, scaleFactor=1.1, minNeighbors=7)
+
+        # Detect eyes in the frame
+        eyes = eye_cascade.detectMultiScale(gray, scaleFactor=1.1, minNeighbors=7)
+
+        # Draw rectangles around faces and eyes
+        for x, y, w, h in faces:
+            cv.rectangle(img, (x, y), (x + w, y + h), (0, 255, 0), 1)
+
+        for a, b, c, d in eyes:
+            cv.rectangle(img, (a, b), (a + c, b + d), (255, 0, 0), 1)
+
+        # Display the resulting frame
+        cv.imshow("Face and Eye Detection", img)
+
+        # Check for the 'q' key to exit the program
+        key = cv.waitKey(1)
+        if key == ord("q"):
+            break
+
+    # Release the webcam and close all windows
+    cap.release()
+    cv.destroyAllWindows()
+
+
+if __name__ == "__main__":
+    # Call the main function
+    detect_faces_and_eyes()

@@ -1,18 +1,27 @@
 import cv2 as cv
 
-# import numpy as np
+# Read the image in grayscale
+img = cv.imread(r"..\img\hand1.jpg", cv.IMREAD_GRAYSCALE)
 
-img = cv.imread("..\img\hand1.jpg", 0)
-flag, frame = cv.threshold(img, 70, 255, cv.THRESH_BINARY)
+# Apply thresholding to create a binary image
+_, thresholded = cv.threshold(img, 70, 255, cv.THRESH_BINARY)
 
-contor, _ = cv.findContours(frame.copy(), cv.RETR_TREE, cv.CHAIN_APPROX_SIMPLE)
+# Find contours in the binary image
+contours, _ = cv.findContours(thresholded.copy(), cv.RETR_TREE, cv.CHAIN_APPROX_SIMPLE)
 
-hull = [cv.convexHull(c) for c in contor]
+# Convex Hull for each contour
+convex_hulls = [cv.convexHull(contour) for contour in contours]
 
-final = cv.drawContours(img, hull, -1, (0, 0, 0))
-cv.imshow("original_image", img)
-cv.imshow("thres", frame)
-cv.imshow("final_hsv", final)
+# Draw contours and convex hulls on the original image
+original_with_contours = cv.drawContours(img.copy(), contours, -1, (0, 0, 0), 2)
+original_with_convex_hulls = cv.drawContours(img.copy(), convex_hulls, -1, (0, 0, 0), 2)
 
+# Display the images
+cv.imshow("Original Image", img)
+cv.imshow("Thresholded Image", thresholded)
+cv.imshow("Contours", original_with_contours)
+cv.imshow("Convex Hulls", original_with_convex_hulls)
+
+# Wait for a key press and close windows
 cv.waitKey(0)
 cv.destroyAllWindows()
