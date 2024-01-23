@@ -10,7 +10,7 @@ Tubes==0.2.1
 modules==1.0.0
 pdf2docx==0.5.7
 pong==1.5
-beautifulsoup4==4.12.2
+beautifulsoup4==4.12.3
 dictator==0.3.1
 caller==0.0.2
 watchdog==3.0.0
