@@ -41,7 +41,7 @@ tornado==6.4
 obs==0.0.0
 todo==0.1
 oauth2client==4.1.3
-keras==3.0.2
+keras==3.0.4
 pymongo==4.6.1
 playsound==1.3.0
 pyttsx3==2.90
