@@ -28,7 +28,7 @@ requests==2.31.0
 quo==2023.5.1
 PyPDF2==3.0.1
 pyserial==3.5
-twilio==8.11.0
+twilio==8.12.0
 tabula==1.0.5
 nltk==3.8.1
 Pillow==10.2.0
