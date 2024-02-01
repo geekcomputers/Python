@@ -50,3 +50,5 @@ def detect_faces_and_eyes():
 if __name__ == "__main__":
     # Call the main function
     detect_faces_and_eyes()
+
+# program end
