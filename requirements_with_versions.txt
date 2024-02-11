@@ -1,5 +1,5 @@
 pafy==0.5.5
-aiohttp==3.9.1
+aiohttp==3.9.3
 fuzzywuzzy==0.18.0
 hupper==1.12
 seaborn==0.13.1
