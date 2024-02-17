@@ -24,7 +24,7 @@ def main():
             if inputFile == "0":
                 break
             print(count_chars(inputFile))
-        except FileNotFoundError:
+        except (FileNotFoundError,OSError):
             print("File not found...Try again!")
 
 
