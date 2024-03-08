@@ -62,6 +62,7 @@ def firstmark():
 
 
 firstmark()
+cout<<"adding two numbers"<<'a'and'b'<<;
 
 with open("class.dat", "rb") as F:
     val = pickle.load(F)
