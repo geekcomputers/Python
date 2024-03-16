@@ -1,12 +1,46 @@
 import random
+import pandas as pd
 
 # Taking players data
 players = {}  # stores players name their locations
 isReady = {}
 current_loc = 1  # vaiable for iterating location
 
-imp = True
+# creating board
+board = [
+    [100, 99, 98, "S", 96, "S", 94, 93, 92, 91],
+    [81, 82, 83, 84, 85, 86, "L", "S", 89, 90],
+    [80, 79, 78, 77, 76, 75, 74, 73, 72, "L"],
+    [61, 62, "S", 64, 65, 66, 67, 68, 69, 70],
+    [60, 59, 58, 57, 56, 55, 54, 53, 52, 51],
+    [41, 42, 43, 44, 45, 46, 47, "S", 49, "L"],
+    ["L", 39, 38, 37, "S", 35, 34, 33, "S", 31],
+    [21, 22, 23, 24, 25, 26, 27, "L", 29, 30],
+    ["L", 19, 18, 17, 16, 15, 14, 13, 12, 11],
+    [1, 2, 3, "L", 5, 6, 7, "L", 9, 10],
+]
 
+df = pd.DataFrame(board)
+
+styled_df = df.style \
+    .set_properties(**{'background-color': 'lightblue', 'color': 'black'}) \
+    .set_table_styles([{
+        'selector': 'td',
+        'props': [
+            ('padding', '20px'),
+        ]
+    }])
+
+# DataFrame as HTML
+html_output = styled_df.render()
+
+# Save the HTML output
+with open('styled_df_output.html', 'w') as f:
+    f.write(html_output)
+
+print("HTML output saved to 'styled_df_output.html'")
+
+imp = True
 
 # players input function
 def player_input():
@@ -42,13 +76,13 @@ def play():
     global isReady
     global imp
 
-    while imp:
-        print("/"*20)
-        print("1 -> roll the dice (or enter)")
-        print("2 -> start new game")
-        print("3 -> exit the game")
-        print("/"*20)
+    print("/"*20)
+    print("1 -> roll the dice (or enter)")
+    print("2 -> start new game")
+    print("3 -> exit the game")
+    print("/"*20)
 
+    while imp:
         for i in players:
             n = input("{}'s turn: ".format(i)) or 1
             n = int(n)
@@ -86,6 +120,7 @@ def play():
                             return
 
                     print(f"you are at position {players[i]}")
+                    print('-'*20)
 
                 elif n == 2:
                     players = {}  # stores player ans their locations
@@ -155,7 +190,7 @@ def ladder(a, i):
         players[i] = 67
     elif (a == 71):
         players[i] = 92
-    elif (a == 88):
+    elif (a == 87):
         players[i] = 99
     else:
         return players[i]
