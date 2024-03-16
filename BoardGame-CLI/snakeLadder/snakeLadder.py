@@ -1,6 +1,5 @@
 import random
 import pandas as pd
-from IPython.display import display
 
 # Taking players data
 players = {}  # stores players name their locations
