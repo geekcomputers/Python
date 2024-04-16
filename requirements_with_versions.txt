@@ -70,7 +70,7 @@ yfinance==0.2.35
 tweepy==4.14.0
 tkcalendar==1.6.1
 pytube==15.0.0
-xor-cipher==3.1.0
+xor-cipher==4.0.0
 bird==0.1.2
 mechanize==0.4.9
 translate==3.6.1
