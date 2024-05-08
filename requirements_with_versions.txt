@@ -56,7 +56,7 @@ openpyxl==3.1.2
 pytesseract==0.3.10
 requests-mock==1.12.1
 pyglet==2.0.10
-urllib3==2.1.0
+urllib3==2.2.1
 thirdai==0.7.44
 google-api-python-client==2.115.0
 sound==0.1.0
