@@ -3,16 +3,26 @@ import test_data
 
 class SearchEngine:
     def __init__(self, document1):
-        # initialize database
-        conn = sqlite3.connect("searchengine.db")
-        cur = conn.cursor()
-        cur.execute("CREATE TABLE DocumentStore(id INTEGER PRIMARY KEY, document TEXT)")
-        cur.execute("INSERT INTO DocumentStore (document) VALUES (?)", (document1,))
-        conn.commit()
-        res = cur.execute("SELECT * FROM DocumentStore")
+        """
+        - Initialize database.
+        - Check if the tables exist, if not create them
+        """
+        self.conn = sqlite3.connect("searchengine.db")
+        cur = self.conn.cursor()
+        res = cur.execute("SELECT name FROM sqlite_master WHERE name='IndexToWord'")
+        tables_exist = res.fetchone()
+        # tables_exist = res.fetchall()
+        if not tables_exist:
+            self.conn.execute("CREATE TABLE IndexToWord(id INTEGER PRIMARY KEY, document TEXT)")
+            self.conn.execute('CREATE TABLE WordToIndex (store TEXT)')
+            # self.conn.commit()
+
+        # cur.execute("INSERT INTO DocumentStore (document) VALUES (?)", (document1,))
+        # self.conn.commit()
+        res = cur.execute("SELECT name FROM sqlite_master")
         print(res.fetchall())
         # self.index = test_data['documents'][:-1]
-        # cur = conn.execute('CREATE TABLE keyvals (key TEXT PRIMARY KEY, value TEXT)')
+        # 
 
     def index_document(self, document):
         doc_num = 1
