@@ -53,7 +53,7 @@ Feel free to explore the scripts and use them for your learning and automation n
 39. [space_invader.py.py](https://github.com/meezan-mallick/space_invader_game) - Classical 2D space invader game to recall your childhood memories.
 40. [Test Case Generator](https://github.com/Tanmay-901/test-case-generator/blob/master/test_case.py) - Generate different types of test cases with a clean and friendly UI, used in competitive programming and software testing.
 41. [Extract Thumbnail From Video](https://github.com/geekcomputers/Python/tree/ExtractThumbnailFromVideo) - Extract Thumbnail from video files
-42. [How to begin the journy of open source (first contribution)](https://www.youtube.com/watch?v=v2X51AVgl3o) - First Contribution of open source
+42. [How to begin the journey of open source (first contribution)](https://www.youtube.com/watch?v=v2X51AVgl3o) - First Contribution of open source
 <hr>
 
 _**Note**: The content in this repository belongs to the respective authors and creators. I'm just providing a formatted README.md for better presentation._
