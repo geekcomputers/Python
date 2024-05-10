@@ -1,5 +1,6 @@
 import sqlite3
 import test_data
+import ast
 
 class SearchEngine:
     """
@@ -11,7 +12,7 @@ class SearchEngine:
 
     def __init__(self):
         """
-        Return - None
+        Returns - None
         Input - None
         ----------
         - Initialize database. we use sqlite3
@@ -20,18 +21,19 @@ class SearchEngine:
           connection object
         """
         self.conn = sqlite3.connect("searchengine.db")
-        cur = self.conn.cursor()
-        res = cur.execute("SELECT name FROM sqlite_master WHERE name='IdToDoc'")
+        self.cur = self.conn.cursor()
+        res = self.cur.execute("SELECT name FROM sqlite_master WHERE name='IdToDoc'")
         tables_exist = res.fetchone()
-        # tables_exist = res.fetchall()
+
         if not tables_exist:
             self.conn.execute("CREATE TABLE IdToDoc(id INTEGER PRIMARY KEY, document TEXT)")
-            self.conn.execute('CREATE TABLE WordToId (store TEXT)')
+            self.conn.execute('CREATE TABLE WordToId (name TEXT, value TEXT)')
+            self.cur.execute("INSERT INTO WordToId VALUES (?, ?)", ("index", "{}",))
             # self.conn.commit()
 
         # cur.execute("INSERT INTO DocumentStore (document) VALUES (?)", (document1,))
         # self.conn.commit()
-        res = cur.execute("SELECT name FROM sqlite_master")
+        res = self.cur.execute("SELECT name FROM sqlite_master")
         print(res.fetchall())
         # self.index = test_data['documents'][:-1]
         # 
@@ -51,15 +53,16 @@ class SearchEngine:
         - uses the id to call the method that adds the words of 
           the document to the index WordToId
         """
-        self._add_to_IdToDoc(document)
-        # self._add_to_WordToId(document)
-        # doc_num = 1
-        # for word in document:
-        #     if word not in self.index:
-        #         self.index[word] = set([doc_num])
-        #     else:
-        #         self.index.add(doc_num)
-        # print(self.index)
+        row_id = self._add_to_IdToDoc(document)
+        reverse_idx = self.cur.execute("SELECT value FROM WordToId WHERE name='index'").fetchone()[0]
+        reverse_idx = ast.literal_eval(reverse_idx)
+        document = document.split()
+        for word in document:
+            if word not in reverse_idx:
+                reverse_idx[word] = set([row_id])
+            else:
+                reverse_idx.add(row_id)
+        print(reverse_idx)
 
     def _add_to_IdToDoc(self, document):
         """
@@ -83,6 +86,6 @@ class SearchEngine:
 
 if __name__ == "__main__":
     se = SearchEngine()
-    se.index_document("we should all strive to be happy")
+    se.index_document("we should all strive to be happy and happy again")
     se.index_document("happiness is all you need")
     se.index_document("no way should we be sad")
