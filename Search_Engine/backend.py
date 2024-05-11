@@ -1,6 +1,7 @@
 import sqlite3
 import test_data
 import ast
+import json
 
 class SearchEngine:
     """
@@ -26,8 +27,8 @@ class SearchEngine:
         tables_exist = res.fetchone()
 
         if not tables_exist:
-            self.conn.execute("CREATE TABLE IdToDoc(id INTEGER PRIMARY KEY, document TEXT)")
-            self.conn.execute('CREATE TABLE WordToId (name TEXT, value TEXT)')
+            self.cur.execute("CREATE TABLE IdToDoc(id INTEGER PRIMARY KEY, document TEXT)")
+            self.cur.execute('CREATE TABLE WordToId (name TEXT, value TEXT)')
             self.cur.execute("INSERT INTO WordToId VALUES (?, ?)", ("index", "{}",))
             # self.conn.commit()
 
@@ -55,13 +56,16 @@ class SearchEngine:
         """
         row_id = self._add_to_IdToDoc(document)
         reverse_idx = self.cur.execute("SELECT value FROM WordToId WHERE name='index'").fetchone()[0]
-        reverse_idx = ast.literal_eval(reverse_idx)
+        reverse_idx = json.loads(reverse_idx)
         document = document.split()
         for word in document:
             if word not in reverse_idx:
-                reverse_idx[word] = set([row_id])
+                reverse_idx[word] = [row_id]
             else:
-                reverse_idx.add(row_id)
+                if row_id not in reverse_idx[word]: # incase the word has already been indexed
+                    reverse_idx[word].append(row_id)
+        reverse_idx = json.dumps(reverse_idx)
+        self.cur.execute("UPDATE WordToId SET value = (?) WHERE name='index'", (reverse_idx,))
         print(reverse_idx)
 
     def _add_to_IdToDoc(self, document):
@@ -73,7 +77,7 @@ class SearchEngine:
           into the db
         - retrieve and return the row id of the inserted document
         """
-        res = self.conn.execute("INSERT INTO IdToDoc (document) VALUES (?)", (document,))
+        res = self.cur.execute("INSERT INTO IdToDoc (document) VALUES (?)", (document,))
         return res.lastrowid
 
 
