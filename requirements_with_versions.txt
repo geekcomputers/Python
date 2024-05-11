@@ -103,7 +103,7 @@ googletrans==3.0.0
 slab==1.1.5
 psutil==5.9.8
 mediapipe==0.10.9
-rich==13.7.0
+rich==13.7.1
 httplib2==0.22.0
 protobuf==4.25.2
 colorama==0.4.6
