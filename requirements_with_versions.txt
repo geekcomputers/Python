@@ -22,7 +22,7 @@ win10toast==0.9
 Counter==1.0.0
 Flask==3.0.2
 selenium==4.16.0
-firebase-admin==6.3.0
+firebase-admin==6.5.0
 ujson==5.9.0
 requests==2.31.0
 quo==2023.5.1
@@ -56,7 +56,7 @@ openpyxl==3.1.2
 pytesseract==0.3.10
 requests-mock==1.12.1
 pyglet==2.0.10
-urllib3==2.1.0
+urllib3==2.2.1
 thirdai==0.7.44
 google-api-python-client==2.115.0
 sound==0.1.0
@@ -64,7 +64,7 @@ xlwt==1.3.0
 pygame==2.5.2
 speechtotext==0.0.3
 wikipedia==1.4.0
-tqdm==4.66.1
+tqdm==4.66.4
 Menu==3.2.2
 yfinance==0.2.35
 tweepy==4.14.0
@@ -74,7 +74,7 @@ xor-cipher==4.0.0
 bird==0.1.2
 mechanize==0.4.9
 translate==3.6.1
-solara==1.26.1
+solara==1.32.1
 pywhatkit==5.4
 mutagen==1.47.0
 Unidecode==1.3.8
@@ -103,7 +103,7 @@ googletrans==3.0.0
 slab==1.1.5
 psutil==5.9.8
 mediapipe==0.10.9
-rich==13.7.0
+rich==13.7.1
 httplib2==0.22.0
 protobuf==4.25.2
 colorama==0.4.6
