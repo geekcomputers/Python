@@ -30,19 +30,16 @@ class SearchEngine:
             self.conn.execute("CREATE TABLE IdToDoc(id INTEGER PRIMARY KEY, document TEXT)")
             self.conn.execute('CREATE TABLE WordToId (name TEXT, value TEXT)')
             cur.execute("INSERT INTO WordToId VALUES (?, ?)", ("index", "{}",))
-            # self.conn.commit()
 
-        # cur.execute("INSERT INTO DocumentStore (document) VALUES (?)", (document1,))
-        # self.conn.commit()
         cur = self.conn.cursor()
-        res = cur.execute("SELECT name FROM sqlite_master")
+        # res = cur.execute("SELECT name FROM sqlite_master")
         # print(res.fetchall())
         # self.index = test_data['documents'][:-1]
         # 
 
     def index_document(self, document):
         """
-        Returns - 
+        Returns - <sqlite3.Cursor object>
         Input - str: a string of words called document
         ----------
         Indexes the document. It does this by performing two
@@ -53,7 +50,8 @@ class SearchEngine:
           to IdToDoc
         - retrieves the id of the inserted document
         - uses the id to call the method that adds the words of 
-          the document to the index WordToId
+          the document to the reverse index WordToId if the word has not
+          already been indexed
         """
         row_id = self._add_to_IdToDoc(document)
         cur = self.conn.cursor()
@@ -64,12 +62,12 @@ class SearchEngine:
             if word not in reverse_idx:
                 reverse_idx[word] = [row_id]
             else:
-                if row_id not in reverse_idx[word]: # incase the word has already been indexed
+                if row_id not in reverse_idx[word]:
                     reverse_idx[word].append(row_id)
         reverse_idx = json.dumps(reverse_idx)
         cur = self.conn.cursor()
-        cur.execute("UPDATE WordToId SET value = (?) WHERE name='index'", (reverse_idx,))
-        # print(reverse_idx)
+        result = cur.execute("UPDATE WordToId SET value = (?) WHERE name='index'", (reverse_idx,))
+        return(result)
 
     def _add_to_IdToDoc(self, document):
         """
@@ -85,6 +83,16 @@ class SearchEngine:
         return res.lastrowid
 
     def find_documents(self, search_term):
+        """
+        Returns - <class method>: the return value of the _find_documents_with_idx method
+        Input - str: a string of words called `search_term`
+        ---------
+        - retrieve the reverse index
+        - use the words contained in the search term to find all the idxs
+          that contain the word
+        - use idxs to call the _find_documents_with_idx method
+        - return the result of the called method
+        """
         cur = self.conn.cursor()
         reverse_idx = cur.execute("SELECT value FROM WordToId WHERE name='index'").fetchone()[0]
         reverse_idx = json.loads(reverse_idx)
@@ -104,9 +112,9 @@ class SearchEngine:
         if not common_idx_of_docs: # the search term does not exist
             return []
 
-        return self._documents_with_idx(common_idx_of_docs)
+        return self._find_documents_with_idx(common_idx_of_docs)
         
-    def _documents_with_idx(self, idxs):
+    def _find_documents_with_idx(self, idxs):
         idxs = list(idxs)
         cur = self.conn.cursor()
         sql="SELECT document FROM IdToDoc WHERE id in ({seq})".format(
@@ -119,7 +127,7 @@ class SearchEngine:
 if __name__ == "__main__":
     se = SearchEngine()
     se.index_document("we should all strive to be happy and happy again")
-    se.index_document("happiness is all you need")
+    print(se.index_document("happiness is all you need"))
     se.index_document("no way should we be sad")
     se.index_document("a cheerful heart is a happy one")
-    se.find_documents("happy")
+    print(se.find_documents("happy"))
