@@ -31,12 +31,6 @@ class SearchEngine:
             self.conn.execute('CREATE TABLE WordToId (name TEXT, value TEXT)')
             cur.execute("INSERT INTO WordToId VALUES (?, ?)", ("index", "{}",))
 
-        cur = self.conn.cursor()
-        # res = cur.execute("SELECT name FROM sqlite_master")
-        # print(res.fetchall())
-        # self.index = test_data['documents'][:-1]
-        # 
-
     def index_document(self, document):
         """
         Returns - <sqlite3.Cursor object>
