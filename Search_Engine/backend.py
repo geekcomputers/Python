@@ -104,17 +104,16 @@ class SearchEngine:
         if not common_idx_of_docs: # the search term does not exist
             return []
 
-        # print(common_idx_of_docs)
-        self._documents_with_idx(common_idx_of_docs)
+        return self._documents_with_idx(common_idx_of_docs)
         
     def _documents_with_idx(self, idxs):
+        idxs = list(idxs)
         cur = self.conn.cursor()
-        # reverse_idx = cur.execute("SELECT value FROM IdToDoc WHERE id=(?) or id=(?)", ()).fetchone()[0]
-        sql="SELECT value FROM IdToDoc WHERE id in ({seq})".format(
+        sql="SELECT document FROM IdToDoc WHERE id in ({seq})".format(
                                                                 seq=','.join(['?']*len(idxs))
-                                                            )
-        result = cur.execute(sql, idxs)
-        print(result)
+                                                               )
+        result = cur.execute(sql, idxs).fetchall()
+        return(result)
 
 
 if __name__ == "__main__":
