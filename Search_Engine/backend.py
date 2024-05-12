@@ -22,20 +22,21 @@ class SearchEngine:
           connection object
         """
         self.conn = sqlite3.connect("searchengine.db")
-        self.cur = self.conn.cursor()
-        res = self.cur.execute("SELECT name FROM sqlite_master WHERE name='IdToDoc'")
+        cur = self.conn.cursor()
+        res = cur.execute("SELECT name FROM sqlite_master WHERE name='IdToDoc'")
         tables_exist = res.fetchone()
 
         if not tables_exist:
-            self.cur.execute("CREATE TABLE IdToDoc(id INTEGER PRIMARY KEY, document TEXT)")
-            self.cur.execute('CREATE TABLE WordToId (name TEXT, value TEXT)')
-            self.cur.execute("INSERT INTO WordToId VALUES (?, ?)", ("index", "{}",))
+            self.conn.execute("CREATE TABLE IdToDoc(id INTEGER PRIMARY KEY, document TEXT)")
+            self.conn.execute('CREATE TABLE WordToId (name TEXT, value TEXT)')
+            cur.execute("INSERT INTO WordToId VALUES (?, ?)", ("index", "{}",))
             # self.conn.commit()
 
         # cur.execute("INSERT INTO DocumentStore (document) VALUES (?)", (document1,))
         # self.conn.commit()
-        res = self.cur.execute("SELECT name FROM sqlite_master")
-        print(res.fetchall())
+        cur = self.conn.cursor()
+        res = cur.execute("SELECT name FROM sqlite_master")
+        # print(res.fetchall())
         # self.index = test_data['documents'][:-1]
         # 
 
@@ -55,7 +56,8 @@ class SearchEngine:
           the document to the index WordToId
         """
         row_id = self._add_to_IdToDoc(document)
-        reverse_idx = self.cur.execute("SELECT value FROM WordToId WHERE name='index'").fetchone()[0]
+        cur = self.conn.cursor()
+        reverse_idx = cur.execute("SELECT value FROM WordToId WHERE name='index'").fetchone()[0]
         reverse_idx = json.loads(reverse_idx)
         document = document.split()
         for word in document:
@@ -65,8 +67,9 @@ class SearchEngine:
                 if row_id not in reverse_idx[word]: # incase the word has already been indexed
                     reverse_idx[word].append(row_id)
         reverse_idx = json.dumps(reverse_idx)
-        self.cur.execute("UPDATE WordToId SET value = (?) WHERE name='index'", (reverse_idx,))
-        print(reverse_idx)
+        cur = self.conn.cursor()
+        cur.execute("UPDATE WordToId SET value = (?) WHERE name='index'", (reverse_idx,))
+        # print(reverse_idx)
 
     def _add_to_IdToDoc(self, document):
         """
@@ -77,19 +80,47 @@ class SearchEngine:
           into the db
         - retrieve and return the row id of the inserted document
         """
-        res = self.cur.execute("INSERT INTO IdToDoc (document) VALUES (?)", (document,))
+        cur = self.conn.cursor()
+        res = cur.execute("INSERT INTO IdToDoc (document) VALUES (?)", (document,))
         return res.lastrowid
 
-
-
     def find_documents(self, search_term):
-        pass
+        cur = self.conn.cursor()
+        reverse_idx = cur.execute("SELECT value FROM WordToId WHERE name='index'").fetchone()[0]
+        reverse_idx = json.loads(reverse_idx)
+        search_term = search_term.split(" ")
+        all_docs_with_search_term = []
+        for term in search_term:
+            if term in reverse_idx:
+                all_docs_with_search_term.append(reverse_idx[term])
 
-    def _search_index(self):
-        pass
+        if not all_docs_with_search_term: # the search term does not exist
+            return []
+
+        common_idx_of_docs = set(all_docs_with_search_term[0])
+        for idx in all_docs_with_search_term[1:]:
+            common_idx_of_docs.intersection_update(idx)
+
+        if not common_idx_of_docs: # the search term does not exist
+            return []
+
+        # print(common_idx_of_docs)
+        self._documents_with_idx(common_idx_of_docs)
+        
+    def _documents_with_idx(self, idxs):
+        cur = self.conn.cursor()
+        # reverse_idx = cur.execute("SELECT value FROM IdToDoc WHERE id=(?) or id=(?)", ()).fetchone()[0]
+        sql="SELECT value FROM IdToDoc WHERE id in ({seq})".format(
+                                                                seq=','.join(['?']*len(idxs))
+                                                            )
+        result = cur.execute(sql, idxs)
+        print(result)
+
 
 if __name__ == "__main__":
     se = SearchEngine()
     se.index_document("we should all strive to be happy and happy again")
     se.index_document("happiness is all you need")
     se.index_document("no way should we be sad")
+    se.index_document("a cheerful heart is a happy one")
+    se.find_documents("happy")
