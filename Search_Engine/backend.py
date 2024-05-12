@@ -115,6 +115,14 @@ class SearchEngine:
         return self._find_documents_with_idx(common_idx_of_docs)
         
     def _find_documents_with_idx(self, idxs):
+        """
+        Returns - list[str]: the list of documents with the idxs
+        Input - list of idxs
+        ---------
+        - use the class-level connection object to retrieve the documents that
+          have the idx in the input list of idxs.
+        - retrieve and return these documents as a list
+        """
         idxs = list(idxs)
         cur = self.conn.cursor()
         sql="SELECT document FROM IdToDoc WHERE id in ({seq})".format(
