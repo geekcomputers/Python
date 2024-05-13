@@ -22,21 +22,26 @@ class bcolors:
 run = True
 li = ["s", "w", "g"]
 
-system("clear")
-b = input(
-    bcolors.OKBLUE
-    + bcolors.BOLD
-    + "Welcome to the game 'Snake-Water-Gun'.\nWanna play? Type Y or N: "
-    + bcolors.ENDC
-).capitalize()
+while True:
+    system("clear")
+    b = input(
+        bcolors.OKBLUE
+        + bcolors.BOLD
+        + "Welcome to the game 'Snake-Water-Gun'.\nWanna play? Type Y or N: "
+        + bcolors.ENDC
+    ).capitalize()
 
-if b == "N":
-    run = False
-    print("Ok bubyeee! See you later")
-elif b == "Y" or b == "y":
-    print(
-        "There will be 10 matches, and the one who wins more matches will win. Let's start."
-    )
+    if b == "N":
+        run = False
+        print("Ok bubyeee! See you later")
+        break
+    elif b == "Y" or b == "y":
+        print(
+            "There will be 10 matches, and the one who wins more matches will win. Let's start."
+        )
+        break
+    else:
+        continue
 
 i = 0
 score = 0

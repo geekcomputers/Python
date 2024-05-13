@@ -14,10 +14,14 @@ def download():
         url = YouTube(str(url_box.get()))
         video = url.streams.first()
         filename = filedialog.asksaveasfilename(defaultextension=".mp4", filetypes=[("MP4 files", "*.mp4")])
-        video.download(filename=filename)
-        messagebox.showinfo('', 'Download completed!')
+        if filename:  # Check if a filename is selected
+            video.download(filename=filename)
+            messagebox.showinfo('', 'Download completed!')
+        else:
+            messagebox.showwarning('', 'Download cancelled!')
     except Exception as e:
         messagebox.showerror("Error", "An error occurred while downloading the video.")
+
 
 
 root = Tk()
