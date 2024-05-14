@@ -72,7 +72,7 @@ tkcalendar==1.6.1
 pytube==15.0.0
 xor-cipher==4.0.0
 bird==0.1.2
-mechanize==0.4.9
+mechanize==0.4.10
 translate==3.6.1
 solara==1.32.2
 pywhatkit==5.4
