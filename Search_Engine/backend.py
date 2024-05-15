@@ -131,5 +131,5 @@ if __name__ == "__main__":
     se.index_document("we should all strive to be happy and happy again")
     print(se.index_document("happiness is all you need"))
     se.index_document("no way should we be sad")
-    se.index_document("a cheerful heart is a happy one")
+    se.index_document("a cheerful heart is a happy one even in Nigeria")
     print(se.find_documents("happy"))
