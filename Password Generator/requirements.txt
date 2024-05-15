@@ -1,2 +1,2 @@
 colorama==0.4.6
-inquirer==3.2.1
+inquirer==3.2.4
