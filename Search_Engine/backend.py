@@ -21,7 +21,7 @@ class SearchEngine:
         - maintain a class level access to the database
           connection object
         """
-        self.conn = sqlite3.connect("searchengine.db")
+        self.conn = sqlite3.connect("searchengine.sqlite3", autocommit=True)
         cur = self.conn.cursor()
         res = cur.execute("SELECT name FROM sqlite_master WHERE name='IdToDoc'")
         tables_exist = res.fetchone()
@@ -33,7 +33,7 @@ class SearchEngine:
 
     def index_document(self, document):
         """
-        Returns - <sqlite3.Cursor object>
+        Returns - string
         Input - str: a string of words called document
         ----------
         Indexes the document. It does this by performing two
@@ -61,7 +61,7 @@ class SearchEngine:
         reverse_idx = json.dumps(reverse_idx)
         cur = self.conn.cursor()
         result = cur.execute("UPDATE WordToId SET value = (?) WHERE name='index'", (reverse_idx,))
-        return(result)
+        return("index successful")
 
     def _add_to_IdToDoc(self, document):
         """
