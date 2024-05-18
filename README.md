@@ -1,4 +1,4 @@
-# My Python Eggs 🐍 😄
+# My Python Eggs 🐍 😄.
 
 <hr>
 
