@@ -2,6 +2,7 @@
 Scrapper for downloading prison break
 series from an open server and putting them in a designated folder.
 """
+
 import os
 import subprocess
 
@@ -14,7 +15,7 @@ BASE_URL = "http://dl.funsaber.net/serial/Prison%20Break/season%20"
 def download_files(links, idx):
     for link in links:
         subprocess.call(
-            ["aria2c", "-s", "16", "-x", "16", "-d", "season" + str(idx), link]
+            ["aria2c", "-s", "16", "-x", "16", "-d", "season" + str(idx), link],
         )
 
 

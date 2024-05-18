@@ -42,7 +42,7 @@ while 1 > 0:
     print("Sent data: ", original_data + crc_str)
     sent_data = original_data + crc_str
     print(
-        "If again applying CRC algorithm, the remainder/CRC must be zero if errorless."
+        "If again applying CRC algorithm, the remainder/CRC must be zero if errorless.",
     )
     crc = crc_check(sent_data, div)
     remainder = crc

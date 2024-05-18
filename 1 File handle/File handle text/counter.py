@@ -5,9 +5,10 @@
     - Code readability
 """
 
+
 class Counter:
 
-    def __init__(self, text:str) -> None:
+    def __init__(self, text: str) -> None:
         self.text = text
 
         # Define the initial count of the lower and upper case.
@@ -16,7 +17,7 @@ class Counter:
         self.count()
 
     def count(self) -> None:
-        
+
         for char in self.text:
             if char.lower():
                 self.count_lower += 1
@@ -24,7 +25,7 @@ class Counter:
                 self.count_upper += 1
 
         return (self.count_lower, self.count_upper)
-    
+
     def get_total_lower(self) -> int:
         return self.count_lower
 

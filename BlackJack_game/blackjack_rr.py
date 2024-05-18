@@ -192,7 +192,7 @@ while True:
 
     print("\t              **********************************************************")
     print(
-        "\t                       Welcome to the game Casino - BLACK JACK !                                                     "
+        "\t                       Welcome to the game Casino - BLACK JACK !                                                     ",
     )
     print("\t              **********************************************************")
     print(Colour.BLACK + "\t                                   ***************")
@@ -208,7 +208,7 @@ while True:
     print("\t                                   ***************" + Colour.END)
 
     print(
-        "\nRULES: Get as close to 21 as you can but if you get more than 21 you will lose!\n  Aces count as 1 or 11."
+        "\nRULES: Get as close to 21 as you can but if you get more than 21 you will lose!\n  Aces count as 1 or 11.",
     )
 
     deck = Deck()
@@ -268,11 +268,11 @@ while True:
                 + "\t$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$\n \t      Congratulations! You won "
                 + str(player_chips.total)
                 + " coins!\n\t$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$\n "
-                + Colour.END
+                + Colour.END,
             )
             break
     else:
         print(
-            "Oops! You have bet all your chips and we are sorry you can't play more.\nThanks for playing! Do come again to Casino BLACK JACK!"
+            "Oops! You have bet all your chips and we are sorry you can't play more.\nThanks for playing! Do come again to Casino BLACK JACK!",
         )
         break

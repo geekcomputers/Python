@@ -25,7 +25,7 @@ for i in range(x):
         print("Have a good day.")
     if num == 9:
         print(
-            "Upgrading Windows, your PC will restart several times. Sit back and relax."
+            "Upgrading Windows, your PC will restart several times. Sit back and relax.",
         )
     if num == 10:
         print("The architects are still drafting.")

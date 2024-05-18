@@ -2,6 +2,7 @@
 # modified Prince Gangurde 4/4/2020
 
 from random import randint
+
 import pycountry
 
 case = randint(1, 2)

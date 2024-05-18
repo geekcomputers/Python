@@ -6,9 +6,10 @@ that number appears in the triple quoted string.
 Credit to William J. Turkel and Adam Crymble for the word
 frequency code used below. I just merged the two ideas.
 """
+
 import re
 
-pattern = re.compile("\W")  # re is used to compile the expression more than once
+pattern = re.compile(r"\W")  # re is used to compile the expression more than once
 # wordstring consisting of a million characters
 wordstring = """SCENE I. Yorkshire. Gaultree Forest.
 Enter the ARCHBISHOP OF YORK, MOWBRAY, LORD HASTINGS, and others
@@ -308,7 +309,7 @@ wordfreq = [
     wordlist.count(w) for w in wordlist
 ]  # counts frequency of a letter in the given list
 
-print("String\n {} \n".format(wordstring))
-print("List\n {} \n".format(str(wordlist)))
-print("Frequencies\n {} \n".format(str(wordfreq)))
-print("Pairs\n {}".format(str(dict(zip(wordlist, wordfreq)))))
+print(f"String\n {wordstring} \n")
+print(f"List\n {str(wordlist)} \n")
+print(f"Frequencies\n {str(wordfreq)} \n")
+print(f"Pairs\n {str(dict(zip(wordlist, wordfreq)))}")

@@ -1,5 +1,4 @@
 #! /usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
 Created on Fri Mar 23 14:17:24 2019
 
@@ -31,7 +30,7 @@ class Bird(pygame.sprite.Sprite):
 
     def __init__(self, x, y, ms_to_up, images):
 
-        super(Bird, self).__init__()
+        super().__init__()
         self.x, self.y = x, y
         self.ms_to_up = ms_to_up
         self._img_wingup, self._img_wingdown = images
@@ -93,7 +92,7 @@ class PipePair(pygame.sprite.Sprite):
                 - 3 * Bird.HEIGHT  # fill window from top to bottom
                 - 3 * PipePair.PIECE_HEIGHT  # make room for bird to fit through
             )
-            / PipePair.PIECE_HEIGHT  # 2 end pieces + 1 body piece  # to get number of pipe pieces
+            / PipePair.PIECE_HEIGHT,  # 2 end pieces + 1 body piece  # to get number of pipe pieces
         )
         self.bottom_pieces = randint(1, total_pipe_body_pieces)
         self.top_pieces = total_pipe_body_pieces - self.bottom_pieces

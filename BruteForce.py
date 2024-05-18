@@ -78,7 +78,10 @@ if __name__ == "__main__":
 
     # Obtém a senha encontrada e o múmero de tentativas
     password, attempts = findPassword(
-        chars, testFunction, show=1000, format_=" Trying %s"
+        chars,
+        testFunction,
+        show=1000,
+        format_=" Trying %s",
     )
 
     t = datetime.timedelta(seconds=int(time.process_time() - t))

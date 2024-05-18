@@ -1,12 +1,12 @@
 """
   Author : Mohit Kumar
-  
-  Python program to find triplets in a given  array whose sum is zero 
+
+  Python program to find triplets in a given  array whose sum is zero
 """
+
 
 # function to print triplets with 0 sum
 def find_Triplets_with_zero_sum(arr, num):
-
     """find triplets in a given  array whose sum is zero
 
     Parameteres :
@@ -71,10 +71,10 @@ if __name__ == "__main__":
 
 """
 SAMPLE INPUT 1 :
-	Enter size of array : 5 
+	Enter size of array : 5
 	Enter elements of array : 0, -1, 2, -3, 1
 OUTPUT :
-	Triplets with 0 sum are as : 
+	Triplets with 0 sum are as :
 				    -3 1 2
 				    -1 0 1
 COMPLEXITY ANALYSIS :

@@ -1,6 +1,7 @@
+import re
+
 import requests
 from bs4 import BeautifulSoup
-import re
 
 re_text = r"\:|\.|\!|(https|http)?:\/\/(\w|\.|\/|\?|\=|\&|\%)*\b|(.twitter.com\/)\w*|\&"
 re_text_1 = r"(pictwittercom)\/\w*"
@@ -28,9 +29,9 @@ def tweeter_scrapper():
     for dirty_tweet in list_of_dirty_tweets:
         dirty_tweet = re.sub(re_text, "", dirty_tweet, flags=re.MULTILINE)
         dirty_tweet = re.sub(re_text_1, "", dirty_tweet, flags=re.MULTILINE)
-        dirty_tweet = dirty_tweet.replace(u"\xa0…", u"")
-        dirty_tweet = dirty_tweet.replace(u"\xa0", u"")
-        dirty_tweet = dirty_tweet.replace(u"\u200c", u"")
+        dirty_tweet = dirty_tweet.replace("\xa0…", "")
+        dirty_tweet = dirty_tweet.replace("\xa0", "")
+        dirty_tweet = dirty_tweet.replace("\u200c", "")
         clear_list_of_tweets.append(dirty_tweet)
     print(clear_list_of_tweets)
 

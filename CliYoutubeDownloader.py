@@ -1,26 +1,31 @@
-from pytube import *
 import sys
+
+from pytube import *
 
 
 class YouTubeDownloder:
     def __init__(self):
         self.url = str(input("Enter the url of video : "))
         self.youtube = YouTube(
-            self.url, on_progress_callback=YouTubeDownloder.onProgress
+            self.url,
+            on_progress_callback=YouTubeDownloder.onProgress,
         )
         self.showTitle()
 
     def showTitle(self):
-        print("title : {0}\n".format(self.youtube.title))
+        print(f"title : {self.youtube.title}\n")
         self.showStreams()
 
     def showStreams(self):
         self.streamNo = 1
         for stream in self.youtube.streams:
             print(
-                "{0} => resolation:{1}/fps:{2}/type:{3}".format(
-                    self.streamNo, stream.resolution, stream.fps, stream.type
-                )
+                "{} => resolation:{}/fps:{}/type:{}".format(
+                    self.streamNo,
+                    stream.resolution,
+                    stream.fps,
+                    stream.type,
+                ),
             )
             self.streamNo += 1
         self.chooseStream()
@@ -47,13 +52,13 @@ class YouTubeDownloder:
 
     def getPermisionToContinue(self):
         print(
-            "\n title : {0} \n author : {1} \n size : {2:.2f}MB \n resolution : {3} \n fps : {4} \n ".format(
+            "\n title : {} \n author : {} \n size : {:.2f}MB \n resolution : {} \n fps : {} \n ".format(
                 self.youtube.title,
                 self.youtube.author,
                 file_size,
                 self.stream.resolution,
                 self.stream.fps,
-            )
+            ),
         )
         if input("do you want it ?(defualt = (y)es) or (n)o ") == "n":
             self.showStreams()

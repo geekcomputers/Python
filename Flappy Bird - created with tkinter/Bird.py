@@ -27,14 +27,14 @@ class Bird(Thread):
         *screen_geometry,
         fp="bird.png",
         event="<Up>",
-        descend_speed=5
+        descend_speed=5,
     ):
 
         # Verifica se "background" é uma instância de Background e se o "gamerover_method" é chamável
 
         if not isinstance(background, Background):
             raise TypeError(
-                "The background argument must be an instance of Background."
+                "The background argument must be an instance of Background.",
             )
         if not callable(gameover_function):
             raise TypeError("The gameover_method argument must be a callable object.")
@@ -139,7 +139,11 @@ class Bird(Thread):
 
     @staticmethod
     def getPhotoImage(
-        image=None, image_path=None, width=None, height=None, closeAfter=False
+        image=None,
+        image_path=None,
+        width=None,
+        height=None,
+        closeAfter=False,
     ):
         """
         Retorna um objeto da classe PIL.ImageTk.PhotoImage de uma imagem e as imagens criadas de PIL.Image

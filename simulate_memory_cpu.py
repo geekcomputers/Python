@@ -1,39 +1,40 @@
 #! /user/bin/env python
-# -*- encoding: utf-8 -*-
 """
 Simulate cpu、 memory usage
 """
 
-import sys
 import re
+import sys
 import time
 from multiprocessing import Process, cpu_count
 
 
 def print_help():
-    print('Usage: ')
-    print('  python cpu_memory_simulator.py m 1GB')
-    print('  python cpu_memory_simulator.py c 1')
-    print('  python cpu_memory_simulator.py mc 1GB 2')
+    print("Usage: ")
+    print("  python cpu_memory_simulator.py m 1GB")
+    print("  python cpu_memory_simulator.py c 1")
+    print("  python cpu_memory_simulator.py mc 1GB 2")
+
 
 # memory usage
 
 
 def mem():
-    pattern = re.compile('^(\d*)([M|G]B)$')
+    pattern = re.compile(r"^(\d*)([M|G]B)$")
     size = sys.argv[2].upper()
     match = pattern.match(size)
     if match:
         num = int(match.group(1))
         unit = match.group(2)
-        if unit == 'MB':
-            s = ' ' * (num * 1024 * 1024)
+        if unit == "MB":
+            s = " " * (num * 1024 * 1024)
         else:
-            s = ' ' * (num * 1024 * 1024 * 1024)
+            s = " " * (num * 1024 * 1024 * 1024)
         time.sleep(24 * 3600)
     else:
         print("bad args.....")
         print_help()
+
 
 # cpu usage
 
@@ -41,6 +42,7 @@ def mem():
 def deadloop():
     while True:
         pass
+
 
 # Specify how many cores to occupy according to the parameters
 
@@ -54,7 +56,7 @@ def cpu():
         return
 
     if cores > cpu_num:
-        print("Invalid CPU Num(cpu_count="+str(cpu_num)+")")
+        print("Invalid CPU Num(cpu_count=" + str(cpu_num) + ")")
         return
 
     if cores is None or cores < 1:
@@ -72,9 +74,9 @@ def mem_cpu():
 if __name__ == "__main__":
     if len(sys.argv) >= 3:
         switcher = {
-            'm': mem,
-            'c': cpu,
-            'mc': mem_cpu
+            "m": mem,
+            "c": cpu,
+            "mc": mem_cpu,
         }
         switcher.get(sys.argv[1], mem)()
     else:

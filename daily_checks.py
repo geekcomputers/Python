@@ -31,11 +31,11 @@ def print_docs():  # Function to print the daily checks automatically
     # The command below passes the command line string to open word, open the document, print it then close word down
     subprocess.Popen(
         [
-            "C:\\Program Files (x86)\Microsoft Office\Office14\winword.exe",
+            "C:\\Program Files (x86)\\Microsoft Office\\Office14\\winword.exe",
             "P:\\\\Documentation\\Daily Docs\\Back office Daily Checks.doc",
             "/mFilePrintDefault",
             "/mFileExit",
-        ]
+        ],
     ).communicate()
 
 
@@ -43,13 +43,13 @@ def putty_sessions(conffilename):  # Function to load the putty sessions I need
     # Open the file server_list.txt, loop through reading each line
     #  1.1 -Changed - 1.3 Changed name to use variable conffilename
     for server in open(conffilename):
-        subprocess.Popen(("putty -load " + server))  # Open the PuTTY sessions - 1.1
+        subprocess.Popen("putty -load " + server)  # Open the PuTTY sessions - 1.1
 
 
 def rdp_sessions():
     print("Loading RDP Sessions:")
     subprocess.Popen(
-        "mstsc eclr.rdp"
+        "mstsc eclr.rdp",
     )  # Open up a terminal session connection and load the euroclear session
 
 
@@ -57,7 +57,7 @@ def euroclear_docs():
     # The command below opens IE and loads the Euroclear password document
     subprocess.Popen(
         '"C:\\Program Files\\Internet Explorer\\iexplore.exe"'
-        '"file://fs1\pub_b\Pub_Admin\Documentation\Settlements_Files\PWD\Eclr.doc"'
+        r'"file://fs1\pub_b\Pub_Admin\Documentation\Settlements_Files\PWD\Eclr.doc"',
     )
 
 
@@ -68,7 +68,7 @@ def euroclear_docs():
 def main():
     filename = sys.argv[0]  # Create the variable filename
     confdir = os.getenv(
-        "my_config"
+        "my_config",
     )  # Set the variable confdir from the OS environment variable - 1.3
     conffile = "daily_checks_servers.conf"  # Set the variable conffile - 1.3
     # Set the variable conffilename by joining confdir and conffile together - 1.3

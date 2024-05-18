@@ -1,4 +1,5 @@
-import pyqrcode, png
+import png
+import pyqrcode
 from pyqrcode import QRCode
 
 # Creating QR code after given text "input"

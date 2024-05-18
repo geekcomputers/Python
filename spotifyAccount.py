@@ -34,7 +34,7 @@ class proxy:
 
             data = ""
             urls = [
-                "https://api.proxyscrape.com/?request=getproxies&proxytype=socks4&timeout=10000&ssl=yes"
+                "https://api.proxyscrape.com/?request=getproxies&proxytype=socks4&timeout=10000&ssl=yes",
             ]
             for url in urls:
                 data += requests.get(url).text
@@ -66,7 +66,7 @@ def creator():
         if title == "windows":
             system(
                 "title "
-                + f"Spotify Account Creator by KevinLage https://github.com/KevinLage/Spotify-Account-Creator Created: {created}/{maxi} Errors:{errors}"
+                + f"Spotify Account Creator by KevinLage https://github.com/KevinLage/Spotify-Account-Creator Created: {created}/{maxi} Errors:{errors}",
             )
 
         s = requests.session()
@@ -104,7 +104,7 @@ def creator():
                 if title == "windows":
                     system(
                         "title "
-                        + f"Spotify Account Creator : {created}/{maxi} Errors:{errors}"
+                        + f"Spotify Account Creator : {created}/{maxi} Errors:{errors}",
                     )
             else:
                 errors += 1

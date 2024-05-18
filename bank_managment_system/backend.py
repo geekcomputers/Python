@@ -10,10 +10,10 @@ def connect_database():
     cur = conn.cursor()
 
     cur.execute(
-        "create table if not exists bank (acc_no int, name text, age int, address text, balance int, account_type text, mobile_number int)"
+        "create table if not exists bank (acc_no int, name text, age int, address text, balance int, account_type text, mobile_number int)",
     )
     cur.execute(
-        "create table if not exists staff (name text, pass text,salary int, position text)"
+        "create table if not exists staff (name text, pass text,salary int, position text)",
     )
     cur.execute("create table if not exists admin (name text, pass text)")
     cur.execute("insert into admin values('arpit','123')")
@@ -139,14 +139,14 @@ def check_balance(acc_no):
 # update_name_in_bank_table
 def update_name_in_bank_table(new_name, acc_no):
     print(new_name)
-    conn.execute("update bank set name='{}' where acc_no={}".format(new_name, acc_no))
+    conn.execute(f"update bank set name='{new_name}' where acc_no={acc_no}")
     conn.commit()
 
 
 # update_age_in_bank_table
 def update_age_in_bank_table(new_name, acc_no):
     print(new_name)
-    conn.execute("update bank set age={} where acc_no={}".format(new_name, acc_no))
+    conn.execute(f"update bank set age={new_name} where acc_no={acc_no}")
     conn.commit()
 
 
@@ -154,7 +154,7 @@ def update_age_in_bank_table(new_name, acc_no):
 def update_address_in_bank_table(new_name, acc_no):
     print(new_name)
     conn.execute(
-        "update bank set address='{}' where acc_no={}".format(new_name, acc_no)
+        f"update bank set address='{new_name}' where acc_no={acc_no}",
     )
     conn.commit()
 
@@ -204,20 +204,20 @@ def show_employees_for_update():
 # update employee name from data base
 def update_employee_name(new_name, old_name):
     print(new_name, old_name)
-    cur.execute("update staff set name='{}' where name='{}'".format(new_name, old_name))
+    cur.execute(f"update staff set name='{new_name}' where name='{old_name}'")
     conn.commit()
 
 
 def update_employee_password(new_pass, old_name):
     print(new_pass, old_name)
-    cur.execute("update staff set pass='{}' where name='{}'".format(new_pass, old_name))
+    cur.execute(f"update staff set pass='{new_pass}' where name='{old_name}'")
     conn.commit()
 
 
 def update_employee_salary(new_salary, old_name):
     print(new_salary, old_name)
     cur.execute(
-        "update staff set salary={} where name='{}'".format(new_salary, old_name)
+        f"update staff set salary={new_salary} where name='{old_name}'",
     )
     conn.commit()
 
@@ -225,7 +225,7 @@ def update_employee_salary(new_salary, old_name):
 def update_employee_position(new_pos, old_name):
     print(new_pos, old_name)
     cur.execute(
-        "update staff set position='{}' where name='{}'".format(new_pos, old_name)
+        f"update staff set position='{new_pos}' where name='{old_name}'",
     )
     conn.commit()
 

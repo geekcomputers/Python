@@ -1,5 +1,5 @@
 """   Author : Mohit Kumar
-      
+
         Tim Sort implemented in python
         Time Complexity : O(n log(n))
         Space Complexity :O(n)
@@ -8,6 +8,7 @@
 
 # Python3 program to perform TimSort.
 RUN = 32
+
 
 # This function sorts array from left index to
 # to right index which is of size atmost RUN
@@ -119,13 +120,13 @@ if __name__ == "__main__":
     print("After Sorting Array is")
     printArray(arr, n)
 
-""" 
-    OUTPUT : 
-    
+"""
+    OUTPUT :
+
     Enter size of array : 5
     Given Array is
-    5 3 4 2 1 
+    5 3 4 2 1
     After Sorting Array is
     1 2 3 4 5
-      
+
 """

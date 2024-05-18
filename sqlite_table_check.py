@@ -14,11 +14,11 @@ import sqlite3
 
 dropbox = os.getenv("dropbox")
 config = os.getenv("my_config")
-dbfile = "Databases\jarvis.db"
+dbfile = r"Databases\jarvis.db"
 listfile = "sqlite_master_table.lst"
 master_db = os.path.join(dropbox, dbfile)
 config_file = os.path.join(config, listfile)
-tablelist = open(config_file, "r")
+tablelist = open(config_file)
 
 conn = sqlite3.connect(master_db)
 cursor = conn.cursor()
@@ -37,7 +37,8 @@ for table in tablelist.readlines():
     conn = sqlite3.connect(master_db)
     cursor = conn.cursor()
     cursor.execute(
-        "select count(*) from sqlite_master where name = ?", (table.strip(),)
+        "select count(*) from sqlite_master where name = ?",
+        (table.strip(),),
     )
     res = cursor.fetchone()
 

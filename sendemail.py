@@ -1,5 +1,3 @@
-from __future__ import print_function
-
 import base64
 import mimetypes
 import os
@@ -11,7 +9,7 @@ from email.mime.text import MIMEText
 
 import httplib2
 import oauth2client
-from apiclient import errors, discovery
+from apiclient import discovery, errors
 from oauth2client import client, tools
 
 SCOPES = "https://www.googleapis.com/auth/gmail.send"
@@ -43,7 +41,12 @@ def SendMessage(sender, to, subject, msgHtml, msgPlain, attachmentFile=None):
     service = discovery.build("gmail", "v1", http=http)
     if attachmentFile:
         message1 = createMessageWithAttachment(
-            sender, to, subject, msgHtml, msgPlain, attachmentFile
+            sender,
+            to,
+            subject,
+            msgHtml,
+            msgPlain,
+            attachmentFile,
         )
     else:
         message1 = CreateMessageHtml(sender, to, subject, msgHtml, msgPlain)

@@ -8,13 +8,12 @@
 
 # Description	: Scans directories to check if there are any sqlite files in there
 
-from __future__ import print_function
 
 import os
 
 
 def isSQLite3(filename):
-    from os.path import isfile, getsize
+    from os.path import getsize, isfile
 
     if not isfile(filename):
         return False
@@ -37,11 +36,13 @@ for r, d, f in os.walk(r"."):
         if isSQLite3(files):
             print(files)
             print(
-                "[+] '%s' **** is a SQLITE database file **** " % os.path.join(r, files)
+                "[+] '%s' **** is a SQLITE database file **** "
+                % os.path.join(r, files),
             )
             log.write("[+] '%s' **** is a SQLITE database file **** " % files + "\n")
         else:
             log.write(
-                "[-] '%s' is NOT a sqlite database file" % os.path.join(r, files) + "\n"
+                "[-] '%s' is NOT a sqlite database file" % os.path.join(r, files)
+                + "\n",
             )
             log.write("[-] '%s' is NOT a sqlite database file" % files + "\n")

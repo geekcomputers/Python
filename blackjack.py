@@ -7,13 +7,13 @@ deck = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, 11] * 4
 random.shuffle(deck)
 
 print(
-    "                       **********************************************************                                    "
+    "                       **********************************************************                                    ",
 )
 print(
-    "                                   Welcome to the game Casino - BLACK JACK !                                         "
+    "                                   Welcome to the game Casino - BLACK JACK !                                         ",
 )
 print(
-    "                       **********************************************************                                    "
+    "                       **********************************************************                                    ",
 )
 
 d_cards = []  # Initialising dealer's cards
@@ -39,7 +39,7 @@ if sum(p_cards) > 21:
 
 if sum(d_cards) > 21:
     print(
-        "Dealer is BUSTED !\n   ************** You are the Winner !!******************\n"
+        "Dealer is BUSTED !\n   ************** You are the Winner !!******************\n",
     )
     exit()
 
@@ -100,7 +100,7 @@ while sum(p_cards) < 21:
             print("*************You are BUSTED !*************\n Dealer Wins !!")
         if sum(p_cards) == 21:
             print(
-                "*******************You are the Winner !!*****************************"
+                "*******************You are the Winner !!*****************************",
             )
 
     else:

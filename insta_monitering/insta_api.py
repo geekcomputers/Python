@@ -43,9 +43,12 @@ class StartHandlerinsta(tornado.web.RequestHandler):
         temp["status"] = True
         temp["productId"] = productId
         print(
-            "{0}, {1}, {2}, {3}".format(
-                temp["userId"], temp["productId"], temp["query"], temp["status"]
-            )
+            "{}, {}, {}, {}".format(
+                temp["userId"],
+                temp["productId"],
+                temp["query"],
+                temp["status"],
+            ),
         )
         self.write(ujson.dumps(temp))
 
@@ -67,9 +70,12 @@ class StopHandlerinsta(tornado.web.RequestHandler):
         temp["productId"] = productId
         temp["status"] = result
         print(
-            "{0}, {1}, {2}, {3}".format(
-                temp["userId"], temp["productId"], temp["query"], temp["status"]
-            )
+            "{}, {}, {}, {}".format(
+                temp["userId"],
+                temp["productId"],
+                temp["query"],
+                temp["status"],
+            ),
         )
         self.write(ujson.dumps(temp))
 
@@ -91,9 +97,12 @@ class StatusHandlerinsta(tornado.web.RequestHandler):
         temp["status"] = result
         temp["productId"] = productId
         print(
-            "{0}, {1}, {2}, {3}".format(
-                temp["userId"], temp["productId"], temp["query"], temp["status"]
-            )
+            "{}, {}, {}, {}".format(
+                temp["userId"],
+                temp["productId"],
+                temp["query"],
+                temp["status"],
+            ),
         )
         self.write(ujson.dumps(temp))
 
@@ -154,7 +163,7 @@ if __name__ == "__main__":
             (r"/instagram/monitoring/status", StatusHandlerinsta),
             (r"/instagram/monitoring/less", SenderHandlerinstaLess),
             (r"/instagram/monitoring/greater", SenderHandlerinstaGreater),
-        ]
+        ],
     )
 
     application.listen(7074)

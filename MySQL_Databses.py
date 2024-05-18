@@ -3,7 +3,10 @@ import mysql.connector
 # MySQl databses details
 
 mydb = mysql.connector.connect(
-    host="0.0.0.0", user="root", passwd="", database="db_name"
+    host="0.0.0.0",
+    user="root",
+    passwd="",
+    database="db_name",
 )
 mycursor = mydb.cursor()
 

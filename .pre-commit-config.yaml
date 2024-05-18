@@ -1,0 +1,223 @@
+repos:
+  - repo: https://github.com/asottile/add-trailing-comma
+    rev: v3.1.0
+    hooks:
+      - id: add-trailing-comma
+  - repo: https://github.com/psf/black.git
+    rev: 24.4.0
+    hooks:
+      - id: black
+  - repo: https://github.com/nbQA-dev/nbQA
+    rev: 1.8.5
+    hooks:
+      - id: nbqa-black
+        name: nbqa-black
+        description: Run 'black' on a Jupyter Notebook
+        entry: nbqa black
+        language: python
+        require_serial: true
+        types_or: [jupyter, markdown]
+        additional_dependencies: [black]
+  - repo: https://github.com/asottile/pyupgrade
+    rev: v3.15.2
+    hooks:
+      - id: pyupgrade
+        args: [--py39-plus]
+  - repo: https://github.com/pycqa/isort
+    rev: 5.13.2
+    hooks:
+      - id: isort
+  - repo: https://github.com/adamchainz/blacken-docs
+    rev: 1.16.0
+    hooks:
+      - id: blacken-docs
+        additional_dependencies:
+          - black==24.2.0
+  - repo: https://github.com/nbQA-dev/nbQA
+    rev: 1.8.5
+    hooks:
+      - id: nbqa-pyupgrade
+        name: nbqa-pyupgrade
+        description: Run 'pyupgrade' on a Jupyter Notebook
+        entry: nbqa pyupgrade
+        language: python
+        require_serial: true
+        types_or: [jupyter, markdown]
+        additional_dependencies: [pyupgrade]
+      - id: nbqa-isort
+        name: nbqa-isort
+        description: Run 'isort' on a Jupyter Notebook
+        entry: nbqa isort
+        language: python
+        require_serial: true
+        types_or: [jupyter, markdown]
+        additional_dependencies: [isort]
+
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.6.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
+      - id: debug-statements
+      - id: name-tests-test
+      - id: requirements-txt-fixer
+
+  - repo: https://github.com/codespell-project/codespell
+    rev: v2.2.6
+    hooks:
+      - id: codespell
+        additional_dependencies:
+          - tomli
+
+  - repo: https://github.com/nbQA-dev/nbQA
+    rev: 1.8.5
+    hooks:
+      - id: nbqa-flake8
+        args: ["--ignore=E501,E712,W291,F632,E203"]
+        name: nbqa-flake8
+        description: Run 'flake8' on a Jupyter Notebook
+        entry: nbqa flake8
+        language: python
+        require_serial: true
+        types_or: [jupyter, markdown]
+        additional_dependencies:
+          - flake8-variables-names
+          - pep8-naming
+          - flake8-functions-names
+
+  - repo: https://github.com/PyCQA/flake8
+    rev: 7.0.0
+    hooks:
+      - id: flake8
+        args: ["--ignore=E501,E712,W291,F632,E203"]
+        additional_dependencies:
+          - flake8-variables-names
+          - pep8-naming
+          - flake8-functions-names
+
+  - repo: https://github.com/nbQA-dev/nbQA
+    rev: 1.8.5
+    hooks:
+      - id: nbqa-mypy
+        name: nbqa-mypy
+        description: Run 'mypy' on a Jupyter Notebook
+        entry: nbqa mypy
+        language: python
+        require_serial: true
+        types_or: [jupyter, markdown]
+        additional_dependencies:
+          - mypy
+          - pandas-stubs
+          - git+https://github.com/numpy/numpy-stubs
+          - mypy-extensions
+          - types-requests
+          - types-PyYAML
+          - types-setuptools
+
+        args:
+          - --cache-dir=/dev/null
+          - --cache-dir=nul
+          - --no-incremental
+          - --explicit-package-bases
+          - --ignore-missing-imports
+          - --disallow-untyped-calls
+          - --disallow-untyped-defs
+          - --disallow-untyped-decorators
+          - --strict
+          - --extra-checks
+          - --disallow-any-unimported
+          - --disallow-any-decorated
+          - --disallow-any-explicit
+          - --disallow-any-generics
+          - --disallow-subclassing-any
+          - --local-partial-types
+          - --pretty
+          - --force-uppercase-builtins
+          - --force-union-syntax
+          - --warn-unreachable
+          - --warn-redundant-casts
+          - --warn-return-any
+
+
+
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v1.9.0
+    hooks:
+      - id: mypy
+        args:
+          - --cache-dir=/dev/null
+          - --cache-dir=nul
+          - --no-incremental
+          - --explicit-package-bases
+          - --ignore-missing-imports
+          - --disallow-untyped-calls
+          - --disallow-untyped-defs
+          - --disallow-untyped-decorators
+          - --strict
+          - --extra-checks
+          - --disallow-any-unimported
+          - --disallow-any-decorated
+          - --disallow-any-explicit
+          - --disallow-any-generics
+          - --disallow-subclassing-any
+          - --local-partial-types
+          - --pretty
+          - --force-uppercase-builtins
+          - --force-union-syntax
+          - --warn-unreachable
+          - --warn-redundant-casts
+          - --warn-return-any
+
+
+
+        additional_dependencies:
+          - mypy
+          - pandas-stubs
+          - git+https://github.com/numpy/numpy-stubs
+          - mypy-extensions
+          - types-requests
+          - types-PyYAML
+          - types-setuptools
+
+  - repo: https://github.com/nbQA-dev/nbQA
+    rev: 1.8.5
+    hooks:
+      - id: nbqa-pylint
+        name: nbqa-pylint
+        description: Run 'pylint' on a Jupyter Notebook
+        entry: nbqa pylint
+        language: python
+        require_serial: true
+        types_or: [jupyter, markdown]
+        additional_dependencies: [pylint]
+        args:
+          [
+            "--max-line-length=79",
+            "--const-naming-style=any",
+            "--disable=E0401,W0104",
+          ]
+
+  - repo: https://github.com/pre-commit/mirrors-pylint
+    rev: v2.3.1
+    hooks:
+      - id: pylint
+        name: pylint
+        entry: pylint
+        language: python
+        types: [python]
+        args:
+          [--max-line-length=79, "--const-naming-style=any", "--disable=E0401,W0104"]
+        additional_dependencies: [pylint]
+
+  - repo: https://github.com/nbQA-dev/nbQA
+    rev: 1.8.5
+    hooks:
+      - id: nbqa-pydocstyle
+        name: nbqa-pydocstyle
+        description: Run 'pydocstyle' on a Jupyter Notebook
+        entry: nbqa pydocstyle
+        language: python
+        require_serial: true
+        types_or: [jupyter, markdown]
+        additional_dependencies: [pydocstyle]

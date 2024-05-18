@@ -1,14 +1,15 @@
 # In this program you ask it about any topic and it will show you the data from wikipedia
 # pip install wikipedia
 
-import wikipedia
 import tkinter as tk
-from tkinter import Label, Button, Entry, Text, messagebox, SOLID, GROOVE, StringVar, WORD, END
-#import PIL as ImageTK
-from tkinter import messagebox
+# import PIL as ImageTK
+from tkinter import (END, GROOVE, SOLID, WORD, Button, Entry, Label, StringVar,
+                     Text, messagebox)
+
+import wikipedia
 
 
-class main():
+class main:
     def __init__(self, root):
         self.root = root
 
@@ -16,13 +17,13 @@ class main():
         self.root.geometry("1920x1080")
 
         self.lbl1 = Label(
-                root,
-                text="WIKIPEDIA SUMMARY",
-                font=("Verdana", 25, "bold"),
-                width=50,
-                bg="yellow",
-                fg="red",
-                relief=SOLID,
+            root,
+            text="WIKIPEDIA SUMMARY",
+            font=("Verdana", 25, "bold"),
+            width=50,
+            bg="yellow",
+            fg="red",
+            relief=SOLID,
         )
         self.lbl1.pack(padx=10, pady=15)
 
@@ -47,7 +48,7 @@ class main():
             relief=GROOVE,
             bg="#4cd137",
             bd=3,
-            command=lambda:self.summary("None"),
+            command=lambda: self.summary("None"),
         )
         self.searchbtn.pack()
 
@@ -67,8 +68,8 @@ class main():
         self.searchbtn["text"] = "Searching..."
         try:
             self.query = wikipedia.page(self.question.get(), auto_suggest=True)
-            self.quesbox.delete(0, 'end')
-            self.answer.delete('1.0', END)
+            self.quesbox.delete(0, "end")
+            self.answer.delete("1.0", END)
             self.answer.insert(END, (self.query.summary))
 
             self.answer.pack()
@@ -78,8 +79,8 @@ class main():
 
         self.searchbtn["text"] = "Search"
 
-
         # Wikipeida page returns to many pages
+
 
 if __name__ == "__main__":
     root = tk.Tk()

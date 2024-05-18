@@ -1,5 +1,5 @@
-
 # Node class for binary tree
+
 
 class Node:
     def __init__(self, data):

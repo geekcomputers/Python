@@ -28,7 +28,7 @@ while True:
         bcolors.OKBLUE
         + bcolors.BOLD
         + "Welcome to the game 'Snake-Water-Gun'.\nWanna play? Type Y or N: "
-        + bcolors.ENDC
+        + bcolors.ENDC,
     ).capitalize()
 
     if b == "N":
@@ -37,7 +37,7 @@ while True:
         break
     elif b == "Y" or b == "y":
         print(
-            "There will be 10 matches, and the one who wins more matches will win. Let's start."
+            "There will be 10 matches, and the one who wins more matches will win. Let's start.",
         )
         break
     else:
@@ -90,7 +90,7 @@ if run == True:
             bcolors.OKGREEN
             + bcolors.BOLD
             + "Woooh!!!!!!! Congratulations you won"
-            + bcolors.ENDC
+            + bcolors.ENDC,
         )
     elif score == 5:
         print("Game draws!!!!!!!")
@@ -99,5 +99,5 @@ if run == True:
             bcolors.FAIL
             + bcolors.BOLD
             + "You lose!!!. Better luck next time"
-            + bcolors.ENDC
+            + bcolors.ENDC,
         )

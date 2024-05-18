@@ -66,7 +66,8 @@ class Notepads_managment:
         self.style.configure(".", foreground=_fgcolor)
         self.style.configure(".", font="TkDefaultFont")
         self.style.map(
-            ".", background=[("selected", _compcolor), ("active", _ana2color)]
+            ".",
+            background=[("selected", _compcolor), ("active", _ana2color)],
         )
 
         top.geometry("600x450")

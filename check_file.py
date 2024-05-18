@@ -8,11 +8,9 @@
 # Modifications	: with statement added to ensure correct file closure
 
 # Description	: Check a file exists and that we can read the file
-from __future__ import print_function
 
 import os  # Import the Modules
 import sys  # Import the Modules
-
 
 # Prints usage if not appropriate length of arguments are provided
 
@@ -23,7 +21,7 @@ def usage():
 
 # Readfile Functions which open the file that is passed to the script
 def readfile(filename):
-    with open(filename, "r") as f:  # Ensure file is correctly closed under
+    with open(filename) as f:  # Ensure file is correctly closed under
         read_file = f.read()  # all circumstances
     print(read_file)
     print()
@@ -36,7 +34,7 @@ def main():
     if len(sys.argv) >= 2:
         file_names = sys.argv[1:]
         filteredfilenames_1 = list(
-            file_names
+            file_names,
         )  # To counter changing in the same list which you are iterating
         filteredfilenames_2 = list(file_names)
         # Iterate for each filename passed in command line argument
@@ -44,7 +42,7 @@ def main():
             if not os.path.isfile(filename):  # Check the File exists
                 print("[-] " + filename + " does not exist.")
                 filteredfilenames_2.remove(
-                    filename
+                    filename,
                 )  # remove non existing files from fileNames list
                 continue
 

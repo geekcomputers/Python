@@ -1,5 +1,5 @@
 The Koch snowflake (also known as the Koch curve, Koch star, or Koch island) is a mathematical curve and one of the earliest fractal curves
-to have been described. It is based on the Koch curve, which appeared in a 1904 paper titled “On a continuous curve without tangents, 
+to have been described. It is based on the Koch curve, which appeared in a 1904 paper titled “On a continuous curve without tangents,
 constructible from elementary geometry” by the Swedish mathematician Helge von Koch.
 
 How to construct one:
@@ -13,7 +13,7 @@ Step 2:
 Divide each side in three equal parts. This is why it is handy to have the sides divisible by three.
 
 Step 3:
-Draw an equilateral triangle on each middle part. Measure the length of the middle third to know the length of the sides of these new 
+Draw an equilateral triangle on each middle part. Measure the length of the middle third to know the length of the sides of these new
 triangles.
 
 Step 4:
@@ -24,8 +24,8 @@ Step 5:
 Draw an equilateral triangle on each middle part. Note how you draw each next generation of parts that are one 3rd of the mast one.
 
 Step 6:
-Repeat until you're satisfied with the amount of iterations. It will become harder and harder to accurately draw the new triangles, but 
-with a fine pencil and lots of patience you can reach the 8th iteration. The one shown in the picture is a Koch snowflake of the 4th 
+Repeat until you're satisfied with the amount of iterations. It will become harder and harder to accurately draw the new triangles, but
+with a fine pencil and lots of patience you can reach the 8th iteration. The one shown in the picture is a Koch snowflake of the 4th
 iteration.
 
 Step 7:

@@ -1,5 +1,4 @@
 import tkinter
-
 # retrieve system's time
 from time import strftime
 
@@ -19,7 +18,10 @@ def time():
 
 
 clockTime = tkinter.Label(
-    top, font=("calibri", 40, "bold"), background="black", foreground="white"
+    top,
+    font=("calibri", 40, "bold"),
+    background="black",
+    foreground="white",
 )
 
 clockTime.pack(anchor="center")

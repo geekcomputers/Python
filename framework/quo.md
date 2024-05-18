@@ -17,11 +17,11 @@
 **Quo** is a toolkit for writing Command-Line Interface(CLI) applications and a TUI (Text User Interface) framework for Python.
 
 Quo is making headway towards composing speedy and orderly CLI and TUI applications while forestalling any disappointments brought about by the failure to execute a python application.
-Simple to code, easy to learn, and does not come with needless baggage. 
+Simple to code, easy to learn, and does not come with needless baggage.
 
 ## Compatibility
 Quo works flawlessly  with Linux, OSX, and Windows.
-Quo requires Python `3.8` or later. 
+Quo requires Python `3.8` or later.
 
 
 ## Features
@@ -67,9 +67,9 @@ Try this:
 
 **Example 1**
 ```python
- from quo import echo
+from quo import echo
 
- echo("Hello, World!", fg="red", italic=True, bold=True)
+echo("Hello, World!", fg="red", italic=True, bold=True)
 ```
 <p align="center">
   <img src="https://github.com/scalabli/quo/raw/master/docs/images/print/hello-world.png" />
@@ -78,10 +78,9 @@ Try this:
 
 **Example 2**
 ```python
- from quo import echo
+from quo import echo
 
- echo("Blue on white", fg="blue", bg="white")
- 
+echo("Blue on white", fg="blue", bg="white")
 ```
 <p align="center">
   <img src="https://github.com/scalabli/quo/raw/master/docs/images/print/blue-on-white.png" />
@@ -92,18 +91,17 @@ Alternatively, you can import [print](https://quo.readthedocs.io/en/latest/print
 
 **Example 1**
 ```python
- from quo import print
+from quo import print
 
- print('<b>This is bold</b>')
- print('<i>This is italic</i>')
+print("<b>This is bold</b>")
+print("<i>This is italic</i>")
 ```
 **Example 2**
 
 ```python
- from quo import print
+from quo import print
 
- print('<u>This is underlined</u>')
- 
+print("<u>This is underlined</u>")
 ```
 <p align="center">
   <img src="https://github.com/scalabli/quo/raw/master/docs/images/print/underlined1.png" />
@@ -111,20 +109,19 @@ Alternatively, you can import [print](https://quo.readthedocs.io/en/latest/print
 
 **Example 3**
 ```python
- from quo import print
+from quo import print
 
- print("Quo is <style bg='red'>Scalable</style>") 
+print("Quo is <style bg='red'>Scalable</style>")
 ```
 <p align="center">
   <img src="https://github.com/scalabli/quo/raw/master/docs/images/print/scalable.png" />
 </p>
 
 **Example 4**
-```python                   
- # Colors from the ANSI palette.
- print('<red>This is red</red>')
- print('<style fg="white" bg="green">White on green</stlye>')
-
+```python
+# Colors from the ANSI palette.
+print("<red>This is red</red>")
+print('<style fg="white" bg="green">White on green</stlye>')
 ```
 <p align="center">
   <img src="https://github.com/scalabli/quo/raw/master/docs/images/print/white-on-green.png" />
@@ -133,9 +130,9 @@ Alternatively, you can import [print](https://quo.readthedocs.io/en/latest/print
 ## Quo prompt
  - Using ``quo.prompt`` method.
 ```python
- from quo import prompt
+from quo import prompt
 
- prompt("What is your name?")
+prompt("What is your name?")
 ```
 <p align="center">
   <img src="https://github.com/scalabli/quo/raw/master/docs/images/prompt/prompt1.png" />
@@ -147,10 +144,10 @@ Alternatively, you can import [print](https://quo.readthedocs.io/en/latest/print
 **Example 1**
 
 ```python
- from quo.prompt import Prompt
-   
- session = Prompt()
- session.prompt("Type something:") 
+from quo.prompt import Prompt
+
+session = Prompt()
+session.prompt("Type something:")
 ```
 
 **Example 2**
@@ -158,12 +155,10 @@ Alternatively, you can import [print](https://quo.readthedocs.io/en/latest/print
 Real time integer validator
 
 ```python
+from quo.prompt import Prompt
 
- from quo.prompt import Prompt
-
- session = Prompt(int=True)
- number = int(session.prompt('Give a number: '))
-
+session = Prompt(int=True)
+number = int(session.prompt("Give a number: "))
 ```
 
 ![validate](https://raw.githubusercontent.com/scalabli/quo/master/docs/images/number-validator.png)
@@ -174,17 +169,17 @@ Real time integer validator
 ``Bottom toolbar``
 
 ```python
+from quo.prompt import Prompt
+from quo.text import Text
 
-  from quo.prompt import Prompt
-  from quo.text import Text
 
-  def toolbar():
-        return Text('This is a <b><style bg="red">Toolbar</style></b>!')
+def toolbar():
+    return Text('This is a <b><style bg="red">Toolbar</style></b>!')
 
-  # Returns a callable
-  session = Prompt(bottom_toolbar=toolbar)
-  session.prompt('> ')
 
+# Returns a callable
+session = Prompt(bottom_toolbar=toolbar)
+session.prompt("> ")
 ```
 
 ![validate](https://raw.githubusercontent.com/scalabli/quo/master/docs/images/bottom-toolbar.png)
@@ -199,12 +194,11 @@ A placeholder  text that's displayed as long as no input s given.
 :bulb: This won't be returned as part of the output.
 
 ```python
+from quo.prompt import Prompt
+from quo.text import Text
 
-  from quo.prompt import Prompt
-  from quo.text import Text
-
-  session = Prompt(placeholder=Text('<gray>(please type something)</gray>'))
-  session.prompt("What is your name?: ")
+session = Prompt(placeholder=Text("<gray>(please type something)</gray>"))
+session.prompt("What is your name?: ")
 ```
 <p align="center">
   <img src="https://github.com/scalabli/quo/raw/master/docs/images/prompt/gray-placeholder.png" />
@@ -216,14 +210,12 @@ A placeholder  text that's displayed as long as no input s given.
 
 
 ```python
+from quo.color import Color
+from quo.prompt import Prompt
 
- from quo.color import Color
- from quo.prompt import Prompt
-
- style = Color("fg:red")
- session = Prompt(style=style)
- session.prompt("Type something: ")
-
+style = Color("fg:red")
+session = Prompt(style=style)
+session.prompt("Type something: ")
 ```
 
 <p align="center">
@@ -236,12 +228,12 @@ A placeholder  text that's displayed as long as no input s given.
 
 Press [Tab] to autocomplete
 ```python
+from quo.prompt import Prompt
+from quo.completion import WordCompleter
 
- from quo.prompt import Prompt
- from quo.completion import WordCompleter
- example = WordCompleter(['USA', 'UK', 'Canada', 'Kenya'])
- session = Prompt(completer=example)
- session.prompt('Which country are you from?: ')
+example = WordCompleter(["USA", "UK", "Canada", "Kenya"])
+session = Prompt(completer=example)
+session.prompt("Which country are you from?: ")
 ```
 ![Autocompletion](https://github.com/scalabli/quo/raw/master/docs/images/autocompletion.png)
 
@@ -252,19 +244,18 @@ Press [Tab] to autocomplete
 Auto suggestion is a way to propose some input completions to the user. Usually, the input is compared to the history and when there is another entry starting with the given text, the completion will be shown as gray text behind the current input.
 Pressing the right arrow → or ctrl-e will insert this suggestion, alt-f will insert the first word of the suggestion.
 ```python
+from quo.history import MemoryHistory
+from quo.prompt import Prompt
 
- from quo.history import MemoryHistory
- from quo.prompt import Prompt
+MemoryHistory.append("import os")
+MemoryHistory.append('print("hello")')
+MemoryHistory.append('print("world")')
+MemoryHistory.append("import path")
 
- MemoryHistory.append("import os")
- MemoryHistory.append('print("hello")') 
- MemoryHistory.append('print("world")')  
- MemoryHistory.append("import path")
+session = Prompt(history=MemoryHistory, suggest="history")
 
- session = Prompt(history=MemoryHistory, suggest="history")
-
- while True:
-    session.prompt('> ')
+while True:
+    session.prompt("> ")
 ```
 
 
@@ -280,12 +271,10 @@ For more control over quo terminal content, import and construct a `Console` obj
 Draw a horizontal bar with an optional title, which is a good way of dividing your terminal output in to sections.
 
 ```python
+from quo.console import Console
 
- from quo.console import Console
-
- console = Console()
- console.bar("I am a bar")
-
+console = Console()
+console.bar("I am a bar")
 ```
 
 <p align="center">
@@ -300,23 +289,19 @@ Quo supports launching applications through `Console.launch`
 **Example 1**
 
 ```python
+from quo.console import Console
 
- from quo.console import Console
-
- console = Console()
- console.launch("https://quo.rtfd.io/")
-
+console = Console()
+console.launch("https://quo.rtfd.io/")
 ```
 
 **Example 2**
 
 ```python
+from quo.console import Console
 
- from quo.console import Console
-
- console = Console()
- console.launch("/home/path/README.md", locate=True)
-
+console = Console()
+console.launch("/home/path/README.md", locate=True)
 ```
 
 ``Rule``
@@ -326,12 +311,10 @@ Used for drawing a horizontal line.
 **Example 1**
 
 ```python
+from quo.console import Console
 
- from quo.console import Console
-
- console = Console()
- console.rule()
-
+console = Console()
+console.rule()
 ```
 <p align="center">
   <img src="https://github.com/scalabli/quo/raw/master/docs/images/console/rule.png" />
@@ -342,12 +325,10 @@ Used for drawing a horizontal line.
 A multicolored line.
 
 ```python
+from quo.console import Console
 
- from quo.console import Console
-
- console = Console()
- console.rule(multicolored=True)
-
+console = Console()
+console.rule(multicolored=True)
 ```
 
 <p align="center">
@@ -361,16 +342,14 @@ A multicolored line.
 Quo can create a context manager that is used to display a spinner on stdout as long as the context has not exited
 
 ```python
+import time
+from quo.console import Console
 
- import time
- from quo.console import Console
+console = Console()
 
- console = Console()
-
- with console.spin():
-           time.sleep(3)
-           print("Hello, World")
-
+with console.spin():
+    time.sleep(3)
+    print("Hello, World")
 ```
 Read more on [Console](https://quo.readthedocs.io/en/latest/console.html)
 
@@ -382,14 +361,11 @@ High level API for displaying dialog boxes to the user for informational purpose
 
 Message Box dialog
 ```python
+from quo.dialog import MessageBox
 
- from quo.dialog import MessageBox
-
- MessageBox(
-       title="Message pop up window", 
-       text="Do you want to continue?\nPress ENTER to quit."
-              )
-
+MessageBox(
+    title="Message pop up window", text="Do you want to continue?\nPress ENTER to quit."
+)
 ```
 ![Message Box](https://github.com/scalabli/quo/raw/master/docs/images/messagebox.png)
 
@@ -398,14 +374,9 @@ Message Box dialog
 Input Box dialog
 
 ```python
+from quo.dialog import InputBox
 
- from quo.dialog import InputBox
-
- InputBox(
-      title="InputBox shenanigans",
-      text="What Country are you from? :"
-        )
-
+InputBox(title="InputBox shenanigans", text="What Country are you from? :")
 ```
 ![Prompt Box](https://github.com/scalabli/quo/raw/master/docs/images/promptbox.png)
 
@@ -417,47 +388,46 @@ Read more on [Dialogs](https://quo.readthedocs.io/en/latest/dialogs.html)
 A key binding is an association between a physical key on akeyboard and a parameter.
 
 ```python
+from quo import echo
+from quo.keys import bind
+from quo.prompt import Prompt
 
- from quo import echo
- from quo.keys import bind
- from quo.prompt import Prompt
+session = Prompt()
 
- session = Prompt()
 
- # Print "Hello world" when ctrl-h is pressed
- @bind.add("ctrl-h")
- def _(event):
-      echo("Hello, World!")
+# Print "Hello world" when ctrl-h is pressed
+@bind.add("ctrl-h")
+def _(event):
+    echo("Hello, World!")
 
- session.prompt("")
 
+session.prompt("")
 ```
 
 Read more on [Key bindings](https://quo.readthedocs.io/en/latest/kb.html)
 
 
-## Quo Parser 
+## Quo Parser
 
 You can parse optional and positional arguments with Quo and generate help pages for your command-line tools.
 
 ```python
- from quo.parse import Parser
- 
- parser = Parser(description= "This script prints hello NAME COUNT times.")
+from quo.parse import Parser
 
- parser.argument('--count', default=3, type=int, help='number of greetings')
- parser.argument('name', help="The person to greet")
- 
- arg = parser.parse()
- 
- for x in range(arg.count):
-     print(f"Hello {arg.name}!")
+parser = Parser(description="This script prints hello NAME COUNT times.")
 
+parser.argument("--count", default=3, type=int, help="number of greetings")
+parser.argument("name", help="The person to greet")
+
+arg = parser.parse()
+
+for x in range(arg.count):
+    print(f"Hello {arg.name}!")
 ```
 
 ```shell
    $ python prog.py John --count 4
-   
+
 ```
 
 And what it looks like:
@@ -482,13 +452,12 @@ Creating a new progress bar can be done by calling the class **ProgressBar**
 The progress can be displayed for any iterable. This works by wrapping the iterable (like ``range``) with the class **ProgressBar**
 
 ```python
+import time
+from quo.progress import ProgressBar
 
- import time
- from quo.progress import ProgressBar
-  
- with ProgressBar() as pb:
-               for i in pb(range(800)):
-                             time.sleep(.01)
+with ProgressBar() as pb:
+    for i in pb(range(800)):
+        time.sleep(0.01)
 ```
 ![ProgressBar](https://raw.githubusercontent.com/scalabli/quo/master/docs/images/simple-progress-bar.png)
 
@@ -503,18 +472,16 @@ This offers a number of configuration options to set the look and feel of the ta
 **Example 1**
 
 ```python
+from quo.table import Table
 
- from quo.table import Table
+data = [
+    ["Name", "Gender", "Age"],
+    ["Alice", "F", 24],
+    ["Bob", "M", 19],
+    ["Dave", "M", 24],
+]
 
- data = [
-     ["Name", "Gender", "Age"],
-     ["Alice", "F", 24],
-     ["Bob", "M", 19],
-     ["Dave", "M", 24]
-  ]
-
- Table(data)
-
+Table(data)
 ```
 ![tabulate](https://raw.githubusercontent.com/scalabli/quo/master/docs/images/tables/table.png)
 
@@ -523,17 +490,15 @@ This offers a number of configuration options to set the look and feel of the ta
 Right aligned table
 
 ```python
+from quo.table import Table
 
- from quo.table import Table
-
- data = [
+data = [
     ["Name", "Gender", "Age"],
     ["Alice", "F", 24],
     ["Bob", "M", 19],
-    ["Dave", "M", 24]
-    ]
- Table(data, align="right")
-
+    ["Dave", "M", 24],
+]
+Table(data, align="right")
 ```
 
 ![tabulate](https://raw.githubusercontent.com/scalabli/quo/master/docs/images/tables/right-table.png)
@@ -543,18 +508,16 @@ Right aligned table
 Colored table
 
 ```python
+from quo.table import Table
 
- from quo.table import Table
-
- data = [
+data = [
     ["Name", "Gender", "Age"],
     ["Alice", "F", 24],
     ["Bob", "M", 19],
-    ["Dave", "M", 24]
-    ]
-    
- Table(data, style="fg:green")
+    ["Dave", "M", 24],
+]
 
+Table(data, style="fg:green")
 ```
 
 
@@ -565,18 +528,16 @@ Colored table
 Grid table
 
 ```python
+from quo.table import Table
 
- from quo.table import Table
-
- data = [
+data = [
     ["Name", "Gender", "Age"],
     ["Alice", "F", 24],
     ["Bob", "M", 19],
-    ["Dave", "M", 24]
-    ]
+    ["Dave", "M", 24],
+]
 
- Table(data, theme="grid")
-
+Table(data, theme="grid")
 ```
 
 
@@ -595,17 +556,13 @@ A collection of reusable components for building full screen applications.
 Draw a border around any container, optionally with a title.
 
 ```python
+from quo import container
+from quo.widget import Frame, Label
 
- from quo import container
- from quo.widget import Frame, Label
+content = Frame(Label("Hello, World!"), title="Quo: python")
 
- content = Frame(
-             Label("Hello, World!"),
-               title="Quo: python")
-
- #Press Ctrl-C to exit
- container(content, bind=True, full_screen=True)
-
+# Press Ctrl-C to exit
+container(content, bind=True, full_screen=True)
 ```
 ![Frame](https://raw.githubusercontent.com/scalabli/quo/master/docs/images/widgets/frame.png)
 
@@ -618,49 +575,45 @@ Widget that displays the given text. It is not editable or focusable.
 This will occupy a minimum space in your terminal
 
 ```python
+from quo import container
+from quo.widget import Label
 
- from quo import container
- from quo.widget import Label
+content = Label("Hello, World", style="fg:black bg:red")
 
- content = Label("Hello, World", style="fg:black bg:red")
-
- container(content)
-
+container(content)
 ```
 **Example 2**
 
 This will be a fullscreen application
 
 ```python
+from quo import container
+from quo.widget import Label
 
- from quo import container
- from quo.widget import Label
+content = Label("Hello, World", style="fg:black bg:red")
 
- content = Label("Hello, World", style="fg:black bg:red")
-
- # Press Ctrl-C to exit
- container(content, bind=True, full_screen=True)
-
+# Press Ctrl-C to exit
+container(content, bind=True, full_screen=True)
 ```
 **Example 3**
 
 Full screen application using a custom binding key.
 
 ```python
+from quo import container
+from quo.keys import bind
+from quo.widget import Label
 
- from quo import container
- from quo.keys import bind
- from quo.widget import Label
+content = Label("Hello, World", style="fg:black bg:red")
 
- content = Label("Hello, World", style="fg:black bg:red")
 
- #Press Ctrl-Z to exit
- @bind.add("ctrl-z")
- def _(event):
-     event.app.exit()
+# Press Ctrl-Z to exit
+@bind.add("ctrl-z")
+def _(event):
+    event.app.exit()
 
- container(content, bind=True, full_screen=True)
 
+container(content, bind=True, full_screen=True)
 ```
 
 Read more on [Widgets](https://quo.readthedocs.io/en/latest/widgets.html)
@@ -696,7 +649,7 @@ For discussions about the usage, development, and the future of quo, please join
 ### Bug tracker
 
 If you have any suggestions, bug reports, or annoyances please report them
-to our issue tracker at 
+to our issue tracker at
 [Bug tracker](https://github.com/scalabli/quo/issues/) or send an email to:
 
  📥 scalabli@googlegroups.com | scalabli@proton.me
@@ -710,7 +663,7 @@ to our issue tracker at
 
 ## License📑
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)  
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 This software is licensed under the `MIT License`. See the [License](https://github.com/scalabli/quo/blob/master/LICENSE) file in the top distribution directory for the full license text.
 
 
@@ -718,4 +671,3 @@ This software is licensed under the `MIT License`. See the [License](https://git
 Code of Conduct is adapted from the Contributor Covenant,
 version 1.2.0 available at
 [Code of Conduct](http://contributor-covenant.org/version/1/2/0/)
-

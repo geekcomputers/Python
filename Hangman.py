@@ -1,8 +1,7 @@
 # importing the time module
-import time
-
 # importing the random module
 import random
+import time
 
 # welcoming the user
 name = input("What is your name? ")
@@ -15,8 +14,8 @@ time.sleep(1)
 print("Start guessing...\nHint:It is a fruit")
 time.sleep(0.5)
 
-someWords = """apple banana mango strawberry  
-orange grape pineapple apricot lemon coconut watermelon 
+someWords = """apple banana mango strawberry
+orange grape pineapple apricot lemon coconut watermelon
 cherry papaya berry peach lychee muskmelon"""
 
 someWords = someWords.split(" ")

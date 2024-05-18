@@ -23,17 +23,17 @@ class Tubes(Thread):
         score_function=None,
         *screen_geometry,
         fp=("tube.png", "tube_mourth"),
-        animation_speed=50
+        animation_speed=50,
     ):
 
         # Verifica os parâmetros passados e lança um erro caso algo esteja incorreto
         if not isinstance(background, Background):
             raise TypeError(
-                "The background argument must be an instance of Background."
+                "The background argument must be an instance of Background.",
             )
         if not len(fp) == 2:
             raise TypeError(
-                "The parameter fp should be a sequence containing the path of the images of the tube body and the tube mouth."
+                "The parameter fp should be a sequence containing the path of the images of the tube body and the tube mouth.",
             )
         if not isinstance(bird, Bird):
             raise TypeError("The birdargument must be an instance of Bird.")
@@ -76,7 +76,7 @@ class Tubes(Thread):
                 width=self.__imageWidth,
                 height=self.__imageHeight,
                 closeAfter=True,
-            )[0]
+            )[0],
         )
 
         # Carrega imagem do corpo do tubo
@@ -85,7 +85,7 @@ class Tubes(Thread):
                 image_path=self.image_path[0],
                 width=self.__imageWidth,
                 height=self.__imageHeight,
-            )[1]
+            )[1],
         )
 
         # Calcula a distância mínima inicial entre os tubos
@@ -116,8 +116,10 @@ class Tubes(Thread):
         # Cria e adiciona à lista do corpo do tubo de cima, a boca do tubo
         tube1.append(
             self.__background.create_image(
-                width, height, image=self.__background.tubeImages[1]
-            )
+                width,
+                height,
+                image=self.__background.tubeImages[1],
+            ),
         )
 
         # Cria uma nova imagem na lista de imagens com a altura sendo igual a posição Y do tubo de cima
@@ -128,7 +130,7 @@ class Tubes(Thread):
                     width=self.__imageWidth,
                     height=height,
                 )[0],
-            ]
+            ],
         )
 
         # Define a posição Y do corpo do tubo de cima
@@ -137,8 +139,10 @@ class Tubes(Thread):
         # Cria e adiciona à lista do corpo do tubo de cima, o corpo do tubo
         tube1.append(
             self.__background.create_image(
-                width, y, image=self.__background.tubeImages[0][-1][0]
-            )
+                width,
+                y,
+                image=self.__background.tubeImages[0][-1][0],
+            ),
         )
 
         ###############################################################################################################
@@ -153,8 +157,10 @@ class Tubes(Thread):
         # Cria e adiciona à lista do corpo do tubo de baixo, a boca do tubo
         tube2.append(
             self.__background.create_image(
-                width, height, image=self.__background.tubeImages[1]
-            )
+                width,
+                height,
+                image=self.__background.tubeImages[1],
+            ),
         )
 
         # Define a altura da imagem do corpo do tubo de baixo
@@ -166,7 +172,7 @@ class Tubes(Thread):
                 image=self.__background.tubeImages[2],
                 width=self.__imageWidth,
                 height=height,
-            )[0]
+            )[0],
         )
 
         # Define a posição Y do corpo do tubo de baixo
@@ -175,8 +181,10 @@ class Tubes(Thread):
         # Cria e adiciona à lista do corpo do tubo de baixo, o corpo do tubo
         tube2.append(
             self.__background.create_image(
-                width, y, image=self.__background.tubeImages[0][-1][1]
-            )
+                width,
+                y,
+                image=self.__background.tubeImages[0][-1][1],
+            ),
         )
 
         # Adiciona à lista de tubos os tubos de cima e de baixo da posição X
@@ -201,7 +209,11 @@ class Tubes(Thread):
 
     @staticmethod
     def getPhotoImage(
-        image=None, image_path=None, width=None, height=None, closeAfter=False
+        image=None,
+        image_path=None,
+        width=None,
+        height=None,
+        closeAfter=False,
     ):
         """
         Retorna um objeto da classe PIL.ImageTk.PhotoImage de uma imagem e as imagens criadas de PIL.Image

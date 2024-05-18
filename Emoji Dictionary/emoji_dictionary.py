@@ -2,9 +2,10 @@
 
 # -----------------------------------------------------------------------------------------------------
 import io  # used for dealing with input and output
-from tkinter import *  # importing the necessary libraries
-import tkinter.messagebox as mbox
 import tkinter as tk  # imported tkinter as tk
+import tkinter.messagebox as mbox
+from tkinter import *  # importing the necessary libraries
+
 import emoji
 
 # -----------------------------------------------------------------------------------------------
@@ -244,12 +245,16 @@ window.geometry("1000x700")
 
 # for writing Dictionary label, at the top of window
 dic = tk.Label(
-    text="EMOJI DICTIONARY", font=("Arial", 50, "underline"), fg="magenta"
+    text="EMOJI DICTIONARY",
+    font=("Arial", 50, "underline"),
+    fg="magenta",
 )  # same way bg
 dic.place(x=160, y=10)
 
 start1 = tk.Label(
-    text="Enter any Emoji you want to search...", font=("Arial", 30), fg="green"
+    text="Enter any Emoji you want to search...",
+    font=("Arial", 30),
+    fg="green",
 )  # same way bg
 start1.place(x=160, y=120)
 
@@ -269,7 +274,12 @@ def on_inputentry_click(event):
 # Taking input from TextArea
 # inputentry = Entry(window,font=("Arial", 35), width=33, border=2)
 inputentry = Entry(
-    window, font=("Arial", 35), width=28, border=2, bg="light yellow", fg="brown"
+    window,
+    font=("Arial", 35),
+    width=28,
+    border=2,
+    bg="light yellow",
+    fg="brown",
 )
 inputentry.place(x=120, y=180)
 
@@ -313,6 +323,7 @@ outputtxt = tk.Text(
     relief="solid",
 )
 outputtxt.place(x=120, y=400)
+
 
 # function for exiting
 def exit_win():

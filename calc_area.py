@@ -6,12 +6,12 @@ import math as m
 def main():
     shape = int(
         input(
-            "Enter 1 for square, 2 for rectangle, 3 for circle, 4 for triangle, 5 for cylinder, 6 for cone, or 7 for sphere: "
-        )
+            "Enter 1 for square, 2 for rectangle, 3 for circle, 4 for triangle, 5 for cylinder, 6 for cone, or 7 for sphere: ",
+        ),
     )
     if shape == 1:
         side = float(input("Enter length of side: "))
-        print("Area of square = " + str(side ** 2))
+        print("Area of square = " + str(side**2))
     elif shape == 2:
         l = float(input("Enter length: "))
         b = float(input("Enter breadth: "))

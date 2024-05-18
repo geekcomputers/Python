@@ -1,7 +1,6 @@
 # ==================== Libraries ====================
 import tkinter as tk
-from tkinter import ttk
-from tkinter import messagebox
+from tkinter import messagebox, ttk
 
 # ===================================================
 # ==================== Classes ======================
@@ -128,7 +127,8 @@ class Inside:
         self.value1 = self.out_var.get()
         if self.value1 == "":
             messagebox.showwarning(
-                "Operator Before Number", "Please Enter Number Before Operator"
+                "Operator Before Number",
+                "Please Enter Number Before Operator",
             )
         else:
             self.out_var.set("")
@@ -138,7 +138,8 @@ class Inside:
         self.value1 = self.out_var.get()
         if self.value1 == "":
             messagebox.showwarning(
-                "Operator Before Number", "Please Enter Number Before Operator"
+                "Operator Before Number",
+                "Please Enter Number Before Operator",
             )
         else:
             self.out_var.set("")
@@ -148,7 +149,8 @@ class Inside:
         self.value1 = self.out_var.get()
         if self.value1 == "":
             messagebox.showwarning(
-                "Operator Before Number", "Please Enter Number Before Operator"
+                "Operator Before Number",
+                "Please Enter Number Before Operator",
             )
         else:
             self.out_var.set("")
@@ -158,7 +160,8 @@ class Inside:
         self.value1 = self.out_var.get()
         if self.value1 == "":
             messagebox.showwarning(
-                "Operator Before Number", "Please Enter Number Before Operator"
+                "Operator Before Number",
+                "Please Enter Number Before Operator",
             )
         else:
             self.out_var.set("")
@@ -170,7 +173,8 @@ class Inside:
         self.value2 = self.out_var.get()
         if self.value2 == "":
             messagebox.showerror(
-                "Second Number", "Please Enter Second Number To Perform Calculation"
+                "Second Number",
+                "Please Enter Second Number To Perform Calculation",
             )
         else:
 
@@ -198,7 +202,8 @@ class Inside:
 
             except ValueError:
                 messagebox.showinfo(
-                    "Restart", "Please Close And Restart Application...Sorry"
+                    "Restart",
+                    "Please Close And Restart Application...Sorry",
                 )
 
     def cal_buttons(self):

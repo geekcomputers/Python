@@ -18,7 +18,7 @@ time.sleep(1)
 print("A Quick Tip!")
 time.sleep(1)
 print(
-    "make sure to use the same type of quotes(quotation marks or apostrophes)at the end that you used at the start"
+    "make sure to use the same type of quotes(quotation marks or apostrophes)at the end that you used at the start",
 )
 
 # in c -> printf("Hello World!");

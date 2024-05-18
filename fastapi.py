@@ -1,11 +1,14 @@
-from fastapi import FastAPI
-from pydantic import BaseModel
 from typing import Optional
+
+from pydantic import BaseModel
+
+from fastapi import FastAPI
 
 app = FastAPI()
 
 # temp database
 fakedb = []
+
 
 # course model to store courses
 class Course(BaseModel):

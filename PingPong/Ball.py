@@ -1,5 +1,7 @@
 import pygame
+
 pygame.init()
+
 
 class Ball:
 
@@ -12,21 +14,17 @@ class Ball:
         self.minCoord = minCoord
         self.maxCoord = maxCoord
 
-
     def drawBall(self):
 
-        pygame.draw.circle(self.win, (255,)*3, self.pos, self.rad, 0)
-
+        pygame.draw.circle(self.win, (255,) * 3, self.pos, self.rad, 0)
 
     def doHorizontalFlip(self):
 
         self.vel[0] *= -1
 
-
     def doVerticalFlip(self):
 
         self.vel[1] *= -1
-
 
     def borderCollisionCheck(self):
 
@@ -38,13 +36,11 @@ class Ball:
 
             self.doVerticalFlip()
 
-        
     def updatePos(self):
 
-        self.pos = [self.pos[0]+self.vel[0], self.pos[1]+self.vel[1]]
+        self.pos = [self.pos[0] + self.vel[0], self.pos[1] + self.vel[1]]
 
-
-    def checkSlabCollision(self, slabPos): # slab pos = [xmin, ymin, xmax, ymax]
+    def checkSlabCollision(self, slabPos):  # slab pos = [xmin, ymin, xmax, ymax]
         if (
             self.pos[0] + self.rad > slabPos[0]
             and self.pos[0] - self.rad < slabPos[2]

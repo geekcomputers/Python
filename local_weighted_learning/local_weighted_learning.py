@@ -16,16 +16,19 @@ def weighted_matrix(point: np.mat, training_data_x: np.mat, bandwidth: float) ->
     # m is the number of training samples
     m, n = np.shape(training_data_x)
     # Initializing weights as identity matrix
-    weights = np.mat(np.eye((m)))
+    weights = np.mat(np.eye(m))
     # calculating weights for all training examples [x(i)'s]
     for j in range(m):
         diff = point - training_data[j]
-        weights[j, j] = np.exp(diff * diff.T / (-2.0 * bandwidth ** 2))
+        weights[j, j] = np.exp(diff * diff.T / (-2.0 * bandwidth**2))
     return weights
 
 
 def local_weight(
-    point: np.mat, training_data_x: np.mat, training_data_y: np.mat, bandwidth: float
+    point: np.mat,
+    training_data_x: np.mat,
+    training_data_y: np.mat,
+    bandwidth: float,
 ) -> np.mat:
     """
     Calculate the local weights using the weight_matrix function on training data.
@@ -39,7 +42,9 @@ def local_weight(
 
 
 def local_weight_regression(
-    training_data_x: np.mat, training_data_y: np.mat, bandwidth: float
+    training_data_x: np.mat,
+    training_data_y: np.mat,
+    bandwidth: float,
 ) -> np.mat:
     """
     Calculate predictions for each data point on axis.
@@ -49,7 +54,10 @@ def local_weight_regression(
 
     for i, item in enumerate(training_data_x):
         ypred[i] = item * local_weight(
-            item, training_data_x, training_data_y, bandwidth
+            item,
+            training_data_x,
+            training_data_y,
+            bandwidth,
         )
 
     return ypred

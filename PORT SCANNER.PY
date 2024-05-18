@@ -68,14 +68,16 @@ Open up an text editor, copy & paste the code below. Save the file as:
 "portscanner.py" and exit the editor
 """
 
+import platform
 import socket
 import subprocess
 import sys
 from time import time
-import platform
 
 # Clear the screen
-subprocess.call('clear' if platform.platform() in ("Linux", "Darwin") else "cls", shell=True)
+subprocess.call(
+    "clear" if platform.platform() in ("Linux", "Darwin") else "cls", shell=True
+)
 
 # Ask for input
 remoteServer = input("Enter a remote host to scan: ")
@@ -98,7 +100,7 @@ try:
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         result = sock.connect_ex((remoteServerIP, port))
         if result == 0:
-            print("Port {}: 	 Open".format(port))
+            print(f"Port {port}: 	 Open")
         sock.close()
 
 except KeyboardInterrupt:
@@ -106,10 +108,10 @@ except KeyboardInterrupt:
     sys.exit(2)
 
 except socket.gaierror:
-    print('Hostname could not be resolved. Exiting')
+    print("Hostname could not be resolved. Exiting")
     sys.exit(1)
 
-except socket.error:
+except OSError:
     print("Couldn't connect to server")
     sys.exit(3)
 
@@ -120,4 +122,4 @@ t2 = time()
 total = t2 - t1
 
 # Printing the information to screen
-print('Scanning Completed in about {total} seconds', total)
+print("Scanning Completed in about {total} seconds", total)

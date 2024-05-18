@@ -4,10 +4,10 @@
 #  _________________________________________________ ###
 #  _________________________________________________ ###
 
-from tkinter import *
-from random import randint, choices
-import webbrowser
 import os
+import webbrowser
+from random import choices, randint
+from tkinter import *
 
 mycolor = "#262626"
 
@@ -221,7 +221,11 @@ class Case:
         self.x_scroll = Scrollbar(gui, orient=HORIZONTAL)
         self.y_scroll.grid(row=0, column=11, sticky="NS", pady=(22, 0), padx=(0, 20))
         self.x_scroll.grid(
-            row=1, sticky="EW", columnspan=10, padx=(20, 0), pady=(0, 30)
+            row=1,
+            sticky="EW",
+            columnspan=10,
+            padx=(20, 0),
+            pady=(0, 30),
         )
         self.output = Text(
             gui,
@@ -255,7 +259,12 @@ class Case:
             bd=3,
         )
         self.copy_button.grid(
-            row=2, column=3, sticky="SW", ipady=10, pady=(10, 18), padx=15
+            row=2,
+            column=3,
+            sticky="SW",
+            ipady=10,
+            pady=(10, 18),
+            padx=15,
         )
         self.generate_button = Button(
             gui,
@@ -288,7 +297,12 @@ class Case:
             bd=3,
         )
         self.done_button.grid(
-            row=3, column=3, columnspan=2, ipady=10, pady=(10, 20), padx=5
+            row=3,
+            column=3,
+            columnspan=2,
+            ipady=10,
+            pady=(10, 20),
+            padx=5,
         )
         self.button_exit_output = Button(
             gui,
@@ -300,7 +314,12 @@ class Case:
             command=lambda: gui.destroy(),
         )
         self.button_exit_output.grid(
-            row=3, column=4, columnspan=2, ipady=10, pady=(10, 20), padx=5
+            row=3,
+            column=4,
+            columnspan=2,
+            ipady=10,
+            pady=(10, 20),
+            padx=5,
         )
 
     def try_forget(self):
@@ -319,23 +338,34 @@ class Case:
 
     def get_t(self, r):
         self.test_case_count_label = Label(
-            gui, text="T  = ", font=("calibre", 10, "bold"), width=17
+            gui,
+            text="T  = ",
+            font=("calibre", 10, "bold"),
+            width=17,
         )  # Type 1
         self.test_case_count = Entry(
-            gui, textvariable=t, font=("calibre", 10, "normal")
+            gui,
+            textvariable=t,
+            font=("calibre", 10, "normal"),
         )
         self.test_case_count_label.grid(row=r, column=0, pady=20, ipady=1)  # Type 1
         self.test_case_count.grid(row=r, column=1)
 
     def get_n(self, r):
         self.minimum_value_of_n = Entry(
-            gui, textvariable=n_min, font=("calibre", 10, "normal")
+            gui,
+            textvariable=n_min,
+            font=("calibre", 10, "normal"),
         )
         self.min_max_values_of_n_label = Label(
-            gui, text=" <= n <=", font=("calibre", 10, "bold")
+            gui,
+            text=" <= n <=",
+            font=("calibre", 10, "bold"),
         )
         self.maximum_value_of_n = Entry(
-            gui, textvariable=n_max, font=("calibre", 10, "normal")
+            gui,
+            textvariable=n_max,
+            font=("calibre", 10, "normal"),
         )
         self.minimum_value_of_n.grid(row=r, column=0, padx=10, pady=10)
         self.min_max_values_of_n_label.grid(row=r, column=1, ipadx=5, ipady=1)
@@ -343,13 +373,19 @@ class Case:
 
     def get_m(self, r):
         self.minimum_value_of_m = Entry(
-            gui, textvariable=m_min, font=("calibre", 10, "normal")
+            gui,
+            textvariable=m_min,
+            font=("calibre", 10, "normal"),
         )
         self.min_max_values_of_m_label = Label(
-            gui, text="<= m <=", font=("calibre", 10, "bold")
+            gui,
+            text="<= m <=",
+            font=("calibre", 10, "bold"),
         )
         self.maximum_value_of_m = Entry(
-            gui, textvariable=m_max, font=("calibre", 10, "normal")
+            gui,
+            textvariable=m_max,
+            font=("calibre", 10, "normal"),
         )
         self.minimum_value_of_m.grid(row=r, column=0, padx=10, pady=10)
         self.min_max_values_of_m_label.grid(row=r, column=1, padx=10, ipadx=5, ipady=1)
@@ -357,13 +393,19 @@ class Case:
 
     def get_k(self, r):
         self.minimum_value_of_k = Entry(
-            gui, textvariable=k_min, font=("calibre", 10, "normal")
+            gui,
+            textvariable=k_min,
+            font=("calibre", 10, "normal"),
         )
         self.min_max_values_of_k_label = Label(
-            gui, text=" <= k <=", font=("calibre", 10, "bold")
+            gui,
+            text=" <= k <=",
+            font=("calibre", 10, "bold"),
         )
         self.maximum_value_of_k = Entry(
-            gui, textvariable=k_max, font=("calibre", 10, "normal")
+            gui,
+            textvariable=k_max,
+            font=("calibre", 10, "normal"),
         )
         self.minimum_value_of_k.grid(row=r, column=0, pady=10)
         self.min_max_values_of_k_label.grid(row=r, column=1)
@@ -371,13 +413,19 @@ class Case:
 
     def get_a(self, r):
         self.minimum_value_of_ai = Entry(
-            gui, textvariable=a_min, font=("calibre", 10, "normal")
+            gui,
+            textvariable=a_min,
+            font=("calibre", 10, "normal"),
         )
         self.min_max_values_of_ai_label = Label(
-            gui, text=" <= Ai <=", font=("calibre", 10, "bold")
+            gui,
+            text=" <= Ai <=",
+            font=("calibre", 10, "bold"),
         )
         self.maximum_value_of_ai = Entry(
-            gui, textvariable=a_max, font=("calibre", 10, "normal")
+            gui,
+            textvariable=a_max,
+            font=("calibre", 10, "normal"),
         )
         self.minimum_value_of_ai.grid(row=r, column=0, padx=10, pady=10)
         self.min_max_values_of_ai_label.grid(row=r, column=1, ipadx=2, ipady=1)
@@ -385,13 +433,19 @@ class Case:
 
     def get_b(self, r):
         self.minimum_value_of_bi = Entry(
-            gui, textvariable=b_min, font=("calibre", 10, "normal")
+            gui,
+            textvariable=b_min,
+            font=("calibre", 10, "normal"),
         )
         self.min_max_values_of_bi_label = Label(
-            gui, text=" <= Bi <= ", font=("calibre", 10, "bold")
+            gui,
+            text=" <= Bi <= ",
+            font=("calibre", 10, "bold"),
         )
         self.maximum_value_of_bi = Entry(
-            gui, textvariable=b_max, font=("calibre", 10, "normal")
+            gui,
+            textvariable=b_max,
+            font=("calibre", 10, "normal"),
         )
         self.minimum_value_of_bi.grid(row=r, column=0, pady=10)
         self.min_max_values_of_bi_label.grid(row=r, column=1, padx=10)
@@ -399,10 +453,16 @@ class Case:
 
     def get_char_list(self, r):
         self.char_list_label = Label(
-            gui, text="  Characters :  ", font=("calibre", 10, "bold"), width=17
+            gui,
+            text="  Characters :  ",
+            font=("calibre", 10, "bold"),
+            width=17,
         )
         self.char_list = Entry(
-            gui, textvariable=char_lis, font=("calibre", 10, "normal"), width=43
+            gui,
+            textvariable=char_lis,
+            font=("calibre", 10, "normal"),
+            width=43,
         )
         self.char_list.insert(END, "(Space separated characters)")
         self.char_list.bind("<FocusIn>", lambda args: self.char_list.delete("0", "end"))
@@ -418,10 +478,18 @@ class Case:
             bd=3,
         )
         self.sub_btn = Button(
-            gui, text=" GENERATE ", command=self.submit, font="calibre", bd=3
+            gui,
+            text=" GENERATE ",
+            command=self.submit,
+            font="calibre",
+            bd=3,
         )
         self.exit_btn = Button(
-            gui, text=" EXIT ", command=lambda: gui.destroy(), font="calibre", bd=3
+            gui,
+            text=" EXIT ",
+            command=lambda: gui.destroy(),
+            font="calibre",
+            bd=3,
         )
         self.back_btn.grid(row=r, column=0, pady=(20, 20), ipady=1)
         self.sub_btn.grid(row=r, column=1, pady=(20, 20), ipady=1)
@@ -439,10 +507,12 @@ class Case:
             pass
         try:
             self.n_min = min(
-                int(self.minimum_value_of_n.get()), int(self.maximum_value_of_n.get())
+                int(self.minimum_value_of_n.get()),
+                int(self.maximum_value_of_n.get()),
             )
             self.n_max = max(
-                int(self.minimum_value_of_n.get()), int(self.maximum_value_of_n.get())
+                int(self.minimum_value_of_n.get()),
+                int(self.maximum_value_of_n.get()),
             )
             if self.n_min > self.n_max or self.n_max == 0 or self.n_max > 10000000:
                 return
@@ -452,10 +522,12 @@ class Case:
             pass
         try:
             self.m_min = min(
-                int(self.minimum_value_of_m.get()), int(self.maximum_value_of_m.get())
+                int(self.minimum_value_of_m.get()),
+                int(self.maximum_value_of_m.get()),
             )
             self.m_max = max(
-                int(self.minimum_value_of_m.get()), int(self.maximum_value_of_m.get())
+                int(self.minimum_value_of_m.get()),
+                int(self.maximum_value_of_m.get()),
             )
             if self.m_min > self.m_max or self.m_max == 0 or self.m_max > 10000000:
                 return
@@ -465,10 +537,12 @@ class Case:
             pass
         try:
             self.k_min = min(
-                int(self.minimum_value_of_k.get()), int(self.maximum_value_of_k.get())
+                int(self.minimum_value_of_k.get()),
+                int(self.maximum_value_of_k.get()),
             )
             self.k_max = max(
-                int(self.minimum_value_of_k.get()), int(self.maximum_value_of_k.get())
+                int(self.minimum_value_of_k.get()),
+                int(self.maximum_value_of_k.get()),
             )
             if self.k_min > self.k_max or self.k_max == 0 or self.k_max > 10000000:
                 return
@@ -478,10 +552,12 @@ class Case:
             pass
         try:
             self.a_min = min(
-                int(self.minimum_value_of_ai.get()), int(self.maximum_value_of_ai.get())
+                int(self.minimum_value_of_ai.get()),
+                int(self.maximum_value_of_ai.get()),
             )
             self.a_max = max(
-                int(self.minimum_value_of_ai.get()), int(self.maximum_value_of_ai.get())
+                int(self.minimum_value_of_ai.get()),
+                int(self.maximum_value_of_ai.get()),
             )
             if self.a_min > self.a_max or self.a_max == 0 or self.a_max > 10000000:
                 return
@@ -491,10 +567,12 @@ class Case:
             pass
         try:
             self.b_min = min(
-                int(self.minimum_value_of_bi.get()), int(self.maximum_value_of_bi.get())
+                int(self.minimum_value_of_bi.get()),
+                int(self.maximum_value_of_bi.get()),
             )
             self.b_max = max(
-                int(self.minimum_value_of_bi.get()), int(self.maximum_value_of_bi.get())
+                int(self.minimum_value_of_bi.get()),
+                int(self.maximum_value_of_bi.get()),
             )
             if self.b_min > self.b_max or self.b_max == 0 or self.b_max > 10000000:
                 return
@@ -589,7 +667,7 @@ class Case:
 
 class Type1(Case):
     def __init__(self, master):
-        super(Type1, self).__init__(master)  # Type 1
+        super().__init__(master)  # Type 1
         self.forget_home()
         self.take_input()
 
@@ -621,7 +699,7 @@ class Type1(Case):
 
 class Type2(Case):  # Type 2
     def __init__(self, master):
-        super(Type2, self).__init__(master)
+        super().__init__(master)
         self.forget_home()
         self.take_input()
 
@@ -656,7 +734,7 @@ class Type2(Case):  # Type 2
 
 class Type3(Case):
     def __init__(self, master):
-        super(Type3, self).__init__(master)
+        super().__init__(master)
         self.forget_home()
         self.take_input()
 
@@ -685,7 +763,7 @@ class Type3(Case):
 
 class Type4(Case):
     def __init__(self, master):
-        super(Type4, self).__init__(master)
+        super().__init__(master)
         self.forget_home()
         self.take_input()
 
@@ -733,7 +811,7 @@ class Type4(Case):
 
 class Type5(Case):
     def __init__(self, master):
-        super(Type5, self).__init__(master)
+        super().__init__(master)
         self.forget_home()
         self.take_input()
 
@@ -766,7 +844,7 @@ class Type5(Case):
 
 class Type6(Case):
     def __init__(self, master):  # Type 6
-        super(Type6, self).__init__(master)
+        super().__init__(master)
         self.forget_home()
         self.take_input()
 
@@ -807,7 +885,7 @@ class Type6(Case):
 
 class Type7(Case):
     def __init__(self, master):  # Type 7
-        super(Type7, self).__init__(master)
+        super().__init__(master)
         self.forget_home()
         self.take_input()
 
@@ -836,7 +914,7 @@ class Type7(Case):
 
 class Type8(Case):
     def __init__(self, master):  # Type 8
-        super(Type8, self).__init__(master)
+        super().__init__(master)
         self.forget_home()
         self.take_input()
 
@@ -874,7 +952,7 @@ class Type8(Case):
 
 class Type9(Case):
     def __init__(self, master):
-        super(Type9, self).__init__(master)
+        super().__init__(master)
         self.forget_home()
         self.take_input()
 
@@ -901,7 +979,7 @@ class Type9(Case):
 
 class Type10(Case):
     def __init__(self, master):
-        super(Type10, self).__init__(master)
+        super().__init__(master)
         self.forget_home()
         self.take_input()
 

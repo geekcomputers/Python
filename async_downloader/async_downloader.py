@@ -24,7 +24,7 @@ def download(ways):
     event_loop = asyncio.get_event_loop()
     try:
         event_loop.run_until_complete(
-            async_downloader(ways, event_loop, success_files, failure_files)
+            async_downloader(ways, event_loop, success_files, failure_files),
         )
     finally:
         event_loop.close()
@@ -73,16 +73,20 @@ async def download_file_by_url(url, session=None):
             if response.status == 404:
                 print(
                     "\t{} from {} : Failed : {}".format(
-                        file_name, url, "404 - Not found"
-                    )
+                        file_name,
+                        url,
+                        "404 - Not found",
+                    ),
                 )
                 return fail, url
 
             if not response.status == 200:
                 print(
                     "\t{} from {} : Failed : HTTP response {}".format(
-                        file_name, url, response.status
-                    )
+                        file_name,
+                        url,
+                        response.status,
+                    ),
                 )
                 return fail, url
 
@@ -97,12 +101,14 @@ async def download_file_by_url(url, session=None):
     except aiohttp.client_exceptions.ClientConnectionError:
         print(
             "\t{} from {}: Failed : {}".format(
-                file_name, url, "Client connection error"
-            )
+                file_name,
+                url,
+                "Client connection error",
+            ),
         )
 
     else:
-        print("\t{} from {} : Success".format(file_name, url))
+        print(f"\t{file_name} from {url} : Success")
         fail = False
 
     return fail, url

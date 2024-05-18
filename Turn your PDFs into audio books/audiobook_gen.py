@@ -4,8 +4,8 @@ import pyttsx3
 book = open(input("Enter the book name: "), "rb")
 pg_no = int(
     input(
-        "Enter the page number from which you want the system to start reading text: "
-    )
+        "Enter the page number from which you want the system to start reading text: ",
+    ),
 )
 
 pdf_Reader = PyPDF2.PdfFileReader(book)

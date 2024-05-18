@@ -23,9 +23,9 @@ while failed > 0:
 
 	elif userInput != compChosse:
 		failed = failed - 1
-	
+
 		print(":no your wrong: " + "left: " + str(failed))
-	
+
 		userInput = input("guess:")
 
 	if failed == 0:

@@ -1,6 +1,7 @@
 import random
-from colorama import Fore, Style
+
 import inquirer
+from colorama import Fore, Style
 
 responses = [
     "It is certain",
@@ -30,7 +31,7 @@ responses = [
 # Will try to make it much more better.
 def get_user_name():
     return inquirer.text(
-        message="Hi! I am the magic 8 ball, what's your name?"
+        message="Hi! I am the magic 8 ball, what's your name?",
     ).execute()
 
 

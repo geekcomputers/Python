@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """
 Created on Mon Feb 26 14:29:11 2018
 
@@ -24,7 +23,7 @@ import math
 import random
 
 
-class Vector(object):
+class Vector:
     """
     This class represents a vector of arbitray size.
     You need to give the vector components.
@@ -100,7 +99,7 @@ class Vector(object):
         """
         summe = 0
         for c in self.__components:
-            summe += c ** 2
+            summe += c**2
         return math.sqrt(summe)
 
     def __add__(self, other):
@@ -252,7 +251,7 @@ def randomVector(N, a, b):
     return ans
 
 
-class Matrix(object):
+class Matrix:
     """
     class: Matrix
     This class represents a arbitrary matrix.
@@ -342,7 +341,7 @@ class Matrix(object):
             else:
                 raise Exception(
                     "vector must have the same size as the "
-                    + "number of columns of the matrix!"
+                    + "number of columns of the matrix!",
                 )
         elif isinstance(other, int) or isinstance(other, float):  # matrix-scalar
             matrix = []

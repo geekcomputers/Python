@@ -1,5 +1,3 @@
-from __future__ import print_function
-
 import os  # Load the Library Module
 import sqlite3  # Load the Library Module
 import subprocess  # Load the Library Module
@@ -15,18 +13,20 @@ from time import strftime  # Load just the strftime Module from Time
 # Description			: Creates an output file by pulling all the servers for the given site from SQLITE database, then goes through the list pinging the servers to see if they are up on the network
 
 dropbox = os.getenv(
-    "dropbox"
+    "dropbox",
 )  # Set the variable, by getting the value of the variable from the OS
 config = os.getenv(
-    "my_config"
+    "my_config",
 )  # Set the variable, by getting the value of the variable from the OS
 dbfile = "Databases/jarvis.db"  # Set the variable to the database
 master_db = os.path.join(
-    dropbox, dbfile
+    dropbox,
+    dbfile,
 )  # Create the variable by linking the path and the file
 listfile = "startup_list.txt"  # File that will hold the servers
 serverfile = os.path.join(
-    config, listfile
+    config,
+    listfile,
 )  # Create the variable by linking the path and the file
 outputfile = "server_startup_" + strftime("%Y-%m-%d-%H-%M") + ".log"
 
@@ -34,7 +34,7 @@ outputfile = "server_startup_" + strftime("%Y-%m-%d-%H-%M") + ".log"
 
 text = """
 
-You need to pass an argument, the options the script expects is 
+You need to pass an argument, the options the script expects is
 
     -site1		For the Servers relating to site1
     -site2	For the Servers located in site2"""
@@ -42,7 +42,7 @@ You need to pass an argument, the options the script expects is
 
 def windows():  # This is the function to run if it detects the OS is windows.
     f = open(outputfile, "a")  # Open the logfile
-    for server in open(serverfile, "r"):  # Read the list of servers from the list
+    for server in open(serverfile):  # Read the list of servers from the list
         # ret = subprocess.call("ping -n 3 %s" % server.strip(), shell=True,stdout=open('NUL', 'w'),stderr=subprocess.STDOUT)	# Ping the servers in turn
         ret = subprocess.call(
             "ping -n 3 %s" % server.strip(),
@@ -51,17 +51,17 @@ def windows():  # This is the function to run if it detects the OS is windows.
         )  # Ping the servers in turn
         if ret == 0:  # Depending on the response
             f.write(
-                "%s: is alive" % server.strip().ljust(15) + "\n"
+                "%s: is alive" % server.strip().ljust(15) + "\n",
             )  # Write out to the logfile is the server is up
         else:
             f.write(
-                "%s: did not respond" % server.strip().ljust(15) + "\n"
+                "%s: did not respond" % server.strip().ljust(15) + "\n",
             )  # Write to the logfile if the server is down
 
 
 def linux():  # This is the function to run if it detects the OS is nix.
     f = open("server_startup_" + strftime("%Y-%m-%d") + ".log", "a")  # Open the logfile
-    for server in open(serverfile, "r"):  # Read the list of servers from the list
+    for server in open(serverfile):  # Read the list of servers from the list
         ret = subprocess.call(
             "ping -c 3 %s" % server,
             shell=True,
@@ -70,11 +70,11 @@ def linux():  # This is the function to run if it detects the OS is nix.
         )  # Ping the servers in turn
         if ret == 0:  # Depending on the response
             f.write(
-                "%s: is alive" % server.strip().ljust(15) + "\n"
+                "%s: is alive" % server.strip().ljust(15) + "\n",
             )  # Write out to the logfile is the server is up
         else:
             f.write(
-                "%s: did not respond" % server.strip().ljust(15) + "\n"
+                "%s: did not respond" % server.strip().ljust(15) + "\n",
             )  # Write to the logfile if the server is down
 
 
@@ -82,7 +82,8 @@ def get_servers(query):  # Function to get the servers from the database
     conn = sqlite3.connect(master_db)  # Connect to the database
     cursor = conn.cursor()  # Create the cursor
     cursor.execute(
-        "select hostname from tp_servers where location =?", (query,)
+        "select hostname from tp_servers where location =?",
+        (query,),
     )  # SQL Statement
     print("\nDisplaying Servers for : " + query + "\n")
     while True:  # While there are results
@@ -120,7 +121,7 @@ def main():  # Main Function
             query = "site2"  # Set the variable to have the value bromley
         else:
             print(
-                "\n[-] Unknown option [-] " + text
+                "\n[-] Unknown option [-] " + text,
             )  # If an unknown option is passed, let the user know
             sys.exit(0)
     get_servers(query)  # Call the get servers funtion, with the value from the argument
@@ -131,7 +132,7 @@ def main():  # Main Function
         windows()  # Call the windows function
 
     print(
-        "\n[+] Check the log file " + outputfile + " [+]\n"
+        "\n[+] Check the log file " + outputfile + " [+]\n",
     )  # Display the name of the log
 
 

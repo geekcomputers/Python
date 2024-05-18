@@ -9,5 +9,5 @@ def is_armstrong_number(number):
         num //=  10
         temp += rem ** length
     return temp == number
-    
+
 is_armstrong_number(5)

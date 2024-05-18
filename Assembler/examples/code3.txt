@@ -13,7 +13,7 @@ int 0x80
 
 _double:
 add ecx, ecx
-ret 
+ret
 
 _cube:
 push eax

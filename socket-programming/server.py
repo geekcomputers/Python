@@ -20,7 +20,7 @@ while True:
         # show connected client
         print("connected from", client_address)
         # sending acknowledgement to client that you are connected
-        connection.send(str("Now You are connected").encode("utf-8"))
+        connection.send(b"Now You are connected")
 
         # receiving the message
         while True:

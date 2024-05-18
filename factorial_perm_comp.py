@@ -39,7 +39,7 @@ def main():
         while True:
             try:
                 n = int(input("\n Enter  Value for n "))
-                print("Factorial of {} = {}".format(n, factorial(n)))
+                print(f"Factorial of {n} = {factorial(n)}")
                 break
             except ValueError:
                 print("Invalid Value")
@@ -52,7 +52,7 @@ def main():
             try:
                 n = int(input("\n Enter Value for n "))
                 r = int(input("\n Enter Value for r "))
-                print("Permutation of {}P{} = {}".format(n, r, permutation(n, r)))
+                print(f"Permutation of {n}P{r} = {permutation(n, r)}")
                 break
             except ValueError:
                 print("Invalid Value")
@@ -65,7 +65,7 @@ def main():
                 n = int(input("\n Enter Value for n "))
                 r = int(input("\n Enter Value for r "))
 
-                print("Combination of {}C{} = {}".format(n, r, combination(n, r)))
+                print(f"Combination of {n}C{r} = {combination(n, r)}")
                 break
 
             except ValueError:

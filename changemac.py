@@ -44,7 +44,7 @@ crrntmac = crrntmac.decode("utf-8")
 print(
     "Your Current mac address = "
     + crrntmac
-    + "\nEnter Option to change Your MAC:\n1. Enter MAC address manually \n2. Automatic Random MAC address"
+    + "\nEnter Option to change Your MAC:\n1. Enter MAC address manually \n2. Automatic Random MAC address",
 )
 opt = int(input())
 

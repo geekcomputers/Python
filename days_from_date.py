@@ -1,6 +1,6 @@
-import re  # regular expressions
 import calendar  # module of python to provide useful fucntions related to calendar
 import datetime  # module of python to get the date and time
+import re  # regular expressions
 import tkinter as tk
 
 root = tk.Tk()
@@ -16,7 +16,8 @@ def process_date(user_input):
 
 def find_day(date):
     born = datetime.datetime.strptime(
-        date, "%d %m %Y"
+        date,
+        "%d %m %Y",
     ).weekday()  # this statement returns an integer corresponding to the day of the week
     return calendar.day_name[
         born
@@ -31,15 +32,22 @@ def printt():
     date = process_date(user_input)
     c = "Day on " + user_input + "  is " + find_day(date)
     label2 = tk.Label(root, text=c, font=("Times new roman", 20), fg="black").place(
-        x=20, y=200
+        x=20,
+        y=200,
     )
 
 
 lbl = tk.Label(root, text="Date --", font=("Ubuntu", 20), fg="black").place(
-    x=0, y=0.1, height=60, width=150
+    x=0,
+    y=0.1,
+    height=60,
+    width=150,
 )
 lbl1 = tk.Label(root, text="(DD/MM/YYYY)", font=("Ubuntu", 15), fg="Gray").place(
-    x=120, y=0.1, height=60, width=150
+    x=120,
+    y=0.1,
+    height=60,
+    width=150,
 )
 but = tk.Button(
     root,
@@ -51,7 +59,11 @@ but = tk.Button(
     bg="black",
 ).place(x=50, y=130, height=50, width=300)
 Date = tk.Entry(
-    root, font=("Times new roman", 20), textvariable=user_input1, bg="white", fg="black"
+    root,
+    font=("Times new roman", 20),
+    textvariable=user_input1,
+    bg="white",
+    fg="black",
 ).place(x=30, y=50, height=40, width=340)
 
 root.mainloop()

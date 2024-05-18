@@ -78,4 +78,3 @@ pip install thirdai
 ### Dependencies
 
 - `thirdai` library
-

@@ -40,4 +40,4 @@ print("\n")
 story = (". ").join(list(map(lambda x: random_sentence(), range(0, 20))))
 
 # prints random sentences story
-print("{}".format(story))
+print(f"{story}")

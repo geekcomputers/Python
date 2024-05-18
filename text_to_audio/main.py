@@ -1,9 +1,9 @@
 # A exclusive CLI version can be made using inquirer library.
-from gtts import gTTS
 from io import BytesIO
-
 # only use when needed to avoid memory usage in program
 from pprint import pprint
+
+from gtts import gTTS
 
 """_summary_
 def some_function():
@@ -62,7 +62,10 @@ class userAudio:
             self.text_to_audio = text
 
         self.gtts_object = gTTS(
-            text=self.text_to_audio, lang=self.lang, slow=self.slow, tld=self.accent
+            text=self.text_to_audio,
+            lang=self.lang,
+            slow=self.slow,
+            tld=self.accent,
         )
 
     # ! Some error is here.
@@ -70,7 +73,10 @@ class userAudio:
         text = input("Enter the text you want to convert to audio: ")
         self.text_to_audio = text
         self.gtts_object = gTTS(
-            text=self.text_to_audio, lang=self.lang, slow=self.slow, tld=self.accent
+            text=self.text_to_audio,
+            lang=self.lang,
+            slow=self.slow,
+            tld=self.accent,
         )  # Just need to understand the class workings little better.
         # Isn't this declaring this again?
 
@@ -151,7 +157,7 @@ class userAudio:
 # hello = userAudio("Hello, world!")
 # hello.play_only()
 
-with open("special_file.txt", "r") as f:
+with open("special_file.txt") as f:
     retrieved_text = f.read()
 retrieved_text = retrieved_text.replace("\n", "")
 
@@ -173,7 +179,7 @@ class fun_secret_generator_string:
     #     print("File saved successfully")
 
     # Reading from the file
-    with open("special_file.txt", "r") as f:
+    with open("special_file.txt") as f:
         retrieved_text = f.read()
     retrieved_text = retrieved_text.replace("\n", "")
 

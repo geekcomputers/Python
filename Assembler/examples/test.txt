@@ -7,4 +7,4 @@ mov ecx, VAR1
 mov ebx, $var1
 sub ecx, ebx
 mov eax, 4
-int 0x80 
+int 0x80

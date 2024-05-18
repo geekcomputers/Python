@@ -4,7 +4,7 @@ __version__ = "1.0"
 import os.path
 from datetime import timedelta
 from time import time
-from tkinter import Tk, Button
+from tkinter import Button, Tk
 
 from Background import Background
 from Bird import Bird
@@ -43,7 +43,7 @@ class App(Tk, Settings):
 
         # Configura a janela do programa
         self.title(self.window_name)
-        self.geometry("{}x{}".format(self.__width, self.__height))
+        self.geometry(f"{self.__width}x{self.__height}")
         self.resizable(*self.window_rz)
         self.attributes("-fullscreen", self.window_fullscreen)
         self["bg"] = "black"
@@ -52,7 +52,7 @@ class App(Tk, Settings):
         for file in self.images_fp:
             if not os.path.exists(file):
                 raise FileNotFoundError(
-                    "The following file was not found:\n{}".format(file)
+                    f"The following file was not found:\n{file}",
                 )
 
         # Carrega a imagem do botão para começar o jogo
@@ -144,7 +144,7 @@ class App(Tk, Settings):
                 (self.__width // 2) - width // 1.5,
                 int(self.__height / 100 * self.button_position_y),
                 window=startButton,
-            )
+            ),
         )
 
         # Cria um botão para sair do jogo
@@ -164,7 +164,7 @@ class App(Tk, Settings):
                 (self.__width // 2) + width // 1.5,
                 int(self.__height / 100 * self.button_position_y),
                 window=exitButton,
-            )
+            ),
         )
 
     def createScoreBoard(self):
@@ -304,7 +304,8 @@ class App(Tk, Settings):
         self.__background.focus_force()
         # Define evento para trocar o modo de janela para "fullscreen" ou "window"
         self.__background.bind(
-            self.window_fullscreen_event, self.changeFullscreenOption
+            self.window_fullscreen_event,
+            self.changeFullscreenOption,
         )
         # Define evento para começar o jogo
         self.__background.bind(self.window_start_event, self.start)

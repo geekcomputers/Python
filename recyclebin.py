@@ -1,9 +1,6 @@
-from __future__ import print_function
-
 import os  # Load the Module
 
 from _winreg import *  # Load the Module
-
 
 # Script Name		: recyclebin.py
 # Author				: Craig Richards
@@ -18,7 +15,7 @@ def sid2user(sid):  # Start of the function to gather the user
     try:
         key = OpenKey(
             HKEY_LOCAL_MACHINE,
-            "SOFTWARE\Microsoft\Windows NT\CurrentVersion\ProfileList" + "\\" + sid,
+            r"SOFTWARE\Microsoft\Windows NT\CurrentVersion\ProfileList" + "\\" + sid,
         )
         (value, type) = QueryValueEx(key, "ProfileImagePath")
         user = value.split("\\")[-1]

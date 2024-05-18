@@ -2,6 +2,7 @@
 although there is function to find gcd in python but this is the code which
 takes two inputs and prints gcd of the two.
 """
+
 a = int(input("Enter number 1 (a): "))
 b = int(input("Enter number 2 (b): "))
 
@@ -11,4 +12,4 @@ while i <= a and i <= b:
         gcd = i
     i = i + 1
 
-print("\nGCD of {0} and {1} = {2}".format(a, b, gcd))
+print(f"\nGCD of {a} and {b} = {gcd}")

@@ -1,12 +1,13 @@
 # Author-Kingslayer
 # Email-kingslayer8509@gmail.com
 # you need to create a file password.txt which contains all possible passwords
-import requests
+import os
+import sys
 import threading
 import urllib.request
-import os
+
+import requests
 from bs4 import BeautifulSoup
-import sys
 
 if sys.version_info[0] != 3:
     print(
@@ -14,7 +15,7 @@ if sys.version_info[0] != 3:
 	REQUIRED PYTHON 3.x
 	use: python3 fb.py
 --------------------------------------
-			"""
+			""",
     )
     sys.exit()
 
@@ -54,7 +55,7 @@ def function(email, passw, i):
 
 
 print("\n---------- Welcome To Facebook BruteForce ----------\n")
-file = open("passwords.txt", "r")
+file = open("passwords.txt")
 
 email = input("Enter Email/Username : ")
 

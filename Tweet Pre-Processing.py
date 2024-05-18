@@ -1,14 +1,13 @@
 #!/usr/bin/env python
-# coding: utf-8
 
 # In[10]:
 
 
-import numpy as np
-from nltk.corpus import twitter_samples
-import matplotlib.pyplot as plt
 import random
 
+import matplotlib.pyplot as plt
+import numpy as np
+from nltk.corpus import twitter_samples
 
 # In[ ]:
 
@@ -45,7 +44,7 @@ print(positive_tweets[random.randint(0, 5000)])
 # In[19]:
 
 
-""" There are 4 basic steps in pre-processing of any text 
+""" There are 4 basic steps in pre-processing of any text
 1.Tokenizing
 2.Removing hyper links if any
 3.Converting to lower case
@@ -59,7 +58,6 @@ import string
 from nltk.corpus import stopwords
 from nltk.stem import PorterStemmer
 from nltk.tokenize import TweetTokenizer
-
 
 # In[20]:
 

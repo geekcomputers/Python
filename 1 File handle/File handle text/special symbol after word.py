@@ -1,4 +1,4 @@
-with open("happy.txt", "r") as F:
+with open("happy.txt") as F:
     # method 1
     for i in F.read().split():
         print(i, "*", end="")

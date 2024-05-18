@@ -6,15 +6,16 @@
 # Description   : This will move specified number of files(given in ratio) from the src directory to dest directory.
 
 
-import os, random
 import argparse
+import os
+import random
 
 
 def check_ratio(x):
     try:
         x = float(x)
     except ValueError:
-        raise argparse.ArgumentTypeError("%r not a floating-point literal" % (x,))
+        raise argparse.ArgumentTypeError("{!r} not a floating-point literal".format(x))
 
     if x < 0.0 or x > 1.0:
         raise argparse.ArgumentTypeError("%r not in range [0.0, 1.0]" % (x))
@@ -56,7 +57,7 @@ ratio = args.ratio
 files = os.listdir(src)
 size = int(ratio * len(files))
 
-print("Move {} files from {} to {} ? [y/n]".format(size, src, dest))
+print(f"Move {size} files from {src} to {dest} ? [y/n]")
 if input().lower() == "y":
     for f in random.sample(files, size):
         try:
