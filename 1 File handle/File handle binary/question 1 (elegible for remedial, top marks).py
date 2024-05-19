@@ -6,8 +6,9 @@ teacher has assigned the following duty to Amit
 Write a function remcount( ) to count the number of students who need
  remedial class (student who scored less than 40 percent)
 
- 
+
  """
+
 # also find no. of children who got top marks
 
 import pickle

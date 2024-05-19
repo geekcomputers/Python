@@ -24,10 +24,10 @@ except Exception as e:
     import con_file as config
 
 
-class PorxyApplyingDecorator(object):
+class PorxyApplyingDecorator:
     def __init__(self):
         filename = os.getcwd() + "/" + "ipList.txt"
-        with open(filename, "r") as f:
+        with open(filename) as f:
             ipdata = f.read()
         self._IP = random.choice(ipdata.split(","))
 
@@ -86,7 +86,10 @@ async def datapullpost(future, url):
             user_agent = {"User-agent": "Mozilla/17.0"}
             try:
                 data = requests.get(
-                    url=url, headers=user_agent, timeout=10, verify=False
+                    url=url,
+                    headers=user_agent,
+                    timeout=10,
+                    verify=False,
                 ).text
             except Exception as e:
                 print(e)
@@ -209,7 +212,10 @@ class MoniteringClass:
                     user_agent = {"User-agent": "Mozilla/17.0"}
                     try:
                         data = requests.get(
-                            url=url, headers=user_agent, timeout=24, verify=False
+                            url=url,
+                            headers=user_agent,
+                            timeout=24,
+                            verify=False,
                         ).text
                     except Exception as err:
                         print(f"Exception : {err}")
@@ -223,7 +229,9 @@ class MoniteringClass:
             datadict = ujson.loads(data)
             userdata, media_post, top_post = self._dataProcessing(datadict)
             finallydata = self._lastProcess(
-                userdata=userdata, media_post=media_post, top_post=top_post
+                userdata=userdata,
+                media_post=media_post,
+                top_post=top_post,
             )
             # print(ujson.dumps(finallydata))
         except Exception as e:
@@ -258,7 +266,10 @@ class theradPorcess(multiprocessing.Process):
     def run(self):
         try:
             hashtags(
-                user=self.user, tags=self.tags, type=self.type, productId=self.productId
+                user=self.user,
+                tags=self.tags,
+                type=self.type,
+                productId=self.productId,
             )
         except Exception as err:
             print(f"exception : {err}\n")

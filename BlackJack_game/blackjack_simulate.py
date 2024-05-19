@@ -120,7 +120,9 @@ class Chips:
     def get_tips(content):
         fmt_tips = "{color}** TIPS: {content}! **{end}"
         return fmt_tips.format(
-            color=COLOR.get("YELLOW"), content=content, end=COLOR.get("END")
+            color=COLOR.get("YELLOW"),
+            content=content,
+            end=COLOR.get("END"),
         )
 
     @property
@@ -198,7 +200,7 @@ class User:
         :param chips_amount: Casino tokens equal money
         """
         self.name = name
-        self.prompt = "{role} >> ({name}) : ".format(role=role, name=self.name)
+        self.prompt = f"{role} >> ({self.name}) : "
         self.chips = Chips(chips_amount)
         self.color = color
         self.hand = []
@@ -248,7 +250,9 @@ class User:
     def is_point(self, opt, point):
         self.calculate_point()
         compare_fmt = "{user_point} {opt} {point}".format(
-            user_point=self.point, opt=opt, point=point
+            user_point=self.point,
+            opt=opt,
+            point=point,
         )
         return eval(compare_fmt)
 
@@ -265,7 +269,7 @@ class User:
 
     def unveiling(self):
         self.calculate_point()
-        points_fmt = "My point is: {}".format(str(self.point))
+        points_fmt = f"My point is: {str(self.point)}"
         self.speak(points_fmt)
         self.unveil_card()
 
@@ -299,7 +303,9 @@ class Player(User):
 
     def refresh_prompt(self):
         self.prompt = "{role} [ ${remain} ] >> ({name}) : ".format(
-            role="Player", name=self.name, remain=self.chips.current_amount()
+            role="Player",
+            name=self.name,
+            remain=self.chips.current_amount(),
         )
 
     def select_choice(self, pattern):
@@ -345,7 +351,8 @@ class Recorder:
     def record(self, winner, chips, player_point, dealer_point):
         self.update(winner, chips, player_point, dealer_point)
         Row = namedtuple(
-            "Row", ["rounds", "player_point", "dealer_point", "winner", "remain_chips"]
+            "Row",
+            ["rounds", "player_point", "dealer_point", "winner", "remain_chips"],
         )
         row = Row(
             self.rounds,
@@ -384,7 +391,7 @@ class Recorder:
                     row.dealer_point,
                     row.winner,
                     row.remain_chips,
-                )
+                ),
             )
 
         print("")

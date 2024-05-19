@@ -1,7 +1,7 @@
 # Python-Assembler
 # WE need A FREE T-SHIRT
-This program is a simple assembler-like (intel-syntax) interpreter language. The program is written in python 3. 
-To start the program you will need to type 
+This program is a simple assembler-like (intel-syntax) interpreter language. The program is written in python 3.
+To start the program you will need to type
 
 ``` python assembler.py code.txt ```
 
@@ -13,16 +13,16 @@ You can find some examples in the directory 'examples'.
 
 For instance-
 
-``` 
+```
 $msg db "hello world"
 
-mov ecx, $msg 
+mov ecx, $msg
 mov eax, 4
 int 0x80
 mov eax, 1
 mov ebx, 0
 int 0x80
-``` 
+```
 
 Will print onto console
 

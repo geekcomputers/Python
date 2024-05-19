@@ -48,5 +48,6 @@ if St < 10:
 # add '0' to the empty spaces (caused by previous operations) in the final result!
 
 print(
-    "final result is :", str(Ht) + ":" + str(Mt) + ":" + str(St)
+    "final result is :",
+    str(Ht) + ":" + str(Mt) + ":" + str(St),
 )  # final result (formatted in clock)

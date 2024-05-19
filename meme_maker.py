@@ -1,6 +1,6 @@
 import sys
 
-from PIL import ImageDraw, ImageFont, Image
+from PIL import Image, ImageDraw, ImageFont
 
 
 def input_par():
@@ -41,7 +41,10 @@ def main():
     # Drawing text on the picture
     draw = ImageDraw.Draw(image_file)
     draw.text(
-        (0, 2300), text, (color_value[0], color_value[1], color_value[2]), font=font
+        (0, 2300),
+        text,
+        (color_value[0], color_value[1], color_value[2]),
+        font=font,
     )
     draw = ImageDraw.Draw(image_file)
 

@@ -7,10 +7,11 @@ site used :
    link : https://www.indiatoday.in/topic/
 """
 
+import time
+import webbrowser
+
 import requests
 from bs4 import BeautifulSoup
-import webbrowser
-import time
 
 
 def Times_of_India(userInput, ua):
@@ -90,7 +91,7 @@ if __name__ == "__main__":
     print(bold_start, localtime, bold_end)
 
     ua = {
-        "UserAgent": "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:69.0) Gecko/20100101 Firefox/69.0"
+        "UserAgent": "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:69.0) Gecko/20100101 Firefox/69.0",
     }
     print(
         bold_start,

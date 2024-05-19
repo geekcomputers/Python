@@ -3,10 +3,11 @@ Created on Sat Jul 15 01:41:31 2017
 
 @author: Albert
 """
-from __future__ import print_function
+
+
+from bs4 import BeautifulSoup
 
 import wikipedia as wk
-from bs4 import BeautifulSoup
 
 
 def wiki():

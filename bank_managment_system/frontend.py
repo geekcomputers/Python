@@ -36,11 +36,17 @@ def create():
         ):
 
             acc_no = backend.create_customer(
-                name, age, address, balance, acc_type, mobile_number
+                name,
+                age,
+                address,
+                balance,
+                acc_type,
+                mobile_number,
             )
 
             label = Label(
-                create_employee_frame, text="Your account number is {}".format(acc_no)
+                create_employee_frame,
+                text=f"Your account number is {acc_no}",
             )
             label.grid(row=14)
 
@@ -91,7 +97,9 @@ def create():
     entry10 = Entry(create_employee_frame)
     entry10.grid(row=12, pady=4)
     button = Button(
-        create_employee_frame, text="Submit", command=create_customer_in_database
+        create_employee_frame,
+        text="Submit",
+        command=create_customer_in_database,
     )
     button.grid(row=13, pady=4)
 
@@ -137,27 +145,37 @@ def show():
             show_frame.grid(padx=400, pady=200)
 
             label = Label(
-                show_frame, text="Account_number:\t{}".format(details[0]), font="bold"
+                show_frame,
+                text=f"Account_number:\t{details[0]}",
+                font="bold",
             )
             label.grid(row=0, pady=6)
-            label = Label(show_frame, text="Name:\t{}".format(details[1]), font="bold")
+            label = Label(show_frame, text=f"Name:\t{details[1]}", font="bold")
             label.grid(row=1, pady=6)
-            label = Label(show_frame, text="Age:\t{}".format(details[2]), font="bold")
+            label = Label(show_frame, text=f"Age:\t{details[2]}", font="bold")
             label.grid(row=2, pady=6)
             label = Label(
-                show_frame, text="Address:\t{}".format(details[3]), font="bold"
+                show_frame,
+                text=f"Address:\t{details[3]}",
+                font="bold",
             )
             label.grid(row=3, pady=6)
             label = Label(
-                show_frame, text="Balance:\t{}".format(details[4]), font="bold"
+                show_frame,
+                text=f"Balance:\t{details[4]}",
+                font="bold",
             )
             label.grid(row=4, pady=6)
             label = Label(
-                show_frame, text="Account_type:\t{}".format(details[5]), font="bold"
+                show_frame,
+                text=f"Account_type:\t{details[5]}",
+                font="bold",
             )
             label.grid(row=5, pady=6)
             label = Label(
-                show_frame, text="Mobile Number:\t{}".format(details[6]), font="bold"
+                show_frame,
+                text=f"Mobile Number:\t{details[6]}",
+                font="bold",
             )
             label.grid(row=6, pady=6)
             button = Button(
@@ -221,12 +239,14 @@ def add():
                 detail = backend.get_detail(acc_no)
 
                 label = Label(
-                    add_frame, text="Account holder name:   {}".format(detail[0][0])
+                    add_frame,
+                    text=f"Account holder name:   {detail[0][0]}",
                 )
                 label.grid(row=0, pady=3)
 
                 label = Label(
-                    add_frame, text="Current amount:   {}".format(detail[0][1])
+                    add_frame,
+                    text=f"Current amount:   {detail[0][1]}",
                 )
                 label.grid(row=1, pady=3)
 
@@ -312,12 +332,14 @@ def withdraw():
                 detail = backend.get_detail(acc_no)
 
                 label = Label(
-                    add_frame, text="Account holder name:   {}".format(detail[0][0])
+                    add_frame,
+                    text=f"Account holder name:   {detail[0][0]}",
                 )
                 label.grid(row=0, pady=3)
 
                 label = Label(
-                    add_frame, text="Current amount:   {}".format(detail[0][1])
+                    add_frame,
+                    text=f"Current amount:   {detail[0][1]}",
                 )
                 label.grid(row=1, pady=3)
 
@@ -395,7 +417,9 @@ def check():
                 check_frame.grid(padx=500, pady=300)
 
                 label = Label(
-                    check_frame, text="Balance Is:{}".format(balance), font="bold"
+                    check_frame,
+                    text=f"Balance Is:{balance}",
+                    font="bold",
                 )
                 label.grid(row=0, pady=4)
 
@@ -474,7 +498,9 @@ def update():
             entry_name.grid(row=1, column=2, padx=2)
             global submit_button
             submit_button = Button(
-                update_customer_frame, text="Update", command=update_name_in_database
+                update_customer_frame,
+                text="Update",
+                command=update_name_in_database,
             )
             submit_button.grid(row=1, column=3)
 
@@ -504,7 +530,9 @@ def update():
             entry_name.grid(row=2, column=2, padx=2)
             global submit_button
             submit_button = Button(
-                update_customer_frame, text="Update", command=update_age_in_database
+                update_customer_frame,
+                text="Update",
+                command=update_age_in_database,
             )
             submit_button.grid(row=2, column=3)
 
@@ -534,7 +562,9 @@ def update():
             entry_name.grid(row=3, column=2, padx=2)
             global submit_button
             submit_button = Button(
-                update_customer_frame, text="Update", command=update_address_in_database
+                update_customer_frame,
+                text="Update",
+                command=update_address_in_database,
             )
             submit_button.grid(row=3, column=3)
 
@@ -553,17 +583,23 @@ def update():
                 label.grid(row=0)
 
                 name_button = Button(
-                    update_customer_frame, text="Name", command=update_name
+                    update_customer_frame,
+                    text="Name",
+                    command=update_name,
                 )
                 name_button.grid(row=1, column=0, pady=6)
 
                 age_button = Button(
-                    update_customer_frame, text="Age", command=update_age
+                    update_customer_frame,
+                    text="Age",
+                    command=update_age,
                 )
                 age_button.grid(row=2, column=0, pady=6)
 
                 address_button = Button(
-                    update_customer_frame, text="Address", command=update_address
+                    update_customer_frame,
+                    text="Address",
+                    command=update_address,
                 )
                 address_button.grid(row=3, column=0, pady=6)
 
@@ -602,7 +638,10 @@ def update():
     entry_acc.grid(pady=4)
 
     button = Button(
-        search_frame, text="update", command=show_all_updateble_content, bg="red"
+        search_frame,
+        text="update",
+        command=show_all_updateble_content,
+        bg="red",
     )
     button.grid()
 
@@ -620,20 +659,30 @@ def allmembers():
     list_frame = Frame(tk)
     list_frame.grid(padx=50, pady=50)
     label = Label(
-        list_frame, text="Acc_no\t\t\tName\t\t\tAge\t\t\tAddress\t\t\tbalance"
+        list_frame,
+        text="Acc_no\t\t\tName\t\t\tAge\t\t\tAddress\t\t\tbalance",
     )
     label.grid(pady=6)
     for i in details:
         label = Label(
             list_frame,
             text="{}\t\t\t{}\t\t\t{}\t\t\t{}\t\t\t{}".format(
-                i[0], i[1], i[2], i[3], i[4]
+                i[0],
+                i[1],
+                i[2],
+                i[3],
+                i[4],
             ),
         )
         label.grid(pady=4)
 
     button = Button(
-        list_frame, text="Back", width=20, height=2, bg="red", command=clear_list_frame
+        list_frame,
+        text="Back",
+        width=20,
+        height=2,
+        bg="red",
+        command=clear_list_frame,
     )
     button.grid()
     mainloop()
@@ -716,13 +765,21 @@ def page2():
     button1 = Button(frame1, text="Create Account", command=create, width=20, height=2)
     button1.grid(row=0, pady=6)
     button2 = Button(
-        frame1, text="Show Details", command=search_acc, width=20, height=2
+        frame1,
+        text="Show Details",
+        command=search_acc,
+        width=20,
+        height=2,
     )
     button2.grid(row=1, pady=6)
     button3 = Button(frame1, text="Add balance", command=add, width=20, height=2)
     button3.grid(row=2, pady=6)
     button4 = Button(
-        frame1, text="Withdraw money", command=withdraw, width=20, height=2
+        frame1,
+        text="Withdraw money",
+        command=withdraw,
+        width=20,
+        height=2,
     )
     button4.grid(row=3, pady=6)
     button5 = Button(frame1, text="Check balance", command=check, width=20, height=2)
@@ -730,14 +787,22 @@ def page2():
     button6 = Button(frame1, text="Update Account", command=update, width=20, height=2)
     button6.grid(row=5, pady=6)
     button7 = Button(
-        frame1, text="List of all members", command=allmembers, width=20, height=2
+        frame1,
+        text="List of all members",
+        command=allmembers,
+        width=20,
+        height=2,
     )
     button7.grid(row=6, pady=6)
     button8 = Button(frame1, text="Delete Account", command=delete, width=20, height=2)
     button8.grid(row=7, pady=6)
 
     button9 = Button(
-        frame1, text="Exit", command=back_to_main_from_page2, width=20, height=2
+        frame1,
+        text="Exit",
+        command=back_to_main_from_page2,
+        width=20,
+        height=2,
     )
     button9.grid(row=8, pady=6)
 
@@ -846,7 +911,9 @@ def update_employee():
                 entry19.grid(row=1, column=1, padx=4)
                 global update_button
                 update_button = Button(
-                    update_frame, text="Update", command=database_calling
+                    update_frame,
+                    text="Update",
+                    command=database_calling,
                 )
                 update_button.grid(row=1, column=2, padx=4)
 
@@ -868,7 +935,9 @@ def update_employee():
                 entry19.grid(row=2, column=1, padx=4)
                 global update_button
                 update_button = Button(
-                    update_frame, text="Update", command=database_calling
+                    update_frame,
+                    text="Update",
+                    command=database_calling,
                 )
                 update_button.grid(row=2, column=2, padx=4)
 
@@ -892,7 +961,9 @@ def update_employee():
                 entry19.grid(row=3, column=1, padx=4)
                 global update_button
                 update_button = Button(
-                    update_frame, text="Update", command=database_calling
+                    update_frame,
+                    text="Update",
+                    command=database_calling,
                 )
                 update_button.grid(row=3, column=2, padx=4)
 
@@ -915,7 +986,9 @@ def update_employee():
                 entry19.grid(row=4, column=1, padx=4)
                 global update_button
                 update_button = Button(
-                    update_frame, text="Update", command=database_calling
+                    update_frame,
+                    text="Update",
+                    command=database_calling,
                 )
                 update_button.grid(row=4, column=2, padx=4)
 
@@ -924,7 +997,9 @@ def update_employee():
             update_frame.grid(padx=400, pady=250)
 
             label = Label(
-                update_frame, text="press what do you want to update", font="bold"
+                update_frame,
+                text="press what do you want to update",
+                font="bold",
             )
             label.grid(pady=6)
 
@@ -1039,7 +1114,7 @@ def show_employee():
     for i in details:
         label = Label(
             show_employee_frame,
-            text="{}\t\t\t{}\t\t\t{}\t\t\t{}".format(i[0], i[1], i[2], i[3]),
+            text=f"{i[0]}\t\t\t{i[1]}\t\t\t{i[2]}\t\t\t{i[3]}",
         )
         label.grid(pady=4)
 
@@ -1073,7 +1148,7 @@ def Total_money():
     label = Label(all_money, text="Total Amount of money")
     label.grid(row=0, pady=6)
 
-    label = Label(all_money, text="{}".format(all))
+    label = Label(all_money, text=f"{all}")
     label.grid(row=1)
 
     button = Button(
@@ -1167,12 +1242,20 @@ def page1():
             button13.grid(row=2, pady=6)
 
             button11 = Button(
-                page1_frame, text="Total Money", command=Total_money, width=20, height=2
+                page1_frame,
+                text="Total Money",
+                command=Total_money,
+                width=20,
+                height=2,
             )
             button11.grid(row=3, pady=6)
 
             button12 = Button(
-                page1_frame, text="Back", command=back_to_main, width=20, height=2
+                page1_frame,
+                text="Back",
+                command=back_to_main,
+                width=20,
+                height=2,
             )
             button12.grid(row=4, pady=6)
 

@@ -2,8 +2,6 @@ import os
 import sys
 from pprint import pprint
 
-import sys
-
 sys.path.append(os.path.realpath("."))
 import inquirer  # noqa
 

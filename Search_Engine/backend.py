@@ -1,7 +1,9 @@
-import sqlite3
-import test_data
 import ast
 import json
+import sqlite3
+
+import test_data
+
 
 class SearchEngine:
     """
@@ -27,9 +29,11 @@ class SearchEngine:
         tables_exist = res.fetchone()
 
         if not tables_exist:
-            self.conn.execute("CREATE TABLE IdToDoc(id INTEGER PRIMARY KEY, document TEXT)")
-            self.conn.execute('CREATE TABLE WordToId (name TEXT, value TEXT)')
-            cur.execute("INSERT INTO WordToId VALUES (?, ?)", ("index", "{}",))
+            self.conn.execute(
+                "CREATE TABLE IdToDoc(id INTEGER PRIMARY KEY, document TEXT)"
+            )
+            self.conn.execute("CREATE TABLE WordToId (name TEXT, value TEXT)")
+            cur.execute("INSERT INTO WordToId VALUES (?, ?)", ("index", "{}"))
 
     def index_document(self, document):
         """
@@ -43,13 +47,15 @@ class SearchEngine:
         - passes the document to a method to add the document
           to IdToDoc
         - retrieves the id of the inserted document
-        - uses the id to call the method that adds the words of 
+        - uses the id to call the method that adds the words of
           the document to the reverse index WordToId if the word has not
           already been indexed
         """
         row_id = self._add_to_IdToDoc(document)
         cur = self.conn.cursor()
-        reverse_idx = cur.execute("SELECT value FROM WordToId WHERE name='index'").fetchone()[0]
+        reverse_idx = cur.execute(
+            "SELECT value FROM WordToId WHERE name='index'"
+        ).fetchone()[0]
         reverse_idx = json.loads(reverse_idx)
         document = document.split()
         for word in document:
@@ -60,8 +66,10 @@ class SearchEngine:
                     reverse_idx[word].append(row_id)
         reverse_idx = json.dumps(reverse_idx)
         cur = self.conn.cursor()
-        result = cur.execute("UPDATE WordToId SET value = (?) WHERE name='index'", (reverse_idx,))
-        return("index successful")
+        result = cur.execute(
+            "UPDATE WordToId SET value = (?) WHERE name='index'", (reverse_idx,)
+        )
+        return "index successful"
 
     def _add_to_IdToDoc(self, document):
         """
@@ -88,7 +96,9 @@ class SearchEngine:
         - return the result of the called method
         """
         cur = self.conn.cursor()
-        reverse_idx = cur.execute("SELECT value FROM WordToId WHERE name='index'").fetchone()[0]
+        reverse_idx = cur.execute(
+            "SELECT value FROM WordToId WHERE name='index'"
+        ).fetchone()[0]
         reverse_idx = json.loads(reverse_idx)
         search_term = search_term.split(" ")
         all_docs_with_search_term = []
@@ -96,18 +106,18 @@ class SearchEngine:
             if term in reverse_idx:
                 all_docs_with_search_term.append(reverse_idx[term])
 
-        if not all_docs_with_search_term: # the search term does not exist
+        if not all_docs_with_search_term:  # the search term does not exist
             return []
 
         common_idx_of_docs = set(all_docs_with_search_term[0])
         for idx in all_docs_with_search_term[1:]:
             common_idx_of_docs.intersection_update(idx)
 
-        if not common_idx_of_docs: # the search term does not exist
+        if not common_idx_of_docs:  # the search term does not exist
             return []
 
         return self._find_documents_with_idx(common_idx_of_docs)
-        
+
     def _find_documents_with_idx(self, idxs):
         """
         Returns - list[str]: the list of documents with the idxs
@@ -119,11 +129,11 @@ class SearchEngine:
         """
         idxs = list(idxs)
         cur = self.conn.cursor()
-        sql="SELECT document FROM IdToDoc WHERE id in ({seq})".format(
-                                                                seq=','.join(['?']*len(idxs))
-                                                               )
+        sql = "SELECT document FROM IdToDoc WHERE id in ({seq})".format(
+            seq=",".join(["?"] * len(idxs)),
+        )
         result = cur.execute(sql, idxs).fetchall()
-        return(result)
+        return result
 
 
 if __name__ == "__main__":

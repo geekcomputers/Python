@@ -16,7 +16,7 @@ class CreditCard:
                 "67",
                 "58",
                 "63",
-            )
+            ),
         ):
             comp = "Maestro Card"
         elif str(self.card_no).startswith("5"):

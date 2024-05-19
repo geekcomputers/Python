@@ -1,11 +1,10 @@
-import requests
-from bs4 import BeautifulSoup
-
+# import time
+import json
 # import csv
 import os
 
-# import time
-import json
+import requests
+from bs4 import BeautifulSoup
 
 
 class Phonearena:
@@ -62,7 +61,7 @@ class Phonearena:
                 model_img_html = model.find(class_="head-image")
                 model_img = model_img_html.find("img")["data-src"]
                 specs_html = model.find(
-                    class_="phone__section phone__section_widget_quickSpecs"
+                    class_="phone__section phone__section_widget_quickSpecs",
                 )
                 release_date = specs_html.find(class_="calendar")
                 release_date = release_date.find(class_="title").p.text
@@ -105,7 +104,7 @@ if __name__ == "__main__":
             json.dump(phone_urls, of)
 
         # Step 2: Iterate through all the links from the above execution and run the next command
-        with open("obj.absolute_path+'-Phoneurls.json", "r") as inp:
+        with open("obj.absolute_path+'-Phoneurls.json") as inp:
             temp = json.load(inp)
             phone_specs = obj.crawl_phones_models_specification(temp)
 

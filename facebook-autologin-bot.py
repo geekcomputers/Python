@@ -1,5 +1,6 @@
-import pyttsx3
 import time
+
+import pyttsx3
 from selenium import webdriver
 
 tts = pyttsx3.init()
@@ -34,7 +35,7 @@ while t == 1:
         speak(text)
         text = "I can autologin to your social sites like facebook twitter github and instagram"
         print(
-            "I can autologin to your social sites like facebook twitter github and instagram"
+            "I can autologin to your social sites like facebook twitter github and instagram",
         )
         speak(text)
         continue

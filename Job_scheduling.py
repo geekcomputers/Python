@@ -9,13 +9,13 @@ from typing import List
 
 
 class Scheduling:
-    def __init__(self, jobs: List[int]) -> None:
+    def __init__(self, jobs: list[int]) -> None:
         """
         Assign jobs as instance of class Scheduling
         """
         self.jobs = jobs
 
-    def schedule(self, total_jobs: int, deadline: List[int]) -> List[int]:
+    def schedule(self, total_jobs: int, deadline: list[int]) -> list[int]:
         """
         Parameteres  : total_jobs  and list of deadline of jobs
         Returns : List of jobs_id which are profitable  and can be done before
@@ -38,7 +38,7 @@ class Scheduling:
 
         return self.j
 
-    def feasible(self, profit_jobs: List[int], deadline: List[int]) -> bool:
+    def feasible(self, profit_jobs: list[int], deadline: list[int]) -> bool:
         """
         Parameters : list of current profitable jobs within deadline
                      list of deadline of jobs

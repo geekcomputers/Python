@@ -14,26 +14,29 @@
 #        * *
 #          *
 
+
 def main():
     lines = int(input("Enter no.of lines: "))
     pattern(lines)
 
+
 def pattern(lines):
     for i in range(lines):
-        for j in range(i+1):
+        for j in range(i + 1):
             print("* ", end="")
         print("")
     print(" ")
 
-    for i in range(0,lines):
-    
+    for i in range(0, lines):
+
         for j in range(0, (2 * (i - 1)) + 1):
             print(" ", end="")
-    
+
         for j in range(0, lines - i):
             print("*", end=" ")
-    
-        print("")    
+
+        print("")
+
 
 if __name__ == "__main__":
-    main()    
+    main()

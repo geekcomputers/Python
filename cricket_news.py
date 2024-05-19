@@ -1,6 +1,6 @@
-from bs4 import BeautifulSoup
-import requests
 import pyttsx3
+import requests
+from bs4 import BeautifulSoup
 
 engine = pyttsx3.init()
 voices = engine.getProperty("voices")

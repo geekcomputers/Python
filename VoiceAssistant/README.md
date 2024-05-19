@@ -14,8 +14,8 @@ This is Voice Assistant coded using Python which can do the following: -
     4. Read a MS Word(docx) document.
     5. Convert speech to text.
     6. Read a book(PDF).
-    
-    
+
+
 
 
 ## Author
@@ -51,24 +51,24 @@ In-case, if you don't find _1_VoiceAssistant in Voice Assistant folder, just ins
 
 ## Description of Commands
 1. text to speech - User needs to type the text and then it will be spoken by the VoiceAssistant.
-2. Search on Google - Voice Assistant will ask you "What do you want me to search on Google". 
-         
-         >Voice Assistant then starts recording your voice and will record anything that is spoken henceforth. 
+2. Search on Google - Voice Assistant will ask you "What do you want me to search on Google".
+
+         >Voice Assistant then starts recording your voice and will record anything that is spoken henceforth.
          >Then it will open the search results in default browser.
-3. Search on Wikipedia - Voice Assistant will ask you "What do you want me to search on Wikipwedia? please say the exactsentence or word to search.". 
-         
-         >Voice Assistant then starts recording your voice and will record anything that is spoken henceforth. 
+3. Search on Wikipedia - Voice Assistant will ask you "What do you want me to search on Wikipwedia? please say the exactsentence or word to search.".
+
+         >Voice Assistant then starts recording your voice and will record anything that is spoken henceforth.
          >Then it will speak out and print the summary of the search results.
          >It then asks, whether the respective search result should be opened in the default browser.
-        
+
 4. Read MS word document - Asks user to enter the location of file to be read and reads it.
-        
+
         NOTE :-
          1. A file location without an extension(i.e. '.docx') will give an error.
          2. A file inside a third party folder(Ex OneDrive) can't be accessed and will give an error.
 
 5. Convert speech to text - Prints out the speech spoken by user.
-        
+
         By default, it record the voice for 60 seconds but it can be changed.
 
 6. Read a book - Asks user to enter the location of file to be read and reads it.

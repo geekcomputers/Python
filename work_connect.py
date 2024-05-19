@@ -14,11 +14,12 @@ import sys  # Load the Library Module
 import time  # Load the Library Module
 
 dropbox = os.getenv(
-    "dropbox"
+    "dropbox",
 )  # Set the variable dropbox, by getting the values of the environment setting for dropbox
 rdpfile = "remote\\workpc.rdp"  # Set the variable logfile, using the arguments passed to create the logfile
 conffilename = os.path.join(
-    dropbox, rdpfile
+    dropbox,
+    rdpfile,
 )  # Set the variable conffilename by joining confdir and conffile together
 remote = (
     r"c:\windows\system32\mstsc.exe "  # Set the variable remote with the path to mstsc
@@ -46,20 +47,20 @@ else:
             (
                 r"c:\Program Files\Checkpoint\Endpoint Connect\trac.exe connect -u username -p "
                 + passwd
-            )
+            ),
         )
-        subprocess.Popen((r"c:\geektools\puttycm.exe"))
+        subprocess.Popen(r"c:\geektools\puttycm.exe")
         time.sleep(
-            15
+            15,
         )  # Sleep for 15 seconds, so the checkpoint software can connect before opening mstsc
         subprocess.Popen([remote, conffilename])
     elif (
         sys.argv[1].lower().startswith("-d")
     ):  # If the first argument is -d then disconnect my checkpoint session.
         subprocess.Popen(
-            (r"c:\Program Files\Checkpoint\Endpoint Connect\trac.exe disconnect ")
+            (r"c:\Program Files\Checkpoint\Endpoint Connect\trac.exe disconnect "),
         )
     else:
         print(
-            "Unknown option - " + text
+            "Unknown option - " + text,
         )  # If any other option is passed, then print Unknown option and the text from above - 1.2

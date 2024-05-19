@@ -12,7 +12,7 @@ class Dice:
         else:
             print(
                 "This absolutely shouldn't ever happen. The programmer sucks or someone "
-                "has tweaked with code they weren't supposed to touch!"
+                "has tweaked with code they weren't supposed to touch!",
             )
 
     def roll(self):
@@ -63,7 +63,9 @@ def getDices():
 
     sides = pickNumber(sides, "How many sides will the dices have?: ", sideLowerLimit)
     diceAmount = pickNumber(
-        diceAmount, "How many dices will do you want?: ", diceLowerLimit
+        diceAmount,
+        "How many dices will do you want?: ",
+        diceLowerLimit,
     )
 
     for i in range(0, diceAmount):

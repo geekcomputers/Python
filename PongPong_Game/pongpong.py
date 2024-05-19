@@ -19,17 +19,24 @@ paddleacc = (
 
 class PongPongWindow(pyglet.window.Window):
     def __init__(self, *args, **kwargs):
-        super(PongPongWindow, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
 
         self.win_size = (WIDTH, HEIGHT)
         self.paddle_pos = (WIDTH / 2 - PWIDTH / 2, 0)
         self.main_batch = pyglet.graphics.Batch()
         self.walls = load.load_rectangles(self.win_size, BORDER, batch=self.main_batch)
         self.balls = load.load_balls(
-            self.win_size, RADIUS, speed=ballspeed, batch=self.main_batch
+            self.win_size,
+            RADIUS,
+            speed=ballspeed,
+            batch=self.main_batch,
         )
         self.paddles = load.load_paddles(
-            self.paddle_pos, PWIDTH, PHEIGHT, acc=paddleacc, batch=self.main_batch
+            self.paddle_pos,
+            PWIDTH,
+            PHEIGHT,
+            acc=paddleacc,
+            batch=self.main_batch,
         )
 
     def on_draw(self):

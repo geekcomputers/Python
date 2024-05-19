@@ -1,20 +1,21 @@
 # ./PongPong/pong/paddle.py
 
+from typing import Tuple
+
 import pyglet
 from pyglet.window import key
-from typing import Tuple
 
 
 class Paddle(pyglet.shapes.Rectangle):
     def __init__(self, *args, **kwargs):
-        super(Paddle, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
 
         self.acc_left, self.acc_right = 0.0, 0.0
         self.rightx = 0
         self.key_handler = key.KeyStateHandler()
         self.event_handlers = [self, self.key_handler]
 
-    def update(self, win_size: Tuple, border: float, other_object, dt):
+    def update(self, win_size: tuple, border: float, other_object, dt):
 
         newlx = self.x + self.acc_left
         newrx = self.x + self.acc_right

@@ -4,7 +4,6 @@ from tkinter import *
 # On CMD, or Terminal.
 import hupper
 
-
 # Python program to create a simple GUI
 # calculator using Tkinter
 
@@ -382,7 +381,7 @@ class Metadata:
         print(f"Last Edit Author: {self.last_edit_author}")
         print(f"Last Edit Author Email: {self.last_edit_author_email}")
         print(
-            f"Last Edit Author GitHub Profile URL: {self.last_edit_author_gh_profile_url}"
+            f"Last Edit Author GitHub Profile URL: {self.last_edit_author_gh_profile_url}",
         )
         print(f"Last Edit Author GitHub Username: {self.last_edit_author_gh_username}")
 

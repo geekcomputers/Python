@@ -1,8 +1,8 @@
-import pyautogui  # pip install pyautogui
-from PIL import Image, ImageGrab  # pip install pillow
-
 # from numpy import asarray
 import time
+
+import pyautogui  # pip install pyautogui
+from PIL import Image, ImageGrab  # pip install pillow
 
 
 def hit(key):

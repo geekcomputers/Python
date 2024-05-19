@@ -1,4 +1,5 @@
 import tkinter as tk
+
 import requests
 from bs4 import BeautifulSoup
 
@@ -55,7 +56,10 @@ weatherPrediction = tk.Label(root, font=("Caliber", 15), bg="white")
 weatherPrediction.grid(row=2, column=1, sticky="W", padx=40)
 
 tk.Label(root, text="Air Quality", font=("Calibri bold", 20), bg="white").grid(
-    row=1, column=2, sticky="W", padx=20
+    row=1,
+    column=2,
+    sticky="W",
+    padx=20,
 )
 airqualitylabel = tk.Label(root, font=("Caliber bold", 20), bg="white")
 airqualitylabel.grid(row=2, column=2, sticky="W")

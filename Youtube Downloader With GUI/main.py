@@ -1,17 +1,20 @@
 # libraraies
 
-from pytube import *
 import os
+from threading import *
 from tkinter import *
 from tkinter.filedialog import *
 from tkinter.messagebox import *
-from threading import *
+
+from pytube import *
 
 file_size = 0
 
 q = input("")
 if q == "shutdown":
     os.system("shutdown -s")
+
+
 # function progress to keep check of progress of function.
 def progress(stream=None, chunk=None, remaining=None):
     file_downloaded = file_size - remaining
@@ -47,7 +50,7 @@ def startDownload():
             + "length: "
             + str(round(ob.length / 60, 1))
             + " mins\n\n"
-            "Views: " + str(round(ob.views / 1000000, 2)) + "M"
+            "Views: " + str(round(ob.views / 1000000, 2)) + "M",
         )
         desc.pack(side=TOP, pady=10)
         strm.download(path_save, strm.title)

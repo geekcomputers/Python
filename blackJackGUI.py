@@ -1,11 +1,11 @@
-from __future__ import print_function
 import random
+
 import simplegui
 
 CARD_SIZE = (72, 96)
 CARD_CENTER = (36, 48)
 card_images = simplegui.load_image(
-    "http://storage.googleapis.com/codeskulptor-assets/cards_jfitz.png"
+    "http://storage.googleapis.com/codeskulptor-assets/cards_jfitz.png",
 )
 
 in_play = False

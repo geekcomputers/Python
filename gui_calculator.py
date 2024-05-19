@@ -6,6 +6,7 @@ w.geometry("500x500")
 w.title("Calculatorax")
 w.configure(bg="#03befc")
 
+
 # Functions(Keypad)
 def calc1():
     b = txt1.get()
@@ -145,7 +146,11 @@ def divide():
 # Labels
 
 lbl1 = Label(
-    w, text="Calculatorax", font=("Times New Roman", 35), fg="#232226", bg="#fc9d03"
+    w,
+    text="Calculatorax",
+    font=("Times New Roman", 35),
+    fg="#232226",
+    bg="#fc9d03",
 )
 
 # Entryboxes
@@ -186,10 +191,18 @@ btn_clear = Button(
     bg="#e876e6",
 )
 btn_subtract = Button(
-    w, text="-", font=("Unispace", 26), command=subtract, bg="#3954ed"
+    w,
+    text="-",
+    font=("Unispace", 26),
+    command=subtract,
+    bg="#3954ed",
 )
 btn_multiplication = Button(
-    w, text="x", font=("Unispace", 26), command=multiply, bg="#3954ed"
+    w,
+    text="x",
+    font=("Unispace", 26),
+    command=multiply,
+    bg="#3954ed",
 )
 btn_division = Button(w, text="÷", font=("Unispace", 26), command=divide, bg="#3954ed")
 

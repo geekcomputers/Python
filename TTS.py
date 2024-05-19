@@ -1,5 +1,5 @@
-from tkinter import *
 from platform import system
+from tkinter import *
 
 if system() == "Windows" or "nt":
     import win32com.client as wincl

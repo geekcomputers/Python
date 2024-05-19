@@ -1,6 +1,7 @@
 #      uno game      #
 
 import random
+
 """
 Generate the UNO deck of 108 cards.
 Parameters: None
@@ -16,7 +17,7 @@ def buildDeck():
     wilds = ["Wild", "Wild Draw Four"]
     for colour in colours:
         for value in values:
-            cardVal = "{} {}".format(colour, value)
+            cardVal = f"{colour} {value}"
             deck.append(cardVal)
             if value != 0:
                 deck.append(cardVal)
@@ -62,12 +63,12 @@ Return: None
 
 
 def showHand(player, playerHand):
-    print("Player {}'s Turn".format(players_name[player]))
+    print(f"Player {players_name[player]}'s Turn")
     print("Your Hand")
     print("------------------")
     y = 1
     for card in playerHand:
-        print("{}) {}".format(y, card))
+        print(f"{y}) {card}")
         y += 1
     print("")
 
@@ -99,9 +100,10 @@ colours = ["Red", "Green", "Yellow", "Blue"]
 numPlayers = int(input("How many players?"))
 while numPlayers < 2 or numPlayers > 4:
     numPlayers = int(
-        input("Invalid. Please enter a number between 2-4.\nHow many players?"))
+        input("Invalid. Please enter a number between 2-4.\nHow many players?"),
+    )
 for player in range(numPlayers):
-    players_name.append(input("Enter player {} name: ".format(player+1)))
+    players_name.append(input(f"Enter player {player + 1} name: "))
     players.append(drawCards(5))
 
 
@@ -118,14 +120,17 @@ else:
 
 while playing:
     showHand(playerTurn, players[playerTurn])
-    print("Card on top of discard pile: {}".format(discards[-1]))
+    print(f"Card on top of discard pile: {discards[-1]}")
     if canPlay(currentColour, cardVal, players[playerTurn]):
         cardChosen = int(input("Which card do you want to play?"))
-        while not canPlay(currentColour, cardVal, [players[playerTurn][cardChosen-1]]):
+        while not canPlay(
+            currentColour, cardVal, [players[playerTurn][cardChosen - 1]]
+        ):
             cardChosen = int(
-                input("Not a valid card. Which card do you want to play?"))
-        print("You played {}".format(players[playerTurn][cardChosen-1]))
-        discards.append(players[playerTurn].pop(cardChosen-1))
+                input("Not a valid card. Which card do you want to play?"),
+            )
+        print(f"You played {players[playerTurn][cardChosen - 1]}")
+        discards.append(players[playerTurn].pop(cardChosen - 1))
 
         # cheak if player won
         if len(players[playerTurn]) == 0:
@@ -142,13 +147,15 @@ while playing:
                 cardVal = splitCard[1]
             if currentColour == "Wild":
                 for x in range(len(colours)):
-                    print("{}) {}".format(x+1, colours[x]))
+                    print(f"{x + 1}) {colours[x]}")
                 newColour = int(
-                    input("What colour would you like to choose? "))
+                    input("What colour would you like to choose? "),
+                )
                 while newColour < 1 or newColour > 4:
                     newColour = int(
-                        input("Invalid option. What colour would you like to choose"))
-                currentColour = colours[newColour-1]
+                        input("Invalid option. What colour would you like to choose"),
+                    )
+                currentColour = colours[newColour - 1]
             if cardVal == "Reverse":
                 playDirection = playDirection * -1
             elif cardVal == "Skip":
@@ -156,20 +163,20 @@ while playing:
                 if playerTurn >= numPlayers:
                     playerTurn = 0
                 elif playerTurn < 0:
-                    playerTurn = numPlayers-1
+                    playerTurn = numPlayers - 1
             elif cardVal == "Draw Two":
-                playerDraw = playerTurn+playDirection
+                playerDraw = playerTurn + playDirection
                 if playerDraw == numPlayers:
                     playerDraw = 0
                 elif playerDraw < 0:
-                    playerDraw = numPlayers-1
+                    playerDraw = numPlayers - 1
                 players[playerDraw].extend(drawCards(2))
             elif cardVal == "Draw Four":
-                playerDraw = playerTurn+playDirection
+                playerDraw = playerTurn + playDirection
                 if playerDraw == numPlayers:
                     playerDraw = 0
                 elif playerDraw < 0:
-                    playerDraw = numPlayers-1
+                    playerDraw = numPlayers - 1
                 players[playerDraw].extend(drawCards(4))
             print("")
     else:
@@ -180,7 +187,7 @@ while playing:
     if playerTurn >= numPlayers:
         playerTurn = 0
     elif playerTurn < 0:
-        playerTurn = numPlayers-1
+        playerTurn = numPlayers - 1
 
 print("Game Over")
-print("{} is the Winner!".format(winner))
+print(f"{winner} is the Winner!")

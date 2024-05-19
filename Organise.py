@@ -1,5 +1,3 @@
-from __future__ import print_function
-
 import os
 import shutil
 import sys
@@ -52,7 +50,7 @@ except IndexError:
 def ChangeDirectory(dir):
     try:
         os.chdir(dir)
-    except WindowsError:
+    except OSError:
         print("Error! Cannot change the Directory")
         print("Enter a valid directory!")
         ChangeDirectory(str(input("Enter the Path of directory: ")))
@@ -64,15 +62,15 @@ ChangeDirectory(destLocation)
 def Organize(dirs, name):
     try:
         os.mkdir(name)
-        print("{} Folder Created".format(name))
-    except WindowsError:
-        print("{} Folder Exist".format(name))
+        print(f"{name} Folder Created")
+    except OSError:
+        print(f"{name} Folder Exist")
 
-    src = "{}\\{}".format(destLocation, dirs)
-    dest = "{}\{}".format(destLocation, name)
+    src = f"{destLocation}\\{dirs}"
+    dest = f"{destLocation}\{name}"
 
     os.chdir(dest)
-    shutil.move(src, "{}\\{}".format(dest, dirs))
+    shutil.move(src, f"{dest}\\{dirs}")
 
     print(os.getcwd())
     os.chdir(destLocation)

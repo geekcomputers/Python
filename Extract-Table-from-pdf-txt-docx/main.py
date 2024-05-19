@@ -1,6 +1,7 @@
 # %%
-import pandas as pd
 import os
+
+import pandas as pd
 import tabula
 from docx.api import Document
 

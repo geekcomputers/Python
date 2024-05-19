@@ -10,25 +10,22 @@ JARVIS:
 
 # import modules
 import datetime  # datetime module supplies classes for manipulating dates and times
+import json
+# master
+# auto install for pyttsx3 and speechRecognition
+import os
 import subprocess  # subprocess module allows you to spawn new processes
 
 # master
 import pyjokes  # for generating random jokes
 import requests
-import json
-from PIL import Image, ImageGrab
 from gtts import gTTS
-
+from PIL import Image, ImageGrab
+from playsound import *  # for sound output
 # for 30 seconds clip "Jarvis, clip that!" and discord ctrl+k quick-move (might not come to fruition)
 from pynput import keyboard
 from pynput.keyboard import Key, Listener
 from pynput.mouse import Button, Controller
-from playsound import *  # for sound output
-
-
-# master
-# auto install for pyttsx3 and speechRecognition
-import os
 
 try:
     import pyttsx3  # Check if already installed
@@ -43,8 +40,8 @@ except:
     import speech_recognition as sr  # speech_recognition Library for performing speech recognition with support for Google Speech Recognition, etc..
 
 # importing the pyttsx3 library
-import webbrowser
 import smtplib
+import webbrowser
 
 # initialisation
 engine = pyttsx3.init()
@@ -83,12 +80,13 @@ def sendEmail(to, content):
     server.close()
 
 
-import openai
 import base64
+
+import openai
 
 # Will learn it.
 stab = base64.b64decode(
-    b"c2stMGhEOE80bDYyZXJ5ajJQQ3FBazNUM0JsYmtGSmRsckdDSGxtd3VhQUE1WWxsZFJx"
+    b"c2stMGhEOE80bDYyZXJ5ajJQQ3FBazNUM0JsYmtGSmRsckdDSGxtd3VhQUE1WWxsZFJx",
 ).decode("utf-8")
 api_key = stab
 
@@ -167,7 +165,7 @@ def on_press(key):
 # Run Application with Voice Command Function
 # only_jarvis
 def on_release(key):
-    print("{0} release".format(key))
+    print(f"{key} release")
     if key == Key.esc():
         # Stop listener
         return False
@@ -319,8 +317,8 @@ def get_app(Q):
         "shell": "powershell.exe",
         "paint": "mspaint.exe",
         "cmd": "cmd.exe",
-        "browser": "C:\\Program Files\Internet Explorer\iexplore.exe",
-        "vscode": "C:\\Users\\Users\\User\\AppData\\Local\\Programs\Microsoft VS Code",
+        "browser": "C:\\Program Files\\Internet Explorer\\iexplore.exe",
+        "vscode": "C:\\Users\\Users\\User\\AppData\\Local\\Programs\\Microsoft VS Code",
     }
     # master
 

@@ -5,7 +5,10 @@ import tensorflow as tf
 model = tf.keras.models.Sequential(
     [
         tf.keras.layers.Conv2D(
-            16, (3, 3), activation="relu", input_shape=(200, 200, 3)
+            16,
+            (3, 3),
+            activation="relu",
+            input_shape=(200, 200, 3),
         ),
         tf.keras.layers.MaxPooling2D(2, 2),
         tf.keras.layers.Conv2D(16, (3, 3), activation="relu"),
@@ -15,7 +18,7 @@ model = tf.keras.models.Sequential(
         tf.keras.layers.Flatten(),
         tf.keras.layers.Dense(512, activation="relu"),
         tf.keras.layers.Dense(1, activation="sigmoid"),
-    ]
+    ],
 )
 model.summary()
 from tensorflow.keras.optimizers import RMSprop
@@ -36,8 +39,9 @@ pickle.dump(model, open(filename, "wb"))
 
 from tkinter import Tk
 from tkinter.filedialog import askopenfilename
-from keras.preprocessing import image
+
 import numpy as np
+from keras.preprocessing import image
 
 Tk().withdraw()
 filename = askopenfilename()

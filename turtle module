@@ -18,7 +18,7 @@ sponge.backward(30)
 ```
 #import turtle defines the module turtle which will allow you to create a Turtle object and draw with it.
 #turtle.Turtle; here "turtle" tells Python that we are referring to the turtle module, which is where the object "Turtle" is found
-``` 
+```
 
 **Creating a Rectangle**
 
@@ -30,8 +30,8 @@ scrn = turtle.Screen()          #creates a graphics window
 ciri = turtle.Turtle()          #means the Turtle type that is defined within the turtle module
                                 #ciri is an instance of Turtle class
 ciri.forward(180)               #object.method(parameter)
-ciri.left(90)             
-ciri.forward(75)         
+ciri.left(90)
+ciri.forward(75)
 ciri.left(90)
 ciri.forward(180)
 ciri.left(90)
@@ -40,8 +40,8 @@ ciri.forward(75)
 **Creating  a triangle**
 
 ```
-import turtle                  
-scrn = turtle.Screen()         
+import turtle
+scrn = turtle.Screen()
 mini = turtle.Turtle()
 mini.forward(180)
 mini.left(150)
@@ -52,12 +52,12 @@ mini.forward(100)
 **Creating rectangle and triangle together**
 
 ```
-import turtle                  
-scrn = turtle.Screen()         
-ciri = turtle.Turtle()         
+import turtle
+scrn = turtle.Screen()
+ciri = turtle.Turtle()
 ciri.forward(180)           #object.method(parameter)
-ciri.left(90)             
-ciri.forward(75)         
+ciri.left(90)
+ciri.forward(75)
 ciri.left(90)
 ciri.forward(180)
 ciri.left(90)
@@ -74,7 +74,7 @@ mini.forward(100)
 **Using properties**
 
 ```
-import turtle 
+import turtle
 scrn = turtle.Screen()
 scrn.bgcolor("lavender")
 #the object scrn has color property(which we write as bgcolor)
@@ -98,7 +98,7 @@ arina.forward(90)
 **Mutliple objects with properties**
 
 ```
-import turtle 
+import turtle
 scrn = turtle.Screen()
 scrn.bgcolor("lavender")
 #the object scrn has color property(which we write as bgcolor)
@@ -121,8 +121,8 @@ arina.forward(90)
 ciri = turtle.Turtle()
 ciri.color("yellow")
 ciri.forward(180)           #object.method(parameter)
-ciri.left(90)             
-ciri.forward(75)         
+ciri.left(90)
+ciri.forward(75)
 ciri.left(90)
 ciri.forward(180)
 ciri.left(90)
@@ -150,7 +150,7 @@ zina.left(180)                   #notice this
 zina.forward(150)
 
 scrn.exitonclick()                # wait for a user click on the canvas
-#we invoke its exitonclick method of scrn object, the program pauses execution 
+#we invoke its exitonclick method of scrn object, the program pauses execution
 #and waits for the user to click the mouse somewhere in the window
 
 ```

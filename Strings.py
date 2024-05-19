@@ -16,8 +16,8 @@ print(String1)
 
 # Creating String with triple
 # Quotes allows multiple lines
-String1 = """Smile 
-            For 
+String1 = """Smile
+            For
             Life"""
 print("\nCreating a multiline String: ")
 print(String1)

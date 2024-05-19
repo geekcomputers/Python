@@ -1,5 +1,4 @@
 #!/usr/bin/python
-# coding: utf-8
 
 import math
 import os
@@ -30,7 +29,7 @@ def pi(n):
     sums = []
     for pid in pids:
         os.waitpid(pid, 0)  # 等待子进程结束
-        with open("%d" % pid, "r") as f:
+        with open("%d" % pid) as f:
             sums.append(float(f.read()))
         os.remove("%d" % pid)  # 删除通信的文件
     return math.sqrt(sum(sums) * 8)

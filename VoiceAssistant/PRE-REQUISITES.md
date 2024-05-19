@@ -7,7 +7,7 @@ Following are the pre-requisites to be installed in the system to use Voice Assi
 
 1. Following libraries and packages are to be installed. The syntax for library [installation of a library and a package](https://packaging.python.org/en/latest/tutorials/installing-packages/) is: -
    1. pip install (library/package\_name)       or
-   1. pip3 install (library/package\_name)   
+   1. pip3 install (library/package\_name)
 
 ## *Enter the following commands to install them*: -
 

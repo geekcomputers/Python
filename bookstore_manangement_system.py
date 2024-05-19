@@ -1,10 +1,12 @@
 import os
 
-
 import mysql.connector as mys
 
 mycon = mys.connect(
-    host="localhost", user="root", passwd="Yksrocks", database="book_store_management"
+    host="localhost",
+    user="root",
+    passwd="Yksrocks",
+    database="book_store_management",
 )
 
 
@@ -216,7 +218,7 @@ for m in data2222:
                             separator()
 
                             print(
-                                " Password Is  Greater  than  20  Characters  Enter Again"
+                                " Password Is  Greater  than  20  Characters  Enter Again",
                             )
 
                             separator()
@@ -379,7 +381,7 @@ while a == True:
                                 separator()
 
                                 rep = input(
-                                    "Do  You  Want  To  Restart  ??    yes / no  --  "
+                                    "Do  You  Want  To  Restart  ??    yes / no  --  ",
                                 ).lower()
 
                                 if rep == "yes":
@@ -429,7 +431,7 @@ while a == True:
                                     separator()
 
                                     choice44 = input(
-                                        "DO YOU WANT TO BUY BOOK ?     Y/N -- "
+                                        "DO YOU WANT TO BUY BOOK ?     Y/N -- ",
                                     )
 
                                     separator()
@@ -464,7 +466,7 @@ while a == True:
                                                 if y[6] <= 8:
 
                                                     print(
-                                                        "WARNING!!!!!!!!!!!!!!!!!!!!!!!"
+                                                        "WARNING!!!!!!!!!!!!!!!!!!!!!!!",
                                                     )
                                                     print(
                                                         "NO.  OF THIS BOOK IS LOW",
@@ -480,7 +482,7 @@ while a == True:
                                         separator()
 
                                         rep = input(
-                                            "Do  You  Want  To  Restart  ??    yes / no  --  "
+                                            "Do  You  Want  To  Restart  ??    yes / no  --  ",
                                         ).lower()
 
                                         if rep == "yes":
@@ -504,7 +506,7 @@ while a == True:
                                     elif choice44 == "n" or choice44 == "N":
 
                                         print(
-                                            "SORRY  FOR  INCONVENIENCE  WE  WILL  TRY  TO  FULLFILL  YOUR  REQUIREMENT  AS  SOON  AS  POSSIBLE"
+                                            "SORRY  FOR  INCONVENIENCE  WE  WILL  TRY  TO  FULLFILL  YOUR  REQUIREMENT  AS  SOON  AS  POSSIBLE",
                                         )
 
                                         end_separator()
@@ -512,7 +514,7 @@ while a == True:
                                         separator()
 
                                         rep = input(
-                                            "Do  You  Want  To  Restart  ??    yes / no  --  "
+                                            "Do  You  Want  To  Restart  ??    yes / no  --  ",
                                         ).lower()
 
                                         if rep == "yes":
@@ -534,7 +536,7 @@ while a == True:
                                 elif y[6] == 0:
 
                                     print(
-                                        "SORRY  NO  BOOK  LEFT  WE  WILL  TRY  TO  FULLFILL  YOUR  REQUIREMENT  AS  SOON  AS  POSSIBLE"
+                                        "SORRY  NO  BOOK  LEFT  WE  WILL  TRY  TO  FULLFILL  YOUR  REQUIREMENT  AS  SOON  AS  POSSIBLE",
                                     )
 
                                     end_separator()
@@ -542,7 +544,7 @@ while a == True:
                                     separator()
 
                                     rep = input(
-                                        "Do  You  Want  To  Restart  ??    yes / no  --  "
+                                        "Do  You  Want  To  Restart  ??    yes / no  --  ",
                                     ).lower()
 
                                     if rep == "yes":
@@ -589,7 +591,7 @@ while a == True:
                                         separator()
 
                                         rep = input(
-                                            "Do  You  Want  To  Restart  ??    yes / no  --  "
+                                            "Do  You  Want  To  Restart  ??    yes / no  --  ",
                                         ).lower()
 
                                         if rep == "yes":

@@ -18,7 +18,7 @@
 """
 
 
-class XORCipher(object):
+class XORCipher:
     def __init__(self, key=0):
         """
         simple constructor that receives a key or uses
@@ -141,7 +141,7 @@ class XORCipher(object):
         assert isinstance(file, str) and isinstance(key, int)
 
         try:
-            with open(file, "r") as fin:
+            with open(file) as fin:
                 with open("encrypt.out", "w+") as fout:
                     # actual encrypt-process
                     for line in fin:
@@ -165,7 +165,7 @@ class XORCipher(object):
         assert isinstance(file, str) and isinstance(key, int)
 
         try:
-            with open(file, "r") as fin:
+            with open(file) as fin:
                 with open("decrypt.out", "w+") as fout:
                     # actual encrypt-process
                     for line in fin:

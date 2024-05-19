@@ -1,5 +1,3 @@
-from __future__ import print_function
-
 import os
 import urllib.request
 
@@ -9,7 +7,8 @@ print("Testing Internet Connection")
 print()
 try:
     urllib.request.urlopen(
-        "http://google.com", timeout=2
+        "http://google.com",
+        timeout=2,
     )  # Tests if connection is up and running
     print("Internet is working fine!")
     print()

@@ -19,12 +19,16 @@ class MyApplication:
 
         # Add a button for interaction
         concat_button = ttk.Button(
-            frame, text="Click Me!", command=self.on_button_click
+            frame,
+            text="Click Me!",
+            command=self.on_button_click,
         )
         concat_button.grid(row=1, column=0, pady=10)
 
         remove_button = ttk.Button(
-            frame, text="Remove '!'", command=self.on_remove_click
+            frame,
+            text="Remove '!'",
+            command=self.on_remove_click,
         )
         remove_button.grid(row=2, column=0, pady=10)
 

@@ -1,7 +1,7 @@
 """
-  hey everyone it is a basic game code using random . in this game computer will randomly chose an number from 1 to 100 and players will have 
-  to guess that which number it is and game will tell him on every guss whether his/her guess is smaller or bigger than the chosen number. it is 
-  a multi player game so it can be played with many players there is no such limitations of user till the size of list. if any one wants to modify 
+  hey everyone it is a basic game code using random . in this game computer will randomly chose an number from 1 to 100 and players will have
+  to guess that which number it is and game will tell him on every guss whether his/her guess is smaller or bigger than the chosen number. it is
+  a multi player game so it can be played with many players there is no such limitations of user till the size of list. if any one wants to modify
   this game he/she is most welcomed.
     Thank you
 """
@@ -15,7 +15,7 @@ score = []
 print(
     "\n\tRandom Number Game\n\nHello Everyone ! it is just a game of chance in which you have to guess a number"
     " from 0 to 100 and computer will tell whether your guess is smaller or bigger than the acctual number chossen by the computer . "
-    "the person with less attempts in guessing the number will be winner ."
+    "the person with less attempts in guessing the number will be winner .",
 )
 x = input()
 os.system("cls")

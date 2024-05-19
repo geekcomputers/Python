@@ -28,7 +28,7 @@ find_phone = re.compile(
 # email regex source : http://www.regexlib.com/REDetails.aspx?regexp_id=26
 find_email = re.compile(
     r"""(
-							([a-zA-Z0-9_\-\.]+)	
+							([a-zA-Z0-9_\-\.]+)
 							@
 							((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)
 							|

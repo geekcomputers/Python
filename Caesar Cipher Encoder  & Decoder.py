@@ -6,6 +6,7 @@
 
 # Improved by: OfficialAhmed (https://github.com/OfficialAhmed)
 
+
 def get_int() -> int:
     """
     Get integer, otherwise redo
@@ -18,6 +19,7 @@ def get_int() -> int:
         key = get_int()
 
     return key
+
 
 def main():
 
@@ -42,9 +44,9 @@ def encode():
     encoded_cipher = ""
     text = input("Enter text to encode: ")
     key = get_int()
-        
+
     for char in text:
-        
+
         ascii = ord(char) + key
         encoded_cipher += chr(ascii)
 
@@ -64,5 +66,5 @@ def decode():
     print(decoded_cipher)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

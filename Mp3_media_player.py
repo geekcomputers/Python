@@ -1,10 +1,11 @@
 # its very amazing
 import os
+from tkinter import *
 from tkinter.filedialog import askdirectory
 
-import pygame
 from mutagen.id3 import ID3
-from tkinter import *
+
+import pygame
 
 root = Tk()
 root.minsize(300, 300)

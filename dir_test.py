@@ -6,7 +6,6 @@
 # Modifications		:
 
 # Description			: Tests to see if the directory testdir exists, if not it will create the directory for you if you want it created.
-from __future__ import print_function
 
 import os
 

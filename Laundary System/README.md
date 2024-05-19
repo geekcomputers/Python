@@ -13,7 +13,7 @@ The LaundryService class is designed to manage customer details and calculate ch
      - `cloth_type`: String, type of cloth deposited (Cotton, Silk, Woolen, or Polyester).
      - `branded`: Boolean (0 or 1), indicating whether the cloth is branded.
      - `season`: String, season when the cloth is deposited (Summer or Winter).
-     
+
 2. `customerDetails()`: Prints out the details of the customer, including name, contact number, email, cloth type, and whether the cloth is branded.
 
 3. `calculateCharge()`: Calculates the charge based on the type of cloth, branding, and season.
@@ -56,7 +56,7 @@ The LaundryService class is designed to manage customer details and calculate ch
      - `cloth_type`: String, type of cloth deposited (Cotton, Silk, Woolen, or Polyester).
      - `branded`: Boolean (0 or 1), indicating whether the cloth is branded.
      - `season`: String, season when the cloth is deposited (Summer or Winter).
-     
+
 2. `customerDetails()`: Prints out the details of the customer, including name, contact number, email, cloth type, and whether the cloth is branded.
 
 3. `calculateCharge()`: Calculates the charge based on the type of cloth, branding, and season.
@@ -87,5 +87,3 @@ Use the finalDetails() method to print the customer details along with the calcu
 
 Contributors
 (Rohit Raj)[https://github.com/MrCodYrohit]
-
-

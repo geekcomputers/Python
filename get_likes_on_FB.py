@@ -1,5 +1,3 @@
-from __future__ import print_function
-
 import json
 import sys
 import urllib
@@ -48,5 +46,5 @@ print(
     + "\t"
     + str(num_share)
     + "\t"
-    + str(num_like)
+    + str(num_like),
 )

@@ -7,11 +7,11 @@
 # def checkBinod(file):
 # =======
 
+import os
 # def checkBinod(file):       #this function will check there is any 'Binod' text in file or not
 #     with open(file, "r") as f: #we are opening file in read mode and using 'with' so need to take care of close()
 # =======
 import time
-import os
 
 # Importing our Bindoer
 print("To Kaise Hai Ap Log!")
@@ -21,7 +21,7 @@ print("Chaliye Binod Karte Hai!")
 
 def checkBinod(file):  # Trying to find Binod In File Insted Of Manohar Ka Kotha
     # master
-    with open(file, "r") as f:
+    with open(file) as f:
         # master
         fileContent = f.read()
     if "binod" in fileContent.lower():

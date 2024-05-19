@@ -1,5 +1,7 @@
 from tkinter import *
+
 from translate import Translator
+
 
 # Translator function
 def translate():
@@ -47,7 +49,10 @@ textbox = Entry(mainframe, textvariable=var1).grid(row=3, column=3, padx=10, pad
 
 # creating a button to call Translator function
 b = Button(
-    mainframe, text="Translate", command=translate, activebackground="green"
+    mainframe,
+    text="Translate",
+    command=translate,
+    activebackground="green",
 ).grid(row=4, column=1, columnspan=3)
 
 root.mainloop()

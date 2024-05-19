@@ -1,5 +1,3 @@
-from __future__ import print_function
-
 import re
 
 import mechanize
@@ -10,17 +8,17 @@ br.addheaders = [
     (
         "User-Agent",
         "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/37.0.2062.120 Safari/537.36",
-    )
+    ),
 ]
 br.set_handle_robots(False)
 # For page exploration
 page = input("Enter Page No:")
 # print type(page)
 p = urllib2.Request(
-    "https://www.google.co.in/search?q=gate+psu+2017+ext:pdf&start=" + page
+    "https://www.google.co.in/search?q=gate+psu+2017+ext:pdf&start=" + page,
 )
 ht = br.open(p)
-text = '<cite\sclass="_Rm">(.+?)</cite>'
+text = r'<cite\sclass="_Rm">(.+?)</cite>'
 patt = re.compile(text)
 h = ht.read()
 urls = re.findall(patt, h)
@@ -48,5 +46,5 @@ for url in urls:
     except urllib2.URLError as e:
         print(
             "Sorry there exists a problem with this URL Please Download this Manually "
-            + str(url)
+            + str(url),
         )

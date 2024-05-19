@@ -2,7 +2,7 @@
 Written by  : Shreyas Daniel - github.com/shreydan
 Description : Uses Pythons eval() function
               as a way to implement calculator.
-             
+
 Functions available are:
 --------------------------------------------
                          + : addition
@@ -11,7 +11,7 @@ Functions available are:
                          / : division
                          % : percentage
                          e : 2.718281...
-                        pi : 3.141592... 
+                        pi : 3.141592...
                       sine : sin(rad)
                     cosine : cos(rad)
                    exponent: x^y
@@ -25,9 +25,10 @@ absolute value             : aval(n)
 
 import sys
 
+from fileinfo import raw_input
+
 ## Imported math library to run sin(), cos(), tan() and other such functions in the calculator
 
-from fileinfo import raw_input
 
 
 def calc(term):
@@ -111,7 +112,7 @@ def main():
 
     print(
         "\nScientific Calculator\n\nFor Example: sin(rad(90)) + 50% * (sqrt(16)) + round(1.42^2)"
-        + "- 12mod3\n\nEnter quit to exit"
+        + "- 12mod3\n\nEnter quit to exit",
     )
 
     if sys.version_info.major >= 3:

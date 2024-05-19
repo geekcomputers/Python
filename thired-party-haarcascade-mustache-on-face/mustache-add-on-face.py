@@ -1,5 +1,4 @@
 import cv2
-
 from utils import image_resize
 
 cap = cv2.VideoCapture(0)
@@ -18,12 +17,12 @@ while True:
 
     frame = cv2.cvtColor(frame, cv2.COLOR_BGR2BGRA)
 
-    for (x, y, w, h) in faces:
+    for x, y, w, h in faces:
         roi_gray = gray[y : y + h, x : x + h]  # rec
         roi_color = frame[y : y + h, x : x + h]
 
         nose = nose_cascade.detectMultiScale(roi_gray, scaleFactor=1.5, minNeighbors=5)
-        for (nx, ny, nw, nh) in nose:
+        for nx, ny, nw, nh in nose:
 
             roi_nose = roi_gray[ny : ny + nh, nx : nx + nw]
             mustache2 = image_resize(mustache.copy(), width=nw)

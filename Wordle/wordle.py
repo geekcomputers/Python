@@ -26,9 +26,11 @@ new_dictionary.close()
 import random
 
 # Load 5 letter word dictionary
-with open("5 letter word dictionary.txt", 'r') as dictionary:
+with open("5 letter word dictionary.txt") as dictionary:
     # Read content of dictionary
-    dictionary = dictionary.read().split('\n') # This returns a list of all the words in the dictionary
+    dictionary = dictionary.read().split(
+        "\n"
+    )  # This returns a list of all the words in the dictionary
 
 # Choose a random word from the dictionary
 word = random.choice(dictionary)
@@ -95,7 +97,6 @@ while True:
             letter += 1
             continue
 
-
         answer_given = False
         do_not_add = False
         # Check if letter is in word
@@ -105,7 +106,10 @@ while True:
             if user_inp[letter] == i:
                 return_answer += "G"
             else:
-                if not user_inp[word.index(user_inp[letter])] == word[word.index(user_inp[letter])]:
+                if (
+                    not user_inp[word.index(user_inp[letter])]
+                    == word[word.index(user_inp[letter])]
+                ):
                     return_answer += "Y"
                 else:
                     answer_given = False
@@ -117,7 +121,7 @@ while True:
 
         # Append checked letter to the list letters_checked
         if not do_not_add:
-           letters_checked.append(user_inp[letter])
+            letters_checked.append(user_inp[letter])
 
         letter += 1
 

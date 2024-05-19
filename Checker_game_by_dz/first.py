@@ -3,18 +3,20 @@ Author : Dhruv B Kakadiya
 
 """
 
+from modules import statics as st
+from modules.checker import *
+from modules.checker_board import *
+from modules.statics import *
+
 # import libraries
 import pygame as pg
-from modules import statics as st
-from modules.statics import *
-from modules.checker_board import *
-from modules.checker import *
 
 # static variables for this perticular file
 fps = 60
 
 WIN = pg.display.set_mode((st.width, st.height))
 pg.display.set_caption("Checkers")
+
 
 # get row and col for mouse
 def get_row_col_mouse(pos):

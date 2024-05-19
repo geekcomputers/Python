@@ -3,10 +3,10 @@
 # Body of the mail is in body.txt
 
 # open names.txt for reading
-with open("names.txt", 'r', encoding='utf-8') as names_file:
+with open("names.txt", encoding="utf-8") as names_file:
 
     # open body.txt for reading
-    with open("body.txt", 'r', encoding='utf-8') as body_file:
+    with open("body.txt", encoding="utf-8") as body_file:
 
         # read entire content of the body
         body = body_file.read()
@@ -16,6 +16,5 @@ with open("names.txt", 'r', encoding='utf-8') as names_file:
             mail = "Hello " + name.strip() + "\n" + body
 
             # write the mails to individual files
-            with open(name.strip()+".txt", 'w', encoding='utf-8') as mail_file:
+            with open(name.strip() + ".txt", "w", encoding="utf-8") as mail_file:
                 mail_file.write(mail)
-

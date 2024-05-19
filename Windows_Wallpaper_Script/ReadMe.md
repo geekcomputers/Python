@@ -3,7 +3,7 @@ Ever seen those amazing windows wallpapers on your windows lock screen? This Pyt
 The wallpapers keep changing with time when connected to the internet so you can run the script after you notice new wallpapers on your lockscreen in order to obtain them.
 
 ***Optional:*** You can also use the windows task scheduler and schedule
-the script to run in a set time interval and also set the desktop wallpaper folder as default wallpaper folder. For more Info on task scheduling in Windows 10, 
+the script to run in a set time interval and also set the desktop wallpaper folder as default wallpaper folder. For more Info on task scheduling in Windows 10,
 Look Here: [Task Scheduling in windows](https://www.digitalcitizen.life/how-create-task-basic-task-wizard)
 
 # Requirements

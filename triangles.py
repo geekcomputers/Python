@@ -8,7 +8,7 @@ print(
     + "(c)"
     + " " * (max_size)
     + "(d)"
-    + " " * (max_size)
+    + " " * (max_size),
 )
 
 for i in range(1, max_size + 1):

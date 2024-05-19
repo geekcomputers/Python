@@ -1,6 +1,3 @@
-# -*- coding: utf-8 -*-
-
-
 def SOUNDEX(TERM: str):
 
     # Step 0: Covert the TERM to UpperCase

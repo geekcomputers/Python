@@ -28,7 +28,7 @@ class DetermineSign:
                 return w2n.word_to_num(input_value)
             except ValueError:
                 raise ValueError(
-                    "Invalid input. Please enter a number or a word representing a number."
+                    "Invalid input. Please enter a number or a word representing a number.",
                 )
 
     # Now use this in other methods.

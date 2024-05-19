@@ -11,7 +11,7 @@ Received: from holes.mr.itd.umich.edu (holes.mr.itd.umich.edu [141.211.14.79])
 	by flawless.mail.umich.edu () with ESMTP id m05EEFR1013674;
 	Sat, 5 Jan 2008 09:14:15 -0500
 Received: FROM paploo.uhi.ac.uk (app1.prod.collab.uhi.ac.uk [194.35.219.184])
-	BY holes.mr.itd.umich.edu ID 477F90B0.2DB2F.12494 ; 
+	BY holes.mr.itd.umich.edu ID 477F90B0.2DB2F.12494 ;
 	 5 Jan 2008 09:14:10 -0500
 Received: from paploo.uhi.ac.uk (localhost [127.0.0.1])
 	by paploo.uhi.ac.uk (Postfix) with ESMTP id 5F919BC2F2;
@@ -76,7 +76,7 @@ Received: from icestorm.mr.itd.umich.edu (icestorm.mr.itd.umich.edu [141.211.93.
 	by sleepers.mail.umich.edu () with ESMTP id m04NAbGa029441;
 	Fri, 4 Jan 2008 18:10:37 -0500
 Received: FROM paploo.uhi.ac.uk (app1.prod.collab.uhi.ac.uk [194.35.219.184])
-	BY icestorm.mr.itd.umich.edu ID 477EBCE3.161BB.4320 ; 
+	BY icestorm.mr.itd.umich.edu ID 477EBCE3.161BB.4320 ;
 	 4 Jan 2008 18:10:31 -0500
 Received: from paploo.uhi.ac.uk (localhost [127.0.0.1])
 	by paploo.uhi.ac.uk (Postfix) with ESMTP id 07969BB706;
@@ -141,7 +141,7 @@ Received: from ghostbusters.mr.itd.umich.edu (ghostbusters.mr.itd.umich.edu [141
 	by panther.mail.umich.edu () with ESMTP id m04LAcZw014275;
 	Fri, 4 Jan 2008 16:10:38 -0500
 Received: FROM paploo.uhi.ac.uk (app1.prod.collab.uhi.ac.uk [194.35.219.184])
-	BY ghostbusters.mr.itd.umich.edu ID 477EA0C6.A0214.25480 ; 
+	BY ghostbusters.mr.itd.umich.edu ID 477EA0C6.A0214.25480 ;
 	 4 Jan 2008 16:10:33 -0500
 Received: from paploo.uhi.ac.uk (localhost [127.0.0.1])
 	by paploo.uhi.ac.uk (Postfix) with ESMTP id C48CDBB490;
@@ -205,7 +205,7 @@ Received: from dreamcatcher.mr.itd.umich.edu (dreamcatcher.mr.itd.umich.edu [141
 	by panther.mail.umich.edu () with ESMTP id m04KkNbx032077;
 	Fri, 4 Jan 2008 15:46:23 -0500
 Received: FROM paploo.uhi.ac.uk (app1.prod.collab.uhi.ac.uk [194.35.219.184])
-	BY dreamcatcher.mr.itd.umich.edu ID 477E9B13.2F3BC.22965 ; 
+	BY dreamcatcher.mr.itd.umich.edu ID 477E9B13.2F3BC.22965 ;
 	 4 Jan 2008 15:46:13 -0500
 Received: from paploo.uhi.ac.uk (localhost [127.0.0.1])
 	by paploo.uhi.ac.uk (Postfix) with ESMTP id 4AE03BB552;
@@ -273,7 +273,7 @@ Received: from firestarter.mr.itd.umich.edu (firestarter.mr.itd.umich.edu [141.2
 	by fan.mail.umich.edu () with ESMTP id m04K3HGF006563;
 	Fri, 4 Jan 2008 15:03:17 -0500
 Received: FROM paploo.uhi.ac.uk (app1.prod.collab.uhi.ac.uk [194.35.219.184])
-	BY firestarter.mr.itd.umich.edu ID 477E9100.8F7F4.1590 ; 
+	BY firestarter.mr.itd.umich.edu ID 477E9100.8F7F4.1590 ;
 	 4 Jan 2008 15:03:15 -0500
 Received: from paploo.uhi.ac.uk (localhost [127.0.0.1])
 	by paploo.uhi.ac.uk (Postfix) with ESMTP id 57770BB477;
@@ -322,7 +322,7 @@ Sakai Source Repository  	#38024  	Wed Nov 07 14:54:46 MST 2007  	zqian@umich.ed
 
 Watch for enrollments object being null and concatenate provider ids when there are more than one.
 Files Changed
-MODIFY /site-manage/trunk/site-manage-tool/tool/src/java/org/sakaiproject/site/tool/SiteAction.java 
+MODIFY /site-manage/trunk/site-manage-tool/tool/src/java/org/sakaiproject/site/tool/SiteAction.java
 
 
 
@@ -346,7 +346,7 @@ Received: from eyewitness.mr.itd.umich.edu (eyewitness.mr.itd.umich.edu [141.211
 	by mission.mail.umich.edu () with ESMTP id m04JoHJi019755;
 	Fri, 4 Jan 2008 14:50:17 -0500
 Received: FROM paploo.uhi.ac.uk (app1.prod.collab.uhi.ac.uk [194.35.219.184])
-	BY eyewitness.mr.itd.umich.edu ID 477E8DF2.67B91.5278 ; 
+	BY eyewitness.mr.itd.umich.edu ID 477E8DF2.67B91.5278 ;
 	 4 Jan 2008 14:50:13 -0500
 Received: from paploo.uhi.ac.uk (localhost [127.0.0.1])
 	by paploo.uhi.ac.uk (Postfix) with ESMTP id 2D1B9BB492;
@@ -425,7 +425,7 @@ Received: from tadpole.mr.itd.umich.edu (tadpole.mr.itd.umich.edu [141.211.14.72
 	by fan.mail.umich.edu () with ESMTP id m04GbT9x022078;
 	Fri, 4 Jan 2008 11:37:29 -0500
 Received: FROM paploo.uhi.ac.uk (app1.prod.collab.uhi.ac.uk [194.35.219.184])
-	BY tadpole.mr.itd.umich.edu ID 477E60B2.82756.9904 ; 
+	BY tadpole.mr.itd.umich.edu ID 477E60B2.82756.9904 ;
 	 4 Jan 2008 11:37:09 -0500
 Received: from paploo.uhi.ac.uk (localhost [127.0.0.1])
 	by paploo.uhi.ac.uk (Postfix) with ESMTP id 8D13DBB001;
@@ -504,7 +504,7 @@ Received: from it.mr.itd.umich.edu (it.mr.itd.umich.edu [141.211.93.151])
 	by fan.mail.umich.edu () with ESMTP id m04GZ6lt020480;
 	Fri, 4 Jan 2008 11:35:06 -0500
 Received: FROM paploo.uhi.ac.uk (app1.prod.collab.uhi.ac.uk [194.35.219.184])
-	BY it.mr.itd.umich.edu ID 477E6033.6469D.21870 ; 
+	BY it.mr.itd.umich.edu ID 477E6033.6469D.21870 ;
 	 4 Jan 2008 11:35:02 -0500
 Received: from paploo.uhi.ac.uk (localhost [127.0.0.1])
 	by paploo.uhi.ac.uk (Postfix) with ESMTP id E40FABAE5B;
@@ -583,7 +583,7 @@ Received: from holes.mr.itd.umich.edu (holes.mr.itd.umich.edu [141.211.14.79])
 	by panther.mail.umich.edu () with ESMTP id m04GCaHB030887;
 	Fri, 4 Jan 2008 11:12:36 -0500
 Received: FROM paploo.uhi.ac.uk (app1.prod.collab.uhi.ac.uk [194.35.219.184])
-	BY holes.mr.itd.umich.edu ID 477E5AEB.E670B.28397 ; 
+	BY holes.mr.itd.umich.edu ID 477E5AEB.E670B.28397 ;
 	 4 Jan 2008 11:12:30 -0500
 Received: from paploo.uhi.ac.uk (localhost [127.0.0.1])
 	by paploo.uhi.ac.uk (Postfix) with ESMTP id 99715BAE7D;
@@ -649,7 +649,7 @@ Received: from creepshow.mr.itd.umich.edu (creepshow.mr.itd.umich.edu [141.211.1
 	by godsend.mail.umich.edu () with ESMTP id m04GBqqv025330;
 	Fri, 4 Jan 2008 11:11:52 -0500
 Received: FROM paploo.uhi.ac.uk (app1.prod.collab.uhi.ac.uk [194.35.219.184])
-	BY creepshow.mr.itd.umich.edu ID 477E5AB3.5CC32.30840 ; 
+	BY creepshow.mr.itd.umich.edu ID 477E5AB3.5CC32.30840 ;
 	 4 Jan 2008 11:11:34 -0500
 Received: from paploo.uhi.ac.uk (localhost [127.0.0.1])
 	by paploo.uhi.ac.uk (Postfix) with ESMTP id 62AA4BAE46;
@@ -715,7 +715,7 @@ Received: from carrie.mr.itd.umich.edu (carrie.mr.itd.umich.edu [141.211.93.152]
 	by sleepers.mail.umich.edu () with ESMTP id m04GB3Vg011502;
 	Fri, 4 Jan 2008 11:11:03 -0500
 Received: FROM paploo.uhi.ac.uk (app1.prod.collab.uhi.ac.uk [194.35.219.184])
-	BY carrie.mr.itd.umich.edu ID 477E5A8D.B378F.24200 ; 
+	BY carrie.mr.itd.umich.edu ID 477E5A8D.B378F.24200 ;
 	 4 Jan 2008 11:10:56 -0500
 Received: from paploo.uhi.ac.uk (localhost [127.0.0.1])
 	by paploo.uhi.ac.uk (Postfix) with ESMTP id C7251BAD44;
@@ -780,7 +780,7 @@ Received: from holes.mr.itd.umich.edu (holes.mr.itd.umich.edu [141.211.14.79])
 	by faithful.mail.umich.edu () with ESMTP id m04GAL9k010604;
 	Fri, 4 Jan 2008 11:10:21 -0500
 Received: FROM paploo.uhi.ac.uk (app1.prod.collab.uhi.ac.uk [194.35.219.184])
-	BY holes.mr.itd.umich.edu ID 477E5A67.34350.23015 ; 
+	BY holes.mr.itd.umich.edu ID 477E5A67.34350.23015 ;
 	 4 Jan 2008 11:10:18 -0500
 Received: from paploo.uhi.ac.uk (localhost [127.0.0.1])
 	by paploo.uhi.ac.uk (Postfix) with ESMTP id 98D04BAD43;
@@ -846,7 +846,7 @@ Received: from shining.mr.itd.umich.edu (shining.mr.itd.umich.edu [141.211.93.15
 	by flawless.mail.umich.edu () with ESMTP id m04Fcfjm012313;
 	Fri, 4 Jan 2008 10:38:41 -0500
 Received: FROM paploo.uhi.ac.uk (app1.prod.collab.uhi.ac.uk [194.35.219.184])
-	BY shining.mr.itd.umich.edu ID 477E52FA.E6C6E.24093 ; 
+	BY shining.mr.itd.umich.edu ID 477E52FA.E6C6E.24093 ;
 	 4 Jan 2008 10:38:37 -0500
 Received: from paploo.uhi.ac.uk (localhost [127.0.0.1])
 	by paploo.uhi.ac.uk (Postfix) with ESMTP id 6A39594CD2;
@@ -915,7 +915,7 @@ Received: from creepshow.mr.itd.umich.edu (creepshow.mr.itd.umich.edu [141.211.1
 	by sleepers.mail.umich.edu () with ESMTP id m04FHgfs011536;
 	Fri, 4 Jan 2008 10:17:42 -0500
 Received: FROM paploo.uhi.ac.uk (app1.prod.collab.uhi.ac.uk [194.35.219.184])
-	BY creepshow.mr.itd.umich.edu ID 477E4E0F.CCA4B.926 ; 
+	BY creepshow.mr.itd.umich.edu ID 477E4E0F.CCA4B.926 ;
 	 4 Jan 2008 10:17:38 -0500
 Received: from paploo.uhi.ac.uk (localhost [127.0.0.1])
 	by paploo.uhi.ac.uk (Postfix) with ESMTP id BD02DBAC64;
@@ -980,7 +980,7 @@ Received: from holes.mr.itd.umich.edu (holes.mr.itd.umich.edu [141.211.14.79])
 	by panther.mail.umich.edu () with ESMTP id m04F4Dci015108;
 	Fri, 4 Jan 2008 10:04:13 -0500
 Received: FROM paploo.uhi.ac.uk (app1.prod.collab.uhi.ac.uk [194.35.219.184])
-	BY holes.mr.itd.umich.edu ID 477E4AE3.D7AF.31669 ; 
+	BY holes.mr.itd.umich.edu ID 477E4AE3.D7AF.31669 ;
 	 4 Jan 2008 10:04:05 -0500
 Received: from paploo.uhi.ac.uk (localhost [127.0.0.1])
 	by paploo.uhi.ac.uk (Postfix) with ESMTP id 933E3BAC17;
@@ -1057,7 +1057,7 @@ Received: from guys.mr.itd.umich.edu (guys.mr.itd.umich.edu [141.211.14.76])
 	by flawless.mail.umich.edu () with ESMTP id m04E5U3C029277;
 	Fri, 4 Jan 2008 09:05:30 -0500
 Received: FROM paploo.uhi.ac.uk (app1.prod.collab.uhi.ac.uk [194.35.219.184])
-	BY guys.mr.itd.umich.edu ID 477E3D23.EE2E7.5237 ; 
+	BY guys.mr.itd.umich.edu ID 477E3D23.EE2E7.5237 ;
 	 4 Jan 2008 09:05:26 -0500
 Received: from paploo.uhi.ac.uk (localhost [127.0.0.1])
 	by paploo.uhi.ac.uk (Postfix) with ESMTP id 33C7856DC0;
@@ -1131,7 +1131,7 @@ Received: from guys.mr.itd.umich.edu (guys.mr.itd.umich.edu [141.211.14.76])
 	by faithful.mail.umich.edu () with ESMTP id m04C2VN7026678;
 	Fri, 4 Jan 2008 07:02:31 -0500
 Received: FROM paploo.uhi.ac.uk (app1.prod.collab.uhi.ac.uk [194.35.219.184])
-	BY guys.mr.itd.umich.edu ID 477E2050.C2599.3263 ; 
+	BY guys.mr.itd.umich.edu ID 477E2050.C2599.3263 ;
 	 4 Jan 2008 07:02:27 -0500
 Received: from paploo.uhi.ac.uk (localhost [127.0.0.1])
 	by paploo.uhi.ac.uk (Postfix) with ESMTP id 6497FBA906;
@@ -1217,7 +1217,7 @@ Received: from firestarter.mr.itd.umich.edu (firestarter.mr.itd.umich.edu [141.2
 	by casino.mail.umich.edu () with ESMTP id m04B8Qw9001368;
 	Fri, 4 Jan 2008 06:08:26 -0500
 Received: FROM paploo.uhi.ac.uk (app1.prod.collab.uhi.ac.uk [194.35.219.184])
-	BY firestarter.mr.itd.umich.edu ID 477E13A5.30FC0.24054 ; 
+	BY firestarter.mr.itd.umich.edu ID 477E13A5.30FC0.24054 ;
 	 4 Jan 2008 06:08:23 -0500
 Received: from paploo.uhi.ac.uk (localhost [127.0.0.1])
 	by paploo.uhi.ac.uk (Postfix) with ESMTP id 784A476D7B;
@@ -1286,7 +1286,7 @@ Received: from galaxyquest.mr.itd.umich.edu (galaxyquest.mr.itd.umich.edu [141.2
 	by score.mail.umich.edu () with ESMTP id m049n60G017588;
 	Fri, 4 Jan 2008 04:49:06 -0500
 Received: FROM paploo.uhi.ac.uk (app1.prod.collab.uhi.ac.uk [194.35.219.184])
-	BY galaxyquest.mr.itd.umich.edu ID 477E010C.48C2.10259 ; 
+	BY galaxyquest.mr.itd.umich.edu ID 477E010C.48C2.10259 ;
 	 4 Jan 2008 04:49:03 -0500
 Received: from paploo.uhi.ac.uk (localhost [127.0.0.1])
 	by paploo.uhi.ac.uk (Postfix) with ESMTP id 254CC8CDEE;
@@ -1364,7 +1364,7 @@ Received: from workinggirl.mr.itd.umich.edu (workinggirl.mr.itd.umich.edu [141.2
 	by fan.mail.umich.edu () with ESMTP id m049Xge3031803;
 	Fri, 4 Jan 2008 04:33:42 -0500
 Received: FROM paploo.uhi.ac.uk (app1.prod.collab.uhi.ac.uk [194.35.219.184])
-	BY workinggirl.mr.itd.umich.edu ID 477DFD6C.75DBE.26054 ; 
+	BY workinggirl.mr.itd.umich.edu ID 477DFD6C.75DBE.26054 ;
 	 4 Jan 2008 04:33:35 -0500
 Received: from paploo.uhi.ac.uk (localhost [127.0.0.1])
 	by paploo.uhi.ac.uk (Postfix) with ESMTP id 6C929BA656;
@@ -1450,7 +1450,7 @@ Received: from salemslot.mr.itd.umich.edu (salemslot.mr.itd.umich.edu [141.211.1
 	by panther.mail.umich.edu () with ESMTP id m0497WAN027902;
 	Fri, 4 Jan 2008 04:07:32 -0500
 Received: FROM paploo.uhi.ac.uk (app1.prod.collab.uhi.ac.uk [194.35.219.184])
-	BY salemslot.mr.itd.umich.edu ID 477DF74E.49493.30415 ; 
+	BY salemslot.mr.itd.umich.edu ID 477DF74E.49493.30415 ;
 	 4 Jan 2008 04:07:29 -0500
 Received: from paploo.uhi.ac.uk (localhost [127.0.0.1])
 	by paploo.uhi.ac.uk (Postfix) with ESMTP id 88598BA5B6;
@@ -1514,7 +1514,7 @@ Received: from eyewitness.mr.itd.umich.edu (eyewitness.mr.itd.umich.edu [141.211
 	by jacknife.mail.umich.edu () with ESMTP id m040pJHB027171;
 	Thu, 3 Jan 2008 19:51:19 -0500
 Received: FROM paploo.uhi.ac.uk (app1.prod.collab.uhi.ac.uk [194.35.219.184])
-	BY eyewitness.mr.itd.umich.edu ID 477D8300.AC098.32562 ; 
+	BY eyewitness.mr.itd.umich.edu ID 477D8300.AC098.32562 ;
 	 3 Jan 2008 19:51:15 -0500
 Received: from paploo.uhi.ac.uk (localhost [127.0.0.1])
 	by paploo.uhi.ac.uk (Postfix) with ESMTP id E6CC4B9F8A;
@@ -1579,7 +1579,7 @@ Received: from salemslot.mr.itd.umich.edu (salemslot.mr.itd.umich.edu [141.211.1
 	by jacknife.mail.umich.edu () with ESMTP id m03MIMXY027729;
 	Thu, 3 Jan 2008 17:18:22 -0500
 Received: FROM paploo.uhi.ac.uk (app1.prod.collab.uhi.ac.uk [194.35.219.184])
-	BY salemslot.mr.itd.umich.edu ID 477D5F23.797F6.16348 ; 
+	BY salemslot.mr.itd.umich.edu ID 477D5F23.797F6.16348 ;
 	 3 Jan 2008 17:18:14 -0500
 Received: from paploo.uhi.ac.uk (localhost [127.0.0.1])
 	by paploo.uhi.ac.uk (Postfix) with ESMTP id EF439B98CE;
@@ -1644,7 +1644,7 @@ Received: from anniehall.mr.itd.umich.edu (anniehall.mr.itd.umich.edu [141.211.9
 	by faithful.mail.umich.edu () with ESMTP id m03M6xaq014868;
 	Thu, 3 Jan 2008 17:06:59 -0500
 Received: FROM paploo.uhi.ac.uk (app1.prod.collab.uhi.ac.uk [194.35.219.184])
-	BY anniehall.mr.itd.umich.edu ID 477D5C7A.4FE1F.22211 ; 
+	BY anniehall.mr.itd.umich.edu ID 477D5C7A.4FE1F.22211 ;
 	 3 Jan 2008 17:06:53 -0500
 Received: from paploo.uhi.ac.uk (localhost [127.0.0.1])
 	by paploo.uhi.ac.uk (Postfix) with ESMTP id 0BC8D7225E;
@@ -1708,7 +1708,7 @@ Received: from icestorm.mr.itd.umich.edu (icestorm.mr.itd.umich.edu [141.211.93.
 	by chaos.mail.umich.edu () with ESMTP id m03LYdY1029538;
 	Thu, 3 Jan 2008 16:34:39 -0500
 Received: FROM paploo.uhi.ac.uk (app1.prod.collab.uhi.ac.uk [194.35.219.184])
-	BY icestorm.mr.itd.umich.edu ID 477D54EA.13F34.26602 ; 
+	BY icestorm.mr.itd.umich.edu ID 477D54EA.13F34.26602 ;
 	 3 Jan 2008 16:34:36 -0500
 Received: from paploo.uhi.ac.uk (localhost [127.0.0.1])
 	by paploo.uhi.ac.uk (Postfix) with ESMTP id CC710ADC79;
@@ -1773,7 +1773,7 @@ Received: from galaxyquest.mr.itd.umich.edu (galaxyquest.mr.itd.umich.edu [141.2
 	by fan.mail.umich.edu () with ESMTP id m03LT6uw027749;
 	Thu, 3 Jan 2008 16:29:06 -0500
 Received: FROM paploo.uhi.ac.uk (app1.prod.collab.uhi.ac.uk [194.35.219.184])
-	BY galaxyquest.mr.itd.umich.edu ID 477D5397.E161D.20326 ; 
+	BY galaxyquest.mr.itd.umich.edu ID 477D5397.E161D.20326 ;
 	 3 Jan 2008 16:28:58 -0500
 Received: from paploo.uhi.ac.uk (localhost [127.0.0.1])
 	by paploo.uhi.ac.uk (Postfix) with ESMTP id DEC65ADC79;
@@ -1848,7 +1848,7 @@ Received: from salemslot.mr.itd.umich.edu (salemslot.mr.itd.umich.edu [141.211.1
 	by jacknife.mail.umich.edu () with ESMTP id m03LNlf0002115;
 	Thu, 3 Jan 2008 16:23:47 -0500
 Received: FROM paploo.uhi.ac.uk (app1.prod.collab.uhi.ac.uk [194.35.219.184])
-	BY salemslot.mr.itd.umich.edu ID 477D525E.1448.30389 ; 
+	BY salemslot.mr.itd.umich.edu ID 477D525E.1448.30389 ;
 	 3 Jan 2008 16:23:44 -0500
 Received: from paploo.uhi.ac.uk (localhost [127.0.0.1])
 	by paploo.uhi.ac.uk (Postfix) with ESMTP id 9D005B9D06;

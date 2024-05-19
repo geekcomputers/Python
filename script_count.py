@@ -1,5 +1,3 @@
-from __future__ import print_function
-
 import os  # Load the library module
 
 # Script Name		: script_count.py
@@ -14,10 +12,10 @@ import os  # Load the library module
 # Description			: This scans my scripts directory and gives a count of the different types of scripts
 
 path = os.getenv(
-    "scripts"
+    "scripts",
 )  # Set the variable path by getting the value from the OS environment variable scripts
 dropbox = os.getenv(
-    "dropbox"
+    "dropbox",
 )  # Set the variable dropbox by getting the value from the OS environment variable dropbox
 
 
@@ -29,11 +27,12 @@ def clear_screen():  # Function to clear the screen
 
 
 def count_files(
-    path, extensions
+    path,
+    extensions,
 ):  # Start of the function to count the files in the scripts directory, it counts the extension when passed below
     counter = 0  # Set the counter to 0
     for root, dirs, files in os.walk(
-        path
+        path,
     ):  # Loop through all the directories in the given path
         for file in files:  # For all the files
             counter += file.endswith(extensions)  # Count the files
@@ -42,7 +41,8 @@ def count_files(
 
 def github():  # Start of the function just to count the files in the github directory
     github_dir = os.path.join(
-        dropbox, "github"
+        dropbox,
+        "github",
     )  # Joins the paths to get the github directory - 1.1
     github_count = sum(
         (len(f) for _, _, f in os.walk(github_dir))
@@ -57,13 +57,14 @@ def github():  # Start of the function just to count the files in the github dir
         print("\nGithub directory is all Clear")
     else:  # If it is any other number then print the following message, showing the number outstanding.
         print(
-            "\nYou have: " + str(github_count) + " waiting to be uploaded to github!!"
+            "\nYou have: " + str(github_count) + " waiting to be uploaded to github!!",
         )
 
 
 def development():  # Start of the function just to count the files in the development directory
     dev_dir = os.path.join(
-        path, "development"
+        path,
+        "development",
     )  # Joins the paths to get the development directory - 1.1
     dev_count = sum(
         (len(f) for _, _, f in os.walk(dev_dir))
@@ -78,7 +79,7 @@ def development():  # Start of the function just to count the files in the devel
         print("\nDevelopment directory is all clear")
     else:
         print(
-            "\nYou have: " + str(dev_count) + " waiting to be finished!!"
+            "\nYou have: " + str(dev_count) + " waiting to be finished!!",
         )  # If it is any other number then print the following message, showing the number outstanding.
 
 
@@ -86,7 +87,7 @@ clear_screen()  # Call the function to clear the screen
 
 print("\nYou have the following :\n")
 print(
-    "AutoIT:\t" + str(count_files(path, ".au3"))
+    "AutoIT:\t" + str(count_files(path, ".au3")),
 )  # Run the count_files function to count the files with the extension we pass
 print("Batch:\t" + str(count_files(path, (".bat", ",cmd"))))  # 1.3
 print("Perl:\t" + str(count_files(path, ".pl")))

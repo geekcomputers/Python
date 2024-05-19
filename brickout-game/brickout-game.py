@@ -1,11 +1,11 @@
 """
  Pygame base template for opening a window
- 
+
  Sample Python/Pygame Programs
  Simpson College Computer Science
  http://programarcadegames.com/
  http://simpson.edu/computer-science/
- 
+
  Explanation video: http://youtu.be/vRB_983kUMc
 
 -------------------------------------------------
@@ -33,12 +33,12 @@ size = (700, 500)
 screen = pygame.display.set_mode(size)
 
 """
-    This is a simple Ball class for respresenting a ball 
-    in the game. 
+    This is a simple Ball class for respresenting a ball
+    in the game.
 """
 
 
-class Ball(object):
+class Ball:
     def __init__(self, screen, radius, x, y):
         self.__screen = screen
         self._radius = radius
@@ -107,7 +107,7 @@ class Ball(object):
 """
 
 
-class Paddle(object):
+class Paddle:
     def __init__(self, screen, width, height, x, y):
         self.__screen = screen
         self._width = width
@@ -123,7 +123,10 @@ class Paddle(object):
         draws the paddle onto screen.
         """
         pygame.draw.rect(
-            screen, (0, 0, 0), (self._xLoc, self._yLoc, self._width, self._height), 0
+            screen,
+            (0, 0, 0),
+            (self._xLoc, self._yLoc, self._width, self._height),
+            0,
         )
 
     def update(self):
@@ -212,7 +215,7 @@ class Brick(pygame.sprite.Sprite):
 
 
 """
-    This is a simple class for representing a 
+    This is a simple class for representing a
     brick wall.
 """
 

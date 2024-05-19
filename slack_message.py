@@ -1,5 +1,3 @@
-from __future__ import print_function
-
 # Created by sarathkaul on 11/11/19
 
 import json

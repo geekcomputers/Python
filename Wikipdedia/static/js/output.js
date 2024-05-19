@@ -6,4 +6,3 @@ function validateForm() {
         return false;
     }
 }
-

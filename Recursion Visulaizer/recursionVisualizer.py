@@ -1,5 +1,5 @@
-import turtle
 import random
+import turtle
 
 t = turtle.Turtle()
 num = random.randint(1, 1000)

@@ -14,8 +14,10 @@ Usage:
 
 enter index of article you would like to see, or 'r' for retry and 'n' for exit.
 """
-import requests
+
 import webbrowser
+
+import requests
 
 page_count = 10
 url = (
@@ -33,7 +35,7 @@ def load():
         for idx, j in enumerate(jsonData):
             print(str(idx) + ": ", j["title"])
         i = input(
-            "Which page you want to see, enter index..[r: for retry,n: exit]?"
+            "Which page you want to see, enter index..[r: for retry,n: exit]?",
         ).lower()
         if i == "r":
             print("Loading randoms again...")
@@ -47,7 +49,7 @@ def load():
                 raise Exception("Wrong Input...")
             print("taking you to the browser...")
             webbrowser.get().open(
-                "https://en.wikipedia.org/wiki?curid=" + str(jsonData[int(i)]["id"])
+                "https://en.wikipedia.org/wiki?curid=" + str(jsonData[int(i)]["id"]),
             )
         load()
     else:

@@ -1,5 +1,3 @@
-from __future__ import print_function
-
 from sys import platform as _platform
 
 # Script Name	: password_cracker.py
@@ -23,7 +21,7 @@ elif _platform == "win32":
 
 def testPass(cryptPass):  # Start the function
     salt = cryptPass[0:2]
-    dictFile = open("dictionary.txt", "r")  # Open the dictionary file
+    dictFile = open("dictionary.txt")  # Open the dictionary file
     for word in dictFile.readlines():  # Scan through the file
         word = word.strip("\n")
         cryptWord = crypt.crypt(word, salt)  # Check for password in the file

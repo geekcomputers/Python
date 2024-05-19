@@ -47,10 +47,16 @@ b = tkinter.Entry(
 )
 b.place(x=0, y=270)
 t1 = tkinter.Label(
-    root, text="TYPE MESSAGE:", font=("arial", 20, "bold", "underline"), fg="red"
+    root,
+    text="TYPE MESSAGE:",
+    font=("arial", 20, "bold", "underline"),
+    fg="red",
 )
 t2 = tkinter.Label(
-    root, text="TYPE SECRET MESSAGE:", font=("arial", 20, "bold", "underline"), fg="red"
+    root,
+    text="TYPE SECRET MESSAGE:",
+    font=("arial", 20, "bold", "underline"),
+    fg="red",
 )
 t1.place(x=10, y=0)
 t2.place(x=10, y=220)

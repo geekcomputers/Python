@@ -55,7 +55,7 @@ class ScrapperLogic:
                         for element in item.find_all(class_=True):
                             classes = []
                             classes.extend(element["class"])
-                            phone_no += str((self.which_digit(classes[1])))
+                            phone_no += str(self.which_digit(classes[1]))
                     except Exception:
                         pass
         except Exception:
@@ -106,10 +106,10 @@ class ScrapperLogic:
         page_number = 1
         service_count = 1
 
-        total_url = "https://www.justdial.com/{0}/{1}".format(self.location, self.query)
+        total_url = f"https://www.justdial.com/{self.location}/{self.query}"
 
         fields = ["Name", "Phone", "Rating", "Rating Count", "Address", "Location"]
-        out_file = open("{0}.csv".format(self.file_name), "w")
+        out_file = open(f"{self.file_name}.csv", "w")
         csvwriter = csv.DictWriter(out_file, delimiter=",", fieldnames=fields)
         csvwriter.writerow(
             {
@@ -119,7 +119,7 @@ class ScrapperLogic:
                 "Rating Count": "Rating Count",  # Shows the stars for ex: 4 stars
                 "Address": "Address",  # Shows the address of the place
                 "Location": "Location",  # shows the location
-            }
+            },
         )
 
         progress_value = 0
@@ -132,13 +132,14 @@ class ScrapperLogic:
 
             if progress_value != 0:
                 progress_value += 1
-                self.label_progress["text"] = "{0}{1}".format(progress_value, "%")
+                self.label_progress["text"] = "{}{}".format(progress_value, "%")
                 self.progressbar["value"] = progress_value
 
             url = total_url + "/page-%s" % page_number
-            print("{0} {1}, {2}".format("Scrapping page number: ", page_number, url))
+            print("{} {}, {}".format("Scrapping page number: ", page_number, url))
             req = urllib.request.Request(
-                url, headers={"User-Agent": "Mozilla/5.0 (Windows NT 6.1; Win64; x64)"}
+                url,
+                headers={"User-Agent": "Mozilla/5.0 (Windows NT 6.1; Win64; x64)"},
             )
             page = urllib.request.urlopen(req)
 
@@ -148,7 +149,7 @@ class ScrapperLogic:
             # Iterate through the 10 results in the page
 
             progress_value += 1
-            self.label_progress["text"] = "{0}{1}".format(progress_value, "%")
+            self.label_progress["text"] = "{}{}".format(progress_value, "%")
             self.progressbar["value"] = progress_value
 
             for service_html in services:
@@ -213,7 +214,11 @@ class JDScrapperGUI:
         location = self.entry_location.get()
         file_name = self.entry_file_name.get()
         scrapper = ScrapperLogic(
-            query, location, file_name, self.progress, self.label_progress
+            query,
+            location,
+            file_name,
+            self.progress,
+            self.label_progress,
         )
         t1 = threading.Thread(target=scrapper.start_scrapping_logic, args=[])
         t1.start()
@@ -241,12 +246,17 @@ class JDScrapperGUI:
         self.label_progress.grid(row=3, column=0)
 
         self.button_start = Button(
-            self.master, text="Start", command=self.start_scrapping
+            self.master,
+            text="Start",
+            command=self.start_scrapping,
         )
         self.button_start.grid(row=3, column=1)
 
         self.progress = Progressbar(
-            self.master, orient=HORIZONTAL, length=350, mode="determinate"
+            self.master,
+            orient=HORIZONTAL,
+            length=350,
+            mode="determinate",
         )
         self.progress.grid(row=4, columnspan=2)
 

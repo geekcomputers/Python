@@ -10,7 +10,7 @@ What can it do:
                                             e.) MS Paint<br/>
                                             f.) cmd<br/>
                                             g.) Browser (Internet Explorer)<br/>
-    
+
 It will make your experience better while using the Windows computer.
 ===========================================================================
 It demonstrates Controlling windows programs with your voice.

@@ -4,7 +4,7 @@
 
 	Note: Do not use root username & password for security reasons
 		  Create a seperate user and provide access to a home directory of the user
-		  Use login id and password of the user created 
+		  Use login id and password of the user created
 		  cwd here stands for current working directory
 """
 

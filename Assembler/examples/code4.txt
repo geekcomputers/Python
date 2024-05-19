@@ -11,4 +11,3 @@ div ebx
 mov ecx, eax
 mov eax, 4
 int 0x80
-

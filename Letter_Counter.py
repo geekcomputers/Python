@@ -20,16 +20,28 @@ def printt():
 
 
 lbl = tk.Label(root, text="Enter the Message--", font=("Ubuntu", 15), fg="black").place(
-    x=10, y=10
+    x=10,
+    y=10,
 )
 lbl1 = tk.Label(
-    root, text="Enter the Letter you want to count--", font=("Ubuntu", 15), fg="black"
+    root,
+    text="Enter the Letter you want to count--",
+    font=("Ubuntu", 15),
+    fg="black",
 ).place(x=10, y=80)
 E1 = tk.Entry(
-    root, font=("arial", 15), textvariable=message1, bg="white", fg="black"
+    root,
+    font=("arial", 15),
+    textvariable=message1,
+    bg="white",
+    fg="black",
 ).place(x=10, y=40, height=40, width=340)
 E2 = tk.Entry(
-    root, font=("arial", 15), textvariable=Letter1, bg="white", fg="black"
+    root,
+    font=("arial", 15),
+    textvariable=Letter1,
+    bg="white",
+    fg="black",
 ).place(x=10, y=120, height=40, width=340)
 but = tk.Button(
     root,

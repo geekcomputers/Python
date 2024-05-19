@@ -6,10 +6,10 @@ class Swapper:
     -------
     swap_tuple_unpacking(self):
         Swaps the values of x and y using a tuple unpacking method.
-    
+
     swap_temp_variable(self):
         Swaps the values of x and y using a temporary variable.
-    
+
     swap_arithmetic_operations(self):
         Swaps the values of x and y using arithmetic operations.
 
@@ -29,7 +29,7 @@ class Swapper:
         """
         if not isinstance(x, (int, float)) or not isinstance(y, (float, int)):
             raise ValueError("Both x and y should be integers.")
-        
+
         self.x = x
         self.y = y
 

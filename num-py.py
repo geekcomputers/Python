@@ -1,12 +1,13 @@
 import numpy as np
 
+
 # to check if shape are equal and find there power
 def get_array(x, y):
     a = np.shape(x)
     b = np.shape(y)
 
     if a == b:
-        np_pow_array = x ** y
+        np_pow_array = x**y
         print("Array of powers without using np.power: ", np_pow_array)
 
         print("Array of powers using np.power: ", np.power(x, y))

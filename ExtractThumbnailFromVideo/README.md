@@ -31,7 +31,7 @@ Here's an example of how to use the function:
 from thumbnail_extractor import extract_thumbnail
 
 # Extract a thumbnail from 'my_video.mp4' with dimensions (320, 240)
-extract_thumbnail('my_video.mp4', (320, 240))
+extract_thumbnail("my_video.mp4", (320, 240))
 # Replace 'my_video.mp4' with the path to your own video file and (320, 240) with your desired thumbnail dimensions.
 
 ## Required Packages
@@ -45,5 +45,3 @@ To use this function, you need the following package:
     ```
 
 This function is useful for generating thumbnail images from videos. It simplifies the process of creating video thumbnails for various applications.
-
-

@@ -5,13 +5,13 @@
 
 import requests
 
-
 # Function for download file parameter taking as url
 
 
 def download(url):
     f = open(
-        "file_name.jpg", "wb"
+        "file_name.jpg",
+        "wb",
     )  # opening file in write binary('wb') mode with file_name.ext ext=extension
     f.write(requests.get(url).content)  # Writing File Content in file_name.jpg
     f.close()

@@ -32,12 +32,12 @@ def guessing_game(GUESS_RANGE, GUESS_LIMIT):
         elif GUESS_LIMIT == 0 and not done:  # Last chance to guess
             if GUESS == RANDOM:
                 print(
-                    f"You nailed it! However, it took you all the {ATTEMPTS_ALLOWED} attempts."
+                    f"You nailed it! However, it took you all the {ATTEMPTS_ALLOWED} attempts.",
                 )
             else:
                 print(
                     f"GAME OVER! It took you more than {ATTEMPTS_ALLOWED} attempts. "
-                    f"The correct number is {RANDOM}."
+                    f"The correct number is {RANDOM}.",
                 )
 
 

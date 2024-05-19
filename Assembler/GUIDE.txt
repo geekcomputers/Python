@@ -2,13 +2,13 @@
 
 ### Register
 
-In this programming language you can use four registers. 
+In this programming language you can use four registers.
 * eax
 * ebx
 * ecx
 * edx
 
-The register **eax** will be standard use for multiplication and division. 
+The register **eax** will be standard use for multiplication and division.
 Commands for arithmetic are:
 
 * add  p0, p1
@@ -23,13 +23,13 @@ The commands **mul** and **div** standard use eax. For instance:
 mov ecx, 56
 sub ecx, 10
 mov eax, 4
-int 0x80 
+int 0x80
 
 ```
 
 * The first line move the number  56 into register ecx.
 * The second line subtract 10 from the ecx register.
-* The third line move the number 4 into the eax register. This is for the print-function. 
+* The third line move the number 4 into the eax register. This is for the print-function.
 * The fourt line call interrupt 0x80, thus the result will print onto console.
 * The fifth line is a new line. This is important.
 
@@ -37,9 +37,9 @@ int 0x80
 
 ### System-Functions
 
-With the interrupt 0x80 you can use some functionality in your program. 
+With the interrupt 0x80 you can use some functionality in your program.
 
-EAX  | Function 
+EAX  | Function
 ---- | ---------
 1   | exit program. error code in ebx
 3   | read input. onto ecx (only float)
@@ -67,7 +67,7 @@ int 0x80
 
 ```
 
-**Important: The arithmetic commands (add, sub) works only with registers or constans. 
+**Important: The arithmetic commands (add, sub) works only with registers or constans.
 Therefore we must use the register ebx as a placeholder, above.**
 
 
@@ -79,8 +79,8 @@ Result of code, above.
 
 ### Comments available
 
-Comments begin with ; and ends with a newline. 
-We noticed a comment, above. 
+Comments begin with ; and ends with a newline.
+We noticed a comment, above.
 
 ### Push and Pop
 
@@ -92,14 +92,14 @@ push eax
 
 ```
 
-This line will push the content of register eax onto the stack. 
+This line will push the content of register eax onto the stack.
 
 ```
-pop ecx 
+pop ecx
 
 ```
 
-This line will pop the content of the top of the stack onto the ecx register. 
+This line will pop the content of the top of the stack onto the ecx register.
 
 ```
 push [register]
@@ -109,7 +109,7 @@ pop [register]
 
 ### Jumps
 
-With the command **cmp** we can compare two register. 
+With the command **cmp** we can compare two register.
 
 ```
 cmp r0, r1
@@ -126,7 +126,7 @@ Otherwise the command **jmp** is actively and jumps to label **l2**
 For instance
 
 ```
-l1: 
+l1:
 
 ```
 
@@ -156,7 +156,7 @@ int 0x80
 
 _double:
 add ecx, ecx
-ret 
+ret
 
 _cube:
 push eax
@@ -172,7 +172,7 @@ ret
 
 ```
 
-A subprogram label begins with a **_** and ends with a colon. See above. 
+A subprogram label begins with a **_** and ends with a colon. See above.
 
 
 If you call the subprogram you must avoid the colon.

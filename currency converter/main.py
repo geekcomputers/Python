@@ -1,11 +1,10 @@
 # cc program
-from PyQt5.QtGui import *
-from PyQt5.QtCore import *
-from PyQt5.QtWidgets import *
-from PyQt5 import QtWidgets, uic
-from PyQt5.QtCore import *
 import requests
 from bs4 import BeautifulSoup
+from PyQt5 import QtWidgets, uic
+from PyQt5.QtCore import *
+from PyQt5.QtGui import *
+from PyQt5.QtWidgets import *
 from requests.models import ContentDecodingError
 
 
@@ -27,10 +26,10 @@ def getVal(cont1, cont2):
 app = QtWidgets.QApplication([])
 
 window = uic.loadUi("gui.ui")
-f = open("country.txt", "r")
+f = open("country.txt")
 
 window = uic.loadUi("C:/Users/prath/Desktop/Currency-Calculator-Dynamic/gui.ui")
-f = open("C:/Users/prath/Desktop/Currency-Calculator-Dynamic/country.txt", "r")
+f = open("C:/Users/prath/Desktop/Currency-Calculator-Dynamic/country.txt")
 
 window.dropDown1.addItem("Select")
 window.dropDown2.addItem("Select")

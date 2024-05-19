@@ -3,8 +3,9 @@ Author : Dhruv B Kakadiya
 
 """
 
-from .statics import *
 import pygame as pg
+
+from .statics import *
 
 
 class pieces:

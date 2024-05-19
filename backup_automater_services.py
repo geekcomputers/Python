@@ -18,21 +18,23 @@ todaystr = (
 )  # Format it so we can use the format to create the directory
 
 confdir = os.getenv(
-    "my_config"
+    "my_config",
 )  # Set the variable by getting the value from the OS setting
 dropbox = os.getenv(
-    "dropbox"
+    "dropbox",
 )  # Set the variable by getting the value from the OS setting
 conffile = "services.conf"  # Set the variable as the name of the configuration file
 conffilename = os.path.join(
-    confdir, conffile
+    confdir,
+    conffile,
 )  # Set the variable by combining the path and the file name
 sourcedir = os.path.expanduser(
-    "~/Library/Services/"
+    "~/Library/Services/",
 )  # Source directory of where the scripts are located
 # Combine several settings to create
 destdir = os.path.join(
-    dropbox, "My_backups" + "/" + "Automater_services" + todaystr + "/"
+    dropbox,
+    "My_backups" + "/" + "Automater_services" + todaystr + "/",
 )
 
 # the destination backup directory
@@ -40,9 +42,11 @@ for file_name in open(conffilename):  # Walk through the configuration file
     fname = file_name.strip()  # Strip out the blank lines from the configuration file
     if fname:  # For the lines that are not blank
         sourcefile = os.path.join(
-            sourcedir, fname
+            sourcedir,
+            fname,
         )  # Get the name of the source files to backup
         destfile = os.path.join(
-            destdir, fname
+            destdir,
+            fname,
         )  # Get the name of the destination file names
         shutil.copytree(sourcefile, destfile)  # Copy the directories

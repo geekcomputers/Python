@@ -57,9 +57,9 @@ def create_button(p1):
     global cursor
 
     sql_command = """
-    CREATE TABLE notes ( 
-    id INTEGER PRIMARY KEY, 
-    title TEXT, 
+    CREATE TABLE notes (
+    id INTEGER PRIMARY KEY,
+    title TEXT,
     note TEXT);"""
 
     try:

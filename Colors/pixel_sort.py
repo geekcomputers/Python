@@ -1,17 +1,17 @@
 """Pixel Sorting"""
 
 # Importing Libraries
+import argparse
+import colorsys
+import math
+import os
+
 import cv2
 import numpy as np
-import math
-import colorsys
 import pandas as pd
-import os
-import argparse
-from tqdm import tqdm
-
 # Importing the external file Library
 import sound
+from tqdm import tqdm
 
 # Taking arguments from command line
 parser = argparse.ArgumentParser()  # you iniatize as such
@@ -29,6 +29,7 @@ print(str(args.f).capitalize() + " directory is created.")
 df = []
 total = 0
 dict, final, img_list = {}, [], []
+
 
 # Create dataframe and save it as an excel file
 def createDataSet(val=0, data=[]):
@@ -72,7 +73,9 @@ def step(bgr, repetitions=1):
 
     # conversion of rgb to hsv values
     h, s, v = colorsys.rgb_to_hsv(
-        r, g, b
+        r,
+        g,
+        b,
     )  # h,s,v is a better option for classifying each color
 
     # Repetitions are taken to decrease the noise
@@ -130,7 +133,8 @@ def main():
             color.append(val)
 
         thresh = findThreshold(
-            color, add
+            color,
+            add,
         )  # setting the threshold value for every row in the frame
 
         # For the specific row , if all the values are non-zero then it is sorted with color
@@ -156,13 +160,14 @@ def main():
 
     # Writing down the final sorted image
     cv2.imwrite(
-        "Image_sort/" + str(args.f) + "/" + str(args.f) + ".jpg", img
+        "Image_sort/" + str(args.f) + "/" + str(args.f) + ".jpg",
+        img,
     )  # Displaying the final picture
 
     print("\n>>> Formation of the Video progress of the pixel-sorted image")
     makeVideo()
     sound.main(
-        args.f
+        args.f,
     )  # Calling the external python file to create the audio of the pixel-sorted image
 
 

@@ -1,14 +1,14 @@
 """
-Shaurya Pratap Singh 
+Shaurya Pratap Singh
 @shaurya-blip
 
 Shows loading message while doing something.
 """
 
 import itertools
+import sys
 import threading
 import time
-import sys
 
 # The task is not done right now
 done = False
@@ -25,7 +25,9 @@ def animate(message="loading", endmessage="Done!"):
 
 
 t = threading.Thread(
-    target=lambda: animate(message="installing..", endmessage="Installation is done!!!")
+    target=lambda: animate(
+        message="installing..", endmessage="Installation is done!!!"
+    ),
 )
 t.start()
 

@@ -1,5 +1,3 @@
-from __future__ import print_function
-
 import optparse  # Import the module
 from socket import *  # Import the module
 from threading import *  # Import the module

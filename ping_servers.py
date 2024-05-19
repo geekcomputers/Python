@@ -1,5 +1,3 @@
-from __future__ import print_function
-
 import os  # Load the Library Module
 import subprocess  # Load the Library Module
 import sys  # Load the Library Module
@@ -25,7 +23,7 @@ You need to supply the application group for the servers you want to ping, i.e.
 
 Followed by the site i.e.
     155
-    bromley"""
+    bromley""",
     )
     sys.exit(0)
 else:
@@ -37,7 +35,7 @@ else:
             "\nYou need to supply the app group. Usage : "
             + filename
             + " followed by the application group i.e. \n \t dms or \n \t swaps \n "
-            "then the site i.e. \n \t 155 or \n \t bromley"
+            "then the site i.e. \n \t 155 or \n \t bromley",
         )
 
     appgroup = sys.argv[1]  # Set the variable appgroup as the first argument you supply
@@ -63,28 +61,33 @@ logfile = (
     "ping_" + appgroup + "_" + site + ".log"
 )  # Set the variable logfile, using the arguments passed to create the logfile
 logfilename = os.path.join(
-    logdir, logfile
+    logdir,
+    logfile,
 )  # Set the variable logfilename by joining logdir and logfile together
 confdir = os.getenv(
-    "my_config"
+    "my_config",
 )  # Set the variable confdir from the OS environment variable - 1.2
 conffile = appgroup + "_servers_" + site + ".txt"  # Set the variable conffile - 1.2
 conffilename = os.path.join(
-    confdir, conffile
+    confdir,
+    conffile,
 )  # Set the variable conffilename by joining confdir and conffile together - 1.2
 
 f = open(logfilename, "w")  # Open a logfile to write out the output
 for server in open(conffilename):  # Open the config file and read each line - 1.2
     ret = subprocess.call(
-        myping + server, shell=True, stdout=f, stderr=subprocess.STDOUT
+        myping + server,
+        shell=True,
+        stdout=f,
+        stderr=subprocess.STDOUT,
     )  # Run the ping command for each server in the list.
     if ret == 0:  # Depending on the response
         f.write(
-            server.strip() + " is alive" + "\n"
+            server.strip() + " is alive" + "\n",
         )  # Write out that you can receive a reponse
     else:
         f.write(
-            server.strip() + " did not respond" + "\n"
+            server.strip() + " did not respond" + "\n",
         )  # Write out you can't reach the box
 
 print("\n\tYou can see the results in the logfile : " + logfilename)

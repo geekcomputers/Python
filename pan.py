@@ -122,11 +122,11 @@ d = {
             "Gasper",
             "Betina",
             "Andres",
-        ]
+        ],
     ),
     "Age": pd.Series([25, 26, 25, 23, 30, 29, 23, 34, 40, 30, 51, 46]),
     "Rating": pd.Series(
-        [4.23, 3.24, 3.98, 2.56, 3.20, 4.6, 3.8, 3.78, 2.98, 4.80, 4.10, 3.65]
+        [4.23, 3.24, 3.98, 2.56, 3.20, 4.6, 3.8, 3.78, 2.98, 4.80, 4.10, 3.65],
     ),
 }
 df = pd.DataFrame(d)
@@ -147,11 +147,11 @@ d = {
             "Gasper",
             "Betina",
             "Andres",
-        ]
+        ],
     ),
     "Age": pd.Series([25, 26, 25, 23, 30, 29, 23, 34, 40, 30, 51, 46]),
     "Rating": pd.Series(
-        [4.23, 3.24, 3.98, 2.56, 3.20, 4.6, 3.8, 3.78, 2.98, 4.80, 4.10, 3.65]
+        [4.23, 3.24, 3.98, 2.56, 3.20, 4.6, 3.8, 3.78, 2.98, 4.80, 4.10, 3.65],
     ),
 }
 df = pd.DataFrame(d)
@@ -225,7 +225,9 @@ print(df.expanding(min_periods=3).mean())
 # ........................MISSING DATA............................................#
 
 df = pd.DataFrame(
-    np.random.randn(3, 3), index=["a", "c", "e"], columns=["one", "two", "three"]
+    np.random.randn(3, 3),
+    index=["a", "c", "e"],
+    columns=["one", "two", "three"],
 )
 
 df = df.reindex(["a", "b", "c"])

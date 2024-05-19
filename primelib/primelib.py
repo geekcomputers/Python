@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """
 Created on Thu Oct  5 16:44:23 2017
 
@@ -16,7 +15,7 @@ primeFactorization(number)
 greatestPrimeFactor(number)
 smallestPrimeFactor(number)
 getPrime(n)
-getPrimesBetween(pNumber1, pNumber2) 
+getPrimesBetween(pNumber1, pNumber2)
 
 ----
 
@@ -46,12 +45,13 @@ def pi(maxK=70, prec=1008, disp=1007):
     prec: precision of decimal places
     disp: number of decimal places shown
     """
-    from decimal import Decimal as Dec, getcontext as gc
+    from decimal import Decimal as Dec
+    from decimal import getcontext as gc
 
     gc().prec = prec
     K, M, L, X, S = 6, 1, 13591409, 1, 13591409
     for k in range(1, maxK + 1):
-        M = Dec((K ** 3 - (K << 4)) * M / k ** 3)
+        M = Dec((K**3 - (K << 4)) * M / k**3)
         L += 545140134
         X *= -262537412640768000
         S += Dec(M * L) / X
@@ -475,7 +475,7 @@ def getPrime(n):
 
     # precondition
     assert isinstance(ans, int) and isPrime(
-        ans
+        ans,
     ), "'ans' must been a prime number and from type int"
 
     return ans

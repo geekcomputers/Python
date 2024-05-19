@@ -1,9 +1,6 @@
-from __future__ import print_function
-
 import optparse  # Import the module
 
 import nmap  # Import the module
-
 
 # Script Name		: nmap_scan.py
 # Author				: Craig Richards
@@ -23,7 +20,7 @@ def nmapScan(tgtHost, tgtPort):  # Create the function, this fucntion does the s
 
 def main():  # Main Program
     parser = optparse.OptionParser(
-        "usage%prog " + "-H <host> -p <port>"
+        "usage%prog " + "-H <host> -p <port>",
     )  # Display options/help if required
     parser.add_option("-H", dest="tgtHost", type="string", help="specify host")
     parser.add_option("-p", dest="tgtPort", type="string", help="port")

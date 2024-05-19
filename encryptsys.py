@@ -71,7 +71,7 @@ def encrypt():
 
     fintext = str(nummoves) + "." + fintext
 
-    print("\Encrypted text : " + fintext)
+    print(r"\Encrypted text : " + fintext)
 
 
 sel = input("What would you want to do?\n\n[1] Encrypt\n[2] Decrypt\n\n> ").lower()

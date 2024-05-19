@@ -110,26 +110,34 @@ class Notebook:
         self.nb.pack(expand=True, fill="both")
         # ----- LabelFrames -----
         self.page1_main_label = ttk.LabelFrame(
-            self.page1, text="Encrypt Any Text"
+            self.page1,
+            text="Encrypt Any Text",
         )  # <----- Page1 LabelFrame1
         self.page1_main_label.grid(row=0, column=0, pady=20, padx=2, ipadx=20)
         self.page1_output_label = ttk.LabelFrame(self.page1, text="Decrypted Text")
         self.page1_output_label.grid(row=1, column=0, pady=10, padx=2)
 
         self.page2_main_label = ttk.LabelFrame(
-            self.page2, text="Decrypt Any Text"
+            self.page2,
+            text="Decrypt Any Text",
         )  # <----- Page1 LabelFrame1
         self.page2_main_label.grid(row=0, column=0, pady=20, padx=2, ipadx=20)
         self.page2_output_label = ttk.LabelFrame(self.page2, text="Real Text")
         self.page2_output_label.grid(row=1, column=0, pady=10, padx=2)
         # <---Scrolled Text Global
         self.decrypted_text_box = ScrolledText(
-            self.page1_output_label, width=30, height=5, state="normal"
+            self.page1_output_label,
+            width=30,
+            height=5,
+            state="normal",
         )
         self.decrypted_text_box.grid(row=1, column=0, padx=2, pady=10)
 
         self.text_box = ScrolledText(
-            self.page2_output_label, width=30, height=5, state="normal"
+            self.page2_output_label,
+            width=30,
+            height=5,
+            state="normal",
         )
         self.text_box.grid(row=1, column=0, padx=2, pady=10)
         # ----- Variables -----
@@ -145,11 +153,15 @@ class Notebook:
     def page1_inside(self):
         style = ttk.Style()
         user_text_label = ttk.Label(
-            self.page1_main_label, text="Enter Your Text Here : ", font=("", 14)
+            self.page1_main_label,
+            text="Enter Your Text Here : ",
+            font=("", 14),
         )
         user_text_label.grid(row=0, column=0, pady=10)
         user_entry_box = ttk.Entry(
-            self.page1_main_label, width=35, textvariable=self.user_text
+            self.page1_main_label,
+            width=35,
+            textvariable=self.user_text,
         )
         user_entry_box.grid(row=1, column=0)
         style.configure(
@@ -173,7 +185,8 @@ class Notebook:
         user_text = self.user_text.get()
         if user_text == "":
             showerror(
-                "Nothing Found", "Please Enter Something In Entry Box To Encrypt...!"
+                "Nothing Found",
+                "Please Enter Something In Entry Box To Encrypt...!",
             )
             return
         else:
@@ -185,11 +198,15 @@ class Notebook:
     def page2_inside(self):
         style = ttk.Style()
         user_text_label = ttk.Label(
-            self.page2_main_label, text="Enter Decrypted Text Here : ", font=("", 14)
+            self.page2_main_label,
+            text="Enter Decrypted Text Here : ",
+            font=("", 14),
         )
         user_text_label.grid(row=0, column=0, pady=10)
         user_entry_box = ttk.Entry(
-            self.page2_main_label, width=35, textvariable=self.user_text2
+            self.page2_main_label,
+            width=35,
+            textvariable=self.user_text2,
         )
         user_entry_box.grid(row=1, column=0)
         style.configure(
@@ -212,7 +229,8 @@ class Notebook:
         user_text = self.user_text2.get()
         if user_text == "":
             showerror(
-                "Nothing Found", "Please Enter Something In Entry Box To Encrypt...!"
+                "Nothing Found",
+                "Please Enter Something In Entry Box To Encrypt...!",
             )
             return
         else:
@@ -224,7 +242,7 @@ class Notebook:
         if todo == "Encrypt":
             try:
                 text_coming = str(
-                    text_coming
+                    text_coming,
                 )  # <----- Lowering the letters as dic in lower letter
                 for word in text_coming:
                     for key, value in self.data_dic.items():
