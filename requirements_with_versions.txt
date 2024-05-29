@@ -23,7 +23,7 @@ Counter==1.0.0
 Flask==3.0.2
 selenium==4.16.0
 firebase-admin==6.5.0
-ujson==5.9.0
+ujson==5.10.0
 requests==2.31.0
 quo==2023.5.1
 PyPDF2==3.0.1
