@@ -24,7 +24,7 @@ Flask==3.0.2
 selenium==4.16.0
 firebase-admin==6.5.0
 ujson==5.10.0
-requests==2.31.0
+requests==2.32.3
 quo==2023.5.1
 PyPDF2==3.0.1
 pyserial==3.5
