@@ -1,6 +1,4 @@
 import sqlite3
-# import test_data
-# import ast
 import json
 
 class AutoComplete:
@@ -101,6 +99,22 @@ class AutoComplete:
         cur.execute("UPDATE WordPrediction SET value = (?) WHERE name='predictions'", (predictions,))
         return("training complete")
 
+    def predict(self, word):
+        """
+        Returns - string
+        Input - string
+        ----------
+        Returns the completion word of the input word
+        - takes in a word
+        - retrieves the predictions map
+        - returns the completion word of the input word
+        """
+        cur = self.conn.cursor()
+        predictions = cur.execute("SELECT value FROM WordPrediction WHERE name='predictions'").fetchone()[0]
+        predictions = json.loads(predictions)
+        completion_word = predictions[word.lower()]['completion_word']
+        return completion_word
+
 
 
 if __name__ == "__main__":
@@ -109,4 +123,4 @@ if __name__ == "__main__":
               all these new weapons in your arsenal, we would better get those profits fired up"
     ac = AutoComplete()
     ac.train(input_)
-    # print(ac.predict("to"))
+    print(ac.predict("to"))
