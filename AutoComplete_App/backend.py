@@ -1,7 +1,7 @@
 import sqlite3
 # import test_data
 # import ast
-# import json
+import json
 
 class AutoComplete:
     """
@@ -45,7 +45,6 @@ class AutoComplete:
         cur = self.conn.cursor()
         res = cur.execute("SELECT name FROM sqlite_master WHERE name='WordMap'")
         tables_exist = res.fetchone()
-        print(tables_exist)
 
         if not tables_exist:
             self.conn.execute("CREATE TABLE WordMap(name TEXT, value TEXT)")
@@ -54,8 +53,27 @@ class AutoComplete:
             cur.execute("INSERT INTO WordPrediction VALUES (?, ?)", ("predictions", "{}",))
 
     def train(self, sentence):
+        """
+        Returns - string
+        Input - str: a string of words called sentence
+        ----------
+        Trains the sentence. It does this by creating a map of
+        current words to next words and their counts for each
+        time the next word appears after the current word
+        - takes in the sentence and splits it into a list of words
+        - retrieves the word map and predictions map
+        - creates the word map and predictions map together
+        - saves word map and predictions map to the database
+        """
+        cur = self.conn.cursor()
         words_list = sentence.split(" ")
-        words_map = {}
+
+        words_map = cur.execute("SELECT value FROM WordMap WHERE name='wordsmap'").fetchone()[0]
+        words_map = json.loads(words_map)
+
+        predictions = cur.execute("SELECT value FROM WordPrediction WHERE name='predictions'").fetchone()[0]
+        predictions = json.loads(predictions)
+
         for idx in range(len(words_list)-1):
             curr_word, next_word = words_list[idx], words_list[idx+1]
             if curr_word not in words_map:
@@ -65,7 +83,24 @@ class AutoComplete:
             else:
                 words_map[curr_word][next_word] += 1
 
-        print(words_map)
+            # checking the completion word against the next word
+            if curr_word not in predictions:
+                predictions[curr_word] = {
+                    'completion_word': next_word,
+                    'completion_count': 1
+                }
+            else:
+                if words_map[curr_word][next_word] > predictions[curr_word]['completion_count']:
+                    predictions[curr_word]['completion_word'] = next_word
+                    predictions[curr_word]['completion_count'] = words_map[curr_word][next_word]
+
+        words_map = json.dumps(words_map)
+        predictions = json.dumps(predictions)
+
+        cur.execute("UPDATE WordMap SET value = (?) WHERE name='wordsmap'", (words_map,))
+        cur.execute("UPDATE WordPrediction SET value = (?) WHERE name='predictions'", (predictions,))
+        return("training complete")
+
 
 
 if __name__ == "__main__":
@@ -73,9 +108,5 @@ if __name__ == "__main__":
               we have got to learn how to use them and to use them well. And with\
               all these new weapons in your arsenal, we would better get those profits fired up"
     ac = AutoComplete()
-    print(ac.train(input_))
-    # se.index_document("we should all strive to be happy and happy again")
-    # print(se.index_document("happiness is all you need"))
-    # se.index_document("no way should we be sad")
-    # se.index_document("a cheerful heart is a happy one even in Nigeria")
-    # print(se.find_documents("happy"))
+    ac.train(input_)
+    # print(ac.predict("to"))
