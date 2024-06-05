@@ -1,3 +1,5 @@
+import typing
+
 __author__ = "Nitkarsh Chourasia"
 __version__ = "1.0"
 def addition(
@@ -17,7 +19,6 @@ def addition(
 
     # returning the result.
     return f"The sum of {num1} and {num2} is: {sum_result}"
-)
 
 print(addition(5, 10))  # This will use the provided parameters
 print(addition(2, 2))
