@@ -37,7 +37,7 @@ xlrd==2.0.1
 fpdf==1.7.2
 mysql-connector-repackaged==0.3.1
 word2number==1.1
-tornado==6.4
+tornado==6.4.1
 obs==0.0.0
 todo==0.1
 oauth2client==4.1.3
