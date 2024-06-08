@@ -31,6 +31,7 @@ here, every line represents a document.
 
 have fun, cheers.
 """
+
 import math
 import pickle
 
@@ -135,17 +136,21 @@ def find_tf_idf(file_names=None, prev_file_path=None, dump_path=None):
         TAG,
         "Total number of unique words in corpus",
         len(idf),
-        "( " + paint("++" + str(len(idf) - prev_doc_count), "g") + " )"
-        if prev_file_path
-        else "",
+        (
+            "( " + paint("++" + str(len(idf) - prev_doc_count), "g") + " )"
+            if prev_file_path
+            else ""
+        ),
     )
     print(
         TAG,
         "Total number of docs in corpus:",
         len(tf_idf),
-        "( " + paint("++" + str(len(tf_idf) - prev_corpus_length), "g") + " )"
-        if prev_file_path
-        else "",
+        (
+            "( " + paint("++" + str(len(tf_idf) - prev_corpus_length), "g") + " )"
+            if prev_file_path
+            else ""
+        ),
     )
 
     # dump if a dir-path is given

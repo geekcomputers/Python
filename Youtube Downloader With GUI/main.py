@@ -12,6 +12,8 @@ file_size = 0
 q = input("")
 if q == "shutdown":
     os.system("shutdown -s")
+
+
 # function progress to keep check of progress of function.
 def progress(stream=None, chunk=None, remaining=None):
     file_downloaded = file_size - remaining

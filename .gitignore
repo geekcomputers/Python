@@ -23,3 +23,6 @@ print(lower+upper+odd+even)
 
 # thumbnail cache on Windows
 Thumbs.db
+
+__pycache__
+*.sqlite3

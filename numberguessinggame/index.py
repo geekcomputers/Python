@@ -1,7 +1,8 @@
 import random
 
+
 def number_guessing_game():
-   
+
     secret_number = random.randint(1, 100)
     attempts = 0
 
@@ -18,11 +19,14 @@ def number_guessing_game():
             elif guess > secret_number:
                 print("Too high! Try again.")
             else:
-                print(f"Congratulations! You guessed the number {secret_number} in {attempts} attempts!")
+                print(
+                    f"Congratulations! You guessed the number {secret_number} in {attempts} attempts!"
+                )
                 break
 
         except ValueError:
             print("Please enter a valid number.")
+
 
 if __name__ == "__main__":
     number_guessing_game()

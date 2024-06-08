@@ -73,7 +73,7 @@ def scanner(string):
         match state:
 
             case 0:
-            
+
                 match ch:
 
                     case "m":  # catch mov-command
@@ -185,12 +185,12 @@ def scanner(string):
                         state = 47
                         token += ch
 
-                    case _:# error case
+                    case _:  # error case
 
                         state = 0
                         token = ""
                         raise InvalidSyntax()
-            
+
             case 2:  # state 2
 
                 match ch:
@@ -200,7 +200,7 @@ def scanner(string):
                         state = 3
                         token += "v"
 
-                    case _:# error case
+                    case _:  # error case
 
                         state = 0
                         token = ""
@@ -249,7 +249,7 @@ def scanner(string):
                         raise InvalidSyntax()
 
             case 6:  # state 6
-            
+
                 if ch.isdigit():
 
                     state = 6
@@ -268,7 +268,7 @@ def scanner(string):
                     raise InvalidSyntax()
 
             case 7:  # state 7
-            
+
                 match ch:
 
                     case "d":
@@ -276,7 +276,7 @@ def scanner(string):
                         state = 8
                         token += ch
 
-                    case _: # error case
+                    case _:  # error case
 
                         state = 0
                         token = ""
@@ -290,7 +290,7 @@ def scanner(string):
                         state = 9
                         token += ch
 
-                    case _:# error case
+                    case _:  # error case
 
                         state = 0
                         token = ""
@@ -318,7 +318,7 @@ def scanner(string):
                         state = 11
                         token += ch
 
-                    case _:# error case
+                    case _:  # error case
 
                         state = 0
                         token = ""
@@ -332,7 +332,7 @@ def scanner(string):
                         state = 12
                         token += ch
 
-                    case _:# error case
+                    case _:  # error case
 
                         state = 0
                         token = ""
@@ -594,7 +594,7 @@ def scanner(string):
                     raise InvalidSyntax()
 
             case 29:  # state 29
-                
+
                 match ch:
                     case "m":
 
@@ -806,7 +806,7 @@ def scanner(string):
 
                         state = 42
                         token += ch
-                    case _:# error case
+                    case _:  # error case
 
                         state = 0
                         token = ""
@@ -819,7 +819,7 @@ def scanner(string):
 
                         state = 43
                         token += ch
-                    case _:# error case
+                    case _:  # error case
 
                         state = 0
                         token = ""
@@ -846,7 +846,7 @@ def scanner(string):
 
                         state = 45
                         token += ch
-                    case _:# error case
+                    case _:  # error case
 
                         state = 0
                         token = ""
@@ -859,7 +859,7 @@ def scanner(string):
 
                         state = 46
                         token += ch
-                    case _:# error case
+                    case _:  # error case
 
                         state = 0
                         token = ""
@@ -886,7 +886,7 @@ def scanner(string):
 
                         state = 48
                         token += ch
-                    case _:# error case
+                    case _:  # error case
 
                         state = 0
                         token = ""
@@ -913,7 +913,7 @@ def scanner(string):
 
                         state = 50
                         token += ch
-                    case _:# error case
+                    case _:  # error case
 
                         state = 0
                         token = ""
@@ -1081,7 +1081,7 @@ def parser():
                         zeroFlag = False
                         if eax == 0:
                             zeroFlag = True
-                    
+
                     case "ebx":
                         ebx += token.token
 
@@ -1089,7 +1089,7 @@ def parser():
                         zeroFlag = False
                         if ebx == 0:
                             zeroFlag = True
-                    
+
                     case "ecx":
                         ecx += token.token
 
@@ -1097,7 +1097,7 @@ def parser():
                         zeroFlag = False
                         if ecx == 0:
                             zeroFlag = True
-                    
+
                     case "edx":
                         edx += token.token
 
@@ -1301,7 +1301,6 @@ def parser():
 
                 # actual comparing
                 zeroFlag = setZeroFlag(token.token, tmpToken.token)
-                
 
         elif token.token == "je":
 
@@ -1448,7 +1447,7 @@ def parser():
                 return
 
             if token.t == "register":
-                
+
                 match token.token:
                     case "eax":
                         eax /= eax
@@ -1470,8 +1469,9 @@ def parser():
         # increment pointer for fetching next token.
         pointer += 1
 
+
 def setZeroFlag(token, tmpToken):
-    """ return bool for zero flag based on the regToken """
+    """return bool for zero flag based on the regToken"""
     global eax, ebx, ecx, edx
 
     # Register in string
@@ -1506,6 +1506,7 @@ def setZeroFlag(token, tmpToken):
             return
 
     return zeroFlag
+
 
 def registerLabels():
     """

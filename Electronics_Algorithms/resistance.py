@@ -1,69 +1,40 @@
-def resistance_calculator(material:str, lenght:float, section:float, temperature:float):
-  """
-  material is a string indicating the material of the wire
-  
-  lenght is a floating value indicating the lenght of the wire in meters
+def resistance_calculator(
+    material: str, lenght: float, section: float, temperature: float
+):
+    """
+    material is a string indicating the material of the wire
 
-  diameter is a floating value indicating the diameter of the wire in millimeters
+    lenght is a floating value indicating the lenght of the wire in meters
 
-  temperature is a floating value indicating the temperature at which the wire is operating in °C
+    diameter is a floating value indicating the diameter of the wire in millimeters
 
-  Available materials:
-  - silver
-  - copper
-  - aluminium
-  - tungsten
-  - iron
-  - steel
-  - zinc
-  - solder"""
+    temperature is a floating value indicating the temperature at which the wire is operating in °C
 
-  materials = {
-    "silver": {
-                "rho": 0.0163,
-                "coefficient": 0.0038
-              },
+    Available materials:
+    - silver
+    - copper
+    - aluminium
+    - tungsten
+    - iron
+    - steel
+    - zinc
+    - solder"""
 
-    "copper": {
-                "rho": 0.0178,
-                "coefficient": 0.00381
-              },
+    materials = {
+        "silver": {"rho": 0.0163, "coefficient": 0.0038},
+        "copper": {"rho": 0.0178, "coefficient": 0.00381},
+        "aluminium": {"rho": 0.0284, "coefficient": 0.004},
+        "tungsten": {"rho": 0.055, "coefficient": 0.0045},
+        "iron": {"rho": 0.098, "coefficient": 0.006},
+        "steel": {"rho": 0.15, "coefficient": 0.0047},
+        "zinc": {"rho": 0.06, "coefficient": 0.0037},
+        "solder": {"rho": 0.12, "coefficient": 0.0043},
+    }
 
-    "aluminium": {
-                  "rho": 0.0284,
-                  "coefficient": 0.004
-                 },
+    rho_20deg = materials[material]["rho"]
+    temp_coefficient = materials[material]["coefficient"]
 
-    "tungsten": {
-                  "rho": 0.055,
-                  "coefficient": 0.0045
-                },
+    rho = rho_20deg * (1 + temp_coefficient * (temperature - 20))
+    resistance = rho * lenght / section
 
-    "iron": {
-              "rho": 0.098,
-              "coefficient": 0.006
-            },
-
-    "steel": {
-                "rho": 0.15,
-                "coefficient": 0.0047
-              },
-
-    "zinc": {
-              "rho": 0.06,
-              "coefficient": 0.0037
-            },
-
-    "solder": {
-                "rho": 0.12,
-                "coefficient": 0.0043
-              }
-  }
-
-  rho_20deg = materials[material]["rho"]
-  temp_coefficient = materials[material]["coefficient"]
-
-  rho = rho_20deg * (1 + temp_coefficient * (temperature - 20))
-  resistance = rho * lenght / section
-
-  return f"{resistance}Ω"
+    return f"{resistance}Ω"

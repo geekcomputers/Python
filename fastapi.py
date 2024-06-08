@@ -7,6 +7,7 @@ app = FastAPI()
 # temp database
 fakedb = []
 
+
 # course model to store courses
 class Course(BaseModel):
     id: int

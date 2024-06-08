@@ -23,13 +23,14 @@ database_reference = db.collection("on_call")
 
 # Here the collection name is on_call which has documents with fields phone , from (%H:%M:%S time to call the person),date
 
+
 # gets data from cloud database and calls 5 min prior the time (from time) alloted in the database
 def search():
 
     calling_time = datetime.now()
     one_hours_from_now = (calling_time + timedelta(hours=1)).strftime("%H:%M:%S")
     current_date = str(strftime("%d-%m-%Y", gmtime()))
-    docs = db.collection(u"on_call").where(u"date", u"==", current_date).stream()
+    docs = db.collection("on_call").where("date", "==", current_date).stream()
     list_of_docs = []
     for doc in docs:
 

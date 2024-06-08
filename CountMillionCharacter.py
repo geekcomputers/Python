@@ -6,6 +6,7 @@ that number appears in the triple quoted string.
 Credit to William J. Turkel and Adam Crymble for the word
 frequency code used below. I just merged the two ideas.
 """
+
 import re
 
 pattern = re.compile("\W")  # re is used to compile the expression more than once

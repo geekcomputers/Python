@@ -4,9 +4,9 @@
   Python program to find triplets in a given  array whose sum is zero 
 """
 
+
 # function to print triplets with 0 sum
 def find_Triplets_with_zero_sum(arr, num):
-
     """find triplets in a given  array whose sum is zero
 
     Parameteres :

@@ -1,6 +1,7 @@
 #      uno game      #
 
 import random
+
 """
 Generate the UNO deck of 108 cards.
 Parameters: None
@@ -99,9 +100,10 @@ colours = ["Red", "Green", "Yellow", "Blue"]
 numPlayers = int(input("How many players?"))
 while numPlayers < 2 or numPlayers > 4:
     numPlayers = int(
-        input("Invalid. Please enter a number between 2-4.\nHow many players?"))
+        input("Invalid. Please enter a number between 2-4.\nHow many players?")
+    )
 for player in range(numPlayers):
-    players_name.append(input("Enter player {} name: ".format(player+1)))
+    players_name.append(input("Enter player {} name: ".format(player + 1)))
     players.append(drawCards(5))
 
 
@@ -121,11 +123,12 @@ while playing:
     print("Card on top of discard pile: {}".format(discards[-1]))
     if canPlay(currentColour, cardVal, players[playerTurn]):
         cardChosen = int(input("Which card do you want to play?"))
-        while not canPlay(currentColour, cardVal, [players[playerTurn][cardChosen-1]]):
-            cardChosen = int(
-                input("Not a valid card. Which card do you want to play?"))
-        print("You played {}".format(players[playerTurn][cardChosen-1]))
-        discards.append(players[playerTurn].pop(cardChosen-1))
+        while not canPlay(
+            currentColour, cardVal, [players[playerTurn][cardChosen - 1]]
+        ):
+            cardChosen = int(input("Not a valid card. Which card do you want to play?"))
+        print("You played {}".format(players[playerTurn][cardChosen - 1]))
+        discards.append(players[playerTurn].pop(cardChosen - 1))
 
         # cheak if player won
         if len(players[playerTurn]) == 0:
@@ -142,13 +145,13 @@ while playing:
                 cardVal = splitCard[1]
             if currentColour == "Wild":
                 for x in range(len(colours)):
-                    print("{}) {}".format(x+1, colours[x]))
-                newColour = int(
-                    input("What colour would you like to choose? "))
+                    print("{}) {}".format(x + 1, colours[x]))
+                newColour = int(input("What colour would you like to choose? "))
                 while newColour < 1 or newColour > 4:
                     newColour = int(
-                        input("Invalid option. What colour would you like to choose"))
-                currentColour = colours[newColour-1]
+                        input("Invalid option. What colour would you like to choose")
+                    )
+                currentColour = colours[newColour - 1]
             if cardVal == "Reverse":
                 playDirection = playDirection * -1
             elif cardVal == "Skip":
@@ -156,20 +159,20 @@ while playing:
                 if playerTurn >= numPlayers:
                     playerTurn = 0
                 elif playerTurn < 0:
-                    playerTurn = numPlayers-1
+                    playerTurn = numPlayers - 1
             elif cardVal == "Draw Two":
-                playerDraw = playerTurn+playDirection
+                playerDraw = playerTurn + playDirection
                 if playerDraw == numPlayers:
                     playerDraw = 0
                 elif playerDraw < 0:
-                    playerDraw = numPlayers-1
+                    playerDraw = numPlayers - 1
                 players[playerDraw].extend(drawCards(2))
             elif cardVal == "Draw Four":
-                playerDraw = playerTurn+playDirection
+                playerDraw = playerTurn + playDirection
                 if playerDraw == numPlayers:
                     playerDraw = 0
                 elif playerDraw < 0:
-                    playerDraw = numPlayers-1
+                    playerDraw = numPlayers - 1
                 players[playerDraw].extend(drawCards(4))
             print("")
     else:
@@ -180,7 +183,7 @@ while playing:
     if playerTurn >= numPlayers:
         playerTurn = 0
     elif playerTurn < 0:
-        playerTurn = numPlayers-1
+        playerTurn = numPlayers - 1
 
 print("Game Over")
 print("{} is the Winner!".format(winner))

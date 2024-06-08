@@ -20,7 +20,9 @@ Separate filenames with spaces.
 David Costell (DontEatThemCookies on GitHub)
 v2 - 03/12/2022
 """
+
 import sys
+
 
 def with_files(files):
     """Executes when file(s) is/are specified."""
@@ -35,6 +37,7 @@ def with_files(files):
     for contents in file_contents:
         sys.stdout.write(contents)
 
+
 def no_files():
     """Executes when no file(s) is/are specified."""
     try:
@@ -47,6 +50,7 @@ def no_files():
     except EOFError:
         exit()
 
+
 def main():
     """Entry point of the cat program."""
     # Read the arguments passed to the program
@@ -54,6 +58,7 @@ def main():
         no_files()
     else:
         with_files(sys.argv[1:])
+
 
 if __name__ == "__main__":
     main()

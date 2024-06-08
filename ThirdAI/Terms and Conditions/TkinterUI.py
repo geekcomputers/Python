@@ -9,6 +9,7 @@ class ThirdAIApp:
     """
     A GUI application for using the ThirdAI neural database client to train and query data.
     """
+
     def __init__(self, root):
         """
         Initialize the user interface window.
@@ -19,7 +20,7 @@ class ThirdAIApp:
         # Initialize the main window
         self.root = root
         self.root.geometry("600x500")
-        self.root.title('ThirdAI - T&C')
+        self.root.title("ThirdAI - T&C")
 
         # Initialize variables
         self.path = []
@@ -28,33 +29,69 @@ class ThirdAIApp:
         # GUI elements
 
         # Labels and buttons
-        self.menu = tk.Label(self.root, text="Terms & Conditions", font=self.custom_font(30), fg='black',
-                             highlightthickness=2, highlightbackground="red")
+        self.menu = tk.Label(
+            self.root,
+            text="Terms & Conditions",
+            font=self.custom_font(30),
+            fg="black",
+            highlightthickness=2,
+            highlightbackground="red",
+        )
         self.menu.place(x=125, y=10)
 
-        self.insert_button = tk.Button(self.root, text="Insert File!", font=self.custom_font(15), fg='black', bg="grey",
-                                       width=10, command=self.file_input)
+        self.insert_button = tk.Button(
+            self.root,
+            text="Insert File!",
+            font=self.custom_font(15),
+            fg="black",
+            bg="grey",
+            width=10,
+            command=self.file_input,
+        )
         self.insert_button.place(x=245, y=100)
 
         self.text_box = tk.Text(self.root, wrap=tk.WORD, width=30, height=1)
         self.text_box.place(x=165, y=150)
 
-        self.training_button = tk.Button(self.root, text="Training", font=self.custom_font(15), fg='black', bg="grey",
-                                         width=10, command=self.training)
+        self.training_button = tk.Button(
+            self.root,
+            text="Training",
+            font=self.custom_font(15),
+            fg="black",
+            bg="grey",
+            width=10,
+            command=self.training,
+        )
         self.training_button.place(x=245, y=195)
 
-        self.query_label = tk.Label(self.root, text="Query", font=self.custom_font(20), fg='black')
+        self.query_label = tk.Label(
+            self.root, text="Query", font=self.custom_font(20), fg="black"
+        )
         self.query_label.place(x=255, y=255)
 
         self.query_entry = tk.Entry(self.root, font=self.custom_font(20), width=30)
         self.query_entry.place(x=70, y=300)
 
-        self.processing_button = tk.Button(self.root, text="Processing", font=self.custom_font(15), fg='black',
-                                           bg="grey", width=10, command=self.processing)
+        self.processing_button = tk.Button(
+            self.root,
+            text="Processing",
+            font=self.custom_font(15),
+            fg="black",
+            bg="grey",
+            width=10,
+            command=self.processing,
+        )
         self.processing_button.place(x=245, y=355)
 
-        self.clear_button = tk.Button(self.root, text="Clear", font=15, fg='black', bg="grey", width=10,
-                                      command=self.clear_all)
+        self.clear_button = tk.Button(
+            self.root,
+            text="Clear",
+            font=15,
+            fg="black",
+            bg="grey",
+            width=10,
+            command=self.clear_all,
+        )
         self.clear_button.place(x=245, y=405)
 
     @staticmethod
@@ -96,7 +133,9 @@ class ThirdAIApp:
         Train the neural database client with the selected PDF file.
         """
         if not self.path:
-            messagebox.showwarning("No File Selected", "Please select a PDF file before training.")
+            messagebox.showwarning(
+                "No File Selected", "Please select a PDF file before training."
+            )
             return
 
         self.client.train(self.path[0])

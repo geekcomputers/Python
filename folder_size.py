@@ -25,7 +25,7 @@ fsizedicr = {
     "Megabytes": float(1) / (1024 * 1024),
     "Gigabytes": float(1) / (1024 * 1024 * 1024),
 }
-for (path, dirs, files) in os.walk(
+for path, dirs, files in os.walk(
     directory
 ):  # Walk through all the directories. For each iteration, os.walk returns the folders, subfolders and files in the dir.
     for file in files:  # Get all the files

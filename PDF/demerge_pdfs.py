@@ -3,16 +3,16 @@ Python program to split large pdf(typically textbook) into small set of pdfs, ma
 to enhance the experience of reading and feasibility to study only specific parts from the large original textbook
 """
 
-
 import PyPDF2
+
 path = input()
-merged_pdf = open(path, mode='rb')
+merged_pdf = open(path, mode="rb")
 
 
 pdf = PyPDF2.PdfFileReader(merged_pdf)
 
-(u, ctr, x) = tuple([0]*3)
-for i in range(1, pdf.numPages+1):
+(u, ctr, x) = tuple([0] * 3)
+for i in range(1, pdf.numPages + 1):
 
     if u >= pdf.numPages:
         print("Successfully done!")
@@ -21,15 +21,15 @@ for i in range(1, pdf.numPages+1):
     ctr = int(input(f"Enter the number of pages for {name}: "))
     u += ctr
     if u > pdf.numPages:
-        print('Limit exceeded! ')
+        print("Limit exceeded! ")
         break
 
-    base_path = '/Users/darpan/Desktop/{}.pdf'
+    base_path = "/Users/darpan/Desktop/{}.pdf"
     path = base_path.format(name)
-    f = open(path, mode='wb')
+    f = open(path, mode="wb")
     pdf_writer = PyPDF2.PdfFileWriter()
 
-    for j in range(x, x+ctr):
+    for j in range(x, x + ctr):
         page = pdf.getPage(j)
         pdf_writer.addPage(page)
 

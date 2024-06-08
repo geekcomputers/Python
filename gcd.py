@@ -2,6 +2,7 @@
 although there is function to find gcd in python but this is the code which
 takes two inputs and prints gcd of the two.
 """
+
 a = int(input("Enter number 1 (a): "))
 b = int(input("Enter number 2 (b): "))
 

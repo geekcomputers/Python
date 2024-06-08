@@ -51,7 +51,6 @@ for name_div in az_names:
         while next_sibling and next_sibling.name == "br":
             next_sibling = next_sibling.next_sibling
 
-            
         # Print the text content of the next sibling element
         if next_sibling:
             print(next_sibling.text.strip())

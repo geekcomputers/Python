@@ -6,6 +6,7 @@ win = Tk()  # objek
 win.title("WIKIPEDIA")
 win.geometry("200x70")  # function
 
+
 # function
 def search_wiki():
     search = entry.get()

@@ -20,6 +20,7 @@ root.title("Clock")
 
 # master
 
+
 # This function is used to
 # display time on the label
 def def_time():
