@@ -10,22 +10,22 @@ coverage = {
     # "case-4" : False
 }
 
-# def resetDic():
-#     for i in coverage.keys():
-#         coverage[i] = False
+def resetDic():
+    for i in coverage.keys():
+        coverage[i] = False
 
-# def printCov():
-    # for branch, hit in coverage.items():
-    #     if hit:
-    #         print(branch, "was hit")
-    #     else:
-    #         print(branch, "was not hit")
-    # resetDic()
+def printCov():
+    for branch, hit in coverage.items():
+        if hit:
+            print(branch, "was hit")
+        else:
+            print(branch, "was not hit")
+    resetDic()
 
-# def pow_test_one():
-#         result = binaryExponentiation(2.00000, 0)
-#         assert(result == 1)
-#         print("pow-case-1 passed")
+def pow_test_one():
+        result = binaryExponentiation(2.00000, 0)
+        assert(result == 1)
+        print("pow-case-1 passed")
 
 def binaryExponentiation(x: float, n: int) -> float:
     """
@@ -82,6 +82,6 @@ if __name__ == "__main__":
     print(binaryExponentiation(2.00000, 10))
     print(binaryExponentiation(2.10000, 3))
     print(binaryExponentiation(2.00000, -2))
-    # pow_test_one()
+    pow_test_one()
     
-    # printCov()
+    printCov()
