@@ -23,7 +23,7 @@ Programming language: <Python>
 
 <Francis>
 
-<BinaryExponation>
+<BinaryExponentiation>
 
 <https://github.com/Timmermans13/Python/blob/Francis-Branch/power_of_n.py>
 
