@@ -25,9 +25,9 @@ Programming language: <Python>
 
 <BinaryExponation>
 
-<Show a patch (diff) or a link to a commit made in your forked repository that shows the instrumented code to gather coverage measurements>
+<https://github.com/Timmermans13/Python/blob/Francis-Branch/power_of_n.py>
 
-<Provide a screenshot of the coverage results output by the instrumentation>
+<https://github.com/Timmermans13/Python/blob/Francis-Branch/Coverage_old_results_function_1.png>
 
 <Function 2 name>
 
@@ -39,17 +39,17 @@ Programming language: <Python>
 
 <The following is supposed to be repeated for each group member>
 
-<Group member name>
+<Francis >
 
 <Test 1>
 
-<Show a patch (diff) or a link to a commit made in your forked repository that shows the new/enhanced test>
+<https://github.com/Timmermans13/Python/blob/Francis-Branch/power_of_num_tests.py>
 
-<Provide a screenshot of the old coverage results (the same as you already showed above)>
+<https://github.com/Timmermans13/Python/blob/Francis-Branch/Coverage_old_results_function_1.png>
 
-<Provide a screenshot of the new coverage results>
+<https://github.com/Timmermans13/Python/blob/Francis-Branch/Coverage_new_results_function_1.png>
 
-<State the coverage improvement with a number and elaborate on why the coverage is improved>
+<The test I have provided tests the with the branch where n is equal to 0 (pow-case-1). This was the only branch that was not covered, hence improving the branch coverage to 100%>
 
 <Test 2>
 
