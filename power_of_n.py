@@ -7,7 +7,6 @@ coverage = {
     "pow-case-1" : False,
     "pow-case-2" : False,
     "pow-case-3" : False,
-    # "case-4" : False
 }
 
 def resetDic():
