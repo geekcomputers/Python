@@ -23,7 +23,7 @@ Programming language: <Python>
 
 <Francis>
 
-<Function 1 name>
+<BinaryExponation>
 
 <Show a patch (diff) or a link to a commit made in your forked repository that shows the instrumented code to gather coverage measurements>
 
