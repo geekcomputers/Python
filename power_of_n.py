@@ -1,5 +1,3 @@
-import power_of_num_tests as pow
-
 # Assign values to author and version.
 __author__ = "Himanshu Gupta"
 __version__ = "1.0.0"
@@ -23,7 +21,10 @@ def printCov():
             print(branch, "was not hit")
     resetDic()
 
-
+def pow_test_one():
+        result = binaryExponentiation(2.00000, 0)
+        assert(result == 1)
+        print("pow-case-1 passed")
 
 def binaryExponentiation(x: float, n: int) -> float:
     """
@@ -77,9 +78,12 @@ if __name__ == "__main__":
     
     print() # Blank Line
 
+    
     print(binaryExponentiation(2.00000, 10))
     print(binaryExponentiation(2.10000, 3))
     print(binaryExponentiation(2.00000, -2))
-    pow.pow_test_one()
+    pow_test_one()
+    
+    
     
     printCov()
