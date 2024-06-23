@@ -27,7 +27,7 @@ Programming language: <Python>
 
 <https://github.com/Timmermans13/Python/blob/Francis-Branch/power_of_n.py>
 
-![](https://github.com/Timmermans13/Python/blob/Francis-Branch/Coverage_old_results_function_1.png)
+![](https://github.com/Timmermans13/Python/blob/master/pow-cov-old-instr.png)
 
 <is_balanced>
 
@@ -47,7 +47,7 @@ Programming language: <Python>
 
 <https://github.com/Timmermans13/Python/blob/Francis-Branch/power_of_num_tests.py>
 
-![](https://github.com/Timmermans13/Python/blob/Francis-Branch/Coverage_old_results_function_1.png)
+![](https://github.com/Timmermans13/Python/blob/master/pow-cov-old-instr.png)
 
 ![](https://github.com/Timmermans13/Python/blob/Francis-Branch/Coverage_new_results_function_1.png)
 
