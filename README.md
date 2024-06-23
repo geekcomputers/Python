@@ -4,7 +4,7 @@
 
 Name: <Python>
 
-URL: <![](https://github.com/geekcomputers/Python)>
+URL: <https://github.com/geekcomputers/Python>
 
 Number of lines of code and the tool used to count it: <31401>
 
@@ -27,7 +27,7 @@ Programming language: <Python>
 
 <https://github.com/Timmermans13/Python/blob/Francis-Branch/power_of_n.py>
 
-<https://github.com/Timmermans13/Python/blob/Francis-Branch/Coverage_old_results_function_1.png>
+<![]https://github.com/Timmermans13/Python/blob/Francis-Branch/Coverage_old_results_function_1.png>
 
 <is_balanced>
 
