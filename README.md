@@ -29,9 +29,11 @@ Programming language: <Python>
 
 <https://github.com/Timmermans13/Python/blob/Francis-Branch/Coverage_old_results_function_1.png>
 
-<Function 2 name>
+<is_balanced>
 
-<Provide the same kind of information provided for Function 1>
+<https://github.com/Timmermans13/Python/blob/Francis-Branch/balance_parenthesis.py>
+
+<https://github.com/Timmermans13/Python/blob/Francis-Branch/balance_parenthesis_old_cov_inst.png>
 
 ## Coverage improvement
 
@@ -53,7 +55,13 @@ Programming language: <Python>
 
 <Test 2>
 
-<Provide the same kind of information provided for Test 1>
+<https://github.com/Timmermans13/Python/blob/Francis-Branch/balance_parenthesis.py>
+
+<https://github.com/Timmermans13/Python/blob/Francis-Branch/balance_parenthesis_old_cov_inst.png>
+
+<https://github.com/Timmermans13/Python/blob/Francis-Branch/balance_parenthesis_new_cov_inst.png>
+
+<The test I have provided tests the with the branch where the string empty (bal-case-2). This was the only branch that was not covered, hence improving the branch coverage to 100%>
 
 ### Overall
 
