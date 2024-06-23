@@ -3,7 +3,7 @@ import random
 import time
 from enum import Enum
 from pathlib import Path
-from typing import Callable, List
+from typing import Callable, List, Dict
 
 import requests
 from colorama import Fore, Style
@@ -14,6 +14,14 @@ request_timeout = 1000
 data_path = Path(__file__).parent.parent.parent / 'Data'
 year = 4800566455
 
+# Data structure to hold coverage information
+coverage = {
+    "try_block": False,
+    "except_connection_error": False,
+    "status_code_check": False,
+    "return_statement": False,
+    "raise_runtime_error": False
+}
 
 class Source(Enum):
     """Enum that represents switch between local and web word parsing."""
@@ -60,23 +68,28 @@ def parse_word_from_local(choice_function: Callable[[List[str]], str] = random.c
 
 
 def parse_word_from_site(url: str = 'https://random-word-api.herokuapp.com/word') -> str:
-    # noqa: DAR201
     """
     Parse word from website.
 
-    :param url: url that word will be parsed from.
-    :return Optional[str]: string that contains the word.
-    :raises ConnectionError: no connection to the internet.
-    :raises RuntimeError: something go wrong with getting the word from site.
+    :param url: URL that word will be parsed from.
+    :return: string that contains the word.
+    :raises requests.exceptions.ConnectionError: no connection to the internet.
+    :raises RuntimeError: something went wrong with getting the word from the site.
     """
     try:
         response: requests.Response = requests.get(url, timeout=request_timeout)
-    except ConnectionError:
-        raise ConnectionError('There is no connection to the internet')
+        coverage["try_block"] = True  # Added line: marking the try block as reached
+    except requests.exceptions.ConnectionError:
+        coverage["except_connection_error"] = True  # Added line: marking the except block as reached
+        raise requests.exceptions.ConnectionError('There is no connection to the internet')
+    
     if response.status_code == success_code:
+        coverage["status_code_check"] = True  # Added line: marking the status code check as reached
+        coverage["return_statement"] = True  # Added line: marking the return statement as reached
         return json.loads(response.content.decode())[0]
-    raise RuntimeError('Something go wrong with getting the word from site')
-
+    
+    coverage["raise_runtime_error"] = True  # Added line: marking the raise runtime error as reached
+    raise RuntimeError('Something went wrong with getting the word from site')
 
 class MainProcess(object):
     """Manages game process."""
@@ -167,3 +180,13 @@ class MainProcess(object):
 if __name__ == '__main__':
     main_process = MainProcess(Source(1), print, input, random.choice)
     main_process.start_game()
+
+# Function to print and save coverage information
+def print_coverage() -> None:
+    with open("output.txt", "w") as f:
+        for statement, reached in coverage.items():
+            output = f"{statement}: {'Reached' if reached else 'Not Reached'}"
+            print(output)
+            f.write(output + "\n")
+
+print_coverage()
