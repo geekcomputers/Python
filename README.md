@@ -2,7 +2,7 @@
 
 ## Project chosen
 
-Name: <Python>
+Name: Python
 
 URL: <https://github.com/geekcomputers/Python>
 
@@ -23,13 +23,13 @@ Programming language: <Python>
 
 <Francis>
 
-<Binary-Exponentiation>
+BinaryExponentiation
 
 <https://github.com/Timmermans13/Python/blob/Francis-Branch/power_of_n.py>
 
 ![](https://github.com/Timmermans13/Python/blob/master/pow-cov-old-instr.png)
 
-<is_balanced>
+is_balanced
 
 <https://github.com/Timmermans13/Python/blob/Francis-Branch/balance_parenthesis.py>
 
