@@ -45,11 +45,11 @@ Programming language: <Python>
 
 <Test 1>
 
-<https://github.com/Timmermans13/Python/blob/Francis-Branch/power_of_num_tests.py>
+<https://github.com/Timmermans13/Python/blob/Francis-Branch/power_of_n.py>
 
 ![](https://github.com/Timmermans13/Python/blob/master/pow-cov-old-instr.png)
 
-![](https://github.com/Timmermans13/Python/blob/Francis-Branch/Coverage_new_results_function_1.png)
+![](https://github.com/Timmermans13/Python/blob/master/pow-cov-new-instr.png)
 
 <The test I have provided tests the with the branch where n is equal to 0 (pow-case-1). This was the only branch that was not covered, hence improving the branch coverage to 100%>
 
