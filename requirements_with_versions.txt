@@ -92,7 +92,7 @@ geocoder==1.38.1
 APScheduler==3.10.4
 PyQRCode==1.2.1
 freegames==2.5.3
-pyperclip==1.8.2
+pyperclip==1.9.0
 newspaper==0.1.0.7
 opencv-python==4.10.0.82
 tensorflow==2.15.0.post1
