@@ -82,7 +82,8 @@ Post-test branches
 
 ![](new_branches.png)
 
-Code diff
+Code added: track.py, test.py
+Code modified: pongpong.py, ball.py, paddle.py
 
 ### Overall
 Old cov:
