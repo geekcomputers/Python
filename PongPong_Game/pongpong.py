@@ -2,6 +2,7 @@
 
 import pyglet
 from pong import load
+from track import update_coverage, print_coverage, write_coverage_to_file
 
 # Variables, Considering a vertical oriented window for game
 WIDTH = 600  # Game Window Width
@@ -58,3 +59,6 @@ def update(dt):
 if __name__ == "__main__":
     pyglet.clock.schedule_interval(update, 1 / 120.0)
     pyglet.app.run()
+
+    print_coverage()
+    write_coverage_to_file("coverage")
