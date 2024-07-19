@@ -67,7 +67,7 @@ int 0x80
 
 ```
 
-**Important: The arithmetic commands (add, sub) works only with registers or constans. 
+**Important: The arithmetic commands (add, sub) works only with registers or constants. 
 Therefore we must use the register ebx as a placeholder, above.**
 
 
