@@ -27,10 +27,10 @@ int 0x80
 
 ```
 
-* The first line move the number  56 into register ecx.
-* The second line subtract 10 from the ecx register.
+* The first line move the number 56 into register ecx.
+* The second line subtracts 10 from the ecx register.
 * The third line move the number 4 into the eax register. This is for the print-function. 
-* The fourt line call interrupt 0x80, thus the result will print onto console.
+* The fourth line call interrupt 0x80, thus the result will print onto console.
 * The fifth line is a new line. This is important.
 
 **Important: close each line with a newline!**
@@ -67,7 +67,7 @@ int 0x80
 
 ```
 
-**Important: The arithmetic commands (add, sub) works only with registers or constans. 
+**Important: The arithmetic commands (add, sub) work only with registers or constants. 
 Therefore we must use the register ebx as a placeholder, above.**
 
 
@@ -79,12 +79,12 @@ Result of code, above.
 
 ### Comments available
 
-Comments begin with ; and ends with a newline. 
-We noticed a comment, above. 
+Comments begin with ; and end with a newline. 
+We noticed a comment above. 
 
 ### Push and Pop
 
-Sometimes we must save the content of a register, against losing of data.
+Sometimes we must save the content of a register, against losing data.
 Therefor we use the push and pop command.
 
 ```
@@ -92,7 +92,7 @@ push eax
 
 ```
 
-This line will push the content of register eax onto the stack. 
+This line will push the contents of register eax onto the stack. 
 
 ```
 pop ecx 
@@ -109,7 +109,7 @@ pop [register]
 
 ### Jumps
 
-With the command **cmp** we can compare two register. 
+With the command **cmp** we can compare two registers. 
 
 ```
 cmp r0, r1
@@ -119,7 +119,7 @@ jmp l2
 ```
 
 Are the two register equal? The the command **je** is actively and jumps to label **l1**
-Otherwise the command **jmp** is actively and jumps to label **l2**
+Otherwise, the command **jmp** is actively and jumps to label **l2**
 
 #### Labels
 
