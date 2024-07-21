@@ -1,8 +1,7 @@
 # ImageDownloader - Muhammed Shokr its amazing
-import os, re, requests # Always import file in main
 
 def ImageDownloader(url):
-    # import os, re, requests
+    import os, re, requests
 
     response = requests.get(url)
     text = response.text
