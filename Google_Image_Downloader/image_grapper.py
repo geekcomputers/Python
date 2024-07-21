@@ -2,10 +2,10 @@
 # -*- coding: utf-8 -*-
 # importing required libraries
 import json
-from os import chdir, system
-from os import walk
-from os.path import curdir
-from os.path import pardir
+from os import chdir, system,walk
+# from os import walk
+from os.path import curdir,pardir
+# from os.path import pardir
 from urllib.parse import urlencode
 from urllib.request import urlopen, Request
 
