@@ -1,5 +1,4 @@
 import pyqrcode, png
-from pyqrcode import QRCode
 
 # Creating QR code after given text "input"
 url = pyqrcode.create(input("Enter text to convert: "))
