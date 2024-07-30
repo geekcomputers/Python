@@ -6,6 +6,7 @@ import numpy as np
 import random
 from time import sleep
 
+
 # Creates an empty board
 def create_board():
     return np.array([[0, 0, 0], [0, 0, 0], [0, 0, 0]])

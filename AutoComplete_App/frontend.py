@@ -8,15 +8,17 @@ def train():
     ac = backend.AutoComplete()
     ac.train(sentence)
 
+
 def predict_word():
     word = predict_word_entry.get()
     ac = backend.AutoComplete()
     print(ac.predict(word))
 
+
 if __name__ == "__main__":
     root = Tk()
     root.title("Input note")
-    root.geometry('300x300')
+    root.geometry("300x300")
 
     train_label = Label(root, text="Train")
     train_label.pack()

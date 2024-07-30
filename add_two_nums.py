@@ -1,9 +1,10 @@
+import typing
+
 __author__ = "Nitkarsh Chourasia"
 __version__ = "1.0"
-def addition(
-        num1: typing.Union[int, float],
-        num2: typing.Union[int, float]
-) -> str:
+
+
+def addition(num1: typing.Union[int, float], num2: typing.Union[int, float]) -> str:
     """A function to add two given numbers."""
 
     # Checking if the given parameters are numerical or not.
@@ -17,7 +18,7 @@ def addition(
 
     # returning the result.
     return f"The sum of {num1} and {num2} is: {sum_result}"
-)
+
 
 print(addition(5, 10))  # This will use the provided parameters
 print(addition(2, 2))

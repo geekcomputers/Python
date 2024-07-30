@@ -21,6 +21,7 @@ Usage:
 Credits: This code was written by editing the code from http://www.lpb-riannetrujillo.com/blog/python-fractal/
 
 """
+
 import sys
 import turtle
 

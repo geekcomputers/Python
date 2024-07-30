@@ -51,7 +51,7 @@ def pi(maxK=70, prec=1008, disp=1007):
     gc().prec = prec
     K, M, L, X, S = 6, 1, 13591409, 1, 13591409
     for k in range(1, maxK + 1):
-        M = Dec((K ** 3 - (K << 4)) * M / k ** 3)
+        M = Dec((K**3 - (K << 4)) * M / k**3)
         L += 545140134
         X *= -262537412640768000
         S += Dec(M * L) / X

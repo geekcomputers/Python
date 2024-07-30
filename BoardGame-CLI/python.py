@@ -2,15 +2,34 @@ import random
 
 # Define the game board with snakes and ladders
 snakes_and_ladders = {
-    2: 38, 7: 14, 8: 31, 15: 26, 16: 6, 21: 42,
-    28: 84, 36: 44, 46: 25, 49: 11, 51: 67, 62: 19,
-    64: 60, 71: 91, 74: 53, 78: 98, 87: 94, 89: 68,
-    92: 88, 95: 75, 99: 80
+    2: 38,
+    7: 14,
+    8: 31,
+    15: 26,
+    16: 6,
+    21: 42,
+    28: 84,
+    36: 44,
+    46: 25,
+    49: 11,
+    51: 67,
+    62: 19,
+    64: 60,
+    71: 91,
+    74: 53,
+    78: 98,
+    87: 94,
+    89: 68,
+    92: 88,
+    95: 75,
+    99: 80,
 }
+
 
 # Function to roll a six-sided die
 def roll_die():
     return random.randint(1, 6)
+
 
 # Function to simulate a single turn
 def take_turn(current_position, player_name):
@@ -35,6 +54,7 @@ def take_turn(current_position, player_name):
         print(f"Congratulations, {player_name} reached the final square!")
 
     return new_position
+
 
 # Main game loop
 def play_snakes_and_ladders():
@@ -64,6 +84,7 @@ def play_snakes_and_ladders():
         print(f"{player1_name} won!")
     elif player2_position == 100:
         print(f"{player2_name} won!")
+
 
 # Start the game
 play_snakes_and_ladders()

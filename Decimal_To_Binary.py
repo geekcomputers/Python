@@ -47,6 +47,7 @@ Program: Decimal to Binary converter.
 THis program accepts fractional values, the accuracy can be set below:
 """
 
+
 # Function to convert decimal number
 # to binary using recursion
 def DecimalToBinary(num):

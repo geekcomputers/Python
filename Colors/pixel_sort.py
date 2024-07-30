@@ -30,6 +30,7 @@ df = []
 total = 0
 dict, final, img_list = {}, [], []
 
+
 # Create dataframe and save it as an excel file
 def createDataSet(val=0, data=[]):
     global dict

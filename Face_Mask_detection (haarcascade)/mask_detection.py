@@ -22,7 +22,7 @@ while True:
     cv2.imshow("webcam", img)
     faces = faceCascade.detectMultiScale(img, 1.1, 4)
 
-    for (x, y, w, h) in faces:
+    for x, y, w, h in faces:
         crop_img = img[y : y + h, x : x + w]
         crop_img = cv2.resize(crop_img, (224, 224))
         normalized_image_array = (crop_img.astype(np.float32) / 127.0) - 1

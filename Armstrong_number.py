@@ -6,19 +6,25 @@ NOTE:
 this scripts only works for number in base 10
 """
 
-def is_armstrong_number(number:str):
-    total:int = 0
-    exp:int = len(number) #get the number of digits, this will determinate the exponent
 
-    digits:list[int] = []
-    for digit in number: digits.append(int(digit)) #get the single digits
-    for x in digits: total += x ** exp #get the power of each digit and sum it to the total
-    
+def is_armstrong_number(number: str):
+    total: int = 0
+    exp: int = len(
+        number
+    )  # get the number of digits, this will determinate the exponent
+
+    digits: list[int] = []
+    for digit in number:
+        digits.append(int(digit))  # get the single digits
+    for x in digits:
+        total += x**exp  # get the power of each digit and sum it to the total
+
     # display the result
     if int(number) == total:
-       print(number,"is an Armstrong number")
+        print(number, "is an Armstrong number")
     else:
-       print(number,"is not an Armstrong number")
+        print(number, "is not an Armstrong number")
+
 
 number = input("Enter the number : ")
 is_armstrong_number(number)

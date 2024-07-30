@@ -11,7 +11,7 @@ def main():
     )
     if shape == 1:
         side = float(input("Enter length of side: "))
-        print("Area of square = " + str(side ** 2))
+        print("Area of square = " + str(side**2))
     elif shape == 2:
         l = float(input("Enter length: "))
         b = float(input("Enter breadth: "))
