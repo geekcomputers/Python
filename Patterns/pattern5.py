@@ -9,11 +9,11 @@ def main():
     lines = int(input("Enter the number of lines: "))
     pattern(lines)
 
-def pattern(rows):
-    for i in range(1, rows+1):
-        for j in range(i, 0, -1):
-            print(j, end="")
-        print()
+def pattern(rows): 
+    const=''
+    for i in range(1, rows+1): 
+        const=str(i)+const
+        print(const)
 
 if __name__ == "__main__":
     main()
