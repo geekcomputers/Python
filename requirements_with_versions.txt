@@ -21,7 +21,7 @@ backend==0.2.4.1
 win10toast==0.9
 Counter==1.0.0
 Flask==3.0.2
-selenium==4.23.0
+selenium==4.23.1
 firebase-admin==6.5.0
 ujson==5.10.0
 requests==2.32.3
