@@ -61,7 +61,7 @@ thirdai==0.8.5
 google-api-python-client==2.133.0
 sound==0.1.0
 xlwt==1.3.0
-pygame==2.5.2
+pygame==2.6.0
 speechtotext==0.0.3
 wikipedia==1.4.0
 tqdm==4.66.4
