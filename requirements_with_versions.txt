@@ -86,7 +86,7 @@ fitz==0.0.1.dev2
 fastapi==0.109.0
 Django==5.1
 docx==0.2.4
-matplotlib==3.9.0
+matplotlib==3.9.2
 pyshorteners==1.0.1
 geocoder==1.38.1
 APScheduler==3.10.4
