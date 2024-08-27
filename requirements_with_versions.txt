@@ -30,7 +30,7 @@ PyPDF2==3.0.1
 pyserial==3.5
 twilio==9.1.1
 tabula==1.0.5
-nltk==3.8.1
+nltk==3.9.1
 Pillow==10.3.0
 SocksiPy-branch==1.01
 xlrd==2.0.1
