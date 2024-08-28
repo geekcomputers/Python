@@ -15,7 +15,7 @@ dictator==0.3.1
 caller==0.0.2
 watchdog==4.0.2
 PyQt5==5.15.11
-numpy==2.0.0
+numpy==2.1.0
 fileinfo==0.3.3
 backend==0.2.4.1
 win10toast==0.9
