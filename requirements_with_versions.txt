@@ -66,7 +66,7 @@ speechtotext==0.0.3
 wikipedia==1.4.0
 tqdm==4.66.5
 Menu==3.2.2
-yfinance==0.2.41
+yfinance==0.2.43
 tweepy==4.14.0
 tkcalendar==1.6.1
 pytube==15.0.0
