@@ -109,5 +109,5 @@ protobuf==5.27.1
 colorama==0.4.6
 plyer==2.1.0
 Flask-Ask==0.9.8
-emoji==2.11.1
+emoji==2.12.1
 PyAutoGUI==0.9.54
