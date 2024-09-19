@@ -13,14 +13,10 @@ def main():
     pattern(lines)
 
 def pattern(lines):
-    for i in range(lines,0,-1):
-        for j in range(lines-i):
-            print(' ', end='') 
-        
-        for j in range(2*i-1):
-            print('$',end='')
-        print() 
-
+     flag=lines
+     for i in range(lines):
+         print(" "*(i),'$'*(2*flag-1))
+         flag-=1
 
 if __name__ == "__main__":
     main()

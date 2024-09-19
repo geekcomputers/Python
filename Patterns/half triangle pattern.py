@@ -40,43 +40,31 @@ def main():
             print("Invalid input")
             exit(0)
 
-def upper_half_repeat_pattern(lines):
+def upper_half_repeat_pattern(lines=5): 
+     for column in range(1, (lines +1)): 
+         print(f"{str(column) * column}") 
 
-    t = 1
-    for column in range(1, (lines +1)):
-        print(f"{str(t) * column}")
-        t += 1
 
-def upper_half_incremental_pattern(lines):
+def lower_half_repeat_pattern(lines=5):
+     for length in range(lines, 0, -1): 
+         print(f"{str(length) * length}")
 
-    for column in range(1, (lines +1)):
-        row = ""
-        for ii in range(1, column +1):
-            row += str(ii)
-        print(row)
-            
 
-def lower_half_incremental_pattern(lines):
+def upper_half_incremental_pattern(lines=5):
+     const=""
+     for column in range(1, (lines +1)):
+         const+=str(column)
+         print(const)
 
-    for row_length in range(lines, 0, -1):
-        row = ""
-        column = 1
 
-        for _ in range(row_length):
-            column = 0 if column == 10 else column
-            row = f"{row}{column}"
-            column += 1
 
-        print(row)
+def lower_half_incremental_pattern(lines=5):
+     for row_length in range(lines, 0, -1):
+         for x in range(1,row_length+1):
+             print(x,end='') 
+         print()
 
-def lower_half_repeat_pattern(lines):
 
-    for row_length in range(lines, 0, -1):
-        
-        row = ""
-        for _ in range(1, row_length+1):
-            row += str(row_length)
-        print(row)
 
 if __name__ == "__main__":
     main()

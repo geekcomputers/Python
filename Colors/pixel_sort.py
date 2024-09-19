@@ -43,7 +43,7 @@ def createDataSet(val=0, data=[]):
 # Generating colors for each row of the frame
 def generateColors(c_sorted, frame, row):
     global df, img_list
-    height = 25
+    height = 15
     img = np.zeros((height, len(c_sorted), 3), np.uint8)
     for x in range(0, len(c_sorted)):
         r, g, b = c_sorted[x][0] * 255, c_sorted[x][1] * 255, c_sorted[x][2] * 255
