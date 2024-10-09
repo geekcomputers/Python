@@ -1,6 +1,4 @@
-import tkinter as tk #provides a library of basic elements of GUI widgets
-from tkinter import messagebox #provides a different set of dialogues that are used to display message boxes
-import random
+
 
 def check_winner(board, player):
     # Check rows, columns, and diagonals for a win
