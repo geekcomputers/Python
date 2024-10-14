@@ -1,25 +1,3 @@
-class QuesAnsVirtualAssistant:
-    """
-        Used for question-answering
-
-        We want a table like this
-        id     |    Question    |    Answer
-
-        Programmatically represented as
-        {
-            id: {question: ..., answer: ...}
-        }
-    """
-    pass
-
-
-
-
-
-
-
-
-
 import sqlite3
 import json
 import pandas as pd
