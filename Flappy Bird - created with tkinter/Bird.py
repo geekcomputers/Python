@@ -1,255 +1,193 @@
-from threading import Thread
-
+from threading import Thread, Lock
+from enum import Enum, auto
 from Background import Background
-from PIL.Image import open as openImage
+from PIL.Image import open as open_image
 from PIL.ImageTk import PhotoImage
 
+class BirdState(Enum):
+    """
+    Enumeration for bird state.
+    """
+    ALIVE = auto()
+    DEAD = auto()
+    FLYING = auto()
 
 class Bird(Thread):
     """
-    Classe para criar um pássaro
+    Class to create a bird character with movement and collision detection.
     """
 
-    __tag = "Bird"
-    __isAlive = None
-    __going_up = False
-    __going_down = 0
-    __times_skipped = 0
-    __running = False
+    DEFAULT_TAG = "Bird"
+    DESCEND_RATE = 0.00390625
+    CLIMB_RATE = 0.0911458333
 
-    decends = 0.00390625
-    climbsUp = 0.0911458333
+    def __init__(self, background, gameover_function, *screen_geometry, 
+                 fp="bird.png", event="<Up>", descend_speed=5):
+        """
+        Initialize the Bird object.
 
-    def __init__(
-        self,
-        background,
-        gameover_function,
-        *screen_geometry,
-        fp="bird.png",
-        event="<Up>",
-        descend_speed=5
-    ):
-
-        # Verifica se "background" é uma instância de Background e se o "gamerover_method" é chamável
-
+        :param background: Background instance where the bird is drawn.
+        :param gameover_function: Function to call when the game is over.
+        :param screen_geometry: Tuple of screen width and height.
+        :param fp: File path to the bird image.
+        :param event: Key event for bird jump.
+        :param descend_speed: Speed of descending.
+        """
         if not isinstance(background, Background):
-            raise TypeError(
-                "The background argument must be an instance of Background."
-            )
+            raise TypeError("The background argument must be an instance of Background.")
         if not callable(gameover_function):
-            raise TypeError("The gameover_method argument must be a callable object.")
-
-        # Instância os parâmetros
-        self.__canvas = background
+            raise TypeError("The gameover_function argument must be callable.")
+        
+        self._canvas = background
         self.image_path = fp
-        self.__descend_speed = descend_speed
-        self.gameover_method = gameover_function
+        self._descend_speed = descend_speed
+        self._gameover_function = gameover_function
 
-        # Recebe a largura e altura do background
-        self.__width = screen_geometry[0]
-        self.__height = screen_geometry[1]
+        # Screen dimensions
+        self._width, self._height = screen_geometry
 
-        # Define a decida e subida do pássaro com base na altura do background
-        self.decends *= self.__height
-        self.decends = int(self.decends + 0.5)
-        self.climbsUp *= self.__height
-        self.climbsUp = int(self.climbsUp + 0.5)
+        # Set descending and climbing rates
+        self.descend_rate = int(self.DESCEND_RATE * self._height + 0.5)
+        self.climb_rate = int(self.CLIMB_RATE * self._height + 0.5)
 
-        # Invoca o método construtor de Thread
-        Thread.__init__(self)
+        # Thread initialization
+        super().__init__()
+        self._lock = Lock()
 
-        # Calcula o tamanho do pássaro com base na largura e altura da janela
-        self.width = (self.__width // 100) * 6
-        self.height = (self.__height // 100) * 11
+        # Bird state management
+        self.state = BirdState.ALIVE
+        self._going_up = False
+        self._going_down_speed = 0
+        self._jump_skipped = 0
+        self._running = False
 
-        # Carrega e cria a imagem do pássaro no background
-        self.__canvas.bird_image = self.getPhotoImage(
-            image_path=self.image_path,
-            width=self.width,
-            height=self.height,
-            closeAfter=True,
-        )[0]
-        self.__birdID = self.__canvas.create_image(
-            self.__width // 2,
-            self.__height // 2,
-            image=self.__canvas.bird_image,
-            tag=self.__tag,
-        )
+        # Bird dimensions based on screen size
+        self._bird_width = (self._width // 100) * 6
+        self._bird_height = (self._height // 100) * 11
 
-        # Define evento para fazer o pássaro subir
-        self.__canvas.focus_force()
-        self.__canvas.bind(event, self.jumps)
-        self.__isAlive = True
+        # Load the bird image
+        self._load_bird_image()
 
-    def birdIsAlive(self):
+        # Set up key event for jumping
+        self._canvas.focus_force()
+        self._canvas.bind(event, self.jump)
+
+    def _load_bird_image(self):
         """
-        Método para verificar se o pássaro está vivo
+        Load and create the bird image on the canvas.
         """
+        try:
+            self._canvas.bird_image = self.get_photo_image(
+                image_path=self.image_path,
+                width=self._bird_width,
+                height=self._bird_height,
+                close_after=True
+            )[0]
+            self._bird_id = self._canvas.create_image(
+                self._width // 2,
+                self._height // 2,
+                image=self._canvas.bird_image,
+                tag=self.DEFAULT_TAG
+            )
+        except Exception as e:
+            raise RuntimeError(f"Failed to load bird image: {e}")
 
-        return self.__isAlive
-
-    def checkCollision(self):
+    @property
+    def is_alive(self):
         """
-        Método para verificar se o pássaro ultrapassou a borda da janela ou colidiu com algo
+        Property to check if the bird is alive.
         """
+        return self.state == BirdState.ALIVE
 
-        # Recebe a posição do pássaro no background
-        position = list(self.__canvas.bbox(self.__tag))
-
-        # Se o pássaro tiver ultrapassado a borda de baixo do background, ele será declarado morto
-        if position[3] >= self.__height + 20:
-            self.__isAlive = False
-
-        # Se o pássaro tiver ultrapassado a borda de cima do background, ele será declarado morto
-        if position[1] <= -20:
-            self.__isAlive = False
-
-        # Dá uma margem de erro ao pássaro de X pixels
-        position[0] += int(25 / 78 * self.width)
-        position[1] += int(25 / 77 * self.height)
-        position[2] -= int(20 / 78 * self.width)
-        position[3] -= int(10 / 77 * self.width)
-
-        # Define os objetos a serem ignorados em colisões
-        ignored_collisions = self.__canvas.getBackgroundID()
-        ignored_collisions.append(self.__birdID)
-
-        # Verifica possíveis colisões com o pássaro
-        possible_collisions = list(self.__canvas.find_overlapping(*position))
-
-        # Remove das possíveis colisões os objetos ignorados
-        for _id in ignored_collisions:
-            try:
-                possible_collisions.remove(_id)
-            except BaseException:
-                continue
-
-        # Se houver alguma colisão o pássaro morre
-        if len(possible_collisions) >= 1:
-            self.__isAlive = False
-
-        return not self.__isAlive
-
-    def getTag(self):
+    def check_collision(self):
         """
-        Método para retornar a tag do pássaro
+        Check if the bird has collided with an object or boundary.
         """
+        position = list(self._canvas.bbox(self.DEFAULT_TAG))
 
-        return self.__tag
+        if position[3] >= self._height + 20 or position[1] <= -20:
+            self.state = BirdState.DEAD
+
+        margin_x = int(25 / 78 * self._bird_width)
+        margin_y = int(25 / 77 * self._bird_height)
+        position[0] += margin_x
+        position[1] += margin_y
+        position[2] -= margin_x
+        position[3] -= int(10 / 77 * self._bird_width)
+
+        ignored_ids = self._canvas.getBackgroundID()
+        ignored_ids.append(self._bird_id)
+
+        possible_collisions = set(self._canvas.find_overlapping(*position)) - set(ignored_ids)
+
+        if possible_collisions:
+            self.state = BirdState.DEAD
+
+        return self.state == BirdState.DEAD
 
     @staticmethod
-    def getPhotoImage(
-        image=None, image_path=None, width=None, height=None, closeAfter=False
-    ):
+    def get_photo_image(image=None, image_path=None, width=None, height=None, close_after=False):
         """
-        Retorna um objeto da classe PIL.ImageTk.PhotoImage de uma imagem e as imagens criadas de PIL.Image
-        (photoImage, new, original)
-
-        @param image: Instância de PIL.Image.open
-        @param image_path: Diretório da imagem
-        @param width: Largura da imagem
-        @param height: Altura da imagem
-        @param closeAfter: Se True, a imagem será fechada após ser criado um PhotoImage da mesma
+        Returns a PhotoImage object from an image or image path.
         """
-
-        if not image:
-            if not image_path:
-                return
-
-            # Abre a imagem utilizando o caminho dela
-            image = openImage(image_path)
-
-        # Será redimesionada a imagem somente se existir um width ou height
-        if not width:
-            width = image.width
-        if not height:
-            height = image.height
-
-        # Cria uma nova imagem já redimensionada
-        newImage = image.resize([width, height])
-
-        # Cria um photoImage
-        photoImage = PhotoImage(newImage)
-
-        # Se closeAfter for True, ele fecha as imagens
-        if closeAfter:
-            # Fecha a imagem nova
-            newImage.close()
-            newImage = None
-
-            # Fecha a imagem original
-            image.close()
-            image = None
-
-        # Retorna o PhotoImage da imagem,a nova imagem que foi utilizada e a imagem original
-        return photoImage, newImage, image
-
-    def jumps(self, event=None):
-        """
-        Método para fazer o pássaro pular
-        """
-
-        # Verifica se o pássaro saiu da área do background
-        self.checkCollision()
-
-        # Se o pássaro estiver morto, esse método não pode ser executado
-        if not self.__isAlive or not self.__running:
-            self.__going_up = False
+        if not image and not image_path:
             return
 
-        # Declara que o pássaro está subindo
-        self.__going_up = True
-        self.__going_down = 0
+        image = image or open_image(image_path)
 
-        # Move o pássaro enquanto o limite de subida por animação não tiver excedido
-        if self.__times_skipped < self.climbsUp:
+        width = width or image.width
+        height = height or image.height
 
-            # Move o pássaro para cima
-            self.__canvas.move(self.__tag, 0, -1)
-            self.__times_skipped += 1
+        resized_image = image.resize((width, height))
+        photo_image = PhotoImage(resized_image)
 
-            # Executa o método novamente
-            self.__canvas.after(3, self.jumps)
+        if close_after:
+            resized_image.close()
+            image.close()
 
+        return photo_image, resized_image, image
+
+    def jump(self, event=None):
+        """
+        Make the bird jump.
+        """
+        if not self.is_alive or not self._running:
+            return
+
+        self._going_up = True
+        self._going_down_speed = 0
+
+        if self._jump_skipped < self.climb_rate:
+            self._canvas.move(self.DEFAULT_TAG, 0, -1)
+            self._jump_skipped += 1
+            self._canvas.after(3, self.jump)
         else:
-
-            # Declara que o pássaro não está mais subindo
-            self.__going_up = False
-            self.__times_skipped = 0
+            self._going_up = False
+            self._jump_skipped = 0
 
     def kill(self):
         """
-        Método para matar o pássaro
+        Kill the bird, changing its state to DEAD.
         """
-
-        self.__isAlive = False
+        self.state = BirdState.DEAD
 
     def run(self):
         """
-        #Método para iniciar a animação do passáro caindo
+        Run the bird's falling animation.
         """
+        self._running = True
 
-        self.__running = True
+        while self.is_alive:
+            with self._lock:
+                self.check_collision()
 
-        # Verifica se o pássaro saiu da área do background
-        self.checkCollision()
+                if self._going_down_speed < self.descend_rate:
+                    self._going_down_speed += 0.05
 
-        # Enquanto o pássaro não tiver chegado em sua velocidade máxima, a velocidade aumentará em 0.05
-        if self.__going_down < self.decends:
-            self.__going_down += 0.05
+                if not self._going_up:
+                    self._canvas.move(self.DEFAULT_TAG, 0, self._going_down_speed)
 
-        # Executa a animação de descida somente se o pássaro estiver vivo
-        if self.__isAlive:
+            self._canvas.after(self._descend_speed)
 
-            # Executa a animação de descida somente se o pássaro não estiver subindo
-            if not self.__going_up:
-                # Move o pássaro para baixo
-                self.__canvas.move(self.__tag, 0, self.__going_down)
-
-            # Executa novamente o método
-            self.__canvas.after(self.__descend_speed, self.run)
-
-        # Se o pássaro estiver morto, será executado um método de fim de jogo
-        else:
-            self.__running = False
-            self.gameover_method()
+        self._running = False
+        self._gameover_function()
