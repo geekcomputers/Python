@@ -19,12 +19,12 @@ def cubeRoot():
 
 cubeRoot()
 
-cont = str(input("Would you like to continue: "))
-while cont == "yes":
+cont = input("Would you like to continue: ")
+while cont == "yes" or "y":
     cubeRoot()
-    cont = str(input("Would you like to continue: "))
-    if cont == "no":
+    cont = input("Would you like to continue: ")
+    if cont == "no" or "n":
         exit()
     else:
         print("Enter a correct answer(yes or no)")
-        cont = str(input("Would you like to continue: "))
+        cont = input("Would you like to continue: ")

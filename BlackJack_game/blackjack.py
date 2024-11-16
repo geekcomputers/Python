@@ -1,7 +1,7 @@
 # master
 # master
 # BLACK JACK - CASINO A GAME OF FORTUNE!!!
-from time import *
+from time import sleep
 
 # BLACK JACK - CASINO
 # PYTHON CODE BASE
