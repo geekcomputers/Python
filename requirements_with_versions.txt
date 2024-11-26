@@ -89,7 +89,7 @@ docx==0.2.4
 matplotlib==3.9.2
 pyshorteners==1.0.1
 geocoder==1.38.1
-APScheduler==3.10.4
+APScheduler==3.11.0
 PyQRCode==1.2.1
 freegames==2.5.3
 pyperclip==1.8.2
