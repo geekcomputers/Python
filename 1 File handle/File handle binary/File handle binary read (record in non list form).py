@@ -2,7 +2,7 @@ import pickle
 
 
 def binary_read():
-    with open("studrec.dat") as b:
+    with open("studrec.dat","rb") as b:
         stud = pickle.load(b)
         print(stud)
 
