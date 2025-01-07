@@ -101,7 +101,7 @@ pytest==8.3.4
 qrcode==8.0
 googletrans==3.0.0
 slab==1.7.0
-psutil==6.1.0
+psutil==6.1.1
 mediapipe==0.10.20
 rich==13.9.4
 httplib2==0.22.0
