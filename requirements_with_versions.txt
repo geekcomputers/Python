@@ -99,7 +99,7 @@ tensorflow==2.15.0.post1
 pandas==2.2.3
 pytest==8.3.4
 qrcode==8.0
-googletrans==3.0.0
+googletrans==4.0.2
 slab==1.7.0
 psutil==6.1.1
 mediapipe==0.10.20
