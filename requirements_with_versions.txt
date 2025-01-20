@@ -55,7 +55,7 @@ pydantic==2.10.3
 openpyxl==3.1.2
 pytesseract==0.3.13
 requests-mock==1.12.1
-pyglet==2.0.20
+pyglet==2.1.1
 urllib3==2.3.0
 thirdai==0.9.25
 google-api-python-client==2.158.0
