@@ -1,5 +1,4 @@
-from turtle import mode
-
+'''Author - Mugen https://github.com/Mugendesu'''
 
 class Node :
     def __init__(self , data , next = None):
