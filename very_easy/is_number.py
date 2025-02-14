@@ -31,3 +31,4 @@ if __name__ == "__main__":
     print(check_number(pow(10, 20)))
     print(check_number("Hello"))
     print(check_number(1 + 2j))
+
