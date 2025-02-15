@@ -21,6 +21,7 @@ class Ball:
     def doHorizontalFlip(self):
 
         self.vel[0] *= -1
+        print("Github")
 
 
     def doVerticalFlip(self):
