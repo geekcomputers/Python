@@ -42,7 +42,7 @@ title_label.place(x=10, y=10)
 
 # Display image
 try:
-    img = Image.open("D:\\Downloads\\img.png")
+    img = Image.open("img.png")
     photo_img = ImageTk.PhotoImage(img)
     my_img = Tk.Label(window, image=photo_img, justify="right")
     my_img.place(x=850, y=0)
