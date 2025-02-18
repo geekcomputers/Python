@@ -3,6 +3,7 @@
 import pyglet
 from pyglet.window import key
 from typing import Tuple
+from track import update_coverage
 
 
 class Paddle(pyglet.shapes.Rectangle):
@@ -20,15 +21,23 @@ class Paddle(pyglet.shapes.Rectangle):
         newrx = self.x + self.acc_right
 
         if self.key_handler[key.LEFT]:
+            update_coverage("pong/paddle.py/Paddle/update.if1")
+
             self.x = newlx
         elif self.key_handler[key.RIGHT]:
+            update_coverage("pong/paddle.py/Paddle/update.elif1")
+
             self.x = newrx
 
         self.rightx = self.x + self.width
 
         if self.x < border:
+            update_coverage("pong/paddle.py/Paddle/update.if2")
+
             self.x = border
             self.rightx = self.x + self.width
         elif self.rightx > win_size[0] - border:
+            update_coverage("pong/paddle.py/Paddle/update.elif2")
+
             self.x = win_size[0] - border - self.width
             self.rightx = self.x + self.width
