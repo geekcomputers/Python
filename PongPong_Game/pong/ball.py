@@ -3,7 +3,7 @@
 import pyglet
 import random
 from typing import Tuple
-
+from track import update_coverage
 
 class BallObject(pyglet.shapes.Circle):
     def __init__(self, *args, **kwargs):
@@ -29,13 +29,21 @@ class BallObject(pyglet.shapes.Circle):
         newy = self.y + self.velocity_y
 
         if newx < border + self.radius or newx > win_size[0] - border - self.radius:
+            update_coverage("pong/ball.py/BallObject/update.if")
+
             self.velocity_x = -(self.velocity_x / abs(self.velocity_x)) * rn
         elif newy > win_size[1] - border - self.radius:
+            update_coverage("pong/ball.py/BallObject/update.elif")
+
             self.velocity_y = -(self.velocity_y / abs(self.velocity_y)) * rn
         elif (newy - self.radius < other_object.height) and (
             other_object.x <= newx <= other_object.rightx
         ):
+            update_coverage("pong/ball.py/BallObject/update.elif2")
+
             self.velocity_y = -(self.velocity_y / abs(self.velocity_y)) * rn
         else:
+            update_coverage("pong/ball.py/BallObject/update.else")
+
             self.x = newx
             self.y = newy
