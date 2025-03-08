@@ -996,10 +996,13 @@ def parser():
                     if token.token in variables:
                         token.token = variables[token.token]
                     else:
-                        print("Error: undefine variable! --> " + token.token)
+                        print(f"Error: Undefined variable {token.token}")
                         return
+
                 elif token.t == "string":
-                    pass
+                    
+                    token.token = str(token.token)
+
                 elif isinstance(token.token, float):
                     pass
                 elif token.token.isdigit():
@@ -1161,7 +1164,7 @@ def parser():
                         zeroFlag = False
                 elif tmpToken.token == "ebx":
                     ebx -= token.token
-
+                        
                     # update zero flag
                     if ebx == 0:
                         zeroFlag = True
@@ -1249,6 +1252,9 @@ def parser():
             # pop register from stack
             match token.token:
                 case "eax":
+                    if len(stack) == 0:
+                        print("Error: Stack Underflow")
+                        return
                     eax = stack.pop()
                 case "ebx":
                     ebx = stack.pop()
@@ -1454,6 +1460,9 @@ def parser():
                         eax /= eax
 
                     case "ebx":
+                        if ebx == 0:
+                            print("Error: Division by Zero")
+                            return
                         eax /= ebx
 
                     case "ecx":
