@@ -1,0 +1,8 @@
+pong/ball.py/BallObject/update.if: Covered
+pong/ball.py/BallObject/update.elif: Covered
+pong/ball.py/BallObject/update.elif2: Covered
+pong/ball.py/BallObject/update.else: Covered
+pong/paddle.py/Paddle/update.if1: Covered
+pong/paddle.py/Paddle/update.elif1: Covered
+pong/paddle.py/Paddle/update.if2: Covered
+pong/paddle.py/Paddle/update.elif2: Covered
