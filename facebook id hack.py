@@ -1,5 +1,5 @@
 # Author-Kingslayer
-# Email-kingslayer8509@gmail.com
+# Email-nguyenduy299kmhook@gmail.com
 # you need to create a file password.txt which contains all possible passwords
 import requests
 import threading
