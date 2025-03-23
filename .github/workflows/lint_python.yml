@@ -1,4 +1,4 @@
-name: lint_python
+name: python
 on: [pull_request, push]
 jobs:
   lint_python:

@@ -19,7 +19,7 @@ def minimax(board, depth, is_maximizing):
         return -1
     if check_winner(board, 'O'):
         return 1
-    if is_board_full(board): #if game is full, terminate
+    if is_board_full(board): 
         return 0
 
     if is_maximizing: #recursive approach that fills board with Os
