@@ -14,9 +14,9 @@ Example:
     [0, 1]
 """
 
-from typing import List, Union
+from typing import List, Optional
 
-def two_sum(nums: List[int], target: int) -> Union[List[int], bool]:
+def two_sum(nums: List[int], target: int) -> Optional[List[int]]:
     """
     Finds indices of two numbers in 'nums' that add up to 'target'.
 
@@ -25,33 +25,34 @@ def two_sum(nums: List[int], target: int) -> Union[List[int], bool]:
         target (int): Target sum.
 
     Returns:
-        List[int]: Indices of the two numbers that add up to the target.
-        False: If no such pair is found.
+        Optional[List[int]]: Indices of the two numbers that add up to the target,
+                             or None if no such pair is found.
     """
+    if len(nums) < 2:
+        raise ValueError("Input list must contain at least two numbers.")
+    
+    if not all(isinstance(num, int) for num in nums):
+        raise TypeError("All elements in the list must be integers.")
+    
     # Dictionary to track seen values and their indices
     seen_values = {}
 
     for index, value in enumerate(nums):
         complement = target - value
-        
-        # Check if the complement exists in the dictionary
         if complement in seen_values:
             return [seen_values[complement], index]
-
-        # Add current value to dictionary for future reference
         seen_values[value] = index
 
-    # Return False if no pair is found (explicit is better than implicit)
-    return False
+    return None
 
 # Example usage
 if __name__ == "__main__":
     example_nums = [2, 7, 11, 15]
     example_target = 9
     result = two_sum(example_nums, example_target)
-    
-    # Clean, professional result display
+
     if result:
-        print(f"Indices that add up to {example_target}: {result}")
+        num1, num2 = example_nums[result[0]], example_nums[result[1]]
+        print(f"Indices that add up to {example_target}: {result} (Values: {num1} + {num2})")
     else:
         print(f"No combination found that adds up to {example_target}.")
