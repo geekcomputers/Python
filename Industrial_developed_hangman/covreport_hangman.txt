@@ -1,0 +1,53 @@
+
+## Output of coverage report BEFORE added tests
+Name                             Stmts   Miss  Cover   Missing
+--------------------------------------------------------------
+src/hangman/__init__.py              0      0   100%
+src/hangman/main.py                 99      7    93%   82-84, 126, 168, 181-182
+tests/__init__.py                    0      0   100%
+tests/test_hangman/__init__.py       0      0   100%
+--------------------------------------------------------------
+TOTAL                               99      7    93%
+
+
+## Output of function to identify conditional branches (before coverage test)
+--------------------------------------------------------------
+try_block: Reached
+except_connection_error: Not Reached
+status_code_check: Reached
+return_statement: Reached
+raise_runtime_error: Not Reached
+--------------------------------------------------------------
+
+
+## Included test function (in test_main.py)
+def test_parse_word_from_site_err() -> None:
+    with requests_mock.Mocker() as mock:
+        mock.get('https://random-word-api.herokuapp.com/word', status_code=404)
+        with pytest.raises(RuntimeError):
+            parse_word_from_site()
+    print_coverage()
+
+
+## Output of coverage report AFTER added tests
+Name                              Stmts   Miss  Cover   Missing
+---------------------------------------------------------------
+src/hangman/__init__.py               0      0   100%
+src/hangman/main.py                 102      4    96%   126, 168, 181-182
+tests/__init__.py                     0      0   100%
+tests/test_hangman/__init__.py        0      0   100%
+tests/test_hangman/test_main.py      76      0   100%
+---------------------------------------------------------------
+TOTAL                               178      4    98%
+
+
+## Output of function to identify conditional branches (after coverage test)
+---------------------------------------------------------------
+try_block: Reached
+except_connection_error: Reached
+status_code_check: Reached
+return_statement: Reached
+raise_runtime_error: Reached
+---------------------------------------------------------------
+
+# Stan. 
