@@ -1,0 +1,435 @@
+English,Hindi
+the,द
+be,होना
+to,को
+of,का
+and,और
+a,एक
+in,में
+that,कि
+have,रखना
+it,यह
+for,के लिए
+not,नहीं
+on,पर
+with,के साथ
+he,वह
+as,जैसे
+you,तुम
+do,करना
+at,पर
+this,यह
+but,लेकिन
+his,उसका
+from,से
+they,वे
+we,हम
+say,कहना
+her,उसकी
+she,वह
+or,या
+an,एक
+will,होगा
+my,मेरा
+one,एक
+would,होगा
+there,वहां
+what,क्या
+up,ऊपर
+out,बाहर
+if,अगर
+about,लगभग
+who,जो
+get,पाना
+which,जो
+go,जाना
+me,मुझे
+when,जब
+can,सकना
+like,जैसा
+time,समय
+no,नहीं
+just,बस
+him,उसे
+know,जानना
+take,लेना
+people,लोग
+into,में
+year,साल
+your,आपका
+good,अच्छा
+some,कुछ
+could,सकता
+them,उन्हें
+see,देखना
+other,अन्य
+than,से
+then,फिर
+now,अब
+look,देखना
+only,केवल
+come,आना
+its,इसका
+over,ऊपर
+also,भी
+back,पीछे
+after,के बाद
+use,उपयोग
+two,दो
+how,कैसे
+our,हमारा
+work,काम
+first,पहला
+well,अच्छा
+way,तरीका
+even,भी
+new,नया
+any,कोई
+give,देना
+day,दिन
+most,अधिकांश
+us,हम
+is,है
+are,हैं
+has,है
+were,थे
+had,था
+been,होना
+may,हो सकता है
+many,कई
+must,होना चाहिए
+such,ऐसा
+more,अधिक
+should,चाहिए
+little,थोड़ा
+much,बहुत
+how,कैसे
+why,क्यों
+where,कहाँ
+because,क्योंकि
+through,के माध्यम से
+before,पहले
+after,बाद
+between,के बीच
+under,के नीचे
+again,फिर
+further,आगे
+once,एक बार
+here,यहाँ
+there,वहाँ
+when,जब
+where,कहाँ
+why,क्यों
+how,कैसे
+all,सभी
+any,कोई
+both,दोनों
+each,प्रत्येक
+few,कुछ
+more,अधिक
+most,अधिकांश
+other,अन्य
+some,कुछ
+such,ऐसा
+no,नहीं
+nor,न ही
+not,नहीं
+only,केवल
+same,समान
+so,तो
+than,से
+too,बहुत
+very,बहुत
+a,एक
+an,एक
+the,द
+and,और
+but,लेकिन
+if,अगर
+or,या
+because,क्योंकि
+as,जैसे
+until,जब तक
+while,जबकि
+of,का
+at,पर
+by,द्वारा
+for,के लिए
+with,के साथ
+about,लगभग
+against,के खिलाف
+between,के बीच
+into,में
+through,के माध्यम से
+during,के दौरान
+before,पहले
+after,बाद
+above,ऊपर
+below,नीचे
+to,को
+from,से
+up,ऊपर
+down,नीचे
+in,में
+out,बाहर
+on,पर
+off,बंद
+over,ऊपर
+under,के नीचे
+again,फिर
+further,आगे
+then,तब
+once,एक बार
+here,यहाँ
+there,वहाँ
+when,जब
+where,कहाँ
+why,क्यों
+how,कैसे
+all,सभी
+any,कोई
+both,दोनों
+each,प्रत्येक
+few,कुछ
+more,अधिक
+most,अधिकांश
+other,अन्य
+some,कुछ
+such,ऐसा
+no,नहीं
+nor,न ही
+not,नहीं
+only,केवल
+same,समान
+so,तो
+than,से
+too,बहुत
+very,बहुत
+can,सकना
+will,होगा
+just,बस
+should,चाहिए
+now,अब
+want,चाहना
+like,जैसा
+better,बेहतर
+best,सबसे अच्छा
+would,होगा
+could,सकता
+might,हो सकता है
+must,होना चाहिए
+shall,होना चाहिए
+always,हमेशा
+often,अक्सर
+sometimes,कभी-कभी
+never,कभी नहीं
+still,अभी भी
+only,केवल
+just,बस
+really,वास्तव में
+actually,वास्तव में
+perhaps,शायद
+mainly,मुख्य रूप से
+simply,बस
+clearly,स्पष्ट रूप से
+probably,संभवतः
+finally,अंत में
+potentially,संभावित रूप से
+actually,वास-तव में
+certainly,निश्चित रूप से
+obviously,स्पष्ट रूप से
+specifically,विशेष रूप से
+basically,मूल रूप से
+virtually,लगभग
+absolutely,बिल्कुल
+completely,पूरी तरह से
+totally,पूरी तरह से
+entirely,पूरी तरह से
+generally,सामान्यतः
+normally,सामान्य रूप से
+regularly,नियमित रूप से
+traditionally,पारंपरिक रूप से
+usually,आमतौर पर
+possible,संभव
+impossible,असंभव
+necessary,आवश्यक
+important,महत्वपूर्ण
+essential,आवश्यक
+significant,महत्वपूर्ण
+crucial,महत्वपूर्ण
+vital,महत्वपूर्ण
+potential,संभावित
+specific,विशिष्ट
+particular,विशेष
+unique,अनूठा
+different,अलग
+similar,समान
+various,विभिन्न
+alternative,वैकल्पिक
+additional,अतिरिक्त
+extra,अतिरिक्त
+major,प्रमुख
+minor,छोटा
+primary,प्राथमिक
+secondary,द्वितीयक
+normal,सामान्य
+unusual,असामान्य
+common,सामान्य
+rare,दुर्लभ
+strange,अजीब
+odd,विचित्र
+perfect,पूर्ण
+complete,पूर्ण
+entire,पूरा
+whole,पूरा
+half,आधा
+part,भाग
+section,अनुभाग
+piece,टुकड़ा
+bit,थोड़ा
+aspect,पहलू
+element,तत्व
+feature,विशेषता
+quality,गुण
+property,संपत्ति
+characteristic,विशेषता
+nature,प्रकृति
+type,प्रकार
+kind,तरह
+sort,तरह
+form,रूप
+structure,संरचना
+style,शैली
+pattern,पैटर्न
+design,डिजाइन
+system,प्रणाली
+method,विधि
+process,प्रक्रिया
+approach,दृष्टिकोण
+technique,तकनीक
+way,तरीका
+manner,तरीका
+mode,मोड
+means,माध्यम
+result,परिणाम
+outcome,परिणाम
+consequence,परिणाम
+effect,प्रभाव
+impact,प्रभाव
+significance,महत्व
+importance,महत्व
+value,मूल्य
+meaning,अर्थ
+purpose,उद्देश्य
+reason,कारण
+cause,कारण
+factor,कारक
+source,स्रोत
+origin,मूल
+basis,आधार
+context,संदर्भ
+situation,स्थिति
+condition,स्थिति
+circumstance,परिस्थिति
+state,राज्य
+position,स्थिति
+relation,संबंध
+connection,संबंध
+link,लिंक
+association,संघ
+interaction,अंतः क्रिया
+influence,प्रभाव
+role,भूमिका
+function,कार्य
+part,भाग
+place,स्थान
+space,जगह
+position,स्थिति
+area,क्षेत्र
+region,क्षेत्र
+zone,क्षेत्र
+range,श्रेणी
+site,स्थल
+moment,क्षण
+stage,चरण
+phase,चरण
+period,अवधि
+time,समय
+instance,उदाहरण
+case,मामला
+example,उदाहरण
+sample,नमूना
+experience,अनुभव
+incident,घटना
+event,घटना
+occurrence,घटना
+situation,स्थिति
+circumstance,परिस्थिति
+background,पृष्ठभूमि
+context,संदर्भ
+condition,स्थिति
+environment,पर्यावरण
+setting,सेटिंग
+scene,दृश्य
+scenario,परिदृश्य
+story,कहानी
+account,खाता
+detail,विवरण
+particular,विशेष
+specific,विशिष्ट
+aspect,पहलू
+element,तत्व
+feature,विशेषता
+characteristic,विशेषता
+quality,गुण
+property,संपत्ति
+nature,प्रकृति
+type,प्रकार
+kind,तरह
+sort,तरह
+form,रूप
+shape,आकार
+structure,संरचना
+style,शैली
+pattern,पैटर्न
+design,डिजाइन
+system,प्रणाली
+method,विधि
+process,प्रक्रिया
+approach,दृष्टिकोण
+technique,तकनीक
+way,तरीका
+manner,तरीका
+mode,मोड
+means,माध्यम
+result,परिणाम
+outcome,परिणाम
+consequence,परिणाम
+effect,प्रभाव
+impact,प्रभाव
+significance,महत्व
+importance,महत्व
+value,मूल्य
+meaning,अर्थ
+point,बिंदु
+purpose,उद्देश्य
+reason,कारण
+cause,कारण
+factor,कारक
+source,स्रोत
+origin,मूल
+basis,आधार
+context,संदर्भ
+situation,स्थिति
+condition,स्थिति
+circumstance,परिस्थिति
+state,राज्य
+position,स्थिति
+relation,संबंध
+connection,संबंध
+link,लिंक
+association,संघ
+interaction,अंतः क्रिया
+influence,प्रभाव
+role,भूमिका
+function,कार्य
