@@ -98,7 +98,7 @@ opencv-python==4.11.0.86
 tensorflow==2.18.1
 pandas==2.2.3
 pytest==8.3.5
-qrcode==8.0
+qrcode==8.1
 googletrans==4.0.2
 slab==1.7.0
 psutil==7.0.0
