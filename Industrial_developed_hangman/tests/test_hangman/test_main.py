@@ -4,8 +4,12 @@ from typing import Callable, List
 
 import pytest
 import requests_mock
-from src.hangman.main import (MainProcess, Source, parse_word_from_local,
-                              parse_word_from_site)
+from src.hangman.main import (
+    MainProcess,
+    Source,
+    parse_word_from_local,
+    parse_word_from_site,
+)
 
 
 class FkPrint:

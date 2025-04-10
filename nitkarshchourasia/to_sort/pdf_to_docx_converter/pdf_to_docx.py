@@ -4,8 +4,7 @@ from pdf2docx import Converter
 
 
 def convert_pdf_to_docx(pdf_file_path, docx_file_path):
-    """
-    Converts a PDF file to a DOCX file using pdf2docx library.
+    """Converts a PDF file to a DOCX file using pdf2docx library.
 
     Parameters:
     - pdf_file_path (str): The path to the input PDF file.

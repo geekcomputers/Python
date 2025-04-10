@@ -2,8 +2,7 @@ import cv2 as cv
 
 
 def detect_faces_and_eyes():
-    """
-    Detects faces and eyes in real-time using the webcam.
+    """Detects faces and eyes in real-time using the webcam.
 
     Press 'q' to exit the program.
     """

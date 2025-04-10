@@ -31,10 +31,8 @@ def findPassword(chars, function, show=50, format_="%s"):
 
 
 def getChars():
-    """
-    Método para obter uma lista contendo todas as
-    letras do alfabeto e números.
-    """
+    """Método para obter uma lista contendo todas as letras do alfabeto e
+    números."""
     chars = []
 
     # Acrescenta à lista todas as letras maiúsculas

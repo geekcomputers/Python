@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 
-"""
-Python Program using the Luhn Algorithm
+"""Python Program using the Luhn Algorithm.
 
 This program uses the Luhn Algorithm, named after its creator
 Hans Peter Luhn, to calculate the check digit of a 10-digit

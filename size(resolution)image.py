@@ -1,5 +1,6 @@
 def jpeg_res(filename):
-    """ "This function prints the resolution of the jpeg image file passed into it"""
+    """ "This function prints the resolution of the jpeg image file passed into
+    it."""
 
     # open image for reading in binary mode
     with open(filename, "rb") as img_file:

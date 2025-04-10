@@ -1,10 +1,8 @@
-"""
-Author- Richmond Nyamekye
+"""Author- Richmond Nyamekye.
 
 download https://github.com/mozilla/geckodriver/releases
 
 install requirements: python -m pip install selenium
-
 """
 
 import pywhatkit

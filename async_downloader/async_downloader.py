@@ -1,5 +1,5 @@
-"""
-It's example of usage asyncio+aiohttp to downloading.
+"""It's example of usage asyncio+aiohttp to downloading.
+
 You should install aiohttp for using:
 (You can use virtualenv to testing)
 pip install -r /path/to/requirements.txt

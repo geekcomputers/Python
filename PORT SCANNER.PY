@@ -1,12 +1,9 @@
 #!/usr/bin/env python
-"""
-PORT SCANNER IN PYTHON...
-This post will show how you can make a small and easy-to-use port scanner program
-written in Python.
-There are many ways of doing this with Python, and I'm going to do it using the
-built-in module Socket.
-Sockets
-The socket module in Python provides access to the BSD socket interface.
+"""PORT SCANNER IN PYTHON... This post will show how you can make a small and
+easy-to-use port scanner program written in Python. There are many ways of
+doing this with Python, and I'm going to do it using the built-in module
+Socket. Sockets The socket module in Python provides access to the BSD socket
+interface.
 
 It includes the socket class, for handling the actual data channel, and functions
 for network-related tasks such as converting a server’s name to an address and

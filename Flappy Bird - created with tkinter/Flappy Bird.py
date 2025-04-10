@@ -1,6 +1,3 @@
-__author__ = "Jean Loui Bernard Silva de Jesus"
-__version__ = "1.0"
-
 import os.path
 from datetime import timedelta
 from time import time
@@ -11,11 +8,14 @@ from Bird import Bird
 from Settings import Settings
 from Tubes import Tubes
 
+__author__ = "Jean Loui Bernard Silva de Jesus"
+__version__ = "1.0"
+
+
+
 
 class App(Tk, Settings):
-    """
-    Classe principal do jogo onde tudo será executado
-    """
+    """Classe principal do jogo onde tudo será executado."""
 
     # Variáveis privadas e ajustes internos
     __background_animation_speed = 720
@@ -96,17 +96,13 @@ class App(Tk, Settings):
         self.__bird_descend_speed = int(self.__bird_descend_speed)
 
     def changeFullscreenOption(self, event=None):
-        """
-        Método para colocar o jogo no modo "fullscreen" ou "window"
-        """
+        """Método para colocar o jogo no modo "fullscreen" ou "window"."""
 
         self.window_fullscreen = not self.window_fullscreen
         self.attributes("-fullscreen", self.window_fullscreen)
 
     def close(self, event=None):
-        """
-        Método para fechar o jogo
-        """
+        """Método para fechar o jogo."""
 
         # Salva a melhor pontuação do jogador antes de sair do jogo
         self.saveScore()
@@ -120,9 +116,7 @@ class App(Tk, Settings):
             quit()
 
     def createMenuButtons(self):
-        """
-        Método para criar os botões de menu
-        """
+        """Método para criar os botões de menu."""
 
         # Define o tamanho do botão em porcentagem com base no tamanho da janela
         width = (self.__width // 100) * self.button_width
@@ -168,10 +162,8 @@ class App(Tk, Settings):
         )
 
     def createScoreBoard(self):
-        """
-        Método para criar a imagem do placar do jogo no background
-        junto com as informações do jogador.
-        """
+        """Método para criar a imagem do placar do jogo no background junto com
+        as informações do jogador."""
 
         # Define a posição X e Y
         x = self.__width // 2
@@ -227,9 +219,7 @@ class App(Tk, Settings):
         )
 
     def createTitleImage(self):
-        """
-        Método para criar a imagem do título do jogo no background
-        """
+        """Método para criar a imagem do título do jogo no background."""
 
         self.__background.create_image(
             self.__width // 2,
@@ -238,9 +228,7 @@ class App(Tk, Settings):
         )
 
     def deleteMenuButtons(self):
-        """
-        Método para deletar os botões de menu
-        """
+        """Método para deletar os botões de menu."""
 
         # Deleta cada botão criado dentro do background
         for item in self.__buttons:
@@ -250,9 +238,7 @@ class App(Tk, Settings):
         self.__buttons.clear()
 
     def gameOver(self):
-        """
-        Método de fim de jogo
-        """
+        """Método de fim de jogo."""
 
         # Calcula o tempo jogado em segundos e depois o formata
         self.__time = int(time() - self.__time)
@@ -275,18 +261,15 @@ class App(Tk, Settings):
         self.createScoreBoard()
 
     def increaseScore(self):
-        """
-        Método para aumentar a pontuação do jogo atual do jogador
-        """
+        """Método para aumentar a pontuação do jogo atual do jogador."""
 
         self.__score += 1
         if self.__score > self.__bestScore:
             self.__bestScore = self.__score
 
     def init(self):
-        """
-        Método para iniciar o programa em si, criando toda a parte gráfica inicial do jogo
-        """
+        """Método para iniciar o programa em si, criando toda a parte gráfica
+        inicial do jogo."""
 
         # self.createMenuButtons()
         self.loadScore()
@@ -336,9 +319,7 @@ class App(Tk, Settings):
         )
 
     def loadScore(self):
-        """
-        Método para carregar a pontuação do jogador
-        """
+        """Método para carregar a pontuação do jogador."""
 
         # Tenta carregar o placar do usuário
         try:
@@ -353,17 +334,13 @@ class App(Tk, Settings):
             file.close()
 
     def saveScore(self):
-        """
-        Método para salvar a pontuação do jogador
-        """
+        """Método para salvar a pontuação do jogador."""
 
         with open(self.score_fp, "w") as file:
             file.write(bin(self.__bestScore))
 
     def start(self, event=None):
-        """
-        Método para inicializar o jogo
-        """
+        """Método para inicializar o jogo."""
 
         # Este método é executado somente se o jogador não estiver já jogando
         if self.__playing:

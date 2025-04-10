@@ -1,4 +1,4 @@
-"""' Multiple extension changer"""
+"""' Multiple extension changer."""
 
 import hashlib
 import random as rand

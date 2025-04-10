@@ -1,14 +1,11 @@
 #! /usr/bin/python3
-
-"""
-Author- Tony Stark
+"""Author- Tony Stark.
 
 download https://github.com/mozilla/geckodriver/releases
 
 set path paste binary file /usr/local/bin
 
 install requirements: python -m pip install selenium
-
 """
 
 import os

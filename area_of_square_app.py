@@ -1,15 +1,15 @@
+from word2number import w2n
+
 __author__ = "Nitkarsh Chourasia"
 __author_GitHub_profile__ = "https://github.com/NitkarshChourasia"
 __author_email_address__ = "playnitkarsh@gmal.com"
 __created_on__ = "10/10/2021"
 __last_updated__ = "10/10/2021"
 
-from word2number import w2n
 
 
 def convert_words_to_number(word_str):
-    """
-    Convert a string containing number words to an integer.
+    """Convert a string containing number words to an integer.
 
     Args:
     - word_str (str): Input string with number words.

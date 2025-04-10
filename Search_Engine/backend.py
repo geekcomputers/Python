@@ -6,11 +6,10 @@ import test_data
 
 
 class SearchEngine:
-    """
-    It works by building a reverse index store that maps
-    words to an id. To find the document(s) that contain
-    a certain search term, we then take an intersection
-    of the ids
+    """It works by building a reverse index store that maps words to an id.
+
+    To find the document(s) that contain a certain search term, we then take an
+    intersection of the ids
     """
 
     def __init__(self):

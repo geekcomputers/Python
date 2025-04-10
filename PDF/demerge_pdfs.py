@@ -1,7 +1,6 @@
-"""
-Python program to split large pdf(typically textbook) into small set of pdfs, maybe chapterwise
-to enhance the experience of reading and feasibility to study only specific parts from the large original textbook
-"""
+"""Python program to split large pdf(typically textbook) into small set of
+pdfs, maybe chapterwise to enhance the experience of reading and feasibility to
+study only specific parts from the large original textbook."""
 
 import PyPDF2
 

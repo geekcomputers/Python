@@ -6,9 +6,7 @@ from PIL.ImageTk import PhotoImage
 
 
 class Bird(Thread):
-    """
-    Classe para criar um pássaro
-    """
+    """Classe para criar um pássaro."""
 
     __tag = "Bird"
     __isAlive = None
@@ -82,16 +80,13 @@ class Bird(Thread):
         self.__isAlive = True
 
     def birdIsAlive(self):
-        """
-        Método para verificar se o pássaro está vivo
-        """
+        """Método para verificar se o pássaro está vivo."""
 
         return self.__isAlive
 
     def checkCollision(self):
-        """
-        Método para verificar se o pássaro ultrapassou a borda da janela ou colidiu com algo
-        """
+        """Método para verificar se o pássaro ultrapassou a borda da janela ou
+        colidiu com algo."""
 
         # Recebe a posição do pássaro no background
         position = list(self.__canvas.bbox(self.__tag))
@@ -131,9 +126,7 @@ class Bird(Thread):
         return not self.__isAlive
 
     def getTag(self):
-        """
-        Método para retornar a tag do pássaro
-        """
+        """Método para retornar a tag do pássaro."""
 
         return self.__tag
 
@@ -145,15 +138,13 @@ class Bird(Thread):
         height=None,
         closeAfter=False,
     ):
-        """
-        Retorna um objeto da classe PIL.ImageTk.PhotoImage de uma imagem e as imagens criadas de PIL.Image
-        (photoImage, new, original)
+        """Retorna um objeto da classe PIL.ImageTk.PhotoImage de uma imagem e
+        as imagens criadas de PIL.Image (photoImage, new, original)
 
-        @param image: Instância de PIL.Image.open
-        @param image_path: Diretório da imagem
-        @param width: Largura da imagem
-        @param height: Altura da imagem
-        @param closeAfter: Se True, a imagem será fechada após ser criado um PhotoImage da mesma
+        @param image: Instância de PIL.Image.open @param image_path: Diretório
+        da imagem @param width: Largura da imagem @param height: Altura da
+        imagem @param closeAfter: Se True, a imagem será fechada após ser
+        criado um PhotoImage da mesma
         """
 
         if not image:
@@ -189,9 +180,7 @@ class Bird(Thread):
         return photoImage, newImage, image
 
     def jumps(self, event=None):
-        """
-        Método para fazer o pássaro pular
-        """
+        """Método para fazer o pássaro pular."""
 
         # Verifica se o pássaro saiu da área do background
         self.checkCollision()
@@ -222,16 +211,12 @@ class Bird(Thread):
             self.__times_skipped = 0
 
     def kill(self):
-        """
-        Método para matar o pássaro
-        """
+        """Método para matar o pássaro."""
 
         self.__isAlive = False
 
     def run(self):
-        """
-        #Método para iniciar a animação do passáro caindo
-        """
+        """#Método para iniciar a animação do passáro caindo"""
 
         self.__running = True
 

@@ -1,5 +1,4 @@
-"""
-Created on Thu Oct  5 16:44:23 2017
+"""Created on Thu Oct  5 16:44:23 2017.
 
 @author: Christian Bender
 
@@ -35,7 +34,6 @@ fib (n) // calculate the n-th fibonacci term.
 -----
 
 goldbach(number)  // Goldbach's assumption
-
 """
 
 
@@ -450,8 +448,8 @@ def kgV(number1, number2):
 
 
 def getPrime(n):
-    """
-    Gets the n-th prime number.
+    """Gets the n-th prime number.
+
     input: positive integer 'n' >= 0
     returns the n-th prime number, beginning at index 0
     """

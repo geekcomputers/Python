@@ -10,9 +10,7 @@ from typing import List
 
 class Scheduling:
     def __init__(self, jobs: list[int]) -> None:
-        """
-        Assign jobs as instance of class Scheduling
-        """
+        """Assign jobs as instance of class Scheduling."""
         self.jobs = jobs
 
     def schedule(self, total_jobs: int, deadline: list[int]) -> list[int]:

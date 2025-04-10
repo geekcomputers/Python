@@ -4,8 +4,7 @@ import cv2
 
 
 def extract_thumbnail(video_path, frame_size):
-    """
-    Extracts a thumbnail frame from a video and saves it as an image file.
+    """Extracts a thumbnail frame from a video and saves it as an image file.
 
     Args:
         video_path (str): The path to the input video file.

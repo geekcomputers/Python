@@ -1,9 +1,7 @@
-"""
-Created on Sat Jul 15 01:41:31 2017
+"""Created on Sat Jul 15 01:41:31 2017.
 
 @author: Albert
 """
-
 
 from bs4 import BeautifulSoup
 
@@ -11,9 +9,7 @@ import wikipedia as wk
 
 
 def wiki():
-    """
-    Search Anything in wikipedia
-    """
+    """Search Anything in wikipedia."""
 
     word = input("Wikipedia Search : ")
     results = wk.search(word)
@@ -51,10 +47,8 @@ def fullPage(page):
 
 
 def randomWiki():
-    """
-    This function gives you a list of n number of random articles
-    Choose any article.
-    """
+    """This function gives you a list of n number of random articles Choose any
+    article."""
     number = input("No: of Random Pages : ")
     lst = wk.random(number)
     for i in enumerate(lst):

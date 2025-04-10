@@ -260,7 +260,7 @@ def doubleslash(text):
 
 
 def print_index(toc):
-    """Prints out the index in proper format with title name and page number
+    """Prints out the index in proper format with title name and page number.
 
     Args:
         toc (nested list): toc[1] - Topic name
@@ -293,7 +293,8 @@ def print_n_speak_index(toc):
 
 
 def search_in_toc(toc, key, totalpg):
-    """Searches a particular lesson name provided as a parameter in toc and returns its starting and ending page numbers.
+    """Searches a particular lesson name provided as a parameter in toc and
+    returns its starting and ending page numbers.
 
     Args:
         toc (nested list): toc[1] - Topic name
@@ -324,7 +325,8 @@ def search_in_toc(toc, key, totalpg):
 
 
 def book_details(author, title, total_pages):
-    """Creates a table of book details like author name, title, and total pages.
+    """Creates a table of book details like author name, title, and total
+    pages.
 
     Args:
         author (str): Name of author

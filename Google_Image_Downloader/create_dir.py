@@ -1,13 +1,9 @@
-"""
-Code to directly use in file to
-create directory in home location
+"""Code to directly use in file to create directory in home location.
 
-Note:- I Have used python package so if you want
-to create in the main directory of your project use
-pardir+"\\"+name in functions
+Note:- I Have used python package so if you want to create in the main
+directory of your project use pardir+"\\"+name in functions
 
-All the folder operations are done on home
-project directory.
+All the folder operations are done on home project directory.
 """
 
 from os import chdir, makedirs, removedirs, rename

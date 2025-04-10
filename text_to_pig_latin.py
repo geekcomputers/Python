@@ -1,7 +1,7 @@
-"""
-This program converts English text to Pig-Latin. In Pig-Latin, we take the first letter of each word,
-move it to the end, and add 'ay'. If the first letter is a vowel, we simply add 'hay' to the end.
-The program preserves capitalization and title case.
+"""This program converts English text to Pig-Latin. In Pig-Latin, we take the
+first letter of each word, move it to the end, and add 'ay'. If the first
+letter is a vowel, we simply add 'hay' to the end. The program preserves
+capitalization and title case.
 
 For example:
 - "Hello" becomes "Ellohay"

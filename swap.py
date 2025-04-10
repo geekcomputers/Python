@@ -1,6 +1,5 @@
 class Swapper:
-    """
-    A class to perform swapping of two values.
+    """A class to perform swapping of two values.
 
     Methods:
     -------
@@ -12,12 +11,10 @@ class Swapper:
 
     swap_arithmetic_operations(self):
         Swaps the values of x and y using arithmetic operations.
-
     """
 
     def __init__(self, x, y):
-        """
-        Initialize the Swapper class with two values.
+        """Initialize the Swapper class with two values.
 
         Parameters:
         ----------
@@ -25,7 +22,6 @@ class Swapper:
             The first value to be swapped.
         y : int
             The second value to be swapped.
-
         """
         if not isinstance(x, (int, float)) or not isinstance(y, (float, int)):
             raise ValueError("Both x and y should be integers.")
@@ -37,19 +33,13 @@ class Swapper:
         print(f"{message} x: {self.x}, y: {self.y}")
 
     def swap_tuple_unpacking(self):
-        """
-        Swaps the values of x and y using a tuple unpacking method.
-
-        """
+        """Swaps the values of x and y using a tuple unpacking method."""
         self.display_values("Before swapping")
         self.x, self.y = self.y, self.x
         self.display_values("After swapping")
 
     def swap_temp_variable(self):
-        """
-        Swaps the values of x and y using a temporary variable.
-
-        """
+        """Swaps the values of x and y using a temporary variable."""
         self.display_values("Before swapping")
         temp = self.x
         self.x = self.y
@@ -57,10 +47,7 @@ class Swapper:
         self.display_values("After swapping")
 
     def swap_arithmetic_operations(self):
-        """
-        Swaps the values of x and y using arithmetic operations.
-
-        """
+        """Swaps the values of x and y using arithmetic operations."""
         self.display_values("Before swapping")
         self.x = self.x - self.y
         self.y = self.x + self.y

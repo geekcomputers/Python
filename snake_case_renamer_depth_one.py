@@ -4,8 +4,7 @@ from typing import Union
 
 
 def generate_unique_name(directory: str, name: str) -> str:
-    """
-    Generate a unique name for a file or folder in the specified directory.
+    """Generate a unique name for a file or folder in the specified directory.
 
     Parameters:
     ----------
@@ -27,8 +26,8 @@ def generate_unique_name(directory: str, name: str) -> str:
 
 
 def rename_files_and_folders(directory: str) -> None:
-    """
-    Rename files and folders in the specified directory to lowercase with underscores.
+    """Rename files and folders in the specified directory to lowercase with
+    underscores.
 
     Parameters:
     ----------
@@ -58,8 +57,8 @@ def rename_files_and_folders(directory: str) -> None:
 
 
 def main() -> None:
-    """
-    Main function to handle command-line arguments and call the renaming function.
+    """Main function to handle command-line arguments and call the renaming
+    function.
 
     Usage:
     ------
@@ -68,7 +67,6 @@ def main() -> None:
     Example:
     --------
     python rename_files_script.py /path/to/directory
-
     """
     # Create a parser for command-line arguments
     parser = argparse.ArgumentParser(

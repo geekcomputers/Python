@@ -12,8 +12,7 @@ def input_list():
 
 
 def insertion_sort(list, n):
-    """
-    sort list in assending order
+    """Sort list in assending order.
 
     INPUT:
         list=list of values to be sorted
@@ -35,8 +34,7 @@ def insertion_sort(list, n):
 
 
 def insertion_sort_desc(list, n):
-    """
-    sort list in desending order
+    """Sort list in desending order.
 
     INPUT:
         list=list of values to be sorted

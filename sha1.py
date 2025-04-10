@@ -5,62 +5,59 @@ import unittest
 
 
 class SHA1Hash:
-    """
-    Class to contain the entire pipeline for SHA1 Hashing Algorithm
-    """
+    """Class to contain the entire pipeline for SHA1 Hashing Algorithm."""
 
     def __init__(self, data):
-        """
-        Inititates the variables data and h. h is a list of 5 8-digit Hexadecimal
-        numbers corresponding to (1732584193, 4023233417, 2562383102, 271733878, 3285377520)
-        respectively. We will start with this as a message digest. 0x is how you write
-        Hexadecimal numbers in Python
+        """Inititates the variables data and h.
+
+        h is a list of 5 8-digit Hexadecimal numbers corresponding to
+        (1732584193, 4023233417, 2562383102, 271733878, 3285377520)
+        respectively. We will start with this as a message digest. 0x is how
+        you write Hexadecimal numbers in Python
         """
         self.data = data
         self.h = [0x67452301, 0xEFCDAB89, 0x98BADCFE, 0x10325476, 0xC3D2E1F0]
 
     @staticmethod
     def rotate(n, b):
-        """
-        Static method to be used inside other methods. Left rotates n by b.
+        """Static method to be used inside other methods.
+
+        Left rotates n by b.
         """
         return ((n << b) | (n >> (32 - b))) & 0xFFFFFFFF
 
     def padding(self):
-        """
-        Pads the input message with zeros so that padded_data has 64 bytes or 512 bits
-        """
+        """Pads the input message with zeros so that padded_data has 64 bytes
+        or 512 bits."""
         padding = b"\x80" + b"\x00" * (63 - (len(self.data) + 8) % 64)
         padded_data = self.data + padding + struct.pack(">Q", 8 * len(self.data))
         return padded_data
 
     def split_blocks(self):
-        """
-        Returns a list of bytestrings each of length 64
-        """
+        """Returns a list of bytestrings each of length 64."""
         return [
             self.padded_data[i : i + 64] for i in range(0, len(self.padded_data), 64)
         ]
 
     # @staticmethod
     def expand_block(self, block):
-        """
-        Takes a bytestring-block of length 64, unpacks it to a list of integers and returns a
-        list of 80 integers pafter some bit operations
-        """
+        """Takes a bytestring-block of length 64, unpacks it to a list of
+        integers and returns a list of 80 integers pafter some bit
+        operations."""
         w = list(struct.unpack(">16L", block)) + [0] * 64
         for i in range(16, 80):
             w[i] = self.rotate((w[i - 3] ^ w[i - 8] ^ w[i - 14] ^ w[i - 16]), 1)
         return w
 
     def final_hash(self):
-        """
-        Calls all the other methods to process the input. Pads the data, then splits into
-        blocks and then does a series of operations for each block (including expansion).
-        For each block, the variable h that was initialized is copied to a,b,c,d,e
-        and these 5 variables a,b,c,d,e undergo several changes. After all the blocks are
-        processed, these 5 variables are pairwise added to h ie a to h[0], b to h[1] and so on.
-        This h becomes our final hash which is returned.
+        """Calls all the other methods to process the input.
+
+        Pads the data, then splits into blocks and then does a series of
+        operations for each block (including expansion). For each block, the
+        variable h that was initialized is copied to a,b,c,d,e and these 5
+        variables a,b,c,d,e undergo several changes. After all the blocks are
+        processed, these 5 variables are pairwise added to h ie a to h[0], b to
+        h[1] and so on. This h becomes our final hash which is returned.
         """
         self.padded_data = self.padding()
         self.blocks = self.split_blocks()
@@ -98,8 +95,9 @@ class SHA1Hash:
 
 
 class SHA1HashTest(unittest.TestCase):
-    """
-    Test class for the SHA1Hash class. Inherits the TestCase class from unittest
+    """Test class for the SHA1Hash class.
+
+    Inherits the TestCase class from unittest
     """
 
     def testMatchHashes(self):
@@ -108,10 +106,11 @@ class SHA1HashTest(unittest.TestCase):
 
 
 def main():
-    """
-    Provides option 'string' or 'file' to take input and prints the calculated SHA1 hash.
-    unittest.main() has been commented because we probably dont want to run
-    the test each time.
+    """Provides option 'string' or 'file' to take input and prints the
+    calculated SHA1 hash.
+
+    unittest.main() has been commented because we probably dont want to run the
+    test each time.
     """
     # unittest.main()
     parser = argparse.ArgumentParser(description="Process some strings or files")

@@ -6,7 +6,8 @@ def diff(a, b):
 
 
 def simpleColor(r, g, b):
-    """simpleColor obtiene el nombre del color mas general al cual se acerca su formato R G B"""
+    """SimpleColor obtiene el nombre del color mas general al cual se acerca su
+    formato R G B."""
     r = int(r)
     g = int(g)
     b = int(b)

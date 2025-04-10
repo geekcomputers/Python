@@ -1,6 +1,6 @@
-"""Write a user-defined function named count() that will read
-the contents of text file named “happy.txt” and count
-the number of lines which starts with either “I‟ or “M‟."""
+"""Write a user-defined function named count() that will read the contents of
+text file named “happy.txt” and count the number of lines which starts with
+either “I‟ or “M‟."""
 
 import os
 import time

@@ -3,9 +3,7 @@ from json import dumps, loads
 
 
 class Settings:
-    """
-    Classe com todas as configurações do jogo
-    """
+    """Classe com todas as configurações do jogo."""
 
     # Configurações da janela
     window_name = "Flappy Bird"
@@ -70,8 +68,9 @@ class Settings:
     ]
 
     def setOptions(self):
-        """
-        Método para receber algumas configurações do jogo de um arquivo .json.
+        """Método para receber algumas configurações do jogo de um arquivo
+        .json.
+
         Caso o arquivo não exista, será criado um com as configurações padrões.
         """
 

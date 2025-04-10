@@ -1,6 +1,12 @@
 import pickle
+from tkinter import Tk
+from tkinter.filedialog import askopenfilename
 
+import numpy as np
 import tensorflow as tf
+from keras.preprocessing import image
+from tensorflow.keras.optimizers import RMSprop
+from tensorflow.keras.preprocessing.image import ImageDataGenerator
 
 model = tf.keras.models.Sequential(
     [
@@ -21,10 +27,8 @@ model = tf.keras.models.Sequential(
     ],
 )
 model.summary()
-from tensorflow.keras.optimizers import RMSprop
 
 model.compile(optimizer=RMSprop(lr=0.001), loss="binary_crossentropy", metrics=["acc"])
-from tensorflow.keras.preprocessing.image import ImageDataGenerator
 
 train_datagen = ImageDataGenerator(rescale=1 / 255)
 train_generator = train_datagen.flow_from_directory(
@@ -37,11 +41,7 @@ model.fit_generator(train_generator, steps_per_epoch=6, epochs=1, verbose=1)
 filename = "myTf1.sav"
 pickle.dump(model, open(filename, "wb"))
 
-from tkinter import Tk
-from tkinter.filedialog import askopenfilename
 
-import numpy as np
-from keras.preprocessing import image
 
 Tk().withdraw()
 filename = askopenfilename()

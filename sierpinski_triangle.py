@@ -1,4 +1,4 @@
-"""Author Anurag Kumar | anuragkumarak95@gmail.com | git/anuragkumarak95
+"""Author Anurag Kumar | anuragkumarak95@gmail.com | git/anuragkumarak95.
 
 Simple example of Fractal generation using recursive function.
 
@@ -19,7 +19,6 @@ Usage:
   - $python sierpinski_triangle.py <int:depth_for_fractal>
 
 Credits: This code was written by editing the code from http://www.lpb-riannetrujillo.com/blog/python-fractal/
-
 """
 
 import sys

@@ -3,7 +3,7 @@ from inorder_successor import inorder_successor
 
 # The above line imports the inorder_successor function from the inorder_successor.py file
 def delete_node(root, val):
-    """This function deletes a node with value val from the BST"""
+    """This function deletes a node with value val from the BST."""
 
     # search in the left subtree
     if root.data < val:

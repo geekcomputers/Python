@@ -1,23 +1,18 @@
 # Mixed sorting
 
-"""
-Given a list of integers nums, sort the array such that:
+"""Given a list of integers nums, sort the array such that:
 
-All even numbers are sorted in increasing order
-All odd numbers are sorted in decreasing order
-The relative positions of the even and odd numbers remain the same
-Example 1
-Input
+All even numbers are sorted in increasing order All odd numbers are sorted in
+decreasing order The relative positions of the even and odd numbers remain the
+same Example 1 Input
 
-nums = [8, 13, 11, 90, -5, 4]
-Output
+nums = [8, 13, 11, 90, -5, 4] Output
 
-[4, 13, 11, 8, -5, 90]
-Explanation
+[4, 13, 11, 8, -5, 90] Explanation
 
 The even numbers are sorted in increasing order, the odd numbers are sorted in
-decreasing number, and the relative positions were
-[even, odd, odd, even, odd, even] and remain the same after sorting.
+decreasing number, and the relative positions were [even, odd, odd, even, odd,
+even] and remain the same after sorting.
 """
 
 # solution

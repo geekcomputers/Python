@@ -13,14 +13,8 @@ print(List)
 List.pop()
 List.reverse()
 print(List)
-"""
-List.append(1)
-print(List)
-List.append(2)
-print(List)
-List.insert(1 , 3)
-print(List)
-"""
+"""List.append(1) print(List) List.append(2) print(List) List.insert(1 , 3)
+print(List)"""
 
 list2 = [2, 3, 7, 5, 10, 17, 12, 4, 1, 13]
 for i in list2:

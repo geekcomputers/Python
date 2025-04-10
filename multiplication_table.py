@@ -1,5 +1,4 @@
-"""
-The 'multiplication table' Implemented in Python 3
+"""The 'multiplication table' Implemented in Python 3.
 
 Syntax:
 python3 multiplication_table.py [rows columns]

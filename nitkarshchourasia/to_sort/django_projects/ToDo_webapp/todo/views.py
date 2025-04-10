@@ -9,7 +9,6 @@ from .models import Todo
 # Import todo form and models
 
 
-
 def index(request):
     item_list = Todo.objects.order_by("-date")
     if request.method == "POST":

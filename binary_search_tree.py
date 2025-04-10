@@ -1,8 +1,8 @@
 class Node:
-    """Class for node of a tree"""
+    """Class for node of a tree."""
 
     def __init__(self, info):
-        """Initialising a node"""
+        """Initialising a node."""
         self.info = info
         self.left = None
         self.right = None
@@ -16,14 +16,14 @@ class Node:
 
 
 class BinarySearchTree:
-    """Class for BST"""
+    """Class for BST."""
 
     def __init__(self):
-        """Initialising a BST"""
+        """Initialising a BST."""
         self.root = None
 
     def insert(self, val):
-        """Creating a BST with root value as val"""
+        """Creating a BST with root value as val."""
         # Check if tree has root with None value
         if self.root is None:
             self.root = Node(val)

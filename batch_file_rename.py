@@ -1,24 +1,21 @@
 # batch_file_rename.py
 # Created: 6th August 2012
 
-"""
-This will batch rename a group of files in a given directory,
-once you pass the current and new extensions
-"""
+"""This will batch rename a group of files in a given directory, once you pass
+the current and new extensions."""
 
 # just checking
-__author__ = "Craig Richards"
-__version__ = "1.0"
-
 import argparse
 import os
 
+__author__ = "Craig Richards"
+__version__ = "1.0"
+
+
 
 def batch_rename(work_dir, old_ext, new_ext):
-    """
-    This will batch rename a group of files in a given directory,
-    once you pass the current and new extensions
-    """
+    """This will batch rename a group of files in a given directory, once you
+    pass the current and new extensions."""
     # files = os.listdir(work_dir)
     for filename in os.listdir(work_dir):
         # Get the file extension
@@ -65,9 +62,7 @@ def get_parser():
 
 
 def main():
-    """
-    This will be called if the script is directly invoked.
-    """
+    """This will be called if the script is directly invoked."""
     # adding command line argument
     parser = get_parser()
     args = vars(parser.parse_args())

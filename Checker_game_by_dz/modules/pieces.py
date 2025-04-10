@@ -18,7 +18,6 @@ class pieces:
         self.col = col
         self.color = color
         self.king = False
-
         """if (self.color == yellow):
             self.direction = -1
         else:

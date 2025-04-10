@@ -1,5 +1,5 @@
 def print_root_to_leaf_paths(root, path):
-    """This function prints all the root to leaf paths in a BST"""
+    """This function prints all the root to leaf paths in a BST."""
 
     # If the tree is empty, return
     if root is None:

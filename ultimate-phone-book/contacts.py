@@ -3,13 +3,16 @@
 
 # this code uses GPL V3 LICENSE
 ## check license it https://github.com/JymPatel/Python-FirstEdition/blob/Main/LICENSE
-print("this code uses GPL V3 LICENSE")
-print("")
-
 import os
+
 # start of code
 # import library
 import pickle
+
+print("this code uses GPL V3 LICENSE")
+print("")
+
+
 
 # get array from pickle data
 infile = open("data/pickle-main", "rb")

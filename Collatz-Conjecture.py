@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 
 # Recommended: Python 3.6+
-
 """
 Collatz Conjecture - Python
 
@@ -61,12 +60,8 @@ def main():
     print("\nBEGIN COLLATZ SEQUENCE")
 
     def sequence(number: float) -> float:
-        """
-        The core part of this program,
-        it performs the operations of
-        the Collatz sequence to the given
-        number (parameter number).
-        """
+        """The core part of this program, it performs the operations of the
+        Collatz sequence to the given number (parameter number)."""
         modulo = number % 2  # The number modulo'd by 2
         if modulo == 0:  # If the result is 0,
             number = number / 2  # divide it by 2

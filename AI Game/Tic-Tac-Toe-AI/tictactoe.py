@@ -1,7 +1,8 @@
 import random
 import tkinter as tk  # provides a library of basic elements of GUI widgets
-from tkinter import \
-    messagebox  # provides a different set of dialogues that are used to display message boxes
+from tkinter import (  # provides a different set of dialogues that are used to display message boxes
+    messagebox,
+)
 
 
 def check_winner(board, player):

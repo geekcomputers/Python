@@ -1,5 +1,4 @@
-"""
-The 'cat' Program Implemented in Python 3
+"""The 'cat' Program Implemented in Python 3.
 
 The Unix 'cat' utility reads the contents
 of file(s) specified through stdin and 'conCATenates'

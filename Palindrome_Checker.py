@@ -1,6 +1,6 @@
-"""
+"""A simple method is , to reverse the string and and compare with original
+string.
 
-A simple method is , to reverse the string and and compare with original string.
 If both are same that's means string is palindrome otherwise else.
 """
 

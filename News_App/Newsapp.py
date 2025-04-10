@@ -4,7 +4,6 @@ from datetime import timedelta
 
 import solara as sr
 import yfinance as yf
-
 from patterns import Company_Name
 
 srart_date = date.today()

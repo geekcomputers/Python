@@ -1,9 +1,7 @@
 # Sends inspirational quotes to the user using Zen Quotes API
 
 # Format
-"""
-example quote -Quote Author Name
-"""
+"""Example quote -Quote Author Name."""
 
 from json import loads
 

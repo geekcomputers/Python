@@ -25,8 +25,8 @@ def speak(text):
 
 
 def greet(g):
-    """Uses the datetime library to generate current time and then greets accordingly.
-
+    """Uses the datetime library to generate current time and then greets
+    accordingly.
 
     Args:
         g (str): To decide whether to say hello or good bye
@@ -49,14 +49,15 @@ def greet(g):
 
 
 def hear():
-    """[It will process the speech of user using Google_Speech_Recognizer(recognize_google)]
+    """[It will process the speech of user using
+    Google_Speech_Recognizer(recognize_google)]
 
     Returns:
         [str]: [Speech of user as a string in English(en - IN)]
     """
     r = sr.Recognizer()
-    """Reconizer is a class which has lot of functions related to Speech i/p and o/p.
-    """
+    """Reconizer is a class which has lot of functions related to Speech i/p
+    and o/p."""
     r.pause_threshold = (
         1  # a pause of more than 1 second will stop the microphone temporarily
     )
@@ -86,7 +87,8 @@ def hear():
 
 
 def recognizing():
-    """Uses the Rich library to print a simulates version of "recognizing" by printing a loading bar."""
+    """Uses the Rich library to print a simulates version of "recognizing" by
+    printing a loading bar."""
     with Progress() as pr:
         rec = pr.add_task("[red]Recognizing...", total=100)
         while not pr.finished:
@@ -95,7 +97,9 @@ def recognizing():
 
 
 def long_hear(duration_time=60):
-    """[It will process the speech of user using Google_Speech_Recognizer(recognize_google)]
+    """[It will process the speech of user using
+    Google_Speech_Recognizer(recognize_google)]
+
         the difference between the hear() and long_hear() is that - the
         hear() - records users voice for 9 seconds
         long_hear() - will record user's voice for the time specified by user. By default, it records for 60 seconds.
@@ -103,8 +107,8 @@ def long_hear(duration_time=60):
         [str]: [Speech of user as a string in English(en - IN)]
     """
     r = sr.Recognizer()
-    """Reconizer is a class which has lot of functions related to Speech i/p and o/p.
-    """
+    """Reconizer is a class which has lot of functions related to Speech i/p
+    and o/p."""
     r.pause_threshold = (
         1  # a pause of more than 1 second will stop the microphone temporarily
     )
@@ -134,7 +138,9 @@ def long_hear(duration_time=60):
 
 
 def short_hear(duration_time=5):
-    """[It will process the speech of user using Google_Speech_Recognizer(recognize_google)]
+    """[It will process the speech of user using
+    Google_Speech_Recognizer(recognize_google)]
+
         the difference between the hear() and long_hear() is that - the
         hear() - records users voice for 9 seconds
         long_hear - will record user's voice for the time specified by user. By default, it records for 60 seconds.
@@ -142,8 +148,8 @@ def short_hear(duration_time=5):
         [str]: [Speech of user as a string in English(en - IN)]
     """
     r = sr.Recognizer()
-    """Reconizer is a class which has lot of functions related to Speech i/p and o/p.
-    """
+    """Reconizer is a class which has lot of functions related to Speech i/p
+    and o/p."""
     r.pause_threshold = (
         1  # a pause of more than 1 second will stop the microphone temporarily
     )

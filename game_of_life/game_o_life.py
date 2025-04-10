@@ -32,11 +32,11 @@ import random
 import sys
 
 import numpy as np
+from matplotlib import pyplot as plt
 from matplotlib import use as mpluse
+from matplotlib.colors import ListedColormap
 
 mpluse("TkAgg")
-from matplotlib import pyplot as plt
-from matplotlib.colors import ListedColormap
 
 usage_doc = "Usage of script: script_nama <size_of_canvas:int>"
 
@@ -56,7 +56,9 @@ def seed(canvas):
 
 
 def run(canvas):
-    """This  function runs the rules of game through all points, and changes their status accordingly.(in the same canvas)
+    """This  function runs the rules of game through all points, and changes
+    their status accordingly.(in the same canvas)
+
     @Args:
     --
     canvas : canvas of population to run the rules on.

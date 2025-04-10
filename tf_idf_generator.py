@@ -60,7 +60,6 @@ def paint(str, color="r"):
     @returns:
     --
     str : final modified string with foreground color as per parameters.
-
     """
     if color in switcher:
         str = switcher[color] + str + Style.RESET_ALL
@@ -72,8 +71,9 @@ TAG = paint("TF-IDF-GENE/", "b")
 
 def find_tf_idf(file_names=None, prev_file_path=None, dump_path=None):
     """Function to create a TF-IDF list of dictionaries for a corpus of docs.
-    If you opt for dumping the data, you can provide a file_path with .tfidfpkl extension(standard made for better understanding)
-    and also re-generate a new tfidf list which overrides over an old one by mentioning its path.
+    If you opt for dumping the data, you can provide a file_path with .tfidfpkl
+    extension(standard made for better understanding) and also re-generate a
+    new tfidf list which overrides over an old one by mentioning its path.
 
     @Args:
     --

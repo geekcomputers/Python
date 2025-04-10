@@ -1469,7 +1469,7 @@ def parser():
 
 
 def setZeroFlag(token, tmpToken):
-    """return bool for zero flag based on the regToken"""
+    """Return bool for zero flag based on the regToken."""
     global eax, ebx, ecx, edx
 
     # Register in string
@@ -1507,9 +1507,8 @@ def setZeroFlag(token, tmpToken):
 
 
 def registerLabels():
-    """
-    This function search for labels / subprogram-labels and registers this in the 'jumps' list.
-    """
+    """This function search for labels / subprogram-labels and registers this
+    in the 'jumps' list."""
     for i in range(len(tokens)):
         if tokens[i].t == "label":
             jumps[tokens[i].token] = i
@@ -1518,9 +1517,7 @@ def registerLabels():
 
 
 def resetInterpreter():
-    """
-    resets the interpreter mind.
-    """
+    """Resets the interpreter mind."""
     global eax, ebx, ecx, edx, zeroFlag, stack
     global variables, jumps, lines, tokens, returnStack
     eax = 0
@@ -1544,9 +1541,7 @@ def resetInterpreter():
 
 # main program
 def main():
-    """
-    reads textfiles from the command-line and interprets them.
-    """
+    """Reads textfiles from the command-line and interprets them."""
 
     # [1:] because the first argument is the program itself.
     for arg in sys.argv[1:]:

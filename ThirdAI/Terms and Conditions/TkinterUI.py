@@ -6,13 +6,11 @@ from ThirdAI import NeuralDBClient as Ndb
 
 
 class ThirdAIApp:
-    """
-    A GUI application for using the ThirdAI neural database client to train and query data.
-    """
+    """A GUI application for using the ThirdAI neural database client to train
+    and query data."""
 
     def __init__(self, root):
-        """
-        Initialize the user interface window.
+        """Initialize the user interface window.
 
         Args:
             root (tk.Tk): The main Tkinter window.
@@ -96,8 +94,7 @@ class ThirdAIApp:
 
     @staticmethod
     def custom_font(size):
-        """
-        Create a custom font with the specified size.
+        """Create a custom font with the specified size.
 
         Args:
             size (int): The font size.
@@ -108,9 +105,8 @@ class ThirdAIApp:
         return Font(size=size)
 
     def file_input(self):
-        """
-        Open a file dialog to select a PDF file and display its name in the text box.
-        """
+        """Open a file dialog to select a PDF file and display its name in the
+        text box."""
         file_type = dict(defaultextension=".pdf", filetypes=[("pdf file", "*.pdf")])
         file_path = filedialog.askopenfilename(**file_type)
 
@@ -121,17 +117,13 @@ class ThirdAIApp:
             self.text_box.insert(tk.INSERT, file_name)
 
     def clear_all(self):
-        """
-        Clear the query entry, text box, and reset the path.
-        """
+        """Clear the query entry, text box, and reset the path."""
         self.query_entry.delete(0, tk.END)
         self.text_box.delete(1.0, tk.END)
         self.path.clear()
 
     def training(self):
-        """
-        Train the neural database client with the selected PDF file.
-        """
+        """Train the neural database client with the selected PDF file."""
         if not self.path:
             messagebox.showwarning(
                 "No File Selected", "Please select a PDF file before training."
@@ -143,9 +135,7 @@ class ThirdAIApp:
         messagebox.showinfo("Training Complete", "Training is done!")
 
     def processing(self):
-        """
-        Process a user query and display the output in a new window.
-        """
+        """Process a user query and display the output in a new window."""
         question = self.query_entry.get()
 
         # When there is no query submitted by the user
@@ -157,8 +147,7 @@ class ThirdAIApp:
         self.display_output(output)
 
     def display_output(self, output_data):
-        """
-        Display the output data in a new window.
+        """Display the output data in a new window.
 
         Args:
             output_data (str): The output text to be displayed.
@@ -173,9 +162,7 @@ class ThirdAIApp:
 
 
 if __name__ == "__main__":
-    """
-    Initializing the main application window
-    """
+    """Initializing the main application window."""
 
     # Calling the main application window
     win = tk.Tk()

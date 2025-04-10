@@ -1,11 +1,11 @@
 import sys
+from time import sleep
 
 try:
     import requests
 except ImportError:
     print("Please Install Requests Module With Command 'pip install requests'")
     sys.exit(1)
-from time import sleep
 
 url = "https://api.covid19api.com/summary"
 visit = requests.get(url).json()

@@ -51,9 +51,7 @@ def delete_button(p1):
 
 
 def create_button(p1):
-    """
-    for creating a new database
-    """
+    """For creating a new database."""
     global cursor
 
     sql_command = """
@@ -98,16 +96,16 @@ def back_button(p1):
 
 
 def clear_button(p1):
-    """
-    This function is for the clear button.
+    """This function is for the clear button.
+
     This will clear the notice-input field
     """
     w.inputNotice.delete(1.0, END)
 
 
 def exit_button(p1):
-    """
-    function for the exit button.
+    """Function for the exit button.
+
     this will exit the application.
     """
     sys.exit(0)

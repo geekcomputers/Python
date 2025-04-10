@@ -5,9 +5,8 @@ from bs4 import BeautifulSoup as soup
 
 
 def news(xml_news_url, counter):
-    """Print select details from a html response containing xml
-    @param xml_news_url: url to parse
-    """
+    """Print select details from a html response containing xml @param
+    xml_news_url: url to parse."""
 
     context = ssl._create_unverified_context()
     Client = urlopen(xml_news_url, context=context)

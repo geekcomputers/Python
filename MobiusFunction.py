@@ -1,6 +1,6 @@
 def is_square_free(factors):
-    """
-    This functions takes a list of prime factors as input.
+    """This functions takes a list of prime factors as input.
+
     returns True if the factors are square free.
     """
     for i in factors:
@@ -10,9 +10,7 @@ def is_square_free(factors):
 
 
 def prime_factors(n):
-    """
-    Returns prime factors of n as a list.
-    """
+    """Returns prime factors of n as a list."""
     i = 2
     factors = []
     while i * i <= n:
@@ -27,9 +25,7 @@ def prime_factors(n):
 
 
 def mobius_function(n):
-    """
-    Defines Mobius function
-    """
+    """Defines Mobius function."""
     factors = prime_factors(n)
     if is_square_free(factors):
         if len(factors) % 2 == 0:

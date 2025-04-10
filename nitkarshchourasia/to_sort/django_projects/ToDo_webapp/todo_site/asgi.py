@@ -1,5 +1,4 @@
-"""
-ASGI config for todo_site project.
+"""ASGI config for todo_site project.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 

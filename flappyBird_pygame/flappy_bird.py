@@ -1,6 +1,5 @@
 #! /usr/bin/env python3
-"""
-Created on Fri Mar 23 14:17:24 2019
+"""Created on Fri Mar 23 14:17:24 2019.
 
 @author: Mehul
 """

@@ -1,5 +1,6 @@
 # A exclusive CLI version can be made using inquirer library.
 from io import BytesIO
+
 # only use when needed to avoid memory usage in program
 from pprint import pprint
 

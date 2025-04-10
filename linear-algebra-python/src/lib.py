@@ -1,5 +1,4 @@
-"""
-Created on Mon Feb 26 14:29:11 2018
+"""Created on Mon Feb 26 14:29:11 2018.
 
 @author: Christian Bender
 @license: MIT-license
@@ -24,9 +23,8 @@ import random
 
 
 class Vector:
-    """
-    This class represents a vector of arbitray size.
-    You need to give the vector components.
+    """This class represents a vector of arbitray size. You need to give the
+    vector components.
 
     Overview about the methods:
 
@@ -63,9 +61,7 @@ class Vector:
             raise Exception("please give any vector")
 
     def __str__(self):
-        """
-        returns a string representation of the vector
-        """
+        """Returns a string representation of the vector."""
         ans = "("
         length = len(self.__components)
         for i in range(length):
@@ -88,15 +84,11 @@ class Vector:
             raise Exception("index out of range")
 
     def size(self):
-        """
-        returns the size of the vector
-        """
+        """Returns the size of the vector."""
         return len(self.__components)
 
     def eulidLength(self):
-        """
-        returns the eulidean length of the vector
-        """
+        """Returns the eulidean length of the vector."""
         summe = 0
         for c in self.__components:
             summe += c**2
@@ -133,10 +125,7 @@ class Vector:
         return Vector(result)
 
     def __mul__(self, other):
-        """
-        mul implements the scalar multiplication
-        and the dot-product
-        """
+        """Mul implements the scalar multiplication and the dot-product."""
         ans = []
         if isinstance(other, float) or isinstance(other, int):
             for c in self.__components:
@@ -152,9 +141,7 @@ class Vector:
         return Vector(ans)
 
     def copy(self):
-        """
-        copies this vector and returns it.
-        """
+        """Copies this vector and returns it."""
         components = [x for x in self.__components]
         return Vector(components)
 
@@ -169,9 +156,7 @@ class Vector:
         self.__components[pos] = value
 
     def norm(self):
-        """
-        normalizes this vector and returns it.
-        """
+        """Normalizes this vector and returns it."""
         eLength = self.eulidLength()
         quotient = 1.0 / eLength
         for i in range(len(self.__components)):
@@ -179,9 +164,7 @@ class Vector:
         return self
 
     def __eq__(self, other):
-        """
-        returns true if the vectors are equal otherwise false.
-        """
+        """Returns true if the vectors are equal otherwise false."""
         ans = True
         SIZE = self.size()
         if SIZE == other.size():
@@ -195,9 +178,7 @@ class Vector:
 
 
 def zeroVector(dimension):
-    """
-    returns a zero-vector of size 'dimension'
-    """
+    """Returns a zero-vector of size 'dimension'."""
     # precondition
     assert isinstance(dimension, int)
     ans = []
@@ -207,10 +188,7 @@ def zeroVector(dimension):
 
 
 def unitBasisVector(dimension, pos):
-    """
-    returns a unit basis vector with a One
-    at index 'pos' (indexing at 0)
-    """
+    """Returns a unit basis vector with a One at index 'pos' (indexing at 0)"""
     # precondition
     assert isinstance(dimension, int) and (isinstance(pos, int))
     ans = []
@@ -270,19 +248,13 @@ class Matrix:
     """
 
     def __init__(self, matrix, w, h):
-        """
-        simple constructor for initialzes
-        the matrix with components.
-        """
+        """Simple constructor for initialzes the matrix with components."""
         self.__matrix = matrix
         self.__width = w
         self.__height = h
 
     def __str__(self):
-        """
-        returns a string representation of this
-        matrix.
-        """
+        """Returns a string representation of this matrix."""
         ans = ""
         for i in range(self.__height):
             ans += "|"
@@ -294,38 +266,30 @@ class Matrix:
         return ans
 
     def changeComponent(self, x, y, value):
-        """
-        changes the x-y component of this matrix
-        """
+        """Changes the x-y component of this matrix."""
         if x >= 0 and x < self.__height and y >= 0 and y < self.__width:
             self.__matrix[x][y] = value
         else:
             raise Exception("changeComponent: indices out of bounds")
 
     def component(self, x, y):
-        """
-        returns the specified (x,y) component
-        """
+        """Returns the specified (x,y) component."""
         if x >= 0 and x < self.__height and y >= 0 and y < self.__width:
             return self.__matrix[x][y]
         else:
             raise Exception("changeComponent: indices out of bounds")
 
     def width(self):
-        """
-        getter for the width
-        """
+        """Getter for the width."""
         return self.__width
 
     def height(self):
-        """
-        getter for the height
-        """
+        """Getter for the height."""
         return self.__height
 
     def __mul__(self, other):
-        """
-        implements the matrix-vector multiplication.
+        """Implements the matrix-vector multiplication.
+
         implements the matrix-scalar multiplication
         """
         if isinstance(other, Vector):  # vector-matrix
@@ -353,9 +317,7 @@ class Matrix:
             return Matrix(matrix, self.__width, self.__height)
 
     def __add__(self, other):
-        """
-        implements the matrix-addition.
-        """
+        """Implements the matrix-addition."""
         if self.__width == other.width() and self.__height == other.height():
             matrix = []
             for i in range(self.__height):
@@ -368,9 +330,7 @@ class Matrix:
             raise Exception("matrix must have the same dimension!")
 
     def __sub__(self, other):
-        """
-        implements the matrix-subtraction.
-        """
+        """Implements the matrix-subtraction."""
         if self.__width == other.width() and self.__height == other.height():
             matrix = []
             for i in range(self.__height):
@@ -383,9 +343,7 @@ class Matrix:
             raise Exception("matrix must have the same dimension!")
 
     def __eq__(self, other):
-        """
-        returns true if the matrices are equal otherwise false.
-        """
+        """Returns true if the matrices are equal otherwise false."""
         ans = True
         if self.__width == other.width() and self.__height == other.height():
             for i in range(self.__height):
@@ -399,9 +357,7 @@ class Matrix:
 
 
 def squareZeroMatrix(N):
-    """
-    returns a square zero-matrix of dimension NxN
-    """
+    """Returns a square zero-matrix of dimension NxN."""
     ans = []
     for i in range(N):
         row = []
@@ -412,10 +368,8 @@ def squareZeroMatrix(N):
 
 
 def randomMatrix(W, H, a, b):
-    """
-    returns a random matrix WxH with integer components
-    between 'a' and 'b'
-    """
+    """Returns a random matrix WxH with integer components between 'a' and
+    'b'."""
     matrix = []
     random.seed(None)
     for i in range(H):

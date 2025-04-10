@@ -6,8 +6,7 @@ class Calculator:
         pass
 
     def add(self, num1, num2):
-        """
-        This function adds two numbers.
+        """This function adds two numbers.
 
         Examples:
         >>> add(2, 3)
@@ -20,8 +19,7 @@ class Calculator:
         return num1 + num2
 
     def subtract(self, num1, num2):
-        """
-        This function subtracts two numbers.
+        """This function subtracts two numbers.
 
         Examples:
         >>> subtract(5, 3)
@@ -34,8 +32,7 @@ class Calculator:
         return num1 - num2
 
     def multiply(self, num1, num2):
-        """
-        This function multiplies two numbers.
+        """This function multiplies two numbers.
 
         Examples:
         >>> multiply(4, 2)
@@ -48,8 +45,7 @@ class Calculator:
         return num1 * num2
 
     def divide(self, num1, num2):
-        """
-        This function divides two numbers.
+        """This function divides two numbers.
 
         Examples:
         >>> divide(4, 4)

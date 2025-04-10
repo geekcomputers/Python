@@ -2,8 +2,9 @@ import os
 import sys
 from pprint import pprint
 
-sys.path.append(os.path.realpath("."))
 import inquirer  # noqa
+
+sys.path.append(os.path.realpath("."))
 
 # Take authentication input from the user
 questions = [

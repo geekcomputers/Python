@@ -5,9 +5,7 @@ import time
 
 
 def getFibonacciIterative(n: int) -> int:
-    """
-    Calculate the fibonacci number at position n iteratively
-    """
+    """Calculate the fibonacci number at position n iteratively."""
 
     a = 0
     b = 1
@@ -19,9 +17,7 @@ def getFibonacciIterative(n: int) -> int:
 
 
 def getFibonacciRecursive(n: int) -> int:
-    """
-    Calculate the fibonacci number at position n recursively
-    """
+    """Calculate the fibonacci number at position n recursively."""
 
     a = 0
     b = 1
@@ -37,9 +33,8 @@ def getFibonacciRecursive(n: int) -> int:
 
 
 def getFibonacciDynamic(n: int, fib: list) -> int:
-    """
-    Calculate the fibonacci number at position n using dynamic programming to improve runtime
-    """
+    """Calculate the fibonacci number at position n using dynamic programming
+    to improve runtime."""
 
     if n == 0 or n == 1:
         return n
@@ -56,9 +51,7 @@ def main():
 
 
 def compareFibonacciCalculators(n: int) -> None:
-    """
-    Interactively compare both fibonacci generators
-    """
+    """Interactively compare both fibonacci generators."""
 
     startI = time.clock()
     resultI = getFibonacciIterative(n)

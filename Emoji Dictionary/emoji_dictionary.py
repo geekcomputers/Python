@@ -263,7 +263,7 @@ firstclick1 = True
 
 
 def on_inputentry_click(event):
-    """function that gets called whenever entry1 is clicked"""
+    """Function that gets called whenever entry1 is clicked."""
     global firstclick1
 
     if firstclick1:  # if this is the first time they clicked it

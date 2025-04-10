@@ -19,15 +19,11 @@ from XOR_cipher import XORCipher
 
 
 class TestXORCipher(TestCase):
-    """
-    Test XORCipher class.
-    """
+    """Test XORCipher class."""
 
     def setUp(self):
-        """
-        The SetUp call with commented values in the event one needs
-        to instantiate mocked objects regarding the XORCipher class.
-        """
+        """The SetUp call with commented values in the event one needs to
+        instantiate mocked objects regarding the XORCipher class."""
 
         # key = mock.MagicMock()
         # self.XORCipher_1 = XORCipher(key)
@@ -35,10 +31,8 @@ class TestXORCipher(TestCase):
 
     @mock.patch("XOR_cipher.XORCipher.__init__")
     def test__init__(self, mock__init__):
-        """
-        Test the __init__ method with commented values in the event
-        one needs to instantiate mocked objects on the method.
-        """
+        """Test the __init__ method with commented values in the event one
+        needs to instantiate mocked objects on the method."""
 
         # self.XORCipher_1.__init__ = mock.MagicMock()
         XORCipher.__init__ = mock.MagicMock()
@@ -51,9 +45,7 @@ class TestXORCipher(TestCase):
 
     @mock.patch("XOR_cipher.XORCipher.encrypt")
     def test_encrypt(self, mock_encrypt):
-        """
-        Test the encrypt method with mocked values.
-        """
+        """Test the encrypt method with mocked values."""
 
         ans = mock.MagicMock()
         content = mock.MagicMock()
@@ -65,9 +57,7 @@ class TestXORCipher(TestCase):
 
     @mock.patch("XOR_cipher.XORCipher.decrypt")
     def test_decrypt(self, mock_decrypt):
-        """
-        Test the decrypt method with mocked values.
-        """
+        """Test the decrypt method with mocked values."""
 
         ans = mock.MagicMock()
         content = mock.MagicMock()
@@ -79,9 +69,7 @@ class TestXORCipher(TestCase):
 
     @mock.patch("XOR_cipher.XORCipher.encrypt_string")
     def test_encrypt_string(self, mock_encrypt_string):
-        """
-        Test the encrypt_string method with mocked values.
-        """
+        """Test the encrypt_string method with mocked values."""
 
         ans = mock.MagicMock()
         content = mock.MagicMock()
@@ -93,9 +81,7 @@ class TestXORCipher(TestCase):
 
     @mock.patch("XOR_cipher.XORCipher.decrypt_string")
     def test_decrypt_string(self, mock_decrypt_string):
-        """
-        Test the decrypt_string method with mocked values.
-        """
+        """Test the decrypt_string method with mocked values."""
 
         ans = mock.MagicMock()
         content = mock.MagicMock()
@@ -107,9 +93,7 @@ class TestXORCipher(TestCase):
 
     @mock.patch("XOR_cipher.XORCipher.encrypt_file")
     def test_encrypt_file(self, mock_encrypt_file):
-        """
-        Test the encrypt_file method with mocked values.
-        """
+        """Test the encrypt_file method with mocked values."""
 
         file = mock.MagicMock()
         key = mock.MagicMock()
@@ -120,9 +104,7 @@ class TestXORCipher(TestCase):
 
     @mock.patch("XOR_cipher.XORCipher.decrypt_file")
     def test_decrypt_file(self, mock_decrypt_file):
-        """
-        Test the decrypt_file method with mocked values.
-        """
+        """Test the decrypt_file method with mocked values."""
 
         file = mock.MagicMock()
         key = mock.MagicMock()

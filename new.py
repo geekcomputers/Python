@@ -1,5 +1,6 @@
-"""
-a simple terminal program to find new about certain topic by web scraping site.
+"""A simple terminal program to find new about certain topic by web scraping
+site.
+
 site used :
 1. Times of India,
    link : https://timesofindia.indiatimes.com/india/

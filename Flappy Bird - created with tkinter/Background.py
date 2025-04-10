@@ -5,9 +5,7 @@ from PIL.ImageTk import PhotoImage
 
 
 class Background(Canvas):
-    """
-    Classe para gerar um plano de fundo animado
-    """
+    """Classe para gerar um plano de fundo animado."""
 
     __background = []
     __stop = False
@@ -66,9 +64,7 @@ class Background(Canvas):
         )
 
     def getBackgroundID(self):
-        """
-        Retorna os id's das imagens de background
-        """
+        """Retorna os id's das imagens de background."""
         return [self.__background_default, *self.__background]
 
     @staticmethod
@@ -79,15 +75,13 @@ class Background(Canvas):
         height=None,
         closeAfter=False,
     ):
-        """
-        Retorna um objeto da classe PIL.ImageTk.PhotoImage de uma imagem e as imagens criadas de PIL.Image
-        (photoImage, new, original)
+        """Retorna um objeto da classe PIL.ImageTk.PhotoImage de uma imagem e
+        as imagens criadas de PIL.Image (photoImage, new, original)
 
-        @param image: Instância de PIL.Image.open
-        @param image_path: Diretório da imagem
-        @param width: Largura da imagem
-        @param height: Altura da imagem
-        @param closeAfter: Se True, a imagem será fechada após ser criado um PhotoImage da mesma
+        @param image: Instância de PIL.Image.open @param image_path: Diretório
+        da imagem @param width: Largura da imagem @param height: Altura da
+        imagem @param closeAfter: Se True, a imagem será fechada após ser
+        criado um PhotoImage da mesma
         """
 
         if not image:
@@ -123,9 +117,8 @@ class Background(Canvas):
         return photoImage, newImage, image
 
     def reset(self):
-        """
-        Método para resetar o background, apagando todos os itens que não sejam o plano de fundo
-        """
+        """Método para resetar o background, apagando todos os itens que não
+        sejam o plano de fundo."""
 
         # Deleta todos os itens do canvas
         self.delete("all")
@@ -160,9 +153,7 @@ class Background(Canvas):
         )
 
     def run(self):
-        """
-        Método para iniciar a animação do background
-        """
+        """Método para iniciar a animação do background."""
 
         # Enquanto o atributo "stop" for False, a animação continuará em um loop infinito
         if not self.__stop:
@@ -190,7 +181,5 @@ class Background(Canvas):
             self.after(self.animation_speed, self.run)
 
     def stop(self):
-        """
-        Método para parar a animação do background
-        """
+        """Método para parar a animação do background."""
         self.__stop = True

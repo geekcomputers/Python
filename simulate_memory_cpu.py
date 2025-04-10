@@ -1,7 +1,5 @@
 #! /user/bin/env python
-"""
-Simulate cpu、 memory usage
-"""
+"""Simulate cpu、 memory usage."""
 
 import re
 import sys

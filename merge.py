@@ -10,7 +10,7 @@ resultfile = "result.csv"
 
 # the merge func
 def merge():
-    """merge csv files to one file"""
+    """Merge csv files to one file."""
 
     # indicates use of a global variable.
     global resultfile

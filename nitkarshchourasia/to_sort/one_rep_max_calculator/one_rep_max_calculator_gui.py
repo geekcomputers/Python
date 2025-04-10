@@ -2,8 +2,8 @@ import tkinter as tk
 
 
 class OneRepMaxCalculator:
-    """
-    A class used to calculate the estimated one-repetition maximum (1RM) for a weightlifting exercise.
+    """A class used to calculate the estimated one-repetition maximum (1RM) for
+    a weightlifting exercise.
 
     Attributes
     ----------

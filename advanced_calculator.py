@@ -1,15 +1,5 @@
 # This is like making a package.lock file for npm package.
 # Yes, I should be making it.
-__author__ = "Nitkarsh Chourasia"
-__version__ = "0.0.0"  # SemVer # Understand more about it
-__license__ = "MIT"  # Understand more about it
-# Want to make it open source but how to do it?
-# Program to make a simple calculator
-# Will have to extensively work on Jarvis and local_document and MongoDb and Redis and JavaScript and CSS and DOM manipulation to understand it.
-# Will have to study maths to understand it more better.
-# How can I market gtts? Like showing used google's api? This is how can I market it?
-# Project description? What will be the project description?
-
 from io import BytesIO
 from numbers import Number
 from pprint import pprint
@@ -22,6 +12,19 @@ import inquirer
 from gtts import gTTS
 
 from pygame import mixer, time
+
+__author__ = "Nitkarsh Chourasia"
+__version__ = "0.0.0"  # SemVer # Understand more about it
+__license__ = "MIT"  # Understand more about it
+# Want to make it open source but how to do it?
+# Program to make a simple calculator
+# Will have to extensively work on Jarvis and local_document and MongoDb and Redis and JavaScript and CSS and DOM manipulation to understand it.
+# Will have to study maths to understand it more better.
+# How can I market gtts? Like showing used google's api? This is how can I market it?
+# Project description? What will be the project description?
+
+
+
 
 # Find the best of best extensions for the auto generation of the documentation parts.
 # For your favourite languages like JavaScript, Python ,etc,...

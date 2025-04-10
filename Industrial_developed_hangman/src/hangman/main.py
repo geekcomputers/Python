@@ -23,22 +23,20 @@ class Source(Enum):
 
 
 def print_wrong(text: str, print_function: Callable[[str], None]) -> None:
-    """
-    Print styled text(red).
+    """Print styled text(red).
 
-    :parameter text: text to print.
-    :parameter print_function: Function that will be used to print in game.
+    :parameter text: text to print. :parameter print_function: Function that
+    will be used to print in game.
     """
     text_to_print = Style.RESET_ALL + Fore.RED + text
     print_function(text_to_print)
 
 
 def print_right(text: str, print_function: Callable[[str], None]) -> None:
-    """
-    Print styled text(red).
+    """Print styled text(red).
 
-    :parameter text: text to print.
-    :parameter print_function: Function that will be used to print in game.
+    :parameter text: text to print. :parameter print_function: Function that
+    will be used to print in game.
     """
     print_function(Style.RESET_ALL + Fore.GREEN + text)
 
@@ -47,12 +45,11 @@ def parse_word_from_local(
     choice_function: Callable[[list[str]], str] = random.choice
 ) -> str:
     # noqa: DAR201
-    """
-    Parse word from local file.
+    """Parse word from local file.
 
-    :parameter choice_function: Function that will be used to choice a word from file.
-    :returns str: string that contains the word.
-    :raises FileNotFoundError: file to read words not found.
+    :parameter choice_function: Function that will be used to choice a word
+    from file. :returns str: string that contains the word. :raises
+    FileNotFoundError: file to read words not found.
     """
     try:
         with open(data_path / "local_words.txt", encoding="utf8") as words_file:
@@ -65,13 +62,12 @@ def parse_word_from_site(
     url: str = "https://random-word-api.herokuapp.com/word",
 ) -> str:
     # noqa: DAR201
-    """
-    Parse word from website.
+    """Parse word from website.
 
-    :param url: url that word will be parsed from.
-    :return Optional[str]: string that contains the word.
-    :raises ConnectionError: no connection to the internet.
-    :raises RuntimeError: something go wrong with getting the word from site.
+    :param url: url that word will be parsed from. :return Optional[str]:
+    string that contains the word. :raises ConnectionError: no connection to
+    the internet. :raises RuntimeError: something go wrong with getting the
+    word from site.
     """
     try:
         response: requests.Response = requests.get(url, timeout=request_timeout)
@@ -88,13 +84,12 @@ class MainProcess:
     def __init__(
         self, source: Enum, pr_func: Callable, in_func: Callable, ch_func: Callable
     ) -> None:
-        """
-        Init MainProcess object.
+        """Init MainProcess object.
 
         :parameter in_func: Function that will be used to get input in game.
-        :parameter source: Represents source to get word.
-        :parameter pr_func: Function that will be used to print in game.
-        :parameter ch_func: Function that will be used to choice word.
+        :parameter source: Represents source to get word. :parameter pr_func:
+        Function that will be used to print in game. :parameter ch_func:
+        Function that will be used to choice word.
         """
         self._source = source
         self._answer_word = ""
@@ -106,11 +101,10 @@ class MainProcess:
 
     def get_word(self) -> str:
         # noqa: DAR201
-        """
-        Parse word(wrapper for local and web parse).
+        """Parse word(wrapper for local and web parse).
 
-        :returns str: string that contains the word.
-        :raises AttributeError: Not existing enum
+        :returns str: string that contains the word. :raises AttributeError:
+        Not existing enum
         """
         if self._source == Source.FROM_INTERNET:
             return parse_word_from_site()
@@ -132,11 +126,10 @@ class MainProcess:
 
     def game_process(self, user_character: str) -> bool:
         # noqa: DAR201
-        """
-        Process user input.
+        """Process user input.
 
-        :parameter user_character: User character.
-        :returns bool: state of game.
+        :parameter user_character: User character. :returns bool: state of
+        game.
         """
         if user_character in self._answer_word:
             word_list_to_show = list(self._word_string_to_show)

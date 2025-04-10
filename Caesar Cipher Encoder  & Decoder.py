@@ -8,9 +8,7 @@
 
 
 def get_int() -> int:
-    """
-    Get integer, otherwise redo
-    """
+    """Get integer, otherwise redo."""
 
     try:
         key = int(input("Enter number of characters you want to shift: "))

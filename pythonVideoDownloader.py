@@ -34,8 +34,8 @@ def get_video_links():
 def download_video_series(video_links):
     for link in video_links:
 
-        """iterate through all links in video_links
-        and download them one by one"""
+        """Iterate through all links in video_links and download them one by
+        one."""
 
         # obtain filename by splitting url and getting
         # last string

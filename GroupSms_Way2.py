@@ -49,12 +49,10 @@ opener.addheaders = [
 
 try:
     for number in num:
-        send_sms_data = (
-            "ssaction=ss&Token={}&mobile={}&message={}&msgLen=136".format(
-                jession_id,
-                number,
-                message,
-            )
+        send_sms_data = "ssaction=ss&Token={}&mobile={}&message={}&msgLen=136".format(
+            jession_id,
+            number,
+            message,
         )
         sms_sent_page = opener.open(send_sms_url, send_sms_data)
 except OSError:

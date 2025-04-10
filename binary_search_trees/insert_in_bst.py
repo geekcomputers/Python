@@ -2,7 +2,7 @@ from tree_node import Node
 
 
 def insert(root, val):
-    """This function inserts a node with value val into the BST"""
+    """This function inserts a node with value val into the BST."""
 
     # If the tree is empty, create a new node
     if root is None:

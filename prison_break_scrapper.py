@@ -1,7 +1,5 @@
-"""
-Scrapper for downloading prison break
-series from an open server and putting them in a designated folder.
-"""
+"""Scrapper for downloading prison break series from an open server and putting
+them in a designated folder."""
 
 import os
 import subprocess

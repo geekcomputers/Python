@@ -1,5 +1,6 @@
 def print_in_range(root, k1, k2):
-    """This function prints the nodes in a BST that are in the range k1 to k2 inclusive"""
+    """This function prints the nodes in a BST that are in the range k1 to k2
+    inclusive."""
 
     # If the tree is empty, return
     if root is None:

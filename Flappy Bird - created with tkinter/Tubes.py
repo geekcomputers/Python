@@ -8,9 +8,7 @@ from PIL.ImageTk import PhotoImage
 
 
 class Tubes(Thread):
-    """
-    Classe para criar tubos
-    """
+    """Classe para criar tubos."""
 
     __distance = 0
     __move = 10
@@ -95,9 +93,8 @@ class Tubes(Thread):
         self.__tubes = []
 
     def createNewTubes(self):
-        """
-        Método para criar 2 novos tubos (baixo e cima) numa mesma posição X
-        """
+        """Método para criar 2 novos tubos (baixo e cima) numa mesma posição
+        X."""
 
         # Cria uma lista para armazenar as partes do corpo do tubo de cima
         tube1 = []
@@ -194,9 +191,7 @@ class Tubes(Thread):
         self.__distance = 0
 
     def deleteAll(self):
-        """
-        Método para deletar todos os tubos gerados
-        """
+        """Método para deletar todos os tubos gerados."""
 
         # Deleta os tubos gerados no background
         for tubes in self.__tubes:
@@ -215,15 +210,13 @@ class Tubes(Thread):
         height=None,
         closeAfter=False,
     ):
-        """
-        Retorna um objeto da classe PIL.ImageTk.PhotoImage de uma imagem e as imagens criadas de PIL.Image
-        (photoImage, new, original)
+        """Retorna um objeto da classe PIL.ImageTk.PhotoImage de uma imagem e
+        as imagens criadas de PIL.Image (photoImage, new, original)
 
-        @param image: Instância de PIL.Image.open
-        @param image_path: Diretório da imagem
-        @param width: Largura da imagem
-        @param height: Altura da imagem
-        @param closeAfter: Se True, a imagem será fechada após ser criado um PhotoImage da mesma
+        @param image: Instância de PIL.Image.open @param image_path: Diretório
+        da imagem @param width: Largura da imagem @param height: Altura da
+        imagem @param closeAfter: Se True, a imagem será fechada após ser
+        criado um PhotoImage da mesma
         """
 
         if not image:
@@ -259,9 +252,7 @@ class Tubes(Thread):
         return photoImage, newImage, image
 
     def move(self):
-        """
-        Método para mover todos os tubos
-        """
+        """Método para mover todos os tubos."""
 
         # Cria uma variável auxilar para checar se o método de pontuar foi executado
         scored = False
@@ -294,9 +285,8 @@ class Tubes(Thread):
                     self.__background.move(body, -self.__move, 0)
 
     def run(self):
-        """
-        Método para gerar os tubos no background e fazer a sua animação em um loop infinito
-        """
+        """Método para gerar os tubos no background e fazer a sua animação em
+        um loop infinito."""
 
         # Se o método "stop" tiver sido chamado, a animação será encerrada
         if self.__stop:
@@ -340,8 +330,6 @@ class Tubes(Thread):
         self.__background.after(self.__animation_speed, self.run)
 
     def stop(self):
-        """
-        Método para interromper a Thread
-        """
+        """Método para interromper a Thread."""
 
         self.__stop = True

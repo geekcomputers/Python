@@ -1,12 +1,14 @@
+import webbrowser
+
 from speakListen import greet, hear, speak
+
+import wikipedia
 
 """ 1. speakListen.speak(text)
     2. speakListen.greet()
     3. speakListen.hear()
 """
-import webbrowser
 
-import wikipedia
 
 
 def google_search():
@@ -26,7 +28,8 @@ def google_search():
 
 
 def wiki_search():
-    """[Speak out the summary in wikipedia and going to the website according to user's choice.]"""
+    """[Speak out the summary in wikipedia and going to the website according
+    to user's choice.]"""
     wiki_search = "What do you want me to search on Wikipedia? Please tell me the exact sentence or word to Search."
     wiki_search_link = "https://en.wikipedia.org/wiki/"
 

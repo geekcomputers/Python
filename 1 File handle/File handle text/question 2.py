@@ -1,7 +1,6 @@
-""" Write a method/function DISPLAYWORDS() in python to read lines
- from a text file STORY.TXT,
- using read function
-and display those words, which are less than 4 characters. """
+"""Write a method/function DISPLAYWORDS() in python to read lines from a text
+file STORY.TXT, using read function and display those words, which are less
+than 4 characters."""
 
 print("Hey!! You can print the word which are less then 4 characters")
 

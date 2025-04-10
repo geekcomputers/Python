@@ -1,5 +1,5 @@
 def is_valid_bst(root, min, max):
-    """Function to check if a binary tree is a binary search tree"""
+    """Function to check if a binary tree is a binary search tree."""
 
     # If the tree is empty, return True
     if root is None:

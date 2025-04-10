@@ -20,10 +20,7 @@
 
 class XORCipher:
     def __init__(self, key=0):
-        """
-        simple constructor that receives a key or uses
-        default key = 0
-        """
+        """Simple constructor that receives a key or uses default key = 0."""
 
         # private field
         self.__key = key

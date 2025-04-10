@@ -1,5 +1,5 @@
 def inorder(root):
-    """This function performs an inorder traversal of a BST"""
+    """This function performs an inorder traversal of a BST."""
 
     # The inorder traversal of a BST is the nodes in increasing order
     if root is None:

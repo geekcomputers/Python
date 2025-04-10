@@ -1,13 +1,11 @@
-"""Amit is a monitor of class XII-A and he stored the record of all
-the students of his class in a file named “class.dat”.
-Structure of record is [roll number, name, percentage]. His computer
-teacher has assigned the following duty to Amit
+"""Amit is a monitor of class XII-A and he stored the record of all the
+students of his class in a file named “class.dat”. Structure of record is [roll
+number, name, percentage]. His computer teacher has assigned the following duty
+to Amit.
 
-Write a function remcount( ) to count the number of students who need
- remedial class (student who scored less than 40 percent)
-
-
- """
+Write a function remcount( ) to count the number of students who need  remedial
+class (student who scored less than 40 percent)
+"""
 
 # also find no. of children who got top marks
 

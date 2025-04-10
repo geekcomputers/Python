@@ -1,8 +1,7 @@
 def resistance_calculator(
     material: str, lenght: float, section: float, temperature: float
 ):
-    """
-    material is a string indicating the material of the wire
+    """Material is a string indicating the material of the wire.
 
     lenght is a floating value indicating the lenght of the wire in meters
 
@@ -18,7 +17,8 @@ def resistance_calculator(
     - iron
     - steel
     - zinc
-    - solder"""
+    - solder
+    """
 
     materials = {
         "silver": {

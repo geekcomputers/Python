@@ -1,5 +1,4 @@
-"""
-Introduction Description
+"""Introduction Description.
 
 The machine operating environment: system environment Win10, the operating environment Python3.6, run the tool Pycharm
 
@@ -21,6 +20,10 @@ The following provides a simple 8 purely digital dictionary generation program c
 """
 
 import itertools as its
+import time
+
+import pywifi
+from pywifi import const  # quote some definitions
 
 # Problems encountered do not understand? Python learning exchange group: 821 460 695 meet your needs, data base files have been uploaded, you can download their own!
 
@@ -38,10 +41,7 @@ if __name__ == "__main__":
 #  2. brute force password when using longer
 
 
-import time
 
-import pywifi
-from pywifi import const  # quote some definitions
 
 """
  Problems encountered do not understand? Python learning exchange group: 821 460 695 meet your needs, data base files have been uploaded, you can download their own!

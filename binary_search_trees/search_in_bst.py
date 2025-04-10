@@ -1,5 +1,6 @@
 def search(root, val):
-    """This function searches for a node with value val in the BST and returns True if found, False otherwise"""
+    """This function searches for a node with value val in the BST and returns
+    True if found, False otherwise."""
 
     # If the tree is empty, return False
     if root == None:

@@ -8,6 +8,7 @@ n = len(tlist)
 
 def counting_sort(tlist, k, n):
     """Counting sort algo with sort in place.
+
     Args:
         tlist: target list to sort
         k: max value assume known before hand
@@ -16,7 +17,6 @@ def counting_sort(tlist, k, n):
     Adv:
         The count (after cum sum) will hold the actual position of the element in sorted order
         Using the above,
-
     """
 
     # Create a count list and using the index to map to the integer in tlist.

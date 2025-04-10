@@ -7,7 +7,6 @@ import numpy as np
 # superinposing two images
 
 
-
 cap = cv2.VideoCapture(0)
 
 time.sleep(2)  # 2 sec time to adjust cam with time

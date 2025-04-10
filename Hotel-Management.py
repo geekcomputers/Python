@@ -1,3 +1,7 @@
+import json
+import os
+
+
 def menu():
 
     options = {
@@ -117,8 +121,6 @@ def add():
     exit_menu()
 
 
-import json
-import os
 
 filecheck = os.path.isfile("Management.txt")
 if not filecheck:

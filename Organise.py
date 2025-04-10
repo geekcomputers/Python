@@ -67,7 +67,7 @@ def Organize(dirs, name):
         print(f"{name} Folder Exist")
 
     src = f"{destLocation}\\{dirs}"
-    dest = f"{destLocation}\{name}"
+    dest = fr"{destLocation}\{name}"
 
     os.chdir(dest)
     shutil.move(src, f"{dest}\\{dirs}")

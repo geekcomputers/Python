@@ -4,10 +4,14 @@
 
 
 import random
+import re
+import string
 
 import matplotlib.pyplot as plt
 import numpy as np
-from nltk.corpus import twitter_samples
+from nltk.corpus import stopwords, twitter_samples
+from nltk.stem import PorterStemmer
+from nltk.tokenize import TweetTokenizer
 
 # In[ ]:
 
@@ -42,8 +46,6 @@ print(positive_tweets[random.randint(0, 5000)])
 
 
 # In[19]:
-
-
 """ There are 4 basic steps in pre-processing of any text
 1.Tokenizing
 2.Removing hyper links if any
@@ -52,12 +54,7 @@ print(positive_tweets[random.randint(0, 5000)])
 5.steeming of the word"""
 
 
-import re
-import string
 
-from nltk.corpus import stopwords
-from nltk.stem import PorterStemmer
-from nltk.tokenize import TweetTokenizer
 
 # In[20]:
 

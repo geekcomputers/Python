@@ -12,7 +12,7 @@ class image2pdf:
         self.isMergePDF = True
 
     def getUserDir(self):
-        """Allow user to choose image directory"""
+        """Allow user to choose image directory."""
 
         msg = "\n1. Current directory\n2. Custom directory\nEnter a number: "
         user_option = int(input(msg))
@@ -42,7 +42,7 @@ class image2pdf:
         return pictures
 
     def selectPictures(self, pictures):
-        """Allow user to manually pick each picture or merge all"""
+        """Allow user to manually pick each picture or merge all."""
 
         listedPictures = {}
         for index, pic in enumerate(pictures):

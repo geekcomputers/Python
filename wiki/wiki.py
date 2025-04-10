@@ -2,9 +2,20 @@
 # pip install wikipedia
 
 import tkinter as tk
+
 # import PIL as ImageTK
-from tkinter import (END, GROOVE, SOLID, WORD, Button, Entry, Label, StringVar,
-                     Text, messagebox)
+from tkinter import (
+    END,
+    GROOVE,
+    SOLID,
+    WORD,
+    Button,
+    Entry,
+    Label,
+    StringVar,
+    Text,
+    messagebox,
+)
 
 import wikipedia
 

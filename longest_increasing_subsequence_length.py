@@ -1,7 +1,5 @@
-"""
-Author- DIWAKAR JAISWAL
-find lenth Longest increasing subsequence of given array.
-"""
+"""Author- DIWAKAR JAISWAL find lenth Longest increasing subsequence of given
+array."""
 
 
 def lis(a):
