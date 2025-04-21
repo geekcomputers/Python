@@ -46,3 +46,5 @@ This is a basic command-line interface (CLI) application built with Python to he
 ---
 
 > This simple Personal Expense Tracker provides a basic yet functional way to manage your finances from the command line.
+
+#### Author: Dhrubaraj Pati
