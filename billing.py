@@ -1,3 +1,4 @@
+updated_billing
 items= {"apple":5,"soap":4,"soda":6,"pie":7,"cake":20}
 total_price=0
 try :
@@ -66,3 +67,4 @@ If they enter something outside 1–6, a warning message is shown.
 The try-except block is used to catch errors if the user enters something that's not a number (like a letter or symbol).
 In that case, it simply shows: "enter only digits".
 """
+
