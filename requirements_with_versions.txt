@@ -22,7 +22,7 @@ win10toast==0.9
 Counter==1.0.0
 Flask==3.1.0
 selenium==4.32.0
-firebase-admin==6.7.0
+firebase-admin==6.8.0
 ujson==5.10.0
 requests==2.32.3
 quo==2023.5.1
