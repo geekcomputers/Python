@@ -2,7 +2,7 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 import sys
 import backend
-
+backend.connect_database()
 def create_styled_frame(parent, min_size=None, style=""):
     """Create a styled QFrame with optional minimum size and custom style."""
     frame = QtWidgets.QFrame(parent)
@@ -206,6 +206,50 @@ def create_home_page(parent, on_admin_clicked, on_employee_clicked, on_exit_clic
     
     return page
 
+def create_admin_menu_page(perent):
+    """Create the admin menu page with buttons for adding, deleting, and viewing accounts."""
+    page = QtWidgets.QWidget(perent)
+    main_layout = QtWidgets.QVBoxLayout(page)
+    main_layout.setContentsMargins(20, 20, 20, 20)
+    main_layout.setSpacing(20)
+
+    # Header frame with title
+    header_frame = create_styled_frame(page, style="background-color: #ffffff; border-radius: 10px; padding: 10px;")
+    header_layout = QtWidgets.QVBoxLayout(header_frame)
+    title_label = create_styled_label(header_frame, "Admin Menu", font_size=30)
+    header_layout.addWidget(title_label, 0, QtCore.Qt.AlignHCenter)
+    main_layout.addWidget(header_frame, 0, QtCore.Qt.AlignTop)
+
+    # Button frame
+    button_frame = create_styled_frame(page)
+    button_frame.setSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Expanding)
+    button_layout = QtWidgets.QVBoxLayout(button_frame)
+    # Button container
+    button_container = create_styled_frame(button_frame, min_size=(300, 0), style="background-color: #ffffff; border-radius: 15px; padding: 20px;")
+    button_container_layout = QtWidgets.QVBoxLayout(button_container)
+    button_container_layout.setSpacing(15)
+    # Buttons
+    add_button = create_styled_button(button_container, "Add Employee")
+    update_employee = create_styled_button(button_container, "Update Employee")
+    employee_list = create_styled_button(button_container, "Employee List")
+    total_money = create_styled_button(button_container, "Total Money")
+    back_to_home = create_styled_button(button_container, "Back")
+    button_container_layout.addWidget(add_button)
+    button_container_layout.addWidget(update_employee)
+    button_container_layout.addWidget(employee_list)
+    button_container_layout.addWidget(total_money)
+    button_container_layout.addWidget(back_to_home)
+    button_layout.addWidget(button_container, 0, QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
+    main_layout.addWidget(button_frame)
+    # Connect button signals
+    # add_button.clicked.connect(on_add_employee_clicked)
+    # update_employee.clicked.connect(on_update_employee_clicked)
+    # employee_list.clicked.connect(on_employee_list_clicked)
+    # total_money.clicked.connect(on_total_money_clicked)
+    # back_to_home.clicked.connect(on_back_to_home_clicked)
+    return page
+    
+
 def setup_main_window(main_window):
     """Set up the main window with a stacked widget containing home, admin, and employee pages."""
     main_window.setObjectName("MainWindow")
@@ -226,10 +270,20 @@ def setup_main_window(main_window):
     
     def exit_app():
         QtWidgets.QApplication.quit()
-    
+        
+    def admin_login_menu_page(name, password):
+        result = backend.check_admin(name, password)
+        if result:
+            stacked_widget.setCurrentIndex(3) 
+        else:
+            print("Invalid admin credentials")  
+        
     home_page = create_home_page(stacked_widget, switch_to_admin, switch_to_employee, exit_app)
     admin_page, admin_name, admin_password, admin_submit = create_login_page(stacked_widget, "Admin Login")
-    result = backend.check_admin(admin_name, admin_password)
+    admin_submit.clicked.connect(
+        lambda: admin_login_menu_page(admin_name.text(), admin_password.text())
+    )
+    admin_menu_page = create_admin_menu_page(stacked_widget)
     
     employee_page, employee_name, employee_password, employee_submit = create_login_page(stacked_widget, "Employee Login")
     
@@ -238,6 +292,7 @@ def setup_main_window(main_window):
     stacked_widget.addWidget(home_page)
     stacked_widget.addWidget(admin_page)
     stacked_widget.addWidget(employee_page)
+    stacked_widget.addWidget(admin_menu_page)
     
     main_layout.addWidget(stacked_widget)
     main_window.setCentralWidget(central_widget)
