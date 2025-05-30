@@ -167,4 +167,4 @@ def get_detail(acc_no):
 # Check if employee exists
 def check_name_in_staff(name):
     cur.execute("SELECT 1 FROM staff WHERE name = ?", (name,))
-    return cur.fetchone() is not Non
+    return cur.fetchone() is not None
