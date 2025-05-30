@@ -35,7 +35,7 @@ def connect_database():
     # Only insert admin if not exists
     cur.execute("SELECT COUNT(*) FROM admin")
     if cur.fetchone()[0] == 0:
-        cur.execute("INSERT INTO admin VALUES (?, ?)", ('arpit', '123'))
+        cur.execute("INSERT INTO admin VALUES (?, ?)", ('admin', 'admin123'))
     
     conn.commit()
 
