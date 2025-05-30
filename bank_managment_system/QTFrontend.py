@@ -203,29 +203,7 @@ def on_login_button_clicked(parent,name_field, password_field):
     # Check if the entered name and password are correct
     if name == "" and password == "":
         # Show a message box with the entered name and password
-        Dialog = QtWidgets.QDialog()
-        Dialog.setObjectName("Dialog")
-        Dialog.resize(317, 60)
-        verticalLayout = QtWidgets.QVBoxLayout(Dialog)
-        verticalLayout.setObjectName("verticalLayout")
-        label = QtWidgets.QLabel(Dialog)
-        label.setObjectName("label")
-        label.setText("Please enter both name and password")
-        verticalLayout.addWidget(label, 0, QtCore.Qt.AlignTop)
-        buttonBox = QtWidgets.QDialogButtonBox(Dialog)
-        buttonBox.setOrientation(QtCore.Qt.Horizontal)
-        buttonBox.setStandardButtons(QtWidgets.QDialogButtonBox.Cancel|QtWidgets.QDialogButtonBox.Ok)
-        buttonBox.setObjectName("buttonBox")
-        verticalLayout.addWidget(buttonBox)
-
-        buttonBox.accepted.connect(Dialog.accept) # type: ignore
-        buttonBox.rejected.connect(lambda:rejectBTN())# type: ignore
-        QtCore.QMetaObject.connectSlotsByName(Dialog)
-        def rejectBTN():
-            parent.setCurrentIndex(0)
-            Dialog.reject()
-        # Show the dialog
-        Dialog.exec_()
+        pop_up_message(parent, "Please enter your name and password.",0)
     else:
         print(f"Name: {name}, Password: {password}")
         
@@ -331,9 +309,53 @@ def create_admin_menu_page(perent):
     # employee_list.clicked.connect(on_employee_list_clicked)
     # total_money.clicked.connect(on_total_money_clicked)
     # back_to_home.clicked.connect(on_back_to_home_clicked)
-    return page
+    return page,add_button,update_employee,employee_list,total_money,back_to_home
     
-
+def create_add_employe_page(parent ,title, name_field_text="Name :", password_field_text="Password :",position_fielld_text="Position :",salary_field_text="Salary :",submit_text="Submit",):
+    """Create a login page with a title, name and password fields, and a submit button."""
+    page = QtWidgets.QWidget(parent)
+    main_layout = QtWidgets.QVBoxLayout(page)
+    
+    # Header frame with title
+    header_frame = create_styled_frame(page, style="background-color: #ffffff; border-radius: 10px; padding: 10px;")
+    header_layout = QtWidgets.QVBoxLayout(header_frame)
+    title_label = create_styled_label(header_frame, title, font_size=30)
+    header_layout.addWidget(title_label, 0, QtCore.Qt.AlignHCenter | QtCore.Qt.AlignTop)
+    main_layout.addWidget(header_frame, 0, QtCore.Qt.AlignTop)
+    
+    # Content frame
+    content_frame = create_styled_frame(page)
+    content_frame.setSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Expanding)
+    content_layout = QtWidgets.QVBoxLayout(content_frame)
+    
+    # Form frame
+    form_frame = create_styled_frame(content_frame, min_size=(340, 200), style="background-color: #ffffff; border-radius: 15px; padding: 10px;")
+    form_layout = QtWidgets.QVBoxLayout(form_frame)
+    form_layout.setSpacing(20)
+    
+    # Input fields
+    name_frame, name_edit = create_input_field(form_frame, name_field_text)
+    password_frame, password_edit = create_input_field(form_frame, password_field_text)
+    salary_frame, salary_edit = create_input_field(form_frame, salary_field_text)
+    position_frame, position_edit = create_input_field(form_frame, position_fielld_text)
+    
+    # Submit button
+    button_frame = create_styled_frame(form_frame, style="padding: 7px;")
+    button_layout = QtWidgets.QVBoxLayout(button_frame)
+    button_layout.setSpacing(60)
+    submit_button = create_styled_button(button_frame, submit_text, min_size=(150, 0))
+    button_layout.addWidget(submit_button, 0, QtCore.Qt.AlignHCenter)
+    
+    form_layout.addWidget(name_frame)
+    form_layout.addWidget(password_frame)
+    form_layout.addWidget(salary_frame)
+    form_layout.addWidget(position_frame)
+    form_layout.addWidget(button_frame)
+    
+    content_layout.addWidget(form_frame, 0, QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
+    main_layout.addWidget(content_frame)
+    
+    return page, name_edit, password_edit, salary_edit, position_edit,submit_button 
 def setup_main_window(main_window):
     """Set up the main window with a stacked widget containing home, admin, and employee pages."""
     main_window.setObjectName("MainWindow")
@@ -360,23 +382,44 @@ def setup_main_window(main_window):
         if result:
             stacked_widget.setCurrentIndex(3) 
         else:
-            print("Invalid admin credentials")  
+            print("Invalid admin credentials")
+            
+    def add_employee_form_submit(name, password, salary, position):
+        if (
+            len(name) != 0
+            and len(password) != 0
+            and len(salary) != 0
+            and len(position) != 0
+        ):
+            backend.create_employee(name, password, salary, position)
+            pop_up_message_with_only_ok(stacked_widget,"Employee added successfully",3)
+            
+        else:
+            print("Please fill in all fields")
+            pop_up_message(stacked_widget,"Please fill in all fields",3)
+          
         
     home_page = create_home_page(stacked_widget, switch_to_admin, switch_to_employee, exit_app)
     admin_page, admin_name, admin_password, admin_submit = create_login_page(stacked_widget, "Admin Login")
     admin_submit.clicked.connect(
         lambda: admin_login_menu_page(admin_name.text(), admin_password.text())
     )
-    admin_menu_page = create_admin_menu_page(stacked_widget)
-    
+    admin_menu_page,add_button,update_employee,employee_list,total_money,back_to_home = create_admin_menu_page(stacked_widget)
+    add_button.clicked.connect(lambda:stacked_widget.setCurrentIndex(4))
+    # create employee page
+    add_employe_page , new_employee_name, new_employee_password, new_employe_salary, new_employe_position, new_employee_submit = create_add_employe_page(stacked_widget, "Add Employee")
+    new_employee_submit.clicked.connect(
+        lambda: add_employee_form_submit(new_employee_name.text(), new_employee_password.text(), new_employe_salary.text(), new_employe_position.text())
+    )
     employee_page, employee_name, employee_password, employee_submit = create_login_page(stacked_widget, "Employee Login")
     
     
     # Add pages to stacked widget
-    stacked_widget.addWidget(home_page)
-    stacked_widget.addWidget(admin_page)
-    stacked_widget.addWidget(employee_page)
-    stacked_widget.addWidget(admin_menu_page)
+    stacked_widget.addWidget(home_page)#1
+    stacked_widget.addWidget(admin_page)#2
+    stacked_widget.addWidget(employee_page)#3
+    stacked_widget.addWidget(admin_menu_page)#4
+    stacked_widget.addWidget(add_employe_page)#5
     
     main_layout.addWidget(stacked_widget)
     main_window.setCentralWidget(central_widget)
