@@ -68,8 +68,15 @@ def create_input_field(parent, label_text, min_label_size=(120, 0)):
     layout.addWidget(label)
     layout.addWidget(line_edit)
     return frame, line_edit
-def pop_up_message(parent, message: str, page: int):
-    """Create a popup message box with a given message."""
+def show_popup_message(parent, message: str, page: int = None, show_cancel: bool = True):
+    """Reusable popup message box.
+
+    Args:
+        parent: The parent widget.
+        message (str): The message to display.
+        page (int, optional): Page index to switch to after dialog closes.
+        show_cancel (bool): Whether to show the Cancel button.
+    """
     dialog = QtWidgets.QDialog(parent)
     dialog.setWindowTitle("Message")
     dialog.setFixedSize(350, 100)
@@ -84,9 +91,14 @@ def pop_up_message(parent, message: str, page: int):
     label.setWordWrap(True)
     layout.addWidget(label)
     
-    button_box = QtWidgets.QDialogButtonBox(
-        QtWidgets.QDialogButtonBox.Ok | QtWidgets.QDialogButtonBox.Cancel
-    )
+    # Decide which buttons to show
+    if show_cancel:
+        button_box = QtWidgets.QDialogButtonBox(
+            QtWidgets.QDialogButtonBox.Ok | QtWidgets.QDialogButtonBox.Cancel
+        )
+    else:
+        button_box = QtWidgets.QDialogButtonBox(QtWidgets.QDialogButtonBox.Ok)
+    
     button_box.setStyleSheet("""
         QPushButton {
             background-color: #3498db;
@@ -104,66 +116,24 @@ def pop_up_message(parent, message: str, page: int):
     """)
     layout.addWidget(button_box)
     
-    button_box.accepted.connect(dialog.accept)
-    button_box.rejected.connect(lambda: reject_clicked(dialog, parent, page))
+    # Connect buttons
+    def on_accept():
+        if page is not None:
+            parent.setCurrentIndex(page)
+        dialog.accept()
     
-    dialog.exec_()
-
-def reject_clicked(dialog, parent, page):
-    parent.setCurrentIndex(page)
-    dialog.reject()
-
-def pop_up_message_with_only_ok(parent, message: str, page: int):
-    """Create a popup message box with only an OK button."""
-    dialog = QtWidgets.QDialog(parent)
-    dialog.setWindowTitle("Message")
-    dialog.setFixedSize(350, 100)
-    dialog.setStyleSheet("background-color: #f0f0f0;")
+    def on_reject():
+        if page is not None:
+            parent.setCurrentIndex(page)
+        dialog.reject()
     
-    layout = QtWidgets.QVBoxLayout(dialog)
-    layout.setSpacing(10)
-    layout.setContentsMargins(15, 15, 15, 15)
-    
-    label = QtWidgets.QLabel(message)
-    label.setStyleSheet("font-size: 12px; color: #2c3e50;")
-    label.setWordWrap(True)
-    layout.addWidget(label)
-    
-    button_box = QtWidgets.QDialogButtonBox(QtWidgets.QDialogButtonBox.Ok)
-    button_box.setStyleSheet("""
-        QPushButton {
-            background-color: #3498db;
-            color: white;
-            border-radius: 4px;
-            padding: 6px 12px;
-            min-width: 80px;
-        }
-        QPushButton:hover {
-            background-color: #2980b9;
-        }
-        QPushButton:pressed {
-            background-color: #1c6ea4;
-        }
-    """)
-    layout.addWidget(button_box)
-    
-    button_box.accepted.connect(lambda: accepted_clicked())
-    def accepted_clicked():
-        parent.setCurrentIndex(page)
-        dialog.close()
+    button_box.accepted.connect(on_accept)
+    button_box.rejected.connect(on_reject)
     
     dialog.exec_()
 def create_login_page(parent ,title, name_field_text="Name :", password_field_text="Password :", submit_text="Submit",):
     """Create a login page with a title, name and password fields, and a submit button."""
-    page = QtWidgets.QWidget(parent)
-    main_layout = QtWidgets.QVBoxLayout(page)
-    
-    # Header frame with title
-    header_frame = create_styled_frame(page, style="background-color: #ffffff; border-radius: 10px; padding: 10px;")
-    header_layout = QtWidgets.QVBoxLayout(header_frame)
-    title_label = create_styled_label(header_frame, title, font_size=30)
-    header_layout.addWidget(title_label, 0, QtCore.Qt.AlignHCenter | QtCore.Qt.AlignTop)
-    main_layout.addWidget(header_frame, 0, QtCore.Qt.AlignTop)
+    page, main_layout = create_page_with_header(parent, "Admin Menu")
     
     # Content frame
     content_frame = create_styled_frame(page)
@@ -203,23 +173,13 @@ def on_login_button_clicked(parent,name_field, password_field):
     # Check if the entered name and password are correct
     if name == "" and password == "":
         # Show a message box with the entered name and password
-        pop_up_message(parent, "Please enter your name and password.",0)
+        show_popup_message(parent, "Please enter your name and password.",0)
     else:
         print(f"Name: {name}, Password: {password}")
         
 def create_home_page(parent, on_admin_clicked, on_employee_clicked, on_exit_clicked):
     """Create the home page with Admin, Employee, and Exit buttons."""
-    page = QtWidgets.QWidget(parent)
-    main_layout = QtWidgets.QVBoxLayout(page)
-    main_layout.setContentsMargins(20, 20, 20, 20)
-    main_layout.setSpacing(20)
-    
-    # Header frame with title
-    header_frame = create_styled_frame(page, style="background-color: #ffffff; border-radius: 10px; padding: 10px;")
-    header_layout = QtWidgets.QVBoxLayout(header_frame)
-    title_label = create_styled_label(header_frame, "Bank Management System", font_size=30)
-    header_layout.addWidget(title_label, 0, QtCore.Qt.AlignHCenter)
-    main_layout.addWidget(header_frame, 0, QtCore.Qt.AlignTop)
+    page, main_layout = create_page_with_header(parent, "Admin Menu")
     
     # Button frame
     button_frame = create_styled_frame(page)
@@ -267,95 +227,78 @@ def create_home_page(parent, on_admin_clicked, on_employee_clicked, on_exit_clic
     exit_button.clicked.connect(on_exit_clicked)
     
     return page
-
-def create_admin_menu_page(perent):
-    """Create the admin menu page with buttons for adding, deleting, and viewing accounts."""
-    page = QtWidgets.QWidget(perent)
+def create_page_with_header(parent, title_text):
+    """Create a page with a styled header and return the page + main layout."""
+    page = QtWidgets.QWidget(parent)
     main_layout = QtWidgets.QVBoxLayout(page)
     main_layout.setContentsMargins(20, 20, 20, 20)
     main_layout.setSpacing(20)
 
-    # Header frame with title
     header_frame = create_styled_frame(page, style="background-color: #ffffff; border-radius: 10px; padding: 10px;")
     header_layout = QtWidgets.QVBoxLayout(header_frame)
-    title_label = create_styled_label(header_frame, "Admin Menu", font_size=30)
-    header_layout.addWidget(title_label, 0, QtCore.Qt.AlignHCenter)
+    title_label = create_styled_label(header_frame, title_text, font_size=30)
+    header_layout.addWidget(title_label, 0, QtCore.Qt.AlignHCenter | QtCore.Qt.AlignTop)
+    
     main_layout.addWidget(header_frame, 0, QtCore.Qt.AlignTop)
+    return page, main_layout
+def create_admin_menu_page(parent):
+    page, main_layout = create_page_with_header(parent, "Admin Menu")
 
-    # Button frame
     button_frame = create_styled_frame(page)
     button_frame.setSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Expanding)
     button_layout = QtWidgets.QVBoxLayout(button_frame)
-    # Button container
+
     button_container = create_styled_frame(button_frame, min_size=(300, 0), style="background-color: #ffffff; border-radius: 15px; padding: 20px;")
     button_container_layout = QtWidgets.QVBoxLayout(button_container)
     button_container_layout.setSpacing(15)
-    # Buttons
-    add_button = create_styled_button(button_container, "Add Employee")
-    update_employee = create_styled_button(button_container, "Update Employee")
-    employee_list = create_styled_button(button_container, "Employee List")
-    total_money = create_styled_button(button_container, "Total Money")
-    back_to_home = create_styled_button(button_container, "Back")
-    button_container_layout.addWidget(add_button)
-    button_container_layout.addWidget(update_employee)
-    button_container_layout.addWidget(employee_list)
-    button_container_layout.addWidget(total_money)
-    button_container_layout.addWidget(back_to_home)
+
+    # Define button labels
+    button_labels = ["Add Employee", "Update Employee", "Employee List", "Total Money", "Back"]
+    buttons = []
+
+    for label in button_labels:
+        btn = create_styled_button(button_container, label)
+        button_container_layout.addWidget(btn)
+        buttons.append(btn)
+
     button_layout.addWidget(button_container, 0, QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
     main_layout.addWidget(button_frame)
-    # Connect button signals
-    # add_button.clicked.connect(on_add_employee_clicked)
-    # update_employee.clicked.connect(on_update_employee_clicked)
-    # employee_list.clicked.connect(on_employee_list_clicked)
-    # total_money.clicked.connect(on_total_money_clicked)
-    # back_to_home.clicked.connect(on_back_to_home_clicked)
-    return page,add_button,update_employee,employee_list,total_money,back_to_home
+
+    return page, *buttons  # Unpack as add_button, update_employee, etc.
+
     
-def create_add_employe_page(parent ,title, name_field_text="Name :", password_field_text="Password :",position_fielld_text="Position :",salary_field_text="Salary :",submit_text="Submit",):
-    """Create a login page with a title, name and password fields, and a submit button."""
-    page = QtWidgets.QWidget(parent)
-    main_layout = QtWidgets.QVBoxLayout(page)
-    
-    # Header frame with title
-    header_frame = create_styled_frame(page, style="background-color: #ffffff; border-radius: 10px; padding: 10px;")
-    header_layout = QtWidgets.QVBoxLayout(header_frame)
-    title_label = create_styled_label(header_frame, title, font_size=30)
-    header_layout.addWidget(title_label, 0, QtCore.Qt.AlignHCenter | QtCore.Qt.AlignTop)
-    main_layout.addWidget(header_frame, 0, QtCore.Qt.AlignTop)
-    
-    # Content frame
+def create_add_employee_page(parent, title, submit_text="Submit"):
+    page, main_layout = create_page_with_header(parent, title)
+
     content_frame = create_styled_frame(page)
     content_frame.setSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Expanding)
     content_layout = QtWidgets.QVBoxLayout(content_frame)
-    
-    # Form frame
+
     form_frame = create_styled_frame(content_frame, min_size=(340, 200), style="background-color: #ffffff; border-radius: 15px; padding: 10px;")
     form_layout = QtWidgets.QVBoxLayout(form_frame)
     form_layout.setSpacing(20)
-    
-    # Input fields
-    name_frame, name_edit = create_input_field(form_frame, name_field_text)
-    password_frame, password_edit = create_input_field(form_frame, password_field_text)
-    salary_frame, salary_edit = create_input_field(form_frame, salary_field_text)
-    position_frame, position_edit = create_input_field(form_frame, position_fielld_text)
-    
+
+    # Define input fields
+    fields = ["Name :", "Password :", "Salary :", "Position :"]
+    edits = []
+
+    for field in fields:
+        field_frame, field_edit = create_input_field(form_frame, field)
+        form_layout.addWidget(field_frame)
+        edits.append(field_edit)
+
     # Submit button
     button_frame = create_styled_frame(form_frame, style="padding: 7px;")
     button_layout = QtWidgets.QVBoxLayout(button_frame)
-    button_layout.setSpacing(60)
     submit_button = create_styled_button(button_frame, submit_text, min_size=(150, 0))
     button_layout.addWidget(submit_button, 0, QtCore.Qt.AlignHCenter)
-    
-    form_layout.addWidget(name_frame)
-    form_layout.addWidget(password_frame)
-    form_layout.addWidget(salary_frame)
-    form_layout.addWidget(position_frame)
+
     form_layout.addWidget(button_frame)
-    
     content_layout.addWidget(form_frame, 0, QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
     main_layout.addWidget(content_frame)
-    
-    return page, name_edit, password_edit, salary_edit, position_edit,submit_button 
+
+    return page, *edits, submit_button  # Unpack as name_edit, password_edit, etc.
+
 def setup_main_window(main_window):
     """Set up the main window with a stacked widget containing home, admin, and employee pages."""
     main_window.setObjectName("MainWindow")
@@ -383,6 +326,7 @@ def setup_main_window(main_window):
             stacked_widget.setCurrentIndex(3) 
         else:
             print("Invalid admin credentials")
+            show_popup_message(stacked_widget,"Invalid admin credentials",0)
             
     def add_employee_form_submit(name, password, salary, position):
         if (
@@ -392,26 +336,66 @@ def setup_main_window(main_window):
             and len(position) != 0
         ):
             backend.create_employee(name, password, salary, position)
-            pop_up_message_with_only_ok(stacked_widget,"Employee added successfully",3)
+            show_popup_message(stacked_widget,"Employee added successfully",3,False)
             
         else:
             print("Please fill in all fields")
-            pop_up_message(stacked_widget,"Please fill in all fields",3)
+            show_popup_message(stacked_widget,"Please fill in all fields",3)
           
         
-    home_page = create_home_page(stacked_widget, switch_to_admin, switch_to_employee, exit_app)
-    admin_page, admin_name, admin_password, admin_submit = create_login_page(stacked_widget, "Admin Login")
+   # Create Home Page
+    home_page = create_home_page(
+        stacked_widget,
+        switch_to_admin,
+        switch_to_employee,
+        exit_app
+    )
+
+    # Create Admin Login Page
+    admin_page, admin_name, admin_password, admin_submit = create_login_page(
+        stacked_widget,
+        title="Admin Login"
+    )
+    admin_password.setEchoMode(QtWidgets.QLineEdit.Password)
+    admin_name.setFont(QtGui.QFont("Arial", 10))
+    admin_password.setFont(QtGui.QFont("Arial", 10))
+    admin_name.setPlaceholderText("Enter your name")
+    admin_password.setPlaceholderText("Enter your password")
+
     admin_submit.clicked.connect(
-        lambda: admin_login_menu_page(admin_name.text(), admin_password.text())
+        lambda: admin_login_menu_page(
+            admin_name.text(),
+            admin_password.text()
+        )
     )
-    admin_menu_page,add_button,update_employee,employee_list,total_money,back_to_home = create_admin_menu_page(stacked_widget)
-    add_button.clicked.connect(lambda:stacked_widget.setCurrentIndex(4))
-    # create employee page
-    add_employe_page , new_employee_name, new_employee_password, new_employe_salary, new_employe_position, new_employee_submit = create_add_employe_page(stacked_widget, "Add Employee")
-    new_employee_submit.clicked.connect(
-        lambda: add_employee_form_submit(new_employee_name.text(), new_employee_password.text(), new_employe_salary.text(), new_employe_position.text())
+
+    # Create Admin Menu Page
+    admin_menu_page, add_button, update_button, list_button, money_button, back_button = create_admin_menu_page(
+        stacked_widget
     )
-    employee_page, employee_name, employee_password, employee_submit = create_login_page(stacked_widget, "Employee Login")
+
+    add_button.clicked.connect(lambda: stacked_widget.setCurrentIndex(4))
+
+    # Create Add Employee Page
+    add_employee_page, emp_name, emp_password, emp_salary, emp_position, emp_submit = create_add_employee_page(
+        stacked_widget,
+        title="Add Employee"
+    )
+
+    emp_submit.clicked.connect(
+        lambda: add_employee_form_submit(
+            emp_name.text(),
+            emp_password.text(),
+            emp_salary.text(),
+            emp_position.text()
+        )
+    )
+
+    # Create Employee Login Page
+    employee_page, employee_name, employee_password, employee_submit = create_login_page(
+        stacked_widget,
+        title="Employee Login"
+    )
     
     
     # Add pages to stacked widget
@@ -419,7 +403,7 @@ def setup_main_window(main_window):
     stacked_widget.addWidget(admin_page)#2
     stacked_widget.addWidget(employee_page)#3
     stacked_widget.addWidget(admin_menu_page)#4
-    stacked_widget.addWidget(add_employe_page)#5
+    stacked_widget.addWidget(add_employee_page)#5
     
     main_layout.addWidget(stacked_widget)
     main_window.setCentralWidget(central_widget)
