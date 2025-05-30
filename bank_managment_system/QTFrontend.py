@@ -68,7 +68,91 @@ def create_input_field(parent, label_text, min_label_size=(120, 0)):
     layout.addWidget(label)
     layout.addWidget(line_edit)
     return frame, line_edit
+def pop_up_message(parent, message: str, page: int):
+    """Create a popup message box with a given message."""
+    dialog = QtWidgets.QDialog(parent)
+    dialog.setWindowTitle("Message")
+    dialog.setFixedSize(350, 100)
+    dialog.setStyleSheet("background-color: #f0f0f0;")
+    
+    layout = QtWidgets.QVBoxLayout(dialog)
+    layout.setSpacing(10)
+    layout.setContentsMargins(15, 15, 15, 15)
+    
+    label = QtWidgets.QLabel(message)
+    label.setStyleSheet("font-size: 12px; color: #2c3e50;")
+    label.setWordWrap(True)
+    layout.addWidget(label)
+    
+    button_box = QtWidgets.QDialogButtonBox(
+        QtWidgets.QDialogButtonBox.Ok | QtWidgets.QDialogButtonBox.Cancel
+    )
+    button_box.setStyleSheet("""
+        QPushButton {
+            background-color: #3498db;
+            color: white;
+            border-radius: 4px;
+            padding: 6px 12px;
+            min-width: 80px;
+        }
+        QPushButton:hover {
+            background-color: #2980b9;
+        }
+        QPushButton:pressed {
+            background-color: #1c6ea4;
+        }
+    """)
+    layout.addWidget(button_box)
+    
+    button_box.accepted.connect(dialog.accept)
+    button_box.rejected.connect(lambda: reject_clicked(dialog, parent, page))
+    
+    dialog.exec_()
 
+def reject_clicked(dialog, parent, page):
+    parent.setCurrentIndex(page)
+    dialog.reject()
+
+def pop_up_message_with_only_ok(parent, message: str, page: int):
+    """Create a popup message box with only an OK button."""
+    dialog = QtWidgets.QDialog(parent)
+    dialog.setWindowTitle("Message")
+    dialog.setFixedSize(350, 100)
+    dialog.setStyleSheet("background-color: #f0f0f0;")
+    
+    layout = QtWidgets.QVBoxLayout(dialog)
+    layout.setSpacing(10)
+    layout.setContentsMargins(15, 15, 15, 15)
+    
+    label = QtWidgets.QLabel(message)
+    label.setStyleSheet("font-size: 12px; color: #2c3e50;")
+    label.setWordWrap(True)
+    layout.addWidget(label)
+    
+    button_box = QtWidgets.QDialogButtonBox(QtWidgets.QDialogButtonBox.Ok)
+    button_box.setStyleSheet("""
+        QPushButton {
+            background-color: #3498db;
+            color: white;
+            border-radius: 4px;
+            padding: 6px 12px;
+            min-width: 80px;
+        }
+        QPushButton:hover {
+            background-color: #2980b9;
+        }
+        QPushButton:pressed {
+            background-color: #1c6ea4;
+        }
+    """)
+    layout.addWidget(button_box)
+    
+    button_box.accepted.connect(lambda: accepted_clicked())
+    def accepted_clicked():
+        parent.setCurrentIndex(page)
+        dialog.close()
+    
+    dialog.exec_()
 def create_login_page(parent ,title, name_field_text="Name :", password_field_text="Password :", submit_text="Submit",):
     """Create a login page with a title, name and password fields, and a submit button."""
     page = QtWidgets.QWidget(parent)
