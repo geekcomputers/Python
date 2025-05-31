@@ -131,6 +131,31 @@ def show_popup_message(parent, message: str, page: int = None, show_cancel: bool
     button_box.rejected.connect(on_reject)
     
     dialog.exec_()
+def get_employee_name(parent,name_field_text="Enter Employee Name"):
+    page, main_layout = create_page_with_header(parent, "Employee Data Update")
+    
+    # Content frame
+    content_frame = create_styled_frame(page)
+    content_frame.setSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Expanding)
+    content_layout = QtWidgets.QVBoxLayout(content_frame)
+    # Form frame
+    form_frame = create_styled_frame(content_frame, min_size=(340, 200), style="background-color: #ffffff; border-radius: 15px; padding: 10px;")
+    form_layout = QtWidgets.QVBoxLayout(form_frame)
+    # Form fields
+    name_label, name_field = create_input_field(form_frame, name_field_text)
+    search_button = create_styled_button(form_frame, "Search", min_size=(100, 30))
+    form_layout.addWidget(name_label)
+    form_layout.addWidget(search_button)
+    
+    search_button.clicked.connect(lambda: backend.check_name_in_staff())
+    def on_search_button_clicked():
+        fetch = backend.check_name_in_staff()
+        if fetch:
+            print(f"Employee data: {fetch[0]}, {fetch[1]}, {fetch[2]}, {fetch[3]},")
+        else:
+            print("Employee not found.")
+            
+        #backend.check_name_in_staff()
 def create_login_page(parent ,title, name_field_text="Name :", password_field_text="Password :", submit_text="Submit",):
     """Create a login page with a title, name and password fields, and a submit button."""
     page, main_layout = create_page_with_header(parent, "Admin Menu")
@@ -267,7 +292,7 @@ def create_admin_menu_page(parent):
     return page, *buttons  # Unpack as add_button, update_employee, etc.
 
     
-def create_add_employee_page(parent, title, submit_text="Submit"):
+def create_add_employee_page(parent, title, submit_text="Submit",update_btn:bool=False):
     page, main_layout = create_page_with_header(parent, title)
 
     content_frame = create_styled_frame(page)
@@ -290,15 +315,22 @@ def create_add_employee_page(parent, title, submit_text="Submit"):
     # Submit button
     button_frame = create_styled_frame(form_frame, style="padding: 7px;")
     button_layout = QtWidgets.QVBoxLayout(button_frame)
+    update_button = create_styled_button(button_frame, "Update", min_size=(150, 0))
     submit_button = create_styled_button(button_frame, submit_text, min_size=(150, 0))
-    button_layout.addWidget(submit_button, 0, QtCore.Qt.AlignHCenter)
+    if update_btn:
+        button_layout.addWidget(update_button, 0, QtCore.Qt.AlignHCenter)
+    else:
+        button_layout.addWidget(submit_button, 0, QtCore.Qt.AlignHCenter)
+    
 
     form_layout.addWidget(button_frame)
     content_layout.addWidget(form_frame, 0, QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
     main_layout.addWidget(content_frame)
-
-    return page, *edits, submit_button  # Unpack as name_edit, password_edit, etc.
-
+    if update_btn:
+        return page, *edits, update_button
+    else:
+        return page, *edits, submit_button  # Unpack as name_edit, password_edit, etc.
+  
 def setup_main_window(main_window):
     """Set up the main window with a stacked widget containing home, admin, and employee pages."""
     main_window.setObjectName("MainWindow")
@@ -341,6 +373,31 @@ def setup_main_window(main_window):
         else:
             print("Please fill in all fields")
             show_popup_message(stacked_widget,"Please fill in all fields",3)
+    def update_employee_data(name, password, salary, position, name_to_update):
+        try:
+            cur = backend.cur
+            if name_to_update:
+                cur.execute("UPDATE staff SET Name = ? WHERE name = ?", (name, name_to_update))
+            
+            cur.execute("UPDATE staff SET Name = ? WHERE name = ?", (password, name))
+            cur.execute("UPDATE staff SET password = ? WHERE name = ?", (password, name))
+            cur.execute("UPDATE staff SET salary = ? WHERE name = ?", (salary, name))
+            cur.execute("UPDATE staff SET position = ? WHERE name = ?", (position, name))
+            backend.conn.commit()
+            show_popup_message(stacked_widget,"Employee Upadate successfully",3,False)
+            
+        except:
+            show_popup_message(stacked_widget,"Please fill in all fields",3)
+
+    def fetch_employee_data(name):
+        try:
+            cur = backend.cur
+            cur.execute("SELECT * FROM staff WHERE name = ?", (name,))
+            employee_data = cur.fetchone()
+            return employee_data
+        except:
+            print("Error fetching employee data")
+            return None
           
         
    # Create Home Page
@@ -375,13 +432,22 @@ def setup_main_window(main_window):
     )
 
     add_button.clicked.connect(lambda: stacked_widget.setCurrentIndex(4))
+    update_button.clicked.connect(lambda: stacked_widget.setCurrentIndex(5))
 
     # Create Add Employee Page
     add_employee_page, emp_name, emp_password, emp_salary, emp_position, emp_submit = create_add_employee_page(
         stacked_widget,
         title="Add Employee"
     )
+    
+    # Update Employee Page
+    update_employee_page1 = get_employee_name(stacked_widget)
+    # apply the update_employee_data function to the submit button
+    
 
+
+
+    # ///////////////////////////
     emp_submit.clicked.connect(
         lambda: add_employee_form_submit(
             emp_name.text(),
@@ -399,11 +465,12 @@ def setup_main_window(main_window):
     
     
     # Add pages to stacked widget
-    stacked_widget.addWidget(home_page)#1
-    stacked_widget.addWidget(admin_page)#2
-    stacked_widget.addWidget(employee_page)#3
-    stacked_widget.addWidget(admin_menu_page)#4
-    stacked_widget.addWidget(add_employee_page)#5
+    stacked_widget.addWidget(home_page)#0
+    stacked_widget.addWidget(admin_page)#1
+    stacked_widget.addWidget(employee_page)#2
+    stacked_widget.addWidget(admin_menu_page)#3
+    stacked_widget.addWidget(add_employee_page)#4
+    stacked_widget.addWidget(update_employee_page1)#5
     
     main_layout.addWidget(stacked_widget)
     main_window.setCentralWidget(central_widget)
