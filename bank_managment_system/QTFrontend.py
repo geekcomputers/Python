@@ -131,29 +131,48 @@ def show_popup_message(parent, message: str, page: int = None, show_cancel: bool
     button_box.rejected.connect(on_reject)
     
     dialog.exec_()
-def get_employee_name(parent,name_field_text="Enter Employee Name"):
+def get_employee_name(parent, name_field_text="Enter Employee Name"):
     page, main_layout = create_page_with_header(parent, "Employee Data Update")
     
     # Content frame
     content_frame = create_styled_frame(page)
     content_frame.setSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Expanding)
     content_layout = QtWidgets.QVBoxLayout(content_frame)
+    
     # Form frame
     form_frame = create_styled_frame(content_frame, min_size=(340, 200), style="background-color: #ffffff; border-radius: 15px; padding: 10px;")
     form_layout = QtWidgets.QVBoxLayout(form_frame)
+    
     # Form fields
     name_label, name_field = create_input_field(form_frame, name_field_text)
     search_button = create_styled_button(form_frame, "Search", min_size=(100, 30))
     form_layout.addWidget(name_label)
     form_layout.addWidget(search_button)
+    content_layout.addWidget(form_frame, 0, QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
+    main_layout.addWidget(content_frame)
     
-    search_button.clicked.connect(lambda: backend.check_name_in_staff())
     def on_search_button_clicked():
-        fetch = backend.check_name_in_staff()
-        if fetch:
-            print(f"Employee data: {fetch[0]}, {fetch[1]}, {fetch[2]}, {fetch[3]},")
-        else:
-            print("Employee not found.")
+        entered_name = name_field.text().strip()
+        if not entered_name:
+            QtWidgets.QMessageBox.warning(parent, "Input Error", "Please enter an employee name.")
+            return
+    
+        try:
+            cur = backend.cur
+            cur.execute("SELECT * FROM staff WHERE name = ?", (entered_name,))
+            fetch = cur.fetchone()
+            if fetch:
+                QtWidgets.QMessageBox.information(parent, "Employee Found",
+                                                  f"Employee data:\nID: {fetch[0]}\nName: {fetch[1]}\nDept: {fetch[2]}\nRole: {fetch[3]}")
+            else:
+                QtWidgets.QMessageBox.information(parent, "Not Found", "Employee not found.")
+        except Exception as e:
+            QtWidgets.QMessageBox.critical(parent, "Error", f"An error occurred: {str(e)}")
+    
+    search_button.clicked.connect(on_search_button_clicked)
+    
+    return page
+
             
         #backend.check_name_in_staff()
 def create_login_page(parent ,title, name_field_text="Name :", password_field_text="Password :", submit_text="Submit",):
@@ -188,19 +207,25 @@ def create_login_page(parent ,title, name_field_text="Name :", password_field_te
     content_layout.addWidget(form_frame, 0, QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
     main_layout.addWidget(content_frame)
     
-    submit_button.clicked.connect(lambda: on_login_button_clicked(parent,name_edit, password_edit))
+    
     
     return page, name_edit, password_edit, submit_button
-def on_login_button_clicked(parent,name_field, password_field):
-    # Get the entered name and password
-    name = name_field.text()
-    password = password_field.text()
-    # Check if the entered name and password are correct
-    if name == "" and password == "":
-        # Show a message box with the entered name and password
-        show_popup_message(parent, "Please enter your name and password.",0)
+def on_login_button_clicked(parent, name_field, password_field):
+    name = name_field.text().strip()
+    password = password_field.text().strip()
+    
+    if not name or not password:
+        show_popup_message(parent, "Please enter your name and password.", 0)
     else:
-        print(f"Name: {name}, Password: {password}")
+        try:
+            # Ideally, here you'd call a backend authentication check
+            success = backend.check_admin(name, password)
+            if success:
+                QtWidgets.QMessageBox.information(parent, "Login Successful", f"Welcome, {name}!")
+            else:
+                QtWidgets.QMessageBox.warning(parent, "Login Failed", "Incorrect name or password.")
+        except Exception as e:
+            QtWidgets.QMessageBox.critical(parent, "Error", f"An error occurred during login: {str(e)}")
         
 def create_home_page(parent, on_admin_clicked, on_employee_clicked, on_exit_clicked):
     """Create the home page with Admin, Employee, and Exit buttons."""
@@ -315,11 +340,11 @@ def create_add_employee_page(parent, title, submit_text="Submit",update_btn:bool
     # Submit button
     button_frame = create_styled_frame(form_frame, style="padding: 7px;")
     button_layout = QtWidgets.QVBoxLayout(button_frame)
-    update_button = create_styled_button(button_frame, "Update", min_size=(150, 0))
-    submit_button = create_styled_button(button_frame, submit_text, min_size=(150, 0))
     if update_btn:
+        update_button = create_styled_button(button_frame, "Update", min_size=(150, 0))
         button_layout.addWidget(update_button, 0, QtCore.Qt.AlignHCenter)
     else:
+        submit_button = create_styled_button(button_frame, submit_text, min_size=(150, 0))
         button_layout.addWidget(submit_button, 0, QtCore.Qt.AlignHCenter)
     
 
@@ -353,12 +378,17 @@ def setup_main_window(main_window):
         QtWidgets.QApplication.quit()
         
     def admin_login_menu_page(name, password):
-        result = backend.check_admin(name, password)
-        if result:
-            stacked_widget.setCurrentIndex(3) 
-        else:
-            print("Invalid admin credentials")
-            show_popup_message(stacked_widget,"Invalid admin credentials",0)
+            try:
+                # Ideally, here you'd call a backend authentication check
+                success = backend.check_admin(name, password)
+                if success:
+                    QtWidgets.QMessageBox.information(stacked_widget, "Login Successful", f"Welcome, {name}!")
+                    stacked_widget.setCurrentIndex(3)
+                else:
+                    QtWidgets.QMessageBox.warning(stacked_widget, "Login Failed", "Incorrect name or password.")
+            except Exception as e:
+                QtWidgets.QMessageBox.critical(stacked_widget, "Error", f"An error occurred during login: {str(e)}")
+                # show_popup_message(stacked_widget,"Invalid admin credentials",0)
             
     def add_employee_form_submit(name, password, salary, position):
         if (
@@ -476,7 +506,7 @@ def setup_main_window(main_window):
     main_window.setCentralWidget(central_widget)
     
     # Set initial page
-    stacked_widget.setCurrentIndex(0)
+    stacked_widget.setCurrentIndex(5)
     
     return stacked_widget, {
         "admin_name": admin_name,
