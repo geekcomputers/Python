@@ -3,6 +3,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 import sys
 import backend
 backend.connect_database()
+employee_data = None
 def create_styled_frame(parent, min_size=None, style=""):
     """Create a styled QFrame with optional minimum size and custom style."""
     frame = QtWidgets.QFrame(parent)
@@ -68,6 +69,7 @@ def create_input_field(parent, label_text, min_label_size=(120, 0)):
     layout.addWidget(label)
     layout.addWidget(line_edit)
     return frame, line_edit
+
 def show_popup_message(parent, message: str, page: int = None, show_cancel: bool = True):
     """Reusable popup message box.
 
@@ -131,6 +133,7 @@ def show_popup_message(parent, message: str, page: int = None, show_cancel: bool
     button_box.rejected.connect(on_reject)
     
     dialog.exec_()
+
 def get_employee_name(parent, name_field_text="Enter Employee Name"):
     page, main_layout = create_page_with_header(parent, "Employee Data Update")
     
@@ -152,18 +155,28 @@ def get_employee_name(parent, name_field_text="Enter Employee Name"):
     main_layout.addWidget(content_frame)
     
     def on_search_button_clicked():
+        global employee_data
         entered_name = name_field.text().strip()
+        print(f"Entered Name: {entered_name}")
         if not entered_name:
             QtWidgets.QMessageBox.warning(parent, "Input Error", "Please enter an employee name.")
             return
     
         try:
-            cur = backend.cur
-            cur.execute("SELECT * FROM staff WHERE name = ?", (entered_name,))
-            fetch = cur.fetchone()
-            if fetch:
-                QtWidgets.QMessageBox.information(parent, "Employee Found",
-                                                  f"Employee data:\nID: {fetch[0]}\nName: {fetch[1]}\nDept: {fetch[2]}\nRole: {fetch[3]}")
+            employee_check = backend.check_name_in_staff(entered_name)
+            print(f"Employee Check: {type(employee_check)},{employee_check}")
+            if employee_check:
+                cur = backend.cur
+                cur.execute("SELECT * FROM staff WHERE name = ?", (entered_name,))
+                employee_data = cur.fetchone()
+                print(f"Employee Data: {employee_data}")
+                parent.setCurrentIndex(6)
+                
+            # if employee_data:
+            # QtWidgets.QMessageBox.information(parent, "Employee Found",
+            #                                   f"Employee data:\nID: {fetch[0]}\nName: {fetch[1]}\nDept: {fetch[2]}\nRole: {fetch[3]}")
+                
+                
             else:
                 QtWidgets.QMessageBox.information(parent, "Not Found", "Employee not found.")
         except Exception as e:
@@ -175,6 +188,7 @@ def get_employee_name(parent, name_field_text="Enter Employee Name"):
 
             
         #backend.check_name_in_staff()
+
 def create_login_page(parent ,title, name_field_text="Name :", password_field_text="Password :", submit_text="Submit",):
     """Create a login page with a title, name and password fields, and a submit button."""
     page, main_layout = create_page_with_header(parent, "Admin Menu")
@@ -210,6 +224,7 @@ def create_login_page(parent ,title, name_field_text="Name :", password_field_te
     
     
     return page, name_edit, password_edit, submit_button
+
 def on_login_button_clicked(parent, name_field, password_field):
     name = name_field.text().strip()
     password = password_field.text().strip()
@@ -277,6 +292,7 @@ def create_home_page(parent, on_admin_clicked, on_employee_clicked, on_exit_clic
     exit_button.clicked.connect(on_exit_clicked)
     
     return page
+
 def create_page_with_header(parent, title_text):
     """Create a page with a styled header and return the page + main layout."""
     page = QtWidgets.QWidget(parent)
@@ -291,6 +307,7 @@ def create_page_with_header(parent, title_text):
     
     main_layout.addWidget(header_frame, 0, QtCore.Qt.AlignTop)
     return page, main_layout
+
 def create_admin_menu_page(parent):
     page, main_layout = create_page_with_header(parent, "Admin Menu")
 
@@ -315,7 +332,6 @@ def create_admin_menu_page(parent):
     main_layout.addWidget(button_frame)
 
     return page, *buttons  # Unpack as add_button, update_employee, etc.
-
     
 def create_add_employee_page(parent, title, submit_text="Submit",update_btn:bool=False):
     page, main_layout = create_page_with_header(parent, title)
@@ -330,21 +346,32 @@ def create_add_employee_page(parent, title, submit_text="Submit",update_btn:bool
 
     # Define input fields
     fields = ["Name :", "Password :", "Salary :", "Position :"]
+    name_edit = None
+    password_edit = None
+    salary_edit = None
+    position_edit = None
     edits = []
 
-    for field in fields:
+    for i, field in enumerate(fields):
         field_frame, field_edit = create_input_field(form_frame, field)
         form_layout.addWidget(field_frame)
+        if i == 0:
+            name_edit = field_edit
+        elif i == 1:
+            password_edit = field_edit
+        elif i == 2:
+            salary_edit = field_edit
+        elif i == 3:
+            position_edit = field_edit
         edits.append(field_edit)
-
     # Submit button
     button_frame = create_styled_frame(form_frame, style="padding: 7px;")
     button_layout = QtWidgets.QVBoxLayout(button_frame)
     if update_btn:
-        update_button = create_styled_button(button_frame, "Update", min_size=(150, 0))
+        update_button = create_styled_button(button_frame, "Update", min_size=(100, 50))
         button_layout.addWidget(update_button, 0, QtCore.Qt.AlignHCenter)
     else:
-        submit_button = create_styled_button(button_frame, submit_text, min_size=(150, 0))
+        submit_button = create_styled_button(button_frame, submit_text, min_size=(100, 50))
         button_layout.addWidget(submit_button, 0, QtCore.Qt.AlignHCenter)
     
 
@@ -352,9 +379,9 @@ def create_add_employee_page(parent, title, submit_text="Submit",update_btn:bool
     content_layout.addWidget(form_frame, 0, QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
     main_layout.addWidget(content_frame)
     if update_btn:
-        return page, *edits, update_button
+        return page, name_edit, password_edit, salary_edit, position_edit, update_button
     else:
-        return page, *edits, submit_button  # Unpack as name_edit, password_edit, etc.
+        return page, name_edit, password_edit, salary_edit, position_edit, submit_button  # Unpack as name_edit, password_edit, etc.
   
 def setup_main_window(main_window):
     """Set up the main window with a stacked widget containing home, admin, and employee pages."""
@@ -474,10 +501,65 @@ def setup_main_window(main_window):
     update_employee_page1 = get_employee_name(stacked_widget)
     # apply the update_employee_data function to the submit button
     
+    update_employee_page2 ,update_employee_name, update_employee_password, update_employee_salary, update_employee_position,update_employee_update = create_add_employee_page(stacked_widget,"Update Employee Details",update_btn=True)
+    def populate_employee_data():
+        global employee_data
+        if employee_data:
+            print("employee_data is not None")
+            update_employee_name.setText(str(employee_data[0]))  # Name
+            update_employee_password.setText(str(employee_data[1]))  # Password
+            update_employee_salary.setText(str(employee_data[2]))  # Salary
+            update_employee_position.setText(str(employee_data[3]))  # Position
+        else:
+            # Clear fields if no employee data is available
+            print("employee_data is None")
+            update_employee_name.clear()
+            update_employee_password.clear()
+            update_employee_salary.clear()
+            update_employee_position.clear()
+            QtWidgets.QMessageBox.warning(stacked_widget, "No Data", "No employee data available to display.")
+    def on_page_changed(index):
+        if index == 6:  # update_employee_page2 is at index 6
+            populate_employee_data()
+            
+    # Connect the currentChanged signal to the on_page_changed function
+    stacked_widget.currentChanged.connect(on_page_changed)
+    def update_employee_data(name, password, salary, position, name_to_update):
+        try:
+            if not name_to_update:
+                show_popup_message(stacked_widget, "Original employee name is missing.", 5)
+                return
+            if not (name or password or salary or position):
+                show_popup_message(stacked_widget, "Please fill at least one field to update.", 5)
+                return
+            if name:
+                backend.update_employee_name(name, name_to_update)
+            if password:
+                backend.update_employee_password(password, name_to_update)
+            if salary:
+                try:
+                    salary = int(salary)
+                    backend.update_employee_salary(salary, name_to_update)
+                except ValueError:
+                    show_popup_message(stacked_widget, "Salary must be a valid number.", 5)
+                    return
+            if position:
+                backend.update_employee_position(position, name_to_update)
+            show_popup_message(stacked_widget, "Employee updated successfully.", 3, False)
+        except Exception as e:
+            show_popup_message(stacked_widget, f"Error updating employee: {str(e)}", 5)
+    update_employee_update.clicked.connect(
+    lambda: update_employee_data(
+        update_employee_name.text().strip(),
+        update_employee_password.text().strip(),
+        update_employee_salary.text().strip(),
+        update_employee_position.text().strip(),
+        employee_data[0] if employee_data else ""
+        )
+    )
 
+    
 
-
-    # ///////////////////////////
     emp_submit.clicked.connect(
         lambda: add_employee_form_submit(
             emp_name.text(),
@@ -501,6 +583,7 @@ def setup_main_window(main_window):
     stacked_widget.addWidget(admin_menu_page)#3
     stacked_widget.addWidget(add_employee_page)#4
     stacked_widget.addWidget(update_employee_page1)#5
+    stacked_widget.addWidget(update_employee_page2)#6
     
     main_layout.addWidget(stacked_widget)
     main_window.setCentralWidget(central_widget)
