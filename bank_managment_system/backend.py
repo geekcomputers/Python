@@ -1,12 +1,11 @@
 import sqlite3
-
+import os 
 # Making connection with database
 def connect_database():
     global conn
     global cur
-    conn = sqlite3.connect("bankmanaging.db")
+    conn = sqlite3.connect(os.path.join(os.path.dirname(__file__), "bankmanaging.db"))
     cur = conn.cursor()
-
     cur.execute(
         """
         CREATE TABLE IF NOT EXISTS bank (
