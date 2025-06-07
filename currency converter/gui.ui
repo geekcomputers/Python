@@ -6,12 +6,100 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>794</width>
-    <height>365</height>
+    <width>785</width>
+    <height>362</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QMainWindow {
+                background-color: #2C2F33;
+            }
+            QLabel#label {
+                color: #FFFFFF;
+                font-family: 'Arial';
+                font-size: 28px;
+                font-weight: bold;
+                background-color: transparent;
+                padding: 10px;
+            }
+            QLabel#label_2, QLabel#label_3 {
+                color: #7289DA;
+                font-family: 'Arial';
+                font-size: 20px;
+                font-weight: normal;
+                background-color: transparent;
+            }
+            QComboBox {
+                background-color: #23272A;
+                color: #FFFFFF;
+                font-family: 'Arial';
+                font-size: 16px;
+                border-radius: 10px;
+                padding: 10px;
+                border: 1px solid #7289DA;
+            }
+            QComboBox:hover {
+                border: 1px solid #677BC4;
+            }
+            QComboBox::drop-down {
+                border: none;
+                width: 20px;
+            }
+            QComboBox::down-arrow {
+                image: url(:/icons/down_arrow.png);
+                width: 12px;
+                height: 12px;
+            }
+            QComboBox QAbstractItemView {
+                background-color: #23272A;
+                color: #FFFFFF;
+                selection-background-color: #7289DA;
+                selection-color: #FFFFFF;
+                border: 1px solid #7289DA;
+                border-radius: 5px;
+            }
+            QLineEdit {
+                background-color: #23272A;
+                color: #FFFFFF;
+                font-family: 'Arial';
+                font-size: 20px;
+                border-radius: 10px;
+                padding: 10px;
+                border: 1px solid #7289DA;
+            }
+            QLineEdit:hover, QLineEdit:focus {
+                border: 1px solid #677BC4;
+            }
+            QPushButton {
+                background-color: #7289DA;
+                color: #FFFFFF;
+                font-family: 'Arial';
+                font-size: 16px;
+                font-weight: bold;
+                border-radius: 10px;
+                padding: 10px;
+                border: none;
+            }
+            QPushButton:hover {
+                background-color: #677BC4;
+            }
+            QPushButton:pressed {
+                background-color: #5B6EAE;
+            }
+            QLCDNumber {
+                background-color: #23272A;
+                color: #43B581;
+                border-radius: 10px;
+                border: 1px solid #7289DA;
+                padding: 10px;
+            }
+            QStatusBar {
+                background-color: #23272A;
+                color: #FFFFFF;
+            }</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QLabel" name="label">
@@ -25,8 +113,8 @@
     </property>
     <property name="font">
      <font>
-      <family>Segoe Script</family>
-      <pointsize>24</pointsize>
+      <family>Arial</family>
+      <pointsize>-1</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
@@ -61,7 +149,7 @@
    <widget class="QPushButton" name="pushButton">
     <property name="geometry">
      <rect>
-      <x>110</x>
+      <x>100</x>
       <y>260</y>
       <width>571</width>
       <height>41</height>
@@ -92,9 +180,11 @@
     </property>
     <property name="font">
      <font>
-      <family>Monotype Corsiva</family>
-      <pointsize>20</pointsize>
+      <family>Arial</family>
+      <pointsize>-1</pointsize>
+      <weight>50</weight>
       <italic>true</italic>
+      <bold>false</bold>
      </font>
     </property>
     <property name="text">
@@ -112,9 +202,11 @@
     </property>
     <property name="font">
      <font>
-      <family>Monotype Corsiva</family>
-      <pointsize>20</pointsize>
+      <family>Arial</family>
+      <pointsize>-1</pointsize>
+      <weight>50</weight>
       <italic>true</italic>
+      <bold>false</bold>
      </font>
     </property>
     <property name="text">
@@ -132,7 +224,6 @@
     </property>
    </widget>
   </widget>
-  <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources/>
  <connections/>
