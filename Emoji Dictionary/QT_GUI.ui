@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>948</width>
-    <height>527</height>
+    <height>638</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -41,8 +41,7 @@
       <property name="styleSheet">
        <string notr="true">background-color: #ffffff;
                 border-radius: 10px;
-                padding: 15px;
-                box-shadow: 0 2px 4px rgba(0,0,0,0.1);</string>
+                padding: 15px;</string>
       </property>
       <property name="frameShape">
        <enum>QFrame::StyledPanel</enum>
@@ -147,8 +146,7 @@
         <widget class="QFrame" name="frame_4">
          <property name="styleSheet">
           <string notr="true">background-color: #ffffff;
-                border-radius: 8px;
-                box-shadow: 0 2px 4px rgba(0,0,0,0.1);</string>
+                border-radius: 8px;</string>
          </property>
          <property name="frameShape">
           <enum>QFrame::StyledPanel</enum>
@@ -161,7 +159,7 @@
            <widget class="QLineEdit" name="lineEdit">
             <property name="font">
              <font>
-              <pointsize>-1</pointsize>
+              <pointsize>14</pointsize>
              </font>
             </property>
             <property name="styleSheet">
@@ -186,7 +184,7 @@
             </property>
             <property name="font">
              <font>
-              <pointsize>-1</pointsize>
+              <pointsize>14</pointsize>
               <weight>62</weight>
               <bold>true</bold>
              </font>
@@ -231,7 +229,7 @@
            <widget class="QPushButton" name="pushButton_2">
             <property name="font">
              <font>
-              <pointsize>-1</pointsize>
+              <pointsize>14</pointsize>
               <weight>62</weight>
               <bold>true</bold>
              </font>
@@ -261,7 +259,7 @@
            <widget class="QPushButton" name="pushButton_3">
             <property name="font">
              <font>
-              <pointsize>-1</pointsize>
+              <pointsize>14</pointsize>
               <weight>62</weight>
               <bold>true</bold>
              </font>
@@ -303,8 +301,7 @@
       </property>
       <property name="styleSheet">
        <string notr="true">background-color: #ffffff;
-                border-radius: 10px;
-                box-shadow: 0 2px 4px rgba(0,0,0,0.1);</string>
+                border-radius: 10px;</string>
       </property>
       <property name="frameShape">
        <enum>QFrame::StyledPanel</enum>
@@ -335,7 +332,7 @@
         <widget class="QTextEdit" name="textEdit">
          <property name="font">
           <font>
-           <pointsize>-1</pointsize>
+           <pointsize>14</pointsize>
           </font>
          </property>
          <property name="styleSheet">
@@ -370,7 +367,7 @@ p, li { white-space: pre-wrap; }
          </property>
          <property name="font">
           <font>
-           <pointsize>-1</pointsize>
+           <pointsize>14</pointsize>
            <weight>62</weight>
            <bold>true</bold>
           </font>
