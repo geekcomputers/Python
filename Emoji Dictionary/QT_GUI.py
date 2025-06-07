@@ -6,14 +6,18 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 from PyQt5 import uic
+from emoji import demojize
+import os
 
 class MainWindow(QMainWindow):
    def __init__(self):
       super(MainWindow, self).__init__()
         
       # Load the UI file
-      uic.loadUi('Emoji Dictionary/QT_GUI.ui', self)
+      uic.loadUi(os.path.join(os.path.dirname(__file__),'QT_GUI.ui'),self)
       self.pushButton_4.clicked.connect(self.close)
+      self.pushButton_2.clicked.connect(lambda:search_emoji())
+      self.pushButton_3.clicked.connect(lambda:clear_text())
       cells = [
          
          ["🐒", "🐕", "🐎", "🐪", "🐁", "🐘", "🦘", "🦈", "🐓", "🐝", "👀", "🦴", "👩🏿", "‍🤝", "🧑", "🏾", "👱🏽", "‍♀", "🎞", "🎨", "⚽"],
@@ -28,12 +32,20 @@ class MainWindow(QMainWindow):
             self.emoji_widget.show() 
          
       def search_emoji():
-            word = self.lineEdit.text()            
+            word = self.lineEdit.text()
+            print(f"Field Text: {word}")           
             if word == "":
                self.textEdit.setText("You have entered no emoji.")
             else:
-               means = emoji.demojize(word)
-               self.textEdit.setText("Meaning of Emoji  :  " + str(word) + "\n\n" + means)
+               means = demojize(word)
+               self.textEdit.setText("Meaning of Emoji  :  " + str(word) + "\n\n" + means.replace("::", ":\n: "))
+      
+      def add_input_emoji(emoji):
+         self.lineEdit.setText(self.lineEdit.text() + emoji)
+      
+      def clear_text():
+         self.lineEdit.setText("")
+         self.textEdit.setText("")
             
       self.emoji_buttons = []
       self.emoji_layout = QGridLayout()
@@ -60,7 +72,7 @@ class MainWindow(QMainWindow):
                      background-color: #f0f0f0;
                   }
                """)
-            #  button.clicked.connect(lambda checked, e=emoji: self.emoji_clicked(e))
+               button.clicked.connect(lambda checked, e=emoji: add_input_emoji(e))
                self.emoji_layout.addWidget(button, row_idx, col_idx)
                self.emoji_buttons.append(button)   
        
