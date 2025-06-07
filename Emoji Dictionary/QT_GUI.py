@@ -51,7 +51,6 @@ class MainWindow(QMainWindow):
       self.emoji_layout = QGridLayout()
       self.emoji_widget = QWidget()
       self.emoji_widget.setLayout(self.emoji_layout)
-      self.frame_2.setLayout(QVBoxLayout())
       self.frame_2.layout().addWidget(self.emoji_widget)
       self.emoji_widget.hide()
       self.pushButton.clicked.connect(lambda:emoji_wight_btn())

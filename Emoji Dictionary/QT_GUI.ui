@@ -159,7 +159,7 @@
            <widget class="QLineEdit" name="lineEdit">
             <property name="font">
              <font>
-              <pointsize>-1</pointsize>
+              <pointsize>14</pointsize>
               <weight>50</weight>
               <bold>false</bold>
              </font>
@@ -189,7 +189,7 @@
             </property>
             <property name="font">
              <font>
-              <pointsize>-1</pointsize>
+              <pointsize>14</pointsize>
               <weight>62</weight>
               <bold>true</bold>
              </font>
@@ -234,7 +234,7 @@
            <widget class="QPushButton" name="pushButton_2">
             <property name="font">
              <font>
-              <pointsize>-1</pointsize>
+              <pointsize>14</pointsize>
               <weight>62</weight>
               <bold>true</bold>
              </font>
@@ -264,7 +264,7 @@
            <widget class="QPushButton" name="pushButton_3">
             <property name="font">
              <font>
-              <pointsize>-1</pointsize>
+              <pointsize>14</pointsize>
               <weight>62</weight>
               <bold>true</bold>
              </font>
@@ -337,7 +337,7 @@
         <widget class="QTextEdit" name="textEdit">
          <property name="font">
           <font>
-           <pointsize>-1</pointsize>
+           <pointsize>14</pointsize>
           </font>
          </property>
          <property name="styleSheet">
@@ -374,7 +374,7 @@ p, li { white-space: pre-wrap; }
          </property>
          <property name="font">
           <font>
-           <pointsize>-1</pointsize>
+           <pointsize>14</pointsize>
            <weight>62</weight>
            <bold>true</bold>
           </font>
