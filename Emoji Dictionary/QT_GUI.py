@@ -13,6 +13,7 @@ class MainWindow(QMainWindow):
         
         # Load the UI file
         uic.loadUi('Emoji Dictionary/QT_GUI.ui', self)
+        self.pushButton_4.clicked.connect(self.close)
         cells = [
             
             ["🐒", "🐕", "🐎", "🐪", "🐁", "🐘", "🦘", "🦈", "🐓", "🐝", "👀", "🦴", "👩🏿", "‍🤝", "🧑", "🏾", "👱🏽", "‍♀", "🎞", "🎨", "⚽"],
