@@ -5,25 +5,22 @@ uChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 digits = "1234567890"
 specialChars = "!@#$%^&*-_+="
 
-passLen = 10  # actual generated password length will be this length + 1
 myPass = ""
 
-for i in range(passLen):
-    while (len(myPass)) <= 2:
-        index = random.randrange(len(lChars))
-        myPass = myPass + lChars[index]
-        myPassLen = len(myPass)
-    while (len(myPass)) <= 5:
-        index = random.randrange(len(digits))
-        myPass = myPass + digits[index]
-        myPassLen = len(myPass)
-    while (len(myPass)) <= 7:
-        index = random.randrange(len(specialChars))
-        myPass = myPass + specialChars[index]
-        myPassLen = len(myPass)
-    while (len(myPass)) <= 10:
-        index = random.randrange(len(uChars))
-        myPass = myPass + uChars[index]
-        myPassLen = len(myPass)
+# Generate 3 lowercase letters
+for _ in range(3):
+    myPass += random.choice(lChars)
 
-print(myPass)
+# Generate 3 digits
+for _ in range(3):
+    myPass += random.choice(digits)
+
+# Generate 2 special characters
+for _ in range(2):
+    myPass += random.choice(specialChars)
+
+# Generate 2 uppercase letters
+for _ in range(2):
+    myPass += random.choice(uChars)
+
+print(myPass)  # Output: 10-character password (e.g. "abc123!@AB")
