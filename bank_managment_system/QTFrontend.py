@@ -478,6 +478,37 @@ def show_employee_list_page(parent, title):
     main_layout.addWidget(content_frame)
     
     return page
+def show_total_money(parent, title):
+    page, main_layout = create_page_with_header(parent, title)
+
+    content_frame = create_styled_frame(page, style="background-color: #f9f9f9; border-radius: 10px; padding: 15px;")
+    content_layout = QtWidgets.QVBoxLayout(content_frame)
+    content_layout.setProperty("spacing", 10)
+    all = backend.all_money()
+
+    # Total money label
+    total_money_label = QtWidgets.QLabel(f"Total Money: ${all}", content_frame)
+    total_money_label.setStyleSheet("font-size: 24px; font-weight: bold; color: #333333;")
+    content_layout.addWidget(total_money_label, alignment=QtCore.Qt.AlignCenter)
+    # Back button
+    back_button = QtWidgets.QPushButton("Back", content_frame)
+    back_button.setStyleSheet("""
+                              QPushButton {
+                                    background-color: #6c757d;
+                                    color: white;
+                                    border: none;
+                                    border-radius: 4px;
+                                    padding: 8px 16px;
+                                    font-size: 14px;
+                                }
+                                QPushButton:hover {
+                                    background-color: #5a6268;
+                                }
+                            """)
+    back_button.clicked.connect(lambda: parent.setCurrentIndex(3))
+    content_layout.addWidget(back_button, alignment=QtCore.Qt.AlignCenter)
+    main_layout.addWidget(content_frame)
+    return page
   
 def setup_main_window(main_window):
     """Set up the main window with a stacked widget containing home, admin, and employee pages."""
@@ -578,6 +609,8 @@ def setup_main_window(main_window):
     add_button.clicked.connect(lambda: stacked_widget.setCurrentIndex(4))
     update_button.clicked.connect(lambda: stacked_widget.setCurrentIndex(5))
     list_button.clicked.connect(lambda: stacked_widget.setCurrentIndex(7))
+    back_button.clicked.connect(lambda: stacked_widget.setCurrentIndex(0))
+    money_button.clicked.connect(lambda: stacked_widget.setCurrentIndex(8))
     # Create Add Employee Page
     add_employee_page, emp_name, emp_password, emp_salary, emp_position, emp_submit = create_add_employee_page(
         stacked_widget,
@@ -645,7 +678,6 @@ def setup_main_window(main_window):
         )
     )
 
-    
 
     emp_submit.clicked.connect(
         lambda: add_employee_form_submit(
@@ -663,7 +695,7 @@ def setup_main_window(main_window):
         stacked_widget,
         title="Employee Login"
     )
-    
+    admin_total_money =  show_total_money(stacked_widget,"Total Money")
     
     # Add pages to stacked widget
     stacked_widget.addWidget(home_page)#0
@@ -674,6 +706,8 @@ def setup_main_window(main_window):
     stacked_widget.addWidget(update_employee_page1)#5
     stacked_widget.addWidget(update_employee_page2)#6
     stacked_widget.addWidget(employee_list_page)#7
+    stacked_widget.addWidget(admin_total_money)#8
+    
     
     
     main_layout.addWidget(stacked_widget)
