@@ -105,7 +105,7 @@ psutil==7.0.0
 mediapipe==0.10.21
 rich==14.0.0
 httplib2==0.22.0
-protobuf==6.30.2
+protobuf==6.31.1
 colorama==0.4.6
 plyer==2.1.0
 Flask-Ask==0.9.8
