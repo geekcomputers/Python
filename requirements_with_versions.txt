@@ -49,7 +49,7 @@ auto-mix-prep==0.2.0
 lib==4.0.0
 pywifi==1.1.12
 patterns==0.3
-openai==1.82.1
+openai==1.84.0
 background==0.2.1
 pydantic==2.11.4
 openpyxl==3.1.2
@@ -58,7 +58,7 @@ requests-mock==1.12.1
 pyglet==2.1.6
 urllib3==2.4.0
 thirdai==0.9.33
-google-api-python-client==2.170.0
+google-api-python-client==2.171.0
 sound==0.1.0
 xlwt==1.3.0
 pygame==2.6.1
