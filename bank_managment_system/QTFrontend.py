@@ -382,6 +382,86 @@ def create_add_employee_page(parent, title, submit_text="Submit",update_btn:bool
         return page, name_edit, password_edit, salary_edit, position_edit, update_button
     else:
         return page, name_edit, password_edit, salary_edit, position_edit, submit_button  # Unpack as name_edit, password_edit, etc.
+    
+def show_employee_list_page(parent, title):
+    page, main_layout = create_page_with_header(parent, title)
+    
+    content_frame = create_styled_frame(page, style="background-color: #f9f9f9; border-radius: 10px; padding: 15px;")
+    content_frame.setSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Expanding)
+    content_layout = QtWidgets.QVBoxLayout(content_frame)
+
+    # Table frame
+    table_frame = create_styled_frame(content_frame, style="background-color: #ffffff;  border-radius: 8px; padding: 10px;")
+    table_layout = QtWidgets.QVBoxLayout(table_frame)
+    table_layout.setSpacing(0)
+
+    # Header row
+    header_frame = create_styled_frame(table_frame, style="background-color: #f5f5f5; ; border-radius: 8px 8px 0 0; padding: 10px;")
+    header_layout = QtWidgets.QHBoxLayout(header_frame)
+    header_layout.setContentsMargins(10, 5, 10, 5)
+    headers = ["Name", "Position", "Salary"]
+    for i, header in enumerate(headers):
+        header_label = QtWidgets.QLabel(header, header_frame)
+        header_label.setStyleSheet("font-weight: bold; font-size: 14px; color: #333333; padding: 0px; margin: 0px;")
+        if i == 2:  # Right-align salary header
+            header_label.setAlignment(QtCore.Qt.AlignRight | QtCore.Qt.AlignVCenter)
+        else:
+            header_label.setAlignment(QtCore.Qt.AlignLeft | QtCore.Qt.AlignVCenter)
+        header_layout.addWidget(header_label, 1 if i < 2 else 0)  # Stretch name and position, not salary
+    table_layout.addWidget(header_frame)
+
+    # Employee rows
+    employees = backend.show_employees_for_update()
+    for row, employee in enumerate(employees):
+        row_frame = create_styled_frame(table_frame, style=f"background-color: {'#fafafa' if row % 2 else '#ffffff'}; padding: 8px;")
+        row_layout = QtWidgets.QHBoxLayout(row_frame)
+        row_layout.setContentsMargins(10, 5, 10, 5)
+
+        # Name
+        name_label = QtWidgets.QLabel(employee[0], row_frame)
+        name_label.setStyleSheet("font-size: 14px; color: #333333; padding: 0px; margin: 0px;")
+        name_label.setAlignment(QtCore.Qt.AlignLeft | QtCore.Qt.AlignVCenter)
+        row_layout.addWidget(name_label, 1)
+
+        # Position
+        position_label = QtWidgets.QLabel(employee[3], row_frame)
+        position_label.setStyleSheet("font-size: 14px; color: #333333; padding: 0px; margin: 0px;")
+        position_label.setAlignment(QtCore.Qt.AlignLeft | QtCore.Qt.AlignVCenter)
+        row_layout.addWidget(position_label, 1)
+
+        # Salary (formatted as currency)
+        salary_label = QtWidgets.QLabel(f"${float(employee[2]):,.2f}", row_frame)
+        salary_label.setStyleSheet("font-size: 14px; color: #333333; padding: 0px; margin: 0px;")
+        salary_label.setAlignment(QtCore.Qt.AlignRight | QtCore.Qt.AlignVCenter)
+        row_layout.addWidget(salary_label, 0)
+
+        table_layout.addWidget(row_frame)
+
+    # Add stretch to prevent rows from expanding vertically
+    table_layout.addStretch()
+    
+    # Back button
+    back_button = QtWidgets.QPushButton("Back", content_frame)
+    back_button.setStyleSheet("""
+        QPushButton {
+            background-color: #6c757d;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 8px 16px;
+            font-size: 14px;
+        }
+        QPushButton:hover {
+            background-color: #5a6268;
+        }
+    """)
+    back_button.clicked.connect(lambda: parent.setCurrentIndex(3))
+    
+    content_layout.addWidget(table_frame)
+    main_layout.addWidget(back_button, alignment=QtCore.Qt.AlignLeft)
+    main_layout.addWidget(content_frame)
+    
+    return page
   
 def setup_main_window(main_window):
     """Set up the main window with a stacked widget containing home, admin, and employee pages."""
