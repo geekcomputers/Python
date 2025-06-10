@@ -28,7 +28,7 @@ requests==2.32.3
 quo==2023.5.1
 PyPDF2==3.0.1
 pyserial==3.5
-twilio==9.6.1
+twilio==9.6.2
 tabula==1.0.5
 nltk==3.9.1
 Pillow==11.2.1
@@ -105,7 +105,7 @@ psutil==7.0.0
 mediapipe==0.10.21
 rich==14.0.0
 httplib2==0.22.0
-protobuf==6.30.2
+protobuf==6.31.1
 colorama==0.4.6
 plyer==2.1.0
 Flask-Ask==0.9.8
