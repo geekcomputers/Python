@@ -626,7 +626,7 @@ def setup_main_window(main_window):
     )
 
     add_button.clicked.connect(lambda: stacked_widget.setCurrentIndex(ADD_EMPLOYEE_PAGE))
-    update_button.clicked.connect(lambda: stacked_widget.setCurrentIndex(UPDATE_EMPLOYEE_PAGE))
+    update_button.clicked.connect(lambda: stacked_widget.setCurrentIndex(UPDATE_EMPLOYEE_PAGE1))
     list_button.clicked.connect(lambda: stacked_widget.setCurrentIndex(EMPLOYEE_LIST_PAGE))
     back_button.clicked.connect(lambda: stacked_widget.setCurrentIndex(HOME_PAGE))
     money_button.clicked.connect(lambda: stacked_widget.setCurrentIndex(ADMIN_TOTAL_MONEY))
