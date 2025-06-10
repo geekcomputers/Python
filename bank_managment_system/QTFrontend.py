@@ -14,6 +14,7 @@ UPDATE_EMPLOYEE_PAGE1 = 5
 UPDATE_EMPLOYEE_PAGE2 = 6
 EMPLOYEE_LIST_PAGE = 7
 ADMIN_TOTAL_MONEY = 8
+EMPLOYEE_MENU_PAGE = 9
 # -------------------------------------------------------------------------------------------------------------
 # === Reusable UI Component Functions ===
 # -------------------------------------------------------------------------------------------------------------
@@ -525,6 +526,31 @@ def show_total_money(parent, title):
     main_layout.addWidget(content_frame)
     return page
  
+def create_employee_menu_page(parent, title):
+    page, main_layout = create_page_with_header(parent, title)
+
+    button_frame = create_styled_frame(page)
+    button_frame.setSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Expanding)
+    button_layout = QtWidgets.QVBoxLayout(button_frame)
+
+    button_container = create_styled_frame(button_frame, min_size=(300, 0), style="background-color: #ffffff; border-radius: 15px; padding: 20px;")
+    button_container_layout = QtWidgets.QVBoxLayout(button_container)
+    button_container_layout.setSpacing(15)
+
+    # Define button labels
+    button_labels = ["Create Account ", "Show Details", "Add Balance", "Withdraw Money", "Chack Balanace", "Update Account", "list of all Members", "Delete Account", "Back"]
+    buttons = []
+
+    for label in button_labels:
+        btn:QtWidgets.QPushButton = create_styled_button(button_container, label)
+        button_container_layout.addWidget(btn)
+        buttons.append(btn)
+
+    button_layout.addWidget(button_container, 0, QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
+    main_layout.addWidget(button_frame)
+
+    return page, *buttons  # Unpack as add_button, update_employee, etc.
+    
 # -------------------------------------------------------------------------------------------------------------
 # === Main Window Setup ===
 # -------------------------------------------------------------------------------------------------------------
@@ -601,7 +627,9 @@ def setup_main_window(main_window):
         switch_to_employee,
         exit_app
     )
-
+    # ------------------------------------------------------------------------------------------------
+    # -------------------------------------Admin panel page ---------------------------------------
+    # ------------------------------------------------------------------------------------------------
     # Create Admin Login Page
     admin_page, admin_name, admin_password, admin_submit = create_login_page(
         stacked_widget,
@@ -708,13 +736,28 @@ def setup_main_window(main_window):
     )
     # show employee list page
     employee_list_page = show_employee_list_page(stacked_widget,"Employee List")
+    admin_total_money =  show_total_money(stacked_widget,"Total Money")
+    # ------------------------------------------------------------------------------------------------
+    # -------------------------------------Employee panel page ---------------------------------------
+    # ------------------------------------------------------------------------------------------------
     
     # Create Employee Login Page
     employee_page, employee_name, employee_password, employee_submit = create_login_page(
         stacked_widget,
         title="Employee Login"
     )
-    admin_total_money =  show_total_money(stacked_widget,"Total Money")
+    
+    employee_menu_page, E_Create_Account, E_Show_Details, E_add_Balance, E_Withdraw_Money, E_Chack_Balanace, E_Update_Account, E_list_of_all_Members, E_Delete_Account, E_Back=  create_employee_menu_page(stacked_widget,"Employee Menu")
+    # List of all  page
+    # E_Create_Account.clicked.connect(lambda: stacked_widget.setCurrentIndex(EMPLOYEE_CREATE_ACCOUNT_PAGE))
+    # E_Show_Details.clicked.connect(lambda: stacked_widget.setCurrentIndex(EMPLOYEE_SHOW_DETAILS_PAGE))
+    # E_add_Balance.clicked.connect(lambda: stacked_widget.setCurrentIndex(EMPLOYEE_ADD_BALANCE_PAGE))
+    # E_Withdraw_Money.clicked.connect(lambda: stacked_widget.setCurrentIndex(EMPLOYEE_WITHDRAW_MONEY_PAGE))
+    # E_Chack_Balanace.clicked.connect(lambda: stacked_widget.setCurrentIndex(EMPLOYEE_CHECK_BALANCE_PAGE))
+    # E_Update_Account.clicked.connect(lambda: stacked_widget.setCurrentIndex(EMPLOYEE_UPDATE_ACCOUNT_PAGE))
+    # E_list_of_all_Members.clicked.connect(lambda: stacked_widget.setCurrentIndex(EMPLOYEE_LIST_OF_ALL_MEMBERS_PAGE))
+    # E_Delete_Account.clicked.connect(lambda: stacked_widget.setCurrentIndex(EMPLOYEE_DELETE_ACCOUNT_PAGE))
+    # E_Back.clicked.connect(lambda: stacked_widget.setCurrentIndex(EMPLOYEE_MENU_PAGE))
     
     # Add pages to stacked widget
     stacked_widget.addWidget(home_page)#0
@@ -726,6 +769,7 @@ def setup_main_window(main_window):
     stacked_widget.addWidget(u_employee_page2)#6
     stacked_widget.addWidget(employee_list_page)#7
     stacked_widget.addWidget(admin_total_money)#8
+    stacked_widget.addWidget(employee_menu_page)#9
     
     
     
@@ -733,7 +777,7 @@ def setup_main_window(main_window):
     main_window.setCentralWidget(central_widget)
     
     # Set initial page
-    stacked_widget.setCurrentIndex(EMPLOYEE_PAGE)
+    stacked_widget.setCurrentIndex(EMPLOYEE_MENU_PAGE)
     
     return stacked_widget, {
         "admin_name": admin_name,
