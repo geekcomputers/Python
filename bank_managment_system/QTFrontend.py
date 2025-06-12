@@ -525,7 +525,8 @@ def show_total_money(parent, title):
     content_layout.addWidget(back_button, alignment=QtCore.Qt.AlignCenter)
     main_layout.addWidget(content_frame)
     return page
- 
+
+#-----------employees menu pages-----------  
 def create_employee_menu_page(parent, title):
     page, main_layout = create_page_with_header(parent, title)
 
@@ -550,7 +551,101 @@ def create_employee_menu_page(parent, title):
     main_layout.addWidget(button_frame)
 
     return page, *buttons  # Unpack as add_button, update_employee, etc.
+
+def create_account_page(parent, title):
+    page, main_layout = create_page_with_header(parent, title)
+
+    content_frame = create_styled_frame(page)
+    content_frame.setSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Expanding)
+    content_layout = QtWidgets.QVBoxLayout(content_frame)
+
+    form_frame = create_styled_frame(content_frame, min_size=(400, 200), style="background-color: #ffffff; border-radius: 15px; padding: 10px;")
+    form_layout = QtWidgets.QVBoxLayout(form_frame)
+    form_layout.setSpacing(3)
+
+    # Define input fields
+    fields = ["Name :", "Age :", "Address","Balance :",  "Mobile number :"]
+    edits = []
+
+    for i, field in enumerate(fields):
+        field_frame, field_edit = create_input_field(form_frame, field,min_label_size=(160, 0))
+        form_layout.addWidget(field_frame)
+        if i == 0:
+            name_edit = field_edit
+        elif i == 1:
+            Age_edit = field_edit
+        elif i == 2:
+            Address_edit = field_edit
+        elif i == 3:
+            Balance_edit = field_edit
+        elif i == 4:
+            Mobile_number_edit = field_edit
+        edits.append(field_edit)
+    # Dropdown for account type
+    account_type_label = QtWidgets.QLabel("Account Type :", form_frame)
+    account_type_label.setStyleSheet("font-size: 14px; font-weight: bold; color: #333333;")
+    form_layout.addWidget(account_type_label)
+    account_type_dropdown = QtWidgets.QComboBox(form_frame)
+    account_type_dropdown.addItems(["Savings", "Current", "Fixed Deposit"])
+    account_type_dropdown.setStyleSheet("""
+        QComboBox {
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: white;
+            min-width: 200px;
+            font-size: 14px;
+        }
+        QComboBox:hover {
+            border: 1px solid #999;
+        }
+        QComboBox::drop-down {
+            border: none;
+            width: 25px;
+        }
+        QComboBox::down-arrow {
+            width: 12px;
+            height: 12px;
+        }
+        QComboBox QAbstractItemView {
+            border: 1px solid #ccc;
+            background-color: white;
+            selection-background-color: #0078d4;
+            selection-color: white;
+        }
+    """)
+    form_layout.addWidget(account_type_dropdown)
+
+    # Submit button
+    button_frame = create_styled_frame(form_frame, style="padding: 7px;")
+    button_layout = QtWidgets.QVBoxLayout(button_frame)
     
+    
+    submit_button = create_styled_button(button_frame, "Submit", min_size=(100, 50))
+    button_layout.addWidget(submit_button, 0, QtCore.Qt.AlignHCenter)
+    
+
+    form_layout.addWidget(button_frame)
+    content_layout.addWidget(form_frame, 0, QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
+    main_layout.addWidget(content_frame)
+    back_btn = QtWidgets.QPushButton("Back", content_frame)
+    back_btn.setStyleSheet("""
+        QPushButton {
+            background-color: #6c757d;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 8px 16px;
+            font-size: 14px;
+        }
+        QPushButton:hover {
+            background-color: #5a6268;
+        }
+    """)
+    back_btn.clicked.connect(lambda: parent.setCurrentIndex(ADMIN_MENU_PAGE))
+    main_layout.addWidget(back_btn, 0,alignment=QtCore.Qt.AlignLeft)
+    
+    return page,( name_edit, Age_edit,Address_edit,Balance_edit,Mobile_number_edit, account_type_dropdown ,submit_button)
 # -------------------------------------------------------------------------------------------------------------
 # === Main Window Setup ===
 # -------------------------------------------------------------------------------------------------------------
@@ -746,10 +841,10 @@ def setup_main_window(main_window):
         stacked_widget,
         title="Employee Login"
     )
-    
+    employee_submit.clicked.connect(lambda: stacked_widget.setCurrentIndex(EMPLOYEE_MENU_PAGE))
     employee_menu_page, E_Create_Account, E_Show_Details, E_add_Balance, E_Withdraw_Money, E_Chack_Balanace, E_Update_Account, E_list_of_all_Members, E_Delete_Account, E_Back=  create_employee_menu_page(stacked_widget,"Employee Menu")
     # List of all  page
-    # E_Create_Account.clicked.connect(lambda: stacked_widget.setCurrentIndex(EMPLOYEE_CREATE_ACCOUNT_PAGE))
+    E_Create_Account.clicked.connect(lambda: stacked_widget.setCurrentIndex(EMPLOYEE_CREATE_ACCOUNT_PAGE))
     # E_Show_Details.clicked.connect(lambda: stacked_widget.setCurrentIndex(EMPLOYEE_SHOW_DETAILS_PAGE))
     # E_add_Balance.clicked.connect(lambda: stacked_widget.setCurrentIndex(EMPLOYEE_ADD_BALANCE_PAGE))
     # E_Withdraw_Money.clicked.connect(lambda: stacked_widget.setCurrentIndex(EMPLOYEE_WITHDRAW_MONEY_PAGE))
@@ -759,7 +854,59 @@ def setup_main_window(main_window):
     # E_Delete_Account.clicked.connect(lambda: stacked_widget.setCurrentIndex(EMPLOYEE_DELETE_ACCOUNT_PAGE))
     # E_Back.clicked.connect(lambda: stacked_widget.setCurrentIndex(EMPLOYEE_MENU_PAGE))
     
-    # Add pages to stacked widget
+    employee_create_account_page,all_employee_menu_btn = create_account_page(stacked_widget, "Create Account")
+    submit_button = all_employee_menu_btn[6].clicked.connect(lambda: add_account_form_submit(
+        all_employee_menu_btn[0].text().strip(),
+        all_employee_menu_btn[1].text().strip(),
+        all_employee_menu_btn[2].text().strip(),
+        all_employee_menu_btn[3].text().strip(),
+        all_employee_menu_btn[5].currentText(),
+        all_employee_menu_btn[4].text().strip()
+    ))
+
+    def add_account_form_submit(name, age, address, balance, account_type, mobile):
+        if (
+            len(name) != 0
+            and len(age) != 0 
+            and len(address) != 0
+            and len(balance) != 0
+            and len(account_type) != 0
+            and len(mobile) != 0
+        ):
+            try:
+                balance = int(balance)
+            except ValueError:
+                show_popup_message(stacked_widget, "Balance must be a valid number", EMPLOYEE_CREATE_ACCOUNT_PAGE)
+                return
+            if balance < 0:
+                show_popup_message(stacked_widget, "Balance cannot be negative",EMPLOYEE_CREATE_ACCOUNT_PAGE)
+                return
+            if account_type not in ["Savings", "Current","Fixed Deposit"]:
+                show_popup_message(stacked_widget, "Invalid account type", EMPLOYEE_CREATE_ACCOUNT_PAGE)
+                return
+            if len(mobile) != 10:
+                show_popup_message(stacked_widget, "Mobile number must be 10 digits", EMPLOYEE_CREATE_ACCOUNT_PAGE)
+                return
+            if not mobile.isdigit():
+                show_popup_message(stacked_widget, "Mobile number must contain only digits", EMPLOYEE_CREATE_ACCOUNT_PAGE)
+                return
+            if not name.isalpha():
+                show_popup_message(stacked_widget, "Name must contain only alphabets", EMPLOYEE_CREATE_ACCOUNT_PAGE)
+                return
+            if not age.isdigit():
+                show_popup_message(stacked_widget, "Age must contain only digits", EMPLOYEE_CREATE_ACCOUNT_PAGE)
+                return
+            if int(age) < 18:
+                show_popup_message(stacked_widget, "Age must be greater than 18", EMPLOYEE_CREATE_ACCOUNT_PAGE)
+                return
+            if len(address) < 10:
+                show_popup_message(stacked_widget, "Address must be at least 10 characters long", EMPLOYEE_CREATE_ACCOUNT_PAGE)
+                return
+            backend.create_customer(name, age, address, balance, account_type, mobile)
+            show_popup_message(stacked_widget, "Account created successfully", EMPLOYEE_MENU_PAGE, False)
+        else:
+            show_popup_message(stacked_widget, "Please fill in all fields", EMPLOYEE_CREATE_ACCOUNT_PAGE)
+            # Add pages to stacked widget
     stacked_widget.addWidget(home_page)#0
     stacked_widget.addWidget(admin_page)#1
     stacked_widget.addWidget(employee_page)#2
@@ -770,6 +917,7 @@ def setup_main_window(main_window):
     stacked_widget.addWidget(employee_list_page)#7
     stacked_widget.addWidget(admin_total_money)#8
     stacked_widget.addWidget(employee_menu_page)#9
+    stacked_widget.addWidget(employee_create_account_page)#10
     
     
     
