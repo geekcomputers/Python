@@ -3,6 +3,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 import sys
 import backend
 backend.connect_database()
+
 employee_data = None
 # Page Constants (for reference)
 HOME_PAGE = 0
@@ -15,6 +16,7 @@ UPDATE_EMPLOYEE_PAGE2 = 6
 EMPLOYEE_LIST_PAGE = 7
 ADMIN_TOTAL_MONEY = 8
 EMPLOYEE_MENU_PAGE = 9
+EMPLOYEE_CREATE_ACCOUNT_PAGE = 10
 # -------------------------------------------------------------------------------------------------------------
 # === Reusable UI Component Functions ===
 # -------------------------------------------------------------------------------------------------------------
@@ -85,7 +87,7 @@ def create_input_field(parent, label_text, min_label_size=(120, 0)):
     layout.addWidget(line_edit)
     return frame, line_edit
 
-def show_popup_message(parent, message: str, page: int = None, show_cancel: bool = True,cancel_page: int = HOME_PAGE):
+def show_popup_message(parent, message: str, page: int = None, show_cancel: bool = False,cancel_page: int = HOME_PAGE):
     """Reusable popup message box.
 
     Args:
@@ -261,7 +263,7 @@ def on_login_button_clicked(parent, name_field, password_field):
     password = password_field.text().strip()
     
     if not name or not password:
-        show_popup_message(parent, "Please enter your name and password.", 0)
+        show_popup_message(parent, "Please enter your name and password.",HOME_PAGE)
     else:
         try:
             # Ideally, here you'd call a backend authentication check
@@ -650,7 +652,7 @@ def create_account_page(parent, title):
 # === Main Window Setup ===
 # -------------------------------------------------------------------------------------------------------------
   
-def setup_main_window(main_window):
+def setup_main_window(main_window: QtWidgets.QMainWindow):
     """Set up the main window with a stacked widget containing home, admin, and employee pages."""
     main_window.setObjectName("MainWindow")
     main_window.resize(800, 600)
@@ -692,11 +694,11 @@ def setup_main_window(main_window):
             and len(position) != 0
         ):
             backend.create_employee(name, password, salary, position)
-            show_popup_message(stacked_widget,"Employee added successfully",3,False)
+            show_popup_message(stacked_widget,"Employee added successfully",ADMIN_MENU_PAGE)
             
         else:
             print("Please fill in all fields")
-            show_popup_message(stacked_widget,"Please fill in all fields",3)
+            show_popup_message(stacked_widget,"Please fill in all fields",ADD_EMPLOYEE_PAGE)
     def update_employee_data(name, password, salary, position, name_to_update):
         try:
             cur = backend.cur
@@ -708,10 +710,10 @@ def setup_main_window(main_window):
             cur.execute("UPDATE staff SET salary = ? WHERE name = ?", (salary, name))
             cur.execute("UPDATE staff SET position = ? WHERE name = ?", (position, name))
             backend.conn.commit()
-            show_popup_message(stacked_widget,"Employee Upadate successfully",3,False)
+            show_popup_message(stacked_widget,"Employee Upadate successfully",UPDATE_EMPLOYEE_PAGE2)
             
         except:
-            show_popup_message(stacked_widget,"Please fill in all fields",3)
+            show_popup_message(stacked_widget,"Please fill in all fields",UPDATE_EMPLOYEE_PAGE2)
 
           
         
@@ -789,10 +791,10 @@ def setup_main_window(main_window):
     def update_employee_data(name, password, salary, position, name_to_update):
         try:
             if not name_to_update:
-                show_popup_message(stacked_widget, "Original employee name is missing.", 5)
+                show_popup_message(stacked_widget, "Original employee name is missing.", UPDATE_EMPLOYEE_PAGE2)
                 return
             if not (name or password or salary or position):
-                show_popup_message(stacked_widget, "Please fill at least one field to update.", 5)
+                show_popup_message(stacked_widget, "Please fill at least one field to update.", UPDATE_EMPLOYEE_PAGE2)
                 return
             if name:
                 backend.update_employee_name(name, name_to_update)
@@ -807,9 +809,9 @@ def setup_main_window(main_window):
                     return
             if position:
                 backend.update_employee_position(position, name_to_update)
-            show_popup_message(stacked_widget, "Employee updated successfully.", 3, False)
+            show_popup_message(stacked_widget, "Employee updated successfully.", ADMIN_MENU_PAGE)
         except Exception as e:
-            show_popup_message(stacked_widget, f"Error updating employee: {str(e)}", 5)
+            show_popup_message(stacked_widget, f"Error updating employee: {str(e)}",UPDATE_EMPLOYEE_PAGE2,show_cancel=True,cancel_page=ADMIN_MENU_PAGE)
     u_employee_update.clicked.connect(
     lambda: update_employee_data(
         u_employee_name.text().strip(),
@@ -925,7 +927,7 @@ def setup_main_window(main_window):
     main_window.setCentralWidget(central_widget)
     
     # Set initial page
-    stacked_widget.setCurrentIndex(EMPLOYEE_MENU_PAGE)
+    stacked_widget.setCurrentIndex(HOME_PAGE)
     
     return stacked_widget, {
         "admin_name": admin_name,
@@ -951,4 +953,6 @@ def main():
 
 if __name__ == "__main__":
     main()
+# TO-DO:
+# 1.refese the employee list page after add or delete or update employee
 
