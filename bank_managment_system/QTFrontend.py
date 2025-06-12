@@ -648,6 +648,27 @@ def create_account_page(parent, title):
     main_layout.addWidget(back_btn, 0,alignment=QtCore.Qt.AlignLeft)
     
     return page,( name_edit, Age_edit,Address_edit,Balance_edit,Mobile_number_edit, account_type_dropdown ,submit_button)
+
+def create_show_details_page1(parent, title):
+    page, main_layout = create_page_with_header(parent, title)
+    content_frame = create_styled_frame(page)
+    content_frame.setSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Expanding)
+    content_layout = QtWidgets.QVBoxLayout(content_frame)
+    
+    form_frame = create_styled_frame(content_frame, min_size=(400, 200), style="background-color: #ffffff; border-radius: 15px; padding: 10px;")
+    form_layout = QtWidgets.QVBoxLayout(form_frame)
+    form_layout.setSpacing(3)
+    # Define input fields
+    bannk_user = create_input_field(form_frame, "Enter Bank account Number :", min_label_size=(180, 0))
+    form_layout.addWidget(bannk_user[0])
+    user_account_number= bannk_user[1]
+    submit_button = create_styled_button(form_frame, "Submit", min_size=(100, 50))
+    form_layout.addWidget(submit_button)
+    content_layout.addWidget(form_frame, 0, QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
+    main_layout.addWidget(content_frame)
+    
+    return page,(user_account_number,submit_button)
+    
 # -------------------------------------------------------------------------------------------------------------
 # === Main Window Setup ===
 # -------------------------------------------------------------------------------------------------------------
@@ -857,7 +878,7 @@ def setup_main_window(main_window: QtWidgets.QMainWindow):
     # E_Back.clicked.connect(lambda: stacked_widget.setCurrentIndex(EMPLOYEE_MENU_PAGE))
     
     employee_create_account_page,all_employee_menu_btn = create_account_page(stacked_widget, "Create Account")
-    submit_button = all_employee_menu_btn[6].clicked.connect(lambda: add_account_form_submit(
+    all_employee_menu_btn[6].clicked.connect(lambda: add_account_form_submit(
         all_employee_menu_btn[0].text().strip(),
         all_employee_menu_btn[1].text().strip(),
         all_employee_menu_btn[2].text().strip(),
@@ -905,10 +926,19 @@ def setup_main_window(main_window: QtWidgets.QMainWindow):
                 show_popup_message(stacked_widget, "Address must be at least 10 characters long", EMPLOYEE_CREATE_ACCOUNT_PAGE)
                 return
             backend.create_customer(name, age, address, balance, account_type, mobile)
+            all_employee_menu_btn[0].setText("")
+            all_employee_menu_btn[1].setText("")
+            all_employee_menu_btn[2].setText("")
+            all_employee_menu_btn[3].setText("")
+            all_employee_menu_btn[4].setText("")
+            all_employee_menu_btn[5].currentText(),
             show_popup_message(stacked_widget, "Account created successfully", EMPLOYEE_MENU_PAGE, False)
         else:
             show_popup_message(stacked_widget, "Please fill in all fields", EMPLOYEE_CREATE_ACCOUNT_PAGE)
             # Add pages to stacked widget
+    
+    show_bank_user_data_page1,show_bank_user_other = create_show_details_page1(stacked_widget, "Show Details")
+    show_bank_user_other[1].clicked.connect(lambda: print(show_bank_user_other[0].text())) 
     stacked_widget.addWidget(home_page)#0
     stacked_widget.addWidget(admin_page)#1
     stacked_widget.addWidget(employee_page)#2
@@ -920,6 +950,7 @@ def setup_main_window(main_window: QtWidgets.QMainWindow):
     stacked_widget.addWidget(admin_total_money)#8
     stacked_widget.addWidget(employee_menu_page)#9
     stacked_widget.addWidget(employee_create_account_page)#10
+    stacked_widget.addWidget(show_bank_user_data_page1)#11
     
     
     
@@ -927,7 +958,7 @@ def setup_main_window(main_window: QtWidgets.QMainWindow):
     main_window.setCentralWidget(central_widget)
     
     # Set initial page
-    stacked_widget.setCurrentIndex(HOME_PAGE)
+    stacked_widget.setCurrentIndex(11)
     
     return stacked_widget, {
         "admin_name": admin_name,
