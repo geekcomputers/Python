@@ -85,7 +85,7 @@ def create_input_field(parent, label_text, min_label_size=(120, 0)):
     layout.addWidget(line_edit)
     return frame, line_edit
 
-def show_popup_message(parent, message: str, page: int = None, show_cancel: bool = True):
+def show_popup_message(parent, message: str, page: int = None, show_cancel: bool = True,cancel_page: int = HOME_PAGE):
     """Reusable popup message box.
 
     Args:
@@ -141,7 +141,7 @@ def show_popup_message(parent, message: str, page: int = None, show_cancel: bool
     
     def on_reject():
         if page is not None:
-            parent.setCurrentIndex(page)
+            parent.setCurrentIndex(cancel_page)
         dialog.reject()
     
     button_box.accepted.connect(on_accept)
