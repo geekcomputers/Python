@@ -19,6 +19,10 @@ EMPLOYEE_MENU_PAGE = 9
 EMPLOYEE_CREATE_ACCOUNT_PAGE = 10
 EMPLOYEE_SHOW_DETAILS_PAGE1 = 11
 EMPLOYEE_SHOW_DETAILS_PAGE2 = 12
+EMPLOYEE_ADD_BALANCE_SEARCH = 13
+EMPLOYEE_ADD_BALANCE_PAGE = 14
+
+FONT_SIZE = QtGui.QFont("Segoe UI", 12)
 # -------------------------------------------------------------------------------------------------------------
 # === Reusable UI Component Functions ===
 # -------------------------------------------------------------------------------------------------------------
@@ -83,7 +87,25 @@ def create_input_field(parent, label_text, min_label_size=(120, 0)):
         label.setMinimumSize(QtCore.QSize(*min_label_size))
     
     line_edit = QtWidgets.QLineEdit(frame)
-    line_edit.setStyleSheet("background-color: rgb(168, 168, 168);")
+    line_edit.setStyleSheet("background-color: #f0f0f0; border: 1px solid #ccc; border-radius: 4px; padding: 8px;")
+    
+    layout.addWidget(label)
+    layout.addWidget(line_edit)
+    return frame, line_edit
+
+def create_input_field_V(parent, label_text, min_label_size=(120, 0)):
+    """Create a horizontal layout with a label and a QLineEdit."""
+    frame = create_styled_frame(parent, style="padding: 7px;")
+    layout = QtWidgets.QVBoxLayout(frame)
+    layout.setContentsMargins(0, 0, 0, 0)
+    layout.setSpacing(0)
+    
+    label = create_styled_label(frame, label_text, font_size=12, bold=True, style="color: #2c3e50;")
+    if min_label_size:
+        label.setMinimumSize(QtCore.QSize(*min_label_size))
+    
+    line_edit = QtWidgets.QLineEdit(frame)
+    line_edit.setStyleSheet("background-color: #f0f0f0; border: 1px solid #ccc; border-radius: 4px; padding: 8px;")
     
     layout.addWidget(label)
     layout.addWidget(line_edit)
@@ -152,6 +174,28 @@ def show_popup_message(parent, message: str, page: int = None, show_cancel: bool
     button_box.rejected.connect(on_reject)
     
     dialog.exec_()
+
+def search_result(parent, title,label_text):
+    page, main_layout = create_page_with_header(parent, title)
+    content_frame = create_styled_frame(page)
+    content_frame.setSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Expanding)
+    content_layout = QtWidgets.QVBoxLayout(content_frame)
+    content_layout.alignment
+    
+    form_frame = create_styled_frame(content_frame, min_size=(400, 200), style="background-color: #ffffff; border-radius: 15px; padding: 10px;")
+    form_layout = QtWidgets.QVBoxLayout(form_frame)
+    form_layout.setSpacing(3)
+    # Define input fields
+    user = create_input_field(form_frame, label_text, min_label_size=(180, 0))
+    form_layout.addWidget(user[0])
+    user_account_number= user[1]
+    user_account_number.setFont(QtGui.QFont("Segoe UI", 12))
+    submit_button = create_styled_button(form_frame, "Submit", min_size=(100, 50))
+    form_layout.addWidget(submit_button)
+    content_layout.addWidget(form_frame, 0, QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
+    main_layout.addWidget(content_frame)
+    
+    return page,(user_account_number,submit_button)
 # -------------------------------------------------------------------------------------------------------------
 # === Page Creation Functions ==
 # -------------------------------------------------------------------------------------------------------------
@@ -727,6 +771,49 @@ def create_show_details_page2(parent, title):
     
     return page,(account_no_field,name_field,age_field,address_field,balance_field,mobile_number_field,account_type_field,exite_btn)
     
+def update_user_balance(parent, title):
+    page, main_layout = create_page_with_header(parent, title)
+    content_frame = create_styled_frame(page)
+    content_frame.setSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Expanding)
+    content_layout = QtWidgets.QVBoxLayout(content_frame)
+    content_layout.alignment
+    
+    form_frame = create_styled_frame(content_frame, min_size=(400, 200), style="background-color: #ffffff; border-radius: 15px; padding: 10px;")
+    form_layout = QtWidgets.QVBoxLayout(form_frame)
+    form_layout.setSpacing(3)
+    # Define input fields
+    user = create_input_field(form_frame, "User Name: ", min_label_size=(180, 0))
+    user_balance = create_input_field(form_frame, "Balance: ", min_label_size=(180, 0))
+    user_update_balance = create_input_field_V(form_frame, "Add amount: ", min_label_size=(180, 0))
+    
+    # Add input fields to the form layout
+    form_layout.addWidget(user[0])
+    form_layout.addWidget(user_balance[0])
+    form_layout.addWidget(user_update_balance[0])
+    
+    # Store the input fields in variables
+    user_account_name= user[1]
+    user_account_name.setReadOnly(True)
+    user_account_name.setStyleSheet("background-color: #8a8a8a; border: 1px solid #ccc; border-radius: 4px; padding: 8px;")
+    user_balance_field = user_balance[1]
+    user_balance_field.setReadOnly(True)
+    user_balance_field.setStyleSheet("background-color: #8a8a8a; border: 1px solid #ccc; border-radius: 4px; padding: 8px;")
+    user_update_balance_field = user_update_balance[1]
+    user_update_balance_field.setStyleSheet("background-color: #f0f0f0; border: 1px solid #ccc; border-radius: 4px; padding: 8px;")
+
+    
+    # Set the font size for the input fields
+    user_account_name.setFont(QtGui.QFont("Segoe UI", 12))
+    user_balance_field.setFont(QtGui.QFont("Segoe UI", 12))
+    user_update_balance_field.setFont(QtGui.QFont("Segoe UI", 12))
+    
+    # Add a submit button
+    submit_button = create_styled_button(form_frame, "Submit", min_size=(100, 50))
+    form_layout.addWidget(submit_button)
+    content_layout.addWidget(form_frame, 0, QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
+    main_layout.addWidget(content_frame)
+    
+    return page,(user_account_name,user_balance_field,user_update_balance_field,submit_button)
 # -------------------------------------------------------------------------------------------------------------
 # === Main Window Setup ===
 # -------------------------------------------------------------------------------------------------------------
@@ -927,7 +1014,7 @@ def setup_main_window(main_window: QtWidgets.QMainWindow):
     # List of all  page
     E_Create_Account.clicked.connect(lambda: stacked_widget.setCurrentIndex(EMPLOYEE_CREATE_ACCOUNT_PAGE))
     E_Show_Details.clicked.connect(lambda: stacked_widget.setCurrentIndex(EMPLOYEE_SHOW_DETAILS_PAGE1))
-    # E_add_Balance.clicked.connect(lambda: stacked_widget.setCurrentIndex(EMPLOYEE_ADD_BALANCE_PAGE))
+    E_add_Balance.clicked.connect(lambda: stacked_widget.setCurrentIndex(EMPLOYEE_ADD_BALANCE_SEARCH))
     # E_Withdraw_Money.clicked.connect(lambda: stacked_widget.setCurrentIndex(EMPLOYEE_WITHDRAW_MONEY_PAGE))
     # E_Chack_Balanace.clicked.connect(lambda: stacked_widget.setCurrentIndex(EMPLOYEE_CHECK_BALANCE_PAGE))
     # E_Update_Account.clicked.connect(lambda: stacked_widget.setCurrentIndex(EMPLOYEE_UPDATE_ACCOUNT_PAGE))
@@ -1014,9 +1101,34 @@ def setup_main_window(main_window: QtWidgets.QMainWindow):
         else:
             show_popup_message(stacked_widget, "Account not found", EMPLOYEE_SHOW_DETAILS_PAGE1)
         
+    add_balance_search_page,add_balance_search_other = search_result(stacked_widget, "Add Balance","Enter Account Number: ")
+    add_balance_search_other[1].clicked.connect(lambda: add_balance_page_submit_btn(int(add_balance_search_other[0].text().strip())))
     
     
-
+    add_balance_page,add_balance_other =update_user_balance(stacked_widget, "Add Balance User Account")
+    add_balance_other[3].clicked.connect(lambda:update_user_account_balance(add_balance_other[2].text().strip()))
+    # user_account_name,user_balance_field,user_update_balance_field,submit_button
+    
+    
+    def add_balance_page_submit_btn(account_number:int):
+        check = backend.check_acc_no(account_number)
+        if check:
+            account_data = backend.get_details(account_number)
+            add_balance_other[0].setText(str(account_data[1]))
+            add_balance_other[1].setText(str(account_data[4]))
+            stacked_widget.setCurrentIndex(14)
+            return account_data
+        else:
+            show_popup_message(stacked_widget, "Account not found", EMPLOYEE_ADD_BALANCE_SEARCH,show_cancel=True,cancel_page=EMPLOYEE_MENU_PAGE)
+        
+    def update_user_account_balance(add_money:int):
+        account_number=int(add_balance_search_other[0].text().strip())
+        backend.update_balance(add_money,account_number)
+        add_balance_other[0].setText("")
+        add_balance_other[1].setText("")
+        show_popup_message(stacked_widget, "Balance updated successfully", EMPLOYEE_MENU_PAGE)
+        add_balance_search_other[0].setText("")
+        
     stacked_widget.addWidget(home_page)#0
     stacked_widget.addWidget(admin_page)#1
     stacked_widget.addWidget(employee_page)#2
@@ -1030,6 +1142,8 @@ def setup_main_window(main_window: QtWidgets.QMainWindow):
     stacked_widget.addWidget(employee_create_account_page)#10
     stacked_widget.addWidget(show_bank_user_data_page1)#11
     stacked_widget.addWidget(show_bank_user_data_page2)#12
+    stacked_widget.addWidget(add_balance_search_page)#13
+    stacked_widget.addWidget(add_balance_page)#14
     
     
     
@@ -1037,7 +1151,7 @@ def setup_main_window(main_window: QtWidgets.QMainWindow):
     main_window.setCentralWidget(central_widget)
     
     # Set initial page
-    stacked_widget.setCurrentIndex(11)
+    stacked_widget.setCurrentIndex(13)
     
     return stacked_widget, {
         "admin_name": admin_name,
