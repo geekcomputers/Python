@@ -87,6 +87,7 @@ def create_input_field(parent, label_text, min_label_size=(120, 0)):
         label.setMinimumSize(QtCore.QSize(*min_label_size))
     
     line_edit = QtWidgets.QLineEdit(frame)
+    line_edit.setFont(FONT_SIZE)
     line_edit.setStyleSheet("background-color: #f0f0f0; border: 1px solid #ccc; border-radius: 4px; padding: 8px;")
     
     layout.addWidget(label)
@@ -106,6 +107,7 @@ def create_input_field_V(parent, label_text, min_label_size=(120, 0)):
     
     line_edit = QtWidgets.QLineEdit(frame)
     line_edit.setStyleSheet("background-color: #f0f0f0; border: 1px solid #ccc; border-radius: 4px; padding: 8px;")
+    line_edit.setFont(FONT_SIZE)
     
     layout.addWidget(label)
     layout.addWidget(line_edit)
@@ -189,7 +191,7 @@ def search_result(parent, title,label_text):
     user = create_input_field(form_frame, label_text, min_label_size=(180, 0))
     form_layout.addWidget(user[0])
     user_account_number= user[1]
-    user_account_number.setFont(QtGui.QFont("Segoe UI", 12))
+    user_account_number.setFont(FONT_SIZE)
     submit_button = create_styled_button(form_frame, "Submit", min_size=(100, 50))
     form_layout.addWidget(submit_button)
     content_layout.addWidget(form_frame, 0, QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
@@ -803,9 +805,9 @@ def update_user_balance(parent, title):
 
     
     # Set the font size for the input fields
-    user_account_name.setFont(QtGui.QFont("Segoe UI", 12))
-    user_balance_field.setFont(QtGui.QFont("Segoe UI", 12))
-    user_update_balance_field.setFont(QtGui.QFont("Segoe UI", 12))
+    user_account_name.setFont(FONT_SIZE)
+    user_balance_field.setFont(FONT_SIZE)
+    user_update_balance_field.setFont(FONT_SIZE)
     
     # Add a submit button
     submit_button = create_styled_button(form_frame, "Submit", min_size=(100, 50))
@@ -1151,7 +1153,7 @@ def setup_main_window(main_window: QtWidgets.QMainWindow):
     main_window.setCentralWidget(central_widget)
     
     # Set initial page
-    stacked_widget.setCurrentIndex(13)
+    stacked_widget.setCurrentIndex(0)
     
     return stacked_widget, {
         "admin_name": admin_name,
