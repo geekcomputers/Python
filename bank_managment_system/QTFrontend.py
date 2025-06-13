@@ -17,6 +17,8 @@ EMPLOYEE_LIST_PAGE = 7
 ADMIN_TOTAL_MONEY = 8
 EMPLOYEE_MENU_PAGE = 9
 EMPLOYEE_CREATE_ACCOUNT_PAGE = 10
+EMPLOYEE_SHOW_DETAILS_PAGE1 = 11
+EMPLOYEE_SHOW_DETAILS_PAGE2 = 12
 # -------------------------------------------------------------------------------------------------------------
 # === Reusable UI Component Functions ===
 # -------------------------------------------------------------------------------------------------------------
@@ -572,6 +574,7 @@ def create_account_page(parent, title):
     for i, field in enumerate(fields):
         field_frame, field_edit = create_input_field(form_frame, field,min_label_size=(160, 0))
         form_layout.addWidget(field_frame)
+        field_edit.setFont(QtGui.QFont("Arial", 12))
         if i == 0:
             name_edit = field_edit
         elif i == 1:
@@ -644,7 +647,7 @@ def create_account_page(parent, title):
             background-color: #5a6268;
         }
     """)
-    back_btn.clicked.connect(lambda: parent.setCurrentIndex(ADMIN_MENU_PAGE))
+    back_btn.clicked.connect(lambda: parent.setCurrentIndex(EMPLOYEE_MENU_PAGE))
     main_layout.addWidget(back_btn, 0,alignment=QtCore.Qt.AlignLeft)
     
     return page,( name_edit, Age_edit,Address_edit,Balance_edit,Mobile_number_edit, account_type_dropdown ,submit_button)
@@ -668,6 +671,61 @@ def create_show_details_page1(parent, title):
     main_layout.addWidget(content_frame)
     
     return page,(user_account_number,submit_button)
+
+def create_show_details_page2(parent, title):
+    page, main_layout = create_page_with_header(parent, title)
+    content_frame = create_styled_frame(page)
+    content_frame.setSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Expanding)
+    content_layout = QtWidgets.QVBoxLayout(content_frame)
+    
+    form_frame = create_styled_frame(content_frame, min_size=(400, 200), style="background-color: #ffffff; border-radius: 15px; padding: 10px;")
+    form_layout = QtWidgets.QVBoxLayout(form_frame)
+    form_frame.setSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Expanding)
+    form_layout.setSpacing(3)
+    
+    # Define input fields
+    
+    labeles = ["Account No: ","Name: ", "Age:", "Address: ", "Balance: ", "Mobile Number: ", "Account Type: "] 
+    for i in range(len(labeles)):
+        label_frame, input_field = create_input_field(form_frame, labeles[i], min_label_size=(180, 30))
+        form_layout.addWidget(label_frame)
+        input_field.setReadOnly(True)
+        input_field.setFont(QtGui.QFont("Arial", 12))
+        if i == 0:
+            account_no_field = input_field
+        elif i == 1:
+            name_field = input_field
+        elif i == 2:
+            age_field = input_field
+        elif i == 3:
+            address_field = input_field
+        elif i == 4:
+            balance_field = input_field
+        elif i == 5:
+            mobile_number_field = input_field
+        elif i == 6:
+            account_type_field = input_field
+    
+    exite_btn = create_styled_button(form_frame, "Exit", min_size=(100, 50))
+    exite_btn.setStyleSheet("""
+                            QPushButton {
+                                background-color: #6c757d;
+                                color: white;
+                                border: none;
+                                border-radius: 4px;
+                                padding: 8px 16px;
+                                font-size: 14px;
+                            }
+                            QPushButton:hover {
+                                background-color: #5a6268;
+                            }
+                        """)
+    exite_btn.clicked.connect(lambda: parent.setCurrentIndex(EMPLOYEE_MENU_PAGE))
+    content_layout.addWidget(form_frame, 0, QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
+    main_layout.addWidget(content_frame)
+    main_layout.addWidget(exite_btn)
+    
+    return page,(account_no_field,name_field,age_field,address_field,balance_field,mobile_number_field,account_type_field,exite_btn)
     
 # -------------------------------------------------------------------------------------------------------------
 # === Main Window Setup ===
@@ -868,7 +926,7 @@ def setup_main_window(main_window: QtWidgets.QMainWindow):
     employee_menu_page, E_Create_Account, E_Show_Details, E_add_Balance, E_Withdraw_Money, E_Chack_Balanace, E_Update_Account, E_list_of_all_Members, E_Delete_Account, E_Back=  create_employee_menu_page(stacked_widget,"Employee Menu")
     # List of all  page
     E_Create_Account.clicked.connect(lambda: stacked_widget.setCurrentIndex(EMPLOYEE_CREATE_ACCOUNT_PAGE))
-    # E_Show_Details.clicked.connect(lambda: stacked_widget.setCurrentIndex(EMPLOYEE_SHOW_DETAILS_PAGE))
+    E_Show_Details.clicked.connect(lambda: stacked_widget.setCurrentIndex(EMPLOYEE_SHOW_DETAILS_PAGE1))
     # E_add_Balance.clicked.connect(lambda: stacked_widget.setCurrentIndex(EMPLOYEE_ADD_BALANCE_PAGE))
     # E_Withdraw_Money.clicked.connect(lambda: stacked_widget.setCurrentIndex(EMPLOYEE_WITHDRAW_MONEY_PAGE))
     # E_Chack_Balanace.clicked.connect(lambda: stacked_widget.setCurrentIndex(EMPLOYEE_CHECK_BALANCE_PAGE))
@@ -937,8 +995,28 @@ def setup_main_window(main_window: QtWidgets.QMainWindow):
             show_popup_message(stacked_widget, "Please fill in all fields", EMPLOYEE_CREATE_ACCOUNT_PAGE)
             # Add pages to stacked widget
     
-    show_bank_user_data_page1,show_bank_user_other = create_show_details_page1(stacked_widget, "Show Details")
-    show_bank_user_other[1].clicked.connect(lambda: print(show_bank_user_other[0].text())) 
+    show_bank_user_data_page1,show_bank_user_other1 = create_show_details_page1(stacked_widget, "Show Details")
+    show_bank_user_data_page2,show_bank_user_other2 = create_show_details_page2(stacked_widget, "Show Details")
+    
+    show_bank_user_other1[1].clicked.connect(lambda: show_bank_user_data_page1_submit_btn(int(show_bank_user_other1[0].text().strip())))
+    def show_bank_user_data_page1_submit_btn(name:int):
+        account_data = backend.get_details(name)
+        if account_data:
+            show_bank_user_other1[0].setText("")
+            show_bank_user_other2[0].setText(str(account_data[0]))
+            show_bank_user_other2[1].setText(str(account_data[1]))
+            show_bank_user_other2[2].setText(str(account_data[2]))
+            show_bank_user_other2[3].setText(str(account_data[3]))
+            show_bank_user_other2[4].setText(str(account_data[4]))
+            show_bank_user_other2[5].setText(str(account_data[5]))
+            show_bank_user_other2[6].setText(str(account_data[6]))
+            stacked_widget.setCurrentIndex(EMPLOYEE_SHOW_DETAILS_PAGE2)
+        else:
+            show_popup_message(stacked_widget, "Account not found", EMPLOYEE_SHOW_DETAILS_PAGE1)
+        
+    
+    
+
     stacked_widget.addWidget(home_page)#0
     stacked_widget.addWidget(admin_page)#1
     stacked_widget.addWidget(employee_page)#2
@@ -951,6 +1029,7 @@ def setup_main_window(main_window: QtWidgets.QMainWindow):
     stacked_widget.addWidget(employee_menu_page)#9
     stacked_widget.addWidget(employee_create_account_page)#10
     stacked_widget.addWidget(show_bank_user_data_page1)#11
+    stacked_widget.addWidget(show_bank_user_data_page2)#12
     
     
     
