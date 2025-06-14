@@ -1106,62 +1106,86 @@ def setup_main_window(main_window: QtWidgets.QMainWindow):
         else:
             show_popup_message(stacked_widget, "Account not found", EMPLOYEE_SHOW_DETAILS_PAGE1)
     
-    # Add balance page
-    add_balance_search_page,add_balance_search_other = search_result(stacked_widget, "Add Balance","Enter Account Number: ")
-    add_balance_search_other[1].clicked.connect(lambda: add_balance_page_submit_btn(int(add_balance_search_other[0].text().strip())))
-    
-    
-    add_balance_page,add_balance_other =update_user(stacked_widget, "Add Balance User Account","Enter Ammount: ")
-    add_balance_other[3].clicked.connect(lambda:update_user_account_balance(add_balance_other[2].text().strip()))
-    
-    
-    def add_balance_page_submit_btn(account_number:int):
-        check = backend.check_acc_no(account_number)
-        if check:
-            account_data = backend.get_details(account_number)
-            add_balance_other[0].setText(str(account_data[1]))
-            add_balance_other[1].setText(str(account_data[4]))
-            stacked_widget.setCurrentIndex(14)
-            return account_data
-        else:
-            show_popup_message(stacked_widget, "Account not found", EMPLOYEE_ADD_BALANCE_SEARCH,show_cancel=True,cancel_page=EMPLOYEE_MENU_PAGE)
-        
-    def update_user_account_balance(add_money:int):
-        account_number=int(add_balance_search_other[0].text().strip())
-        backend.update_balance(add_money,account_number)
-        add_balance_other[0].setText("")
-        add_balance_other[1].setText("")
-        show_popup_message(stacked_widget, "Balance updated successfully", EMPLOYEE_MENU_PAGE)
-        add_balance_search_other[0].setText("")
-        
-    # Withdraw money page
-    withdraw_money_search_page,withdraw_money_search_other = search_result(stacked_widget, "Withdraw Money","Enter Account Number: ")
-    withdraw_money_search_other[1].clicked.connect(lambda: withdraw_money_page_submit_btn(int(withdraw_money_search_other[0].text().strip())))
-    
-    
-    withdraw_money_page,withdraw_money_other =update_user(stacked_widget, "Withdraw Money From User Account","Withdraw Amount: ")
-    withdraw_money_other[3].clicked.connect(lambda:update_user_account_withdraw(withdraw_money_other[2].text().strip()))   
-    
-    def withdraw_money_page_submit_btn(account_number:int):
-        print(account_number)
-        check = backend.check_acc_no(account_number)
-        print(check)
-        if check:
-            account_data = backend.get_details(account_number)
-            withdraw_money_other[0].setText(str(account_data[1]))
-            withdraw_money_other[1].setText(str(account_data[4]))
-            stacked_widget.setCurrentIndex(16)
-            return account_data
-        else:
-            show_popup_message(stacked_widget, "Account not found", EMPLOYEE_WITHDRAW_MONEY_SEARCH,show_cancel=True,cancel_page=EMPLOYEE_MENU_PAGE)
-    
-    def update_user_account_withdraw(withdraw_money:int):
-        account_number=int(withdraw_money_search_other[0].text().strip())
-        backend.deduct_balance(int(withdraw_money),int(account_number))
-        withdraw_money_other[0].setText("")
-        withdraw_money_other[1].setText("")
-        show_popup_message(stacked_widget, "Balance updated successfully", EMPLOYEE_MENU_PAGE)
-        withdraw_money_search_other[0].setText("")
+    def setup_balance_operation_flow(
+        stacked_widget,
+        title_search,
+        placeholder,
+        title_form,
+        action_button_text,
+        success_message,
+        backend_action_fn,
+        stacked_page_index,
+        search_index,
+        page_index
+    ):
+        # Create search UI
+        search_page, search_widgets = search_result(stacked_widget, title_search, placeholder)
+        search_input = search_widgets[0]
+        search_button = search_widgets[1]
+
+        # Create update UI
+        form_page, form_widgets = update_user(stacked_widget, title_form, action_button_text)
+        name_field, balance_field, amount_field, action_button = form_widgets
+
+        def on_search_submit():
+            try:
+                account_number = int(search_input.text().strip())
+            except ValueError:
+                show_popup_message(stacked_widget, "Please enter a valid account number.", search_index)
+                return
+
+            if backend.check_acc_no(account_number):
+                account_data = backend.get_details(account_number)
+                name_field.setText(str(account_data[1]))
+                balance_field.setText(str(account_data[4]))
+                stacked_widget.setCurrentIndex(page_index)
+            else:
+                show_popup_message(stacked_widget, "Account not found", search_index, show_cancel=True, cancel_page=EMPLOYEE_MENU_PAGE)
+
+        def on_action_submit():
+            try:
+                account_number = int(search_input.text().strip())
+                amount = int(amount_field.text().strip())
+                backend_action_fn(amount, account_number)
+                name_field.setText("")
+                balance_field.setText("")
+                search_input.setText("")
+                show_popup_message(stacked_widget, success_message, EMPLOYEE_MENU_PAGE)
+            except ValueError:
+                show_popup_message(stacked_widget, "Enter valid numeric amount.", page_index)
+
+        search_button.clicked.connect(on_search_submit)
+        action_button.clicked.connect(on_action_submit)
+
+        return search_page, form_page
+    # Add Balance Flow
+    add_balance_search_page, add_balance_page = setup_balance_operation_flow(
+        stacked_widget=stacked_widget,
+        title_search="Add Balance",
+        placeholder="Enter Account Number: ",
+        title_form="Add Balance User Account",
+        action_button_text="Enter Amount: ",
+        success_message="Balance updated successfully",
+        backend_action_fn=backend.update_balance,
+        stacked_page_index=EMPLOYEE_ADD_BALANCE_SEARCH,
+        search_index=EMPLOYEE_ADD_BALANCE_SEARCH,
+        page_index=EMPLOYEE_ADD_BALANCE_PAGE,
+    )
+
+    # Withdraw Money Flow
+    withdraw_money_search_page, withdraw_money_page = setup_balance_operation_flow(
+        stacked_widget=stacked_widget,
+        title_search="Withdraw Money",
+        placeholder="Enter Account Number: ",
+        title_form="Withdraw Money From User Account",
+        action_button_text="Withdraw Amount: ",
+        success_message="Amount withdrawn successfully",
+        backend_action_fn=backend.deduct_balance,
+        stacked_page_index=EMPLOYEE_WITHDRAW_MONEY_SEARCH,
+        search_index=EMPLOYEE_WITHDRAW_MONEY_SEARCH,
+        page_index=EMPLOYEE_WITHDRAW_MONEY_PAGE,
+    )
+
         
     stacked_widget.addWidget(home_page)#0
     stacked_widget.addWidget(admin_page)#1
