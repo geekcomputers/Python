@@ -21,6 +21,8 @@ EMPLOYEE_SHOW_DETAILS_PAGE1 = 11
 EMPLOYEE_SHOW_DETAILS_PAGE2 = 12
 EMPLOYEE_ADD_BALANCE_SEARCH = 13
 EMPLOYEE_ADD_BALANCE_PAGE = 14
+EMPLOYEE_WITHDRAW_MONEY_SEARCH = 15
+EMPLOYEE_WITHDRAW_MONEY_PAGE = 16
 
 FONT_SIZE = QtGui.QFont("Segoe UI", 12)
 # -------------------------------------------------------------------------------------------------------------
@@ -773,7 +775,7 @@ def create_show_details_page2(parent, title):
     
     return page,(account_no_field,name_field,age_field,address_field,balance_field,mobile_number_field,account_type_field,exite_btn)
     
-def update_user_balance(parent, title):
+def update_user(parent, title,input_fields_label):
     page, main_layout = create_page_with_header(parent, title)
     content_frame = create_styled_frame(page)
     content_frame.setSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Expanding)
@@ -786,7 +788,7 @@ def update_user_balance(parent, title):
     # Define input fields
     user = create_input_field(form_frame, "User Name: ", min_label_size=(180, 0))
     user_balance = create_input_field(form_frame, "Balance: ", min_label_size=(180, 0))
-    user_update_balance = create_input_field_V(form_frame, "Add amount: ", min_label_size=(180, 0))
+    user_update_balance = create_input_field_V(form_frame, input_fields_label, min_label_size=(180, 0))
     
     # Add input fields to the form layout
     form_layout.addWidget(user[0])
@@ -816,6 +818,7 @@ def update_user_balance(parent, title):
     main_layout.addWidget(content_frame)
     
     return page,(user_account_name,user_balance_field,user_update_balance_field,submit_button)
+
 # -------------------------------------------------------------------------------------------------------------
 # === Main Window Setup ===
 # -------------------------------------------------------------------------------------------------------------
@@ -1017,7 +1020,7 @@ def setup_main_window(main_window: QtWidgets.QMainWindow):
     E_Create_Account.clicked.connect(lambda: stacked_widget.setCurrentIndex(EMPLOYEE_CREATE_ACCOUNT_PAGE))
     E_Show_Details.clicked.connect(lambda: stacked_widget.setCurrentIndex(EMPLOYEE_SHOW_DETAILS_PAGE1))
     E_add_Balance.clicked.connect(lambda: stacked_widget.setCurrentIndex(EMPLOYEE_ADD_BALANCE_SEARCH))
-    # E_Withdraw_Money.clicked.connect(lambda: stacked_widget.setCurrentIndex(EMPLOYEE_WITHDRAW_MONEY_PAGE))
+    E_Withdraw_Money.clicked.connect(lambda: stacked_widget.setCurrentIndex(EMPLOYEE_WITHDRAW_MONEY_SEARCH))
     # E_Chack_Balanace.clicked.connect(lambda: stacked_widget.setCurrentIndex(EMPLOYEE_CHECK_BALANCE_PAGE))
     # E_Update_Account.clicked.connect(lambda: stacked_widget.setCurrentIndex(EMPLOYEE_UPDATE_ACCOUNT_PAGE))
     # E_list_of_all_Members.clicked.connect(lambda: stacked_widget.setCurrentIndex(EMPLOYEE_LIST_OF_ALL_MEMBERS_PAGE))
@@ -1102,14 +1105,14 @@ def setup_main_window(main_window: QtWidgets.QMainWindow):
             stacked_widget.setCurrentIndex(EMPLOYEE_SHOW_DETAILS_PAGE2)
         else:
             show_popup_message(stacked_widget, "Account not found", EMPLOYEE_SHOW_DETAILS_PAGE1)
-        
+    
+    # Add balance page
     add_balance_search_page,add_balance_search_other = search_result(stacked_widget, "Add Balance","Enter Account Number: ")
     add_balance_search_other[1].clicked.connect(lambda: add_balance_page_submit_btn(int(add_balance_search_other[0].text().strip())))
     
     
-    add_balance_page,add_balance_other =update_user_balance(stacked_widget, "Add Balance User Account")
+    add_balance_page,add_balance_other =update_user(stacked_widget, "Add Balance User Account","Enter Ammount: ")
     add_balance_other[3].clicked.connect(lambda:update_user_account_balance(add_balance_other[2].text().strip()))
-    # user_account_name,user_balance_field,user_update_balance_field,submit_button
     
     
     def add_balance_page_submit_btn(account_number:int):
@@ -1131,6 +1134,35 @@ def setup_main_window(main_window: QtWidgets.QMainWindow):
         show_popup_message(stacked_widget, "Balance updated successfully", EMPLOYEE_MENU_PAGE)
         add_balance_search_other[0].setText("")
         
+    # Withdraw money page
+    withdraw_money_search_page,withdraw_money_search_other = search_result(stacked_widget, "Withdraw Money","Enter Account Number: ")
+    withdraw_money_search_other[1].clicked.connect(lambda: withdraw_money_page_submit_btn(int(withdraw_money_search_other[0].text().strip())))
+    
+    
+    withdraw_money_page,withdraw_money_other =update_user(stacked_widget, "Withdraw Money From User Account","Withdraw Amount: ")
+    withdraw_money_other[3].clicked.connect(lambda:update_user_account_withdraw(withdraw_money_other[2].text().strip()))   
+    
+    def withdraw_money_page_submit_btn(account_number:int):
+        print(account_number)
+        check = backend.check_acc_no(account_number)
+        print(check)
+        if check:
+            account_data = backend.get_details(account_number)
+            withdraw_money_other[0].setText(str(account_data[1]))
+            withdraw_money_other[1].setText(str(account_data[4]))
+            stacked_widget.setCurrentIndex(16)
+            return account_data
+        else:
+            show_popup_message(stacked_widget, "Account not found", EMPLOYEE_WITHDRAW_MONEY_SEARCH,show_cancel=True,cancel_page=EMPLOYEE_MENU_PAGE)
+    
+    def update_user_account_withdraw(withdraw_money:int):
+        account_number=int(withdraw_money_search_other[0].text().strip())
+        backend.deduct_balance(int(withdraw_money),int(account_number))
+        withdraw_money_other[0].setText("")
+        withdraw_money_other[1].setText("")
+        show_popup_message(stacked_widget, "Balance updated successfully", EMPLOYEE_MENU_PAGE)
+        withdraw_money_search_other[0].setText("")
+        
     stacked_widget.addWidget(home_page)#0
     stacked_widget.addWidget(admin_page)#1
     stacked_widget.addWidget(employee_page)#2
@@ -1146,6 +1178,8 @@ def setup_main_window(main_window: QtWidgets.QMainWindow):
     stacked_widget.addWidget(show_bank_user_data_page2)#12
     stacked_widget.addWidget(add_balance_search_page)#13
     stacked_widget.addWidget(add_balance_page)#14
+    stacked_widget.addWidget(withdraw_money_search_page)#15
+    stacked_widget.addWidget(withdraw_money_page)#16
     
     
     
@@ -1153,7 +1187,7 @@ def setup_main_window(main_window: QtWidgets.QMainWindow):
     main_window.setCentralWidget(central_widget)
     
     # Set initial page
-    stacked_widget.setCurrentIndex(0)
+    stacked_widget.setCurrentIndex(9)
     
     return stacked_widget, {
         "admin_name": admin_name,
