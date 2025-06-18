@@ -115,6 +115,14 @@ def update_address_in_bank_table(new_address, acc_no):
     cur.execute("UPDATE bank SET address = ? WHERE acc_no = ?", (new_address, acc_no))
     conn.commit()
 
+def update_mobile_number_in_bank_table(new_mobile_number, acc_no):
+    cur.execute("UPDATE bank SET mobile_number = ? WHERE acc_no = ?", (new_mobile_number, acc_no))
+    conn.commit()
+
+def update_acc_type_in_bank_table(new_acc_type, acc_no):
+    cur.execute("UPDATE bank SET account_type = ? WHERE acc_no = ?", (new_acc_type, acc_no))
+    conn.commit()
+
 # List all customers
 def list_all_customers():
     cur.execute("SELECT * FROM bank")
