@@ -23,6 +23,8 @@ EMPLOYEE_ADD_BALANCE_SEARCH = 13
 EMPLOYEE_ADD_BALANCE_PAGE = 14
 EMPLOYEE_WITHDRAW_MONEY_SEARCH = 15
 EMPLOYEE_WITHDRAW_MONEY_PAGE = 16
+EMPLOYEE_CHECK_BALANCE_SEARCH = 17
+EMPLOYEE_CHECK_BALANCE_PAGE = 18
 
 FONT_SIZE = QtGui.QFont("Segoe UI", 12)
 # -------------------------------------------------------------------------------------------------------------
@@ -775,7 +777,7 @@ def create_show_details_page2(parent, title):
     
     return page,(account_no_field,name_field,age_field,address_field,balance_field,mobile_number_field,account_type_field,exite_btn)
     
-def update_user(parent, title,input_fields_label):
+def update_user(parent, title,input_fields_label,input_fielf:bool=True):
     page, main_layout = create_page_with_header(parent, title)
     content_frame = create_styled_frame(page)
     content_frame.setSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Expanding)
@@ -788,12 +790,14 @@ def update_user(parent, title,input_fields_label):
     # Define input fields
     user = create_input_field(form_frame, "User Name: ", min_label_size=(180, 0))
     user_balance = create_input_field(form_frame, "Balance: ", min_label_size=(180, 0))
-    user_update_balance = create_input_field_V(form_frame, input_fields_label, min_label_size=(180, 0))
+        
     
     # Add input fields to the form layout
     form_layout.addWidget(user[0])
     form_layout.addWidget(user_balance[0])
-    form_layout.addWidget(user_update_balance[0])
+    if input_fielf:
+        user_update_balance = create_input_field_V(form_frame, input_fields_label, min_label_size=(180, 0))
+        form_layout.addWidget(user_update_balance[0])
     
     # Store the input fields in variables
     user_account_name= user[1]
@@ -802,22 +806,42 @@ def update_user(parent, title,input_fields_label):
     user_balance_field = user_balance[1]
     user_balance_field.setReadOnly(True)
     user_balance_field.setStyleSheet("background-color: #8a8a8a; border: 1px solid #ccc; border-radius: 4px; padding: 8px;")
-    user_update_balance_field = user_update_balance[1]
-    user_update_balance_field.setStyleSheet("background-color: #f0f0f0; border: 1px solid #ccc; border-radius: 4px; padding: 8px;")
+    if input_fielf:
+        user_update_balance_field = user_update_balance[1]
+        user_update_balance_field.setStyleSheet("background-color: #f0f0f0; border: 1px solid #ccc; border-radius: 4px; padding: 8px;")
 
     
     # Set the font size for the input fields
     user_account_name.setFont(FONT_SIZE)
     user_balance_field.setFont(FONT_SIZE)
-    user_update_balance_field.setFont(FONT_SIZE)
+    if input_fielf:
+        user_update_balance_field.setFont(FONT_SIZE)
     
     # Add a submit button
     submit_button = create_styled_button(form_frame, "Submit", min_size=(100, 50))
     form_layout.addWidget(submit_button)
     content_layout.addWidget(form_frame, 0, QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
     main_layout.addWidget(content_frame)
-    
-    return page,(user_account_name,user_balance_field,user_update_balance_field,submit_button)
+    back_btn = create_styled_button(content_frame, "Back", min_size=(100, 50))
+    back_btn.setStyleSheet("""
+                           QPushButton {
+                                background-color: #6c757d;
+                                color: white;
+                                border: none;
+                                border-radius: 4px;
+                                padding: 8px 16px;
+                                font-size: 14px;
+                            }
+                            QPushButton:hover {
+                                background-color: #5a6268;
+                            }
+                        """)
+    back_btn.clicked.connect(lambda: parent.setCurrentIndex(EMPLOYEE_MENU_PAGE))
+    backend
+    if input_fielf:
+        return page,(user_account_name,user_balance_field,user_update_balance_field,submit_button)
+    else:
+        return page,(user_account_name,user_balance_field,submit_button)
 
 # -------------------------------------------------------------------------------------------------------------
 # === Main Window Setup ===
@@ -1021,7 +1045,7 @@ def setup_main_window(main_window: QtWidgets.QMainWindow):
     E_Show_Details.clicked.connect(lambda: stacked_widget.setCurrentIndex(EMPLOYEE_SHOW_DETAILS_PAGE1))
     E_add_Balance.clicked.connect(lambda: stacked_widget.setCurrentIndex(EMPLOYEE_ADD_BALANCE_SEARCH))
     E_Withdraw_Money.clicked.connect(lambda: stacked_widget.setCurrentIndex(EMPLOYEE_WITHDRAW_MONEY_SEARCH))
-    # E_Chack_Balanace.clicked.connect(lambda: stacked_widget.setCurrentIndex(EMPLOYEE_CHECK_BALANCE_PAGE))
+    E_Chack_Balanace.clicked.connect(lambda: stacked_widget.setCurrentIndex(EMPLOYEE_CHECK_BALANCE_SEARCH))
     # E_Update_Account.clicked.connect(lambda: stacked_widget.setCurrentIndex(EMPLOYEE_UPDATE_ACCOUNT_PAGE))
     # E_list_of_all_Members.clicked.connect(lambda: stacked_widget.setCurrentIndex(EMPLOYEE_LIST_OF_ALL_MEMBERS_PAGE))
     # E_Delete_Account.clicked.connect(lambda: stacked_widget.setCurrentIndex(EMPLOYEE_DELETE_ACCOUNT_PAGE))
@@ -1116,7 +1140,8 @@ def setup_main_window(main_window: QtWidgets.QMainWindow):
         backend_action_fn,
         stacked_page_index,
         search_index,
-        page_index
+        page_index,
+        need_input=True 
     ):
         # Create search UI
         search_page, search_widgets = search_result(stacked_widget, title_search, placeholder)
@@ -1124,8 +1149,11 @@ def setup_main_window(main_window: QtWidgets.QMainWindow):
         search_button = search_widgets[1]
 
         # Create update UI
-        form_page, form_widgets = update_user(stacked_widget, title_form, action_button_text)
-        name_field, balance_field, amount_field, action_button = form_widgets
+        form_page, form_widgets = update_user(stacked_widget, title_form, action_button_text,need_input)
+        if need_input:
+            name_field, balance_field, amount_field, action_button = form_widgets
+        else:
+            name_field, balance_field, action_button = form_widgets
 
         def on_search_submit():
             try:
@@ -1186,7 +1214,30 @@ def setup_main_window(main_window: QtWidgets.QMainWindow):
         page_index=EMPLOYEE_WITHDRAW_MONEY_PAGE,
     )
 
+    check_balance_search_page, check_balance_page = setup_balance_operation_flow(
+        stacked_widget=stacked_widget,
+        title_search="Check Balance",
+        placeholder="Enter Account Number: ",
+        title_form="Check Balance",
+        action_button_text="Check Balance: ",
+        success_message="Balance checked successfully",
+        backend_action_fn=backend.check_balance,
+        stacked_page_index=EMPLOYEE_CHECK_BALANCE_SEARCH,
+        search_index=EMPLOYEE_CHECK_BALANCE_SEARCH,
+        page_index=EMPLOYEE_CHECK_BALANCE_PAGE,
+        need_input = False
+    )
+    def find_and_hide_submit_button(page):
+        # Find all QPushButton widgets in the page
+        buttons = page.findChildren(QtWidgets.QPushButton)
+        for button in buttons:
+            if button.text() == "Submit":
+                button.hide()
+                break
+
+    find_and_hide_submit_button(check_balance_page)
         
+               
     stacked_widget.addWidget(home_page)#0
     stacked_widget.addWidget(admin_page)#1
     stacked_widget.addWidget(employee_page)#2
@@ -1204,6 +1255,8 @@ def setup_main_window(main_window: QtWidgets.QMainWindow):
     stacked_widget.addWidget(add_balance_page)#14
     stacked_widget.addWidget(withdraw_money_search_page)#15
     stacked_widget.addWidget(withdraw_money_page)#16
+    stacked_widget.addWidget(check_balance_search_page)#17
+    stacked_widget.addWidget(check_balance_page)#18
     
     
     
