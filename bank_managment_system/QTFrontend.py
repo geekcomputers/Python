@@ -25,6 +25,8 @@ EMPLOYEE_WITHDRAW_MONEY_SEARCH = 15
 EMPLOYEE_WITHDRAW_MONEY_PAGE = 16
 EMPLOYEE_CHECK_BALANCE_SEARCH = 17
 EMPLOYEE_CHECK_BALANCE_PAGE = 18
+EMPLOYEE_UPDATE_ACCOUNT_SEARCH = 19
+EMPLOYEE_UPDATE_ACCOUNT_PAGE = 20
 
 FONT_SIZE = QtGui.QFont("Segoe UI", 12)
 # -------------------------------------------------------------------------------------------------------------
@@ -606,7 +608,7 @@ def create_employee_menu_page(parent, title):
 
     return page, *buttons  # Unpack as add_button, update_employee, etc.
 
-def create_account_page(parent, title):
+def create_account_page(parent, title,update_btn=False):
     page, main_layout = create_page_with_header(parent, title)
 
     content_frame = create_styled_frame(page)
@@ -675,8 +677,10 @@ def create_account_page(parent, title):
     button_frame = create_styled_frame(form_frame, style="padding: 7px;")
     button_layout = QtWidgets.QVBoxLayout(button_frame)
     
-    
-    submit_button = create_styled_button(button_frame, "Submit", min_size=(100, 50))
+    if update_btn:
+        submit_button = create_styled_button(button_frame, "Update", min_size=(100, 50))
+    else:
+        submit_button = create_styled_button(button_frame, "Submit", min_size=(100, 50))
     button_layout.addWidget(submit_button, 0, QtCore.Qt.AlignHCenter)
     
 
@@ -1046,7 +1050,7 @@ def setup_main_window(main_window: QtWidgets.QMainWindow):
     E_add_Balance.clicked.connect(lambda: stacked_widget.setCurrentIndex(EMPLOYEE_ADD_BALANCE_SEARCH))
     E_Withdraw_Money.clicked.connect(lambda: stacked_widget.setCurrentIndex(EMPLOYEE_WITHDRAW_MONEY_SEARCH))
     E_Chack_Balanace.clicked.connect(lambda: stacked_widget.setCurrentIndex(EMPLOYEE_CHECK_BALANCE_SEARCH))
-    # E_Update_Account.clicked.connect(lambda: stacked_widget.setCurrentIndex(EMPLOYEE_UPDATE_ACCOUNT_PAGE))
+    E_Update_Account.clicked.connect(lambda: stacked_widget.setCurrentIndex(EMPLOYEE_UPDATE_ACCOUNT_SEARCH))
     # E_list_of_all_Members.clicked.connect(lambda: stacked_widget.setCurrentIndex(EMPLOYEE_LIST_OF_ALL_MEMBERS_PAGE))
     # E_Delete_Account.clicked.connect(lambda: stacked_widget.setCurrentIndex(EMPLOYEE_DELETE_ACCOUNT_PAGE))
     # E_Back.clicked.connect(lambda: stacked_widget.setCurrentIndex(EMPLOYEE_MENU_PAGE))
@@ -1236,6 +1240,56 @@ def setup_main_window(main_window: QtWidgets.QMainWindow):
                 break
 
     find_and_hide_submit_button(check_balance_page)
+    
+    # Update Employee details
+    update_empolyee_search_page,update_empolyee_search_other = search_result(stacked_widget, "Update Employee Details", "Enter Employee ID: ")
+    update_employee_page,update_employee_other = create_account_page(stacked_widget, "Update Employee", True)
+    name_edit = update_employee_other[0]
+    Age_edit = update_employee_other[1]
+    Address_edit = update_employee_other[2]
+    Balance_edit = update_employee_other[3]
+    Mobile_number_edit = update_employee_other[4]
+    account_type_dropdown = update_employee_other[5]
+    # name_edit, Age_edit,Address_edit,Balance_edit,Mobile_number_edit, account_type_dropdown ,submit_button
+    
+    update_empolyee_search_other[1].clicked.connect(lambda:update_employee_search_submit())
+    update_employee_other[6].clicked.connect(lambda:update_employee_submit())
+    def update_employee_search_submit():
+        try:
+            user_data = backend.get_details(int(update_empolyee_search_other[0].text().strip()))
+            print("Featch data: ",user_data)
+            name_edit.setText(str(user_data[1]))
+            Age_edit.setText(str(user_data[2]))
+            Address_edit.setText(str(user_data[3]))
+            Balance_edit.setText(str(user_data[4]))
+            Mobile_number_edit.setText(str(user_data[6]))
+            Balance_edit.setDisabled(True)
+            account_type_dropdown.setCurrentText(str(user_data[5]))
+            stacked_widget.setCurrentIndex(EMPLOYEE_UPDATE_ACCOUNT_PAGE)
+        except ValueError:
+            show_popup_message(stacked_widget, "Enter valid numeric employee ID.", EMPLOYEE_MENU_PAGE)
+            
+    def update_employee_submit():
+        try:
+            user_data = backend.get_details(int(update_empolyee_search_other[0].text().strip()))
+            name=name_edit.text().strip()
+            age = int(Age_edit.text().strip())
+            address = Address_edit.text().strip()
+            mobile_number = int(Mobile_number_edit.text().strip())
+            account_type = account_type_dropdown.currentText()
+            print(name,age,address,mobile_number,account_type)
+            backend.update_name_in_bank_table(name,user_data[0])
+            backend.update_age_in_bank_table(age,user_data[0])
+            backend.update_address_in_bank_table(address,user_data[0])
+            backend.update_address_in_bank_table(address,user_data[0])
+            backend.update_mobile_number_in_bank_table(mobile_number,user_data[0])
+            backend.update_acc_type_in_bank_table(account_type,user_data[0])
+            
+            show_popup_message(stacked_widget, "Employee details updated successfully", EMPLOYEE_MENU_PAGE)
+            stacked_widget.setCurrentIndex(EMPLOYEE_MENU_PAGE)
+        except ValueError as e:
+            print(e)
+            show_popup_message(stacked_widget, "Enter valid numeric employee ID.", EMPLOYEE_MENU_PAGE)
         
                
     stacked_widget.addWidget(home_page)#0
@@ -1257,6 +1311,8 @@ def setup_main_window(main_window: QtWidgets.QMainWindow):
     stacked_widget.addWidget(withdraw_money_page)#16
     stacked_widget.addWidget(check_balance_search_page)#17
     stacked_widget.addWidget(check_balance_page)#18
+    stacked_widget.addWidget(update_empolyee_search_page)#19
+    stacked_widget.addWidget(update_employee_page)#20
     
     
     
