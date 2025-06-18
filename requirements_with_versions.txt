@@ -22,7 +22,7 @@ win10toast==0.9
 Counter==1.0.0
 Flask==3.1.1
 selenium==4.33.0
-firebase-admin==6.8.0
+firebase-admin==6.9.0
 ujson==5.10.0
 requests==2.32.4
 quo==2023.5.1
@@ -51,7 +51,7 @@ pywifi==1.1.12
 patterns==0.3
 openai==1.86.0
 background==0.2.1
-pydantic==2.11.4
+pydantic==2.11.6
 openpyxl==3.1.2
 pytesseract==0.3.13
 requests-mock==1.12.1
@@ -70,7 +70,7 @@ yfinance==0.2.62
 tweepy==4.15.0
 tkcalendar==1.6.1
 pytube==15.0.0
-xor-cipher==5.0.1
+xor-cipher==5.0.2
 bird==0.1.2
 mechanize==0.4.10
 translate==3.6.1
