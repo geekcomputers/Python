@@ -23,6 +23,10 @@ EMPLOYEE_ADD_BALANCE_SEARCH = 13
 EMPLOYEE_ADD_BALANCE_PAGE = 14
 EMPLOYEE_WITHDRAW_MONEY_SEARCH = 15
 EMPLOYEE_WITHDRAW_MONEY_PAGE = 16
+EMPLOYEE_CHECK_BALANCE_SEARCH = 17
+EMPLOYEE_CHECK_BALANCE_PAGE = 18
+EMPLOYEE_UPDATE_ACCOUNT_SEARCH = 19
+EMPLOYEE_UPDATE_ACCOUNT_PAGE = 20
 
 FONT_SIZE = QtGui.QFont("Segoe UI", 12)
 # -------------------------------------------------------------------------------------------------------------
@@ -604,7 +608,7 @@ def create_employee_menu_page(parent, title):
 
     return page, *buttons  # Unpack as add_button, update_employee, etc.
 
-def create_account_page(parent, title):
+def create_account_page(parent, title,update_btn=False):
     page, main_layout = create_page_with_header(parent, title)
 
     content_frame = create_styled_frame(page)
@@ -673,8 +677,10 @@ def create_account_page(parent, title):
     button_frame = create_styled_frame(form_frame, style="padding: 7px;")
     button_layout = QtWidgets.QVBoxLayout(button_frame)
     
-    
-    submit_button = create_styled_button(button_frame, "Submit", min_size=(100, 50))
+    if update_btn:
+        submit_button = create_styled_button(button_frame, "Update", min_size=(100, 50))
+    else:
+        submit_button = create_styled_button(button_frame, "Submit", min_size=(100, 50))
     button_layout.addWidget(submit_button, 0, QtCore.Qt.AlignHCenter)
     
 
@@ -775,7 +781,7 @@ def create_show_details_page2(parent, title):
     
     return page,(account_no_field,name_field,age_field,address_field,balance_field,mobile_number_field,account_type_field,exite_btn)
     
-def update_user(parent, title,input_fields_label):
+def update_user(parent, title,input_fields_label,input_fielf:bool=True):
     page, main_layout = create_page_with_header(parent, title)
     content_frame = create_styled_frame(page)
     content_frame.setSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Expanding)
@@ -788,12 +794,14 @@ def update_user(parent, title,input_fields_label):
     # Define input fields
     user = create_input_field(form_frame, "User Name: ", min_label_size=(180, 0))
     user_balance = create_input_field(form_frame, "Balance: ", min_label_size=(180, 0))
-    user_update_balance = create_input_field_V(form_frame, input_fields_label, min_label_size=(180, 0))
+        
     
     # Add input fields to the form layout
     form_layout.addWidget(user[0])
     form_layout.addWidget(user_balance[0])
-    form_layout.addWidget(user_update_balance[0])
+    if input_fielf:
+        user_update_balance = create_input_field_V(form_frame, input_fields_label, min_label_size=(180, 0))
+        form_layout.addWidget(user_update_balance[0])
     
     # Store the input fields in variables
     user_account_name= user[1]
@@ -802,22 +810,42 @@ def update_user(parent, title,input_fields_label):
     user_balance_field = user_balance[1]
     user_balance_field.setReadOnly(True)
     user_balance_field.setStyleSheet("background-color: #8a8a8a; border: 1px solid #ccc; border-radius: 4px; padding: 8px;")
-    user_update_balance_field = user_update_balance[1]
-    user_update_balance_field.setStyleSheet("background-color: #f0f0f0; border: 1px solid #ccc; border-radius: 4px; padding: 8px;")
+    if input_fielf:
+        user_update_balance_field = user_update_balance[1]
+        user_update_balance_field.setStyleSheet("background-color: #f0f0f0; border: 1px solid #ccc; border-radius: 4px; padding: 8px;")
 
     
     # Set the font size for the input fields
     user_account_name.setFont(FONT_SIZE)
     user_balance_field.setFont(FONT_SIZE)
-    user_update_balance_field.setFont(FONT_SIZE)
+    if input_fielf:
+        user_update_balance_field.setFont(FONT_SIZE)
     
     # Add a submit button
     submit_button = create_styled_button(form_frame, "Submit", min_size=(100, 50))
     form_layout.addWidget(submit_button)
     content_layout.addWidget(form_frame, 0, QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
     main_layout.addWidget(content_frame)
-    
-    return page,(user_account_name,user_balance_field,user_update_balance_field,submit_button)
+    back_btn = create_styled_button(content_frame, "Back", min_size=(100, 50))
+    back_btn.setStyleSheet("""
+                           QPushButton {
+                                background-color: #6c757d;
+                                color: white;
+                                border: none;
+                                border-radius: 4px;
+                                padding: 8px 16px;
+                                font-size: 14px;
+                            }
+                            QPushButton:hover {
+                                background-color: #5a6268;
+                            }
+                        """)
+    back_btn.clicked.connect(lambda: parent.setCurrentIndex(EMPLOYEE_MENU_PAGE))
+    backend
+    if input_fielf:
+        return page,(user_account_name,user_balance_field,user_update_balance_field,submit_button)
+    else:
+        return page,(user_account_name,user_balance_field,submit_button)
 
 # -------------------------------------------------------------------------------------------------------------
 # === Main Window Setup ===
@@ -1021,8 +1049,8 @@ def setup_main_window(main_window: QtWidgets.QMainWindow):
     E_Show_Details.clicked.connect(lambda: stacked_widget.setCurrentIndex(EMPLOYEE_SHOW_DETAILS_PAGE1))
     E_add_Balance.clicked.connect(lambda: stacked_widget.setCurrentIndex(EMPLOYEE_ADD_BALANCE_SEARCH))
     E_Withdraw_Money.clicked.connect(lambda: stacked_widget.setCurrentIndex(EMPLOYEE_WITHDRAW_MONEY_SEARCH))
-    # E_Chack_Balanace.clicked.connect(lambda: stacked_widget.setCurrentIndex(EMPLOYEE_CHECK_BALANCE_PAGE))
-    # E_Update_Account.clicked.connect(lambda: stacked_widget.setCurrentIndex(EMPLOYEE_UPDATE_ACCOUNT_PAGE))
+    E_Chack_Balanace.clicked.connect(lambda: stacked_widget.setCurrentIndex(EMPLOYEE_CHECK_BALANCE_SEARCH))
+    E_Update_Account.clicked.connect(lambda: stacked_widget.setCurrentIndex(EMPLOYEE_UPDATE_ACCOUNT_SEARCH))
     # E_list_of_all_Members.clicked.connect(lambda: stacked_widget.setCurrentIndex(EMPLOYEE_LIST_OF_ALL_MEMBERS_PAGE))
     # E_Delete_Account.clicked.connect(lambda: stacked_widget.setCurrentIndex(EMPLOYEE_DELETE_ACCOUNT_PAGE))
     # E_Back.clicked.connect(lambda: stacked_widget.setCurrentIndex(EMPLOYEE_MENU_PAGE))
@@ -1106,63 +1134,164 @@ def setup_main_window(main_window: QtWidgets.QMainWindow):
         else:
             show_popup_message(stacked_widget, "Account not found", EMPLOYEE_SHOW_DETAILS_PAGE1)
     
-    # Add balance page
-    add_balance_search_page,add_balance_search_other = search_result(stacked_widget, "Add Balance","Enter Account Number: ")
-    add_balance_search_other[1].clicked.connect(lambda: add_balance_page_submit_btn(int(add_balance_search_other[0].text().strip())))
-    
-    
-    add_balance_page,add_balance_other =update_user(stacked_widget, "Add Balance User Account","Enter Ammount: ")
-    add_balance_other[3].clicked.connect(lambda:update_user_account_balance(add_balance_other[2].text().strip()))
-    
-    
-    def add_balance_page_submit_btn(account_number:int):
-        check = backend.check_acc_no(account_number)
-        if check:
-            account_data = backend.get_details(account_number)
-            add_balance_other[0].setText(str(account_data[1]))
-            add_balance_other[1].setText(str(account_data[4]))
-            stacked_widget.setCurrentIndex(14)
-            return account_data
+    def setup_balance_operation_flow(
+        stacked_widget,
+        title_search,
+        placeholder,
+        title_form,
+        action_button_text,
+        success_message,
+        backend_action_fn,
+        stacked_page_index,
+        search_index,
+        page_index,
+        need_input=True 
+    ):
+        # Create search UI
+        search_page, search_widgets = search_result(stacked_widget, title_search, placeholder)
+        search_input = search_widgets[0]
+        search_button = search_widgets[1]
+
+        # Create update UI
+        form_page, form_widgets = update_user(stacked_widget, title_form, action_button_text,need_input)
+        if need_input:
+            name_field, balance_field, amount_field, action_button = form_widgets
         else:
-            show_popup_message(stacked_widget, "Account not found", EMPLOYEE_ADD_BALANCE_SEARCH,show_cancel=True,cancel_page=EMPLOYEE_MENU_PAGE)
+            name_field, balance_field, action_button = form_widgets
+
+        def on_search_submit():
+            try:
+                account_number = int(search_input.text().strip())
+            except ValueError:
+                show_popup_message(stacked_widget, "Please enter a valid account number.", search_index)
+                return
+
+            if backend.check_acc_no(account_number):
+                account_data = backend.get_details(account_number)
+                name_field.setText(str(account_data[1]))
+                balance_field.setText(str(account_data[4]))
+                stacked_widget.setCurrentIndex(page_index)
+            else:
+                show_popup_message(stacked_widget, "Account not found", search_index, show_cancel=True, cancel_page=EMPLOYEE_MENU_PAGE)
+
+        def on_action_submit():
+            try:
+                account_number = int(search_input.text().strip())
+                amount = int(amount_field.text().strip())
+                backend_action_fn(amount, account_number)
+                name_field.setText("")
+                balance_field.setText("")
+                search_input.setText("")
+                show_popup_message(stacked_widget, success_message, EMPLOYEE_MENU_PAGE)
+            except ValueError:
+                show_popup_message(stacked_widget, "Enter valid numeric amount.", page_index)
+
+        search_button.clicked.connect(on_search_submit)
+        action_button.clicked.connect(on_action_submit)
+
+        return search_page, form_page
+    # Add Balance Flow
+    add_balance_search_page, add_balance_page = setup_balance_operation_flow(
+        stacked_widget=stacked_widget,
+        title_search="Add Balance",
+        placeholder="Enter Account Number: ",
+        title_form="Add Balance User Account",
+        action_button_text="Enter Amount: ",
+        success_message="Balance updated successfully",
+        backend_action_fn=backend.update_balance,
+        stacked_page_index=EMPLOYEE_ADD_BALANCE_SEARCH,
+        search_index=EMPLOYEE_ADD_BALANCE_SEARCH,
+        page_index=EMPLOYEE_ADD_BALANCE_PAGE,
+    )
+
+    # Withdraw Money Flow
+    withdraw_money_search_page, withdraw_money_page = setup_balance_operation_flow(
+        stacked_widget=stacked_widget,
+        title_search="Withdraw Money",
+        placeholder="Enter Account Number: ",
+        title_form="Withdraw Money From User Account",
+        action_button_text="Withdraw Amount: ",
+        success_message="Amount withdrawn successfully",
+        backend_action_fn=backend.deduct_balance,
+        stacked_page_index=EMPLOYEE_WITHDRAW_MONEY_SEARCH,
+        search_index=EMPLOYEE_WITHDRAW_MONEY_SEARCH,
+        page_index=EMPLOYEE_WITHDRAW_MONEY_PAGE,
+    )
+
+    check_balance_search_page, check_balance_page = setup_balance_operation_flow(
+        stacked_widget=stacked_widget,
+        title_search="Check Balance",
+        placeholder="Enter Account Number: ",
+        title_form="Check Balance",
+        action_button_text="Check Balance: ",
+        success_message="Balance checked successfully",
+        backend_action_fn=backend.check_balance,
+        stacked_page_index=EMPLOYEE_CHECK_BALANCE_SEARCH,
+        search_index=EMPLOYEE_CHECK_BALANCE_SEARCH,
+        page_index=EMPLOYEE_CHECK_BALANCE_PAGE,
+        need_input = False
+    )
+    def find_and_hide_submit_button(page):
+        # Find all QPushButton widgets in the page
+        buttons = page.findChildren(QtWidgets.QPushButton)
+        for button in buttons:
+            if button.text() == "Submit":
+                button.hide()
+                break
+
+    find_and_hide_submit_button(check_balance_page)
+    
+    # Update Employee details
+    update_empolyee_search_page,update_empolyee_search_other = search_result(stacked_widget, "Update Employee Details", "Enter Employee ID: ")
+    update_employee_page,update_employee_other = create_account_page(stacked_widget, "Update Employee", True)
+    name_edit = update_employee_other[0]
+    Age_edit = update_employee_other[1]
+    Address_edit = update_employee_other[2]
+    Balance_edit = update_employee_other[3]
+    Mobile_number_edit = update_employee_other[4]
+    account_type_dropdown = update_employee_other[5]
+    # name_edit, Age_edit,Address_edit,Balance_edit,Mobile_number_edit, account_type_dropdown ,submit_button
+    
+    update_empolyee_search_other[1].clicked.connect(lambda:update_employee_search_submit())
+    update_employee_other[6].clicked.connect(lambda:update_employee_submit())
+    def update_employee_search_submit():
+        try:
+            user_data = backend.get_details(int(update_empolyee_search_other[0].text().strip()))
+            print("Featch data: ",user_data)
+            name_edit.setText(str(user_data[1]))
+            Age_edit.setText(str(user_data[2]))
+            Address_edit.setText(str(user_data[3]))
+            Balance_edit.setText(str(user_data[4]))
+            Mobile_number_edit.setText(str(user_data[6]))
+            Balance_edit.setDisabled(True)
+            account_type_dropdown.setCurrentText(str(user_data[5]))
+            stacked_widget.setCurrentIndex(EMPLOYEE_UPDATE_ACCOUNT_PAGE)
+        except ValueError:
+            show_popup_message(stacked_widget, "Enter valid numeric employee ID.", EMPLOYEE_MENU_PAGE)
+            
+    def update_employee_submit():
+        try:
+            user_data = backend.get_details(int(update_empolyee_search_other[0].text().strip()))
+            name=name_edit.text().strip()
+            age = int(Age_edit.text().strip())
+            address = Address_edit.text().strip()
+            mobile_number = int(Mobile_number_edit.text().strip())
+            account_type = account_type_dropdown.currentText()
+            print(name,age,address,mobile_number,account_type)
+            backend.update_name_in_bank_table(name,user_data[0])
+            backend.update_age_in_bank_table(age,user_data[0])
+            backend.update_address_in_bank_table(address,user_data[0])
+            backend.update_address_in_bank_table(address,user_data[0])
+            backend.update_mobile_number_in_bank_table(mobile_number,user_data[0])
+            backend.update_acc_type_in_bank_table(account_type,user_data[0])
+            
+            show_popup_message(stacked_widget, "Employee details updated successfully", EMPLOYEE_MENU_PAGE)
+            stacked_widget.setCurrentIndex(EMPLOYEE_MENU_PAGE)
+        except ValueError as e:
+            print(e)
+            show_popup_message(stacked_widget, "Enter valid numeric employee ID.", EMPLOYEE_MENU_PAGE)
         
-    def update_user_account_balance(add_money:int):
-        account_number=int(add_balance_search_other[0].text().strip())
-        backend.update_balance(add_money,account_number)
-        add_balance_other[0].setText("")
-        add_balance_other[1].setText("")
-        show_popup_message(stacked_widget, "Balance updated successfully", EMPLOYEE_MENU_PAGE)
-        add_balance_search_other[0].setText("")
-        
-    # Withdraw money page
-    withdraw_money_search_page,withdraw_money_search_other = search_result(stacked_widget, "Withdraw Money","Enter Account Number: ")
-    withdraw_money_search_other[1].clicked.connect(lambda: withdraw_money_page_submit_btn(int(withdraw_money_search_other[0].text().strip())))
-    
-    
-    withdraw_money_page,withdraw_money_other =update_user(stacked_widget, "Withdraw Money From User Account","Withdraw Amount: ")
-    withdraw_money_other[3].clicked.connect(lambda:update_user_account_withdraw(withdraw_money_other[2].text().strip()))   
-    
-    def withdraw_money_page_submit_btn(account_number:int):
-        print(account_number)
-        check = backend.check_acc_no(account_number)
-        print(check)
-        if check:
-            account_data = backend.get_details(account_number)
-            withdraw_money_other[0].setText(str(account_data[1]))
-            withdraw_money_other[1].setText(str(account_data[4]))
-            stacked_widget.setCurrentIndex(16)
-            return account_data
-        else:
-            show_popup_message(stacked_widget, "Account not found", EMPLOYEE_WITHDRAW_MONEY_SEARCH,show_cancel=True,cancel_page=EMPLOYEE_MENU_PAGE)
-    
-    def update_user_account_withdraw(withdraw_money:int):
-        account_number=int(withdraw_money_search_other[0].text().strip())
-        backend.deduct_balance(int(withdraw_money),int(account_number))
-        withdraw_money_other[0].setText("")
-        withdraw_money_other[1].setText("")
-        show_popup_message(stacked_widget, "Balance updated successfully", EMPLOYEE_MENU_PAGE)
-        withdraw_money_search_other[0].setText("")
-        
+               
     stacked_widget.addWidget(home_page)#0
     stacked_widget.addWidget(admin_page)#1
     stacked_widget.addWidget(employee_page)#2
@@ -1180,6 +1309,10 @@ def setup_main_window(main_window: QtWidgets.QMainWindow):
     stacked_widget.addWidget(add_balance_page)#14
     stacked_widget.addWidget(withdraw_money_search_page)#15
     stacked_widget.addWidget(withdraw_money_page)#16
+    stacked_widget.addWidget(check_balance_search_page)#17
+    stacked_widget.addWidget(check_balance_page)#18
+    stacked_widget.addWidget(update_empolyee_search_page)#19
+    stacked_widget.addWidget(update_employee_page)#20
     
     
     
