@@ -97,7 +97,7 @@ newspaper==0.1.0.7
 opencv-python==4.11.0.86
 tensorflow==2.18.1
 pandas==2.2.3
-pytest==8.4.0
+pytest==8.4.1
 qrcode==8.2
 googletrans==4.0.2
 slab==1.8.0
