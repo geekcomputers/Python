@@ -33,7 +33,7 @@ tabula==1.0.5
 nltk==3.9.1
 Pillow==11.2.1
 SocksiPy-branch==1.01
-xlrd==2.0.1
+xlrd==2.0.2
 fpdf==1.7.2
 mysql-connector-repackaged==0.3.1
 word2number==1.1
