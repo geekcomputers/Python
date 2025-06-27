@@ -1,0 +1,39 @@
+from langchain_community.vectorstores import Chroma
+from langchain_ollama import OllamaEmbeddings
+from paddleocr import PaddleOCR
+import whisper
+
+def transcript_generator():
+    model = whisper.load_model("base")  
+
+    result = model.transcribe("audio.mp4")
+    provide_summarizer(result)
+ 
+        
+def provide_summarizer(Text):
+    import re
+    
+    import openai
+    openai.api_key="Enter Api Key"
+    openai.api_base = "https://api.groq.com/openai/v1"
+
+    text_to_summarize = Text["text"]
+
+    response = openai.ChatCompletion.create(
+        model="llama3-8b-8192", 
+        messages=[
+            {"role": "system", "content": "You are a helpful assistant who summarizes long text into points."},
+            {"role": "user", "content": f"Summarize the following:\n\n{text_to_summarize}"}
+        ]
+    )
+
+    summary = re.split(r"(?<=[!?]) +",response["choices"][0]["message"]["content"])
+    
+    with open("summary.txt", "w+") as file:
+        for sentence in summary:
+            file.write(sentence.strip() + "\n")
+        file.close()
+
+    
+if __name__ == "__main__":
+    transcript_generator()
