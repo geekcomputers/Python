@@ -6,7 +6,7 @@ import yfinance as yf
 from patterns import Company_Name
 from datetime import datetime as date,timedelta
 
-srart_date = date.today()
+start_date = date.today()
 end_date = date.today() + timedelta(days=1)
 
 
@@ -32,7 +32,7 @@ def News(symbol):
             except:
                 pass
     except Exception as e:
-        sr.Markdown(e)
+        sr.Markdown(str(e))
         sr.Markdown("No news available")
 
 
