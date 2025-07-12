@@ -1,4 +1,3 @@
-import datetime
 import csv
 
 def load_tasks(filename='tasks.csv'):

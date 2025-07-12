@@ -31,7 +31,7 @@ class Phonearena:
             soup = BeautifulSoup(page.text, "html.parser")
             return soup
 
-        except ConnectionError as err:
+        except ConnectionError:
             print("Please check your network connection and re-run the script.")
             exit()
 

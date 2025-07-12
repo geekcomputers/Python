@@ -45,7 +45,7 @@ for url in urls:
         file.close()
 
         print("Done")
-    except urllib2.URLError as e:
+    except urllib2.URLError:
         print(
             "Sorry there exists a problem with this URL Please Download this Manually "
             + str(url)

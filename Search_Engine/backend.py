@@ -1,6 +1,4 @@
 import sqlite3
-import test_data
-import ast
 import json
 
 class SearchEngine:

@@ -1,7 +1,6 @@
 import sqlite3
 import json
 import pandas as pd
-import sklearn
 from sklearn.feature_extraction.text import TfidfVectorizer
 
 class QuestionAnswerVirtualAssistant:

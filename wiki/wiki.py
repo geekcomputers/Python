@@ -5,7 +5,6 @@ import wikipedia
 import tkinter as tk
 from tkinter import Label, Button, Entry, Text, messagebox, SOLID, GROOVE, StringVar, WORD, END
 #import PIL as ImageTK
-from tkinter import messagebox
 
 
 class main():

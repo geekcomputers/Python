@@ -271,7 +271,7 @@ class Tubes(Thread):
                         if x2 <= (self.__width / 2) - (self.__bird_w / 2):
 
                             # Verifica se o tubo está na lista de tubos passados
-                            if not tube[0] in self.__pastTubes:
+                            if tube[0] not in self.__pastTubes:
                                 # Chama o método para pontuar e adiciona o tubo pontuado à lista de tubos passados
                                 self.__score_method()
                                 self.__pastTubes.append(tube[0])

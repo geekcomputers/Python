@@ -1,7 +1,6 @@
 import time
-from colorama import Fore, Back, Style
+from colorama import Fore
 import speech_recognition as sr
-import os
 import pyttsx3
 import datetime
 from rich.progress import Progress

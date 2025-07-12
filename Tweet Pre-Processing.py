@@ -4,9 +4,7 @@
 # In[10]:
 
 
-import numpy as np
 from nltk.corpus import twitter_samples
-import matplotlib.pyplot as plt
 import random
 
 

@@ -1,6 +1,5 @@
 import os
 import argparse
-from typing import Union
 
 def generate_unique_name(directory: str, name: str) -> str:
     """

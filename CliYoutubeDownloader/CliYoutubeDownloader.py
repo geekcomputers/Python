@@ -1,7 +1,7 @@
 # libraraies
 
-import pytubefix
 import sys
+import pytube
 
 
 class YouTubeDownloder:

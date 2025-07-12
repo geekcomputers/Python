@@ -1,8 +1,4 @@
-from gtts import gTTS
-from playsound import playsound
 import win32com
-from win32com import client
-import os
 
 def tts():
     audio = 'speech.mp3'

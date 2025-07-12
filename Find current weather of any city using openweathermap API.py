@@ -3,7 +3,7 @@
 # using openweathermap api 
 
 # import required modules 
-import requests, json 
+import requests
 
 # Enter your API key here 
 api_key = "Your_API_Key"

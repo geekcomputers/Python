@@ -12,7 +12,6 @@ install requirements: python -m pip install selenium
 """
 
 from selenium import webdriver
-import os
 import time
 
 driver = webdriver.Firefox()
