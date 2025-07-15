@@ -1,7 +1,6 @@
 # schedular code for blocking schedular as we have only 1 process to run
 
-from apscheduler.schedulers.blocking import APScheduler
-from blocking_scheduler import BlockingScheduler
+from apscheduler.schedulers.blocking import BlockingScheduler
 
 from caller import search
 
