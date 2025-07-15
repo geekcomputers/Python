@@ -90,7 +90,10 @@ while Game == Running:
         board[choice] = Mark
         player += 1
         CheckWin()
-
+    if choice < 1 or choice > 9:
+        print("Invalid Position! Please choose a position between 1 and 9.")
+        time.sleep(2)
+        continue
 os.system("cls")
 DrawBoard()
 if Game == Draw:
