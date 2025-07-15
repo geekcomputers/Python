@@ -1,7 +1,6 @@
-from PIL import Image, ImageDraw, ImageFont
+from PIL import ImageDraw, ImageFont
 from customtkinter import filedialog
 from CTkMessagebox import CTkMessagebox
-import customtkinter as ctk
 
 
 class Watermark:
@@ -43,5 +42,5 @@ class Watermark:
         if save_path:
             try:
                 image.save(save_path)
-            except Exception as e:
+            except Exception:
                 print("Failed to save image: {e}")

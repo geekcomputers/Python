@@ -16,13 +16,13 @@ import subprocess  # subprocess module allows you to spawn new processes
 import pyjokes  # for generating random jokes
 import requests
 import json
-from PIL import Image, ImageGrab
+from PIL import ImageGrab
 from gtts import gTTS
 
 # for 30 seconds clip "Jarvis, clip that!" and discord ctrl+k quick-move (might not come to fruition)
 from pynput import keyboard
-from pynput.keyboard import Key, Listener
-from pynput.mouse import Button, Controller
+from pynput.keyboard import Key
+from pynput.mouse import Controller
 from playsound import *  # for sound output
 
 
@@ -135,7 +135,7 @@ def takecommand():
         print("Recognizing...")
         query = r.recognize_google(audio, language="en-in")
         print(f"User said {query}\n")
-    except Exception as e:
+    except Exception:
         print("Say that again please...")
         return "None"
     return query

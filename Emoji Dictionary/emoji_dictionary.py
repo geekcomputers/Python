@@ -1,7 +1,6 @@
 # Emoji Dictionary
 
 # -----------------------------------------------------------------------------------------------------
-import io  # used for dealing with input and output
 from tkinter import *  # importing the necessary libraries
 import tkinter.messagebox as mbox
 import tkinter as tk  # imported tkinter as tk

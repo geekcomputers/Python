@@ -1,5 +1,5 @@
-from tkinter import *
-from tkinter import filedialog, messagebox
+
+from tkinter import Button, Entry, Label, Tk, filedialog, messagebox
 from threading import Thread
 from pytube import YouTube
 
@@ -19,7 +19,7 @@ def download():
             messagebox.showinfo('', 'Download completed!')
         else:
             messagebox.showwarning('', 'Download cancelled!')
-    except Exception as e:
+    except Exception:
         messagebox.showerror("Error", "An error occurred while downloading the video.")
 
 

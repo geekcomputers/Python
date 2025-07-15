@@ -1,4 +1,3 @@
-import colorama as color
 
 
 from colorama import Fore, Back, Style

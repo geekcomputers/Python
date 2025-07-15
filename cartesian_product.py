@@ -1,7 +1,6 @@
 """Cartesian Product of Two Lists."""
 
 # Import
-from itertools import product
 
 
 # Cartesian Product of Two Lists
