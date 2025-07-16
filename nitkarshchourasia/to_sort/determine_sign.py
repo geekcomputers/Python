@@ -1,46 +1,70 @@
 from word2number import w2n
 
-# ? word2number then w2n then .word_to_num? So, library(bunch of modules) then module then method(function)???!
-# return w2n.word_to_num(input_value)
-
-
-# TODO: Instead of rounding at the destination, round at the source.
-# Reason: As per the program need, I don't want a functionality to round or not round the number, based on the requirement, I always want to round the number.
-#! Will see it tomorrow.
-
-
 class DetermineSign:
-    def __init__(self, num=None):
+    def __init__(self, num: str | float | None = None) -> None:
+        """
+        Initialize with a number or prompt user input.
+        
+        Args:
+            num: A number (float/int) or string representation (e.g., "5" or "five").
+        """
         if num is None:
-            self.get_number()
+            self.num = self._get_valid_number()
         else:
-            self.num = round(self.convert_to_float(num), 1)
+            self.num = self._convert_to_float(num)
+        self.num = round(self.num, 1)  # Single rounding at initialization
 
-    # TODO: Word2number
-
-    # Need to further understand this.
-    # ? NEED TO UNDERSTAND THIS. FOR SURETY.
-    def convert_to_float(self, input_value):
+    def _convert_to_float(self, input_value: str | float) -> float:
+        """
+        Convert input to float, handling both numeric strings and word representations.
+        
+        Args:
+            input_value: A string (e.g., "5", "five") or numeric value.
+            
+        Returns:
+            The float representation.
+            
+        Raises:
+            ValueError: If input cannot be converted to a valid number.
+        """
+        if isinstance(input_value, (int, float)):
+            return float(input_value)
+        
         try:
+            # Handle numeric strings (e.g., "5.5")
             return float(input_value)
         except ValueError:
             try:
-                return w2n.word_to_num(input_value)
-            except ValueError:
+                # Handle word representations (e.g., "five point five")
+                # Replace "point" with decimal separator for word2number
+                if "point" in input_value.lower():
+                    parts = input_value.lower().split("point")
+                    integer_part = w2n.word_to_num(parts[0].strip())
+                    decimal_part = w2n.word_to_num(parts[1].strip())
+                    return float(f"{integer_part}.{decimal_part}")
+                else:
+                    return float(w2n.word_to_num(input_value))
+            except (ValueError, TypeError):
                 raise ValueError(
-                    "Invalid input. Please enter a number or a word representing a number."
+                    f"Invalid input: '{input_value}'. Please enter a valid number or word."
                 )
 
-    # Now use this in other methods.
+    def _get_valid_number(self) -> float:
+        """
+        Prompt user for input until a valid number is provided.
+        
+        Returns:
+            A validated float.
+        """
+        while True:
+            user_input = input("Enter a number: ").strip()
+            try:
+                return self._convert_to_float(user_input)
+            except ValueError as e:
+                print(f"Error: {e}. Try again.")
 
-    def get_number(self):
-        self.input_value = format(float(input("Enter a number: ")), ".1f")
-        self.num = round(self.convert_to_float(self.input_value), 1)
-        return self.num
-        # Do I want to return the self.num?
-        # I think I have to just store it as it is.
-
-    def determine_sign(self):
+    def determine_sign(self) -> str:
+        """Determine if the number is positive, negative, or zero."""
         if self.num > 0:
             return "Positive number"
         elif self.num < 0:
@@ -48,13 +72,10 @@ class DetermineSign:
         else:
             return "Zero"
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return f"Number: {self.num}, Sign: {self.determine_sign()}"
 
 
 if __name__ == "__main__":
     number1 = DetermineSign()
-    print(number1.determine_sign())
-
-
-# !Incomplete.
+    print(f"The number is {number1.determine_sign()}")

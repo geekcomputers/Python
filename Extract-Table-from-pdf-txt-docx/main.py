@@ -1,104 +1,84 @@
-# %%
 import pandas as pd
 import os
 import tabula
 from docx.api import Document
 
-# %%
+def process_child_directory(child_dir: str) -> dict[str, pd.DataFrame]:
+    """Process a child directory and return dataframes from its files"""
+    results = {}
+    
+    if not os.path.isdir(child_dir):
+        print(f"Skipping {child_dir} - directory not found")
+        return results
+    
+    original_dir = os.getcwd()  # Save current directory
+    os.chdir(child_dir)
+    
+    # Process PDF
+    pdf_name = f"Pdf1_{os.path.basename(child_dir)}.pdf"
+    if os.path.isfile(pdf_name):
+        try:
+            results['pdf'] = tabula.read_pdf(pdf_name, pages="all")
+            print(f"Read PDF: {pdf_name}")
+        except Exception as e:
+            print(f"Error reading PDF {pdf_name}: {e}")
+    
+    # Process DOCX
+    docx_name = f"Document_{os.path.basename(child_dir)}.docx"
+    if os.path.isfile(docx_name):
+        try:
+            doc = Document(docx_name)
+            table = doc.tables[0]
+            data = []
+            keys = None
+            for i, row in enumerate(table.rows):
+                texts = [cell.text for cell in row.cells]
+                if i == 0:
+                    keys = tuple(texts)
+                    continue
+                data.append(dict(zip(keys, texts)))
+            results['document'] = pd.DataFrame(data)
+            print(f"Read DOCX: {docx_name}")
+        except Exception as e:
+            print(f"Error reading DOCX {docx_name}: {e}")
+    
+    # Process TXT
+    txt_name = f"Text_{os.path.basename(child_dir)}.txt"
+    if os.path.isfile(txt_name):
+        try:
+            results['text'] = pd.read_csv(txt_name)
+            print(f"Read TXT: {txt_name}")
+        except Exception as e:
+            print(f"Error reading TXT {txt_name}: {e}")
+    
+    os.chdir(original_dir)  # Return to original directory
+    return results
 
-if os.path.isdir("Parent") == True:
-    os.chdir("Parent")
-# FOR CHILD1 DIRECTORY
-if os.path.isdir("Child1") == True:
-    os.chdir("Child1")
-# PDF FILE READING
-if os.path.isfile("Pdf1_Child1.pdf") == True:
-    df_pdf_child1 = tabula.read_pdf("Pdf1_Child1.pdf", pages="all")
-# DOCUMENT READING
-if os.path.isfile("Document_Child1.docx") == True:
-    document = Document("Document_Child1.docx")
-    table = document.tables[0]
-    data = []
-
-    keys = None
-    for i, row in enumerate(table.rows):
-        text = (cell.text for cell in row.cells)
-        if i == 0:
-            keys = tuple(text)
-            continue
-        row_data = dict(zip(keys, text))
-        data.append(row_data)
-df_document_child1 = pd.DataFrame(data)
-# TEXT READING
-if os.path.isfile("Text_Child1.txt") == True:
-    df_text_child1 = pd.read_csv("Text_Child1.txt")
-
-# %%
-df_text_child1
-
-
-# %%
-os.chdir("../")
-if os.path.isdir("Parent") == True:
-    os.chdir("Parent")
-# FOR CHILD2 DIRECTORY
-if os.path.isdir("Child2") == True:
-    os.chdir("Child2")
-# PDF FILE READING
-if os.path.isfile("Pdf1_Child2.pdf") == True:
-    df_pdf_child2 = tabula.read_pdf("Pdf1_Child2.pdf", pages="all")
-# DOCUMENT READING
-if os.path.isfile("Document_Child2.docx") == True:
-    document = Document("Document_Child2.docx")
-    table = document.tables[0]
-    data = []
-
-    keys = None
-    for i, row in enumerate(table.rows):
-        text = (cell.text for cell in row.cells)
-        if i == 0:
-            keys = tuple(text)
-            continue
-        row_data = dict(zip(keys, text))
-        data.append(row_data)
-df_document_child2 = pd.DataFrame(data)
-# TEXT READING
-if os.path.isfile("Text_Child2.txt") == True:
-    df_text_child2 = pd.read_csv("Text_Child2.txt")
-
-# %%
-df_pdf_child2[0].head(4)
-
-# %%
-os.chdir("../")
-if os.path.isdir("Parent") == True:
-    os.chdir("Parent")
-# FOR CHILD3 DIRECTORY
-if os.path.isdir("Child3") == True:
-    os.chdir("Child3")
-# PDF FILE READING
-if os.path.isfile("Pdf1_Child3.pdf") == True:
-    df_pdf_child3 = tabula.read_pdf("Pdf1_Child3.pdf", pages="all")
-# DOCUMENT READING
-if os.path.isfile("Document_Child3.docx") == True:
-    document = Document("Document_Child3.docx")
-    table = document.tables[0]
-    data = []
-
-    keys = None
-    for i, row in enumerate(table.rows):
-        text = (cell.text for cell in row.cells)
-        if i == 0:
-            keys = tuple(text)
-            continue
-        row_data = dict(zip(keys, text))
-        data.append(row_data)
-df_document_child3 = pd.DataFrame(data)
-# TEXT READING
-if os.path.isfile("Text_Child3.txt") == True:
-    df_text_child3 = pd.read_csv("Text_Child3.txt")
-
-# %%
-df_text_child3
-
-# %%
+if __name__ == "__main__":
+    # Get the directory where the script (main.py) is located
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    
+    # Correct path to Parent directory (no extra nested folder)
+    parent_dir = os.path.join(script_dir, "Parent")  # Fixed path
+    
+    if not os.path.isdir(parent_dir):
+        print(f"Parent directory NOT found at: {parent_dir}")
+        print("Please check your folder structure! It should be:")
+        print(f"  {script_dir}/Parent/")
+        print(f"  {script_dir}/Parent/Child1/")
+        print(f"  {script_dir}/Parent/Child2/")
+        print(f"  {script_dir}/Parent/Child3/")
+    else:
+        print(f"Processing Parent directory: {parent_dir}")
+        
+        # Process Child1, Child2, Child3
+        all_data = {}
+        for i in range(1, 4):
+            child_name = f"Child{i}"
+            child_path = os.path.join(parent_dir, child_name)
+            all_data[child_name] = process_child_directory(child_path)
+        
+        # Example: Show Child1 text data if available
+        if 'Child1' in all_data and 'text' in all_data['Child1']:
+            print("\n--- Child1 Text Data ---")
+            print(all_data['Child1']['text'].head())

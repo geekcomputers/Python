@@ -9,7 +9,7 @@ from os.path import pardir
 from urllib.parse import urlencode
 from urllib.request import urlopen, Request
 
-import requests
+import httpx
 import ssl
 from bs4 import BeautifulSoup
 from create_dir import create_directory
@@ -62,7 +62,7 @@ def search_for_image():
         images.append(link)
     counter = 0
     for re in images:
-        rs = requests.get(re)
+        rs = httpx.get(re)
         with open("img" + str(counter) + ".jpg", "wb") as file:
             file.write(rs.content)
 
@@ -100,7 +100,7 @@ def download_wallpapers_1080p():
     # Goes to Each link and downloads high resolution images
 
     for re in temp:
-        rs = requests.get(re)
+        rs = httpx.get(re)
         with open("img" + str(count) + ".jpg", "wb") as file:
             file.write(rs.content)
 

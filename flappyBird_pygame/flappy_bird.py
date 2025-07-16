@@ -149,9 +149,18 @@ class PipePair(pygame.sprite.Sprite):
 
 
 def load_images():
+    # 获取脚本所在目录
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    # 构建图片目录路径
+    images_dir = os.path.join(script_dir, "images")
+    
     def load_image(img_file_name):
-
-        file_name = os.path.join(".", "images", img_file_name)
+        file_name = os.path.join(images_dir, img_file_name)
+        # 检查文件是否存在并打印调试信息
+        if not os.path.exists(file_name):
+            print(f"错误: 找不到图片文件 {file_name}")
+            print(f"脚本所在目录: {script_dir}")
+            print(f"图片目录应该是: {images_dir}")
         img = pygame.image.load(file_name)
         img.convert()
         return img

@@ -1,50 +1,84 @@
 import cv2 as cv
+from cv2 import CascadeClassifier, VideoCapture
+import numpy as np
+import os
 
-
-def detect_faces_and_eyes():
+def detect_faces_and_eyes() -> None:
     """
     Detects faces and eyes in real-time using the webcam.
-
     Press 'q' to exit the program.
     """
+    # Get the directory where OpenCV's data files are located
+    cv2_data_dir = os.path.join(os.path.dirname(cv.__file__), 'data')
+    
+    # Construct absolute paths to the Haar cascade files
+    face_cascade_path = os.path.join(cv2_data_dir, 'haarcascade_frontalface_default.xml')
+    eye_cascade_path = os.path.join(cv2_data_dir, 'haarcascade_eye.xml')
+
     # Load the pre-trained classifiers for face and eye detection
-    face_cascade = cv.CascadeClassifier(r"..\libs\haarcascade_frontalface_default.xml")
-    eye_cascade = cv.CascadeClassifier(r"..\libs\haarcascade_eye.xml")
+    face_cascade: CascadeClassifier = cv.CascadeClassifier(face_cascade_path)
+    eye_cascade: CascadeClassifier = cv.CascadeClassifier(eye_cascade_path)
+
+    # Validate classifier loading
+    if face_cascade.empty() or eye_cascade.empty():
+        raise FileNotFoundError(f"Unable to load Haar cascade classifiers from:\n"
+                               f"Face: {face_cascade_path}\n"
+                               f"Eye: {eye_cascade_path}\n\n"
+                               f"Please verify the files exist in your OpenCV installation.")
 
     # Open the webcam
-    cap = cv.VideoCapture(0)
+    cap: VideoCapture = cv.VideoCapture(0)
 
-    while cap.isOpened():
-        # Read a frame from the webcam
-        flag, img = cap.read()
+    if not cap.isOpened():
+        raise IOError("Cannot open webcam")
 
-        # Convert the frame to grayscale for better performance
-        gray = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
+    try:
+        while True:
+            # Read a frame from the webcam
+            flag: bool
+            img: np.ndarray
+            flag, img = cap.read()
 
-        # Detect faces in the frame
-        faces = face_cascade.detectMultiScale(gray, scaleFactor=1.1, minNeighbors=7)
+            if not flag:
+                print("Failed to grab frame")
+                break
 
-        # Detect eyes in the frame
-        eyes = eye_cascade.detectMultiScale(gray, scaleFactor=1.1, minNeighbors=7)
+            # Convert the frame to grayscale for better performance
+            gray: np.ndarray = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
 
-        # Draw rectangles around faces and eyes
-        for x, y, w, h in faces:
-            cv.rectangle(img, (x, y), (x + w, y + h), (0, 255, 0), 1)
+            # Detect faces in the frame
+            faces: np.ndarray = face_cascade.detectMultiScale(
+                gray, 
+                scaleFactor=1.1, 
+                minNeighbors=7
+            )
 
-        for a, b, c, d in eyes:
-            cv.rectangle(img, (a, b), (a + c, b + d), (255, 0, 0), 1)
+            # Detect eyes in the frame
+            eyes: np.ndarray = eye_cascade.detectMultiScale(
+                gray, 
+                scaleFactor=1.1, 
+                minNeighbors=7
+            )
 
-        # Display the resulting frame
-        cv.imshow("Face and Eye Detection", img)
+            # Draw rectangles around faces and eyes
+            for (x, y, w, h) in faces:
+                cv.rectangle(img, (x, y), (x + w, y + h), (0, 255, 0), 1)
 
-        # Check for the 'q' key to exit the program
-        key = cv.waitKey(1)
-        if key == ord("q"):
-            break
+            for (a, b, c, d) in eyes:
+                cv.rectangle(img, (a, b), (a + c, b + d), (255, 0, 0), 1)
 
-    # Release the webcam and close all windows
-    cap.release()
-    cv.destroyAllWindows()
+            # Display the resulting frame
+            cv.imshow("Face and Eye Detection", img)
+
+            # Check for the 'q' key to exit the program
+            key: int = cv.waitKey(1)
+            if key == ord("q"):
+                break
+
+    finally:
+        # Release the webcam and close all windows
+        cap.release()
+        cv.destroyAllWindows()
 
 
 if __name__ == "__main__":

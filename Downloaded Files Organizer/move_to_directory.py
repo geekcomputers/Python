@@ -1,6 +1,7 @@
 import os
 import shutil
 
+
 ext = {
     "web": "css less scss wasm ",
     "audio": "aac aiff ape au flac gsm it m3u m4a mid mod mp3 mpa pls ra s3m sid wav wma xm ",
