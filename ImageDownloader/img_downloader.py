@@ -4,9 +4,9 @@
 def ImageDownloader(url):
     import os
     import re
-    import requests
+    import httpx
 
-    response = requests.get(url)
+    response = httpx.get(url)
     text = response.text
 
     p = r'<img.*?src="(.*?)"[^\>]+>'

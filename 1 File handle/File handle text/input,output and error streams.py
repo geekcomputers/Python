@@ -13,4 +13,4 @@ with open(file.strip(), ) as F:
         else:
             sys.stderr.write("End of file reached")
             break
-
+ 

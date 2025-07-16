@@ -1,6 +1,5 @@
 import pickle
 
-
 def bdelete():
     # Opening a file & loading it
     with open("studrec.dat","rb") as F:

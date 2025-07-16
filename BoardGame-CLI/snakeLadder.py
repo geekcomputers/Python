@@ -1,173 +1,170 @@
 import random
 
-# Taking players data
-players = {}  # stores players name their locations
-isReady = {}
-current_loc = 1  # vaiable for iterating location
+# Game state variables
+players = {}          # Stores player names and their positions
+is_ready = {}         # Tracks if player has rolled a 6 to start
+current_position = 1  # Initial position for new players
+game_active = True    # Controls the main game loop
 
-imp = True
+def get_valid_integer(prompt: str, min_value: int = None, max_value: int = None) -> int:
+    """
+    Get a valid integer input from the user within a specified range.
+    
+    Args:
+        prompt: The message to display to the user.
+        min_value: The minimum acceptable value (inclusive).
+        max_value: The maximum acceptable value (inclusive).
+        
+    Returns:
+        A valid integer within the specified range.
+    """
+    while True:
+        try:
+            value = int(input(prompt))
+            if (min_value is not None and value < min_value) or (max_value is not None and value > max_value):
+                print(f"Please enter a number between {min_value} and {max_value}.")
+                continue
+            return value
+        except ValueError:
+            print("Invalid input. Please enter a valid number.")
 
+def initialize_players() -> None:
+    """Initialize players for the game"""
+    global players, is_ready, current_position
+    
+    while True:
+        player_count = get_valid_integer("Enter the number of players: ", min_value=1)
+        
+        for i in range(player_count):
+            name = input(f"Enter player {i+1} name: ").strip()
+            if not name:
+                name = f"Player {i+1}"
+            players[name] = current_position
+            is_ready[name] = False
+        
+        start_game()
+        break
 
-# players input function
-def player_input():
-    global players
-    global current_loc
-    global isReady
+def roll_dice() -> int:
+    """Roll a 6-sided dice"""
+    return random.randint(1, 6)
 
-    x = True
-    while x:
-        player_num = int(input("Enter the number of players: "))
-        if player_num > 0:
-            for i in range(player_num):
-                name = input(f"Enter player {i+1} name: ")
-                players[name] = current_loc
-                isReady[name] = False
-            x = False
-            play()  # play funtion call
-
-        else:
-            print("Number of player cannot be zero")
-            print()
-
-
-# Dice roll method
-def roll():
-    # print(players)
-    return random.randrange(1, 7)
-
-
-# play method
-def play():
-    global players
-    global isReady
-    global imp
-
-    while imp:
+def start_game() -> None:
+    """Start the main game loop"""
+    global game_active, players, is_ready
+    
+    while game_active:
         print("/"*20)
-        print("1 -> roll the dice (or enter)")
-        print("2 -> start new game")
-        print("3 -> exit the game")
+        print("1 -> Roll the dice")
+        print("2 -> Start new game")
+        print("3 -> Exit the game")
         print("/"*20)
-
-        for i in players:
-            n = input("{}'s turn: ".format(i)) or 1
-            n = int(n)
-
-            if players[i] < 100:
-                if n == 1:
-                    temp1 = roll()
-                    print(f"you got {temp1}")
-                    print("")
-
-                    if isReady[i] == False and temp1 == 6:
-                        isReady[i] = True
-
-                    if isReady[i]:
-                        looproll = temp1
-                        counter_6 = 0
-                        while looproll == 6:
-                            counter_6 += 1
-                            looproll = roll()
-                            temp1 += looproll
-                            print(f"you got {looproll} ")
-                            if counter_6 == 3 :
-                                temp1 -= 18
-                                print("Three consectutives 6 got cancelled")
-                            print("")
-                        # print(temp1)
-                        if (players[i] + temp1) > 100:
-                            pass
-                        elif (players[i] + temp1) < 100:
-                            players[i] += temp1
-                            players[i] = move(players[i], i)
-                        elif (players[i] + temp1) == 100:
-                            print(f"congrats {i} you won !!!")
-                            imp = False
+        
+        for player in players:
+            if not game_active:
+                break
+                
+            choice = input(f"{player}'s turn (press Enter to roll or enter option): ").strip() or "1"
+            
+            try:
+                choice = int(choice)
+            except ValueError:
+                print("Invalid input. Please enter a number.")
+                continue
+                
+            if players[player] < 100:
+                if choice == 1:
+                    dice_roll = roll_dice()
+                    print(f"You rolled a {dice_roll}")
+                    
+                    # Check if player can start moving
+                    if not is_ready[player] and dice_roll == 6:
+                        is_ready[player] = True
+                        print(f"{player} can now start moving!")
+                    
+                    # Process move if player is active
+                    if is_ready[player]:
+                        total_move = dice_roll
+                        consecutive_sixes = 0
+                        
+                        # Handle consecutive sixes
+                        while dice_roll == 6 and consecutive_sixes < 2:
+                            consecutive_sixes += 1
+                            print("You rolled a 6! Roll again...")
+                            dice_roll = roll_dice()
+                            print(f"You rolled a {dice_roll}")
+                            total_move += dice_roll
+                            
+                        # Check for three consecutive sixes penalty
+                        if consecutive_sixes == 2:
+                            print("Three consecutive sixes! You lose your turn.")
+                            total_move = 0
+                        
+                        # Calculate new position
+                        new_position = players[player] + total_move
+                        
+                        # Validate move
+                        if new_position > 100:
+                            new_position = 100 - (new_position - 100)
+                            print(f"Overshot! You bounce back to {new_position}")
+                        elif new_position == 100:
+                            print(f"Congratulations, {player}! You won the game!")
+                            game_active = False
                             return
-
-                    print(f"you are at position {players[i]}")
-
-                elif n == 2:
-                    players = {}  # stores player ans their locations
-                    isReady = {}
-                    current_loc = 0  # vaiable for iterating location
-                    player_input()
-
-                elif n == 3:
-                    print("Bye Bye")
-                    imp = False
-
+                            
+                        # Apply snakes and ladders
+                        players[player] = new_position
+                        players[player] = check_snakes(players[player], player)
+                        players[player] = check_ladders(players[player], player)
+                        
+                        print(f"{player} is now at position {players[player]}")
+                
+                elif choice == 2:
+                    # Reset game state
+                    players = {}
+                    is_ready = {}
+                    current_position = 1
+                    initialize_players()
+                    return
+                
+                elif choice == 3:
+                    print("Thanks for playing! Goodbye.")
+                    game_active = False
+                    return
+                
                 else:
-                    print("pls enter a valid input")
+                    print("Invalid choice. Please enter 1, 2, or 3.")
+            else:
+                print(f"{player} has already won the game!")
 
+def check_snakes(position: int, player: str) -> int:
+    """Check if the player landed on a snake"""
+    snakes = {
+        32: 10, 36: 6, 48: 26, 
+        63: 18, 88: 24, 95: 56, 97: 78
+    }
+    
+    if position in snakes:
+        new_position = snakes[position]
+        print(f"Snake bite! {player} slides down from {position} to {new_position}")
+        return new_position
+    return position
 
-# Move method
-def move(a, i):
-    global players
-    global imp
-    temp_loc = players[i]
+def check_ladders(position: int, player: str) -> int:
+    """Check if the player landed on a ladder"""
+    ladders = {
+        4: 14, 8: 30, 20: 38, 28: 76,
+        40: 42, 50: 67, 71: 92, 80: 99
+    }
+    
+    if position in ladders:
+        new_position = ladders[position]
+        print(f"Ladder! {player} climbs from {position} to {new_position}")
+        return new_position
+    return position
 
-    if (temp_loc) < 100:
-        temp_loc = ladder(temp_loc, i)
-        temp_loc = snake(temp_loc, i)
-
-        return temp_loc
-
-
-# snake bite code
-def snake(c, i):
-    if (c == 32):
-        players[i] = 10
-    elif (c == 36):
-        players[i] = 6
-    elif (c == 48):
-        players[i] = 26
-    elif (c == 63):
-        players[i] = 18
-    elif (c == 88):
-        players[i] = 24
-    elif (c == 95):
-        players[i] = 56
-    elif (c == 97):
-        players[i] = 78
-    else:
-        return players[i]
-    print(f"You got bitten by a snake now you are at {players[i]}")
-
-    return players[i]
-
-
-# ladder code
-def ladder(a, i):
-    global players
-
-    if (a == 4):
-        players[i] = 14
-    elif (a == 8):
-        players[i] = 30
-    elif (a == 20):
-        players[i] = 38
-    elif (a == 40):
-        players[i] = 42
-    elif (a == 28):
-        players[i] = 76
-    elif (a == 50):
-        players[i] = 67
-    elif (a == 71):
-        players[i] = 92
-    elif (a == 88):
-        players[i] = 99
-    else:
-        return players[i]
-    print(f"You got a ladder now you are at {players[i]}")
-
-    return players[i]
-
-
-# while run:
-print("/"*40)
-print("Welcome to the snake ladder game !!!!!!!")
-print("/"*40)
-
-
-player_input()
+if __name__ == "__main__":
+    print("/"*40)
+    print("Welcome to the Snake and Ladder Game!")
+    print("/"*40)
+    initialize_players()

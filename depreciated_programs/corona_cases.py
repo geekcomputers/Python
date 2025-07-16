@@ -1,14 +1,14 @@
 import sys
 
 try:
-    import requests
+    import httpx
 except ImportError:
-    print("Please Install Requests Module With Command 'pip install requests'")
+    print("Please Install HTTPX Module With Command 'pip install httpx'")
     sys.exit(1)
 from time import sleep
 
 url = "https://api.covid19api.com/summary"
-visit = requests.get(url).json()
+visit = httpx.get(url).json()
 
 NewConfirmed = visit["Global"]["NewConfirmed"]
 TotalConfirmed = visit["Global"]["TotalConfirmed"]

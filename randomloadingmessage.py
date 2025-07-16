@@ -1,169 +1,125 @@
-# Created by Nathan R (Mosrod)
-# CREDIT TO https://github.com/1egoman/funnies/blob/master/src/funnies.js
+"""
+Loading Screen Messages Generator
 
-from random import *
+Generates humorous loading screen messages inspired by https://github.com/1egoman/funnies
+"""
 
-x = 1
+import random
+from typing import Dict, List
 
-for i in range(x):
-    num = randint(1, 80)
-    if num == 1:
-        print("Reticulating splines...")
-    if num == 2:
-        print("Swapping time and space...")
-    if num == 3:
-        print("Spinning violently around the y-axis...")
-    if num == 4:
-        print("Tokenizing real life...")
-    if num == 5:
-        print("Bending the spoon...")
-    if num == 6:
-        print("Filtering morale...")
-    if num == 7:
-        print("We need a new fuse...")
-    if num == 8:
-        print("Have a good day.")
-    if num == 9:
-        print(
-            "Upgrading Windows, your PC will restart several times. Sit back and relax."
-        )
-    if num == 10:
-        print("The architects are still drafting.")
-    if num == 11:
-        print("We're building the buildings as fast as we can.")
-    if num == 12:
-        print("Please wait while the little elves draw your map.")
-    if num == 13:
-        print("Don't worry - a few bits tried to escape, but we caught them.")
-    if num == 14:
-        print("Go ahead -- hold your breath!")
-    if num == 15:
-        print("...at least you're not on hold...")
-    if num == 16:
-        print("The server is powered by a lemon and two electrodes.")
-    if num == 17:
-        print("We're testing your patience.")
-    if num == 18:
-        print("As if you had any other choice.")
-    if num == 19:
-        print("The bits are flowing slowly today.")
-    if num == 20:
-        print("It's still faster than you could draw it.")
-    if num == 21:
-        print("My other loading screen is much faster.")
-    if num == 22:
-        print("(Insert quarter)")
-    if num == 23:
-        print("Are we there yet?")
-    if num == 24:
-        print("Just count to 10.")
-    if num == 25:
-        print("Don't panic...")
-    if num == 26:
-        print("We're making you a cookie.")
-    if num == 27:
-        print("Creating time-loop inversion field.")
-    if num == 28:
-        print("Computing chance of success.")
-    if num == 29:
-        print("All I really need is a kilobit.")
-    if num == 30:
-        print("I feel like im supposed to be loading something...")
-    if num == 31:
-        print("Should have used a compiled language...")
-    if num == 32:
-        print("Is this Windows?")
-    if num == 33:
-        print("Don't break your screen yet!")
-    if num == 34:
-        print("I swear it's almost done.")
-    if num == 35:
-        print("Let's take a mindfulness minute...")
-    if num == 36:
-        print("Listening for the sound of one hand clapping...")
-    if num == 37:
-        print("Keeping all the 1's and removing all the 0's...")
-    if num == 38:
-        print("We are not liable for any broken screens as a result of waiting.")
-    if num == 39:
-        print("Where did all the internets go?")
-    if num == 40:
-        print("Granting wishes...")
-    if num == 41:
-        print("Time flies when you’re having fun.")
-    if num == 42:
-        print("Get some coffee and come back in ten minutes...")
-    if num == 43:
-        print("Stay awhile and listen...")
-    if num == 44:
-        print("Convincing AI not to turn evil...")
-    if num == 45:
-        print("How did you get here?")
-    if num == 46:
-        print("Wait, do you smell something burning?")
-    if num == 47:
-        print("Computing the secret to life, the universe, and everything.")
-    if num == 48:
-        print("When nothing is going right, go left...")
-    if num == 49:
-        print("I love my job only when I'm on vacation...")
-    if num == 50:
-        print("Why are they called apartments if they are all stuck together?")
-    if num == 51:
-        print("I’ve got problem for your solution...")
-    if num == 52:
-        print("Whenever I find the key to success, someone changes the lock.")
-    if num == 53:
-        print("Constructing additional pylons...")
-    if num == 54:
-        print("You don’t pay taxes—they take taxes.")
-    if num == 55:
-        print("A commit a day keeps the mobs away.")
-    if num == 56:
-        print("This is not a joke, it's a commit.")
-    if num == 57:
-        print("Hello IT, have you tried turning it off and on again?")
-    if num == 58:
-        print("Hello, IT... Have you tried forcing an unexpected reboot?")
-    if num == 59:
-        print("I didn't choose the engineering life. The engineering life chose me.")
-    if num == 60:
-        print("Dividing by zero...")
-    if num == 61:
-        print("If I’m not back in five minutes, just wait longer.")
-    if num == 62:
-        print("Web developers do it with <style>")
-    if num == 63:
-        print("Cracking military-grade encryption...")
-    if num == 64:
-        print("Entangling superstrings...")
-    if num == 65:
-        print("Looking for sense of humour, please hold on.")
-    if num == 66:
-        print("A different error message? Finally, some progress!")
-    if num == 67:
-        print("Please hold on as we reheat our coffee.")
-    if num == 68:
-        print("Kindly hold on as we convert this bug to a feature...")
-    if num == 69:
-        print("Kindly hold on as our intern quits vim...")
-    if num == 71:
-        print("Winter is coming...")
-    if num == 72:
-        print("Installing dependencies.")
-    if num == 73:
-        print("Switching to the latest JS framework...")
-    if num == 74:
-        print("Let's hope it's worth the wait.")
-    if num == 75:
-        print("Aw, snap! Not...")
-    if num == 76:
-        print("Ordering 1s and 0s...")
-    if num == 77:
-        print("Updating dependencies...")
-    if num == 78:
-        print("Please wait... Consulting the manual...")
-    if num == 79:
-        print("Loading funny message...")
-    if num == 80:
-        print("Feel free to spin in your chair.")
+# Define message categories with weights
+MESSAGES: Dict[str, List[str]] = {
+    "TECHNICAL": [
+        "Reticulating splines...",
+        "Swapping time and space...",
+        "Spinning violently around the y-axis...",
+        "Tokenizing real life...",
+        "Bending the spoon...",
+        "Filtering morale...",
+        "We need a new fuse...",
+        "Upgrading Windows, your PC will restart several times. Sit back and relax.",
+        "The architects are still drafting.",
+        "We're building the buildings as fast as we can.",
+        "Please wait while the little elves draw your map.",
+        "Don't worry - a few bits tried to escape, but we caught them.",
+        "The server is powered by a lemon and two electrodes.",
+        "Creating time-loop inversion field.",
+        "Computing chance of success.",
+        "All I really need is a kilobit.",
+        "I feel like I'm supposed to be loading something...",
+        "Should have used a compiled language...",
+        "Is this Windows?",
+        "Keeping all the 1's and removing all the 0's...",
+        "Cracking military-grade encryption...",
+        "Entangling superstrings...",
+        "Dividing by zero...",
+        "Installing dependencies.",
+        "Switching to the latest JS framework...",
+        "Ordering 1s and 0s...",
+        "Updating dependencies...",
+    ],
+    "HUMOROUS": [
+        "Have a good day.",
+        "Go ahead -- hold your breath!",
+        "...at least you're not on hold...",
+        "We're testing your patience.",
+        "As if you had any other choice.",
+        "The bits are flowing slowly today.",
+        "It's still faster than you could draw it.",
+        "My other loading screen is much faster.",
+        "(Insert quarter)",
+        "Are we there yet?",
+        "Just count to 10.",
+        "Don't panic...",
+        "We're making you a cookie.",
+        "Don't break your screen yet!",
+        "I swear it's almost done.",
+        "Let's take a mindfulness minute...",
+        "Listening for the sound of one hand clapping...",
+        "We are not liable for any broken screens as a result of waiting.",
+        "Where did all the internets go?",
+        "Granting wishes...",
+        "Time flies when you’re having fun.",
+        "Get some coffee and come back in ten minutes...",
+        "Stay awhile and listen...",
+        "Convincing AI not to turn evil...",
+        "How did you get here?",
+        "Wait, do you smell something burning?",
+        "Computing the secret to life, the universe, and everything.",
+        "When nothing is going right, go left...",
+        "I love my job only when I'm on vacation...",
+        "Why are they called apartments if they are all stuck together?",
+        "I’ve got a problem for your solution...",
+        "Whenever I find the key to success, someone changes the lock.",
+        "You don’t pay taxes—they take taxes.",
+        "A commit a day keeps the mobs away.",
+        "This is not a joke, it's a commit.",
+        "Hello IT, have you tried turning it off and on again?",
+        "Hello, IT... Have you tried forcing an unexpected reboot?",
+        "I didn't choose the engineering life. The engineering life chose me.",
+        "If I’m not back in five minutes, just wait longer.",
+        "Web developers do it with <style>",
+        "Looking for sense of humour, please hold on.",
+        "A different error message? Finally, some progress!",
+        "Please hold on as we reheat our coffee.",
+        "Kindly hold on as we convert this bug to a feature...",
+        "Kindly hold on as our intern quits vim...",
+        "Winter is coming...",
+        "Let's hope it's worth the wait.",
+        "Aw, snap! Not...",
+        "Please wait... Consulting the manual...",
+        "Loading funny message...",
+        "Feel free to spin in your chair.",
+    ],
+}
+
+def get_random_message() -> str:
+    """
+    Select a random loading screen message from predefined categories.
+    
+    Returns:
+        str: A randomly selected loading screen message.
+    """
+    # Combine all messages into a single list
+    all_messages = [msg for category in MESSAGES.values() for msg in category]
+    
+    # Ensure there are messages to select from
+    if not all_messages:
+        return "No loading messages available."
+    
+    # Return a random message
+    return random.choice(all_messages)
+
+def generate_loading_messages(count: int = 1) -> None:
+    """
+    Generate and print random loading screen messages.
+    
+    Args:
+        count (int): Number of messages to generate (default: 1).
+    """
+    for _ in range(count):
+        print(get_random_message())
+
+if __name__ == "__main__":
+    # Generate 1 message by default (configurable via count parameter)
+    generate_loading_messages(count=1)

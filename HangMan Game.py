@@ -1,5 +1,6 @@
 # Program for HangMan Game.
-import random, HangMan_Includes as incl
+import random
+import HangMan_Includes as incl
 
 while True:
 	chances=6

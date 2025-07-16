@@ -1,180 +1,192 @@
 def diff(a, b):
     """
-    TODO: fix this function!!
+    Calculate the absolute difference between two values.
+    This helps in determining the variance between color channels.
+    
+    Args:
+        a (int/float): First value
+        b (int/float): Second value
+        
+    Returns:
+        int/float: Absolute difference between a and b
     """
-    return a - b
+    return abs(a - b)  # Fixed to return absolute difference (critical for color comparison)
 
 
 def simpleColor(r, g, b):
-    """simpleColor obtiene el nombre del color mas general al cual se acerca su formato R G B"""
-    r = int(r)
-    g = int(g)
-    b = int(b)
-    bg = ir = 0  # TODO: Fix these variables
+    """
+    Determines the general color name a given RGB value approximates to.
+    Classification is based on comparing the intensity of red, green, and blue channels,
+    as well as their mutual differences.
+    
+    Args:
+        r (int/float): Red channel value (0-255)
+        g (int/float): Green channel value (0-255)
+        b (int/float): Blue channel value (0-255)
+        
+    Returns:
+        str: General color name (e.g., "ROJO", "VERDE") or error message if invalid
+    """
     try:
-        # ROJO --------------------------------------------------
+        # Convert inputs to integers and validate range
+        r = int(r)
+        g = int(g)
+        b = int(b)
+        
+        if not (0 <= r <= 255 and 0 <= g <= 255 and 0 <= b <= 255):
+            return "Error: RGB values must be between 0 and 255"
+
+        # RED DOMINANT --------------------------------------------------
         if r > g and r > b:
+            red_green_diff = diff(r, g)  # Difference between red and green
+            red_blue_diff = diff(r, b)   # Difference between red and blue
 
-            rg = diff(r, g)  # distancia rojo a verde
-            rb = diff(r, b)  # distancia rojo a azul
-
-            if g < 65 and b < 65 and rg > 60:  # azul y verde sin luz
+            # Pure red (green and blue are very low)
+            if g < 65 and b < 65 and red_green_diff > 60:
                 return "ROJO"
 
-            gb = diff(g, b)  # distancia de verde a azul
+            green_blue_diff = diff(g, b)  # Difference between green and blue
 
-            if rg < rb:  # Verde mayor que Azul
-                if gb < rg:  # Verde mas cerca de Azul
-                    if gb >= 30 and rg >= 80:
+            # Green is more prominent than blue
+            if red_green_diff < red_blue_diff:
+                if green_blue_diff < red_green_diff:  # Green closer to blue
+                    if green_blue_diff >= 30 and red_green_diff >= 80:
                         return "NARANJA"
-                    elif gb <= 20 and rg >= 80:
+                    elif green_blue_diff <= 20 and red_green_diff >= 80:
                         return "ROJO"
-                    elif gb <= 20 and b > 175:
+                    elif green_blue_diff <= 20 and b > 175:
                         return "CREMA"
-
                     else:
                         return "CHOCOLATE"
-                else:  # Verde mas cerca de Rojo
-                    if rg > 60:
+                else:  # Green closer to red
+                    if red_green_diff > 60:
                         return "NARANJA*"
                     elif r > 125:
                         return "AMARILLO"
                     else:
-                        return "COCHOLATE"
-            elif rg > rb:  # Azul mayor que verde
-                if bg < rb:  # Verde mas cerca de Azul
-                    if gb < 60:
-                        if r > 150:
-                            return "ROJO 2"
-                        else:
-                            return "MARRON"
+                        return "CHOCOLATE"  # Fixed typo from "COCHOLATE"
+            
+            # Blue is more prominent than green
+            elif red_green_diff > red_blue_diff:
+                if green_blue_diff < red_blue_diff:  # Green closer to blue
+                    if green_blue_diff < 60:
+                        return "ROJO 2" if r > 150 else "MARRON"
                     elif g > 125:
                         return "ROSADO"
                     else:
                         return "ROJO 3"
-                else:  # Verde mas cerca de Rojo
-                    if rb < 60:
-                        if r > 160:
-                            return "ROSADO*"
-                        else:
-                            return "ROJO"
+                else:  # Green closer to red
+                    if red_blue_diff < 60:
+                        return "ROSADO*" if r > 160 else "ROJO"
                     else:
                         return "ROJO"
-
-            else:  # g y b iguales
-                if rg > 20:
-                    if r >= 100 and b < 60:
-                        return "ROJO"
-                    elif r >= 100:
-                        return "ROJO"
-                    else:
-                        return "MARRON"
-
+            
+            # Green and blue are nearly equal
+            else:
+                if red_green_diff > 20:
+                    return "ROJO" if (r >= 100 and (b < 60 or r >= 100)) else "MARRON"
                 else:
                     return "GRIS"
-        # VERDE ---------------------------------------------------
-        elif g > r and g > b:
-            gb = diff(g, b)  # distancia verde a azul
-            gr = diff(g, r)  # distancia verde a rojo
 
-            if r < 65 and b < 65 and gb > 60:  # rojo y azul sin luz
+        # GREEN DOMINANT ---------------------------------------------------
+        elif g > r and g > b:
+            green_blue_diff = diff(g, b)  # Difference between green and blue
+            green_red_diff = diff(g, r)   # Difference between green and red
+
+            # Pure green (red and blue are very low)
+            if r < 65 and b < 65 and green_blue_diff > 60:
                 return "VERDE"
 
-            rb = diff(r, b)  # distancia de rojo a azul
+            red_blue_diff = diff(r, b)  # Difference between red and blue
 
-            if r > b:  # ROJO > AZUL
-                if gr < gb:  # Verde con Rojo
-
-                    if rb >= 150 and gr <= 20:
-                        return "AMARILLO"
-                    else:
-                        return "VERDE"
-                else:  # ...Verde
-                    return "VERDE"
-
-            elif r < b:  # AZUL > ROJO
-                if gb < gr:  # Verde con Azul
-
-                    if gb <= 20:
-                        return "TURQUESA"
-                    else:
-                        return "VERDE"
-                else:  # ...Verde
-                    return "VERDE"
-
-            else:  # r y b iguales
-                if gb > 10:
-                    return "VERDE"
+            # Red is more prominent than blue
+            if r > b:
+                if green_red_diff < green_blue_diff:  # Green mixed with red
+                    return "AMARILLO" if (red_blue_diff >= 150 and green_red_diff <= 20) else "VERDE"
                 else:
-                    return "GRIS"
+                    return "VERDE"
+            
+            # Blue is more prominent than red
+            elif r < b:
+                if green_blue_diff < green_red_diff:  # Green mixed with blue
+                    return "TURQUESA" if green_blue_diff <= 20 else "VERDE"
+                else:
+                    return "VERDE"
+            
+            # Red and blue are nearly equal
+            else:
+                return "VERDE" if green_blue_diff > 10 else "GRIS"
 
-        # AZUL ------------------------------------------------------
+        # BLUE DOMINANT ------------------------------------------------------
         elif b > r and b > g:
-            bg = diff(b, g)  # distancia azul a verde
-            br = diff(b, r)  # distancia azul a rojo
+            blue_green_diff = diff(b, g)  # Difference between blue and green
+            blue_red_diff = diff(b, r)    # Difference between blue and red
 
-            if r < 65 and g < 65 and bg > 60:  # rojo y verde sin luz
+            # Pure blue (red and green are very low)
+            if r < 65 and g < 65 and blue_green_diff > 60:
                 return "AZUL"
 
-            rg = diff(r, g)  # distancia de rojo a verde
+            red_green_diff = diff(r, g)  # Difference between red and green
 
-            if g < r:  # ROJO  > VERDE
-                if bg < rg:  # Azul con Verde
-                    if bg <= 20:
-                        return "TURQUESA"
-                    else:
-                        return "CELESTE"
-                else:  # ...Azul
-                    if rg <= 20:
-                        if r >= 150:
-                            return "LILA"
-                        else:
-                            return "AZUL *************"
+            # Red is more prominent than green
+            if g < r:
+                if blue_green_diff < red_green_diff:  # Blue mixed with green
+                    return "TURQUESA" if blue_green_diff <= 20 else "CELESTE"
+                else:
+                    if red_green_diff <= 20:
+                        return "LILA" if r >= 150 else "AZUL *************"
                     else:
                         return "AZUL"
-
-            elif g > r:  #  VERDE > ROJO
-                if br < rg:  # Azul con rojo
-                    if br <= 20:
+            
+            # Green is more prominent than red
+            elif g > r:
+                if blue_red_diff < red_green_diff:  # Blue mixed with red
+                    if blue_red_diff <= 20:
                         if r > 150 and g < 75:
                             return "ROSADO FIUSHA"
-                        elif ir > 150:
+                        elif r > 150:  # Fixed undefined variable "ir" to "r"
                             return "LILA"
                         else:
                             return "MORADO"
                     else:
                         return "MORADO"
-
-                else:  # ...Azul
-                    if rg <= 20:
-                        if bg <= 20:
-                            return "GRIS"
-                        else:
-                            return "AZUL"
-            else:  # r y g iguales
-                if bg > 20:
-                    if r >= 100 and b < 60:
-                        return "ROJO"
-                    elif r >= 100:
-                        return "ROJO"
+                else:
+                    if red_green_diff <= 20:
+                        return "GRIS" if blue_green_diff <= 20 else "AZUL"
                     else:
-                        return "MARRON"
+                        return "AZUL"
+            
+            # Red and green are nearly equal
+            else:
+                if blue_green_diff > 20:
+                    return "ROJO" if (r >= 100 and (b < 60 or r >= 100)) else "MARRON"
                 else:
                     return "GRIS"
 
-        # IGUALES---------------------------------------
+        # ALL CHANNELS NEARLY EQUAL ---------------------------------------
         else:
             return "GRIS"
 
-    except:
+    except Exception as e:
+        return f"Error: Invalid input - {str(e)}"
 
-        return "Not Color"
 
-
-# ---------------------------------------------------------------------------------------------------
-# Puedes probar asi: python primary_colors.py 120,0,0   , esto resultara en un ROJO como respuesta
-# --------------------------------------------------------------------------------------------------
 if __name__ == "__main__":
     import sys
 
-    print(simpleColor(sys.argv[1], sys.argv[2], sys.argv[3]))
+    # Set default RGB values if no arguments are provided
+    default_r, default_g, default_b = 255, 0, 0  # Default to red
+    
+    # Parse command line arguments with fallback to defaults
+    try:
+        if len(sys.argv) == 4:
+            r, g, b = sys.argv[1], sys.argv[2], sys.argv[3]
+        else:
+            print(f"No arguments provided. Using default RGB: ({default_r}, {default_g}, {default_b})")
+            r, g, b = default_r, default_g, default_b
+    except IndexError:
+        print(f"Invalid arguments. Using default RGB: ({default_r}, {default_g}, {default_b})")
+        r, g, b = default_r, default_g, default_b
+
+    # Get and print the color result
+    print(simpleColor(r, g, b))

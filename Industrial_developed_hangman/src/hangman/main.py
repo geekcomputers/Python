@@ -5,7 +5,7 @@ from enum import Enum
 from pathlib import Path
 from typing import Callable, List
 
-import requests
+import httpx
 from colorama import Fore, Style
 
 DEBUG = False
@@ -70,8 +70,8 @@ def parse_word_from_site(url: str = 'https://random-word-api.herokuapp.com/word'
     :raises RuntimeError: something go wrong with getting the word from site.
     """
     try:
-        response: requests.Response = requests.get(url, timeout=request_timeout)
-    except ConnectionError:
+        response: httpx.Response = httpx.get(url, timeout=request_timeout)
+    except httpx.ConnectError:
         raise ConnectionError('There is no connection to the internet')
     if response.status_code == success_code:
         return json.loads(response.content.decode())[0]

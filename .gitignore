@@ -1,4 +1,6 @@
 .idea
+.vscode
+_pycache_
 *.pyc
 string=sorted(input())
 lower=""

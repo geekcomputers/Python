@@ -4,7 +4,8 @@ import os
 
 # Add parent directory to path to import backend
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from backend import BrowserHistory
+
+from backendBrowserHistory import BrowserHistory
 
 class TestBrowserHistory(unittest.TestCase):
     def setUp(self):

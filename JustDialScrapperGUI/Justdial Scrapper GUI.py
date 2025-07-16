@@ -139,9 +139,10 @@ class ScrapperLogic:
             print("{0} {1}, {2}".format("Scrapping page number: ", page_number, url))
             req = urllib.request.Request(
                 url, headers={"User-Agent": "Mozilla/5.0 (Windows NT 6.1; Win64; x64)"}
-            )
+            ) 
+            
             page = urllib.request.urlopen(req)
-
+            
             soup = BeautifulSoup(page.read(), "html.parser")
             services = soup.find_all("li", {"class": "cntanr"})
 
