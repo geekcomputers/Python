@@ -53,7 +53,7 @@ def india():
 ╚═╝╚═╝░░╚══╝╚═════╝░╚═╝╚═╝░░╚═╝
 
 Country Name :- {name}
-New Confirmed Cases :- {indiaonfirmed}
+New Confirmed Cases :- {indiaconfirmed}
 Total Confirmed Cases :- {indiatotal}
 New Deaths :- {indiaDeaths}
 Total Deaths :- {deathstotal}
