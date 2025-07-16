@@ -1,5 +1,5 @@
 from __future__ import annotations
-from typing import Optional, Dict, Any, List, Tuple
+from typing import Optional, Dict, Any
 import base64
 import mimetypes
 import os
@@ -11,7 +11,7 @@ from email.mime.text import MIMEText
 
 # Google API Authentication Libraries
 from google.oauth2.credentials import Credentials
-from google.auth.transport.requests import AuthorizedSession, Request
+from google.auth.transport.requests import Request
 from google.auth.exceptions import RefreshError
 from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
