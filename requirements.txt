@@ -3,7 +3,6 @@ aiohttp
 fuzzywuzzy
 hupper
 seaborn
-time
 simplegui
 utils
 Tubes
@@ -19,7 +18,6 @@ numpy
 fileinfo
 backend
 win10toast
-Counter
 Flask
 selenium
 firebase-admin
@@ -111,3 +109,18 @@ plyer
 Flask-Ask
 emoji
 PyAutoGUI
+pyjokes
+keyboard
+key
+SpeechRecognition
+pyaudio
+customtkinter
+pyqrcode
+scikit-learn
+darkdetect
+tkinterdnd2
+pdfkit
+python-docx
+PyMuPDF
+inquirer
+pycountry

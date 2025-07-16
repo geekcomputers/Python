@@ -1,6 +1,0 @@
-solara == 1.50.0
-Flask 
-gunicorn ==23.0.0
-simple-websocket
-flask-sock 
-yfinance

@@ -1,4 +1,4 @@
-import requests
+import httpx
 from bs4 import BeautifulSoup
 
 # * Using html5lib as the parser is good
@@ -6,7 +6,7 @@ from bs4 import BeautifulSoup
 
 animals_A_to_Z_URL = "https://animalcorner.org/animal-sitemap/#"
 
-results = requests.get(animals_A_to_Z_URL)
+results = httpx.get(animals_A_to_Z_URL)
 # ? results and results.text ? what are these?
 
 # soup = BeautifulSoup(results.text, "html.parser")

@@ -1,3 +1,0 @@
-tkinter
-messagebox
-emoji
