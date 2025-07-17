@@ -3,7 +3,8 @@ import cv2
 import numpy as np
 import argparse
 import os
-from pathlib import Path  # Core for cross-platform path handling
+from pathlib import Path
+from typing import Union, Tuple, Optional
 
 def rgb_to_luminance(r: np.ndarray, g: np.ndarray, b: np.ndarray) -> np.ndarray:
     """Convert RGB channels to luminance using the ITU-R BT.601 standard."""
@@ -43,14 +44,14 @@ def load_image(image_path: str) -> np.ndarray:
     
     return image
 
-def main():
+def main() -> None:
     """Cross-platform PSNR calculation tool with automatic path handling."""
     # Define default paths using Path (auto-handles separators)
-    default_original = Path("Compression_Analysis") / "orignal_image.png"
-    default_compressed = Path("Compression_Analysis") / "compressed_image.png"
+    default_original: Path = Path("Compression_Analysis") / "orignal_image.png"
+    default_compressed: Path = Path("Compression_Analysis") / "compressed_image.png"
     
     # Set up command-line arguments
-    parser = argparse.ArgumentParser(description="Cross-Platform PSNR Calculator (supports Windows/Linux)")
+    parser: argparse.ArgumentParser = argparse.ArgumentParser(description="Cross-Platform PSNR Calculator (supports Windows/Linux)")
     parser.add_argument(
         "--original", 
         default=str(default_original),
@@ -61,12 +62,12 @@ def main():
         default=str(default_compressed),
         help=f"Path to compressed image (default: {default_compressed})"
     )
-    args = parser.parse_args()
+    args: argparse.Namespace = parser.parse_args()
 
     try:
         # Load images with cross-platform path handling
-        original_image = load_image(args.original)
-        compressed_image = load_image(args.compressed)
+        original_image: np.ndarray = load_image(args.original)
+        compressed_image: np.ndarray = load_image(args.compressed)
 
         # Verify image dimensions match
         if original_image.shape != compressed_image.shape:
@@ -76,9 +77,9 @@ def main():
             )
 
         # Calculate and display PSNR
-        original_lum = calculate_luminance(original_image)
-        compressed_lum = calculate_luminance(compressed_image)
-        psnr = calculate_psnr(original_lum, compressed_lum)
+        original_lum: np.ndarray = calculate_luminance(original_image)
+        compressed_lum: np.ndarray = calculate_luminance(compressed_image)
+        psnr: float = calculate_psnr(original_lum, compressed_lum)
         
         print(f"PSNR Value: {psnr:.2f} dB")
         print("Interpretation: 20-30 dB = low quality, 30-40 dB = good quality, >40 dB = excellent quality")

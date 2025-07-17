@@ -2,10 +2,27 @@ import cv2 as cv
 from cv2 import CascadeClassifier, VideoCapture
 import numpy as np
 import os
+from typing import Tuple, List
 
-def detect_faces_and_eyes() -> None:
+def detect_faces_and_eyes(camera_index: int = 0, 
+                         face_scale_factor: float = 1.1, 
+                         face_min_neighbors: int = 7,
+                         eye_scale_factor: float = 1.1, 
+                         eye_min_neighbors: int = 7) -> None:
     """
-    Detects faces and eyes in real-time using the webcam.
+    Detects faces and eyes in real-time using the webcam or a specified video source.
+    
+    Args:
+        camera_index: Index of the camera to use (default is 0 for built-in webcam).
+        face_scale_factor: Parameter specifying how much the image size is reduced at each image scale for face detection.
+        face_min_neighbors: Parameter specifying how many neighbors each candidate rectangle should have to retain it for face detection.
+        eye_scale_factor: Parameter specifying how much the image size is reduced at each image scale for eye detection.
+        eye_min_neighbors: Parameter specifying how many neighbors each candidate rectangle should have to retain it for eye detection.
+    
+    Raises:
+        FileNotFoundError: If the Haar cascade classifier files are not found.
+        IOError: If the webcam cannot be opened.
+    
     Press 'q' to exit the program.
     """
     # Get the directory where OpenCV's data files are located
@@ -27,60 +44,65 @@ def detect_faces_and_eyes() -> None:
                                f"Please verify the files exist in your OpenCV installation.")
 
     # Open the webcam
-    cap: VideoCapture = cv.VideoCapture(0)
+    cap: VideoCapture = cv.VideoCapture(camera_index)
 
     if not cap.isOpened():
-        raise IOError("Cannot open webcam")
+        raise IOError(f"Cannot open camera with index {camera_index}")
 
     try:
         while True:
-            # Read a frame from the webcam
-            flag: bool
-            img: np.ndarray
-            flag, img = cap.read()
+            # Read a frame from the camera
+            success: bool
+            frame: np.ndarray
+            success, frame = cap.read()
 
-            if not flag:
+            if not success:
                 print("Failed to grab frame")
                 break
 
             # Convert the frame to grayscale for better performance
-            gray: np.ndarray = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
+            gray_frame: np.ndarray = cv.cvtColor(frame, cv.COLOR_BGR2GRAY)
 
-            # Detect faces in the frame
-            faces: np.ndarray = face_cascade.detectMultiScale(
-                gray, 
-                scaleFactor=1.1, 
-                minNeighbors=7
+            # Detect faces in the grayscale frame
+            faces: List[Tuple[int, int, int, int]] = face_cascade.detectMultiScale(
+                gray_frame, 
+                scaleFactor=face_scale_factor, 
+                minNeighbors=face_min_neighbors,
+                minSize=(30, 30),
+                flags=cv.CASCADE_SCALE_IMAGE
             )
 
-            # Detect eyes in the frame
-            eyes: np.ndarray = eye_cascade.detectMultiScale(
-                gray, 
-                scaleFactor=1.1, 
-                minNeighbors=7
+            # Detect eyes in the grayscale frame
+            eyes: List[Tuple[int, int, int, int]] = eye_cascade.detectMultiScale(
+                gray_frame, 
+                scaleFactor=eye_scale_factor, 
+                minNeighbors=eye_min_neighbors,
+                minSize=(10, 10),
+                flags=cv.CASCADE_SCALE_IMAGE
             )
 
-            # Draw rectangles around faces and eyes
+            # Draw rectangles around detected faces
             for (x, y, w, h) in faces:
-                cv.rectangle(img, (x, y), (x + w, y + h), (0, 255, 0), 1)
+                cv.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2)
 
-            for (a, b, c, d) in eyes:
-                cv.rectangle(img, (a, b), (a + c, b + d), (255, 0, 0), 1)
+            # Draw rectangles around detected eyes
+            for (x, y, w, h) in eyes:
+                cv.rectangle(frame, (x, y), (x + w, y + h), (255, 0, 0), 1)
 
-            # Display the resulting frame
-            cv.imshow("Face and Eye Detection", img)
+            # Display the resulting frame with detections
+            cv.imshow("Face and Eye Detection", frame)
 
-            # Check for the 'q' key to exit the program
+            # Check for the 'q' key to exit the loop
             key: int = cv.waitKey(1)
             if key == ord("q"):
                 break
 
     finally:
-        # Release the webcam and close all windows
+        # Release the camera and close all OpenCV windows
         cap.release()
         cv.destroyAllWindows()
 
 
 if __name__ == "__main__":
-    # Call the main function
-    detect_faces_and_eyes()
+    # Call the main function with default parameters
+    detect_faces_and_eyes()    

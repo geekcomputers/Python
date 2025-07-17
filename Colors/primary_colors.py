@@ -1,4 +1,4 @@
-def diff(a, b):
+def diff(a: int | float, b: int | float) -> int | float:
     """
     Calculate the absolute difference between two values.
     This helps in determining the variance between color channels.
@@ -13,7 +13,7 @@ def diff(a, b):
     return abs(a - b)  # Fixed to return absolute difference (critical for color comparison)
 
 
-def simpleColor(r, g, b):
+def simpleColor(r: int | float, g: int | float, b: int | float) -> str:
     """
     Determines the general color name a given RGB value approximates to.
     Classification is based on comparing the intensity of red, green, and blue channels,
@@ -175,7 +175,9 @@ if __name__ == "__main__":
     import sys
 
     # Set default RGB values if no arguments are provided
-    default_r, default_g, default_b = 255, 0, 0  # Default to red
+    default_r: int = 255
+    default_g: int = 0
+    default_b: int = 0  # Default to red
     
     # Parse command line arguments with fallback to defaults
     try:

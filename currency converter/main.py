@@ -6,10 +6,11 @@ Fetches real-time exchange rates and provides a user-friendly interface.
 
 import sys
 from pathlib import Path
-from typing import Optional, Any
+from typing import Optional, Dict, List
 from PyQt5.QtGui import QDoubleValidator
 from PyQt5.QtCore import Qt
-from PyQt5.QtWidgets import (QApplication, QMainWindow)
+from PyQt5.QtWidgets import (QApplication, QMainWindow, QLineEdit, QPushButton, 
+                             QComboBox, QLCDNumber, QWidget)
 from PyQt5 import uic
 import httpx
 
@@ -193,17 +194,24 @@ CURRENCIES = [
 class CurrencyConverter(QMainWindow):
     """Main application window for currency conversion"""
     
-    def __init__(self):
+    def __init__(self) -> None:
         super().__init__()
-        self.base_dir = Path(__file__).parent  # Directory of current script
-        self.ui = self.load_ui()
+        self.base_dir: Path = Path(__file__).parent  # Directory of current script
+        self.ui: QWidget = self.load_ui()
         self.setup_ui_elements()
         self.load_currency_data()  # Load from embedded list
+        
+        # Type hints for UI elements (assigned via UI file)
+        self.lineEdit: QLineEdit
+        self.pushButton: QPushButton
+        self.dropDown1: QComboBox
+        self.dropDown2: QComboBox
+        self.lcdpanel: QLCDNumber
 
 
-    def load_ui(self) -> Any:
+    def load_ui(self) -> QWidget:
         """Load UI file with proper path handling"""
-        ui_path = self.base_dir / "gui.ui"
+        ui_path: Path = self.base_dir / "gui.ui"
         
         try:
             return uic.loadUi(str(ui_path), self)
@@ -223,8 +231,8 @@ class CurrencyConverter(QMainWindow):
     def load_currency_data(self) -> None:
         """Load currency list from embedded data (no external file)"""
         # Remove duplicates while preserving order
-        seen = set()
-        unique_currencies = []
+        seen: set = set()
+        unique_currencies: List[str] = []
         for currency in CURRENCIES:
             if currency not in seen:
                 seen.add(currency)
@@ -242,22 +250,22 @@ class CurrencyConverter(QMainWindow):
         """Fetch exchange rate from API"""
         try:
             # Extract currency codes (format: "Name-CODE")
-            from_code = from_currency.split("-")[-1].strip()
-            to_code = to_currency.split("-")[-1].strip()
+            from_code: str = from_currency.split("-")[-1].strip()
+            to_code: str = to_currency.split("-")[-1].strip()
             
             # Clean up codes with extra info (e.g., "(EURO)")
             from_code = from_code.split()[0]
             to_code = to_code.split()[0]
             
             # API request
-            api_key = "b43a653672c4a94c4c26"  # Replace with your API key if needed
-            url = f"https://free.currconv.com/api/v7/convert?q={from_code}_{to_code}&compact=ultra&apiKey={api_key}"
+            api_key: str = "b43a653672c4a94c4c26"  # Replace with your API key if needed
+            url: str = f"https://free.currconv.com/api/v7/convert?q={from_code}_{to_code}&compact=ultra&apiKey={api_key}"
             
-            response = httpx.get(url, timeout=10)
+            response: httpx.Response = httpx.get(url, timeout=10)
             response.raise_for_status()
-            data = response.json()
+            data: Dict[str, float] = response.json()
             
-            rate_key = f"{from_code}_{to_code}"
+            rate_key: str = f"{from_code}_{to_code}"
             return float(data[rate_key]) if rate_key in data else None
             
         except Exception as e:
@@ -267,9 +275,9 @@ class CurrencyConverter(QMainWindow):
 
     def convert_currency(self) -> None:
         """Handle currency conversion when button is clicked"""
-        amount_text = self.lineEdit.text()
-        from_currency = self.dropDown1.currentText()
-        to_currency = self.dropDown2.currentText()
+        amount_text: str = self.lineEdit.text()
+        from_currency: str = self.dropDown1.currentText()
+        to_currency: str = self.dropDown2.currentText()
         
         # Validate inputs
         if not amount_text or from_currency == "Select Currency" or to_currency == "Select Currency":
@@ -277,11 +285,11 @@ class CurrencyConverter(QMainWindow):
             return
             
         try:
-            amount = float(amount_text)
-            rate = self.get_exchange_rate(from_currency, to_currency)
+            amount: float = float(amount_text)
+            rate: Optional[float] = self.get_exchange_rate(from_currency, to_currency)
             
             if rate is not None:
-                result = amount * rate
+                result: float = amount * rate
                 self.lcdpanel.display(round(result, 2))
             else:
                 self.lcdpanel.display(0)
@@ -295,7 +303,7 @@ if __name__ == "__main__":
     QApplication.setAttribute(Qt.AA_EnableHighDpiScaling, True)
     QApplication.setAttribute(Qt.AA_UseHighDpiPixmaps, True)
     
-    app = QApplication(sys.argv)
-    window = CurrencyConverter()
+    app: QApplication = QApplication(sys.argv)
+    window: CurrencyConverter = CurrencyConverter()
     window.show()
     sys.exit(app.exec_())
