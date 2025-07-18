@@ -4,7 +4,7 @@
 import math
 import sys
 from multiprocessing import Process, Pipe
-from typing import Dict, List
+from typing import List
 
 def slice(mink: int, maxk: int) -> float:
     """

@@ -18,8 +18,8 @@ year = 4800566455
 class Source(Enum):
     """Enum that represents switch between local and web word parsing."""
 
-    FROM_FILE = 0  # noqa: WPS115
-    FROM_INTERNET = 1  # noqa: WPS115
+    FROM_FILE = 0
+    FROM_INTERNET = 1
 
 
 def print_wrong(text: str, print_function: Callable[[str], None]) -> None:
@@ -60,7 +60,6 @@ def parse_word_from_local(choice_function: Callable[[List[str]], str] = random.c
 
 
 def parse_word_from_site(url: str = 'https://random-word-api.herokuapp.com/word') -> str:
-    # noqa: DAR201
     """
     Parse word from website.
 
@@ -99,7 +98,7 @@ class MainProcess(object):
         self._choice_function = ch_func
 
     def get_word(self) -> str:
-        # noqa: DAR201
+       
         """
         Parse word(wrapper for local and web parse).
 
@@ -114,14 +113,14 @@ class MainProcess(object):
 
     def user_lose(self) -> None:
         """Print text for end of game and exits."""
-        print_wrong(f"YOU LOST(the word was '{self._answer_word}')", self._print_function)  # noqa:WPS305
+        print_wrong(f"YOU LOST(the word was '{self._answer_word}')", self._print_function)  
 
     def user_win(self) -> None:
         """Print text for end of game and exits."""
-        print_wrong(f'{self._word_string_to_show} YOU WON', self._print_function)  # noqa:WPS305
-
+        print_wrong(f'{self._word_string_to_show} YOU WON', self._print_function) 
+        
     def game_process(self, user_character: str) -> bool:
-        # noqa: DAR201
+        
         """
         Process user input.
 
@@ -155,8 +154,8 @@ class MainProcess(object):
             print_right(self._answer_word, self._print_function)
         for attempts in range(attempts_amount):
             user_remaining_attempts = attempts_amount - attempts
-            print_right(f'You have {user_remaining_attempts} more attempts', self._print_function)  # noqa:WPS305
-            print_right(f'{self._word_string_to_show} enter character to guess: ', self._print_function)  # noqa:WPS305
+            print_right(f'You have {user_remaining_attempts} more attempts', self._print_function)  
+            print_right(f'{self._word_string_to_show} enter character to guess: ', self._print_function)  
             user_character = self._input_function().lower()
             if self.game_process(user_character):
                 break

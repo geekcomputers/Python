@@ -112,7 +112,7 @@ DateTime
 pywin32
 webbrowser
 Tkinter
-PIL
+
 mypy
 wemake-python-styleguide
 isort
