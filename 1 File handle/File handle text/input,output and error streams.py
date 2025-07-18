@@ -1,5 +1,5 @@
 import sys
-from typing import NoReturn, List
+from typing import NoReturn
 
 
 def read_and_print_file(file_path: str) -> None:

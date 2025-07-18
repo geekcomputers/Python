@@ -1,5 +1,4 @@
-import sys
-from typing import List, Tuple, Optional
+from typing import List, Tuple
 
 
 def display_short_words(file_path: str) -> Tuple[List[str], int]:
