@@ -113,3 +113,38 @@ dependencies = [
     "xor-cipher",
     "yfinance",
 ]
+[tool.ruff]
+line-length = 88
+target-version = "py313"
+select = [
+    "E", "W", "F", "I", "B", "C4", "UP", "YTT",
+    "EM", "EXE", "G", "ISC", "PLC", "PLW", "PT", "S", "SIM", "SLF"
+]
+
+ignore = [
+    "B101",   
+    "B904",   # Within an `except` clause, raise exceptions with `raise ... from err`
+    "B905",   # `zip()` without an explicit `strict=` parameter
+    "EM101",  # Exception must not use a string literal
+    "EXE001", # Shebang is present but file is not executable
+    "G004",   # Logging statement uses f-string
+    "ISC001", # Conflicts with ruff format
+    "PLC0415",# import-outside-top-level
+    "PLC1901",# `{}` can be simplified to `{}` as an empty string is falsey
+    "PLW060", # Using global without assignment
+    "PLW1641",# eq-without-hash
+    "PLW2901",# Redefined loop variable
+    "PT011",  # pytest.raises(Exception) is too broad
+    "PT018",  # Assertion should be broken down
+    "PT028",  # pytest-parameter-with-default-argument
+    "S101",   # Use of `assert` detected
+    "S311",   # Standard pseudo-random generators
+    "SIM905", # Consider using a list literal instead of `str.split`
+    "SLF001", # Private member accessed
+    "UP038",  # Use `X | Y` in `{}` call
+]
+
+max-args = 10
+max-branches = 20
+max-returns = 8
+max-statements = 88
