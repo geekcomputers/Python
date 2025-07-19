@@ -1,5 +1,5 @@
 import pickle
-
+from typing import List, Tuple
 
 def delete_student_record() -> None:
     """
@@ -21,14 +21,14 @@ def delete_student_record() -> None:
     try:
         # Read existing student records from file
         with open("studrec.dat", "rb") as file:
-            student_records: list[tuple[int, ...]] = pickle.load(file)
+            student_records: List[Tuple[int, ...]] = pickle.load(file)
             print("Current student records:", student_records)
             
         # Get roll number to delete
         roll_number: int = int(input("Enter the roll number to delete: "))
         
         # Filter out the record with the specified roll number
-        updated_records: list[tuple[int, ...]] = [
+        updated_records: List[Tuple[int, ...]] = [
             record for record in student_records if record[0] != roll_number
         ]
         
