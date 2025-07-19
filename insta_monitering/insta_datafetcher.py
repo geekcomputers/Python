@@ -6,12 +6,11 @@ import random
 import socket
 import sys
 import time
-import httpx
 import traceback
 
 import bs4
+import httpx
 import pymongo
-
 import socks
 import ujson
 
@@ -50,7 +49,7 @@ class ProxyApplyingDecorator:
             if not os.path.exists(self.proxy_file):
                 raise FileNotFoundError(f"Proxy file not found: {self.proxy_file}")
                 
-            with open(self.proxy_file, "r") as f:
+            with open(self.proxy_file) as f:
                 ipdata = f.read().strip()
                 
             if not ipdata:

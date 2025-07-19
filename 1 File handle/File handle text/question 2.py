@@ -1,7 +1,6 @@
-from typing import List, Tuple
 
 
-def display_short_words(file_path: str) -> Tuple[List[str], int]:
+def display_short_words(file_path: str) -> tuple[list[str], int]:
     """
     Read a text file and extract words with fewer than 4 characters.
     
@@ -25,14 +24,14 @@ def display_short_words(file_path: str) -> Tuple[List[str], int]:
         OSError: For other OS-related errors (e.g., invalid path)
     """
     # Read entire file content
-    with open(file_path, 'r', encoding='utf-8') as file:
+    with open(file_path, encoding='utf-8') as file:
         content: str = file.read()
     
     # Split content into words (handles multiple whitespace characters)
-    words: List[str] = content.split()
+    words: list[str] = content.split()
     
     # Filter words with length < 4 using a generator expression for memory efficiency
-    short_words: List[str] = [word for word in words if len(word) < 4]
+    short_words: list[str] = [word for word in words if len(word) < 4]
     
     return short_words, len(short_words)
 

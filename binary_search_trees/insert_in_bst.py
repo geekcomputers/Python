@@ -1,5 +1,6 @@
 from tree_node import Node
 
+
 def insert(root: Node | None, val: int) -> Node:
     """
     This function inserts a node with value val into the BST.

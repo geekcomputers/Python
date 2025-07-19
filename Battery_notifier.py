@@ -1,5 +1,5 @@
-from plyer import notification  # pip install plyer
 import psutil  # pip install psutil
+from plyer import notification  # pip install plyer
 
 # psutil.sensors_battery() will return the information related to battery
 battery = psutil.sensors_battery()

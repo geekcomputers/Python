@@ -1,6 +1,8 @@
 #install and import google text-to-speech library gtts
-from gtts import gTTS
 import os
+
+from gtts import gTTS
+
 #provide user input text
 text=input('enter the text: ') 
 #covert text into voice

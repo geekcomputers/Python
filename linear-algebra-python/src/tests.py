@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """
 Created on Mon Feb 26 15:40:07 2018
 
@@ -154,7 +153,7 @@ class Test(unittest.TestCase):
     def test_norm_vector(self):
         x = Vector([1, 2, 3])
         self.assertAlmostEqual(x.norm().component(0), (1 / math.sqrt(14)), 0.001)
-        self.assertAlmostEqual(x.norm().component(1), math.sqrt((2.0 / 7)), 0.001)
+        self.assertAlmostEqual(x.norm().component(1), math.sqrt(2.0 / 7), 0.001)
 
     def test__eq__vector(self):
         x = Vector([1, 2, 3])

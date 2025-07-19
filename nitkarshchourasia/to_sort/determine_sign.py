@@ -1,5 +1,6 @@
 from word2number import w2n
 
+
 class DetermineSign:
     def __init__(self, num: str | float | None = None) -> None:
         """

@@ -1,5 +1,6 @@
-from tree_node import Node
 from inorder_successor import inorder_successor
+from tree_node import Node
+
 
 def delete_node(root: Node | None, val: int) -> Node | None:
     """

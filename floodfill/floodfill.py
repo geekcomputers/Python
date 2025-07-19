@@ -1,6 +1,8 @@
-import pygame
 import sys
 from collections import deque
+
+import pygame
+
 
 class FloodFill:
     def __init__(self, window_width: int = 800, window_height: int = 600):
@@ -24,8 +26,8 @@ class FloodFill:
         if self.window_height < 128 or self.window_width < 128:
             return  # Surface too small
         
+        from math import cos, pi, sin
         from random import randint, uniform
-        from math import pi, sin, cos
 
         for _ in range(randint(0, 5)):
             x = randint(50, self.window_width - 50)

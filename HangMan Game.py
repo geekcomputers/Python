@@ -1,5 +1,6 @@
 # Program for HangMan Game.
 import random
+
 import HangMan_Includes as incl
 
 while True:
@@ -9,7 +10,7 @@ while True:
 	name=random.choice(incl.names).upper()
 	# print(name)
 	[result_lst.append('__ ') for i in range(len(name))]
-	result_str=str().join(result_lst)
+	result_str=''.join(result_lst)
 
 	print(f'\nYou have to Guess a Human Name of {len(name)} Alphabets:\t{result_str}')
 	print(incl.draw[0])
@@ -45,7 +46,7 @@ while True:
 					indx[j]+=1
 					i+=1
 			
-			result_str=str().join(result_lst)
+			result_str=''.join(result_lst)
 			print('\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Excellent~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
 			print(f'\nYou have to Guess a Human Name of {len(name)} Alphabets:\t{result_str}\n')
 			print('Tried Inputs:',tuple(sorted(set(inp_lst))))

@@ -1,6 +1,6 @@
-from PIL import ImageDraw, ImageFont
-from customtkinter import filedialog
 from CTkMessagebox import CTkMessagebox
+from customtkinter import filedialog
+from PIL import ImageDraw, ImageFont
 
 
 class Watermark:

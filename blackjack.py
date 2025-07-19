@@ -81,9 +81,7 @@ def dealer_choice():
             print("**********************Player is winner !!**********************")
 
     else:
-        if sum(p_cards) < 21:
-            print("**********************Player is winner !!**********************")
-        elif sum(p_cards) == 21:
+        if sum(p_cards) < 21 or sum(p_cards) == 21:
             print("**********************Player is winner !!**********************")
         else:
             print("***********************Dealer is the Winner !!******************")

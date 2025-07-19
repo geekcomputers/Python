@@ -87,7 +87,7 @@ def add():
         print("Online payment")
     print("")
 
-    with open("Management.txt", "r") as File:
+    with open("Management.txt") as File:
         string = File.read()
         string = string.replace("'", '"')
         dictionary = json.loads(string)
@@ -123,8 +123,8 @@ def add():
     exit_menu()
 
 
-import os
 import json
+import os
 
 filecheck = os.path.isfile("Management.txt")
 if not filecheck:
@@ -143,7 +143,7 @@ if not filecheck:
 
 def modify():
 
-    with open("Management.txt", "r") as File:
+    with open("Management.txt") as File:
         string = File.read()
         string = string.replace("'", '"')
         dictionary = json.loads(string)

@@ -6,9 +6,9 @@ and predicts the most likely next word based on the learned patterns. It uses SQ
 persistent storage of word mappings and predictions.
 """
 
-import sqlite3
 import json
-from typing import Dict, List, Optional, Tuple, Union
+import sqlite3
+
 
 class AutoComplete:
     """
@@ -35,7 +35,7 @@ class AutoComplete:
         
         # Check if tables exist
         cursor.execute("SELECT name FROM sqlite_master WHERE name='NGramMap'")
-        tables_exist: Optional[Tuple[str]] = cursor.fetchone()
+        tables_exist: tuple[str] | None = cursor.fetchone()
         
         if not tables_exist:
             # Create tables if they don't exist
@@ -46,7 +46,7 @@ class AutoComplete:
             cursor.execute("INSERT INTO NGramMap VALUES (?, ?)", ("ngramsmap", "{}"))
             cursor.execute("INSERT INTO NGramPrediction VALUES (?, ?)", ("ngrampredictions", "{}"))
 
-    def generate_ngrams(self, words_list: List[str]) -> List[Tuple[str]]:
+    def generate_ngrams(self, words_list: list[str]) -> list[tuple[str]]:
         """
         Generate N-grams from a list of words.
         """
@@ -72,23 +72,23 @@ class AutoComplete:
         cursor: sqlite3.Cursor = self.conn.cursor()
         
         # Split sentence into individual words
-        words_list: List[str] = sentence.split(" ")
+        words_list: list[str] = sentence.split(" ")
         
         # Retrieve existing N-gram map and predictions from database
         cursor.execute("SELECT value FROM NGramMap WHERE name='ngramsmap'")
         ngrams_map_str: str = cursor.fetchone()[0]
-        ngrams_map: Dict[Tuple[str], Dict[str, int]] = json.loads(ngrams_map_str, object_hook=lambda d: {tuple(k.split()): v for k, v in d.items()})
+        ngrams_map: dict[tuple[str], dict[str, int]] = json.loads(ngrams_map_str, object_hook=lambda d: {tuple(k.split()): v for k, v in d.items()})
         
         cursor.execute("SELECT value FROM NGramPrediction WHERE name='ngrampredictions'")
         predictions_str: str = cursor.fetchone()[0]
-        predictions: Dict[Tuple[str], Dict[str, Union[str, int]]] = json.loads(predictions_str, object_hook=lambda d: {tuple(k.split()): v for k, v in d.items()})
+        predictions: dict[tuple[str], dict[str, str | int]] = json.loads(predictions_str, object_hook=lambda d: {tuple(k.split()): v for k, v in d.items()})
         
         # Generate N-grams
         ngrams = self.generate_ngrams(words_list)
         
         # Process each N-gram and the next word
         for i in range(len(ngrams) - 1):
-            curr_ngram: Tuple[str] = ngrams[i]
+            curr_ngram: tuple[str] = ngrams[i]
             next_word: str = words_list[i + self.n]
             
             # Update N-gram transition counts
@@ -121,7 +121,7 @@ class AutoComplete:
         
         return "training complete"
 
-    def predict(self, words: str) -> Optional[str]:
+    def predict(self, words: str) -> str | None:
         """
         Predict the most likely next word for a given input sequence of words.
         
@@ -139,7 +139,7 @@ class AutoComplete:
         # Retrieve predictions from database
         cursor.execute("SELECT value FROM NGramPrediction WHERE name='ngrampredictions'")
         predictions_str: str = cursor.fetchone()[0]
-        predictions: Dict[Tuple[str], Dict[str, Union[str, int]]] = json.loads(predictions_str, object_hook=lambda d: {tuple(k.split()): v for k, v in d.items()})
+        predictions: dict[tuple[str], dict[str, str | int]] = json.loads(predictions_str, object_hook=lambda d: {tuple(k.split()): v for k, v in d.items()})
         
         input_words = words.lower().split()
         for i in range(len(input_words), max(0, len(input_words) - self.n + 1), -1):
@@ -163,5 +163,5 @@ if __name__ == "__main__":
     
     # Test prediction
     test_words: str = "to use"
-    prediction: Optional[str] = autocomplete.predict(test_words)
+    prediction: str | None = autocomplete.predict(test_words)
     print(f"Prediction for '{test_words}': {prediction}")

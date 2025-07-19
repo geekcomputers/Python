@@ -1,8 +1,8 @@
 '''' Multiple extension changer'''
+import hashlib
+import random as rand
 import time
 from pathlib import Path as p
-import random as rand
-import hashlib
 
 
 def chxten_(files, xten):

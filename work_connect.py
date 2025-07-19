@@ -43,12 +43,12 @@ else:
             2
         ]  # Set the variable passwd as the second argument passed, in this case my login password
         subprocess.Popen(
-            (
+            
                 r"c:\Program Files\Checkpoint\Endpoint Connect\trac.exe connect -u username -p "
                 + passwd
-            )
+            
         )
-        subprocess.Popen((r"c:\geektools\puttycm.exe"))
+        subprocess.Popen(r"c:\geektools\puttycm.exe")
         time.sleep(
             15
         )  # Sleep for 15 seconds, so the checkpoint software can connect before opening mstsc
@@ -57,7 +57,7 @@ else:
         sys.argv[1].lower().startswith("-d")
     ):  # If the first argument is -d then disconnect my checkpoint session.
         subprocess.Popen(
-            (r"c:\Program Files\Checkpoint\Endpoint Connect\trac.exe disconnect ")
+            r"c:\Program Files\Checkpoint\Endpoint Connect\trac.exe disconnect "
         )
     else:
         print(

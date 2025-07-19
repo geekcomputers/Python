@@ -1,5 +1,6 @@
 import sys
 
+
 def get_integer_input(prompt, attempts):
     for i in range(attempts, 0, -1):
         try:

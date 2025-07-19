@@ -2,9 +2,10 @@
 #simple simon says module that interacts with google API to read the subject line of an email and respond to "Simon says:"
 #DO NOT FORGET TO ADD CREDENTIALS.JSON AND TOKEN.JSON TO .GITIGNORE!!!
 
-import ezgmail
 import re
 import time
+
+import ezgmail
 
 check = True
 while check:

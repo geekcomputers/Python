@@ -1,9 +1,9 @@
 # Author-Slayking1965
 # email-kingslayer8509@gmail.com
 import random
-import pyautogui
 import string
 
+import pyautogui
 
 chars = "abcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 

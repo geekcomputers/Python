@@ -35,10 +35,10 @@ n=num
 setData=set()		#set datastructure for checking a number is repeated or not.
 while 1:
 	if n==1:
-		print("{} is a happy number after apply way 2".format(num))
+		print(f"{num} is a happy number after apply way 2")
 		break
 	if n in setData:
-		print("{} is Not a happy number after apply way 2".format(num))
+		print(f"{num} is Not a happy number after apply way 2")
 		break
 	else:
 		setData.add(n)	#adding into set if not inside set

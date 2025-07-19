@@ -26,7 +26,7 @@ new_dictionary.close()
 import random
 
 # Load 5 letter word dictionary
-with open("5 letter word dictionary.txt", 'r') as dictionary:
+with open("5 letter word dictionary.txt") as dictionary:
     # Read content of dictionary
     dictionary = dictionary.read().split('\n') # This returns a list of all the words in the dictionary
 

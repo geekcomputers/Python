@@ -8,8 +8,8 @@ print("")
 
 # start of code
 # import library
-import pickle
 import os
+import pickle
 
 # get array from pickle data
 infile = open('data/pickle-main', 'rb')

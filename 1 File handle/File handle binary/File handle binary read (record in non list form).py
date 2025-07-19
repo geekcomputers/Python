@@ -1,6 +1,6 @@
 import os
 import pickle
-from typing import List, Tuple
+
 
 def read_binary_file() -> None:
     """
@@ -28,7 +28,7 @@ def read_binary_file() -> None:
     try:
         # Read student records
         with open(file_path, "rb") as file:
-            student_records: List[Tuple[int, str, float]] = pickle.load(file)
+            student_records: list[tuple[int, str, float]] = pickle.load(file)
             
             # Print records in a formatted table
             print("\nStudent Records:")

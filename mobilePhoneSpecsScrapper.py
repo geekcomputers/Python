@@ -1,11 +1,11 @@
-import requests
-from bs4 import BeautifulSoup
+# import time
+import json
 
 # import csv
 import os
 
-# import time
-import json
+import requests
+from bs4 import BeautifulSoup
 
 
 class Phonearena:
@@ -105,7 +105,7 @@ if __name__ == "__main__":
             json.dump(phone_urls, of)
 
         # Step 2: Iterate through all the links from the above execution and run the next command
-        with open("obj.absolute_path+'-Phoneurls.json", "r") as inp:
+        with open("obj.absolute_path+'-Phoneurls.json") as inp:
             temp = json.load(inp)
             phone_specs = obj.crawl_phones_models_specification(temp)
 

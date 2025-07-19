@@ -1,4 +1,6 @@
 import pygame
+
+
 class Fighter:
     def __init__(self, player, x, y, flip, data, sprite_sheet, animation_steps, sound):
         self.player = player

@@ -1,5 +1,6 @@
 import numpy as np
 
+
 # to check if shape are equal and find there power
 def get_array(x, y):
     a = np.shape(x)

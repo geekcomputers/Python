@@ -1,10 +1,9 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 
 import sqlite3
 import tkinter as tk
-from tkinter import ttk, Text, Entry, Label, Button, Frame, messagebox
-from typing import List, Tuple
+from tkinter import Button, Entry, Frame, Label, Text, messagebox, ttk
+
 
 class NotepadApp:
     def __init__(self, root: tk.Tk):
@@ -24,7 +23,7 @@ class NotepadApp:
         
         # Search state
         self.search_active = False
-        self.current_results: List[Tuple[int, str, str]] = []
+        self.current_results: list[tuple[int, str, str]] = []
         self.current_index = 0
         
         # Create UI

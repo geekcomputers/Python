@@ -1,7 +1,7 @@
 from pathlib import Path
-from typing import Tuple
 
-def count_lowercase_chars(file_path: str | Path) -> Tuple[int, int, int]:
+
+def count_lowercase_chars(file_path: str | Path) -> tuple[int, int, int]:
     """
     Counts lowercase, uppercase, and total alphabetic characters in a text file.
 
@@ -28,7 +28,7 @@ def count_lowercase_chars(file_path: str | Path) -> Tuple[int, int, int]:
         raise IsADirectoryError(f"Path is a directory, not a file: {file_path}")
 
     # Read file and count characters
-    with open(file_path, 'r', encoding='utf-8') as file:
+    with open(file_path, encoding='utf-8') as file:
         content = file.read()
         lowercase = sum(1 for c in content if c.islower())
         uppercase = sum(1 for c in content if c.isupper())

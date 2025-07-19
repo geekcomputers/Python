@@ -1,11 +1,11 @@
-import customtkinter as ctk
-from customtkinter import filedialog
-from CTkMessagebox import CTkMessagebox
-from PIL import Image, ImageTk
-from watermark import Watermark
-import pyglet
 from tkinter import colorchooser
 
+import customtkinter as ctk
+import pyglet
+from CTkMessagebox import CTkMessagebox
+from customtkinter import filedialog
+from PIL import Image, ImageTk
+from watermark import Watermark
 
 # ------------------- Create Window -----------------
 pyglet.font.add_directory("fonts")

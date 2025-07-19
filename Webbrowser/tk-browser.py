@@ -3,9 +3,11 @@
 # Written by Sina Meysami
 #
 
-from tkinter import * # pip install tk-tools
-import tkinterweb # pip install tkinterweb
 import sys
+from tkinter import *  # pip install tk-tools
+
+import tkinterweb  # pip install tkinterweb
+
 
 class Browser(Tk):
     def __init__(self):

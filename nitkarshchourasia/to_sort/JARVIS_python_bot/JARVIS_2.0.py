@@ -1,22 +1,22 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 
+import base64
+import datetime
 import os
+import smtplib
+import subprocess
 import sys
 import time
-import datetime
-import subprocess
-import pyjokes
-import base64
-from PIL import ImageGrab
-from pynput import keyboard, mouse
-from pygame import mixer  # For audio output
 import webbrowser
-import smtplib
+
+import httpx  # Replaced requests with httpx
+import openai
+import pyjokes
 import pyttsx3
 import speech_recognition as sr
-import openai
-import httpx  # Replaced requests with httpx
+from PIL import ImageGrab
+from pygame import mixer  # For audio output
+from pynput import keyboard, mouse
 
 # Configuration
 __author__ = "Nitkarsh Chourasia <playnitkarsh@gmail.com>"
@@ -282,11 +282,11 @@ if __name__ == "__main__":
     
     # Check dependencies
     try:
+        import httpx
+        import openai
         import pygame
         import pyttsx3
         import speech_recognition as sr
-        import openai
-        import httpx
         from PIL import ImageGrab
     except ImportError as e:
         print(f"Missing dependency: {e}. Please install required packages.")

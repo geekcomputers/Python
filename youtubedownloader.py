@@ -1,6 +1,7 @@
 
-from tkinter import Button, Entry, Label, Tk, filedialog, messagebox
 from threading import Thread
+from tkinter import Button, Entry, Label, Tk, filedialog, messagebox
+
 from pytube import YouTube
 
 

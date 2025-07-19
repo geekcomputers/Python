@@ -1,10 +1,11 @@
-from rich.console import Console
-from rich.syntax import Syntax
-from rich.progress import Progress, SpinnerColumn, BarColumn, TextColumn
-from rich.table import Table
-from typing import Dict, Any
-import time
 import json
+import time
+from typing import Any
+
+from rich.console import Console
+from rich.progress import BarColumn, Progress, SpinnerColumn, TextColumn
+from rich.syntax import Syntax
+from rich.table import Table
 
 console: Console = Console()
 
@@ -12,7 +13,7 @@ console: Console = Console()
 console.rule("[bold]Welcome to Rich Terminal[/bold]", style="rainbow")
 
 # Define some JSON data
-json_data: Dict[str, Any] = {
+json_data: dict[str, Any] = {
     "message": "Hello, World!",
     "status": "success",
     "code": 200

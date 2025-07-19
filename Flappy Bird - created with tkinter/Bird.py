@@ -1,7 +1,10 @@
+from collections.abc import Callable
 from threading import Thread
-from typing import Callable, List, Optional, Tuple
-from PIL.Image import Image, open as openImage
+
+from PIL.Image import Image
+from PIL.Image import open as openImage
 from PIL.ImageTk import PhotoImage
+
 
 class Background:
     """Mock Background class for type checking"""
@@ -11,10 +14,10 @@ class Background:
     def create_image(self, x: int, y: int, image: PhotoImage, tag: str) -> int:
         return 0
     
-    def bbox(self, tag: str) -> Tuple[int, int, int, int]:
+    def bbox(self, tag: str) -> tuple[int, int, int, int]:
         return (0, 0, 0, 0)
     
-    def find_overlapping(self, x1: int, y1: int, x2: int, y2: int) -> List[int]:
+    def find_overlapping(self, x1: int, y1: int, x2: int, y2: int) -> list[int]:
         return []
     
     def move(self, tag: str, x: int, y: int) -> None:
@@ -29,7 +32,7 @@ class Background:
     def focus_force(self) -> None:
         pass
     
-    def getBackgroundID(self) -> List[int]:
+    def getBackgroundID(self) -> list[int]:
         return []
 
 class Bird(Thread):
@@ -129,7 +132,7 @@ class Bird(Thread):
             True if a collision occurred, False otherwise.
         """
         # Get bird position
-        position: List[int] = list(self.__canvas.bbox(self.__tag))
+        position: list[int] = list(self.__canvas.bbox(self.__tag))
         
         # Check boundary collisions
         if position[3] >= self.__height + 20:
@@ -145,11 +148,11 @@ class Bird(Thread):
         position[3] -= int(10 / 77 * self.width)
         
         # Define objects to ignore in collisions
-        ignored_collisions: List[int] = self.__canvas.getBackgroundID()
+        ignored_collisions: list[int] = self.__canvas.getBackgroundID()
         ignored_collisions.append(self.__birdID)
         
         # Check for overlapping objects
-        possible_collisions: List[int] = list(self.__canvas.find_overlapping(*position))
+        possible_collisions: list[int] = list(self.__canvas.find_overlapping(*position))
         
         # Remove ignored objects from collision list
         for obj_id in ignored_collisions:
@@ -170,12 +173,12 @@ class Bird(Thread):
 
     @staticmethod
     def getPhotoImage(
-        image: Optional[Image] = None,
-        image_path: Optional[str] = None,
-        width: Optional[int] = None,
-        height: Optional[int] = None,
+        image: Image | None = None,
+        image_path: str | None = None,
+        width: int | None = None,
+        height: int | None = None,
         closeAfter: bool = False
-    ) -> Tuple[PhotoImage, Optional[Image], Optional[Image]]:
+    ) -> tuple[PhotoImage, Image | None, Image | None]:
         """
         Create a PhotoImage from a PIL Image or image path.
         
@@ -217,7 +220,7 @@ class Bird(Thread):
         
         return photoImage, newImage, image
 
-    def jumps(self, event: Optional[object] = None) -> None:
+    def jumps(self, event: object | None = None) -> None:
         """
         Make the bird jump.
         

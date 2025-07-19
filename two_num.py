@@ -14,9 +14,9 @@ Example:
     [0, 1]
 """
 
-from typing import List, Optional
 
-def two_sum(nums: List[int], target: int) -> Optional[List[int]]:
+
+def two_sum(nums: list[int], target: int) -> list[int] | None:
     """
     Finds indices of two numbers in 'nums' that add up to 'target'.
 

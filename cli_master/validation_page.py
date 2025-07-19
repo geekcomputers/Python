@@ -1,5 +1,6 @@
 import re
 
+
 def phone_validation(phone_number):
     # Match a typical US phone number format (xxx) xxx-xxxx
     pattern = re.compile(r'^\(\d{3}\) \d{3}-\d{4}$')

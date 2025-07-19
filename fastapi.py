@@ -1,6 +1,7 @@
-from fastapi import FastAPI
+
 from pydantic import BaseModel
-from typing import Optional
+
+from fastapi import FastAPI
 
 app = FastAPI()
 
@@ -12,7 +13,7 @@ class Course(BaseModel):
     id: int
     name: str
     price: float
-    is_early_bird: Optional[bool] = None
+    is_early_bird: bool | None = None
 
 
 # Home/welcome route

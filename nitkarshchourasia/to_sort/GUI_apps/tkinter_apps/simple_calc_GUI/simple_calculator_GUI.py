@@ -4,7 +4,6 @@ from tkinter import *
 # On CMD, or Terminal.
 import hupper
 
-
 # Python program to create a simple GUI
 # calculator using Tkinter
 

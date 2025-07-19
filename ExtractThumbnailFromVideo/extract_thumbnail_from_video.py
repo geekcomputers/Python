@@ -1,8 +1,9 @@
-import cv2
 import os
-from typing import Tuple
 
-def extract_thumbnail(video_path: str, frame_size: Tuple[int, int]) -> None:
+import cv2
+
+
+def extract_thumbnail(video_path: str, frame_size: tuple[int, int]) -> None:
     """
     Extracts a thumbnail frame from a video and saves it as an image file.
 

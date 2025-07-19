@@ -5,8 +5,8 @@ A graphical user interface for interacting with the autocomplete system.
 This interface allows users to train the system with text and get word predictions.
 """
 
-from tkinter import Entry, Button, Label, Tk
-from typing import Optional
+from tkinter import Button, Entry, Label, Tk
+
 from backendgui import AutoComplete
 
 
@@ -37,7 +37,7 @@ def predict_word() -> None:
     words: str = predict_word_entry.get()
     if words.strip():  
         autocomplete: AutoComplete = AutoComplete(n=2)
-        prediction: Optional[str] = autocomplete.predict(words)
+        prediction: str | None = autocomplete.predict(words)
         if prediction:
             print(f"Prediction for '{words}': {prediction}")
         else:

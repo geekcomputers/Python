@@ -1,7 +1,8 @@
 import tkinter as tk
-from tkinter import StringVar, Label, Button, OptionMenu, Text, Scrollbar, Toplevel
+from tkinter import Button, Label, OptionMenu, Scrollbar, StringVar, Text, Toplevel
+
 from tkcalendar import Calendar  # Install via: pip install tkcalendar
-from typing import List
+
 
 def main() -> None:
     """Create and run the sports schedule management application"""
@@ -12,10 +13,10 @@ def main() -> None:
     window.resizable(True, True)  # Allow window resizing
     
     # Initialize list to store scheduled games
-    game_list: List[str] = ["Game Schedule:"]
+    game_list: list[str] = ["Game Schedule:"]
     
     # Available teams for dropdown selection
-    team_options: List[str] = [
+    team_options: list[str] = [
         "Eagles", "Tigers", "Bears", 
         "Sharks", "Falcons", "Dragons"
     ]
@@ -28,8 +29,8 @@ def main() -> None:
 
 def create_widgets(
     window: tk.Tk, 
-    game_list: List[str], 
-    team_options: List[str]
+    game_list: list[str], 
+    team_options: list[str]
 ) -> None:
     """Create and position all GUI widgets in the main window"""
     # Configure theme colors
@@ -226,7 +227,7 @@ def create_widgets(
 
 def add_game(
     window: tk.Tk,
-    game_list: List[str],
+    game_list: list[str],
     visitor_var: StringVar,
     home_var: StringVar,
     calendar: Calendar,
@@ -250,7 +251,7 @@ def add_game(
     # Update the display with new list
     update_game_display(game_display, game_list)
 
-def update_game_display(display: Text, game_list: List[str]) -> None:
+def update_game_display(display: Text, game_list: list[str]) -> None:
     """Update the text widget with current game list"""
     # Clear existing content
     display.delete(1.0, tk.END)

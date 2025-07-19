@@ -1,6 +1,7 @@
 from collections import Counter
 from pathlib import Path
 
+
 def count_lowercase_chars(file_path: str | Path = "happy.txt") -> tuple[int, int, int]:
     """
     Counts the number of lowercase letters, uppercase letters, and total alphabetic characters in a text file.
@@ -16,7 +17,7 @@ def count_lowercase_chars(file_path: str | Path = "happy.txt") -> tuple[int, int
         PermissionError: If the file cannot be accessed.
     """
     try:
-        with open(file_path, 'r', encoding='utf-8') as file:
+        with open(file_path, encoding='utf-8') as file:
             content = file.read()
             Counter(content)
             

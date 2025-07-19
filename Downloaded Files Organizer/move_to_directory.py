@@ -1,10 +1,9 @@
 import os
-import shutil
-from typing import Dict, List
 import platform
+import shutil
 
 # File extension categories and their associated extensions
-FILE_EXTENSIONS: Dict[str, List[str]] = {
+FILE_EXTENSIONS: dict[str, list[str]] = {
     "web": ["css", "less", "scss", "wasm"],
     "audio": ["aac", "aiff", "ape", "au", "flac", "gsm", "it", "m3u", "m4a", 
              "mid", "mod", "mp3", "mpa", "pls", "ra", "s3m", "sid", "wav", "wma", "xm"],
@@ -106,9 +105,7 @@ if __name__ == "__main__":
     current_os = platform.system()
     
     # Set base directory based on the detected OS
-    if current_os == 'Windows':
-        base_directory = os.path.join(os.path.expanduser('~'), 'Downloads')
-    elif current_os in ['Linux', 'Darwin']:  # Darwin is macOS
+    if current_os == 'Windows' or current_os in ['Linux', 'Darwin']:
         base_directory = os.path.join(os.path.expanduser('~'), 'Downloads')
     else:
         print(f"Unsupported operating system: {current_os}")

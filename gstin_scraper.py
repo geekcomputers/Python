@@ -1,6 +1,7 @@
-from bs4 import BeautifulSoup
-import requests
 import time
+
+import requests
+from bs4 import BeautifulSoup
 
 # Script Name		: gstin_scraper.py
 # Author				: Purshotam

@@ -1,5 +1,5 @@
 from __future__ import annotations
-from typing import Optional, Dict, Any
+
 import base64
 import mimetypes
 import os
@@ -8,11 +8,13 @@ from email.mime.base import MIMEBase
 from email.mime.image import MIMEImage
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
+from typing import Any
+
+from google.auth.exceptions import RefreshError
+from google.auth.transport.requests import Request
 
 # Google API Authentication Libraries
 from google.oauth2.credentials import Credentials
-from google.auth.transport.requests import Request
-from google.auth.exceptions import RefreshError
 from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
@@ -31,7 +33,7 @@ def get_credentials() -> Credentials:
     Returns:
         Credentials: Valid OAuth2 credentials for accessing Gmail API.
     """
-    creds: Optional[Credentials] = None
+    creds: Credentials | None = None
     home_dir: str = os.path.expanduser("~")
     credential_dir: str = os.path.join(home_dir, ".credentials")
     
@@ -75,8 +77,8 @@ def SendMessage(
     subject: str, 
     msgHtml: str, 
     msgPlain: str, 
-    attachmentFile: Optional[str] = None
-) -> Dict[str, Any] | str:
+    attachmentFile: str | None = None
+) -> dict[str, Any] | str:
     """
     Send an email message via the Gmail API.
     
@@ -116,8 +118,8 @@ def SendMessage(
 def SendMessageInternal(
     service: Any, 
     user_id: str, 
-    message: Dict[str, str]
-) -> Dict[str, Any] | str:
+    message: dict[str, str]
+) -> dict[str, Any] | str:
     """
     Internal helper function to send an email message.
     
@@ -149,7 +151,7 @@ def createMessageWithAttachment(
     msgHtml: str, 
     msgPlain: str, 
     attachmentFile: str
-) -> Dict[str, str]:
+) -> dict[str, str]:
     """Create a MIME message with an attachment.
     
     Args:
@@ -209,7 +211,7 @@ def CreateMessageHtml(
     subject: str, 
     msgHtml: str, 
     msgPlain: str
-) -> Dict[str, str]:
+) -> dict[str, str]:
     """Create a MIME message without attachments.
     
     Args:

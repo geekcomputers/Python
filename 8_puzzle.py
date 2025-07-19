@@ -1,5 +1,6 @@
 from queue import PriorityQueue
 
+
 class PuzzleState:
     def __init__(self, board, goal, moves=0, previous=None):
         self.board = board

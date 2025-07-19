@@ -1,9 +1,7 @@
-from __future__ import print_function
 
 import os  # Load the Module
 
 from _winreg import *  # Load the Module
-
 
 # Script Name		: recyclebin.py
 # Author				: Craig Richards

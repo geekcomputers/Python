@@ -1,4 +1,4 @@
-from typing import Optional
+
 
 class Node:
     def __init__(self, data: int):
@@ -9,10 +9,10 @@ class Node:
             data (int): The data stored in the node.
         """
         self.data: int = data
-        self.left: Optional[Node] = None
-        self.right: Optional[Node] = None
+        self.left: Node | None = None
+        self.right: Node | None = None
 
-def inorder(root: Optional[Node]) -> None:
+def inorder(root: Node | None) -> None:
     """
     This function performs an inorder traversal of a Binary Search Tree (BST).
 

@@ -1,9 +1,8 @@
 import os
-from json import dumps
-from json import loads
+from json import dumps, loads
 
 
-class Settings(object):
+class Settings:
     """
     Classe com todas as configurações do jogo
     """
@@ -81,7 +80,7 @@ class Settings(object):
 
         # Tenta abrir o arquivo parar leitura
         try:
-            file = open(self.settings_fp, "r")
+            file = open(self.settings_fp)
             data = loads(file.read())
             file.close()
 

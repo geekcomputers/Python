@@ -1,9 +1,10 @@
-from tkinter import messagebox
-import customtkinter as ctk
-from typing import List, Tuple, Optional, Union, Literal
-import time
-import random
 import logging
+import random
+import time
+from tkinter import messagebox
+from typing import Literal
+
+import customtkinter as ctk
 
 # Configure logging for error tracking
 logging.basicConfig(
@@ -55,11 +56,11 @@ class TicTacToe:
         self.EMPTY: Literal[" "] = " "
         self.BOARD_SIZE: int = 3  # 3x3 grid
         self.game_over: bool = False
-        self.winning_cells: List[Tuple[int, int]] = []
+        self.winning_cells: list[tuple[int, int]] = []
         self.game_mode: str = MODE_HARD  # Default to hard mode
         
         # Precompute winning lines for faster checks
-        self.winning_lines: List[List[Tuple[int, int]]] = self._get_winning_lines()
+        self.winning_lines: list[list[tuple[int, int]]] = self._get_winning_lines()
 
         # UI Style Configuration - Modern, cohesive design
         self.STYLES = {
@@ -120,9 +121,9 @@ class TicTacToe:
         """Initialize the game board matrix with empty cells"""
         self.board = [[self.EMPTY for _ in range(self.BOARD_SIZE)] 
                      for _ in range(self.BOARD_SIZE)]
-        self.buttons: List[List[ctk.CTkButton]] = []  # Will hold the UI buttons for each cell
+        self.buttons: list[list[ctk.CTkButton]] = []  # Will hold the UI buttons for each cell
 
-    def _get_winning_lines(self) -> List[List[Tuple[int, int]]]:
+    def _get_winning_lines(self) -> list[list[tuple[int, int]]]:
         """
         Precompute all possible winning lines (rows, columns, diagonals).
         
@@ -130,7 +131,7 @@ class TicTacToe:
             List of lists containing tuples of (row, col) coordinates
             for each winning line configuration
         """
-        lines: List[List[Tuple[int, int]]] = []
+        lines: list[list[tuple[int, int]]] = []
         # Rows
         lines.extend([[(i, j) for j in range(self.BOARD_SIZE)] 
                      for i in range(self.BOARD_SIZE)])
@@ -201,7 +202,7 @@ class TicTacToe:
 
             # Create buttons for each cell
             for i in range(self.BOARD_SIZE):
-                row_buttons: List[ctk.CTkButton] = []
+                row_buttons: list[ctk.CTkButton] = []
                 for j in range(self.BOARD_SIZE):
                     button = ctk.CTkButton(
                         board_frame,
@@ -366,8 +367,8 @@ class TicTacToe:
         except Exception as e:
             logging.error(f"Error animating move: {str(e)}", exc_info=True)
 
-    def _interpolate_color(self, start: Union[str, Tuple[str, str]], 
-                          target: Union[str, Tuple[str, str]], 
+    def _interpolate_color(self, start: str | tuple[str, str], 
+                          target: str | tuple[str, str], 
                           factor: float) -> str:
         """
         Interpolate between two colors, handling both string and tuple formats.
@@ -396,7 +397,7 @@ class TicTacToe:
                 target_color = target
                 
             # Convert hex to RGB
-            def hex_to_rgb(h: str) -> Tuple[int, int, int]:
+            def hex_to_rgb(h: str) -> tuple[int, int, int]:
                 h = h.lstrip('#')
                 if len(h) != 6:
                     raise ValueError(f"Invalid hex color: {h}")
@@ -502,7 +503,7 @@ class TicTacToe:
             logging.error(f"Error checking board fullness: {str(e)}", exc_info=True)
             return False  # Safe default
 
-    def _end_game(self, winner: Optional[Literal["human", "ai"]]) -> None:
+    def _end_game(self, winner: Literal["human", "ai"] | None) -> None:
         """
         End the game and handle game over state.
         
@@ -621,7 +622,7 @@ class TicTacToe:
             logging.error(f"Error animating draw cell: {str(e)}", exc_info=True)
 
     def _adjust_button_brightness(self, row: int, col: int, 
-                                base_color: Union[str, Tuple[str, str]], 
+                                base_color: str | tuple[str, str], 
                                 factor: float) -> None:
         """
         Adjust button brightness for animation effects.
@@ -647,7 +648,7 @@ class TicTacToe:
                 color = base_color
                 
             # Convert hex to RGB
-            def hex_to_rgb(h: str) -> Tuple[int, int, int]:
+            def hex_to_rgb(h: str) -> tuple[int, int, int]:
                 h = h.lstrip('#')
                 if len(h) != 6:
                     raise ValueError(f"Invalid hex color: {h}")
@@ -658,7 +659,7 @@ class TicTacToe:
                 )
                 
             # Convert RGB to hex
-            def rgb_to_hex(rgb: Tuple[int, int, int]) -> str:
+            def rgb_to_hex(rgb: tuple[int, int, int]) -> str:
                 return '#%02x%02x%02x' % rgb
                 
             r, g, b = hex_to_rgb(color)
@@ -677,7 +678,7 @@ class TicTacToe:
         except Exception as e:
             logging.error(f"Error adjusting brightness: {str(e)}", exc_info=True)
 
-    def _find_best_move(self) -> Optional[Tuple[int, int]]:
+    def _find_best_move(self) -> tuple[int, int] | None:
         """
         Find optimal move for AI based on difficulty mode.
         
@@ -720,7 +721,7 @@ class TicTacToe:
             logging.error(f"Error finding best move: {str(e)}", exc_info=True)
             return self._get_random_move()  # Fallback to random move
 
-    def _get_random_move(self) -> Optional[Tuple[int, int]]:
+    def _get_random_move(self) -> tuple[int, int] | None:
         """
         Get a random valid move (for easy mode or error fallback).
         
@@ -739,7 +740,7 @@ class TicTacToe:
             logging.error(f"Error getting random move: {str(e)}", exc_info=True)
             return None
 
-    def _get_minimax_move(self) -> Optional[Tuple[int, int]]:
+    def _get_minimax_move(self) -> tuple[int, int] | None:
         """
         Find optimal move using minimax algorithm with alpha-beta pruning.
         
@@ -748,7 +749,7 @@ class TicTacToe:
         """
         try:
             best_score = float('-inf')
-            best_move: Optional[Tuple[int, int]] = None
+            best_move: tuple[int, int] | None = None
             depth_limit = 9  # Full depth for 3x3 board
 
             # Prefer strategic positions (center, corners, edges)

@@ -1,6 +1,7 @@
-from settings import key
-import requests
 import os
+
+import requests
+from settings import key
 
 date = input("Enter date(YYYY-MM-DD): ")
 r = requests.get(f"https://api.nasa.gov/planetary/apod?api_key={key}&date={date}")

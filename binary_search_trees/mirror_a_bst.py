@@ -1,5 +1,6 @@
 from tree_node import Node
 
+
 def create_mirror_bst(root: Node | None) -> Node | None:
     """
     Function to create a mirror of a binary search tree.

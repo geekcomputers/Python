@@ -1,4 +1,5 @@
 import time
+
 pwd=input("Enter your password: ")    #any password u want to set
 
 def IInd_func():

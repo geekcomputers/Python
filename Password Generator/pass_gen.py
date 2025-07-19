@@ -1,5 +1,5 @@
-import string as str
 import secrets
+import string as str
 
 
 class PasswordGenerator:
@@ -23,7 +23,7 @@ class PasswordGenerator:
 
     @staticmethod
     def gen_password(sequence, passlength=8):
-        password = "".join((secrets.choice(sequence) for i in range(passlength)))
+        password = "".join(secrets.choice(sequence) for i in range(passlength))
         return password
 
 

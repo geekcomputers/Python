@@ -1,4 +1,5 @@
 import time
+
 pwd="AKS2608"     #any password u want to set
 
 def IInd_func():

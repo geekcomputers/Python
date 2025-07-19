@@ -5,10 +5,9 @@ Generates humorous loading screen messages inspired by https://github.com/1egoma
 """
 
 import random
-from typing import Dict, List
 
 # Define message categories with weights
-MESSAGES: Dict[str, List[str]] = {
+MESSAGES: dict[str, list[str]] = {
     "TECHNICAL": [
         "Reticulating splines...",
         "Swapping time and space...",

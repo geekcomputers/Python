@@ -1,10 +1,11 @@
-from speakListen import *
-from websiteWork import *
-from textRead import *
 from dictator import *
 from menu import *
-from speechtotext import *
+from speakListen import *
+from textRead import *
 from TextTospeech import *
+from websiteWork import *
+
+from speechtotext import *
 
 
 def main():

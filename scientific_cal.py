@@ -1,4 +1,5 @@
 import math
+
 while True:
     print("""
     Press 1 for basic calculator

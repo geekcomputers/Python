@@ -8,13 +8,12 @@
 
 # Description	: Scans directories to check if there are any sqlite files in there
 
-from __future__ import print_function
 
 import os
 
 
 def isSQLite3(filename):
-    from os.path import isfile, getsize
+    from os.path import getsize, isfile
 
     if not isfile(filename):
         return False

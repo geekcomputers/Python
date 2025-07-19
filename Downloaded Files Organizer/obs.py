@@ -1,10 +1,15 @@
-import time
 import os
-from watchdog.observers import Observer
-from watchdog.events import FileSystemEventHandler, FileSystemEvent  # Import missing type
-from typing import Callable, Optional
+import time
+from collections.abc import Callable
 
-def watcher(directory_path: str, callback: Optional[Callable[[str, str, str], None]] = None) -> None:
+from watchdog.events import (  # Import missing type
+    FileSystemEvent,
+    FileSystemEventHandler,
+)
+from watchdog.observers import Observer
+
+
+def watcher(directory_path: str, callback: Callable[[str, str, str], None] | None = None) -> None:
     """
     Watches a specified directory for file creation events and processes new files.
     

@@ -16,7 +16,7 @@ def weighted_matrix(point: np.asmatrix, training_data_x: np.asmatrix, bandwidth:
     # m is the number of training samples
     m, n = np.shape(training_data_x)
     # Initializing weights as identity matrix
-    weights = np.asmatrix(np.eye((m)))
+    weights = np.asmatrix(np.eye(m))
     # calculating weights for all training examples [x(i)'s]
     for j in range(m):
         diff = point - training_data[j]

@@ -102,7 +102,7 @@ def find_tf_idf(file_names=None, prev_file_path=None, dump_path=None):
     for f in file_names:
 
         file1 = open(
-            f, "r"
+            f
         )  # never use 'rb' for textual data, it creates something like,  {b'line-inside-the-doc'}
 
         # create word_count dict for all docs

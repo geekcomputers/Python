@@ -5,10 +5,9 @@ Handles user input gracefully and provides clear error messages for missing file
 Compatible with Python 3.13.5 and all modern Python 3 versions.
 """
 
-from typing import Dict
 
 
-def count_chars(filename: str) -> Dict[str, int]:
+def count_chars(filename: str) -> dict[str, int]:
     """Count the frequency of each uppercase character in a file.
 
     Args:
@@ -18,9 +17,9 @@ def count_chars(filename: str) -> Dict[str, int]:
         A dictionary where keys are uppercase characters and values are their counts.
         Includes all whitespace, punctuation, and special characters present in the file.
     """
-    char_counts: Dict[str, int] = {}
+    char_counts: dict[str, int] = {}
 
-    with open(filename, 'r') as file:  # Open file in read mode
+    with open(filename) as file:  # Open file in read mode
         content: str = file.read()
         for char in content.upper():  # Convert to uppercase to ensure case insensitivity
             # Update count for current character (default to 0 if not found)
@@ -49,14 +48,14 @@ def main() -> None:
                 break
             
             # Process file and display results
-            counts: Dict[str, int] = count_chars(user_input)
+            counts: dict[str, int] = count_chars(user_input)
             print(f"Character counts for '{user_input}':")
             print(counts)
             print()  # Add blank line for readability
 
         except FileNotFoundError:
             print(f"Error: File '{user_input}' not found. Please try again.\n")
-        except IOError as e:
+        except OSError as e:
             print(f"Error reading file: {str(e)}. Please try again.\n")
 
 

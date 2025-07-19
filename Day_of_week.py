@@ -1,8 +1,8 @@
 # Python program to Find day of
 # the week for a given date
-import re  # regular expressions
 import calendar  # module of python to provide useful fucntions related to calendar
 import datetime  # module of python to get the date and time
+import re  # regular expressions
 
 
 def process_date(user_input):

@@ -1,4 +1,3 @@
-from __future__ import print_function
 
 import sys
 
@@ -1521,9 +1520,7 @@ def registerLabels():
     This function search for labels / subprogram-labels and registers this in the 'jumps' list.
     """
     for i in range(len(tokens)):
-        if tokens[i].t == "label":
-            jumps[tokens[i].token] = i
-        elif tokens[i].t == "subprogram":
+        if tokens[i].t == "label" or tokens[i].t == "subprogram":
             jumps[tokens[i].token] = i
 
 

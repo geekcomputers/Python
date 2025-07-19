@@ -1,10 +1,10 @@
 import os
 import sys
 import time
-from typing import NoReturn, List, Tuple
+from typing import NoReturn
 
 
-def _get_invalid_filename_chars() -> Tuple[str, ...]:
+def _get_invalid_filename_chars() -> tuple[str, ...]:
     """Return a tuple of invalid filename characters for the current OS."""
     if sys.platform.startswith('win'):
         return ('\\', '/', ':', '*', '?', '"', '<', '>', '|')
@@ -12,7 +12,7 @@ def _get_invalid_filename_chars() -> Tuple[str, ...]:
         return ('/',)
 
 
-def is_valid_filename(filename: str) -> Tuple[bool, str]:
+def is_valid_filename(filename: str) -> tuple[bool, str]:
     """
     Validate if a filename is valid for the current operating system.
     
@@ -98,13 +98,13 @@ def print_short_lines(file_name: str) -> None:
         return
 
     try:
-        with open(file_name, "r", encoding="utf-8") as file:
-            lines: List[str] = file.readlines()
+        with open(file_name, encoding="utf-8") as file:
+            lines: list[str] = file.readlines()
             if not lines:
                 print(f"Info: File '{file_name}' is empty.")
                 return
 
-            short_lines: List[str] = [line for line in lines if len(line.rstrip('\n')) < 50]
+            short_lines: list[str] = [line for line in lines if len(line.rstrip('\n')) < 50]
             
             if not short_lines:
                 print("No lines with length < 50 characters (excluding newline).")

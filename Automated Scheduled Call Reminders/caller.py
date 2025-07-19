@@ -6,8 +6,9 @@ It checks for entries every hour and initiates calls 5 minutes prior to the sche
 """
 
 import datetime
-from typing import List, Dict, Any
 from time import gmtime, strftime
+from typing import Any
+
 from firebase_admin import credentials, firestore, initialize_app
 from twilio.rest import Client
 
@@ -42,8 +43,8 @@ def search() -> None:
     current_date: str = str(strftime("%d-%m-%Y", gmtime()))
     
     # Fetch documents from Firestore
-    docs = db.collection(u"on_call").where(u"date", u"==", current_date).stream()
-    scheduled_calls: List[Dict[str, Any]] = []
+    docs = db.collection("on_call").where("date", "==", current_date).stream()
+    scheduled_calls: list[dict[str, Any]] = []
     
     # Filter documents scheduled within the next hour
     for doc in docs:

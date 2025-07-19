@@ -22,6 +22,7 @@ v2 - 03/12/2022
 """
 import sys
 
+
 def with_files(files):
     """Executes when file(s) is/are specified."""
     try:

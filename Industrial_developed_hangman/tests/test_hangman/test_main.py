@@ -1,10 +1,9 @@
 import os
+from collections.abc import Callable
 from pathlib import Path
-from typing import Callable, List
 
 import pytest
 import requests_mock
-
 from src.hangman.main import (
     MainProcess,
     Source,
@@ -13,17 +12,17 @@ from src.hangman.main import (
 )
 
 
-class FkPrint(object):
+class FkPrint:
     def __init__(self) -> None:
-        self.container: List[str] = []
+        self.container: list[str] = []
 
     def __call__(self, value_to_print: str) -> None:
         self.container.append(str(value_to_print))
 
 
-class FkInput(object):
-    def __init__(self, values_to_input: List[str]) -> None:
-        self.values_to_input: List[str] = values_to_input
+class FkInput:
+    def __init__(self, values_to_input: list[str]) -> None:
+        self.values_to_input: list[str] = values_to_input
 
     def __call__(self) -> str:
         return self.values_to_input.pop(0)
@@ -84,7 +83,7 @@ def test_start_game_win(choice_fn: Callable) -> None:
 
 
 @pytest.mark.parametrize('input_str', [[letter] * 10 for letter in 'qwertyuiopasdfghjklzxcvbnm'])  # noqa: WPS435
-def test_start_game_loose(input_str: List[str], choice_fn: Callable) -> None:
+def test_start_game_loose(input_str: list[str], choice_fn: Callable) -> None:
     fk_print = FkPrint()
     fk_input = FkInput(input_str)
     main_process = MainProcess(Source(0), pr_func=fk_print, in_func=fk_input, ch_func=choice_fn)

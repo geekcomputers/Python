@@ -5,7 +5,7 @@
 # (Generally, object is made ancestor of all classes) 
 # In Python 3.x "class Person" is 
 # equivalent to "class Person(object)" 
-class Person(object): 
+class Person: 
 	
 	# Constructor 
 	def __init__(self, name): 

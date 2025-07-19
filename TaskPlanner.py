@@ -1,8 +1,9 @@
 import csv
 
+
 def load_tasks(filename='tasks.csv'):
     tasks = []
-    with open(filename, 'r', newline='') as file:
+    with open(filename, newline='') as file:
         reader = csv.reader(file)
         for row in reader:
             tasks.append({'task': row[0], 'deadline': row[1], 'completed': row[2]})

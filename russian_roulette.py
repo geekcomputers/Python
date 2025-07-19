@@ -2,8 +2,8 @@
     the code is just a russian roulette game against
     the computer
 """
-from random import randrange
 import time
+from random import randrange
 
 
 def main():

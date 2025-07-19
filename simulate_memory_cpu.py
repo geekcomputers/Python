@@ -1,11 +1,10 @@
 #! /user/bin/env python
-# -*- encoding: utf-8 -*-
 """
 Simulate cpu、 memory usage
 """
 
-import sys
 import re
+import sys
 import time
 from multiprocessing import Process, cpu_count
 

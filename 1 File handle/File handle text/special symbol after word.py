@@ -1,7 +1,7 @@
 from pathlib import Path
-from typing import Optional
 
-def print_words_with_asterisk(file_path: Optional[str | Path] = None) -> None:
+
+def print_words_with_asterisk(file_path: str | Path | None = None) -> None:
     """
     Reads a text file and prints each word followed by an asterisk (*) using two methods.
     Handles file paths with spaces and subdirectories.
@@ -28,7 +28,7 @@ def print_words_with_asterisk(file_path: Optional[str | Path] = None) -> None:
         raise IsADirectoryError(f"Path is a directory, not a file: {file_path.resolve()}")
 
     try:
-        with open(file_path, 'r', encoding='utf-8') as file:
+        with open(file_path, encoding='utf-8') as file:
             print(f"Processing file: {file_path.resolve()}\n")  # Show absolute path for verification
 
             # Method 1: Split entire file content into words

@@ -1,9 +1,10 @@
+from datetime import datetime as date
+from datetime import timedelta
+
 import solara as sr
 import yfinance as yf
 
-
 from patterns import Company_Name
-from datetime import datetime as date,timedelta
 
 srart_date = date.today()
 end_date = date.today() + timedelta(days=1)

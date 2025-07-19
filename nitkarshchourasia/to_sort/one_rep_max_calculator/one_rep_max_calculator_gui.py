@@ -1,6 +1,6 @@
 import tkinter as tk
-from tkinter import ttk, messagebox
-from typing import Optional
+from tkinter import messagebox, ttk
+
 
 class OneRepMaxCalculator:
     """
@@ -207,7 +207,7 @@ class OneRepMaxCalculator:
         except ValueError:
             return False
 
-    def calculate_1rm(self) -> Optional[float]:
+    def calculate_1rm(self) -> float | None:
         """
         Calculate 1RM using selected formula with input validation.
         

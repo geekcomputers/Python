@@ -1,5 +1,5 @@
 #Remove all the lines that contain the character `a' in a file and write it to another file.
-f=open("test1.txt","r") #opening file test1.txt
+f=open("test1.txt") #opening file test1.txt
 lines = f.readlines() #saved lines
 print("Original file is :")
 print(lines)
@@ -18,10 +18,10 @@ for line in lines:
 e.close()
 f.close()   
 
-f=open("test1.txt","r")   
+f=open("test1.txt")   
 lines=f.readlines()
 
-e=open("test3.txt","r")   
+e=open("test3.txt")   
 lines1=e.readlines()
 
 print("\n")

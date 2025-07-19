@@ -1,5 +1,6 @@
 import math
 
+
 def square_root(number):
     if number >=0:
         print(f"Square root {math.sqrt(number)}")

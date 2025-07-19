@@ -20,10 +20,11 @@ Rules:
 """
 
 import sys
-import numpy as np
+
 import matplotlib.pyplot as plt
-from matplotlib.colors import ListedColormap
+import numpy as np
 from matplotlib.animation import FuncAnimation
+from matplotlib.colors import ListedColormap
 
 # Configuration
 DEFAULT_CANVAS_SIZE = 50

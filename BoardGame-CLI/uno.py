@@ -1,5 +1,5 @@
 import random
-from typing import List, Union
+
 
 # ANSI color codes for console output
 class Colors:
@@ -34,17 +34,17 @@ def colorize_card(card: str) -> str:
         return f"{Colors.PURPLE}{card}{Colors.RESET}"
     return card
 
-def build_deck() -> List[str]:
+def build_deck() -> list[str]:
     """
     Generate a standard UNO deck consisting of 108 cards.
     
     Returns:
         List[str]: A list containing all UNO cards as strings.
     """
-    deck: List[str] = []
-    colors: List[str] = ["Red", "Green", "Yellow", "Blue"]
-    values: List[Union[int, str]] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "Draw Two", "Skip", "Reverse"]
-    wilds: List[str] = ["Wild", "Wild Draw Four"]
+    deck: list[str] = []
+    colors: list[str] = ["Red", "Green", "Yellow", "Blue"]
+    values: list[int | str] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "Draw Two", "Skip", "Reverse"]
+    wilds: list[str] = ["Wild", "Wild Draw Four"]
     
     # Add numbered and action cards
     for color in colors:
@@ -62,7 +62,7 @@ def build_deck() -> List[str]:
     print(f"Deck built with {len(deck)} cards.")
     return deck
 
-def shuffle_deck(deck: List[str]) -> List[str]:
+def shuffle_deck(deck: list[str]) -> list[str]:
     """
     Shuffle the given deck using the Fisher-Yates algorithm for a uniform random permutation.
     
@@ -78,7 +78,7 @@ def shuffle_deck(deck: List[str]) -> List[str]:
     print("Deck shuffled.")
     return deck
 
-def draw_cards(num_cards: int, deck: List[str], discards: List[str]) -> List[str]:
+def draw_cards(num_cards: int, deck: list[str], discards: list[str]) -> list[str]:
     """
     Draw a specified number of cards from the deck. 
     Reshuffles the discard pile into the deck if it's empty (except the top card).
@@ -91,7 +91,7 @@ def draw_cards(num_cards: int, deck: List[str], discards: List[str]) -> List[str
     Returns:
         List[str]: The cards drawn from the deck.
     """
-    drawn_cards: List[str] = []
+    drawn_cards: list[str] = []
     for _ in range(num_cards):
         if not deck:  # Reshuffle discard pile if deck is empty
             print(f"{Colors.BOLD}Reshuffling discard pile into deck...{Colors.RESET}")
@@ -103,7 +103,7 @@ def draw_cards(num_cards: int, deck: List[str], discards: List[str]) -> List[str
     
     return drawn_cards
 
-def show_hand(player_name: str, player_hand: List[str]) -> None:
+def show_hand(player_name: str, player_hand: list[str]) -> None:
     """
     Display the player's current hand in a formatted and colorized manner.
     
@@ -118,7 +118,7 @@ def show_hand(player_name: str, player_hand: List[str]) -> None:
         print(f"{i}) {colorize_card(card)}")
     print("")
 
-def can_play(current_color: str, current_value: str, player_hand: List[str]) -> bool:
+def can_play(current_color: str, current_value: str, player_hand: list[str]) -> bool:
     """
     Check if the player can play any card from their hand based on the current discard pile.
     
@@ -138,7 +138,7 @@ def can_play(current_color: str, current_value: str, player_hand: List[str]) -> 
             return True
     return False
 
-def get_valid_input(prompt: str, min_val: int, max_val: int, input_type: type = int) -> Union[int, str]:
+def get_valid_input(prompt: str, min_val: int, max_val: int, input_type: type = int) -> int | str:
     """
     Get valid user input within a specified range and type.
     
@@ -171,7 +171,7 @@ def get_valid_input(prompt: str, min_val: int, max_val: int, input_type: type = 
         except ValueError:
             print(f"Invalid input. Please enter a valid {input_type.__name__}.")
 
-def show_game_status(players_name: List[str], players: List[List[str]], play_direction: int, player_turn: int, num_players: int) -> None:
+def show_game_status(players_name: list[str], players: list[list[str]], play_direction: int, player_turn: int, num_players: int) -> None:
     """
     Display the current game status including player hands, direction, and next player.
     
@@ -200,11 +200,11 @@ def main() -> None:
     # Initialize game components
     uno_deck = build_deck()
     uno_deck = shuffle_deck(uno_deck)
-    discards: List[str] = []
+    discards: list[str] = []
 
-    players_name: List[str] = []
-    players: List[List[str]] = []
-    colors: List[str] = ["Red", "Green", "Yellow", "Blue"]
+    players_name: list[str] = []
+    players: list[list[str]] = []
+    colors: list[str] = ["Red", "Green", "Yellow", "Blue"]
 
     # Get number of players
     num_players = get_valid_input("How many players? (2-4): ", 2, 4)

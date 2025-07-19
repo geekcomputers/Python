@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """
 Created on Mon Feb 26 14:29:11 2018
 
@@ -24,7 +23,7 @@ import math
 import random
 
 
-class Vector(object):
+class Vector:
     """
     This class represents a vector of arbitray size.
     You need to give the vector components.
@@ -185,7 +184,7 @@ class Vector(object):
         """
         ans = True
         SIZE = self.size()
-        if SIZE == other.size():
+        if other.size() == SIZE:
             for i in range(SIZE):
                 if self.__components[i] != other.component(i):
                     ans = False
@@ -252,7 +251,7 @@ def randomVector(N, a, b):
     return ans
 
 
-class Matrix(object):
+class Matrix:
     """
     class: Matrix
     This class represents a arbitrary matrix.

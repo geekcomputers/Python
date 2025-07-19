@@ -1,8 +1,7 @@
 # importing the time module
-import time
-
 # importing the random module
 import random
+import time
 
 # welcoming the user
 name = input("What is your name? ")

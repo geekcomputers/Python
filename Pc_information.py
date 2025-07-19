@@ -1,4 +1,4 @@
-import platform # built in lib 
+import platform  # built in lib 
 
 print(f"System : {platform.system()}")  # Prints type of Operating System 
 print(f"System name : {platform.node()}") # Prints System Name

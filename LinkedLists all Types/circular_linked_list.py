@@ -81,7 +81,7 @@ class CircularLinkedList :
         elif idx == self.length:
             self.insert_at_end(data)
             return
-        elif 0 > idx or idx > self.length:
+        elif idx < 0 or idx > self.length:
             raise Exception('Invalid Position')
             return
         pos = 0
@@ -96,7 +96,7 @@ class CircularLinkedList :
             temp = temp.next 
     
     def remove_at(self , idx):
-        if 0 > idx or idx >= self.length:
+        if idx < 0 or idx >= self.length:
             raise Exception('Invalid Position')
         elif idx == 0:
             self.pop_at_beginning()

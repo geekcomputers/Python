@@ -1,9 +1,9 @@
 import json
 import random
 import time
+from collections.abc import Callable
 from enum import Enum
 from pathlib import Path
-from typing import Callable, List
 
 import httpx
 from colorama import Fore, Style
@@ -43,7 +43,7 @@ def print_right(text: str, print_function: Callable[[str], None]) -> None:
     print_function(Style.RESET_ALL + Fore.GREEN + text)
 
 
-def parse_word_from_local(choice_function: Callable[[List[str]], str] = random.choice) -> str:
+def parse_word_from_local(choice_function: Callable[[list[str]], str] = random.choice) -> str:
     # noqa: DAR201
     """
     Parse word from local file.
@@ -77,7 +77,7 @@ def parse_word_from_site(url: str = 'https://random-word-api.herokuapp.com/word'
     raise RuntimeError('Something go wrong with getting the word from site')
 
 
-class MainProcess(object):
+class MainProcess:
     """Manages game process."""
 
     def __init__(self, source: Enum, pr_func: Callable, in_func: Callable, ch_func: Callable) -> None:

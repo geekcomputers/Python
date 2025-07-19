@@ -1,10 +1,10 @@
 import os
+
 import psutil
-from typing import List
 from obs import watcher
 
 # List of browser process names to monitor
-BROWSERS: List[str] = ["chrome.exe", "firefox.exe", "edge.exe", "iexplore.exe"]
+BROWSERS: list[str] = ["chrome.exe", "firefox.exe", "edge.exe", "iexplore.exe"]
 
 def get_downloads_path() -> str:
     """Automatically detect the user's Downloads folder path"""

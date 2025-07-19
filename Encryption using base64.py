@@ -1,4 +1,5 @@
 import base64
+
 #Encryption
 message = input()
 message_bytes = message.encode('ascii')

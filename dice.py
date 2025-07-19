@@ -12,7 +12,7 @@
 import random
 
 
-class Die(object):
+class Die:
     # A dice has a feature of number about how many sides it has when it's
     # established,like 6.
     def __init__(self):

@@ -1,8 +1,8 @@
 import tkinter as tk
 from tkinter import messagebox
-from typing import Optional
 
-def display_message_box() -> Optional[str]:
+
+def display_message_box() -> str | None:
     """Display a message box and return user's response"""
     root = tk.Tk()
     root.withdraw()  # Hide the main window

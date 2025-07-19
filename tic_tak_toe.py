@@ -2,9 +2,11 @@
 # random number in Python
 
 # importing all necessary libraries
-import numpy as np
 import random
 from time import sleep
+
+import numpy as np
+
 
 # Creates an empty board
 def create_board():

@@ -2,6 +2,7 @@
 
 import sys
 
+
 def get_integer():
     for i in range(3,0,-1):                       # executes the loop 3 times. Giving 3 chances to the user.
         num = input("enter a number:")

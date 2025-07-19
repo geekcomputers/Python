@@ -1,6 +1,7 @@
 import sys
 from typing import NoReturn
 
+
 class colors:
     """ANSI color codes for terminal output"""
     CYAN: str = "\033[36m"

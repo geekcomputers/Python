@@ -1,5 +1,7 @@
 from tkinter import *
+
 from translate import Translator
+
 
 # Translator function
 def translate():

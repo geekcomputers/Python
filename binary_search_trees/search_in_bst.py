@@ -1,5 +1,6 @@
 from tree_node import Node
 
+
 def search(root: Node | None, val: int) -> bool:
     """
     This function searches for a node with value val in the BST and returns True if found, False otherwise.

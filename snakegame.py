@@ -29,16 +29,10 @@ while x < 10:
     com_choice = random.choice(list(choices.keys())).lower()
     user_choice = input("\n----->").lower()
 
-    if user_choice == "s" and com_choice == "w":
+    if user_choice == "s" and com_choice == "w" or user_choice == "s" and com_choice == "g":
         com_win += 1
 
-    elif user_choice == "s" and com_choice == "g":
-        com_win += 1
-
-    elif user_choice == "w" and com_choice == "s":
-        user_win += 1
-
-    elif user_choice == "g" and com_choice == "s":
+    elif user_choice == "w" and com_choice == "s" or user_choice == "g" and com_choice == "s":
         user_win += 1
 
     elif user_choice == "g" and com_choice == "w":

@@ -1,5 +1,5 @@
-from flask import Flask, render_template, request
 import practice_beautifulsoap as data
+from flask import Flask, render_template, request
 
 app = Flask(__name__, template_folder='template')
 

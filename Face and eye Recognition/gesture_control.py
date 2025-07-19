@@ -1,6 +1,7 @@
+
 import cv2 as cv
 import numpy as np
-from typing import List
+
 
 def process_hand_image(image_path: str) -> None:
     """
@@ -25,12 +26,12 @@ def process_hand_image(image_path: str) -> None:
     _, thresholded = cv.threshold(img, 70, 255, cv.THRESH_BINARY)
     
     # Find contours in the binary image
-    contours: List[np.ndarray]
+    contours: list[np.ndarray]
     hierarchy: np.ndarray
     contours, hierarchy = cv.findContours(thresholded.copy(), cv.RETR_TREE, cv.CHAIN_APPROX_SIMPLE)
     
     # Compute convex hull for each contour
-    convex_hulls: List[np.ndarray] = [cv.convexHull(contour) for contour in contours]
+    convex_hulls: list[np.ndarray] = [cv.convexHull(contour) for contour in contours]
     
     # Convert grayscale image to BGR for colored drawing
     color_img: np.ndarray = cv.cvtColor(img, cv.COLOR_GRAY2BGR)

@@ -1,19 +1,15 @@
 #!/usr/bin/python
-# -*- coding: utf-8 -*-
 # importing required libraries
 import json
-from os import chdir, system
-from os import walk
-from os.path import curdir
-from os.path import pardir
+import ssl
+from os import chdir, system, walk
+from os.path import curdir, pardir
 from urllib.parse import urlencode
-from urllib.request import urlopen, Request
+from urllib.request import Request, urlopen
 
 import httpx
-import ssl
 from bs4 import BeautifulSoup
 from create_dir import create_directory
-
 
 ssl._create_default_https_context = ssl._create_unverified_context
 

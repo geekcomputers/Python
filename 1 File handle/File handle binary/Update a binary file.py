@@ -1,6 +1,6 @@
 import os
 import pickle
-from typing import List, Tuple
+
 
 def initialize_file_if_not_exists(file_path: str) -> None:
     """
@@ -36,7 +36,7 @@ def update_student_record(file_path: str) -> None:
     try:
         with open(file_path, "rb+") as f:
             # Load existing records
-            records: List[Tuple[int, str, float]] = pickle.load(f)
+            records: list[tuple[int, str, float]] = pickle.load(f)
             
             if not records:
                 print("No records found in the file.")
@@ -90,7 +90,7 @@ def display_all_records(file_path: str) -> None:
     
     try:
         with open(file_path, "rb") as f:
-            records: List[Tuple[int, str, float]] = pickle.load(f)
+            records: list[tuple[int, str, float]] = pickle.load(f)
             
             if not records:
                 print("No records found in the file.")

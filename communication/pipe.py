@@ -1,10 +1,9 @@
 #!/usr/bin/env python3
-# coding: utf-8
 
 import math
 import sys
-from multiprocessing import Process, Pipe
-from typing import List
+from multiprocessing import Pipe, Process
+
 
 def slice(mink: int, maxk: int) -> float:
     """
@@ -42,8 +41,8 @@ def pi(n: int) -> float:
     Returns:
         Approximation of π using the computed sum
     """
-    processes: List[Process] = []
-    parent_conns: List = []
+    processes: list[Process] = []
+    parent_conns: list = []
     unit: int = n // 10
     
     for i in range(10):
@@ -56,7 +55,7 @@ def pi(n: int) -> float:
         p.start()
     
     # Collect results
-    sums: List[float] = []
+    sums: list[float] = []
     for conn in parent_conns:
         result = conn.recv()
         if isinstance(result, str) and result.startswith("Error:"):

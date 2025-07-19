@@ -6,9 +6,9 @@ Author : Dhruv B Kakadiya
 # import libraries
 import pygame as pg
 from modules import statics as st
-from modules.statics import *
-from modules.checker_board import *
 from modules.checker import *
+from modules.checker_board import *
+from modules.statics import *
 
 # static variables for this perticular file
 fps = 60

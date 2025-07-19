@@ -1,9 +1,9 @@
 import os
 import sys
-from typing import Tuple, NoReturn
+from typing import NoReturn
 
 
-def count_lowercase_letters(file_path: str) -> Tuple[int, int]:
+def count_lowercase_letters(file_path: str) -> tuple[int, int]:
     """
     Count lowercase and uppercase alphabetic characters in a text file.
     
@@ -30,7 +30,7 @@ def count_lowercase_letters(file_path: str) -> Tuple[int, int]:
     uppercase_count: int = 0
 
     # Read file content with explicit encoding
-    with open(file_path, 'r', encoding='utf-8') as file:
+    with open(file_path, encoding='utf-8') as file:
         content: str = file.read()
 
     # Iterate through each character to count letters

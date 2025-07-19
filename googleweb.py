@@ -1,13 +1,14 @@
-from fuzzywuzzy import fuzz
 import bs4
-import requests
 import numpy as np
 import pandas as pd
+import requests
+from fuzzywuzzy import fuzz
+
 requests.packages.urllib3.disable_warnings()
 FinalResult=[]
 def SearchResults():
     lis = []
-    f = open("Input", "r")
+    f = open("Input")
     header = {
         'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36'}
     StabUrl = "https://www.google.com/search?rlz=1C1CHBD_enIN872IN872&sxsrf=ALeKk03OHYAnSxX60oUwmblKn36Hyi8MhA%3A1600278715451&ei=u1BiX9ibG7qU4-EP_qGPgA8&q="

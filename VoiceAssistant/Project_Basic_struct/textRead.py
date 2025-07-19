@@ -1,11 +1,12 @@
-from speakListen import hear
-from speakListen import speak
+import time
+
 import docx
 import fitz
-import time
-from rich.console import Console # pip3 install Rich
-from rich.table import Table
 from colorama import Fore
+from rich.console import Console  # pip3 install Rich
+from rich.table import Table
+from speakListen import hear, speak
+
 
 def ms_word():
     """[Print and speak out a ms_word docx file as specified in the path]
@@ -258,17 +259,11 @@ def search_in_toc(toc, key, totalpg):
     for i in range(len(toc) - 1):
         topic = toc[i]
         if i != len(toc) - 2:
-            if topic[1] == key:
-                nexttopic = toc[i + 1]
-                return (topic[2], nexttopic[2])
-            elif topic[1].lower() == key:
+            if topic[1] == key or topic[1].lower() == key:
                 nexttopic = toc[i + 1]
                 return (topic[2], nexttopic[2])
         else:
-            if topic[1] == key:
-                return (topic[2], totalpg)
-            elif topic[1].lower() == key:
-               
+            if topic[1] == key or topic[1].lower() == key:
                 return (topic[2], totalpg)
     return None,None
 

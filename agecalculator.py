@@ -1,7 +1,7 @@
-from _datetime import datetime
 import tkinter as tk
-from tkinter import ttk
 from _datetime import *
+from _datetime import datetime
+from tkinter import ttk
 
 win = tk.Tk()
 win.title('Age Calculate')

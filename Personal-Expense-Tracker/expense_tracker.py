@@ -1,5 +1,6 @@
 import datetime
 
+
 def add_expense(expenses):
     amount = float(input("Enter the expense amount: "))
     category = input("Category (food, travel, shopping, bills, etc.): ")
@@ -70,7 +71,7 @@ def save_expenses(expenses, filename="expenses.txt"):
 def load_expenses(filename="expenses.txt"):
     expenses = []
     try:
-        with open(filename, "r") as f:
+        with open(filename) as f:
             for line in f:
                 amount, category, date_str, note = line.strip().split(',')
                 expenses.append({"amount": float(amount), "category": category, "date": datetime.datetime.strptime(date_str, "%Y-%m-%d").date(), "note": note})

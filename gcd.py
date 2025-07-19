@@ -12,4 +12,4 @@ while i <= a and i <= b:
         gcd = i
     i = i + 1
 
-print("\nGCD of {0} and {1} = {2}".format(a, b, gcd))
+print(f"\nGCD of {a} and {b} = {gcd}")

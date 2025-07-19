@@ -1,6 +1,6 @@
-from typing import List
 
-def crc_check(data: str, div: str) -> List[int]:
+
+def crc_check(data: str, div: str) -> list[int]:
     """
     Perform CRC (Cyclic Redundancy Check) calculation.
     
@@ -12,11 +12,11 @@ def crc_check(data: str, div: str) -> List[int]:
         List of integers representing the CRC remainder
     """
     divisor_length: int = len(div)  # Renamed from 'l' to 'divisor_length'
-    data_list: List[int] = [int(i) for i in data]
-    div_list: List[int] = [int(i) for i in div]
-    zero: List[int] = [0] * divisor_length
-    temp_data: List[int] = data_list[:divisor_length]
-    result: List[int] = []
+    data_list: list[int] = [int(i) for i in data]
+    div_list: list[int] = [int(i) for i in div]
+    zero: list[int] = [0] * divisor_length
+    temp_data: list[int] = data_list[:divisor_length]
+    result: list[int] = []
     
     for j in range(len(data_list) - divisor_length + 1):
         print("Temp_dividend", temp_data)
@@ -33,7 +33,7 @@ def crc_check(data: str, div: str) -> List[int]:
         if divisor_length + j < len(data_list):
             temp_data.append(data_list[divisor_length + j])
     
-    crc: List[int] = temp_data
+    crc: list[int] = temp_data
     print("Quotient: ", result, "remainder", crc)
     return crc
 
@@ -60,7 +60,7 @@ def main() -> None:
             padded_data: str = data + "0" * (len(div) - 1)
             
             # Calculate CRC
-            crc: List[int] = crc_check(padded_data, div)
+            crc: list[int] = crc_check(padded_data, div)
             crc_str: str = ''.join(str(c) for c in crc)
             
             # Display sent data
@@ -69,7 +69,7 @@ def main() -> None:
             
             # Verify CRC at receiver side
             print("If again applying CRC algorithm, the remainder/CRC must be zero if errorless.")
-            receiver_crc: List[int] = crc_check(sent_data, div)
+            receiver_crc: list[int] = crc_check(sent_data, div)
             print("Receiver side remainder: ", receiver_crc)
             
             # Check if remainder is zero

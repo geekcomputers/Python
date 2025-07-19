@@ -1,5 +1,6 @@
 from tree_node import Node
 
+
 def inorder_successor(root: Node) -> Node:
     """
     This function returns the inorder successor of a node in a BST.

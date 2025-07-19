@@ -1,6 +1,7 @@
 import random
 import time
 
+
 class Card:
     """Represents a single playing card"""
     def __init__(self, rank: str, suit: str):

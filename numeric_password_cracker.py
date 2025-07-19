@@ -1,5 +1,6 @@
 import itertools
 
+
 def generate_password_permutations(length):
     # Generate numeric password permutations of the given length
     digits = "0123456789"

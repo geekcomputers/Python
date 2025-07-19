@@ -308,7 +308,7 @@ wordfreq = [
     wordlist.count(w) for w in wordlist
 ]  # counts frequency of a letter in the given list
 
-print("String\n {} \n".format(wordstring))
-print("List\n {} \n".format(str(wordlist)))
-print("Frequencies\n {} \n".format(str(wordfreq)))
-print("Pairs\n {}".format(str(dict(zip(wordlist, wordfreq)))))
+print(f"String\n {wordstring} \n")
+print(f"List\n {str(wordlist)} \n")
+print(f"Frequencies\n {str(wordfreq)} \n")
+print(f"Pairs\n {str(dict(zip(wordlist, wordfreq)))}")

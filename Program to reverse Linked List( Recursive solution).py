@@ -1,4 +1,4 @@
-from sys import stdin, setrecursionlimit
+from sys import setrecursionlimit, stdin
 
 setrecursionlimit(10 ** 6)
 

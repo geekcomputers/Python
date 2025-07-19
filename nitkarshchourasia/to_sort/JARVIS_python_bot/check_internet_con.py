@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 
 import sys
 from urllib.error import URLError
 from urllib.request import urlopen
+
 
 def check_internet_connectivity() -> None:
     """

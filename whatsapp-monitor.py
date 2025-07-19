@@ -11,8 +11,9 @@ install requirements: python -m pip install selenium
 
 """
 
-from selenium import webdriver
 import time
+
+from selenium import webdriver
 
 driver = webdriver.Firefox()
 driver.get("http://web.whatsapp.com")
@@ -43,7 +44,7 @@ while True:
             try:
                 status = driver.find_element_by_class_name("_315-i").text
                 name = driver.find_element_by_class_name("_19vo_").text
-                print("{0} is {1}".format(name, status))
+                print(f"{name} is {status}")
                 time.sleep(30)
             except:
                 name = driver.find_element_by_class_name("_19vo_").text

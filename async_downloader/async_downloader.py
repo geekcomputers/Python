@@ -11,11 +11,12 @@ pip install aiohttp
 
 import asyncio
 from os.path import basename
-from typing import List, Set, Tuple
-import aiohttp
-from aiohttp import ClientSession, ClientError
 
-def download(urls: List[str]) -> None:
+import aiohttp
+from aiohttp import ClientError, ClientSession
+
+
+def download(urls: list[str]) -> None:
     """
     Download files from given URLs asynchronously.
     
@@ -30,8 +31,8 @@ def download(urls: List[str]) -> None:
 
     print("Initiating downloads...")
 
-    success_files: Set[str] = set()
-    failure_files: Set[str] = set()
+    success_files: set[str] = set()
+    failure_files: set[str] = set()
 
     # Run async downloader in the current event loop
     asyncio.run(
@@ -51,7 +52,7 @@ def download(urls: List[str]) -> None:
         for file in failure_files:
             print(file)
 
-async def async_downloader(urls: List[str], success_files: Set[str], failure_files: Set[str]) -> None:
+async def async_downloader(urls: list[str], success_files: set[str], failure_files: set[str]) -> None:
     """
     Asynchronous downloader that processes multiple URLs concurrently.
     
@@ -78,7 +79,7 @@ async def async_downloader(urls: List[str], success_files: Set[str], failure_fil
             else:
                 success_files.add(url)
 
-async def download_file_by_url(url: str, session: ClientSession) -> Tuple[bool, str]:
+async def download_file_by_url(url: str, session: ClientSession) -> tuple[bool, str]:
     """
     Download a single file from given URL using provided session.
     
@@ -110,7 +111,7 @@ async def download_file_by_url(url: str, session: ClientSession) -> Tuple[bool, 
     except aiohttp.ClientResponseError as e:
         print(f"\t{file_name} from {url}: Failed - HTTP Error {e.status}")
         
-    except asyncio.TimeoutError:
+    except TimeoutError:
         print(f"\t{file_name} from {url}: Failed - Connection timed out")
         
     except ClientError as e:

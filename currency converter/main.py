@@ -6,14 +6,20 @@ Fetches real-time exchange rates and provides a user-friendly interface.
 
 import sys
 from pathlib import Path
-from typing import Optional, Dict, List
-from PyQt5.QtGui import QDoubleValidator
-from PyQt5.QtCore import Qt
-from PyQt5.QtWidgets import (QApplication, QMainWindow, QLineEdit, QPushButton, 
-                             QComboBox, QLCDNumber, QWidget)
-from PyQt5 import uic
-import httpx
 
+import httpx
+from PyQt5 import uic
+from PyQt5.QtCore import Qt
+from PyQt5.QtGui import QDoubleValidator
+from PyQt5.QtWidgets import (
+    QApplication,
+    QComboBox,
+    QLCDNumber,
+    QLineEdit,
+    QMainWindow,
+    QPushButton,
+    QWidget,
+)
 
 # Embedded currency data (originally from country.txt)
 CURRENCIES = [
@@ -232,7 +238,7 @@ class CurrencyConverter(QMainWindow):
         """Load currency list from embedded data (no external file)"""
         # Remove duplicates while preserving order
         seen: set = set()
-        unique_currencies: List[str] = []
+        unique_currencies: list[str] = []
         for currency in CURRENCIES:
             if currency not in seen:
                 seen.add(currency)
@@ -246,7 +252,7 @@ class CurrencyConverter(QMainWindow):
             self.dropDown2.addItem(currency)
 
 
-    def get_exchange_rate(self, from_currency: str, to_currency: str) -> Optional[float]:
+    def get_exchange_rate(self, from_currency: str, to_currency: str) -> float | None:
         """Fetch exchange rate from API"""
         try:
             # Extract currency codes (format: "Name-CODE")
@@ -263,7 +269,7 @@ class CurrencyConverter(QMainWindow):
             
             response: httpx.Response = httpx.get(url, timeout=10)
             response.raise_for_status()
-            data: Dict[str, float] = response.json()
+            data: dict[str, float] = response.json()
             
             rate_key: str = f"{from_code}_{to_code}"
             return float(data[rate_key]) if rate_key in data else None
@@ -286,7 +292,7 @@ class CurrencyConverter(QMainWindow):
             
         try:
             amount: float = float(amount_text)
-            rate: Optional[float] = self.get_exchange_rate(from_currency, to_currency)
+            rate: float | None = self.get_exchange_rate(from_currency, to_currency)
             
             if rate is not None:
                 result: float = amount * rate

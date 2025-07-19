@@ -1,6 +1,6 @@
 import os
 import pickle
-from typing import List, Tuple
+
 
 def initialize_file_if_not_exists(file_path: str) -> None:
     """
@@ -32,7 +32,7 @@ def write_sample_data(file_path: str) -> None:
     Args:
         file_path (str): Path to the file to write data to.
     """
-    sample_data: List[Tuple[int, str, float]] = [
+    sample_data: list[tuple[int, str, float]] = [
         (1, "Ramya", 30.0),
         (2, "Vaishnavi", 60.0),
         (3, "Anuya", 40.0),
@@ -58,7 +58,7 @@ def count_remedial_students(file_path: str) -> None:
     
     try:
         with open(file_path, "rb") as file:
-            students: List[Tuple[int, str, float]] = pickle.load(file)
+            students: list[tuple[int, str, float]] = pickle.load(file)
             
             remedial_students = [student for student in students if student[2] < 40.0]
             
@@ -84,7 +84,7 @@ def count_top_scorers(file_path: str) -> None:
     
     try:
         with open(file_path, "rb") as file:
-            students: List[Tuple[int, str, float]] = pickle.load(file)
+            students: list[tuple[int, str, float]] = pickle.load(file)
             
             if not students:
                 print("No student records found.")
@@ -115,7 +115,7 @@ def display_all_students(file_path: str) -> None:
     
     try:
         with open(file_path, "rb") as file:
-            students: List[Tuple[int, str, float]] = pickle.load(file)
+            students: list[tuple[int, str, float]] = pickle.load(file)
             
             print("\nAll student records:")
             print(f"{'ROLL':<8}{'NAME':<15}{'PERCENTAGE':<12}")

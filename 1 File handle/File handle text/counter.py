@@ -1,4 +1,4 @@
-from typing import Dict
+
 
 class TextCounter:
     """
@@ -56,7 +56,7 @@ class TextCounter:
             UnicodeDecodeError: If the file cannot be decoded properly
         """
         if is_file_path:
-            with open(content, 'r', encoding='utf-8') as file:
+            with open(content, encoding='utf-8') as file:
                 return file.read()
         return content
     
@@ -103,7 +103,7 @@ class TextCounter:
                 self.count_digits + 
                 self.count_special)
     
-    def get_stats(self) -> Dict[str, int]:
+    def get_stats(self) -> dict[str, int]:
         """
         Return detailed character statistics.
         

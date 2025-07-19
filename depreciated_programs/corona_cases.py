@@ -1,11 +1,12 @@
 import sys
-from typing import Dict, List, Any, Optional
-import httpx
 from time import sleep
+from typing import Any
+
+import httpx
 
 # Type aliases
-CovidData = Dict[str, Any]
-CountryData = List[Dict[str, Any]]
+CovidData = dict[str, Any]
+CountryData = list[dict[str, Any]]
 
 # API request and data processing
 url: str = "https://api.covid19api.com/summary"
@@ -22,7 +23,7 @@ except (httpx.RequestError, ValueError) as e:
     sys.exit(1)
 
 # Extract global data
-global_data: Dict[str, int] = visit["Global"]
+global_data: dict[str, int] = visit["Global"]
 NewConfirmed: int = global_data["NewConfirmed"]
 TotalConfirmed: int = global_data["TotalConfirmed"]
 NewDeaths: int = global_data["NewDeaths"]
@@ -32,7 +33,7 @@ TotalRecovered: int = global_data["TotalRecovered"]
 
 # Extract India data (using country name instead of index for reliability)
 countries: CountryData = visit["Countries"]
-india_data: Optional[Dict[str, Any]] = next(
+india_data: dict[str, Any] | None = next(
     (country for country in countries if country["Country"] == "India"),
     None
 )

@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """
 Created on Thu Oct  5 16:44:23 2017
 
@@ -46,7 +45,8 @@ def pi(maxK=70, prec=1008, disp=1007):
     prec: precision of decimal places
     disp: number of decimal places shown
     """
-    from decimal import Decimal as Dec, getcontext as gc
+    from decimal import Decimal as Dec
+    from decimal import getcontext as gc
 
     gc().prec = prec
     K, M, L, X, S = 6, 1, 13591409, 1, 13591409

@@ -1,11 +1,13 @@
 import math
-import pygame
-from pygame import mixer
-import cv2
-import numpy as np
 import os
 import sys
+
+import cv2
+import numpy as np
+import pygame
 from fighter import Fighter
+from pygame import mixer
+
 
 # Helper Function for Bundled Assets
 def resource_path(relative_path):

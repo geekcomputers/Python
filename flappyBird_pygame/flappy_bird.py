@@ -1,5 +1,4 @@
 #! /usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
 Created on Fri Mar 23 14:17:24 2019
 
@@ -243,7 +242,7 @@ def main():
 
         # check for collisions
         pipe_collision = any(p.collides_with(bird) for p in pipes)
-        if pipe_collision or 0 >= bird.y or bird.y >= W_HEIGHT - Bird.HEIGHT:
+        if pipe_collision or bird.y <= 0 or bird.y >= W_HEIGHT - Bird.HEIGHT:
             done = True
 
         for x in (0, W_WIDTH / 2):

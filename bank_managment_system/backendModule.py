@@ -6,9 +6,8 @@ including customer and employee management, account operations,
 and administrative functions.
 """
 
-import sqlite3
 import os
-from typing import List, Tuple, Optional
+import sqlite3
 
 # Database connection and cursor
 conn: sqlite3.Connection
@@ -110,7 +109,7 @@ def check_acc_no(acc_no: int) -> bool:
     cur.execute("SELECT 1 FROM bank WHERE acc_no = ?", (acc_no,))
     return cur.fetchone() is not None
 
-def get_details(acc_no: int) -> Optional[Tuple[int, str, int, str, int, str, str]]:
+def get_details(acc_no: int) -> tuple[int, str, int, str, int, str, str] | None:
     """Retrieve full details of a customer account."""
     cur.execute("SELECT * FROM bank WHERE acc_no = ?", (acc_no,))
     return cur.fetchone()
@@ -161,7 +160,7 @@ def update_acc_type_in_bank_table(new_acc_type: str, acc_no: int) -> None:
     cur.execute("UPDATE bank SET account_type = ? WHERE acc_no = ?", (new_acc_type, acc_no))
     conn.commit()
 
-def list_all_customers() -> List[Tuple[int, str, int, str, int, str, str]]:
+def list_all_customers() -> list[tuple[int, str, int, str, int, str, str]]:
     """Retrieve details of all customer accounts."""
     cur.execute("SELECT * FROM bank")
     return cur.fetchall()
@@ -171,7 +170,7 @@ def delete_acc(acc_no: int) -> None:
     cur.execute("DELETE FROM bank WHERE acc_no = ?", (acc_no,))
     conn.commit()
 
-def show_employees() -> List[Tuple[str, int, str]]:
+def show_employees() -> list[tuple[str, int, str]]:
     """Retrieve basic details of all employees."""
     cur.execute("SELECT name, salary, position FROM staff")
     return cur.fetchall()
@@ -182,7 +181,7 @@ def all_money() -> int:
     total = cur.fetchone()[0]
     return total if total is not None else 0
 
-def show_employees_for_update() -> List[Tuple[str, str, int, str]]:
+def show_employees_for_update() -> list[tuple[str, str, int, str]]:
     """Retrieve complete details of all employees for update operations."""
     cur.execute("SELECT * FROM staff")
     return cur.fetchall()
@@ -207,7 +206,7 @@ def update_employee_position(new_pos: str, old_name: str) -> None:
     cur.execute("UPDATE staff SET position = ? WHERE name = ?", (new_pos, old_name))
     conn.commit()
 
-def get_detail(acc_no: int) -> Optional[Tuple[str, int]]:
+def get_detail(acc_no: int) -> tuple[str, int] | None:
     """Retrieve the name and balance of a customer account."""
     cur.execute("SELECT name, balance FROM bank WHERE acc_no = ?", (acc_no,))
     return cur.fetchone()
@@ -217,7 +216,7 @@ def check_name_in_staff(name: str) -> bool:
     cur.execute("SELECT 1 FROM staff WHERE name = ?", (name,))
     return cur.fetchone() is not None
 
-def get_employee_data(name: str) -> Optional[Tuple[str, str, int, str]]:
+def get_employee_data(name: str) -> tuple[str, str, int, str] | None:
     """Retrieve complete details of a specific employee."""
     cur.execute("SELECT * FROM staff WHERE name = ?", (name,))
     return cur.fetchone()

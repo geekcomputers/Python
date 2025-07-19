@@ -1,4 +1,4 @@
-from rich.console import Console # pip3 install Rich
+from rich.console import Console  # pip3 install Rich
 from rich.table import Table
 from speakListen import *
 

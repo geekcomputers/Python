@@ -1,14 +1,15 @@
 import tkinter as tk
-from tkinter import StringVar, Entry, Text, Button, Label, Event
 import tkinter.messagebox as mbox
+from tkinter import Button, Entry, Event, Label, StringVar, Text
+from typing import Any
+
 import emoji
-from typing import Optional, List, Any
 
 
 class Keypad(tk.Frame):
     """A custom keypad frame containing emoji buttons and control functions"""
     
-    cells: List[List[str]] = [
+    cells: list[list[str]] = [
         ["😀", "🥰", "😴", "🤓", "🤮", "🤬", "😨", "🤑", "😫", "😎"],
         [
             "🐒", "🐕", "🐎", "🐪", "🐁", "🐘", "🦘", "🦈", "🐓", "🐝",
@@ -27,9 +28,9 @@ class Keypad(tk.Frame):
     def __init__(self, parent: tk.Tk, *args: Any, **kwargs: Any) -> None:
         """Initialize the keypad frame with emoji buttons and controls"""
         super().__init__(parent, *args, **kwargs)
-        self.target: Optional[Entry] = None
+        self.target: Entry | None = None
         self.memory: str = ""
-        self.label: Optional[Label] = None
+        self.label: Label | None = None
         
         self._create_buttons()
 
@@ -76,7 +77,7 @@ class Keypad(tk.Frame):
             # Optionally show error message to user
             # mbox.showerror("Error", f"Failed to initialize keypad: {str(e)}")
 
-    def get(self) -> Optional[str]:
+    def get(self) -> str | None:
         """Get current text from target entry widget"""
         try:
             if self.target:

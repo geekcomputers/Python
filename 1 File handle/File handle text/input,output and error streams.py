@@ -21,7 +21,7 @@ def read_and_print_file(file_path: str) -> None:
     """
     try:
         # Open file in read mode with explicit UTF-8 encoding
-        with open(file_path, mode='r', encoding='utf-8') as file:
+        with open(file_path, encoding='utf-8') as file:
             # Read and print lines in chunks for better memory efficiency
             for line in file:
                 sys.stdout.write(line)

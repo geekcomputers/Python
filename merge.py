@@ -1,4 +1,3 @@
-from __future__ import print_function
 
 import os
 
@@ -28,11 +27,11 @@ def merge():
     with open(resultfile, "w") as writefile:
         for csvfile in csvfiles:
             with open(csvfile) as readfile:
-                print("File {} readed.".format(csvfile))
+                print(f"File {csvfile} readed.")
 
                 # do the read and write
                 writefile.write(readfile.read() + "\n")
-    print("\nFile {} wrote.".format(resultfile))
+    print(f"\nFile {resultfile} wrote.")
 
 
 # the main program

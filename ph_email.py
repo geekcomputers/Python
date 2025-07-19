@@ -58,7 +58,7 @@ for em in find_email.findall(text):
 print(f"{len(matches)} matches found")
 
 # if matches are found add then to file
-if len(matches):
+if matches:
     with open("matches.txt", "a") as file:
         for match in matches:
             file.write(match)

@@ -9,6 +9,7 @@
 import os
 import sys
 
+
 def get_folder_size(directory):
     """Calculate the total size of a directory and its subdirectories."""
     total_size = 0

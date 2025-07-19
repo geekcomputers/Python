@@ -1,7 +1,9 @@
-import pandas as pd
 import os
+
+import pandas as pd
 import tabula
 from docx.api import Document
+
 
 def process_child_directory(child_dir: str) -> dict[str, pd.DataFrame]:
     """Process a child directory and return dataframes from its files"""

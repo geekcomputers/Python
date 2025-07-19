@@ -4,16 +4,16 @@ This script processes an image by sorting its pixels based on color attributes,
 generates a video of the sorting process, and converts pixel data into audio.
 """
 
+import argparse
+import colorsys
+import math
+from pathlib import Path
+
 import cv2
 import numpy as np
-import math
-import colorsys
 import pandas as pd
-import argparse
-from tqdm import tqdm
 from scipy import signal
-from pathlib import Path
-from typing import Tuple
+from tqdm import tqdm
 
 # Configuration - Modify these for different results
 AUDIO_SAMPLE_RATE: int = 44100  # Audio sampling rate (Hz)
@@ -73,7 +73,7 @@ def sort_pixels_by_hsv(pixels: np.ndarray) -> np.ndarray:
     sort_indices: np.ndarray = np.argsort(sort_keys, axis=0)[:, 0]
     return pixels[sort_indices]
 
-def step_sort_key(bgr: np.ndarray, repetitions: int = SORT_REPETITIONS) -> Tuple[int, float, int]:
+def step_sort_key(bgr: np.ndarray, repetitions: int = SORT_REPETITIONS) -> tuple[int, float, int]:
     """Generate sort key based on HSV color space and luminance"""
     b, g, r = bgr
     # Calculate luminance (weighted for human perception)

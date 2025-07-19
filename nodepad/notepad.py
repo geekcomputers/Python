@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 
 import sys
-from typing import Optional, Any
-from tkinter import ttk, Text, Entry, Label, Button, Frame, Toplevel, Tk, WORD
+from tkinter import WORD, Button, Entry, Frame, Label, Text, Tk, Toplevel, ttk
+from typing import Any
+
 
 # Replace missing module with placeholder (implement this separately)
 # import notepad_support
@@ -56,8 +56,8 @@ def vp_start_gui() -> None:
     notepad_support.init(root, top)
     root.mainloop()
 
-root: Optional[Tk] = None
-w: Optional[Toplevel] = None
+root: Tk | None = None
+w: Toplevel | None = None
 
 def create_Notepads_management(root: Tk, *args: Any, **kwargs: Any) -> tuple[Toplevel, Any]:
     """Starting point when module is imported by another program."""

@@ -1,7 +1,9 @@
-from PyQt5 import QtCore, QtGui, QtWidgets
 import sys
+from collections.abc import Callable
+from typing import Any
+
 import backendModule
-from typing import List, Tuple, Optional, Callable, Union, Any
+from PyQt5 import QtCore, QtGui, QtWidgets
 
 try:
     if hasattr(backendModule, 'connect_database'):
@@ -12,7 +14,7 @@ except Exception as e:
     print(f"Database connection error: {e}")
     sys.exit(1)
 
-employee_data: Optional[Tuple[Any, ...]] = None
+employee_data: tuple[Any, ...] | None = None
 
 HOME_PAGE = 0
 ADMIN_PAGE = 1
@@ -38,7 +40,7 @@ EMPLOYEE_UPDATE_ACCOUNT_PAGE = 20
 
 FONT_SIZE = QtGui.QFont("Segoe UI", 12)
 
-def create_styled_frame(parent: QtWidgets.QWidget, min_size: Optional[Tuple[int, int]] = None, style: str = "") -> QtWidgets.QFrame:
+def create_styled_frame(parent: QtWidgets.QWidget, min_size: tuple[int, int] | None = None, style: str = "") -> QtWidgets.QFrame:
     """Create a styled QFrame with optional minimum size and custom style."""
     frame = QtWidgets.QFrame(parent)
     frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
@@ -60,7 +62,7 @@ def create_styled_label(parent: QtWidgets.QWidget, text: str, font_size: int = 1
     label.setText(text)
     return label
 
-def create_styled_button(parent: QtWidgets.QWidget, text: str, min_size: Optional[Tuple[int, int]] = None) -> QtWidgets.QPushButton:
+def create_styled_button(parent: QtWidgets.QWidget, text: str, min_size: tuple[int, int] | None = None) -> QtWidgets.QPushButton:
     """Create a styled QPushButton with hover and pressed effects."""
     button = QtWidgets.QPushButton(parent)
     if min_size:
@@ -86,7 +88,7 @@ def create_styled_button(parent: QtWidgets.QWidget, text: str, min_size: Optiona
     button.setText(text)
     return button
 
-def create_input_field(parent: QtWidgets.QWidget, label_text: str, min_label_size: Tuple[int, int] = (120, 0)) -> Tuple[QtWidgets.QFrame, QtWidgets.QLineEdit]:
+def create_input_field(parent: QtWidgets.QWidget, label_text: str, min_label_size: tuple[int, int] = (120, 0)) -> tuple[QtWidgets.QFrame, QtWidgets.QLineEdit]:
     """Create a horizontal layout with a label and input field."""
     frame = create_styled_frame(parent, style="padding: 7px;")
     layout = QtWidgets.QHBoxLayout(frame)
@@ -105,7 +107,7 @@ def create_input_field(parent: QtWidgets.QWidget, label_text: str, min_label_siz
     layout.addWidget(line_edit)
     return frame, line_edit
 
-def create_input_field_V(parent: QtWidgets.QWidget, label_text: str, min_label_size: Tuple[int, int] = (120, 0)) -> Tuple[QtWidgets.QFrame, QtWidgets.QLineEdit]:
+def create_input_field_V(parent: QtWidgets.QWidget, label_text: str, min_label_size: tuple[int, int] = (120, 0)) -> tuple[QtWidgets.QFrame, QtWidgets.QLineEdit]:
     """Create a vertical layout with a label and input field."""
     frame = create_styled_frame(parent, style="padding: 7px;")
     layout = QtWidgets.QVBoxLayout(frame)
@@ -124,7 +126,7 @@ def create_input_field_V(parent: QtWidgets.QWidget, label_text: str, min_label_s
     layout.addWidget(line_edit)
     return frame, line_edit
 
-def show_popup_message(parent: QtWidgets.QWidget, message: str, page: Optional[int] = None, show_cancel: bool = False, cancel_page: int = HOME_PAGE) -> None:
+def show_popup_message(parent: QtWidgets.QWidget, message: str, page: int | None = None, show_cancel: bool = False, cancel_page: int = HOME_PAGE) -> None:
     """Display a reusable popup message box with optional navigation."""
     dialog = QtWidgets.QDialog(parent)
     dialog.setWindowTitle("Message")
@@ -177,7 +179,7 @@ def show_popup_message(parent: QtWidgets.QWidget, message: str, page: Optional[i
     
     dialog.exec_()
 
-def search_result(parent: QtWidgets.QWidget, title: str, label_text: str) -> Tuple[QtWidgets.QWidget, Tuple[QtWidgets.QLineEdit, QtWidgets.QPushButton]]:
+def search_result(parent: QtWidgets.QWidget, title: str, label_text: str) -> tuple[QtWidgets.QWidget, tuple[QtWidgets.QLineEdit, QtWidgets.QPushButton]]:
     """Create a search page with input field and submit button."""
     page, main_layout = create_page_with_header(parent, title)
     content_frame = create_styled_frame(page)
@@ -201,7 +203,7 @@ def search_result(parent: QtWidgets.QWidget, title: str, label_text: str) -> Tup
     
     return page, (user_account_number, submit_button)
 
-def create_page_with_header(parent: QtWidgets.QWidget, title_text: str) -> Tuple[QtWidgets.QWidget, QtWidgets.QLayout]:
+def create_page_with_header(parent: QtWidgets.QWidget, title_text: str) -> tuple[QtWidgets.QWidget, QtWidgets.QLayout]:
     """Create a page with a styled header and return the page and main layout."""
     page = QtWidgets.QWidget(parent)
     main_layout = QtWidgets.QVBoxLayout(page)
@@ -262,7 +264,7 @@ def get_employee_name(parent: QtWidgets.QWidget, name_field_text: str = "Enter E
     search_button.clicked.connect(on_search_button_clicked)
     return page
 
-def create_login_page(parent: QtWidgets.QWidget, title: str, name_field_text: str = "Name :", password_field_text: str = "Password :", submit_text: str = "Submit") -> Tuple[QtWidgets.QWidget, QtWidgets.QLineEdit, QtWidgets.QLineEdit, QtWidgets.QPushButton]:
+def create_login_page(parent: QtWidgets.QWidget, title: str, name_field_text: str = "Name :", password_field_text: str = "Password :", submit_text: str = "Submit") -> tuple[QtWidgets.QWidget, QtWidgets.QLineEdit, QtWidgets.QLineEdit, QtWidgets.QPushButton]:
     """Create a login page with name, password fields and submit button."""
     page, main_layout = create_page_with_header(parent, title)
     
@@ -361,7 +363,7 @@ def create_home_page(parent: QtWidgets.QWidget, on_admin_clicked: Callable[[], N
     
     return page
 
-def create_admin_menu_page(parent: QtWidgets.QWidget) -> Tuple[QtWidgets.QWidget, QtWidgets.QPushButton, QtWidgets.QPushButton, QtWidgets.QPushButton, QtWidgets.QPushButton, QtWidgets.QPushButton]:
+def create_admin_menu_page(parent: QtWidgets.QWidget) -> tuple[QtWidgets.QWidget, QtWidgets.QPushButton, QtWidgets.QPushButton, QtWidgets.QPushButton, QtWidgets.QPushButton, QtWidgets.QPushButton]:
     """Create admin menu page with function buttons."""
     page, main_layout = create_page_with_header(parent, "Admin Menu")
 
@@ -374,7 +376,7 @@ def create_admin_menu_page(parent: QtWidgets.QWidget) -> Tuple[QtWidgets.QWidget
     button_container_layout.setSpacing(15)
 
     button_labels = ["Add Employee", "Update Employee", "Employee List", "Total Money", "Back"]
-    buttons: List[QtWidgets.QPushButton] = []
+    buttons: list[QtWidgets.QPushButton] = []
 
     for label in button_labels:
         btn = create_styled_button(button_container, label)
@@ -386,7 +388,7 @@ def create_admin_menu_page(parent: QtWidgets.QWidget) -> Tuple[QtWidgets.QWidget
 
     return page, *buttons
 
-def create_add_employee_page(parent: QtWidgets.QWidget, title: str, submit_text: str = "Submit", update_btn: bool = False) -> Tuple[QtWidgets.QWidget, QtWidgets.QLineEdit, QtWidgets.QLineEdit, QtWidgets.QLineEdit, QtWidgets.QLineEdit, QtWidgets.QPushButton]:
+def create_add_employee_page(parent: QtWidgets.QWidget, title: str, submit_text: str = "Submit", update_btn: bool = False) -> tuple[QtWidgets.QWidget, QtWidgets.QLineEdit, QtWidgets.QLineEdit, QtWidgets.QLineEdit, QtWidgets.QLineEdit, QtWidgets.QPushButton]:
     """Create page for adding or updating employee information."""
     page, main_layout = create_page_with_header(parent, title)
 
@@ -573,7 +575,7 @@ def show_total_money(parent: QtWidgets.QWidget, title: str) -> QtWidgets.QWidget
     
     return page
 
-def create_employee_menu_page(parent: QtWidgets.QWidget, title: str) -> Tuple[QtWidgets.QWidget, QtWidgets.QPushButton, QtWidgets.QPushButton, QtWidgets.QPushButton, QtWidgets.QPushButton, QtWidgets.QPushButton, QtWidgets.QPushButton, QtWidgets.QPushButton, QtWidgets.QPushButton, QtWidgets.QPushButton]:
+def create_employee_menu_page(parent: QtWidgets.QWidget, title: str) -> tuple[QtWidgets.QWidget, QtWidgets.QPushButton, QtWidgets.QPushButton, QtWidgets.QPushButton, QtWidgets.QPushButton, QtWidgets.QPushButton, QtWidgets.QPushButton, QtWidgets.QPushButton, QtWidgets.QPushButton, QtWidgets.QPushButton]:
     """Create employee menu page with function buttons."""
     page, main_layout = create_page_with_header(parent, title)
 
@@ -586,7 +588,7 @@ def create_employee_menu_page(parent: QtWidgets.QWidget, title: str) -> Tuple[Qt
     button_container_layout.setSpacing(15)
 
     button_labels = ["Create Account", "Show Details", "Add Balance", "Withdraw Money", "Check Balance", "Update Account", "List of All Members", "Delete Account", "Back"]
-    buttons: List[QtWidgets.QPushButton] = []
+    buttons: list[QtWidgets.QPushButton] = []
 
     for label in button_labels:
         btn = create_styled_button(button_container, label)
@@ -598,7 +600,7 @@ def create_employee_menu_page(parent: QtWidgets.QWidget, title: str) -> Tuple[Qt
 
     return page, *buttons
 
-def create_account_page(parent: QtWidgets.QWidget, title: str, update_btn: bool = False) -> Tuple[QtWidgets.QWidget, Tuple[QtWidgets.QLineEdit, QtWidgets.QLineEdit, QtWidgets.QLineEdit, QtWidgets.QLineEdit, QtWidgets.QLineEdit, QtWidgets.QComboBox, QtWidgets.QPushButton]]:
+def create_account_page(parent: QtWidgets.QWidget, title: str, update_btn: bool = False) -> tuple[QtWidgets.QWidget, tuple[QtWidgets.QLineEdit, QtWidgets.QLineEdit, QtWidgets.QLineEdit, QtWidgets.QLineEdit, QtWidgets.QLineEdit, QtWidgets.QComboBox, QtWidgets.QPushButton]]:
     """Create page for creating or updating customer accounts."""
     page, main_layout = create_page_with_header(parent, title)
 
@@ -611,7 +613,7 @@ def create_account_page(parent: QtWidgets.QWidget, title: str, update_btn: bool 
     form_layout.setSpacing(3)
 
     fields = ["Name :", "Age :", "Address", "Balance :", "Mobile number :"]
-    edits: List[QtWidgets.QLineEdit] = []
+    edits: list[QtWidgets.QLineEdit] = []
 
     for field in fields:
         field_frame, field_edit = create_input_field(form_frame, field, min_label_size=(160, 0))
@@ -680,7 +682,7 @@ def create_account_page(parent: QtWidgets.QWidget, title: str, update_btn: bool 
     
     return page, (edits[0], edits[1], edits[2], edits[3], edits[4], account_type_dropdown, submit_button)
 
-def create_show_details_page1(parent: QtWidgets.QWidget, title: str) -> Tuple[QtWidgets.QWidget, Tuple[QtWidgets.QLineEdit, QtWidgets.QPushButton]]:
+def create_show_details_page1(parent: QtWidgets.QWidget, title: str) -> tuple[QtWidgets.QWidget, tuple[QtWidgets.QLineEdit, QtWidgets.QPushButton]]:
     """Create first page for showing account details (search by account number)."""
     page, main_layout = create_page_with_header(parent, title)
     
@@ -703,7 +705,7 @@ def create_show_details_page1(parent: QtWidgets.QWidget, title: str) -> Tuple[Qt
     
     return page, (user_account_number, submit_button)
 
-def create_show_details_page2(parent: QtWidgets.QWidget, title: str) -> Tuple[QtWidgets.QWidget, Tuple[QtWidgets.QLineEdit, QtWidgets.QLineEdit, QtWidgets.QLineEdit, QtWidgets.QLineEdit, QtWidgets.QLineEdit, QtWidgets.QLineEdit, QtWidgets.QLineEdit, QtWidgets.QPushButton]]:
+def create_show_details_page2(parent: QtWidgets.QWidget, title: str) -> tuple[QtWidgets.QWidget, tuple[QtWidgets.QLineEdit, QtWidgets.QLineEdit, QtWidgets.QLineEdit, QtWidgets.QLineEdit, QtWidgets.QLineEdit, QtWidgets.QLineEdit, QtWidgets.QLineEdit, QtWidgets.QPushButton]]:
     """Create second page for showing account details (display details)."""
     page, main_layout = create_page_with_header(parent, title)
     
@@ -717,7 +719,7 @@ def create_show_details_page2(parent: QtWidgets.QWidget, title: str) -> Tuple[Qt
     form_layout.setSpacing(3)
     
     labels = ["Account No: ", "Name: ", "Age:", "Address: ", "Balance: ", "Mobile Number: ", "Account Type: "]
-    fields: List[QtWidgets.QLineEdit] = []
+    fields: list[QtWidgets.QLineEdit] = []
     
     for label in labels:
         label_frame, input_field = create_input_field(form_frame, label, min_label_size=(180, 30))
@@ -748,7 +750,7 @@ def create_show_details_page2(parent: QtWidgets.QWidget, title: str) -> Tuple[Qt
     
     return page, (fields[0], fields[1], fields[2], fields[3], fields[4], fields[5], fields[6], exit_btn)
 
-def update_user(parent: QtWidgets.QWidget, title: str, input_fields_label: str, input_field: bool = True) -> Tuple[QtWidgets.QWidget, Union[Tuple[QtWidgets.QLineEdit, QtWidgets.QLineEdit, QtWidgets.QLineEdit, QtWidgets.QPushButton], Tuple[QtWidgets.QLineEdit, QtWidgets.QLineEdit, QtWidgets.QPushButton]]]:
+def update_user(parent: QtWidgets.QWidget, title: str, input_fields_label: str, input_field: bool = True) -> tuple[QtWidgets.QWidget, tuple[QtWidgets.QLineEdit, QtWidgets.QLineEdit, QtWidgets.QLineEdit, QtWidgets.QPushButton] | tuple[QtWidgets.QLineEdit, QtWidgets.QLineEdit, QtWidgets.QPushButton]]:
     """Create page for updating user balance (add/withdraw)."""
     page, main_layout = create_page_with_header(parent, title)
     content_frame = create_styled_frame(page)
@@ -771,7 +773,7 @@ def update_user(parent: QtWidgets.QWidget, title: str, input_fields_label: str, 
     user_balance.setReadOnly(True)
     user_balance.setStyleSheet("background-color: #8a8a8a; border: 1px solid #ccc; border-radius: 4px; padding: 8px;")
     
-    amount_field: Optional[QtWidgets.QLineEdit] = None
+    amount_field: QtWidgets.QLineEdit | None = None
     if input_field:
         amount_frame, amount_field = create_input_field_V(form_frame, input_fields_label, min_label_size=(180, 0))
         form_layout.addWidget(amount_frame)
@@ -811,7 +813,7 @@ def update_user(parent: QtWidgets.QWidget, title: str, input_fields_label: str, 
     else:
         return page, (user_account_name, user_balance, submit_button)
 
-def setup_main_window(main_window: QtWidgets.QMainWindow) -> Tuple[QtWidgets.QStackedWidget, dict]:
+def setup_main_window(main_window: QtWidgets.QMainWindow) -> tuple[QtWidgets.QStackedWidget, dict]:
     """Set up the main window with a stacked widget containing all pages."""
     main_window.setObjectName("MainWindow")
     main_window.resize(800, 600)
@@ -1013,7 +1015,7 @@ def setup_main_window(main_window: QtWidgets.QMainWindow) -> Tuple[QtWidgets.QSt
     
     show_details_btn1.clicked.connect(handle_show_details_submit)
     
-    def setup_balance_operation(title_search: str, placeholder: str, title_form: str, action_text: str, success_msg: str, backend_func: str, search_idx: int, page_idx: int, need_input: bool = True) -> Tuple[QtWidgets.QWidget, QtWidgets.QWidget]:
+    def setup_balance_operation(title_search: str, placeholder: str, title_form: str, action_text: str, success_msg: str, backend_func: str, search_idx: int, page_idx: int, need_input: bool = True) -> tuple[QtWidgets.QWidget, QtWidgets.QWidget]:
         search_page, search_widgets = search_result(stacked_widget, title_search, placeholder)
         search_input, search_btn = search_widgets
         

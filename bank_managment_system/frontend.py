@@ -1,6 +1,7 @@
 # importing all modules
 import tkinter.messagebox
-from tkinter import Tk, Frame, Button, Label, Entry, mainloop
+from tkinter import Button, Entry, Frame, Label, Tk, mainloop
+
 import backendModule
 
 # creating a Tkinter window
@@ -38,7 +39,7 @@ def create():
             )
 
             label = Label(
-                create_employee_frame, text="Your account number is {}".format(acc_no)
+                create_employee_frame, text=f"Your account number is {acc_no}"
             )
             label.grid(row=14)
 
@@ -135,27 +136,27 @@ def show():
             show_frame.grid(padx=400, pady=200)
 
             label = Label(
-                show_frame, text="Account_number:\t{}".format(details[0]), font="bold"
+                show_frame, text=f"Account_number:\t{details[0]}", font="bold"
             )
             label.grid(row=0, pady=6)
-            label = Label(show_frame, text="Name:\t{}".format(details[1]), font="bold")
+            label = Label(show_frame, text=f"Name:\t{details[1]}", font="bold")
             label.grid(row=1, pady=6)
-            label = Label(show_frame, text="Age:\t{}".format(details[2]), font="bold")
+            label = Label(show_frame, text=f"Age:\t{details[2]}", font="bold")
             label.grid(row=2, pady=6)
             label = Label(
-                show_frame, text="Address:\t{}".format(details[3]), font="bold"
+                show_frame, text=f"Address:\t{details[3]}", font="bold"
             )
             label.grid(row=3, pady=6)
             label = Label(
-                show_frame, text="Balance:\t{}".format(details[4]), font="bold"
+                show_frame, text=f"Balance:\t{details[4]}", font="bold"
             )
             label.grid(row=4, pady=6)
             label = Label(
-                show_frame, text="Account_type:\t{}".format(details[5]), font="bold"
+                show_frame, text=f"Account_type:\t{details[5]}", font="bold"
             )
             label.grid(row=5, pady=6)
             label = Label(
-                show_frame, text="Mobile Number:\t{}".format(details[6]), font="bold"
+                show_frame, text=f"Mobile Number:\t{details[6]}", font="bold"
             )
             label.grid(row=6, pady=6)
             button = Button(
@@ -219,12 +220,12 @@ def add():
                 detail = backendModule.get_detail(acc_no)
 
                 label = Label(
-                    add_frame, text="Account holder name:   {}".format(detail[0][0])
+                    add_frame, text=f"Account holder name:   {detail[0][0]}"
                 )
                 label.grid(row=0, pady=3)
 
                 label = Label(
-                    add_frame, text="Current amount:   {}".format(detail[0][1])
+                    add_frame, text=f"Current amount:   {detail[0][1]}"
                 )
                 label.grid(row=1, pady=3)
 
@@ -310,12 +311,12 @@ def withdraw():
                 detail = backendModule.get_detail(acc_no)
 
                 label = Label(
-                    add_frame, text="Account holder name:   {}".format(detail[0][0])
+                    add_frame, text=f"Account holder name:   {detail[0][0]}"
                 )
                 label.grid(row=0, pady=3)
 
                 label = Label(
-                    add_frame, text="Current amount:   {}".format(detail[0][1])
+                    add_frame, text=f"Current amount:   {detail[0][1]}"
                 )
                 label.grid(row=1, pady=3)
 
@@ -393,7 +394,7 @@ def check():
                 check_frame.grid(padx=500, pady=300)
 
                 label = Label(
-                    check_frame, text="Balance Is:{}".format(balance), font="bold"
+                    check_frame, text=f"Balance Is:{balance}", font="bold"
                 )
                 label.grid(row=0, pady=4)
 
@@ -624,9 +625,7 @@ def allmembers():
     for i in details:
         label = Label(
             list_frame,
-            text="{}\t\t\t{}\t\t\t{}\t\t\t{}\t\t\t{}".format(
-                i[0], i[1], i[2], i[3], i[4]
-            ),
+            text=f"{i[0]}\t\t\t{i[1]}\t\t\t{i[2]}\t\t\t{i[3]}\t\t\t{i[4]}",
         )
         label.grid(pady=4)
 
@@ -1037,7 +1036,7 @@ def show_employee():
     for i in details:
         label = Label(
             show_employee_frame,
-            text="{}\t\t\t{}\t\t\t{}\t\t\t{}".format(i[0], i[1], i[2], i[3]),
+            text=f"{i[0]}\t\t\t{i[1]}\t\t\t{i[2]}\t\t\t{i[3]}",
         )
         label.grid(pady=4)
 
@@ -1071,7 +1070,7 @@ def Total_money():
     label = Label(all_money, text="Total Amount of money")
     label.grid(row=0, pady=6)
 
-    label = Label(all_money, text="{}".format(all))
+    label = Label(all_money, text=f"{all}")
     label.grid(row=1)
 
     button = Button(

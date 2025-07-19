@@ -1,4 +1,4 @@
-import pandas as pd 
+import pandas as pd
 
 # reading csv file into python
 df= pd.read_csv("c:\PROJECT\Drug_Recommendation_System\drug_recommendation_system\Drugs_Review_Datasets.csv") # Replace the path with your own file path

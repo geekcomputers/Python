@@ -1,16 +1,16 @@
 import random
+
 import pygame
-from typing import List, Tuple
 
 # Initialize pygame
 pygame.init()
 
 # Define colors
-BLACK: Tuple[int, int, int] = (0, 0, 0)
-WHITE: Tuple[int, int, int] = (255, 255, 255)
-GREEN: Tuple[int, int, int] = (0, 255, 0)
-RED: Tuple[int, int, int] = (255, 0, 0)
-BRICK_COLOR: Tuple[int, int, int] = (56, 177, 237)
+BLACK: tuple[int, int, int] = (0, 0, 0)
+WHITE: tuple[int, int, int] = (255, 255, 255)
+GREEN: tuple[int, int, int] = (0, 255, 0)
+RED: tuple[int, int, int] = (255, 0, 0)
+BRICK_COLOR: tuple[int, int, int] = (56, 177, 237)
 
 # Set up the display
 SCREEN_WIDTH: int = 700
@@ -70,9 +70,7 @@ class Ball:
         self.y_loc += self.y_vel
 
         # Handle collisions with screen walls
-        if self.x_loc <= self.radius:
-            self.x_vel *= -1
-        elif self.x_loc >= self.width - self.radius:
+        if self.x_loc <= self.radius or self.x_loc >= self.width - self.radius:
             self.x_vel *= -1
         
         if self.y_loc <= self.radius:
@@ -200,7 +198,7 @@ class BrickWall:
         self.y: int = y
         self.brick_width: int = brick_width
         self.brick_height: int = brick_height
-        self.bricks: List[Brick] = []
+        self.bricks: list[Brick] = []
 
         # Initialize bricks in a grid pattern
         current_x: int = x

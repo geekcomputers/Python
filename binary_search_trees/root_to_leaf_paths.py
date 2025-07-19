@@ -1,7 +1,8 @@
-from tree_node import Node
-from typing import List
 
-def print_root_to_leaf_paths(root: Node | None, path: List[int]) -> None:
+from tree_node import Node
+
+
+def print_root_to_leaf_paths(root: Node | None, path: list[int]) -> None:
     """
     This function prints all the root-to-leaf paths in a BST.
 

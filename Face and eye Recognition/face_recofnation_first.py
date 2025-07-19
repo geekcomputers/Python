@@ -1,8 +1,9 @@
-import cv2 as cv
-from cv2 import CascadeClassifier, VideoCapture
-import numpy as np
 import os
-from typing import Tuple, List
+
+import cv2 as cv
+import numpy as np
+from cv2 import CascadeClassifier, VideoCapture
+
 
 def detect_faces_and_eyes(camera_index: int = 0, 
                          face_scale_factor: float = 1.1, 
@@ -47,7 +48,7 @@ def detect_faces_and_eyes(camera_index: int = 0,
     cap: VideoCapture = cv.VideoCapture(camera_index)
 
     if not cap.isOpened():
-        raise IOError(f"Cannot open camera with index {camera_index}")
+        raise OSError(f"Cannot open camera with index {camera_index}")
 
     try:
         while True:
@@ -64,7 +65,7 @@ def detect_faces_and_eyes(camera_index: int = 0,
             gray_frame: np.ndarray = cv.cvtColor(frame, cv.COLOR_BGR2GRAY)
 
             # Detect faces in the grayscale frame
-            faces: List[Tuple[int, int, int, int]] = face_cascade.detectMultiScale(
+            faces: list[tuple[int, int, int, int]] = face_cascade.detectMultiScale(
                 gray_frame, 
                 scaleFactor=face_scale_factor, 
                 minNeighbors=face_min_neighbors,
@@ -73,7 +74,7 @@ def detect_faces_and_eyes(camera_index: int = 0,
             )
 
             # Detect eyes in the grayscale frame
-            eyes: List[Tuple[int, int, int, int]] = eye_cascade.detectMultiScale(
+            eyes: list[tuple[int, int, int, int]] = eye_cascade.detectMultiScale(
                 gray_frame, 
                 scaleFactor=eye_scale_factor, 
                 minNeighbors=eye_min_neighbors,

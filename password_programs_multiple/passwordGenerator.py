@@ -2,7 +2,9 @@
 # modified Prince Gangurde 4/4/2020
 
 import random
+
 import pycountry
+
 
 def generate_password():
     # Define characters and word sets

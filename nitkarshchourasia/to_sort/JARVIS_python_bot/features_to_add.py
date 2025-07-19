@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 
 import time
 from getpass import getuser
+
 
 def get_user_name() -> str:
     """

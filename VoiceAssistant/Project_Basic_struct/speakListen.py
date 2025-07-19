@@ -1,10 +1,10 @@
-import time
-from colorama import Fore
-import speech_recognition as sr
-import pyttsx3
 import datetime
-from rich.progress import Progress
+import time
 
+import pyttsx3
+import speech_recognition as sr
+from colorama import Fore
+from rich.progress import Progress
 
 python = pyttsx3.init("sapi5") # name of the engine is set as Python
 voices = python.getProperty("voices")

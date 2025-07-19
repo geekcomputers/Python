@@ -1,5 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
+
 # Make a request on to your website
 page = requests.get("Paste your Website Domain here")
 soup = BeautifulSoup(page.content, 'html.parser')

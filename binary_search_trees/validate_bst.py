@@ -1,5 +1,6 @@
 from tree_node import Node
 
+
 def is_valid_bst(root: Node | None, min_node: Node | None, max_node: Node | None) -> bool:
     """
     Function to check if a binary tree is a binary search tree.
@@ -17,11 +18,7 @@ def is_valid_bst(root: Node | None, min_node: Node | None, max_node: Node | None
         return True
     
     # If the root value is less than the minimum value or greater than the maximum value, return False
-    if min_node is not None and root.data <= min_node.data:
-        return False
-    
-    # If the root value is greater than the maximum value or less than the minimum value, return False
-    elif max_node is not None and root.data >= max_node.data:
+    if min_node is not None and root.data <= min_node.data or max_node is not None and root.data >= max_node.data:
         return False
     
     # Recursively check if the left and right subtrees are BSTs

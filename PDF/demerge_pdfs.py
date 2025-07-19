@@ -5,6 +5,7 @@ to enhance the experience of reading and feasibility to study only specific part
 
 
 import PyPDF2
+
 path = input()
 merged_pdf = open(path, mode='rb')
 
