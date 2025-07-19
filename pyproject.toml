@@ -163,6 +163,7 @@ combine-as-imports = true
 [tool.ruff.lint.per-file-ignores]
 "__init__.py" = ["F401"]
 "tests/**" = ["S101", "PT011", "PT018"]
+".*_test\\.py" = ["S101", "PT011", "PT018"]
 
 [tool.ruff.lint.flake8-2020]
 check-tuple-unpacking = false
