@@ -125,9 +125,11 @@ skip = "*.css,*.js,*.lock"
 [tool.ruff]
 line-length = 88
 target-version = "py313"
-select = ["E", "F", "I", "B", "UP", "YTT", "PLC", "PT", "SIM"]
+# 移除 "B" 选择器（Ruff 不支持该类别规则）
+select = ["E", "F", "I", "UP", "YTT", "PLC", "PT", "SIM"]
 ignore = [
-    "B101", "B904", "B905", "PLC0415", 
+    # 同时移除所有 "B" 类规则的忽略（已无意义）
+    "B904", "B905", "PLC0415", 
     "PLW2901", "PT011", "PT018", "PT028", 
     "S101", "SIM905", "UP038"
 ]
