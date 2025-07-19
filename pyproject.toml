@@ -113,10 +113,10 @@ dependencies = [
     "xor-cipher",
     "yfinance",
 ]
+
 [build-system]
 requires = ["setuptools>=65", "wheel"]
 build-backend = "setuptools.build_meta"
-
 
 [tool.codespell]
 ignore-words-list = "3rt,abd,aer,ans,bitap,crate,damon,fo,followings,hist,iff,kwanza,manuel,mater,secant,som,sur,tim,toi,zar"
@@ -125,10 +125,8 @@ skip = "*.css,*.js,*.lock"
 [tool.ruff]
 line-length = 88
 target-version = "py313"
-# 移除 "B" 选择器（Ruff 不支持该类别规则）
 select = ["E", "F", "I", "UP", "YTT", "PLC", "PT", "SIM"]
 ignore = [
-    # 同时移除所有 "B" 类规则的忽略（已无意义）
     "B904", "B905", "PLC0415", 
     "PLW2901", "PT011", "PT018", "PT028", 
     "S101", "SIM905", "UP038"
