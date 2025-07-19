@@ -113,6 +113,10 @@ dependencies = [
     "xor-cipher",
     "yfinance",
 ]
+[build-system]
+requires = ["setuptools>=65", "wheel"]
+build-backend = "setuptools.build_meta"
+
 [tool.ruff]
 line-length = 88
 target-version = "py313"
@@ -148,3 +152,72 @@ max-args = 10
 max-branches = 20
 max-returns = 8
 max-statements = 88
+
+[tool.codespell]
+ignore-words-list = "3rt,abd,aer,ans,bitap,crate,damon,fo,followings,hist,iff,kwanza,manuel,mater,secant,som,sur,tim,toi,zar"
+skip = "*.css,*.js,*.lock"
+[tool.ruff.lint.isort]
+known-first-party = ["python"]
+combine-as-imports = true
+
+[tool.ruff.lint.per-file-ignores]
+"__init__.py" = ["F401"]
+"tests/**" = ["S101", "PT011", "PT018"]
+
+[tool.ruff.lint.flake8-2020]
+check-tuple-unpacking = false
+[tool.mypy]
+python_version = "3.13"
+ignore_missing_imports = true
+show_error_codes = true
+strict = true
+
+# 性能优化
+incremental = true
+cache_dir = ".mypy_cache"
+workers = 4
+
+# 文件排除
+exclude = '''
+  .*venv.*|
+  .*__pycache__.*|
+  .*migrations.*|
+  .*node_modules.*|
+  .*dist.*|
+  .*build.*|
+  .*templates/.*\.html
+'''
+
+[[tool.mypy.overrides]]
+module = [
+    "django.*",
+    "tensorflow.*",
+    "keras.*",
+    "sklearn.*",
+    "matplotlib.*",
+    "pymongo.*",
+    "firebase_admin.*",
+    "numpy.*",
+    "pandas.*",
+    "cv2.*"
+]
+ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
+module = [
+    ".*_pb2.*",
+    ".*_pb2_grpc.*"
+]
+ignore_errors = true
+
+[[tool.mypy.overrides]]
+module = [
+    "tests.*",
+    ".*_test\.py"
+]
+strict = false
+disallow_untyped_defs = false
+
+[[tool.mypy.overrides]]
+module = ["legacy.*"]
+strict = false
