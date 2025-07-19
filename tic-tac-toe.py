@@ -1,116 +1,141 @@
+"""Tic-Tac-Toe game for two players.
+
+Players take turns marking the spaces in a 3x3 grid with 'X' (Player 1)
+and 'O' (Player 2). The player who succeeds in placing three of their
+marks in a horizontal, vertical, or diagonal row wins the game.
+"""
+
 import os
 import time
+from typing import NoReturn
 
-board = [" ", " ", " ", " ", " ", " ", " ", " ", " ", " "]
-player = 1
-
-########win Flags##########
-Win = 1
-Draw = -1
-Running = 0
-Stop = 1
-###########################
-Game = Running
-Mark = "X"
+# Game state constants
+WIN: int = 1
+DRAW: int = -1
+RUNNING: int = 0
+STOP: int = 1  # Unused in current logic but保留 for consistency
 
 
-# This Function Draws Game Board
-def DrawBoard():
-    print(" %c | %c | %c " % (board[1], board[2], board[3]))
+def draw_board(board: list[str]) -> None:
+    """Draw the current state of the Tic-Tac-Toe board.
+
+    Args:
+        board: List representing the 3x3 grid (indexes 1-9 used)
+    """
+    print(f" {board[1]} | {board[2]} | {board[3]} ")
     print("___|___|___")
-    print(" %c | %c | %c " % (board[4], board[5], board[6]))
+    print(f" {board[4]} | {board[5]} | {board[6]} ")
     print("___|___|___")
-    print(" %c | %c | %c " % (board[7], board[8], board[9]))
+    print(f" {board[7]} | {board[8]} | {board[9]} ")
     print("   |   |   ")
 
 
-# This Function Checks position is empty or not
-def CheckPosition(x):
-    if board[x] == " ":
-        return True
-    else:
-        return False
+def check_position(board: list[str], position: int) -> bool:
+    """Check if a position on the board is empty.
+
+    Args:
+        board: Current game board
+        position: Index (1-9) to check
+
+    Returns:
+        True if position is empty (' '), False otherwise
+    """
+    return board[position] == " "
 
 
-# This Function Checks player has won or not
-def CheckWin():
-    global Game
-    # Horizontal winning condition
+def check_win(board: list[str]) -> int:
+    """Check the current game state (win, draw, or running).
+
+    Args:
+        board: Current game board
+
+    Returns:
+        WIN (1) if a player has won,
+        DRAW (-1) if the board is full with no winner,
+        RUNNING (0) if the game should continue
+    """
+    # Check horizontal wins
     if (
-        board[1] == board[2]
-        and board[2] == board[3]
-        and board[1] != " "
-        or board[4] == board[5]
-        and board[5] == board[6]
-        and board[4] != " "
-        or board[7] == board[8]
-        and board[8] == board[9]
-        and board[7] != " "
-        or board[1] == board[4]
-        and board[4] == board[7]
-        and board[1] != " "
-        or board[2] == board[5]
-        and board[5] == board[8]
-        and board[2] != " "
-        or board[3] == board[6]
-        and board[6] == board[9]
-        and board[3] != " "
-        or board[1] == board[5]
-        and board[5] == board[9]
-        and board[5] != " "
-        or board[3] == board[5]
-        and board[5] == board[7]
-        and board[5] != " "
+        (board[1] == board[2] == board[3] != " ")
+        or (board[4] == board[5] == board[6] != " ")
+        or (board[7] == board[8] == board[9] != " ")
     ):
-        Game = Win
-    # Match Tie or Draw Condition
-    elif (
-        board[1] != " "
-        and board[2] != " "
-        and board[3] != " "
-        and board[4] != " "
-        and board[5] != " "
-        and board[6] != " "
-        and board[7] != " "
-        and board[8] != " "
-        and board[9] != " "
+        return WIN
+
+    # Check vertical wins
+    if (
+        (board[1] == board[4] == board[7] != " ")
+        or (board[2] == board[5] == board[8] != " ")
+        or (board[3] == board[6] == board[9] != " ")
     ):
-        Game = Draw
-    else:
-        Game = Running
+        return WIN
+
+    # Check diagonal wins
+    if (board[1] == board[5] == board[9] != " ") or (
+        board[3] == board[5] == board[7] != " "
+    ):
+        return WIN
+
+    # Check for draw (board full)
+    if all(cell != " " for cell in board[1:]):
+        return DRAW
+
+    # Game still running
+    return RUNNING
 
 
-print("Tic-Tac-Toe Game Designed By Sourabh Somani")
-print("Player 1 [X] --- Player 2 [O]\n")
-print()
-print()
-print("Please Wait...")
-time.sleep(3)
-while Game == Running:
+def main() -> NoReturn:
+    """Main game loop for Tic-Tac-Toe."""
+    board: list[str] = [" "] * 10  # Indexes 1-9 used for gameplay
+    current_player: int = 1  # 1 for Player 1 (X), 2 for Player 2 (O)
+    game_state: int = RUNNING
+
+    print("Tic-Tac-Toe Game")
+    print("Player 1 [X] --- Player 2 [O]\n")
+    print("Please Wait...")
+    time.sleep(3)
+
+    while game_state == RUNNING:
+        os.system("cls")
+        draw_board(board)
+
+        # Determine current player's mark
+        mark: str = "X" if current_player % 2 != 0 else "O"
+        print(f"Player {current_player}'s chance ({mark})")
+
+        # Get and validate player input
+        try:
+            choice: int = int(input("Enter position [1-9] to mark: "))
+        except ValueError:
+            print("Invalid input! Please enter a number between 1-9.")
+            time.sleep(2)
+            continue
+
+        if not (1 <= choice <= 9):
+            print("Invalid Position! Choose between 1 and 9.")
+            time.sleep(2)
+            continue
+
+        if check_position(board, choice):
+            board[choice] = mark
+            current_player += 1
+            game_state = check_win(board)
+        else:
+            print("Position already occupied! Try another.")
+            time.sleep(2)
+
+    # Game over - display result
     os.system("cls")
-    DrawBoard()
-    if player % 2 != 0:
-        print("Player 1's chance")
-        Mark = "X"
-    else:
-        print("Player 2's chance")
-        Mark = "O"
-    choice = int(input("Enter the position between [1-9] where you want to mark : "))
-    if CheckPosition(choice):
-        board[choice] = Mark
-        player += 1
-        CheckWin()
-    if choice < 1 or choice > 9:
-        print("Invalid Position! Please choose a position between 1 and 9.")
-        time.sleep(2)
-        continue
-os.system("cls")
-DrawBoard()
-if Game == Draw:
-    print("Game Draw")
-elif Game == Win:
-    player -= 1
-    if player % 2 != 0:
-        print("Player 1 Won")
-    else:
-        print("Player 2 Won")
+    draw_board(board)
+
+    if game_state == DRAW:
+        print("Game Draw!")
+    elif game_state == WIN:
+        winner: int = current_player - 1  # Adjust for last increment
+        print(f"Player {winner} Won!")
+
+    os._exit(0)
+
+
+if __name__ == "__main__":
+    main()

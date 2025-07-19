@@ -1,120 +1,169 @@
-# Tic-Tac-Toe Program using
-# random number in Python
+"""Random Tic-Tac-Toe Game
 
-# importing all necessary libraries
+A program where two players (represented by 1 and 2) take turns placing their
+marks on a 3x3 board randomly. The first player to get three marks in a row,
+column, or diagonal wins. If all positions are filled with no winner, it's a tie.
+"""
+
 import random
-from time import sleep
+import time
 
 import numpy as np
 
 
-# Creates an empty board
-def create_board():
+def create_board() -> np.ndarray:
+    """Create an empty 3x3 Tic-Tac-Toe board.
+
+    Returns:
+        A 3x3 numpy array initialized with zeros (empty positions).
+    """
     return np.array([[0, 0, 0], [0, 0, 0], [0, 0, 0]])
 
 
-# Check for empty places on board
-def possibilities(board):
-    l = []
+def possibilities(board: np.ndarray) -> list[tuple[int, int]]:
+    """Find all empty positions on the board.
 
-    for i in range(len(board)):
-        for j in range(len(board)):
-            if board[i][j] == 0:
-                l.append((i, j))
-    return l
+    Args:
+        board: 3x3 numpy array representing the game board.
+
+    Returns:
+        List of (row, column) tuples where the board has a zero (empty).
+    """
+    empty_positions: list[tuple[int, int]] = []
+    for row in range(len(board)):
+        for col in range(len(board[row])):
+            if board[row, col] == 0:
+                empty_positions.append((row, col))
+    return empty_positions
 
 
-# Select a random place for the player
-def random_place(board, player):
-    selection = possibilities(board)
-    current_loc = random.choice(selection)
-    board[current_loc] = player
+def random_place(board: np.ndarray, player: int) -> np.ndarray:
+    """Place a player's mark on a random empty position.
+
+    Args:
+        board: 3x3 numpy array representing the game board.
+        player: Player identifier (1 or 2) to place the mark.
+
+    Returns:
+        Updated board with the player's mark in a random empty position.
+    """
+    empty_positions = possibilities(board)
+    if not empty_positions:
+        return board  # Board is full, no move possible
+
+    row, col = random.choice(empty_positions)
+    board[row, col] = player
     return board
 
 
-# Checks whether the player has three
-# of their marks in a horizontal row
-def row_win(board, player):
-    for x in range(len(board)):
-        win = True
+def row_win(board: np.ndarray, player: int) -> bool:
+    """Check if a player has won by filling an entire row.
 
-        for y in range(len(board)):
-            if board[x, y] != player:
-                win = False
-                continue
+    Args:
+        board: 3x3 numpy array representing the game board.
+        player: Player identifier (1 or 2) to check for a win.
 
-        if win == True:
-            return win
-    return win
-
-
-# Checks whether the player has three
-# of their marks in a vertical row
-def col_win(board, player):
-    for x in range(len(board)):
-        win = True
-
-        for y in range(len(board)):
-            if board[y][x] != player:
-                win = False
-                continue
-
-        if win == True:
-            return win
-    return win
+    Returns:
+        True if the player has a full row, False otherwise.
+    """
+    for row in range(len(board)):
+        if all(board[row, col] == player for col in range(len(board[row]))):
+            return True
+    return False
 
 
-# Checks whether the player has three
-# of their marks in a diagonal row
-def diag_win(board, player):
-    win = True
-    y = 0
-    for x in range(len(board)):
-        if board[x, x] != player:
-            win = False
-    if win:
-        return win
-    win = True
-    if win:
-        for x in range(len(board)):
-            y = len(board) - 1 - x
-            if board[x, y] != player:
-                win = False
-    return win
+def col_win(board: np.ndarray, player: int) -> bool:
+    """Check if a player has won by filling an entire column.
+
+    Args:
+        board: 3x3 numpy array representing the game board.
+        player: Player identifier (1 or 2) to check for a win.
+
+    Returns:
+        True if the player has a full column, False otherwise.
+    """
+    for col in range(len(board[0])):
+        if all(board[row, col] == player for row in range(len(board))):
+            return True
+    return False
 
 
-# Evaluates whether there is
-# a winner or a tie
-def evaluate(board):
-    winner = 0
+def diag_win(board: np.ndarray, player: int) -> bool:
+    """Check if a player has won by filling a diagonal.
 
+    Args:
+        board: 3x3 numpy array representing the game board.
+        player: Player identifier (1 or 2) to check for a win.
+
+    Returns:
+        True if the player has a full diagonal, False otherwise.
+    """
+    # Check main diagonal (top-left to bottom-right)
+    main_diag_win = all(board[i, i] == player for i in range(len(board)))
+    if main_diag_win:
+        return True
+
+    # Check anti-diagonal (top-right to bottom-left)
+    anti_diag_win = all(
+        board[i, len(board) - 1 - i] == player for i in range(len(board))
+    )
+    return anti_diag_win
+
+
+def evaluate(board: np.ndarray) -> int:
+    """Determine the game result (winner or tie).
+
+    Args:
+        board: 3x3 numpy array representing the game board.
+
+    Returns:
+        1 if player 1 wins, 2 if player 2 wins, -1 if it's a tie.
+    """
     for player in [1, 2]:
         if row_win(board, player) or col_win(board, player) or diag_win(board, player):
-            winner = player
+            return player
 
-    if np.all(board != 0) and winner == 0:
-        winner = -1
-    return winner
+    # Check for tie (board full with no winner)
+    if np.all(board != 0):
+        return -1
+
+    # Game still ongoing
+    return 0
 
 
-# Main function to start the game
-def play_game():
-    board, winner, counter = create_board(), 0, 1
+def play_game() -> int:
+    """Main game loop for random Tic-Tac-Toe.
+
+    Returns:
+        The result of the game (1 for player 1 win, 2 for player 2 win, -1 for tie).
+    """
+    board: np.ndarray = create_board()
+    winner: int = 0
+    move_counter: int = 1
+
+    print("Initial board:")
     print(board)
-    sleep(2)
+    time.sleep(2)
 
     while winner == 0:
         for player in [1, 2]:
             board = random_place(board, player)
-            print("Board after " + str(counter) + " move")
+            print(f"\nBoard after move {move_counter} (Player {player}):")
             print(board)
-            sleep(2)
-            counter += 1
+            time.sleep(2)
+
             winner = evaluate(board)
+            move_counter += 1
+
             if winner != 0:
                 break
+
     return winner
 
 
-# Driver Code
-print("Winner is: " + str(play_game()))
+if __name__ == "__main__":
+    result: int = play_game()
+    if result == -1:
+        print("\nWinner is: Tie")
+    else:
+        print(f"\nWinner is: Player {result}")

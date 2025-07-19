@@ -1,63 +1,57 @@
-# Script Name		: work_connect.py
-# Author				: Craig Richards
-# Created				: 11th May 2012
-# Last Modified		: 31st October 2012
-# Version				: 1.1
+"""Connect or disconnect work resources (RDP, Checkpoint, PuTTYCM).
 
-# Modifications		: 1.1 - CR - Added some extra code, to check an argument is passed to the script first of all, then check it's a valid input
+Usage:
+  -c <password>: Connect using Checkpoint, launch PuTTYCM and RDP
+  -d: Disconnect Checkpoint session
+  -h/--help: Show this help text
+"""
 
-# Description			: This simple script loads everything I need to connect to work etc
+import os
+import subprocess
+import sys
+import time
 
-import os  # Load the Library Module
-import subprocess  # Load the Library Module
-import sys  # Load the Library Module
-import time  # Load the Library Module
+# Environment variable and file paths
+dropbox: str | None = os.getenv("dropbox")
+rdpfile: str = "remote\\workpc.rdp"
+conffilename: str = os.path.join(dropbox, rdpfile) if dropbox else ""
+remote: str = r"c:\windows\system32\mstsc.exe"
 
-dropbox = os.getenv(
-    "dropbox"
-)  # Set the variable dropbox, by getting the values of the environment setting for dropbox
-rdpfile = "remote\\workpc.rdp"  # Set the variable logfile, using the arguments passed to create the logfile
-conffilename = os.path.join(
-    dropbox, rdpfile
-)  # Set the variable conffilename by joining confdir and conffile together
-remote = (
-    r"c:\windows\system32\mstsc.exe "  # Set the variable remote with the path to mstsc
-)
+# Validate argument count
+if len(sys.argv) < 2:
+    print(__doc__.strip())
+    sys.exit(1)
 
-text = """You need to pass an argument
-	-c Followed by login password to connect
-	-d to disconnect"""  # Text to display if there is no argument passed or it's an invalid option - 1.2
+# Handle help flags
+if any(arg in sys.argv for arg in ("-h", "--help")):
+    print(__doc__.strip())
+    sys.exit(0)
 
-if len(sys.argv) < 2:  # Check there is at least one option passed to the script - 1.2
-    print(text)  # If not print the text above - 1.2
-    sys.exit()  # Exit the program - 1.2
-
-if (
-    "-h" in sys.argv or "--h" in sys.argv or "-help" in sys.argv or "--help" in sys.argv
-):  # Help Menu if called
-    print(text)  # Print the text, stored in the text variable - 1.2
-    sys.exit(0)  # Exit the program
-else:
-    if sys.argv[1].lower().startswith("-c"):  # If the first argument is -c then
-        passwd = sys.argv[
-            2
-        ]  # Set the variable passwd as the second argument passed, in this case my login password
-        subprocess.Popen(
-            r"c:\Program Files\Checkpoint\Endpoint Connect\trac.exe connect -u username -p "
-            + passwd
-        )
-        subprocess.Popen(r"c:\geektools\puttycm.exe")
-        time.sleep(
-            15
-        )  # Sleep for 15 seconds, so the checkpoint software can connect before opening mstsc
+# Process connection/disconnection
+if sys.argv[1].lower().startswith("-c"):
+    if len(sys.argv) < 3:
+        print("Error: -c requires a password argument\n")
+        print(__doc__.strip())
+        sys.exit(1)
+    passwd: str = sys.argv[2]
+    # Launch Checkpoint connection
+    subprocess.Popen(
+        r"c:\Program Files\Checkpoint\Endpoint Connect\trac.exe "
+        f"connect -u username -p {passwd}"
+    )
+    # Launch PuTTY configuration manager
+    subprocess.Popen(r"c:\geektools\puttycm.exe")
+    # Wait for VPN to establish
+    time.sleep(15)
+    # Launch RDP session
+    if conffilename:
         subprocess.Popen([remote, conffilename])
-    elif (
-        sys.argv[1].lower().startswith("-d")
-    ):  # If the first argument is -d then disconnect my checkpoint session.
-        subprocess.Popen(
-            r"c:\Program Files\Checkpoint\Endpoint Connect\trac.exe disconnect "
-        )
-    else:
-        print(
-            "Unknown option - " + text
-        )  # If any other option is passed, then print Unknown option and the text from above - 1.2
+elif sys.argv[1].lower().startswith("-d"):
+    # Disconnect Checkpoint session
+    subprocess.Popen(
+        r"c:\Program Files\Checkpoint\Endpoint Connect\trac.exe disconnect"
+    )
+else:
+    print(f"Unknown option: {sys.argv[1]}\n")
+    print(__doc__.strip())
+    sys.exit(1)
