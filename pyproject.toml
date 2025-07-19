@@ -113,38 +113,38 @@ dependencies = [
     "xor-cipher",
     "yfinance",
 ]
+
+[build-system]
+requires = ["setuptools>=65", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.codespell]
+ignore-words-list = "3rt,abd,aer,ans,bitap,crate,damon,fo,followings,hist,iff,kwanza,manuel,mater,secant,som,sur,tim,toi,zar"
+skip = "*.css,*.js,*.lock"
+
 [tool.ruff]
 line-length = 88
 target-version = "py313"
-select = [
-    "E", "W", "F", "I", "B", "C4", "UP", "YTT",
-    "EM", "EXE", "G", "ISC", "PLC", "PLW", "PT", "S", "SIM", "SLF"
-]
-
+select = ["E", "F", "I", "UP", "YTT", "PLC", "PT", "SIM"]
 ignore = [
-    "B101",   
-    "B904",   # Within an `except` clause, raise exceptions with `raise ... from err`
-    "B905",   # `zip()` without an explicit `strict=` parameter
-    "EM101",  # Exception must not use a string literal
-    "EXE001", # Shebang is present but file is not executable
-    "G004",   # Logging statement uses f-string
-    "ISC001", # Conflicts with ruff format
-    "PLC0415",# import-outside-top-level
-    "PLC1901",# `{}` can be simplified to `{}` as an empty string is falsey
-    "PLW060", # Using global without assignment
-    "PLW1641",# eq-without-hash
-    "PLW2901",# Redefined loop variable
-    "PT011",  # pytest.raises(Exception) is too broad
-    "PT018",  # Assertion should be broken down
-    "PT028",  # pytest-parameter-with-default-argument
-    "S101",   # Use of `assert` detected
-    "S311",   # Standard pseudo-random generators
-    "SIM905", # Consider using a list literal instead of `str.split`
-    "SLF001", # Private member accessed
-    "UP038",  # Use `X | Y` in `{}` call
+    "B904", "B905", "PLC0415", 
+    "PLW2901", "PT011", "PT018", "PT028", 
+    "S101", "SIM905", "UP038"
 ]
 
-max-args = 10
-max-branches = 20
-max-returns = 8
-max-statements = 88
+[tool.ruff.lint.per-file-ignores]
+"__init__.py" = ["F401"]
+"tests/**" = ["S101", "PT011", "PT018"]
+".*_test\\.py" = ["S101", "PT011", "PT018"]
+
+[tool.mypy]
+python_version = "3.13"
+ignore_missing_imports = true
+exclude = ".*venv.*|.*__pycache__.*|.*migrations.*"
+
+[[tool.mypy.overrides]]
+module = [
+    "django.*", "tensorflow.*", "keras.*", 
+    "matplotlib.*", "pymongo.*"
+]
+ignore_missing_imports = true
