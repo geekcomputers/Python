@@ -1,9 +1,6 @@
-from __future__ import print_function
-
 import optparse  # Import the module
 
 import nmap  # Import the module
-
 
 # Script Name		: nmap_scan.py
 # Author				: Craig Richards

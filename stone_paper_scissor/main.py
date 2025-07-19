@@ -1,7 +1,7 @@
-import utils
-
 # import the random module
 import random
+
+import utils
 
 print("Starting the Rock Paper Scissors game!")
 player_name = input("Please enter your name: ")  # Takes Input from the user

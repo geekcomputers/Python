@@ -18,7 +18,7 @@ dbfile = "Databases\jarvis.db"
 listfile = "sqlite_master_table.lst"
 master_db = os.path.join(dropbox, dbfile)
 config_file = os.path.join(config, listfile)
-tablelist = open(config_file, "r")
+tablelist = open(config_file)
 
 conn = sqlite3.connect(master_db)
 cursor = conn.cursor()

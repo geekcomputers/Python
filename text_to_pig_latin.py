@@ -1,6 +1,6 @@
 """
-This program converts English text to Pig-Latin. In Pig-Latin, we take the first letter of each word, 
-move it to the end, and add 'ay'. If the first letter is a vowel, we simply add 'hay' to the end. 
+This program converts English text to Pig-Latin. In Pig-Latin, we take the first letter of each word,
+move it to the end, and add 'ay'. If the first letter is a vowel, we simply add 'hay' to the end.
 The program preserves capitalization and title case.
 
 For example:
@@ -18,6 +18,7 @@ def pig_latin_word(word):
     else:
         return word[1:] + word[0] + "ay"
 
+
 def pig_latin_sentence(text):
     words = text.split()
     pig_latin_words = []
@@ -31,7 +32,8 @@ def pig_latin_sentence(text):
         else:
             pig_latin_words.append(pig_latin_word(word))
 
-    return ' '.join(pig_latin_words)
+    return " ".join(pig_latin_words)
+
 
 user_input = input("Enter some English text: ")
 pig_latin_text = pig_latin_sentence(user_input)

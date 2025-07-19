@@ -5,6 +5,7 @@
 from random import randint
 from tkinter import *
 
+
 # Function to rool the dice
 def roll():
     text.delete(0.0, END)

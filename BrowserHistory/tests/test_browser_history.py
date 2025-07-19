@@ -1,10 +1,12 @@
-import unittest
-import sys
 import os
+import sys
+import unittest
 
 # Add parent directory to path to import backend
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from backend import BrowserHistory
+
+from backendBrowserHistory import BrowserHistory
+
 
 class TestBrowserHistory(unittest.TestCase):
     def setUp(self):
@@ -38,7 +40,7 @@ class TestBrowserHistory(unittest.TestCase):
         # Setup history
         self.browser.visit("page1.com")
         self.browser.visit("page2.com")
-        
+
         # Test normal back navigation
         result = self.browser.back(1)
         self.assertEqual(result, "page1.com")
@@ -57,7 +59,7 @@ class TestBrowserHistory(unittest.TestCase):
         self.browser.visit("page1.com")
         self.browser.visit("page2.com")
         self.browser.back(2)  # Go back to homepage
-        
+
         # Test normal forward navigation
         result = self.browser.forward(1)
         self.assertEqual(result, "page1.com")
@@ -75,17 +77,18 @@ class TestBrowserHistory(unittest.TestCase):
         self.browser.visit("page1.com")
         self.browser.visit("page2.com")
         self.browser.visit("page3.com")
-        
+
         # Back navigation
         self.assertEqual(self.browser.back(2), "page1.com")
-        
+
         # New visit should clear forward history
         self.browser.visit("page4.com")
         self.assertEqual(self.browser._forward_count, 0)
         self.assertIsNone(self.browser._curr.nxt)
-        
+
         # Verify we can't go forward to cleared history
         self.assertEqual(self.browser.forward(1), "page4.com")
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     unittest.main()

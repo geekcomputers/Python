@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 # program to replace all the spaces in an entered string with a hyphen"-"
 def replacetext(string):
     string = string.replace(" ", "-")

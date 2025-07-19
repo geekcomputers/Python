@@ -1,5 +1,6 @@
 import sys
 
+
 def get_integer_input(prompt, attempts):
     for i in range(attempts, 0, -1):
         try:
@@ -7,8 +8,9 @@ def get_integer_input(prompt, attempts):
             return n
         except ValueError:
             print("Enter an integer only")
-            print(f"{i-1} {'chance' if i-1 == 1 else 'chances'} left")
+            print(f"{i - 1} {'chance' if i - 1 == 1 else 'chances'} left")
     return None
+
 
 def sum_of_digits(n):
     total = 0
@@ -16,6 +18,7 @@ def sum_of_digits(n):
         total += n % 10
         n //= 10
     return total
+
 
 chances = 3
 number = get_integer_input("Enter a number: ", chances)

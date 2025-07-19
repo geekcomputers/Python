@@ -8,11 +8,9 @@
 # Modifications	: with statement added to ensure correct file closure
 
 # Description	: Check a file exists and that we can read the file
-from __future__ import print_function
 
 import os  # Import the Modules
 import sys  # Import the Modules
-
 
 # Prints usage if not appropriate length of arguments are provided
 
@@ -23,7 +21,7 @@ def usage():
 
 # Readfile Functions which open the file that is passed to the script
 def readfile(filename):
-    with open(filename, "r") as f:  # Ensure file is correctly closed under
+    with open(filename) as f:  # Ensure file is correctly closed under
         read_file = f.read()  # all circumstances
     print(read_file)
     print()

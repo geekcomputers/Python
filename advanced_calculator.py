@@ -10,11 +10,11 @@ __license__ = "MIT"  # Understand more about it
 # How can I market gtts? Like showing used google's api? This is how can I market it?
 # Project description? What will be the project description?
 
-from gtts import gTTS
-from pygame import mixer, time
 from io import BytesIO
 from pprint import pprint
 
+from gtts import gTTS
+from pygame import mixer, time
 
 # Find the best of best extensions for the auto generation of the documentation parts.
 # For your favourite languages like JavaScript, Python ,etc,...

@@ -4,10 +4,10 @@
 #  _________________________________________________ ###
 #  _________________________________________________ ###
 
-from tkinter import *
-from random import randint, choices
-import webbrowser
 import os
+import webbrowser
+from random import choices, randint
+from tkinter import *
 
 mycolor = "#262626"
 

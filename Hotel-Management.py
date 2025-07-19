@@ -1,49 +1,26 @@
-
 def menu():
-
     options = {
-        1 : {
-            "title" : "Add new customer details", 
-            "method": lambda : add()
-            },
-
-        2 : {
-            "title" : "Modify already existing customer details", 
-            "method": lambda : modify()
-            },
-
-        3 : {
-            "title" : "Search customer details", 
-            "method": lambda : search()
-            },
-
-        4 : {
-            "title" : "View all customer details", 
-            "method": lambda : view()
-            },
-
-        5 : {
-            "title" : "Delete customer details", 
-            "method": lambda : remove()
-            },
-
-        6 : {
-            "title" : "Exit the program", 
-            "method": lambda : exit()
-            }
+        1: {"title": "Add new customer details", "method": lambda: add()},
+        2: {
+            "title": "Modify already existing customer details",
+            "method": lambda: modify(),
+        },
+        3: {"title": "Search customer details", "method": lambda: search()},
+        4: {"title": "View all customer details", "method": lambda: view()},
+        5: {"title": "Delete customer details", "method": lambda: remove()},
+        6: {"title": "Exit the program", "method": lambda: exit()},
     }
 
-    print(f"\n\n{' '*25}Welcome to Hotel Database Management Software\n\n")
+    print(f"\n\n{' ' * 25}Welcome to Hotel Database Management Software\n\n")
 
     for num, option in options.items():
         print(f"{num}: {option.get('title')}")
     print()
 
-    options.get( int(input("Enter your choice(1-6): ")) ).get("method")()
+    options.get(int(input("Enter your choice(1-6): "))).get("method")()
 
 
 def add():
-
     Name1 = input("\nEnter your first name: \n")
     Name2 = input("\nEnter your last name: \n")
     Phone_Num = input("\nEnter your phone number(without +91): \n")
@@ -87,7 +64,7 @@ def add():
         print("Online payment")
     print("")
 
-    with open("Management.txt", "r") as File:
+    with open("Management.txt") as File:
         string = File.read()
         string = string.replace("'", '"')
         dictionary = json.loads(string)
@@ -123,8 +100,8 @@ def add():
     exit_menu()
 
 
-import os
 import json
+import os
 
 filecheck = os.path.isfile("Management.txt")
 if not filecheck:
@@ -142,8 +119,7 @@ if not filecheck:
 
 
 def modify():
-
-    with open("Management.txt", "r") as File:
+    with open("Management.txt") as File:
         string = File.read()
         string = string.replace("'", '"')
         dictionary = json.loads(string)
@@ -167,7 +143,6 @@ def modify():
         print()
 
         with open("Management.txt", "w", encoding="utf-8") as File:
-            
             match choice:
                 case 1:
                     category = "First_Name"
@@ -189,7 +164,6 @@ def modify():
 
 
 def search():
-
     with open("Management.txt") as File:
         dictionary = json.loads(File.read().replace("'", '"'))
 
@@ -284,7 +258,6 @@ def remove():
 
 
 def view():
-
     with open("Management.txt") as File:
         dictionary = json.loads(File.read().replace("'", '"'))
 

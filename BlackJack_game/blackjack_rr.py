@@ -189,7 +189,6 @@ def push(player, dealer):
 player_chips = Chips()
 
 while True:
-
     print("\t              **********************************************************")
     print(
         "\t                       Welcome to the game Casino - BLACK JACK !                                                     "
@@ -227,7 +226,6 @@ while True:
     show_some(player_hand, dealer_hand)
 
     while playing:
-
         hit_or_stand(deck, player_hand)
         show_some(player_hand, dealer_hand)
 
@@ -236,7 +234,6 @@ while True:
             break
 
     if player_hand.value <= 21:
-
         while dealer_hand.value < 17:
             hit(deck, dealer_hand)
 

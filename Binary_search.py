@@ -24,7 +24,10 @@ def binary_search(arr, l, r, x):
 # Main Function
 if __name__ == "__main__":
     # User input array
-    arr = [int(x) for x in input("Enter the array with elements separated by commas: ").split(",")]
+    arr = [
+        int(x)
+        for x in input("Enter the array with elements separated by commas: ").split(",")
+    ]
 
     # User input element to search for
     x = int(input("Enter the element you want to search for: "))
@@ -34,6 +37,6 @@ if __name__ == "__main__":
 
     # printing the output
     if result != -1:
-        print("Element is present at index {}".format(result))
+        print(f"Element is present at index {result}")
     else:
         print("Element is not present in array")

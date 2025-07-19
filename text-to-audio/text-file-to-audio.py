@@ -1,5 +1,6 @@
-from gtts import gTTS
 import os
+
+from gtts import gTTS
 
 # Enter the name of your text file
 mytextfile = "hello.txt"
@@ -8,7 +9,7 @@ mytextfile = "hello.txt"
 language = "en"
 
 # Get the contents of your file
-with open(mytextfile, 'r') as f:
+with open(mytextfile) as f:
     mytext = f.read()
     f.close()
 

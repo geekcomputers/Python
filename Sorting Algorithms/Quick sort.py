@@ -3,7 +3,6 @@ def partition(arr, low, high):
     pivot = arr[high]  # pivot
 
     for j in range(low, high):
-
         # If current element is smaller than or
         # equal to pivot
         if arr[j] <= pivot:
@@ -43,4 +42,4 @@ n = len(arr)
 quickSort(arr, 0, n - 1)
 print("Sorted array is:")
 for i in range(n):
-    print("%d" % arr[i]),
+    (print("%d" % arr[i]),)

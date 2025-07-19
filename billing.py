@@ -1,7 +1,7 @@
 updated_billing
-items= {"apple":5,"soap":4,"soda":6,"pie":7,"cake":20}
-total_price=0
-try :
+items = {"apple": 5, "soap": 4, "soda": 6, "pie": 7, "cake": 20}
+total_price = 0
+try:
     print("""
 Press 1 for apple
 Press 2 for soap
@@ -11,23 +11,23 @@ Press 5 for cake
 Press 6 for bill""")
     while True:
         choice = int(input("enter your choice here..\n"))
-        if choice ==1:
+        if choice == 1:
             print("Apple added to the cart")
-            total_price+=items["apple"]
+            total_price += items["apple"]
 
-        elif choice== 2:
+        elif choice == 2:
             print("soap added to the cart")
-            total_price+= items["soap"]
-        elif choice ==3:
+            total_price += items["soap"]
+        elif choice == 3:
             print("soda added to the cart")
-            total_price+=items["soda"]
-        elif choice ==4:
+            total_price += items["soda"]
+        elif choice == 4:
             print("pie added to the cart")
-            total_price+=items["pie"]
-        elif choice ==5:
+            total_price += items["pie"]
+        elif choice == 5:
             print("cake added to the cart")
-            total_price+=items["cake"]
-        elif choice  == 6:
+            total_price += items["cake"]
+        elif choice == 6:
             print(f"""
 
 Total amount :{total_price}
@@ -67,4 +67,3 @@ If they enter something outside 1–6, a warning message is shown.
 The try-except block is used to catch errors if the user enters something that's not a number (like a letter or symbol).
 In that case, it simply shows: "enter only digits".
 """
-

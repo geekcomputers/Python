@@ -6,9 +6,9 @@
 # Description   : This will move specified number of files(given in ratio) from the src directory to dest directory.
 
 
+import argparse
 import os
 import random
-import argparse
 
 
 def check_ratio(x):
@@ -57,7 +57,7 @@ ratio = args.ratio
 files = os.listdir(src)
 size = int(ratio * len(files))
 
-print("Move {} files from {} to {} ? [y/n]".format(size, src, dest))
+print(f"Move {size} files from {src} to {dest} ? [y/n]")
 if input().lower() == "y":
     for f in random.sample(files, size):
         try:

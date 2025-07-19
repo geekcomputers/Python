@@ -1,11 +1,12 @@
-from tkinter import *
 import calendar
+from tkinter import *
 
 root = Tk()
 # root.geometry("400x300")
 root.title("Calendar")
 
 # Function
+
 
 def text():
     month_int = int(month.get())

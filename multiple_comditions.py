@@ -5,10 +5,10 @@ while True:
             print("in first if")
         elif user == 2:
             print("in second if")
-        elif user ==3:
+        elif user == 3:
             print("in third if")
         else:
-            print("Enter numbers b/w the range of 1-3") 
+            print("Enter numbers b/w the range of 1-3")
     except:
         print("enter only digits")
 

@@ -14,8 +14,10 @@ Usage:
 
 enter index of article you would like to see, or 'r' for retry and 'n' for exit.
 """
-import requests
+
 import webbrowser
+
+import httpx
 
 page_count = 10
 url = (
@@ -26,8 +28,8 @@ url = (
 
 
 def load():
-    response = requests.get(url)
-    if response.ok:
+    response = httpx.get(url)
+    if response.status_code == 200:
         jsonData = response.json()["query"]["random"]
         print("10 Random generted WIKI pages...")
         for idx, j in enumerate(jsonData):

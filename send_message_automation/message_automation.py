@@ -1,5 +1,6 @@
-import pyautogui
 from time import sleep
+
+import pyautogui
 
 # Do you want to include the message counter?
 # make a class of it.

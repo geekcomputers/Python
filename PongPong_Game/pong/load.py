@@ -1,10 +1,10 @@
 # ./PongPong/pong/load.py
 
+
 from . import ball, paddle, rectangle
-from typing import Tuple
 
 
-def load_balls(win_size: Tuple, radius: float, speed: Tuple, batch=None):
+def load_balls(win_size: tuple, radius: float, speed: tuple, batch=None):
     balls = []
     ball_x = win_size[0] / 2
     ball_y = win_size[1] / 2
@@ -15,7 +15,7 @@ def load_balls(win_size: Tuple, radius: float, speed: Tuple, batch=None):
 
 
 def load_paddles(
-    paddle_pos: Tuple, width: float, height: float, acc: Tuple, batch=None
+    paddle_pos: tuple, width: float, height: float, acc: tuple, batch=None
 ):
     paddles = []
     new_paddle = paddle.Paddle(
@@ -27,7 +27,7 @@ def load_paddles(
     return paddles
 
 
-def load_rectangles(win_size: Tuple, border: float, batch=None):
+def load_rectangles(win_size: tuple, border: float, batch=None):
     rectangles = []
     top = rectangle.RectangleObject(
         x=0, y=win_size[1] - border, width=win_size[0], height=border, batch=batch

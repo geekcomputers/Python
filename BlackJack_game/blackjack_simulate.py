@@ -198,7 +198,7 @@ class User:
         :param chips_amount: Casino tokens equal money
         """
         self.name = name
-        self.prompt = "{role} >> ({name}) : ".format(role=role, name=self.name)
+        self.prompt = f"{role} >> ({self.name}) : "
         self.chips = Chips(chips_amount)
         self.color = color
         self.hand = []
@@ -247,9 +247,7 @@ class User:
 
     def is_point(self, opt, point):
         self.calculate_point()
-        compare_fmt = "{user_point} {opt} {point}".format(
-            user_point=self.point, opt=opt, point=point
-        )
+        compare_fmt = f"{self.point} {opt} {point}"
         return eval(compare_fmt)
 
     def speak(self, content="", end_char="\n"):
@@ -265,7 +263,7 @@ class User:
 
     def unveiling(self):
         self.calculate_point()
-        points_fmt = "My point is: {}".format(str(self.point))
+        points_fmt = f"My point is: {str(self.point)}"
         self.speak(points_fmt)
         self.unveil_card()
 

@@ -3,7 +3,7 @@
 from pdf2docx import Converter
 
 
-def convert_pdf_to_docx(pdf_file_path, docx_file_path):
+def convert_pdf_to_docx(pdf_file_path, docx_file_path) -> None:
     """
     Converts a PDF file to a DOCX file using pdf2docx library.
 

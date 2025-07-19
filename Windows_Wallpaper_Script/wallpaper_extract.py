@@ -74,7 +74,7 @@ class Wallpaper:
             if ext == ".jpg":
                 try:
                     im = Image.open(w.file_urls["wall_dst"] + filename)
-                except IOError:
+                except OSError:
                     print("This isn't a picture.", filename)
                 if list(im.size)[0] != 1920 and list(im.size)[0] != 1080:
                     im.close()

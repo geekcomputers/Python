@@ -1,5 +1,3 @@
-from __future__ import print_function
-
 import signal
 import threading
 from time import sleep

@@ -1,10 +1,8 @@
-from django.shortcuts import render, redirect
 from django.contrib import messages
+from django.shortcuts import redirect, render
 
 # Create your views here.
-
 # Import todo form and models
-
 from .forms import TodoForm
 from .models import Todo
 
@@ -27,6 +25,7 @@ def index(request):
     return render(request, "todo/index.html", page)
 
     ### Function to remove item, it receives todo item_id as primary key from url ##
+
 
 def remove(request, item_id):
     item = Todo.objects.get(id=item_id)

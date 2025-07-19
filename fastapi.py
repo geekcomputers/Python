@@ -1,18 +1,19 @@
-from fastapi import FastAPI
 from pydantic import BaseModel
-from typing import Optional
+
+from fastapi import FastAPI
 
 app = FastAPI()
 
 # temp database
 fakedb = []
 
+
 # course model to store courses
 class Course(BaseModel):
     id: int
     name: str
     price: float
-    is_early_bird: Optional[bool] = None
+    is_early_bird: bool | None = None
 
 
 # Home/welcome route

@@ -114,7 +114,7 @@
     <property name="font">
      <font>
       <family>Arial</family>
-      <pointsize>-1</pointsize>
+      <pointsize>28</pointsize>  <!-- 修改字体大小为28 -->
       <weight>75</weight>
       <bold>true</bold>
      </font>
@@ -181,7 +181,7 @@
     <property name="font">
      <font>
       <family>Arial</family>
-      <pointsize>-1</pointsize>
+      <pointsize>20</pointsize>  <!-- 修改字体大小为20 -->
       <weight>50</weight>
       <italic>true</italic>
       <bold>false</bold>
@@ -203,7 +203,7 @@
     <property name="font">
      <font>
       <family>Arial</family>
-      <pointsize>-1</pointsize>
+      <pointsize>20</pointsize>  <!-- 修改字体大小为20 -->
       <weight>50</weight>
       <italic>true</italic>
       <bold>false</bold>

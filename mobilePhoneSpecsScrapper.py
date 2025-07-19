@@ -1,11 +1,11 @@
-import requests
-from bs4 import BeautifulSoup
+# import time
+import json
 
 # import csv
 import os
 
-# import time
-import json
+import requests
+from bs4 import BeautifulSoup
 
 
 class Phonearena:
@@ -21,7 +21,6 @@ class Phonearena:
         self.absolute_path = os.getcwd().strip() + "/" + self.new_folder_name
 
     def crawl_html_page(self, sub_url):
-
         url = sub_url  # Url for html content parsing.
 
         # Handing the connection error of the url.
@@ -105,7 +104,7 @@ if __name__ == "__main__":
             json.dump(phone_urls, of)
 
         # Step 2: Iterate through all the links from the above execution and run the next command
-        with open("obj.absolute_path+'-Phoneurls.json", "r") as inp:
+        with open("obj.absolute_path+'-Phoneurls.json") as inp:
             temp = json.load(inp)
             phone_specs = obj.crawl_phones_models_specification(temp)
 

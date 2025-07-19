@@ -1,5 +1,6 @@
-import pyttsx3
 import time
+
+import pyttsx3
 from selenium import webdriver
 
 tts = pyttsx3.init()

@@ -1,7 +1,7 @@
 import os
 
-from PIL import Image
 from fpdf import FPDF
+from PIL import Image
 
 # Author: @NavonilDas
 

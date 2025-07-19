@@ -1,24 +1,24 @@
 """
-	author: Christian Bender
-	date: 21.12.2017
-	class: XORCipher
+author: Christian Bender
+date: 21.12.2017
+class: XORCipher
 
-	This class implements the XOR-cipher algorithm and provides
-	some useful methods for encrypting and decrypting strings and
-	files.
+This class implements the XOR-cipher algorithm and provides
+some useful methods for encrypting and decrypting strings and
+files.
 
-	Overview about methods
+Overview about methods
 
-	- encrypt : list of char
-	- decrypt : list of char
-	- encrypt_string : str
-	- decrypt_string : str
-	- encrypt_file : boolean
-	- decrypt_file : boolean
+- encrypt : list of char
+- decrypt : list of char
+- encrypt_string : str
+- decrypt_string : str
+- encrypt_file : boolean
+- decrypt_file : boolean
 """
 
 
-class XORCipher(object):
+class XORCipher:
     def __init__(self, key=0):
         """
         simple constructor that receives a key or uses
@@ -141,7 +141,7 @@ class XORCipher(object):
         assert isinstance(file, str) and isinstance(key, int)
 
         try:
-            with open(file, "r") as fin:
+            with open(file) as fin:
                 with open("encrypt.out", "w+") as fout:
                     # actual encrypt-process
                     for line in fin:
@@ -165,7 +165,7 @@ class XORCipher(object):
         assert isinstance(file, str) and isinstance(key, int)
 
         try:
-            with open(file, "r") as fin:
+            with open(file) as fin:
                 with open("decrypt.out", "w+") as fout:
                     # actual encrypt-process
                     for line in fin:

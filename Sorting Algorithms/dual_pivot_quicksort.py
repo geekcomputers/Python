@@ -2,10 +2,10 @@ def dual_pivot_quicksort(arr, low, high):
     """
     Performs Dual-Pivot QuickSort on the input array.
 
-    Dual-Pivot QuickSort is an optimized version of QuickSort that uses 
-    two pivot elements to partition the array into three segments in each 
-    recursive call. This improves performance by reducing the number of 
-    recursive calls, making it faster on average than the single-pivot 
+    Dual-Pivot QuickSort is an optimized version of QuickSort that uses
+    two pivot elements to partition the array into three segments in each
+    recursive call. This improves performance by reducing the number of
+    recursive calls, making it faster on average than the single-pivot
     QuickSort.
 
     Parameters:
@@ -25,6 +25,7 @@ def dual_pivot_quicksort(arr, low, high):
         dual_pivot_quicksort(arr, lp + 1, rp - 1)
         # Recursively sort elements greater than pivot2
         dual_pivot_quicksort(arr, rp + 1, high)
+
 
 def partition(arr, low, high):
     """
@@ -50,17 +51,23 @@ def partition(arr, low, high):
     pivot2 = arr[high]  # right pivot
 
     # Initialize pointers
-    i = low + 1       # Pointer to traverse the array
-    lt = low + 1      # Boundary for elements less than pivot1
-    gt = high - 1     # Boundary for elements greater than pivot2
+    i = low + 1  # Pointer to traverse the array
+    lt = low + 1  # Boundary for elements less than pivot1
+    gt = high - 1  # Boundary for elements greater than pivot2
 
     # Traverse and partition the array based on the two pivots
     while i <= gt:
         if arr[i] < pivot1:
-            arr[i], arr[lt] = arr[lt], arr[i]  # Swap to move smaller elements to the left
+            arr[i], arr[lt] = (
+                arr[lt],
+                arr[i],
+            )  # Swap to move smaller elements to the left
             lt += 1
         elif arr[i] > pivot2:
-            arr[i], arr[gt] = arr[gt], arr[i]  # Swap to move larger elements to the right
+            arr[i], arr[gt] = (
+                arr[gt],
+                arr[i],
+            )  # Swap to move larger elements to the right
             gt -= 1
             i -= 1  # Decrement i to re-evaluate the swapped element
         i += 1
@@ -68,10 +75,11 @@ def partition(arr, low, high):
     # Place the pivots in their correct sorted positions
     lt -= 1
     gt += 1
-    arr[low], arr[lt] = arr[lt], arr[low]     # Place pivot1 at its correct position
-    arr[high], arr[gt] = arr[gt], arr[high]   # Place pivot2 at its correct position
+    arr[low], arr[lt] = arr[lt], arr[low]  # Place pivot1 at its correct position
+    arr[high], arr[gt] = arr[gt], arr[high]  # Place pivot2 at its correct position
 
     return lt, gt  # Return the indices of the two pivots
+
 
 # Example usage
 # Sample Test Case

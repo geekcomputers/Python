@@ -12,11 +12,14 @@ def print_hand(hand, name="Guest"):
 def judge(player, computer):
     if player == computer:
         return "Draw"
-    elif player == 0 and computer == 1:
-        return "Lose"
-    elif player == 1 and computer == 2:
-        return "Lose"
-    elif player == 2 and computer == 0:
+    elif (
+        player == 0
+        and computer == 1
+        or player == 1
+        and computer == 2
+        or player == 2
+        and computer == 0
+    ):
         return "Lose"
     else:
         return "Win"

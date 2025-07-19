@@ -1,6 +1,4 @@
-
-
-from colorama import Fore, Back, Style
+from colorama import Back, Fore, Style
 
 print(Fore.RED + "some red text")
 print(Back.GREEN + "and with a green background")

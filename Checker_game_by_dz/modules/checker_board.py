@@ -4,8 +4,10 @@ Author : Dhruv B Kakadiya
 """
 
 import pygame as pg
-from .statics import *
+
 from .pieces import *
+from .statics import *
+
 
 # checker board creation
 class checker_board:

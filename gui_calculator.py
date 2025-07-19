@@ -6,6 +6,7 @@ w.geometry("500x500")
 w.title("Calculatorax")
 w.configure(bg="#03befc")
 
+
 # Functions(Keypad)
 def calc1():
     b = txt1.get()

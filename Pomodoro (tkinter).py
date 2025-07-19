@@ -13,7 +13,7 @@ bg_colors = {
     "Green": "#9bdeac",
     "Blue": "#1f75fe",
     "Yellow": "#ffcc00",
-    "Purple": "#b19cd9"
+    "Purple": "#b19cd9",
 }
 
 # Global variables
@@ -24,6 +24,7 @@ is_paused = False  # Timer pause flag
 remaining_time = 0  # Remaining time (in seconds) when paused
 custom_work_min = DEFAULT_WORK_MIN
 custom_break_min = DEFAULT_BREAK_MIN
+
 
 # ---------------------------- BACKGROUND COLOR CHANGE FUNCTION ------------------------------- #
 def change_background(*args):
@@ -36,14 +37,22 @@ def change_background(*args):
     work_label.config(bg=new_color)
     break_label.config(bg=new_color)
 
+
 # ---------------------------- NOTIFICATION FUNCTION ------------------------------- #
 def show_notification(message):
     notif = Toplevel(window)
     notif.overrideredirect(True)
     notif.config(bg=PINK)
 
-    msg_label = Label(notif, text=message, font=(FONT_NAME, 12, "bold"),
-                      bg=GREEN, fg="white", padx=10, pady=5)
+    msg_label = Label(
+        notif,
+        text=message,
+        font=(FONT_NAME, 12, "bold"),
+        bg=GREEN,
+        fg="white",
+        padx=10,
+        pady=5,
+    )
     msg_label.pack()
 
     window.update_idletasks()
@@ -62,6 +71,7 @@ def show_notification(message):
 
     notif.after(3000, notif.destroy)
 
+
 # ---------------------------- TIMER FUNCTIONS ------------------------------- #
 def reset_timer():
     global ROUND, timer_mec, total_time, is_paused, remaining_time
@@ -79,6 +89,7 @@ def reset_timer():
     pause_button.config(state=DISABLED)
     play_button.config(state=DISABLED)
 
+
 def start_timer():
     global ROUND, total_time, is_paused
     canvas.itemconfig(progress_arc, extent=0)
@@ -95,6 +106,7 @@ def start_timer():
     pause_button.config(state=NORMAL)
     play_button.config(state=DISABLED)
     is_paused = False
+
 
 def count_down(count):
     global timer_mec, remaining_time
@@ -121,6 +133,7 @@ def count_down(count):
         ROUND += 1
         start_timer()
 
+
 def pause_timer():
     global is_paused, timer_mec
     if not is_paused:
@@ -130,6 +143,7 @@ def pause_timer():
         pause_button.config(state=DISABLED)
         play_button.config(state=NORMAL)
 
+
 def resume_timer():
     global is_paused
     if is_paused:
@@ -137,6 +151,7 @@ def resume_timer():
         count_down(remaining_time)
         play_button.config(state=DISABLED)
         pause_button.config(state=NORMAL)
+
 
 def set_custom_durations():
     global custom_work_min, custom_break_min
@@ -150,6 +165,7 @@ def set_custom_durations():
     except ValueError:
         pass
 
+
 # ---------------------------- UI SETUP ------------------------------- #
 window = Tk()
 window.title("Pomodoro")
@@ -157,14 +173,22 @@ window.config(padx=100, pady=50, bg=PINK)
 
 # Canvas setup with increased width for spacing
 canvas = Canvas(window, width=240, height=224, bg=PINK, highlightthickness=0)
-timer_text = canvas.create_text(120, 112, text="00:00", font=(FONT_NAME, 35, "bold"), fill="white")
-background_circle = canvas.create_arc(40, 32, 200, 192, start=0, extent=359.9,
-                                      style="arc", outline="white", width=5)
-progress_arc = canvas.create_arc(40, 32, 200, 192, start=270, extent=0,
-                                 style="arc", outline="green", width=5)
+timer_text = canvas.create_text(
+    120, 112, text="00:00", font=(FONT_NAME, 35, "bold"), fill="white"
+)
+background_circle = canvas.create_arc(
+    40, 32, 200, 192, start=0, extent=359.9, style="arc", outline="white", width=5
+)
+progress_arc = canvas.create_arc(
+    40, 32, 200, 192, start=270, extent=0, style="arc", outline="green", width=5
+)
 # Updated positions for work and break time labels
-left_custom = canvas.create_text(20, 112, text=f"{custom_work_min}m", font=(FONT_NAME, 12, "bold"), fill="white")
-right_custom = canvas.create_text(220, 112, text=f"{custom_break_min}m", font=(FONT_NAME, 12, "bold"), fill="white")
+left_custom = canvas.create_text(
+    20, 112, text=f"{custom_work_min}m", font=(FONT_NAME, 12, "bold"), fill="white"
+)
+right_custom = canvas.create_text(
+    220, 112, text=f"{custom_break_min}m", font=(FONT_NAME, 12, "bold"), fill="white"
+)
 
 canvas.grid(column=1, row=1)
 
@@ -177,31 +201,43 @@ start_button.grid(column=0, row=2)
 reset_button = Button(text="Reset", command=reset_timer, highlightthickness=0)
 reset_button.grid(column=2, row=2)
 
-pause_button = Button(text="Pause", command=pause_timer, highlightthickness=0, state=DISABLED)
+pause_button = Button(
+    text="Pause", command=pause_timer, highlightthickness=0, state=DISABLED
+)
 pause_button.grid(column=0, row=3)
 
-play_button = Button(text="Play", command=resume_timer, highlightthickness=0, state=DISABLED)
+play_button = Button(
+    text="Play", command=resume_timer, highlightthickness=0, state=DISABLED
+)
 play_button.grid(column=2, row=3)
 
 tick_label = Label(text="", font=(FONT_NAME, 15, "bold"), bg=PINK, fg="green")
 tick_label.grid(column=1, row=4)
 
 # Custom durations (stacked vertically)
-work_label = Label(text="Work (min):", font=(FONT_NAME, 12, "bold"), bg=PINK, fg="white")
+work_label = Label(
+    text="Work (min):", font=(FONT_NAME, 12, "bold"), bg=PINK, fg="white"
+)
 work_label.grid(column=1, row=5, pady=(20, 0))
 entry_work = Entry(width=5, font=(FONT_NAME, 12))
 entry_work.grid(column=1, row=6, pady=(5, 10))
-break_label = Label(text="Break (min):", font=(FONT_NAME, 12, "bold"), bg=PINK, fg="white")
+break_label = Label(
+    text="Break (min):", font=(FONT_NAME, 12, "bold"), bg=PINK, fg="white"
+)
 break_label.grid(column=1, row=7, pady=(5, 0))
 entry_break = Entry(width=5, font=(FONT_NAME, 12))
 entry_break.grid(column=1, row=8, pady=(5, 10))
-set_button = Button(text="Set Durations", command=set_custom_durations, font=(FONT_NAME, 12))
+set_button = Button(
+    text="Set Durations", command=set_custom_durations, font=(FONT_NAME, 12)
+)
 set_button.grid(column=1, row=9, pady=(10, 20))
 
 # OptionMenu for changing background color
 bg_color_var = StringVar(window)
 bg_color_var.set("Pink")
-bg_option = OptionMenu(window, bg_color_var, *bg_colors.keys(), command=change_background)
+bg_option = OptionMenu(
+    window, bg_color_var, *bg_colors.keys(), command=change_background
+)
 bg_option.config(font=(FONT_NAME, 12))
 bg_option.grid(column=1, row=10, pady=(10, 20))
 

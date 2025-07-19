@@ -1,5 +1,5 @@
-import requests
 import geocoder
+import requests
 
 g = geocoder.ip("me")
 

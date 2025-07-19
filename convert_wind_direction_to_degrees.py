@@ -3,6 +3,7 @@ def degrees_to_compass(degrees):
     index = round(degrees / 45) % 8
     return directions[index]
 
+
 # Taking input from the user
 while True:
     try:

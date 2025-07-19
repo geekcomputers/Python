@@ -1,11 +1,9 @@
 #! /usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
 Created on Fri Mar 23 14:17:24 2019
 
 @author: Mehul
 """
-
 
 import math
 import os
@@ -22,7 +20,6 @@ W_HEIGHT = 512
 
 
 class Bird(pygame.sprite.Sprite):
-
     WIDTH = 32  #   bird image width
     HEIGHT = 32  #   bird image height
     DOWN_SPEED = 0.18  #   pix per ms  -y
@@ -30,7 +27,6 @@ class Bird(pygame.sprite.Sprite):
     UP_DURATION = 150  #   time for which bird go up
 
     def __init__(self, x, y, ms_to_up, images):
-
         super(Bird, self).__init__()
         self.x, self.y = x, y
         self.ms_to_up = ms_to_up
@@ -39,7 +35,6 @@ class Bird(pygame.sprite.Sprite):
         self._mask_wingdown = pygame.mask.from_surface(self._img_wingdown)
 
     def update(self, delta_frames=1):
-
         if self.ms_to_up > 0:
             frac_climb_done = 1 - self.ms_to_up / Bird.UP_DURATION
             self.y -= (
@@ -74,13 +69,11 @@ class Bird(pygame.sprite.Sprite):
 
 
 class PipePair(pygame.sprite.Sprite):
-
     WIDTH = 80  #    width of pipe
     PIECE_HEIGHT = 32
     ADD_INTERVAL = 3000
 
     def __init__(self, pipe_end_img, pipe_body_img):
-
         self.x = float(W_WIDTH - 1)
         self.score_counted = False
 
@@ -126,7 +119,6 @@ class PipePair(pygame.sprite.Sprite):
 
     @property
     def bottom_height_px(self):
-
         return self.bottom_pieces * PipePair.PIECE_HEIGHT
 
     @property
@@ -140,18 +132,25 @@ class PipePair(pygame.sprite.Sprite):
         return Rect(self.x, 0, PipePair.WIDTH, PipePair.PIECE_HEIGHT)
 
     def update(self, delta_frames=1):
-
         self.x -= ANI_SPEED * frames_to_msec(delta_frames)
 
     def collides_with(self, bird):
-
         return pygame.sprite.collide_mask(self, bird)
 
 
 def load_images():
-    def load_image(img_file_name):
+    # 获取脚本所在目录
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    # 构建图片目录路径
+    images_dir = os.path.join(script_dir, "images")
 
-        file_name = os.path.join(".", "images", img_file_name)
+    def load_image(img_file_name):
+        file_name = os.path.join(images_dir, img_file_name)
+        # 检查文件是否存在并打印调试信息
+        if not os.path.exists(file_name):
+            print(f"错误: 找不到图片文件 {file_name}")
+            print(f"脚本所在目录: {script_dir}")
+            print(f"图片目录应该是: {images_dir}")
         img = pygame.image.load(file_name)
         img.convert()
         return img
@@ -168,12 +167,10 @@ def load_images():
 
 
 def frames_to_msec(frames, fps=FPS):
-
     return 1000.0 * frames / fps
 
 
 def msec_to_frames(milliseconds, fps=FPS):
-
     return fps * milliseconds / 1000.0
 
 
@@ -185,7 +182,6 @@ def gameover(display, score):
 
 
 def main():
-
     pygame.init()
 
     display_surface = pygame.display.set_mode((W_WIDTH, W_HEIGHT))
@@ -234,7 +230,7 @@ def main():
 
         # check for collisions
         pipe_collision = any(p.collides_with(bird) for p in pipes)
-        if pipe_collision or 0 >= bird.y or bird.y >= W_HEIGHT - Bird.HEIGHT:
+        if pipe_collision or bird.y <= 0 or bird.y >= W_HEIGHT - Bird.HEIGHT:
             done = True
 
         for x in (0, W_WIDTH / 2):

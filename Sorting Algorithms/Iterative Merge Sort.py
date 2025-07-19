@@ -3,20 +3,17 @@
 # Iterative mergesort function to
 # sort arr[0...n-1]
 def mergeSort(a):
-
     current_size = 1
 
     # Outer loop for traversing Each
     # sub array of current_size
     while current_size < len(a) - 1:
-
         left = 0
         # Inner loop for merge call
         # in a sub array
         # Each complete Iteration sorts
         # the iterating sub array
         while left < len(a) - 1:
-
             # mid index = left index of
             # sub array + current sub
             # array size - 1

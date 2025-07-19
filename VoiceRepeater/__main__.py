@@ -1,9 +1,9 @@
+import os
+import shutil
 import time
 
-import speech_recognition as sr
-import os
 import playsound
-import shutil
+import speech_recognition as sr
 
 shutil.rmtree("spoken")
 os.mkdir("spoken")

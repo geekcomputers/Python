@@ -9,7 +9,6 @@
 
 # get file information using os.stat()
 # tested with Python24 vegsaeat 25sep2006
-from __future__ import print_function
 
 import os
 import stat  # index constants for os.stat()
@@ -33,7 +32,7 @@ except FileNotFoundError as e:
     print(e)
     sys.exit(1)
 # When open item is a directory (python2)
-except IOError:
+except OSError:
     pass
 # When open item is a directory (python3)
 except IsADirectoryError:

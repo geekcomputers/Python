@@ -18,7 +18,7 @@ def soundex_al(word):
 
     # get the values from the 'code_dict' and create the soundex code
     for char in temp:
-        for key in code_dict.keys():
+        for key in code_dict:
             if char in key:
                 code = code_dict[key]
                 if code != return_val[-1]:  # Remove all pairs of consecutive digits.

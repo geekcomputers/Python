@@ -81,16 +81,13 @@ def dealer_choice():
             print("**********************Player is winner !!**********************")
 
     else:
-        if sum(p_cards) < 21:
-            print("**********************Player is winner !!**********************")
-        elif sum(p_cards) == 21:
+        if sum(p_cards) < 21 or sum(p_cards) == 21:
             print("**********************Player is winner !!**********************")
         else:
             print("***********************Dealer is the Winner !!******************")
 
 
 while sum(p_cards) < 21:
-
     k = input("Want to hit or stay?\n Press 1 for hit and 0 for stay ")
     if k == 1:
         random.shuffle(deck)

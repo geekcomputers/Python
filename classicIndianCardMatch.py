@@ -97,7 +97,7 @@ while (
         for card in range(len(player1)):
             input("Enter any key to place a card!!!\n")
             currentPlayer1Card = player1[card].rank
-            print("Your current card's rank: {}".format(currentPlayer1Card))
+            print(f"Your current card's rank: {currentPlayer1Card}")
             centerPile.append(player1[card])
             player1.pop(card)
             switchPlayer = False
@@ -110,7 +110,7 @@ while (
     while switchPlayer == False:
         for card in range(len(player2)):
             currentPlayer2Card = player2[card].rank
-            print("Computer's current card's rank: {}".format(currentPlayer2Card))
+            print(f"Computer's current card's rank: {currentPlayer2Card}")
             centerPile.append(player2[card])
             player2.pop(card)
             switchPlayer = True
@@ -121,4 +121,4 @@ while (
 
 print("GAME OVER!!!\n")
 
-print("Human has {} cards and computer has {}..".format(len(player1), len(player2)))
+print(f"Human has {len(player1)} cards and computer has {len(player2)}..")

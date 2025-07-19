@@ -1,4 +1,4 @@
-from tkinter import Tk, Canvas
+from tkinter import Canvas, Tk
 
 from PIL.Image import open as openImage
 from PIL.ImageTk import PhotoImage
@@ -13,7 +13,6 @@ class Background(Canvas):
     __stop = False
 
     def __init__(self, tk_instance, *geometry, fp="background.png", animation_speed=50):
-
         # Verifica se o parâmetro tk_instance é uma instância de Tk
         if not isinstance(tk_instance, Tk):
             raise TypeError("The tk_instance argument must be an instance of Tk.")
@@ -151,7 +150,6 @@ class Background(Canvas):
 
         # Enquanto o atributo "stop" for False, a animação continuará em um loop infinito
         if not self.__stop:
-
             # Move as imagens de background na posição X
             self.move(self.__background[0], -10, 0)
             self.move(self.__background[1], -10, 0)

