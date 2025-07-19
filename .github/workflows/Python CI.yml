@@ -19,8 +19,14 @@ jobs:
           python -m pip install --upgrade pip wheel
           pip install bandit ruff mypy safety codespell
         
+      - name: Run Codespell
+        run: codespell --config pyproject.toml || true
+        
+      - name: Run Safety
+        run: safety check || true
+        
       - name: Run Ruff (linting)
-        run: ruff check . --config pyproject.toml --fix
+        run: ruff check . --config pyproject.toml
         
       - name: Run Ruff (formatting check)
         run: ruff format --check . --config pyproject.toml || true
@@ -28,12 +34,7 @@ jobs:
       - name: Run Bandit
         run: bandit --recursive --skip B101 . || true
         
-      - name: Run Codespell
-        run: codespell --config pyproject.toml || true
-        
-      - name: Run Safety
-        run: safety check || true
-        
+ 
       - name: Setup Mypy cache
         run: mkdir -p .mypy_cache
         
