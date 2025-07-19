@@ -165,8 +165,6 @@ combine-as-imports = true
 "tests/**" = ["S101", "PT011", "PT018"]
 ".*_test\\.py" = ["S101", "PT011", "PT018"]
 
-[tool.ruff.lint.flake8-2020]
-check-tuple-unpacking = false
 [tool.mypy]
 python_version = "3.13"
 ignore_missing_imports = true
