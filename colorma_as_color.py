@@ -1,5 +1,3 @@
-
-
 from colorama import Back, Fore, Style
 
 print(Fore.RED + "some red text")

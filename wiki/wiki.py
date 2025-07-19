@@ -17,7 +17,7 @@ from tkinter import (
 
 import wikipedia
 
-#import PIL as ImageTK
+# import PIL as ImageTK
 
 
 class main:
@@ -28,13 +28,13 @@ class main:
         self.root.geometry("1920x1080")
 
         self.lbl1 = Label(
-                root,
-                text="WIKIPEDIA SUMMARY",
-                font=("Verdana", 25, "bold"),
-                width=50,
-                bg="yellow",
-                fg="red",
-                relief=SOLID,
+            root,
+            text="WIKIPEDIA SUMMARY",
+            font=("Verdana", 25, "bold"),
+            width=50,
+            bg="yellow",
+            fg="red",
+            relief=SOLID,
         )
         self.lbl1.pack(padx=10, pady=15)
 
@@ -59,7 +59,7 @@ class main:
             relief=GROOVE,
             bg="#4cd137",
             bd=3,
-            command=lambda:self.summary("None"),
+            command=lambda: self.summary("None"),
         )
         self.searchbtn.pack()
 
@@ -79,8 +79,8 @@ class main:
         self.searchbtn["text"] = "Searching..."
         try:
             self.query = wikipedia.page(self.question.get(), auto_suggest=True)
-            self.quesbox.delete(0, 'end')
-            self.answer.delete('1.0', END)
+            self.quesbox.delete(0, "end")
+            self.answer.delete("1.0", END)
             self.answer.insert(END, (self.query.summary))
 
             self.answer.pack()
@@ -90,8 +90,8 @@ class main:
 
         self.searchbtn["text"] = "Search"
 
-
         # Wikipeida page returns to many pages
+
 
 if __name__ == "__main__":
     root = tk.Tk()

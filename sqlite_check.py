@@ -1,4 +1,3 @@
-
 import os
 import sqlite3 as lite
 import sys
@@ -25,12 +24,10 @@ try:
 
 
 except lite.Error as e:
-
     print("Error %s:" % e.args[0])
     sys.exit(1)
 
 finally:
-
     if con:
         con.close()
 

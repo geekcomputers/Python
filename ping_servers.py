@@ -1,4 +1,3 @@
-
 import os  # Load the Library Module
 import subprocess  # Load the Library Module
 import sys  # Load the Library Module
@@ -28,7 +27,6 @@ Followed by the site i.e.
     )
     sys.exit(0)
 else:
-
     if (
         len(sys.argv) < 3
     ):  # If no arguments are passed,display the help/instructions on how to run the script

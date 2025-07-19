@@ -4,7 +4,9 @@ import numpy as np
 
 
 # weighted matrix
-def weighted_matrix(point: np.asmatrix, training_data_x: np.asmatrix, bandwidth: float) -> np.asmatrix:
+def weighted_matrix(
+    point: np.asmatrix, training_data_x: np.asmatrix, bandwidth: float
+) -> np.asmatrix:
     """
     Calculate the weight for every point in the
     data set. It takes training_point , query_point, and tau
@@ -20,12 +22,15 @@ def weighted_matrix(point: np.asmatrix, training_data_x: np.asmatrix, bandwidth:
     # calculating weights for all training examples [x(i)'s]
     for j in range(m):
         diff = point - training_data[j]
-        weights[j, j] = np.exp(diff * diff.T / (-2.0 * bandwidth ** 2))
+        weights[j, j] = np.exp(diff * diff.T / (-2.0 * bandwidth**2))
     return weights
 
 
 def local_weight(
-    point: np.asmatrix, training_data_x: np.asmatrix, training_data_y: np.asmatrix, bandwidth: float
+    point: np.asmatrix,
+    training_data_x: np.asmatrix,
+    training_data_y: np.asmatrix,
+    bandwidth: float,
 ) -> np.asmatrix:
     """
     Calculate the local weights using the weight_matrix function on training data.
@@ -77,7 +82,9 @@ def load_data(dataset_name: str, cola_name: str, colb_name: str) -> np.asmatrix:
     return training_data, mcol_b, col_a, col_b
 
 
-def get_preds(training_data: np.asmatrix, mcol_b: np.asmatrix, tau: float) -> np.ndarray:
+def get_preds(
+    training_data: np.asmatrix, mcol_b: np.asmatrix, tau: float
+) -> np.ndarray:
     """
     Get predictions with minimum error for each training data
     """

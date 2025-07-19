@@ -6,7 +6,6 @@ Compatible with Python 3.13.5 and all modern Python 3 versions.
 """
 
 
-
 def count_chars(filename: str) -> dict[str, int]:
     """Count the frequency of each uppercase character in a file.
 
@@ -21,7 +20,9 @@ def count_chars(filename: str) -> dict[str, int]:
 
     with open(filename) as file:  # Open file in read mode
         content: str = file.read()
-        for char in content.upper():  # Convert to uppercase to ensure case insensitivity
+        for (
+            char
+        ) in content.upper():  # Convert to uppercase to ensure case insensitivity
             # Update count for current character (default to 0 if not found)
             char_counts[char] = char_counts.get(char, 0) + 1
 
@@ -41,12 +42,12 @@ def main() -> None:
         try:
             # Get user input with prompt
             user_input: str = input("File name / (0)exit: ").strip()
-            
+
             # Check for exit condition
             if user_input == "0":
                 print("Exiting program. Goodbye!")
                 break
-            
+
             # Process file and display results
             counts: dict[str, int] = count_chars(user_input)
             print(f"Character counts for '{user_input}':")

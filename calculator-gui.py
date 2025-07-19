@@ -172,7 +172,6 @@ class Inside:
                 "Second Number", "Please Enter Second Number To Perform Calculation"
             )
         else:
-
             try:
                 if self.opr == "+":
                     self.value1 = int(self.value1)

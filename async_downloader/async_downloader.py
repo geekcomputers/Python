@@ -19,10 +19,10 @@ from aiohttp import ClientError, ClientSession
 def download(urls: list[str]) -> None:
     """
     Download files from given URLs asynchronously.
-    
+
     Args:
         urls: List of URLs to download
-        
+
     Prints download statistics and results upon completion.
     """
     if not urls:
@@ -35,9 +35,7 @@ def download(urls: list[str]) -> None:
     failure_files: set[str] = set()
 
     # Run async downloader in the current event loop
-    asyncio.run(
-        async_downloader(urls, success_files, failure_files)
-    )
+    asyncio.run(async_downloader(urls, success_files, failure_files))
 
     print("Download process completed")
     print("-" * 100)
@@ -52,46 +50,47 @@ def download(urls: list[str]) -> None:
         for file in failure_files:
             print(file)
 
-async def async_downloader(urls: list[str], success_files: set[str], failure_files: set[str]) -> None:
+
+async def async_downloader(
+    urls: list[str], success_files: set[str], failure_files: set[str]
+) -> None:
     """
     Asynchronous downloader that processes multiple URLs concurrently.
-    
+
     Args:
         urls: List of URLs to download
         success_files: Set to store successfully downloaded URLs
         failure_files: Set to store failed URLs
-        
+
     Uses aiohttp ClientSession for efficient asynchronous requests.
     """
     async with ClientSession() as session:
         # Create and execute download tasks concurrently
-        tasks = [
-            download_file_by_url(url, session)
-            for url in urls
-        ]
-        
+        tasks = [download_file_by_url(url, session) for url in urls]
+
         # Process results as tasks complete
         for task in asyncio.as_completed(tasks):
             failed, url = await task
-            
+
             if failed:
                 failure_files.add(url)
             else:
                 success_files.add(url)
 
+
 async def download_file_by_url(url: str, session: ClientSession) -> tuple[bool, str]:
     """
     Download a single file from given URL using provided session.
-    
+
     Args:
         url: URL of the file to download
         session: aiohttp ClientSession object
-        
+
     Returns:
         Tuple containing:
         - bool: True if download failed, False if successful
         - str: Original URL
-        
+
     Handles various HTTP errors and network exceptions.
     """
     failed = True
@@ -100,31 +99,32 @@ async def download_file_by_url(url: str, session: ClientSession) -> tuple[bool, 
     try:
         async with session.get(url) as response:
             response.raise_for_status()  # Raise exception for 4xx/5xx status codes
-            
+
             # Read response data
             data = await response.read()
-            
+
             # Write data to file
             with open(file_name, "wb") as file:
                 file.write(data)
 
     except aiohttp.ClientResponseError as e:
         print(f"\t{file_name} from {url}: Failed - HTTP Error {e.status}")
-        
+
     except TimeoutError:
         print(f"\t{file_name} from {url}: Failed - Connection timed out")
-        
+
     except ClientError as e:
         print(f"\t{file_name} from {url}: Failed - Connection error: {str(e)}")
-        
+
     except Exception as e:
         print(f"\t{file_name} from {url}: Failed - Unexpected error: {str(e)}")
-        
+
     else:
         print(f"\t{file_name} from {url}: Success")
         failed = False
 
     return failed, url
+
 
 def test() -> None:
     """
@@ -138,6 +138,7 @@ def test() -> None:
     ]
 
     download(urls)
+
 
 if __name__ == "__main__":
     test()

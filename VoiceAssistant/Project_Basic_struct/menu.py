@@ -4,10 +4,9 @@ from speakListen import *
 
 
 def print_menu():
-    """Display a table with list of tasks and their associated commands.
-    """
+    """Display a table with list of tasks and their associated commands."""
     speak("I can do the following")
-    table = Table(title="\nI can do the following :- ", show_lines = True) 
+    table = Table(title="\nI can do the following :- ", show_lines=True)
 
     table.add_column("Sr. No.", style="cyan", no_wrap=True)
     table.add_column("Task", style="yellow")
@@ -24,4 +23,5 @@ def print_menu():
     console = Console()
     console.print(table)
 
-#print_menu()
+
+# print_menu()

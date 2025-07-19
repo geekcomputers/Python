@@ -4,6 +4,7 @@
 Author : Mohit Kumar
 Job Sequencing Problem implemented in python
 """
+
 from collections import namedtuple
 
 

@@ -92,32 +92,35 @@ MESSAGES: dict[str, list[str]] = {
     ],
 }
 
+
 def get_random_message() -> str:
     """
     Select a random loading screen message from predefined categories.
-    
+
     Returns:
         str: A randomly selected loading screen message.
     """
     # Combine all messages into a single list
     all_messages = [msg for category in MESSAGES.values() for msg in category]
-    
+
     # Ensure there are messages to select from
     if not all_messages:
         return "No loading messages available."
-    
+
     # Return a random message
     return random.choice(all_messages)
+
 
 def generate_loading_messages(count: int = 1) -> None:
     """
     Generate and print random loading screen messages.
-    
+
     Args:
         count (int): Number of messages to generate (default: 1).
     """
     for _ in range(count):
         print(get_random_message())
+
 
 if __name__ == "__main__":
     # Generate 1 message by default (configurable via count parameter)

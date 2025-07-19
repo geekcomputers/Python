@@ -2,7 +2,7 @@
 Written by  : Shreyas Daniel - github.com/shreydan
 Description : Uses Pythons eval() function
               as a way to implement calculator.
-             
+
 Functions available are:
 --------------------------------------------
                          + : addition
@@ -11,7 +11,7 @@ Functions available are:
                          / : division
                          % : percentage
                          e : 2.718281...
-                        pi : 3.141592... 
+                        pi : 3.141592...
                       sine : sin(rad)
                     cosine : cos(rad)
                    exponent: x^y
@@ -69,21 +69,17 @@ def calc(term):
             term = term.replace(func, withmath)
 
     try:
-
         # here goes the actual evaluating.
         term = eval(term)
 
     # here goes to the error cases.
     except ZeroDivisionError:
-
         print("Can't divide by 0.  Please try again.")
 
     except NameError:
-
         print("Invalid input.  Please try again")
 
     except AttributeError:
-
         print("Please check usage method and try again.")
     except TypeError:
         print("please enter inputs of correct datatype ")

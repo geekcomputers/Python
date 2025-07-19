@@ -6,19 +6,19 @@ from typing import NoReturn
 def count_lowercase_letters(file_path: str) -> tuple[int, int]:
     """
     Count lowercase and uppercase alphabetic characters in a text file.
-    
+
     Reads the entire content of the file, iterates through each character,
     and counts letters that are lowercase (a-z) and uppercase (A-Z). Non-alphabetic
     characters (numbers, symbols, whitespace) are ignored.
-    
+
     Args:
         file_path: Path to the text file (e.g., "happy.txt")
-        
+
     Returns:
         Tuple containing:
             - Count of lowercase letters (a-z)
             - Count of uppercase letters (A-Z)
-            
+
     Raises:
         FileNotFoundError: If the specified file does not exist
         PermissionError: If the user lacks permission to read the file
@@ -30,7 +30,7 @@ def count_lowercase_letters(file_path: str) -> tuple[int, int]:
     uppercase_count: int = 0
 
     # Read file content with explicit encoding
-    with open(file_path, encoding='utf-8') as file:
+    with open(file_path, encoding="utf-8") as file:
         content: str = file.read()
 
     # Iterate through each character to count letters
@@ -46,10 +46,10 @@ def count_lowercase_letters(file_path: str) -> tuple[int, int]:
 def validate_file_path(file_path: str) -> bool:
     """
     Validate if the provided file path points to an existing, readable file.
-    
+
     Args:
         file_path: Path to check
-        
+
     Returns:
         True if the path is valid and points to a readable file; False otherwise
     """
@@ -79,16 +79,20 @@ def validate_file_path(file_path: str) -> bool:
 def main() -> NoReturn:
     """
     Main function to handle user interaction and coordinate the counting process.
-    
+
     Guides the user to input a file path, validates it, triggers the counting function,
     and displays the results with clear formatting.
     """
     print("=== Alphabet Case Counter ===")
-    print("This program counts lowercase (a-z) and uppercase (A-Z) letters in a text file.\n")
+    print(
+        "This program counts lowercase (a-z) and uppercase (A-Z) letters in a text file.\n"
+    )
 
     # Get and validate file path from user
     while True:
-        file_path: str = input("Enter the path to the text file (e.g., 'happy.txt'): ").strip()
+        file_path: str = input(
+            "Enter the path to the text file (e.g., 'happy.txt'): "
+        ).strip()
         if validate_file_path(file_path):
             break
         print("Please try again.\n")
@@ -104,7 +108,9 @@ def main() -> NoReturn:
         print(f"Total alphabetic letters: {lowercase_count + uppercase_count}")
 
     except UnicodeDecodeError:
-        print(f"\nError: '{file_path}' contains non-UTF-8 data. Cannot read as text file.")
+        print(
+            f"\nError: '{file_path}' contains non-UTF-8 data. Cannot read as text file."
+        )
     except OSError as e:
         print(f"\nSystem error: {str(e)}")
     except Exception as e:

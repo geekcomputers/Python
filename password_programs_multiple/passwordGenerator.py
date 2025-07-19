@@ -9,18 +9,75 @@ import pycountry
 def generate_password():
     # Define characters and word sets
     special_characters = list("!@#$%/?<>|&*-=+_")
-    
+
     animals = (
-        "ant", "alligator", "baboon", "badger", "barb", "bat", "beagle", "bear", "beaver", "bird",
-        "bison", "bombay", "bongo", "booby", "butterfly", "bee", "camel", "cat", "caterpillar",
-        "catfish", "cheetah", "chicken", "chipmunk", "cow", "crab", "deer", "dingo", "dodo", "dog",
-        "dolphin", "donkey", "duck", "eagle", "earwig", "elephant", "emu", "falcon", "ferret", "fish",
-        "flamingo", "fly", "fox", "frog", "gecko", "gibbon", "giraffe", "goat", "goose", "gorilla"
+        "ant",
+        "alligator",
+        "baboon",
+        "badger",
+        "barb",
+        "bat",
+        "beagle",
+        "bear",
+        "beaver",
+        "bird",
+        "bison",
+        "bombay",
+        "bongo",
+        "booby",
+        "butterfly",
+        "bee",
+        "camel",
+        "cat",
+        "caterpillar",
+        "catfish",
+        "cheetah",
+        "chicken",
+        "chipmunk",
+        "cow",
+        "crab",
+        "deer",
+        "dingo",
+        "dodo",
+        "dog",
+        "dolphin",
+        "donkey",
+        "duck",
+        "eagle",
+        "earwig",
+        "elephant",
+        "emu",
+        "falcon",
+        "ferret",
+        "fish",
+        "flamingo",
+        "fly",
+        "fox",
+        "frog",
+        "gecko",
+        "gibbon",
+        "giraffe",
+        "goat",
+        "goose",
+        "gorilla",
     )
 
     colours = (
-        "red", "orange", "yellow", "green", "blue", "indigo", "violet", "purple",
-        "magenta", "cyan", "pink", "brown", "white", "grey", "black"
+        "red",
+        "orange",
+        "yellow",
+        "green",
+        "blue",
+        "indigo",
+        "violet",
+        "purple",
+        "magenta",
+        "cyan",
+        "pink",
+        "brown",
+        "white",
+        "grey",
+        "black",
     )
 
     # Get random values
@@ -46,6 +103,7 @@ def generate_password():
     print("Generated Password:", password)
     print("Based on Country:", country)
     print("Language Hint:", language)
+
 
 # Run it
 generate_password()

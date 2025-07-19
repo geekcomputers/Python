@@ -6,6 +6,8 @@ import backendModule
 
 # creating a Tkinter window
 backendModule.connect_database()
+
+
 # A function for check that acc_no is integer or not
 def check_string_in_account_no(check_acc_no):
     r = check_acc_no.isdigit()
@@ -33,7 +35,6 @@ def create():
             and len(acc_type) != 0
             and len(mobile_number) != 0
         ):
-
             acc_no = backendModule.create_customer(
                 name, age, address, balance, acc_type, mobile_number
             )
@@ -143,21 +144,13 @@ def show():
             label.grid(row=1, pady=6)
             label = Label(show_frame, text=f"Age:\t{details[2]}", font="bold")
             label.grid(row=2, pady=6)
-            label = Label(
-                show_frame, text=f"Address:\t{details[3]}", font="bold"
-            )
+            label = Label(show_frame, text=f"Address:\t{details[3]}", font="bold")
             label.grid(row=3, pady=6)
-            label = Label(
-                show_frame, text=f"Balance:\t{details[4]}", font="bold"
-            )
+            label = Label(show_frame, text=f"Balance:\t{details[4]}", font="bold")
             label.grid(row=4, pady=6)
-            label = Label(
-                show_frame, text=f"Account_type:\t{details[5]}", font="bold"
-            )
+            label = Label(show_frame, text=f"Account_type:\t{details[5]}", font="bold")
             label.grid(row=5, pady=6)
-            label = Label(
-                show_frame, text=f"Mobile Number:\t{details[6]}", font="bold"
-            )
+            label = Label(show_frame, text=f"Mobile Number:\t{details[6]}", font="bold")
             label.grid(row=6, pady=6)
             button = Button(
                 show_frame,
@@ -219,14 +212,10 @@ def add():
 
                 detail = backendModule.get_detail(acc_no)
 
-                label = Label(
-                    add_frame, text=f"Account holder name:   {detail[0][0]}"
-                )
+                label = Label(add_frame, text=f"Account holder name:   {detail[0][0]}")
                 label.grid(row=0, pady=3)
 
-                label = Label(
-                    add_frame, text=f"Current amount:   {detail[0][1]}"
-                )
+                label = Label(add_frame, text=f"Current amount:   {detail[0][1]}")
                 label.grid(row=1, pady=3)
 
                 label = Label(add_frame, text="Enter Money")
@@ -310,14 +299,10 @@ def withdraw():
                 add_frame.grid(padx=400, pady=300)
                 detail = backendModule.get_detail(acc_no)
 
-                label = Label(
-                    add_frame, text=f"Account holder name:   {detail[0][0]}"
-                )
+                label = Label(add_frame, text=f"Account holder name:   {detail[0][0]}")
                 label.grid(row=0, pady=3)
 
-                label = Label(
-                    add_frame, text=f"Current amount:   {detail[0][1]}"
-                )
+                label = Label(add_frame, text=f"Current amount:   {detail[0][1]}")
                 label.grid(row=1, pady=3)
 
                 label = Label(add_frame, text="Enter Money")
@@ -393,9 +378,7 @@ def check():
                 check_frame = Frame(tk)
                 check_frame.grid(padx=500, pady=300)
 
-                label = Label(
-                    check_frame, text=f"Balance Is:{balance}", font="bold"
-                )
+                label = Label(check_frame, text=f"Balance Is:{balance}", font="bold")
                 label.grid(row=0, pady=4)
 
                 button = Button(
@@ -652,7 +635,6 @@ def delete():
             result = backendModule.check_acc_no(acc_no)
             print(result)
             if not result:
-
                 label = Label(search_frame, text="invalid account number")
                 label.grid(pady=2)
                 button = Button(search_frame, text="Exit", command=back_page2)
@@ -874,7 +856,6 @@ def update_employee():
                     new_salary = entry19.get()
                     r = check_string_in_account_no(new_salary)
                     if len(new_salary) != 0 and r:
-
                         old_name = staff_name.get()
                         backendModule.update_employee_salary(new_salary, old_name)
                         entry19.destroy()
@@ -897,7 +878,6 @@ def update_employee():
                 def database_calling():
                     new_position = entry19.get()
                     if len(new_position) != 0:
-
                         old_name = staff_name.get()
                         backendModule.update_employee_position(new_position, old_name)
                         entry19.destroy()
@@ -974,7 +954,6 @@ def update_employee():
         if len(name) != 0:
             result = backendModule.check_name_in_staff(name)
             if result:
-
                 update_that_particular_employee()
             else:
                 label = Label(show_employee_frame, text="Employee not found")

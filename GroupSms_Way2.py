@@ -1,4 +1,3 @@
-
 import sys
 from getpass import getpass
 
@@ -50,9 +49,7 @@ opener.addheaders = [
 
 try:
     for number in num:
-        send_sms_data = (
-            f"ssaction=ss&Token={jession_id}&mobile={number}&message={message}&msgLen=136"
-        )
+        send_sms_data = f"ssaction=ss&Token={jession_id}&mobile={number}&message={message}&msgLen=136"
         sms_sent_page = opener.open(send_sms_url, send_sms_data)
 except OSError:
     print("Error while sending message")

@@ -9,7 +9,6 @@ from .statics import *
 
 
 class pieces:
-
     padding = 17
     outline = 2
 

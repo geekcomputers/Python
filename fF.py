@@ -18,6 +18,7 @@ def get_folder_size(directory):
             total_size += os.path.getsize(os.path.join(root, file))
     return total_size
 
+
 def format_size(size):
     """Format the size into human-readable units."""
     units = ["Bytes", "KB", "MB", "GB", "TB"]
@@ -26,19 +27,21 @@ def format_size(size):
             return f"{size:.2f} {unit}"
         size /= 1024
 
+
 def main():
     if len(sys.argv) < 2:
         print("Usage: python folder_size.py <directory>")
         sys.exit(1)
 
     directory = sys.argv[1]
-    
+
     if not os.path.exists(directory):
         print(f"Error: The directory '{directory}' does not exist.")
         sys.exit(1)
-    
+
     folder_size = get_folder_size(directory)
     print(f"Folder Size: {format_size(folder_size)}")
+
 
 if __name__ == "__main__":
     main()

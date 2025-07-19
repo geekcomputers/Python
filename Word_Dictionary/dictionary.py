@@ -1,7 +1,4 @@
-        
-
 class Dictionary:
-
     def __init__(self):
         self.node = {}
 
@@ -26,7 +23,7 @@ class Dictionary:
             self.words_list.append(spelling)
             return
         for ltr in node:
-            self.list_words_from_node(node[ltr], spelling+ltr)
+            self.list_words_from_node(node[ltr], spelling + ltr)
 
     def print_all_words_in_dictionary(self) -> list[str]:
         node = self.node
@@ -43,8 +40,6 @@ class Dictionary:
         self.words_list = []
         self.list_words_from_node(node, prefix)
         return self.words_list
-
-    
 
 
 # Your Dictionary object will be instantiated and called as such:

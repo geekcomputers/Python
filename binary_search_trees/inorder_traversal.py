@@ -1,5 +1,3 @@
-
-
 class Node:
     def __init__(self, data: int):
         """
@@ -11,6 +9,7 @@ class Node:
         self.data: int = data
         self.left: Node | None = None
         self.right: Node | None = None
+
 
 def inorder(root: Node | None) -> None:
     """
@@ -29,12 +28,12 @@ def inorder(root: Node | None) -> None:
     # The inorder traversal of a BST visits nodes in increasing order
     if root is None:
         return
-    
+
     # Traverse the left subtree
     inorder(root.left)
-    
+
     # Print the root node
     print(root.data)
-    
+
     # Traverse the right subtree
     inorder(root.right)

@@ -31,7 +31,7 @@ twilio_client = Client(ACC_SID, AUTH_TOKEN)
 def search() -> None:
     """
     Search for scheduled calls in the database and initiate reminders 5 minutes prior to the scheduled time.
-    
+
     This function:
     1. Queries the Firebase database for entries with the current date
     2. Filters entries scheduled within the next hour
@@ -39,32 +39,38 @@ def search() -> None:
     """
     # Current time and cutoff time (1 hour from now)
     current_time: datetime.datetime = datetime.datetime.now()
-    one_hour_later: str = (current_time + datetime.timedelta(hours=1)).strftime("%H:%M:%S")
+    one_hour_later: str = (current_time + datetime.timedelta(hours=1)).strftime(
+        "%H:%M:%S"
+    )
     current_date: str = str(strftime("%d-%m-%Y", gmtime()))
-    
+
     # Fetch documents from Firestore
     docs = db.collection("on_call").where("date", "==", current_date).stream()
     scheduled_calls: list[dict[str, Any]] = []
-    
+
     # Filter documents scheduled within the next hour
     for doc in docs:
         doc_data = doc.to_dict()
         if current_time.strftime("%H:%M:%S") <= doc_data["from"] <= one_hour_later:
             scheduled_calls.append(doc_data)
-    
-    print(f"Found {len(scheduled_calls)} scheduled calls for {current_date} within the next hour")
-    
+
+    print(
+        f"Found {len(scheduled_calls)} scheduled calls for {current_date} within the next hour"
+    )
+
     # Process each scheduled call to check if it's time to send a reminder
     while scheduled_calls:
         current_timestamp: str = datetime.datetime.now().strftime("%H:%M")
-        five_minutes_later: str = (datetime.datetime.now() + datetime.timedelta(minutes=5)).strftime("%H:%M")
-        
+        five_minutes_later: str = (
+            datetime.datetime.now() + datetime.timedelta(minutes=5)
+        ).strftime("%H:%M")
+
         for call in scheduled_calls[:]:  # Iterate over a copy to safely remove elements
             scheduled_time = call["from"][0:5]  # Extract HH:MM from HH:MM:SS
-            
+
             if scheduled_time == five_minutes_later:
                 phone_number: str = call["phone"]
-                
+
                 try:
                     # Initiate Twilio call
                     twilio_client.calls.create(
@@ -72,7 +78,9 @@ def search() -> None:
                         from_=TWILIO_PHONE_NUMBER,
                         url="http://demo.twilio.com/docs/voice.xml",
                     )
-                    print(f"Call initiated to {phone_number} for scheduled time {scheduled_time}")
+                    print(
+                        f"Call initiated to {phone_number} for scheduled time {scheduled_time}"
+                    )
                     scheduled_calls.remove(call)
                 except Exception as e:
                     print(f"Error initiating call to {phone_number}: {str(e)}")

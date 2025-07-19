@@ -36,9 +36,12 @@ class PuzzleState:
             if 0 <= nx < 3 and 0 <= ny < 3:
                 new_board = [row[:] for row in self.board]
                 new_board[x][y], new_board[nx][ny] = new_board[nx][ny], new_board[x][y]
-                neighbors.append(PuzzleState(new_board, self.goal, self.moves + 1, self))
+                neighbors.append(
+                    PuzzleState(new_board, self.goal, self.moves + 1, self)
+                )
 
         return neighbors
+
 
 def solve_puzzle(initial_board, goal_board):
     initial_state = PuzzleState(initial_board, goal_board)
@@ -60,6 +63,7 @@ def solve_puzzle(initial_board, goal_board):
 
     return None
 
+
 def print_solution(solution):
     steps = []
     while solution:
@@ -69,21 +73,14 @@ def print_solution(solution):
 
     for step in steps:
         for row in step:
-            print(' '.join(map(str, row)))
+            print(" ".join(map(str, row)))
         print()
 
-# Example usage
-initial_board = [
-    [1, 2, 3],
-    [4, 0, 5],
-    [7, 8, 6]
-]
 
-goal_board = [
-    [1, 2, 3],
-    [4, 5, 6],
-    [7, 8, 0]
-]
+# Example usage
+initial_board = [[1, 2, 3], [4, 0, 5], [7, 8, 6]]
+
+goal_board = [[1, 2, 3], [4, 5, 6], [7, 8, 0]]
 
 solution = solve_puzzle(initial_board, goal_board)
 if solution:

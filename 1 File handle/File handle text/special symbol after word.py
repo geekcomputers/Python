@@ -7,7 +7,7 @@ def print_words_with_asterisk(file_path: str | Path | None = None) -> None:
     Handles file paths with spaces and subdirectories.
 
     Args:
-        file_path (str | Path, optional): Path to the text file. 
+        file_path (str | Path, optional): Path to the text file.
             Defaults to "1 File handle/File handle text/happy.txt" if not specified.
 
     Raises:
@@ -25,16 +25,20 @@ def print_words_with_asterisk(file_path: str | Path | None = None) -> None:
     if not file_path.exists():
         raise FileNotFoundError(f"File does not exist: {file_path.resolve()}")
     if not file_path.is_file():
-        raise IsADirectoryError(f"Path is a directory, not a file: {file_path.resolve()}")
+        raise IsADirectoryError(
+            f"Path is a directory, not a file: {file_path.resolve()}"
+        )
 
     try:
-        with open(file_path, encoding='utf-8') as file:
-            print(f"Processing file: {file_path.resolve()}\n")  # Show absolute path for verification
+        with open(file_path, encoding="utf-8") as file:
+            print(
+                f"Processing file: {file_path.resolve()}\n"
+            )  # Show absolute path for verification
 
             # Method 1: Split entire file content into words
             content = file.read()
             words = content.split()
-            
+
             print("Method 1 Output:")
             for word in words:
                 print(f"{word}*", end="")
@@ -54,12 +58,13 @@ def print_words_with_asterisk(file_path: str | Path | None = None) -> None:
     except PermissionError:
         raise PermissionError(f"Permission denied: Cannot read {file_path.resolve()}")
 
+
 if __name__ == "__main__":
     try:
         # You can explicitly pass the path if needed, e.g.:
         # custom_path = r"C:\Full\Path\To\1 File handle\File handle text\happy.txt"  # Windows
         # print_words_with_asterisk(custom_path)
-        
+
         # Use default path (works for relative paths)
         print_words_with_asterisk()
     except (FileNotFoundError, IsADirectoryError, PermissionError) as e:

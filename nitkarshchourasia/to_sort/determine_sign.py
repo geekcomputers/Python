@@ -5,7 +5,7 @@ class DetermineSign:
     def __init__(self, num: str | float | None = None) -> None:
         """
         Initialize with a number or prompt user input.
-        
+
         Args:
             num: A number (float/int) or string representation (e.g., "5" or "five").
         """
@@ -18,19 +18,19 @@ class DetermineSign:
     def _convert_to_float(self, input_value: str | float) -> float:
         """
         Convert input to float, handling both numeric strings and word representations.
-        
+
         Args:
             input_value: A string (e.g., "5", "five") or numeric value.
-            
+
         Returns:
             The float representation.
-            
+
         Raises:
             ValueError: If input cannot be converted to a valid number.
         """
         if isinstance(input_value, (int, float)):
             return float(input_value)
-        
+
         try:
             # Handle numeric strings (e.g., "5.5")
             return float(input_value)
@@ -53,7 +53,7 @@ class DetermineSign:
     def _get_valid_number(self) -> float:
         """
         Prompt user for input until a valid number is provided.
-        
+
         Returns:
             A validated float.
         """

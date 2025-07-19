@@ -30,8 +30,10 @@ class BallObject(pyglet.shapes.Circle):
 
         if newx < border + self.radius or newx > win_size[0] - border - self.radius:
             self.velocity_x = -(self.velocity_x / abs(self.velocity_x)) * rn
-        elif newy > win_size[1] - border - self.radius or (newy - self.radius < other_object.height) and (
-            other_object.x <= newx <= other_object.rightx
+        elif (
+            newy > win_size[1] - border - self.radius
+            or (newy - self.radius < other_object.height)
+            and (other_object.x <= newx <= other_object.rightx)
         ):
             self.velocity_y = -(self.velocity_y / abs(self.velocity_y)) * rn
         else:

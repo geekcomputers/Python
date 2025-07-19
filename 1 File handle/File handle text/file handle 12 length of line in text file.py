@@ -6,42 +6,66 @@ from typing import NoReturn
 
 def _get_invalid_filename_chars() -> tuple[str, ...]:
     """Return a tuple of invalid filename characters for the current OS."""
-    if sys.platform.startswith('win'):
-        return ('\\', '/', ':', '*', '?', '"', '<', '>', '|')
+    if sys.platform.startswith("win"):
+        return ("\\", "/", ":", "*", "?", '"', "<", ">", "|")
     else:  # Linux/macOS
-        return ('/',)
+        return ("/",)
 
 
 def is_valid_filename(filename: str) -> tuple[bool, str]:
     """
     Validate if a filename is valid for the current operating system.
-    
+
     Args:
         filename: Filename to validate
-        
+
     Returns:
         Tuple containing (is_valid: bool, error_message: str)
     """
     if not filename.strip():
         return False, "Filename cannot be empty or contain only whitespace"
-    
+
     invalid_chars = _get_invalid_filename_chars()
     for char in filename:
         if char in invalid_chars:
-            return False, f"Contains invalid character: '{char}' (invalid: {', '.join(invalid_chars)})"
-    
-    max_length = 255 if not sys.platform.startswith('win') else 260
+            return (
+                False,
+                f"Contains invalid character: '{char}' (invalid: {', '.join(invalid_chars)})",
+            )
+
+    max_length = 255 if not sys.platform.startswith("win") else 260
     if len(filename) > max_length:
         return False, f"Too long (max {max_length} characters)"
-    
-    if sys.platform.startswith('win'):
-        reserved_names = {'CON', 'PRN', 'AUX', 'NUL', 'COM1', 'COM2', 'COM3', 'COM4', 'COM5', 
-                         'COM6', 'COM7', 'COM8', 'COM9', 'LPT1', 'LPT2', 'LPT3', 'LPT4', 
-                         'LPT5', 'LPT6', 'LPT7', 'LPT8', 'LPT9'}
-        base_name = filename.split('.')[0].upper()
+
+    if sys.platform.startswith("win"):
+        reserved_names = {
+            "CON",
+            "PRN",
+            "AUX",
+            "NUL",
+            "COM1",
+            "COM2",
+            "COM3",
+            "COM4",
+            "COM5",
+            "COM6",
+            "COM7",
+            "COM8",
+            "COM9",
+            "LPT1",
+            "LPT2",
+            "LPT3",
+            "LPT4",
+            "LPT5",
+            "LPT6",
+            "LPT7",
+            "LPT8",
+            "LPT9",
+        }
+        base_name = filename.split(".")[0].upper()
         if base_name in reserved_names:
             return False, f"'{filename}' is a reserved system name"
-    
+
     return True, "Valid filename"
 
 
@@ -59,10 +83,10 @@ def write_to_file(file_name: str) -> None:
     try:
         with open(file_name, "a", encoding="utf-8") as file:
             print(f"Created file: '{file_name}'")
-            
+
             while True:
-                text = input("Enter text to add (press Enter to skip): ").rstrip('\n')
-                
+                text = input("Enter text to add (press Enter to skip): ").rstrip("\n")
+
                 if text:
                     file.write(f"{text}\n")
                     print(f"Added: {text}")
@@ -71,11 +95,11 @@ def write_to_file(file_name: str) -> None:
 
                 while True:
                     choice = input("Add more content? (y/n): ").strip().lower()
-                    if choice in ('y', 'n'):
+                    if choice in ("y", "n"):
                         break
                     print("Invalid input. Please enter 'y' or 'n'.")
-                
-                if choice == 'n':
+
+                if choice == "n":
                     print("Content writing completed.")
                     break
 
@@ -104,8 +128,10 @@ def print_short_lines(file_name: str) -> None:
                 print(f"Info: File '{file_name}' is empty.")
                 return
 
-            short_lines: list[str] = [line for line in lines if len(line.rstrip('\n')) < 50]
-            
+            short_lines: list[str] = [
+                line for line in lines if len(line.rstrip("\n")) < 50
+            ]
+
             if not short_lines:
                 print("No lines with length < 50 characters (excluding newline).")
             else:
@@ -139,16 +165,16 @@ def main() -> NoReturn:
     """Main function coordinating file operations with retry for invalid filenames."""
     # Get valid filename with retry mechanism
     file_name = get_valid_filename()
-    
+
     # Write content to file
     write_to_file(file_name)
-    
+
     # Brief pause to ensure file operations complete
     time.sleep(1)
-    
+
     # Read and display short lines
     print_short_lines(file_name)
-    
+
     sys.exit(0)
 
 

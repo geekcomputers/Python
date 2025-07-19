@@ -14,7 +14,7 @@ def create_mirror_bst(root: Node | None) -> Node | None:
     # If the tree is empty, return None
     if root is None:
         return None
-    
+
     # Recursively create the mirror of the left and right subtrees
     left_mirror: Node | None = create_mirror_bst(root.left)
     right_mirror: Node | None = create_mirror_bst(root.right)

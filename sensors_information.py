@@ -36,7 +36,7 @@ def show_sensors():
     for address in ip_addresses():
         print(f"IP Addresses: {address[1]} ({address[0]})")
     print(f"CPU Load: {cpu_load():.1f}")
-    print(f"RAM Available: {ram_available() / 1024 ** 2} MiB")
+    print(f"RAM Available: {ram_available() / 1024**2} MiB")
     print(f"AC Connected: {ac_connected()}")
 
 

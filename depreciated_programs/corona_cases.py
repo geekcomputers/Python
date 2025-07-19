@@ -34,8 +34,7 @@ TotalRecovered: int = global_data["TotalRecovered"]
 # Extract India data (using country name instead of index for reliability)
 countries: CountryData = visit["Countries"]
 india_data: dict[str, Any] | None = next(
-    (country for country in countries if country["Country"] == "India"),
-    None
+    (country for country in countries if country["Country"] == "India"), None
 )
 
 if india_data is None:
@@ -51,6 +50,7 @@ indianewr: int = india_data["NewRecovered"]
 totalre: int = india_data["TotalRecovered"]
 DateUpdate: str = india_data["Date"]
 
+
 def world() -> None:
     """Display global COVID-19 statistics"""
     world_stats = f"""
@@ -65,6 +65,7 @@ New Recovered: {NewRecovered}
 Total Recovered: {TotalRecovered}
     """
     print(world_stats)
+
 
 def india() -> None:
     """Display COVID-19 statistics for India"""
@@ -87,6 +88,7 @@ Updated As Of: {DateUpdate}
 """
     print(india_stats)
 
+
 # ASCII art title
 print("""
 ░█████╗░░█████╗░██████╗░░█████╗░███╗░░██╗░█████╗░  ██╗░░░██╗██╗██████╗░██╗░░░██╗░██████╗
@@ -96,6 +98,7 @@ print("""
 ╚█████╔╝╚█████╔╝██║░░██║╚█████╔╝██║░╚███║██║░░██║  ░░╚██╔╝░░██║██║░░██║╚██████╔╝██████╔╝
 ░╚════╝░░╚════╝░╚═╝░░╚═╝░╚════╝░╚═╝░░╚══╝╚═╝░░╚═╝  ░░░╚═╝░░░╚═╝╚═╝░░╚═╝░╚═════╝░╚═════╝░""")
 print("\nDeveloped By @TheDarkW3b")
+
 
 def choices() -> None:
     """Main menu for user choices"""
@@ -114,6 +117,7 @@ def choices() -> None:
     else:
         print("\nInvalid input. Please try again.")
         choices()
+
 
 # Start the interactive menu
 choices()

@@ -16,11 +16,13 @@ console.rule("[bold]Welcome to Rich Terminal[/bold]", style="rainbow")
 json_data: dict[str, Any] = {
     "message": "Hello, World!",
     "status": "success",
-    "code": 200
+    "code": 200,
 }
 
 # Print JSON with syntax highlighting
-syntax: Syntax = Syntax(json.dumps(json_data, indent=4), "json", theme="monokai", line_numbers=True)
+syntax: Syntax = Syntax(
+    json.dumps(json_data, indent=4), "json", theme="monokai", line_numbers=True
+)
 console.print(syntax)
 
 # Simulating a progress bar

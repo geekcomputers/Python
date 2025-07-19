@@ -8,20 +8,77 @@ import emoji
 
 class Keypad(tk.Frame):
     """A custom keypad frame containing emoji buttons and control functions"""
-    
+
     cells: list[list[str]] = [
         ["😀", "🥰", "😴", "🤓", "🤮", "🤬", "😨", "🤑", "😫", "😎"],
         [
-            "🐒", "🐕", "🐎", "🐪", "🐁", "🐘", "🦘", "🦈", "🐓", "🐝",
-            "👀", "🦴", "👩🏿", "‍🤝", "🧑", "🏾", "👱🏽", "‍♀", "🎞", "🎨", "⚽"
+            "🐒",
+            "🐕",
+            "🐎",
+            "🐪",
+            "🐁",
+            "🐘",
+            "🦘",
+            "🦈",
+            "🐓",
+            "🐝",
+            "👀",
+            "🦴",
+            "👩🏿",
+            "‍🤝",
+            "🧑",
+            "🏾",
+            "👱🏽",
+            "‍♀",
+            "🎞",
+            "🎨",
+            "⚽",
         ],
         [
-            "🍕", "🍗", "🍜", "☕", "🍴", "🍉", "🍓", "🌴", "🌵", "🛺",
-            "🚲", "🛴", "🚉", "🚀", "✈", "🛰", "🚦", "🏳", "‍🌈", "🌎", "🧭"
+            "🍕",
+            "🍗",
+            "🍜",
+            "☕",
+            "🍴",
+            "🍉",
+            "🍓",
+            "🌴",
+            "🌵",
+            "🛺",
+            "🚲",
+            "🛴",
+            "🚉",
+            "🚀",
+            "✈",
+            "🛰",
+            "🚦",
+            "🏳",
+            "‍🌈",
+            "🌎",
+            "🧭",
         ],
         [
-            "🔥", "❄", "🌟", "🌞", "🌛", "🌝", "🌧", "🧺", "🧷", "🪒",
-            "⛲", "🗼", "🕌", "👁", "‍🗨", "💬", "™", "💯", "🔕", "💥", "❤"
+            "🔥",
+            "❄",
+            "🌟",
+            "🌞",
+            "🌛",
+            "🌝",
+            "🌧",
+            "🧺",
+            "🧷",
+            "🪒",
+            "⛲",
+            "🗼",
+            "🕌",
+            "👁",
+            "‍🗨",
+            "💬",
+            "™",
+            "💯",
+            "🔕",
+            "💥",
+            "❤",
         ],
     ]
 
@@ -31,7 +88,7 @@ class Keypad(tk.Frame):
         self.target: Entry | None = None
         self.memory: str = ""
         self.label: Label | None = None
-        
+
         self._create_buttons()
 
     def _create_buttons(self) -> None:
@@ -47,7 +104,7 @@ class Keypad(tk.Frame):
                         bg="yellow",
                         fg="blue",
                         borderwidth=3,
-                        relief="raised"
+                        relief="raised",
                     )
                     btn.grid(row=row_idx, column=col_idx, sticky="news")
 
@@ -56,7 +113,7 @@ class Keypad(tk.Frame):
                 ("Tab", self.tab, 0, 12, 2),
                 ("Backspace", self.backspace, 0, 14, 3),
                 ("Clear", self.clear, 0, 17, 2),
-                ("Hide", self.hide, 0, 19, 2)
+                ("Hide", self.hide, 0, 19, 2),
             ]
 
             for text, cmd, row, col, colspan in control_buttons:
@@ -68,10 +125,10 @@ class Keypad(tk.Frame):
                     bg="yellow",
                     fg="blue",
                     borderwidth=3,
-                    relief="raised"
+                    relief="raised",
                 )
                 btn.grid(row=row, column=col, columnspan=colspan, sticky="news")
-                
+
         except Exception as e:
             print(f"Error creating keypad buttons: {str(e)}")
             # Optionally show error message to user
@@ -192,17 +249,17 @@ def search_emoji() -> None:
             outputtxt.delete("1.0", tk.END)
             outputtxt.insert(tk.END, "No emoji entered. Please input an emoji first.")
             return
-            
+
         # Check if input contains non-emoji characters
         if not all(emoji.is_emoji(char) for char in emoji_input):
             outputtxt.delete("1.0", tk.END)
             outputtxt.insert(tk.END, "Invalid input! Please enter only emojis.")
             return
-            
+
         meaning = emoji.demojize(emoji_input)
         outputtxt.delete("1.0", tk.END)
         outputtxt.insert(tk.END, f"Meaning of Emoji: {emoji_input}\n\n{meaning}")
-        
+
     except emoji.EmojiNotFoundError:
         outputtxt.delete("1.0", tk.END)
         outputtxt.insert(tk.END, "Emoji not recognized. Please try another emoji.")
@@ -245,7 +302,7 @@ if __name__ == "__main__":
             window,
             text="EMOJI DICTIONARY",
             font=("Arial", 50, "underline"),
-            fg="magenta"
+            fg="magenta",
         )
         title_label.place(x=160, y=10)
 
@@ -254,7 +311,7 @@ if __name__ == "__main__":
             window,
             text="Enter any Emoji you want to search...",
             font=("Arial", 30),
-            fg="green"
+            fg="green",
         )
         input_label.place(x=160, y=120)
 
@@ -268,10 +325,10 @@ if __name__ == "__main__":
             border=2,
             bg="light yellow",
             fg="brown",
-            textvariable=myname
+            textvariable=myname,
         )
         inputentry.insert(0, "Click to enter emoji...")
-        inputentry.bind('<FocusIn>', on_inputentry_click)
+        inputentry.bind("<FocusIn>", on_inputentry_click)
         inputentry.place(x=120, y=180)
 
         # Search button
@@ -283,7 +340,7 @@ if __name__ == "__main__":
             bg="light green",
             fg="blue",
             borderwidth=3,
-            relief="raised"
+            relief="raised",
         )
         search_btn.place(x=270, y=250)
 
@@ -296,16 +353,13 @@ if __name__ == "__main__":
             bg="orange",
             fg="blue",
             borderwidth=3,
-            relief="raised"
+            relief="raised",
         )
         clear_btn.place(x=545, y=250)
 
         # Output label
         output_label: Label = Label(
-            window,
-            text="Meaning...",
-            font=("Arial", 30),
-            fg="green"
+            window, text="Meaning...", font=("Arial", 30), fg="green"
         )
         output_label.place(x=160, y=340)
 
@@ -318,7 +372,7 @@ if __name__ == "__main__":
             bg="light yellow",
             fg="brown",
             borderwidth=3,
-            relief="solid"
+            relief="solid",
         )
         outputtxt.place(x=120, y=400)
 
@@ -331,7 +385,7 @@ if __name__ == "__main__":
             bg="red",
             fg="black",
             borderwidth=3,
-            relief="raised"
+            relief="raised",
         )
         exit_btn.place(x=435, y=610)
 
@@ -347,16 +401,16 @@ if __name__ == "__main__":
             bg="light yellow",
             fg="green",
             borderwidth=3,
-            relief="raised"
+            relief="raised",
         )
         keypad_btn.place(x=870, y=183)
 
         # Configure window close protocol
         window.protocol("WM_DELETE_WINDOW", exit_win)
-        
+
         # Start main event loop
         window.mainloop()
-        
+
     except Exception as e:
         print(f"Fatal error during application initialization: {str(e)}")
         # Consider showing a critical error message here

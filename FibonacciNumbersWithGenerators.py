@@ -1,10 +1,10 @@
-def fibonacci_generator(n = None):
+def fibonacci_generator(n=None):
     """
-        Generating function up to n fibonacci numbers iteratively
-        Params:
-            n: int
-        Return:
-            int
+    Generating function up to n fibonacci numbers iteratively
+    Params:
+        n: int
+    Return:
+        int
     """
     f0, f1 = 0, 1
     yield f1
@@ -13,6 +13,7 @@ def fibonacci_generator(n = None):
         yield fn
         f0, f1 = f1, fn
         n -= 1
+
 
 for n_fibo in fibonacci_generator(7):
     print(n_fibo)

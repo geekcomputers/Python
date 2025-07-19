@@ -43,10 +43,8 @@ else:
             2
         ]  # Set the variable passwd as the second argument passed, in this case my login password
         subprocess.Popen(
-            
-                r"c:\Program Files\Checkpoint\Endpoint Connect\trac.exe connect -u username -p "
-                + passwd
-            
+            r"c:\Program Files\Checkpoint\Endpoint Connect\trac.exe connect -u username -p "
+            + passwd
         )
         subprocess.Popen(r"c:\geektools\puttycm.exe")
         time.sleep(

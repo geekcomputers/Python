@@ -18,10 +18,11 @@ SCREEN_HEIGHT: int = 500
 screen: pygame.Surface = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 pygame.display.set_caption("Brickout Game")
 
+
 class Ball:
     """
     Represents the ball in the Brickout game.
-    
+
     Attributes:
         screen (pygame.Surface): The game screen.
         radius (int): The radius of the ball.
@@ -32,6 +33,7 @@ class Ball:
         width (int): The width of the game screen.
         height (int): The height of the game screen.
     """
+
     def __init__(self, screen: pygame.Surface, radius: int, x: int, y: int) -> None:
         self.screen: pygame.Surface = screen
         self.radius: int = radius
@@ -54,14 +56,14 @@ class Ball:
         """Draws the ball on the screen."""
         pygame.draw.circle(self.screen, RED, (self.x_loc, self.y_loc), self.radius)
 
-    def update(self, paddle: 'Paddle', brick_wall: 'BrickWall') -> bool:
+    def update(self, paddle: "Paddle", brick_wall: "BrickWall") -> bool:
         """
         Updates the ball's position and handles collisions with walls, paddle, and bricks.
-        
+
         Args:
             paddle (Paddle): The player's paddle.
             brick_wall (BrickWall): The wall of bricks.
-        
+
         Returns:
             bool: True if the ball goes out of bounds at the bottom, False otherwise.
         """
@@ -72,7 +74,7 @@ class Ball:
         # Handle collisions with screen walls
         if self.x_loc <= self.radius or self.x_loc >= self.width - self.radius:
             self.x_vel *= -1
-        
+
         if self.y_loc <= self.radius:
             self.y_vel *= -1
         elif self.y_loc >= self.height - self.radius:
@@ -83,16 +85,22 @@ class Ball:
             self.y_vel *= -1
 
         # Handle collision with paddle
-        if (self.x_loc + self.radius >= paddle.x_loc and self.x_loc <= paddle.x_loc + paddle.width) and \
-           (self.y_loc + self.radius >= paddle.y_loc and self.y_loc <= paddle.y_loc + paddle.height):
+        if (
+            self.x_loc + self.radius >= paddle.x_loc
+            and self.x_loc <= paddle.x_loc + paddle.width
+        ) and (
+            self.y_loc + self.radius >= paddle.y_loc
+            and self.y_loc <= paddle.y_loc + paddle.height
+        ):
             self.y_vel *= -1
 
         return False
 
+
 class Paddle:
     """
     Represents the player's paddle in the Brickout game.
-    
+
     Attributes:
         screen (pygame.Surface): The game screen.
         width (int): The width of the paddle.
@@ -101,7 +109,10 @@ class Paddle:
         y_loc (int): The y-coordinate of the paddle's top-left corner.
         max_width (int): The maximum x-coordinate the paddle can reach.
     """
-    def __init__(self, screen: pygame.Surface, width: int, height: int, x: int, y: int) -> None:
+
+    def __init__(
+        self, screen: pygame.Surface, width: int, height: int, x: int, y: int
+    ) -> None:
         self.screen: pygame.Surface = screen
         self.width: int = width
         self.height: int = height
@@ -111,7 +122,9 @@ class Paddle:
 
     def draw(self) -> None:
         """Draws the paddle on the screen."""
-        pygame.draw.rect(self.screen, BLACK, (self.x_loc, self.y_loc, self.width, self.height))
+        pygame.draw.rect(
+            self.screen, BLACK, (self.x_loc, self.y_loc, self.width, self.height)
+        )
 
     def update(self) -> None:
         """Updates the paddle's position based on the mouse's x-coordinate."""
@@ -119,10 +132,11 @@ class Paddle:
         if 0 <= x <= self.max_width:
             self.x_loc = x
 
+
 class Brick:
     """
     Represents a single brick in the Brickout game.
-    
+
     Attributes:
         screen (pygame.Surface): The game screen.
         width (int): The width of the brick.
@@ -131,7 +145,10 @@ class Brick:
         y_loc (int): The y-coordinate of the brick's top-left corner.
         is_in_group (bool): Whether the brick is part of a group.
     """
-    def __init__(self, screen: pygame.Surface, width: int, height: int, x: int, y: int) -> None:
+
+    def __init__(
+        self, screen: pygame.Surface, width: int, height: int, x: int, y: int
+    ) -> None:
         self.screen: pygame.Surface = screen
         self.width: int = width
         self.height: int = height
@@ -141,22 +158,24 @@ class Brick:
 
     def draw(self) -> None:
         """Draws the brick on the screen."""
-        pygame.draw.rect(self.screen, BRICK_COLOR, (self.x_loc, self.y_loc, self.width, self.height))
+        pygame.draw.rect(
+            self.screen, BRICK_COLOR, (self.x_loc, self.y_loc, self.width, self.height)
+        )
 
-    def add(self, group: 'BrickWall') -> None:
+    def add(self, group: "BrickWall") -> None:
         """
         Adds the brick to a group.
-        
+
         Args:
             group (BrickWall): The group to add the brick to.
         """
         group.add(self)
         self.is_in_group = True
 
-    def remove(self, group: 'BrickWall') -> None:
+    def remove(self, group: "BrickWall") -> None:
         """
         Removes the brick from a group.
-        
+
         Args:
             group (BrickWall): The group to remove the brick from.
         """
@@ -170,20 +189,26 @@ class Brick:
     def collide(self, ball: Ball) -> bool:
         """
         Checks if the ball collides with the brick.
-        
+
         Args:
             ball (Ball): The ball to check collision with.
-        
+
         Returns:
             bool: True if collision occurs, False otherwise.
         """
-        return (ball.x_loc + ball.radius >= self.x_loc and ball.x_loc + ball.radius <= self.x_loc + self.width) and \
-               (ball.y_loc - ball.radius >= self.y_loc and ball.y_loc - ball.radius <= self.y_loc + self.height)
+        return (
+            ball.x_loc + ball.radius >= self.x_loc
+            and ball.x_loc + ball.radius <= self.x_loc + self.width
+        ) and (
+            ball.y_loc - ball.radius >= self.y_loc
+            and ball.y_loc - ball.radius <= self.y_loc + self.height
+        )
+
 
 class BrickWall:
     """
     Represents the wall of bricks in the Brickout game.
-    
+
     Attributes:
         screen (pygame.Surface): The game screen.
         x (int): The x-coordinate of the top-left corner of the wall.
@@ -192,7 +217,15 @@ class BrickWall:
         brick_height (int): The height of each brick.
         bricks (List[Brick]): The list of bricks in the wall.
     """
-    def __init__(self, screen: pygame.Surface, x: int, y: int, brick_width: int, brick_height: int) -> None:
+
+    def __init__(
+        self,
+        screen: pygame.Surface,
+        x: int,
+        y: int,
+        brick_width: int,
+        brick_height: int,
+    ) -> None:
         self.screen: pygame.Surface = screen
         self.x: int = x
         self.y: int = y
@@ -205,7 +238,9 @@ class BrickWall:
         current_y: int = y
         for _ in range(3):  # 3 rows
             for _ in range(4):  # 4 columns
-                self.bricks.append(Brick(screen, brick_width, brick_height, current_x, current_y))
+                self.bricks.append(
+                    Brick(screen, brick_width, brick_height, current_x, current_y)
+                )
                 current_x += brick_width + (brick_width // 7)
             current_y += brick_height + (brick_height // 7)
             current_x = x
@@ -213,7 +248,7 @@ class BrickWall:
     def add(self, brick: Brick) -> None:
         """
         Adds a brick to the wall.
-        
+
         Args:
             brick (Brick): The brick to add.
         """
@@ -222,7 +257,7 @@ class BrickWall:
     def remove(self, brick: Brick) -> None:
         """
         Removes a brick from the wall.
-        
+
         Args:
             brick (Brick): The brick to remove.
         """
@@ -237,7 +272,7 @@ class BrickWall:
     def update(self, ball: Ball) -> None:
         """
         Updates the wall by checking and removing bricks that collide with the ball.
-        
+
         Args:
             ball (Ball): The ball to check collisions with.
         """
@@ -252,10 +287,10 @@ class BrickWall:
     def collide(self, ball: Ball) -> bool:
         """
         Checks if the ball collides with any brick in the wall.
-        
+
         Args:
             ball (Ball): The ball to check collisions with.
-        
+
         Returns:
             bool: True if collision occurs, False otherwise.
         """
@@ -263,6 +298,7 @@ class BrickWall:
             if brick.collide(ball):
                 return True
         return False
+
 
 def main() -> None:
     """Main function to run the Brickout game."""
@@ -339,6 +375,7 @@ def main() -> None:
 
     # Clean up
     pygame.quit()
+
 
 if __name__ == "__main__":
     main()

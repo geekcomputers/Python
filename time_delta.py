@@ -1,4 +1,4 @@
-"""Time Delta Solution """
+"""Time Delta Solution"""
 
 
 # -----------------------------------------------------------------------------
@@ -26,7 +26,7 @@
 # Sample Output:
 # 25200
 # 88200
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 
 # Imports
 import datetime
@@ -38,15 +38,13 @@ def time_delta(t1, t2):
     Calculate the time delta between two timestamps in seconds.
     """
     # Convert the timestamps to datetime objects
-    t1 = datetime.datetime.strptime(t1, '%a %d %b %Y %H:%M:%S %z')
-    t2 = datetime.datetime.strptime(t2, '%a %d %b %Y %H:%M:%S %z')
+    t1 = datetime.datetime.strptime(t1, "%a %d %b %Y %H:%M:%S %z")
+    t2 = datetime.datetime.strptime(t2, "%a %d %b %Y %H:%M:%S %z")
 
-    return (t1 - t2)
+    return t1 - t2
 
 
-
-if __name__ == '__main__':
-
+if __name__ == "__main__":
     t = int(input())
 
     for itr_t in range(t):
@@ -57,7 +55,3 @@ if __name__ == '__main__':
         delta = time_delta(t1, t2)
         # print Delta with 1 Decimal Place
         print(round(delta.total_seconds(), 1))
-
-
-
-

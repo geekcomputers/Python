@@ -19,7 +19,6 @@ def possibilities(board):
 
     for i in range(len(board)):
         for j in range(len(board)):
-
             if board[i][j] == 0:
                 l.append((i, j))
     return l
@@ -91,7 +90,6 @@ def evaluate(board):
 
     for player in [1, 2]:
         if row_win(board, player) or col_win(board, player) or diag_win(board, player):
-
             winner = player
 
     if np.all(board != 0) and winner == 0:

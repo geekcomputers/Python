@@ -1,4 +1,3 @@
-
 import optparse  # Import the module
 
 import nmap  # Import the module

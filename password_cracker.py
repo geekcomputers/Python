@@ -1,4 +1,3 @@
-
 from sys import platform as _platform
 
 # Script Name	: password_cracker.py

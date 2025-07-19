@@ -15,7 +15,6 @@ class Paddle(pyglet.shapes.Rectangle):
         self.event_handlers = [self, self.key_handler]
 
     def update(self, win_size: tuple, border: float, other_object, dt):
-
         newlx = self.x + self.acc_left
         newrx = self.x + self.acc_right
 

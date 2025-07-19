@@ -143,6 +143,7 @@ def voice(text: str) -> None:
     """Convert text to speech and play using pygame."""
     try:
         from gtts import gTTS
+
         myobj = gTTS(text=text, lang="en", slow=False)
         myobj.save("try.mp3")
         play_audio("try.mp3")
@@ -175,55 +176,56 @@ def on_release(key):
 def get_app(query: str) -> None:
     """Execute actions based on user command."""
     mouse_controller = mouse.Controller()
-    
+
     if query == "time":
         current_time = datetime.datetime.now().strftime("%H:%M:%S")
         print(current_time)
         voice(current_time)
-        
+
     elif query == "news":
         import asyncio
+
         asyncio.run(speak_news())
-        
+
     elif query == "open notepad":
         subprocess.call(["Notepad.exe"])
-        
+
     elif query == "open calculator":
         subprocess.call(["calc.exe"])
-        
+
     elif query == "open stikynot":
         subprocess.call(["StikyNot.exe"])
-        
+
     elif query == "open shell":
         subprocess.call(["powershell.exe"])
-        
+
     elif query == "open paint":
         subprocess.call(["mspaint.exe"])
-        
+
     elif query == "open cmd":
         subprocess.call(["cmd.exe"])
-        
+
     elif query == "open discord":
         subprocess.call(["discord.exe"])
-        
+
     elif query == "open browser":
         subprocess.call(["C:\\Program Files\\Internet Explorer\\iexplore.exe"])
-        
+
     elif query == "open youtube":
         webbrowser.open("https://www.youtube.com/")
-        
+
     elif query == "open google":
         webbrowser.open("https://www.google.com/")
-        
+
     elif query == "open github":
         webbrowser.open("https://github.com/")
-        
+
     elif query.startswith("search for"):
         question = query.replace("search for", "").strip()
         answer = ask_gpt3(question)
         print(answer)
         speak(answer)
-        
+
     elif query == "email to other":
         try:
             speak("What should I say?")
@@ -233,7 +235,7 @@ def get_app(query: str) -> None:
         except Exception as e:
             print(f"Error: {e}")
             speak("Sorry, I can't send the email.")
-            
+
     elif query == "take screenshot":
         try:
             snapshot = ImageGrab.grab()
@@ -247,29 +249,29 @@ def get_app(query: str) -> None:
         except Exception as e:
             print(f"Error taking screenshot: {e}")
             speak("Sorry, I couldn't take the screenshot.")
-            
+
     elif query == "jokes":
         joke = pyjokes.get_joke()
         print(joke)
         speak(joke)
-        
+
     elif query == "start recording":
         # Simulate key press (not actual implementation)
         speak("Started recording. Say 'stop recording' to stop.")
-        
+
     elif query == "stop recording":
         # Simulate key press (not actual implementation)
         speak("Stopped recording. Check your game bar folder for the video.")
-        
+
     elif query == "clip that":
         # Simulate key press (not actual implementation)
         speak("Clipped. Check your game bar folder for the video.")
-        
+
     elif query == "take a break":
         speak("Okay, I'm taking a break. Call me anytime!")
         global exit_jarvis
         exit_jarvis = True
-        
+
     else:
         answer = ask_gpt3(query)
         print(answer)
@@ -279,7 +281,7 @@ def get_app(query: str) -> None:
 if __name__ == "__main__":
     print(f"JARVIS v{__version__} by {__author__}")
     print("Starting...")
-    
+
     # Check dependencies
     try:
         import httpx
@@ -291,12 +293,12 @@ if __name__ == "__main__":
     except ImportError as e:
         print(f"Missing dependency: {e}. Please install required packages.")
         sys.exit(1)
-    
+
     # Main loop
     while not exit_jarvis:
         query = takecommand()
         if query != "none":
             get_app(query)
-    
+
     print("Exiting JARVIS...")
     mixer.quit()

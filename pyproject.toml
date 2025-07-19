@@ -122,9 +122,12 @@ build-backend = "setuptools.build_meta"
 ignore-words-list = "3rt,abd,aer,ans,bitap,crate,damon,fo,followings,hist,iff,kwanza,manuel,mater,secant,som,sur,tim,toi,zar"
 skip = "*.css,*.js,*.lock"
 
+
 [tool.ruff]
-line-length = 88
-target-version = "py313"
+line-length = 88  
+target-version = "py313"  
+
+[tool.ruff.lint]
 select = ["E", "F", "I", "UP", "YTT", "PLC", "PT", "SIM"]
 ignore = [
     "B904", "B905", "PLC0415", 
@@ -136,6 +139,8 @@ ignore = [
 "__init__.py" = ["F401"]
 "tests/**" = ["S101", "PT011", "PT018"]
 ".*_test\\.py" = ["S101", "PT011", "PT018"]
+
+
 
 [tool.mypy]
 python_version = "3.13"

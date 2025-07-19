@@ -8,15 +8,17 @@ def add_document():
     se = backend.SearchEngine()
     print(se.index_document(document))
 
+
 def find_term():
     term = find_term_entry.get()
     se = backend.SearchEngine()
     print(se.find_documents(term))
 
+
 if __name__ == "__main__":
     root = Tk()
     root.title("Registration Form")
-    root.geometry('300x300')
+    root.geometry("300x300")
 
     add_documents_label = Label(root, text="Add Document:")
     add_documents_label.pack()

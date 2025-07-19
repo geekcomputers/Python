@@ -1,16 +1,22 @@
 import random
 
 attempts_list = []
+
+
 def show_score():
     if len(attempts_list) <= 0:
         print("There is currently no high score, it's yours for the taking!")
     else:
         print(f"The current high score is {min(attempts_list)} attempts")
+
+
 def start_game():
     random_number = int(random.randint(1, 10))
     print("Hello traveler! Welcome to the game of guesses!")
     player_name = input("What is your name? ")
-    wanna_play = input(f"Hi, {player_name}, would you like to play the guessing game? (Enter Yes/No) ")
+    wanna_play = input(
+        f"Hi, {player_name}, would you like to play the guessing game? (Enter Yes/No) "
+    )
     # Where the show_score function USED to be
     attempts = 0
     show_score()
@@ -42,5 +48,7 @@ def start_game():
             print(f"({err})")
     else:
         print("That's cool, have a good one!")
-if __name__ == '__main__':
+
+
+if __name__ == "__main__":
     start_game()

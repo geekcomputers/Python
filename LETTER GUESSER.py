@@ -14,19 +14,19 @@ userInput = input("guess:")
 failed = 10
 
 while failed > 0:
-	if userInput == compChosse:
-		print("---------->")
-		print("You are correct!")
-		print("---------->")
-		print("Your guesses: " + str(10 - failed))
-		break
+    if userInput == compChosse:
+        print("---------->")
+        print("You are correct!")
+        print("---------->")
+        print("Your guesses: " + str(10 - failed))
+        break
 
-	elif userInput != compChosse:
-		failed = failed - 1
-	
-		print(":no your wrong: " + "left: " + str(failed))
-	
-		userInput = input("guess:")
+    elif userInput != compChosse:
+        failed = failed - 1
 
-	if failed == 0:
-		print("out of guesses")
+        print(":no your wrong: " + "left: " + str(failed))
+
+        userInput = input("guess:")
+
+    if failed == 0:
+        print("out of guesses")

@@ -53,7 +53,6 @@ len(fakearticle_links)
 fakearticle_links[1888:]
 
 
-
 """We have to modify the links so that the links actually work as we can see that the string extracted is the last part of the url!
 
 **We have to add 'https://www.boomlive.in/fake-news' to the extracted links.**
@@ -142,9 +141,7 @@ files.download("Fake_news.csv")
 
 """**Scraping news from Times of India**"""
 
-TOIarticle_links = (
-    []
-)  # Creating an empty list of all the urls of news from Times of India site
+TOIarticle_links = []  # Creating an empty list of all the urls of news from Times of India site
 
 # Extracting links for all the pages (2 to 125) of boomlive fake news section
 for i in range(2, 126):

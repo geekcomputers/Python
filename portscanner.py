@@ -1,4 +1,3 @@
-
 import optparse  # Import the module
 from socket import *  # Import the module
 from threading import *  # Import the module

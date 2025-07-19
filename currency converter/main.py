@@ -193,20 +193,20 @@ CURRENCIES = [
     "Vietnam Dong-VND",
     "Yemen Rial-YER",
     "Zambia Kwacha-ZMK",
-    "Zimbabwe Dollar-ZWD"
+    "Zimbabwe Dollar-ZWD",
 ]
 
 
 class CurrencyConverter(QMainWindow):
     """Main application window for currency conversion"""
-    
+
     def __init__(self) -> None:
         super().__init__()
         self.base_dir: Path = Path(__file__).parent  # Directory of current script
         self.ui: QWidget = self.load_ui()
         self.setup_ui_elements()
         self.load_currency_data()  # Load from embedded list
-        
+
         # Type hints for UI elements (assigned via UI file)
         self.lineEdit: QLineEdit
         self.pushButton: QPushButton
@@ -214,11 +214,10 @@ class CurrencyConverter(QMainWindow):
         self.dropDown2: QComboBox
         self.lcdpanel: QLCDNumber
 
-
     def load_ui(self) -> QWidget:
         """Load UI file with proper path handling"""
         ui_path: Path = self.base_dir / "gui.ui"
-        
+
         try:
             return uic.loadUi(str(ui_path), self)
         except FileNotFoundError:
@@ -226,13 +225,11 @@ class CurrencyConverter(QMainWindow):
             print(f"Please ensure 'gui.ui' exists in: {self.base_dir}")
             sys.exit(1)
 
-
     def setup_ui_elements(self) -> None:
         """Initialize UI components and connections"""
         self.lineEdit.setValidator(QDoubleValidator())
         self.pushButton.clicked.connect(self.convert_currency)
         self.setWindowTitle("Dynamic Currency Converter")
-
 
     def load_currency_data(self) -> None:
         """Load currency list from embedded data (no external file)"""
@@ -243,7 +240,7 @@ class CurrencyConverter(QMainWindow):
             if currency not in seen:
                 seen.add(currency)
                 unique_currencies.append(currency)
-        
+
         # Populate dropdowns
         self.dropDown1.addItem("Select Currency")
         self.dropDown2.addItem("Select Currency")
@@ -251,55 +248,57 @@ class CurrencyConverter(QMainWindow):
             self.dropDown1.addItem(currency)
             self.dropDown2.addItem(currency)
 
-
     def get_exchange_rate(self, from_currency: str, to_currency: str) -> float | None:
         """Fetch exchange rate from API"""
         try:
             # Extract currency codes (format: "Name-CODE")
             from_code: str = from_currency.split("-")[-1].strip()
             to_code: str = to_currency.split("-")[-1].strip()
-            
+
             # Clean up codes with extra info (e.g., "(EURO)")
             from_code = from_code.split()[0]
             to_code = to_code.split()[0]
-            
+
             # API request
             api_key: str = "b43a653672c4a94c4c26"  # Replace with your API key if needed
             url: str = f"https://free.currconv.com/api/v7/convert?q={from_code}_{to_code}&compact=ultra&apiKey={api_key}"
-            
+
             response: httpx.Response = httpx.get(url, timeout=10)
             response.raise_for_status()
             data: dict[str, float] = response.json()
-            
+
             rate_key: str = f"{from_code}_{to_code}"
             return float(data[rate_key]) if rate_key in data else None
-            
+
         except Exception as e:
             print(f"Error fetching exchange rate: {str(e)}")
             return None
-
 
     def convert_currency(self) -> None:
         """Handle currency conversion when button is clicked"""
         amount_text: str = self.lineEdit.text()
         from_currency: str = self.dropDown1.currentText()
         to_currency: str = self.dropDown2.currentText()
-        
+
         # Validate inputs
-        if not amount_text or from_currency == "Select Currency" or to_currency == "Select Currency":
+        if (
+            not amount_text
+            or from_currency == "Select Currency"
+            or to_currency == "Select Currency"
+        ):
             self.lcdpanel.display(0)
             return
-            
+
         try:
             amount: float = float(amount_text)
             rate: float | None = self.get_exchange_rate(from_currency, to_currency)
-            
+
             if rate is not None:
                 result: float = amount * rate
                 self.lcdpanel.display(round(result, 2))
             else:
                 self.lcdpanel.display(0)
-                
+
         except ValueError:
             self.lcdpanel.display(0)
 
@@ -308,7 +307,7 @@ if __name__ == "__main__":
     # High-DPI support
     QApplication.setAttribute(Qt.AA_EnableHighDpiScaling, True)
     QApplication.setAttribute(Qt.AA_UseHighDpiPixmaps, True)
-    
+
     app: QApplication = QApplication(sys.argv)
     window: CurrencyConverter = CurrencyConverter()
     window.show()

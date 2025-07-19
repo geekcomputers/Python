@@ -9,43 +9,46 @@ from typing import Any
 # import notepad_support
 class NotepadSupport:
     """Placeholder for notepad_support module functionality"""
+
     @staticmethod
     def init(root: Tk, top: Any) -> None:
         pass
-    
+
     @staticmethod
     def add_button(event: Any) -> None:
         pass
-    
+
     @staticmethod
     def clear_button(event: Any) -> None:
         pass
-    
+
     @staticmethod
     def next_button(event: Any) -> None:
         pass
-    
+
     @staticmethod
     def back_button(event: Any) -> None:
         pass
-    
+
     @staticmethod
     def search_button(event: Any) -> None:
         pass
-    
+
     @staticmethod
     def delete_button(event: Any) -> None:
         pass
-    
+
     @staticmethod
     def create_button(event: Any) -> None:
         pass
-    
+
     @staticmethod
     def exit_button(event: Any) -> None:
         sys.exit()
 
+
 notepad_support = NotepadSupport()
+
 
 def vp_start_gui() -> None:
     """Starting point when module is the main routine."""
@@ -56,10 +59,14 @@ def vp_start_gui() -> None:
     notepad_support.init(root, top)
     root.mainloop()
 
+
 root: Tk | None = None
 w: Toplevel | None = None
 
-def create_Notepads_management(root: Tk, *args: Any, **kwargs: Any) -> tuple[Toplevel, Any]:
+
+def create_Notepads_management(
+    root: Tk, *args: Any, **kwargs: Any
+) -> tuple[Toplevel, Any]:
     """Starting point when module is imported by another program."""
     global w, rt
     rt = root
@@ -68,17 +75,19 @@ def create_Notepads_management(root: Tk, *args: Any, **kwargs: Any) -> tuple[Top
     notepad_support.init(w, top, *args, **kwargs)
     return (w, top)
 
+
 def destroy_Notepads_management() -> None:
     global w
     if w:
         w.destroy()
         w = None
 
+
 class NotepadsManagement:
     def __init__(self, top: Tk | Toplevel) -> None:
         """
         Configure and populate the toplevel window for managing notepads.
-        
+
         Args:
             top: The toplevel window to configure.
         """
@@ -87,7 +96,7 @@ class NotepadsManagement:
         _compcolor = "#d9d9d9"  # X11 color: 'gray85'
         _ana1color = "#d9d9d9"  # X11 color: 'gray85'
         _ana2color = "#d9d9d9"  # X11 color: 'gray85'
-        
+
         self.style = ttk.Style()
         if sys.platform == "win32":
             self.style.theme_use("winnative")
@@ -108,23 +117,23 @@ class NotepadsManagement:
             "TNotebook.Tab",
             background=[("selected", _compcolor), ("active", _ana2color)],
         )
-        
+
         # Create notebook tabs
         self.TNotebook1 = ttk.Notebook(top)
         self.TNotebook1.place(relx=0.02, rely=0.02, relheight=0.85, relwidth=0.97)
         self.TNotebook1.configure(width=582)
         self.TNotebook1.configure(takefocus="")
-        
+
         # Tab 0: Add Note
         self.TNotebook1_t0 = Frame(self.TNotebook1)
         self.TNotebook1.add(self.TNotebook1_t0, padding=3)
         self.TNotebook1.tab(0, text="Add", compound="none", underline="-1")
-        
+
         # Tab 1: Display Notes
         self.TNotebook1_t1 = Frame(self.TNotebook1)
         self.TNotebook1.add(self.TNotebook1_t1, padding=3)
         self.TNotebook1.tab(1, text="Display", compound="none", underline="-1")
-        
+
         # Tab 2: Create
         self.TNotebook1_t2 = Frame(self.TNotebook1)
         self.TNotebook1.add(self.TNotebook1_t2, padding=3)
@@ -233,6 +242,7 @@ class NotepadsManagement:
         self.errorOutput = Label(top)
         self.errorOutput.place(relx=0.03, rely=0.91, height=18, width=206)
         self.errorOutput.configure(activebackground="#f9f9f9")
+
 
 if __name__ == "__main__":
     vp_start_gui()

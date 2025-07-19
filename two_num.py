@@ -2,7 +2,7 @@
 Author: Anurag Kumar (mailto:anuragkumarak95@gmail.com)
 
 Description:
-    This function finds two numbers in a given list that add up to a specified target. 
+    This function finds two numbers in a given list that add up to a specified target.
     It returns the indices of those two numbers.
 
 Constraints:
@@ -13,7 +13,6 @@ Example:
     >>> two_sum([2, 7, 11, 15], 9)
     [0, 1]
 """
-
 
 
 def two_sum(nums: list[int], target: int) -> list[int] | None:
@@ -30,10 +29,10 @@ def two_sum(nums: list[int], target: int) -> list[int] | None:
     """
     if len(nums) < 2:
         raise ValueError("Input list must contain at least two numbers.")
-    
+
     if not all(isinstance(num, int) for num in nums):
         raise TypeError("All elements in the list must be integers.")
-    
+
     # Dictionary to track seen values and their indices
     seen_values = {}
 
@@ -45,6 +44,7 @@ def two_sum(nums: list[int], target: int) -> list[int] | None:
 
     return None
 
+
 # Example usage
 if __name__ == "__main__":
     example_nums = [2, 7, 11, 15]
@@ -53,6 +53,8 @@ if __name__ == "__main__":
 
     if result:
         num1, num2 = example_nums[result[0]], example_nums[result[1]]
-        print(f"Indices that add up to {example_target}: {result} (Values: {num1} + {num2})")
+        print(
+            f"Indices that add up to {example_target}: {result} (Values: {num1} + {num2})"
+        )
     else:
         print(f"No combination found that adds up to {example_target}.")

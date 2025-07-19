@@ -1,5 +1,5 @@
 # define punctuation
-punctuations = '''!()-[]{};:'"\,<>./?@#$%^&*_~'''
+punctuations = """!()-[]{};:'"\,<>./?@#$%^&*_~"""
 
 my_str = "Hello!!!, he said ---and went."
 
@@ -9,8 +9,8 @@ my_str = "Hello!!!, he said ---and went."
 # remove punctuation from the string
 no_punct = ""
 for char in my_str:
-   if char not in punctuations:
-       no_punct = no_punct + char
+    if char not in punctuations:
+        no_punct = no_punct + char
 
 # display the unpunctuated string
 print(no_punct)

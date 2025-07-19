@@ -19,6 +19,7 @@ class ShapeDrawer:
             self.turtle.forward(length)
             self.turtle.left(120)
 
+
 def main():
     scrn = turtle.Screen()
     scrn.bgcolor("lavender")
@@ -45,6 +46,7 @@ def main():
     circle_drawer.turtle.circle(50)
 
     scrn.exitonclick()
+
 
 if __name__ == "__main__":
     main()

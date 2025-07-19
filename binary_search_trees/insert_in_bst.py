@@ -15,11 +15,11 @@ def insert(root: Node | None, val: int) -> Node:
     # If the tree is empty, create a new node
     if root is None:
         return Node(val)
-    
+
     # If the value to be inserted is less than the root value, insert it into the left subtree
     if val < root.data:
         root.left = insert(root.left, val)
-    
+
     # If the value to be inserted is greater than the root value, insert it into the right subtree
     else:
         root.right = insert(root.right, val)

@@ -8,11 +8,11 @@ from multiprocessing import Pipe, Process
 def slice(mink: int, maxk: int) -> float:
     """
     Calculate the partial sum of the series 1/(2k+1)² from mink to maxk-1.
-    
+
     Args:
         mink: Start index (inclusive)
         maxk: End index (exclusive)
-        
+
     Returns:
         The computed partial sum
     """
@@ -20,6 +20,7 @@ def slice(mink: int, maxk: int) -> float:
     for k in range(mink, maxk):
         s += 1.0 / (2 * k + 1) / (2 * k + 1)
     return s
+
 
 def worker(mink: int, maxk: int, conn) -> None:
     """Worker function to compute slice and send result via pipe"""
@@ -31,20 +32,21 @@ def worker(mink: int, maxk: int, conn) -> None:
         conn.send(f"Error: {str(e)}")
         conn.close()
 
+
 def pi(n: int) -> float:
     """
     Compute an approximation of π using multi-processing.
-    
+
     Args:
         n: Number of terms in the series to compute (divided by 10 processes)
-        
+
     Returns:
         Approximation of π using the computed sum
     """
     processes: list[Process] = []
     parent_conns: list = []
     unit: int = n // 10
-    
+
     for i in range(10):
         mink = unit * i
         maxk = mink + unit
@@ -53,7 +55,7 @@ def pi(n: int) -> float:
         processes.append(p)
         parent_conns.append(parent_conn)
         p.start()
-    
+
     # Collect results
     sums: list[float] = []
     for conn in parent_conns:
@@ -64,12 +66,13 @@ def pi(n: int) -> float:
         else:
             sums.append(float(result))
         conn.close()
-    
+
     # Wait for all processes to finish
     for p in processes:
         p.join()
-    
+
     return math.sqrt(sum(sums) * 8)
+
 
 if __name__ == "__main__":
     try:

@@ -15,9 +15,7 @@ from time import strftime  # Load just the strftime Module from Time
 
 def windows():  # This is the function to run if it detects the OS is windows.
     f = open("server_startup_" + strftime("%Y-%m-%d") + ".log", "a")  # Open the logfile
-    for server in open(
-        "startup_list.txt"
-    ):  # Read the list of servers from the list
+    for server in open("startup_list.txt"):  # Read the list of servers from the list
         ret = subprocess.call(
             "ping -n 3 %s" % server,
             shell=True,

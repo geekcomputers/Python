@@ -15,11 +15,11 @@ def search(root: Node | None, val: int) -> bool:
     # If the tree is empty, return False
     if root is None:
         return False
-    
+
     # If the root value is equal to the value to be searched, return True
     if root.data == val:
         return True
-    
+
     # If the value to be searched is less than the root value, search in the left subtree
     if root.data > val:
         return search(root.left, val)
