@@ -1,7 +1,7 @@
 name: Python CI
 on: [pull_request, push]
 jobs:
-  lint_python:
+  CI Check:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
