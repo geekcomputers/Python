@@ -29,7 +29,7 @@ jobs:
         run: ruff check . --config pyproject.toml
         
       - name: Run Ruff (formatting check)
-        run: ruff format --check . --config pyproject.toml || true
+        run: ruff format --check . --config pyproject.toml
         
       
  
