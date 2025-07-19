@@ -7,7 +7,7 @@ column, or diagonal wins. If all positions are filled with no winner, it's a tie
 
 import random
 import time
-
+from typing import List, Tuple
 import numpy as np
 
 
@@ -20,7 +20,7 @@ def create_board() -> np.ndarray:
     return np.array([[0, 0, 0], [0, 0, 0], [0, 0, 0]])
 
 
-def possibilities(board: np.ndarray) -> list[tuple[int, int]]:
+def possibilities(board: np.ndarray) -> List[Tuple[int, int]]:
     """Find all empty positions on the board.
 
     Args:
@@ -29,7 +29,7 @@ def possibilities(board: np.ndarray) -> list[tuple[int, int]]:
     Returns:
         List of (row, column) tuples where the board has a zero (empty).
     """
-    empty_positions: list[tuple[int, int]] = []
+    empty_positions: List[Tuple[int, int]] = []
     for row in range(len(board)):
         for col in range(len(board[row])):
             if board[row, col] == 0:
