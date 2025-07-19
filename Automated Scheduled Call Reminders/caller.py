@@ -1,49 +1,82 @@
-# The project automates calls for people from the firebase cloud database and the schedular keeps it running and checks for entries
-# every 1 hour using aps scedular
-# The project can be used to set 5 min before reminder calls to a set of people for doing a particular job
-from firebase_admin import credentials, firestore, initialize_app
-from datetime import datetime, timedelta
+"""
+Firebase-Twilio Automated Reminder System
+
+This script automates reminder calls to individuals stored in a Firebase Cloud Firestore database.
+It checks for entries every hour and initiates calls 5 minutes prior to the scheduled time for each entry.
+"""
+
+import datetime
+from typing import List, Dict, Any
 from time import gmtime, strftime
+from firebase_admin import credentials, firestore, initialize_app
 from twilio.rest import Client
 
-# twilio credentials
-acc_sid = ""
-auth_token = ""
-client = Client(acc_sid, auth_token)
+# Twilio credentials (Replace with your actual credentials)
+ACC_SID: str = ""
+AUTH_TOKEN: str = ""
+TWILIO_PHONE_NUMBER: str = "add your twilio number"
 
-# firebase credentials
-# key.json is your certificate of firebase project
-cred = credentials.Certificate("key.json")
+# Firebase credentials (key.json should be your Firebase project certificate)
+FIREBASE_CERT_PATH: str = "key.json"
+
+# Initialize Firebase and Twilio clients
+cred = credentials.Certificate(FIREBASE_CERT_PATH)
 default_app = initialize_app(cred)
 db = firestore.client()
 database_reference = db.collection("on_call")
+twilio_client = Client(ACC_SID, AUTH_TOKEN)
 
-# Here the collection name is on_call which has documents with fields phone , from (%H:%M:%S time to call the person),date
 
-# gets data from cloud database and calls 5 min prior the time (from time) alloted in the database
-def search():
-
-    calling_time = datetime.now()
-    one_hours_from_now = (calling_time + timedelta(hours=1)).strftime("%H:%M:%S")
-    current_date = str(strftime("%d-%m-%Y", gmtime()))
+def search() -> None:
+    """
+    Search for scheduled calls in the database and initiate reminders 5 minutes prior to the scheduled time.
+    
+    This function:
+    1. Queries the Firebase database for entries with the current date
+    2. Filters entries scheduled within the next hour
+    3. Initiates Twilio calls for entries where the scheduled time is 5 minutes from now
+    """
+    # Current time and cutoff time (1 hour from now)
+    current_time: datetime.datetime = datetime.datetime.now()
+    one_hour_later: str = (current_time + datetime.timedelta(hours=1)).strftime("%H:%M:%S")
+    current_date: str = str(strftime("%d-%m-%Y", gmtime()))
+    
+    # Fetch documents from Firestore
     docs = db.collection(u"on_call").where(u"date", u"==", current_date).stream()
-    list_of_docs = []
+    scheduled_calls: List[Dict[str, Any]] = []
+    
+    # Filter documents scheduled within the next hour
     for doc in docs:
+        doc_data = doc.to_dict()
+        if current_time.strftime("%H:%M:%S") <= doc_data["from"] <= one_hour_later:
+            scheduled_calls.append(doc_data)
+    
+    print(f"Found {len(scheduled_calls)} scheduled calls for {current_date} within the next hour")
+    
+    # Process each scheduled call to check if it's time to send a reminder
+    while scheduled_calls:
+        current_timestamp: str = datetime.datetime.now().strftime("%H:%M")
+        five_minutes_later: str = (datetime.datetime.now() + datetime.timedelta(minutes=5)).strftime("%H:%M")
+        
+        for call in scheduled_calls[:]:  # Iterate over a copy to safely remove elements
+            scheduled_time = call["from"][0:5]  # Extract HH:MM from HH:MM:SS
+            
+            if scheduled_time == five_minutes_later:
+                phone_number: str = call["phone"]
+                
+                try:
+                    # Initiate Twilio call
+                    twilio_client.calls.create(
+                        to=phone_number,
+                        from_=TWILIO_PHONE_NUMBER,
+                        url="http://demo.twilio.com/docs/voice.xml",
+                    )
+                    print(f"Call initiated to {phone_number} for scheduled time {scheduled_time}")
+                    scheduled_calls.remove(call)
+                except Exception as e:
+                    print(f"Error initiating call to {phone_number}: {str(e)}")
 
-        c = doc.to_dict()
-        if (calling_time).strftime("%H:%M:%S") <= c["from"] <= one_hours_from_now:
-            list_of_docs.append(c)
-    print(list_of_docs)
 
-    while list_of_docs:
-        timestamp = datetime.now().strftime("%H:%M")
-        five_minutes_prior = (timestamp + timedelta(minutes=5)).strftime("%H:%M")
-        for doc in list_of_docs:
-            if doc["from"][0:5] == five_minutes_prior:
-                phone_number = doc["phone"]
-                client.calls.create(
-                    to=phone_number,
-                    from_="add your twilio number",
-                    url="http://demo.twilio.com/docs/voice.xml",
-                )
-                list_of_docs.remove(doc)
+if __name__ == "__main__":
+    # Run the search function to check for and initiate calls
+    search()

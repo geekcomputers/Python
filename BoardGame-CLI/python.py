@@ -1,19 +1,36 @@
 import random
+from typing import Dict
 
 # Define the game board with snakes and ladders
-snakes_and_ladders = {
+snakes_and_ladders: Dict[int, int] = {
     2: 38, 7: 14, 8: 31, 15: 26, 16: 6, 21: 42,
     28: 84, 36: 44, 46: 25, 49: 11, 51: 67, 62: 19,
     64: 60, 71: 91, 74: 53, 78: 98, 87: 94, 89: 68,
     92: 88, 95: 75, 99: 80
 }
 
-# Function to roll a six-sided die
-def roll_die():
+
+def roll_die() -> int:
+    """
+    Simulate rolling a six - sided die.
+
+    Returns:
+        int: A random integer between 1 and 6, representing the result of the die roll.
+    """
     return random.randint(1, 6)
 
-# Function to simulate a single turn
-def take_turn(current_position, player_name):
+
+def take_turn(current_position: int, player_name: str) -> int:
+    """
+    Simulate a single turn of the snakes and ladders game.
+
+    Args:
+        current_position (int): The current position of the player on the game board.
+        player_name (str): The name of the player taking the turn.
+
+    Returns:
+        int: The new position of the player after the turn.
+    """
     # Roll the die
     roll_result = roll_die()
     print(f"{player_name} rolled a {roll_result}!")
@@ -36,15 +53,19 @@ def take_turn(current_position, player_name):
 
     return new_position
 
-# Main game loop
-def play_snakes_and_ladders():
-    player1_position = 1
-    player2_position = 1
 
-    player1_name = input("Enter the name of Player 1: ")
-    player2_name = input("Enter the name of Player 2: ")
+def play_snakes_and_ladders() -> None:
+    """
+    Main function to play the snakes and ladders game for two players.
+    Prompts for player names, runs the game loop, and announces the winner.
+    """
+    player1_position: int = 1
+    player2_position: int = 1
 
-    current_player = player1_name
+    player1_name: str = input("Enter the name of Player 1: ")
+    player2_name: str = input("Enter the name of Player 2: ")
+
+    current_player: str = player1_name
 
     while player1_position < 100 and player2_position < 100:
         print(f"\n{current_player}'s turn:")
@@ -64,6 +85,7 @@ def play_snakes_and_ladders():
         print(f"{player1_name} won!")
     elif player2_position == 100:
         print(f"{player2_name} won!")
+
 
 # Start the game
 play_snakes_and_ladders()

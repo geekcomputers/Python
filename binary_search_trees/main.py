@@ -5,12 +5,11 @@ from mirror_a_bst import create_mirror_bst
 from print_in_range import print_in_range
 from root_to_leaf_paths import print_root_to_leaf_paths
 from validate_bst import is_valid_bst
+from tree_node import Node
 
-
-def main():
-    
+def main() -> None:
     # Create a BST
-    root = None
+    root: Node | None = None
     root = insert(root, 50)
     root = insert(root, 30)
     root = insert(root, 20)
@@ -28,8 +27,7 @@ def main():
     print_root_to_leaf_paths(root, [])
     
     # Check if the tree is a BST
-    print("Is the tree a BST:", is_valid_bst(root,None,None))
-    
+    print("Is the tree a BST:", is_valid_bst(root, None, None))
     
     # Delete nodes from the BST
     print("Deleting 20 from the BST:")
@@ -40,8 +38,7 @@ def main():
     print_in_range(root, 10, 90)
     
     # Check if the tree is a BST
-    print("Is the tree a BST:", is_valid_bst(root,None,None))
-    
+    print("Is the tree a BST:", is_valid_bst(root, None, None))
     
     # Delete nodes from the BST
     print("Deleting 30 from the BST:")
@@ -52,7 +49,7 @@ def main():
     print_in_range(root, 10, 90)
     
     # Check if the tree is a BST
-    print("Is the tree a BST:", is_valid_bst(root,None,None))
+    print("Is the tree a BST:", is_valid_bst(root, None, None))
     
     # Delete nodes from the BST
     print("Deleting 50 from the BST:")
@@ -63,21 +60,16 @@ def main():
     print_in_range(root, 10, 90)
     
     # Check if the tree is a BST
-    print("Is the tree a BST:", is_valid_bst(root,None,None))
-    
+    print("Is the tree a BST:", is_valid_bst(root, None, None))
     
     print("Searching for 70 in the BST:", search(root, 70))
     print("Searching for 100 in the BST:", search(root, 100))
     print("Inorder traversal of the BST:")
     print_in_range(root, 10, 90)
     print("Creating a mirror of the BST:")
-    mirror_root = create_mirror_bst(root)
+    mirror_root: Node | None = create_mirror_bst(root)
     print("Inorder traversal of the mirror BST:")
     print_in_range(mirror_root, 10, 90)
 
 if __name__ == "__main__":
     main()
-
-
-
-

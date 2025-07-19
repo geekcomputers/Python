@@ -4,7 +4,7 @@ class DLL:
         next page, and previous page.
         Used to enforce order in operations.
     """
-    def __init__(self, val: str =None):
+    def __init__(self, val: str = None):
         self.val = val
         self.nxt = None
         self.prev = None
