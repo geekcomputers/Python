@@ -189,36 +189,3 @@ exclude = '''
   .*templates/.*\.html
 '''
 
-[[tool.mypy.overrides]]
-module = [
-    "django.*",
-    "tensorflow.*",
-    "keras.*",
-    "sklearn.*",
-    "matplotlib.*",
-    "pymongo.*",
-    "firebase_admin.*",
-    "numpy.*",
-    "pandas.*",
-    "cv2.*"
-]
-ignore_missing_imports = true
-
-[[tool.mypy.overrides]]
-module = [
-    ".*_pb2.*",
-    ".*_pb2_grpc.*"
-]
-ignore_errors = true
-
-[[tool.mypy.overrides]]
-module = [
-    "tests.*",
-    ".*_test\.py"
-]
-strict = false
-disallow_untyped_defs = false
-
-[[tool.mypy.overrides]]
-module = ["legacy.*"]
-strict = false
