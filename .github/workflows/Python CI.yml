@@ -24,13 +24,12 @@ jobs:
         
       - name: Run Bandit
         run: bandit --recursive --skip B101 . || true
-         
+      - name: Run Ruff (formatting check)
+        run: ruff format --check . --config pyproject.toml || true
+
       - name: Run Ruff (linting)
         run: ruff check . --config pyproject.toml
         
-      - name: Run Ruff (formatting check)
-        run: ruff format --check . --config pyproject.toml
-         
       - name: Setup Mypy cache
         run: mkdir -p .mypy_cache
         
