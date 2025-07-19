@@ -1,7 +1,7 @@
 name: Python CI
 on: [pull_request, push]
 jobs:
- CI_Build:
+ Build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -17,7 +17,7 @@ jobs:
       - name: Install check dependencies
         run: |
           python -m pip install --upgrade pip wheel
-          pip install bandit ruff mypy safety codespell
+          pip install bandit ruff mypy codespell
         
       - name: Run Codespell
         run: codespell --config pyproject.toml || true
@@ -30,9 +30,7 @@ jobs:
         
       - name: Run Ruff (formatting check)
         run: ruff format --check . --config pyproject.toml
-        
-      
- 
+         
       - name: Setup Mypy cache
         run: mkdir -p .mypy_cache
         
