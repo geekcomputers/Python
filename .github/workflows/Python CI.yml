@@ -20,7 +20,7 @@ jobs:
           pip install bandit ruff mypy safety codespell
         
       - name: Run Ruff (linting)
-        run: ruff check . --config pyproject.toml
+        run: ruff check . --config pyproject.toml --fix
         
       - name: Run Ruff (formatting check)
         run: ruff format --check . --config pyproject.toml || true
