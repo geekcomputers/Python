@@ -31,8 +31,8 @@ def print_docs():  # Function to print the daily checks automatically
     # The command below passes the command line string to open word, open the document, print it then close word down
     subprocess.Popen(
         [
-            "C:\\Program Files (x86)\Microsoft Office\Office14\winword.exe",
-            "P:\\\\Documentation\\Daily Docs\\Back office Daily Checks.doc",
+            r"C:\Program Files (x86)\Microsoft Office\Office14\winword.exe",
+            r"P:\Documentation\Daily Docs\Back office Daily Checks.doc",
             "/mFilePrintDefault",
             "/mFileExit",
         ]
@@ -55,10 +55,11 @@ def rdp_sessions():
 
 def euroclear_docs():
     # The command below opens IE and loads the Euroclear password document
-    subprocess.Popen(
-        '"C:\\Program Files\\Internet Explorer\\iexplore.exe"'
-        '"file://fs1\pub_b\Pub_Admin\Documentation\Settlements_Files\PWD\Eclr.doc"'
-    )
+    subprocess.Popen([
+        r"C:\Program Files\Internet Explorer\iexplore.exe",
+        r"file://fs1/pub_b/Pub_Admin/Documentation/Settlements_Files/PWD/Eclr.doc"
+    ])
+
 
 
 # End of the functions

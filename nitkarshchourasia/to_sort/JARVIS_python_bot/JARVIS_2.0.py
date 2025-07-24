@@ -319,8 +319,8 @@ def get_app(Q):
         "shell": "powershell.exe",
         "paint": "mspaint.exe",
         "cmd": "cmd.exe",
-        "browser": "C:\\Program Files\Internet Explorer\iexplore.exe",
-        "vscode": "C:\\Users\\Users\\User\\AppData\\Local\\Programs\Microsoft VS Code",
+        "browser": r"C:\\Program Files\Internet Explorer\iexplore.exe",
+        "vscode": r"C:\\Users\\Users\\User\\AppData\\Local\\Programs\Microsoft VS Code",
     }
     # master
 

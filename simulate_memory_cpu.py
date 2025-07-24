@@ -20,7 +20,7 @@ def print_help():
 
 
 def mem():
-    pattern = re.compile('^(\d*)([M|G]B)$')
+    pattern = re.compile(r'^(\d*)([MG]B)$')
     size = sys.argv[2].upper()
     match = pattern.match(size)
     if match:
