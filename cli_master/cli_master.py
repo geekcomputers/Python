@@ -2,7 +2,6 @@ import os
 import sys
 from pprint import pprint
 
-
 sys.path.append(os.path.realpath("."))
 import inquirer
 
@@ -83,12 +82,12 @@ class Validation:
         # Add your password validation logic here
         return True
 
+
 # Have an option to go back.
 # How can I do it?
 if answers is not None and answers.get("authentication") == "Login":
     questions = [
-        inquirer.
-        Text(
+        inquirer.Text(
             "surname",
             message="What's your last name (surname)?",
             validate=Validation.lname_validation,

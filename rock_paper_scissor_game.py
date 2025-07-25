@@ -1,7 +1,4 @@
-from __future__ import print_function
-
 import random
-
 
 # let
 # 0 - rock

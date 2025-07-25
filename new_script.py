@@ -1,5 +1,3 @@
-from __future__ import print_function
-
 import datetime  # Load the library module
 import os  # Load the library module
 import sys  # Load the library module
@@ -55,7 +53,7 @@ new_text = " Script Name	: " + output_file
 if not (os.path.exists(outputdir)):
     os.mkdir(outputdir)
 newscript = open(script, "w")
-input = open(input_file, "r")
+input = open(input_file)
 today = datetime.date.today()
 old_date = " Created	:"
 new_date = " Created	: " + today.strftime("%d %B %Y")

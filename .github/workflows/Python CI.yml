@@ -1,0 +1,40 @@
+name: Python CI
+on: [pull_request, push]
+jobs:
+ Build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+          cache: "pip"
+          cache-dependency-path: "pyproject.toml"
+          
+      - name: Install check dependencies
+        run: |
+          python -m pip install --upgrade pip wheel
+          pip install bandit ruff mypy codespell
+        
+      - name: Run Codespell
+        run: codespell --config pyproject.toml || true
+        
+      - name: Run Bandit
+        run: bandit --recursive --skip B101 . || true
+      - name: Run Ruff (formatting check)
+        run: ruff format --check . --config pyproject.toml || true
+
+      - name: Run Ruff (linting)
+        run: ruff check . --config pyproject.toml
+        
+      - name: Setup Mypy cache
+        run: mkdir -p .mypy_cache
+        
+      - name: Install type stubs
+        run: mypy --config-file pyproject.toml --install-types --non-interactive
+        
+      - name: Run Mypy
+        run: mypy --config-file pyproject.toml

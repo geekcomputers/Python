@@ -2,7 +2,6 @@
 # Simple encryption script for text
 # This was one my first versions of this script
 # 09/07/2017
-from __future__ import print_function
 
 import math
 
@@ -46,7 +45,7 @@ def decrypt(enc_text):
 
 
 def readAndDecrypt(filename):
-    file = open(filename, "r")
+    file = open(filename)
     data = file.read()
     datalistint = []
     actualdata = []
@@ -62,7 +61,7 @@ def readAndDecrypt(filename):
 
 
 def readAndEncrypt(filename):
-    file = open(filename, "r")
+    file = open(filename)
     data = file.read()
     datalist = list(data)
     encrypted_list = list()

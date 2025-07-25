@@ -6,7 +6,7 @@ import os
 import shutil
 
 
-class RearrangeFile(object):
+class RearrangeFile:
     def __init__(self):
         self.folder_path = os.getcwd()
         self.list_of_all_files = os.listdir(self.folder_path)

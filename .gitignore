@@ -1,4 +1,6 @@
 .idea
+.vscode
+_pycache_
 *.pyc
 string=sorted(input())
 lower=""
@@ -18,10 +20,9 @@ print(lower+upper+odd+even)
 
 .venv
 # operating system-related files
-
 # file properties cache/storage on macOS
 *.DS_Store
-
 # thumbnail cache on Windows
 Thumbs.db
 bankmanaging.db
+.vscode/settings.json

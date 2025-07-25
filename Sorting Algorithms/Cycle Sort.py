@@ -26,7 +26,6 @@ def cycleSort(array):
 
         # Rotate the rest of the cycle.
         while pos != cycleStart:
-
             # Find where to put the item.
             pos = cycleStart
             for i in range(cycleStart + 1, len(array)):

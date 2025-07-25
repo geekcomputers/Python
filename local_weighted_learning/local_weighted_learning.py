@@ -4,7 +4,9 @@ import numpy as np
 
 
 # weighted matrix
-def weighted_matrix(point: np.mat, training_data_x: np.mat, bandwidth: float) -> np.mat:
+def weighted_matrix(
+    point: np.asmatrix, training_data_x: np.asmatrix, bandwidth: float
+) -> np.asmatrix:
     """
     Calculate the weight for every point in the
     data set. It takes training_point , query_point, and tau
@@ -16,17 +18,20 @@ def weighted_matrix(point: np.mat, training_data_x: np.mat, bandwidth: float) ->
     # m is the number of training samples
     m, n = np.shape(training_data_x)
     # Initializing weights as identity matrix
-    weights = np.mat(np.eye((m)))
+    weights = np.asmatrix(np.eye(m))
     # calculating weights for all training examples [x(i)'s]
     for j in range(m):
         diff = point - training_data[j]
-        weights[j, j] = np.exp(diff * diff.T / (-2.0 * bandwidth ** 2))
+        weights[j, j] = np.exp(diff * diff.T / (-2.0 * bandwidth**2))
     return weights
 
 
 def local_weight(
-    point: np.mat, training_data_x: np.mat, training_data_y: np.mat, bandwidth: float
-) -> np.mat:
+    point: np.asmatrix,
+    training_data_x: np.asmatrix,
+    training_data_y: np.asmatrix,
+    bandwidth: float,
+) -> np.asmatrix:
     """
     Calculate the local weights using the weight_matrix function on training data.
     Return the weighted matrix.
@@ -39,8 +44,8 @@ def local_weight(
 
 
 def local_weight_regression(
-    training_data_x: np.mat, training_data_y: np.mat, bandwidth: float
-) -> np.mat:
+    training_data_x: np.asmatrix, training_data_y: np.asmatrix, bandwidth: float
+) -> np.asmatrix:
     """
     Calculate predictions for each data point on axis.
     """
@@ -55,7 +60,7 @@ def local_weight_regression(
     return ypred
 
 
-def load_data(dataset_name: str, cola_name: str, colb_name: str) -> np.mat:
+def load_data(dataset_name: str, cola_name: str, colb_name: str) -> np.asmatrix:
     """
     Function used for loading data from the seaborn splitting into x and y points
     """
@@ -65,8 +70,8 @@ def load_data(dataset_name: str, cola_name: str, colb_name: str) -> np.mat:
     col_a = np.array(data[cola_name])  # total_bill
     col_b = np.array(data[colb_name])  # tip
 
-    mcol_a = np.mat(col_a)
-    mcol_b = np.mat(col_b)
+    mcol_a = np.asmatrix(col_a)
+    mcol_b = np.asmatrix(col_b)
 
     m = np.shape(mcol_b)[1]
     one = np.ones((1, m), dtype=int)
@@ -77,7 +82,9 @@ def load_data(dataset_name: str, cola_name: str, colb_name: str) -> np.mat:
     return training_data, mcol_b, col_a, col_b
 
 
-def get_preds(training_data: np.mat, mcol_b: np.mat, tau: float) -> np.ndarray:
+def get_preds(
+    training_data: np.asmatrix, mcol_b: np.asmatrix, tau: float
+) -> np.ndarray:
     """
     Get predictions with minimum error for each training data
     """
@@ -86,7 +93,7 @@ def get_preds(training_data: np.mat, mcol_b: np.mat, tau: float) -> np.ndarray:
 
 
 def plot_preds(
-    training_data: np.mat,
+    training_data: np.asmatrix,
     predictions: np.ndarray,
     col_x: np.ndarray,
     col_y: np.ndarray,

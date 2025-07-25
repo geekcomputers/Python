@@ -2,7 +2,6 @@ import sys
 
 import serial
 
-
 # A serial port-scanner for linux and windows platforms
 
 # Author: Julio César Echeverri Marulanda

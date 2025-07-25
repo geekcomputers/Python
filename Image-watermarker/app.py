@@ -1,11 +1,11 @@
-import customtkinter as ctk
-from customtkinter import filedialog
-from CTkMessagebox import CTkMessagebox
-from PIL import Image, ImageTk
-from watermark import Watermark
-import pyglet
 from tkinter import colorchooser
 
+import customtkinter as ctk
+import pyglet
+from CTkMessagebox import CTkMessagebox
+from customtkinter import filedialog
+from PIL import Image, ImageTk
+from watermark import Watermark
 
 # ------------------- Create Window -----------------
 pyglet.font.add_directory("fonts")
@@ -44,7 +44,7 @@ def load_image():
         )
         loaded_image = ImageTk.PhotoImage(resize_img)
 
-        window.geometry(f"{resize_img.width + 300+30}x{resize_img.height + 50}")
+        window.geometry(f"{resize_img.width + 300 + 30}x{resize_img.height + 50}")
         image_canvas.config(width=resize_img.width, height=resize_img.height)
         image_canvas.grid(row=0, column=1, padx=20, pady=20, columnspan=2)
         image_canvas.create_image(0, 0, anchor="nw", image=loaded_image)

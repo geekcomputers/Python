@@ -1,6 +1,9 @@
 import speech_recognition as sr
+
 # initialize the recognizer
 r = sr.Recognizer()
+
+
 def stt():
     with sr.Microphone() as source:
         # read the audio data from the default microphone

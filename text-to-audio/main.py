@@ -1,5 +1,6 @@
-from gtts import gTTS
 import os
+
+from gtts import gTTS
 
 # Enter the text in string format which you want to convert to audio
 mytext = "Hello World!, this audio is created using GTTS module."

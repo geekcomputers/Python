@@ -1,13 +1,15 @@
-import cv2
 import os
 
-def extract_thumbnail(video_path, frame_size):
+import cv2
+
+
+def extract_thumbnail(video_path: str, frame_size: tuple[int, int]) -> None:
     """
     Extracts a thumbnail frame from a video and saves it as an image file.
 
     Args:
-        video_path (str): The path to the input video file.
-        frame_size (tuple): A tuple containing the desired dimensions (width, height) for the thumbnail frame.
+        video_path: The path to the input video file.
+        frame_size: A tuple containing the desired dimensions (width, height) for the thumbnail frame.
 
     Raises:
         Exception: If the function fails to extract a frame from the video.
@@ -18,22 +20,44 @@ def extract_thumbnail(video_path, frame_size):
 
     Example:
         extract_thumbnail('my_video.mp4', (320, 240))
-    
+
     Required Packages:
-        cv2 (pip install cv2)
-    
+        OpenCV (pip install opencv-python)
+
     This function is useful for generating thumbnail images from videos.
     """
-    video_capture = cv2.VideoCapture(video_path)  # Open the video file for reading
-    total_frames = int(video_capture.get(cv2.CAP_PROP_FRAME_COUNT))  # Get the total number of frames in the video
-    middle_frame_index = total_frames // 2  # Calculate the index of the middle frame
-    video_capture.set(cv2.CAP_PROP_POS_FRAMES, middle_frame_index)  # Seek to the middle frame
-    success, frame = video_capture.read()  # Read the middle frame
-    video_capture.release()  # Release the video capture object
+    # Open the video file
+    video_capture = cv2.VideoCapture(video_path)
 
-    if success:
-        frame = cv2.resize(frame, frame_size)  # Resize the frame to the specified dimensions
-        thumbnail_filename = f"{os.path.basename(video_path)}_thumbnail.jpg"  # Create a filename for the thumbnail
-        cv2.imwrite(thumbnail_filename, frame)  # Save the thumbnail frame as an image
-    else:
-        raise Exception("Could not extract frame")  # Raise an exception if frame extraction fails
+    try:
+        # Get the total number of frames
+        total_frames = int(video_capture.get(cv2.CAP_PROP_FRAME_COUNT))
+
+        # Calculate the middle frame index
+        middle_frame_index = total_frames // 2
+
+        # Seek to the middle frame
+        video_capture.set(cv2.CAP_PROP_POS_FRAMES, middle_frame_index)
+
+        # Read the frame
+        success, frame = video_capture.read()
+
+        if not success:
+            raise Exception("Failed to read frame from video")
+
+        # Resize the frame to the specified dimensions
+        resized_frame = cv2.resize(frame, frame_size)
+
+        # Generate the thumbnail filename
+        base_name = os.path.basename(video_path)
+        file_name, _ = os.path.splitext(base_name)
+        thumbnail_filename = f"{file_name}_thumbnail.jpg"
+
+        # Save the thumbnail image
+        cv2.imwrite(thumbnail_filename, resized_frame)
+
+        print(f"Thumbnail saved as: {thumbnail_filename}")
+
+    finally:
+        # Release the video capture object
+        video_capture.release()

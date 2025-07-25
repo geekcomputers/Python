@@ -1,12 +1,11 @@
 #!/usr/bin/env python
-# coding: utf-8
 
 # In[10]:
 
 
-from nltk.corpus import twitter_samples
 import random
 
+from nltk.corpus import twitter_samples
 
 # In[ ]:
 
@@ -57,7 +56,6 @@ import string
 from nltk.corpus import stopwords
 from nltk.stem import PorterStemmer
 from nltk.tokenize import TweetTokenizer
-
 
 # In[20]:
 

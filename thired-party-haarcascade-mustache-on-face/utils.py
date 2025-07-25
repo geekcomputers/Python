@@ -32,7 +32,7 @@ def image_resize(image, width=None, height=None, inter=cv2.INTER_AREA):
     return resized
 
 
-class CFEVideoConf(object):
+class CFEVideoConf:
     # Standard Video Dimensions Sizes
     STD_DIMENSIONS = {
         "360p": (480, 360),

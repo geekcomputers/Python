@@ -1,4 +1,3 @@
-# coding: utf-8
 def my_found(req):
     my_dict = {
         "XXS": [42, 36, 8, 38, 24],

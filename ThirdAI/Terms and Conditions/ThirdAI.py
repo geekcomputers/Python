@@ -1,4 +1,5 @@
-from thirdai import licensing, neural_db as ndb
+from thirdai import licensing
+from thirdai import neural_db as ndb
 
 
 class NeuralDBClient:
@@ -26,11 +27,11 @@ class NeuralDBClient:
         search_results = self.db.search(
             query=question,
             top_k=2,
-            on_error=lambda error_msg: print(f"Error! {error_msg}"))
+            on_error=lambda error_msg: print(f"Error! {error_msg}"),
+        )
 
         output = ""
         for result in search_results:
             output += result.text + "\n\n"
 
         return output
-

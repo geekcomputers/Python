@@ -20,15 +20,15 @@ from sys import argv  # import argument variable
 def table(rows, columns):
     columns = int(columns)
     rows = int(rows)
-    for r in range(1, rows+1):
+    for r in range(1, rows + 1):
         c = r
-        print(r, end='\t')
+        print(r, end="\t")
         i = 0
-        while columns-1 > i:
-            print(c+r, end='\t')
-            c = c+r
+        while columns - 1 > i:
+            print(c + r, end="\t")
+            c = c + r
             i += 1
-        print('\n')
+        print("\n")
 
 
 table(rows, columns)

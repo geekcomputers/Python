@@ -1,5 +1,5 @@
-ran= int(input("Enter the range of elements you want to store / insert "))
-l1=[]
+ran = int(input("Enter the range of elements you want to store / insert "))
+l1 = []
 for i in range(ran):
     l1.append(input("Enter here  "))
 

@@ -1,4 +1,4 @@
-from __future__ import print_function
+from __future__ import annotations
 
 import base64
 import mimetypes
@@ -8,77 +8,157 @@ from email.mime.base import MIMEBase
 from email.mime.image import MIMEImage
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
+from typing import Any
 
-import httplib2
-import oauth2client
-from apiclient import errors, discovery
-from oauth2client import client, tools
+from google.auth.exceptions import RefreshError
+from google.auth.transport.requests import Request
 
-SCOPES = "https://www.googleapis.com/auth/gmail.send"
-CLIENT_SECRET_FILE = "client_secret.json"
-APPLICATION_NAME = "Gmail API Python Send Email"
+# Google API Authentication Libraries
+from google.oauth2.credentials import Credentials
+from google_auth_oauthlib.flow import InstalledAppFlow
+from googleapiclient.discovery import build
+from googleapiclient.errors import HttpError
+
+SCOPES: str = "https://www.googleapis.com/auth/gmail.send"
+CLIENT_SECRET_FILE: str = "client_secret.json"
+APPLICATION_NAME: str = "Gmail API Python Send Email"
 
 
-def get_credentials():
-    home_dir = os.path.expanduser("~")
-    credential_dir = os.path.join(home_dir, ".credentials")
+def get_credentials() -> Credentials:
+    """
+    Get valid user credentials from storage.
+
+    If no credentials are available, initiate the OAuth2 authorization flow to obtain new credentials.
+
+    Returns:
+        Credentials: Valid OAuth2 credentials for accessing Gmail API.
+    """
+    creds: Credentials | None = None
+    home_dir: str = os.path.expanduser("~")
+    credential_dir: str = os.path.join(home_dir, ".credentials")
+
     if not os.path.exists(credential_dir):
         os.makedirs(credential_dir)
-    credential_path = os.path.join(credential_dir, "gmail-python-email-send.json")
-    store = oauth2client.file.Storage(credential_path)
-    credentials = store.get()
-    if not credentials or credentials.invalid:
-        flow = client.flow_from_clientsecrets(CLIENT_SECRET_FILE, SCOPES)
-        flow.user_agent = APPLICATION_NAME
-        credentials = tools.run_flow(flow, store)
 
-        print("Storing credentials to " + credential_path)
+    credential_path: str = os.path.join(credential_dir, "gmail-python-email-send.json")
 
-    return credentials
+    # Attempt to load existing credentials
+    if os.path.exists(credential_path):
+        try:
+            creds = Credentials.from_authorized_user_file(credential_path, SCOPES)
+        except ValueError as e:
+            print(f"Error loading credentials: {e}")
+
+    # Refresh expired credentials or obtain new ones
+    if not creds or not creds.valid:
+        if creds and creds.expired and creds.refresh_token:
+            try:
+                creds.refresh(
+                    Request()
+                )  # Use Request from google.auth.transport.requests
+            except RefreshError:
+                print("Failed to refresh credentials. Re-authorizing...")
+                creds = None
+        if not creds:
+            flow: InstalledAppFlow = InstalledAppFlow.from_client_secrets_file(
+                CLIENT_SECRET_FILE, SCOPES
+            )
+            creds = flow.run_local_server(port=0)
+
+        # Save the credentials for future use
+        with open(credential_path, "w") as token:
+            token.write(creds.to_json())
+        print(f"Storing credentials to {credential_path}")
+
+    return creds
 
 
-def SendMessage(sender, to, subject, msgHtml, msgPlain, attachmentFile=None):
-    credentials = get_credentials()
-    http = credentials.authorize(httplib2.Http())
-    service = discovery.build("gmail", "v1", http=http)
-    if attachmentFile:
-        message1 = createMessageWithAttachment(
-            sender, to, subject, msgHtml, msgPlain, attachmentFile
-        )
-    else:
-        message1 = CreateMessageHtml(sender, to, subject, msgHtml, msgPlain)
-    result = SendMessageInternal(service, "me", message1)
-    return result
+def SendMessage(
+    sender: str,
+    to: str,
+    subject: str,
+    msgHtml: str,
+    msgPlain: str,
+    attachmentFile: str | None = None,
+) -> dict[str, Any] | str:
+    """
+    Send an email message via the Gmail API.
 
+    Args:
+        sender: Email address of the sender.
+        to: Email address of the recipient.
+        subject: The subject of the email message.
+        msgHtml: HTML content of the email.
+        msgPlain: Plain text version of the email.
+        attachmentFile: Path to the file to be attached (optional).
 
-def SendMessageInternal(service, user_id, message):
+    Returns:
+        Dict[str, Any]: The sent message details if successful.
+        str: Error message if an error occurred.
+    """
+    credentials: Credentials = get_credentials()
+
     try:
-        message = (
+        # Build the Gmail API service
+        service = build("gmail", "v1", credentials=credentials)
+
+        if attachmentFile:
+            message = createMessageWithAttachment(
+                sender, to, subject, msgHtml, msgPlain, attachmentFile
+            )
+        else:
+            message = CreateMessageHtml(sender, to, subject, msgHtml, msgPlain)
+
+        result = SendMessageInternal(service, "me", message)
+        return result
+
+    except HttpError as error:
+        print(f"An error occurred: {error}")
+        return "Error"
+
+
+def SendMessageInternal(
+    service: Any, user_id: str, message: dict[str, str]
+) -> dict[str, Any] | str:
+    """
+    Internal helper function to send an email message.
+
+    Args:
+        service: Authorized Gmail API service instance.
+        user_id: User's email address. Use "me" for the authenticated user.
+        message: Message to be sent.
+
+    Returns:
+        Dict[str, Any]: Sent message details if successful.
+        str: Error message if an error occurred.
+    """
+    try:
+        message_response = (
             service.users().messages().send(userId=user_id, body=message).execute()
         )
-
-        print("Message Id: %s" % message["id"])
-
-        return message
-    except errors.HttpError as error:
-        print("An error occurred: %s" % error)
+        print(f"Message Id: {message_response['id']}")
+        return message_response
+    except HttpError as error:
+        print(f"An error occurred: {error}")
         return "Error"
     return "OK"
 
 
-def createMessageWithAttachment(sender, to, subject, msgHtml, msgPlain, attachmentFile):
-    """Create a message for an email.
+def createMessageWithAttachment(
+    sender: str, to: str, subject: str, msgHtml: str, msgPlain: str, attachmentFile: str
+) -> dict[str, str]:
+    """Create a MIME message with an attachment.
 
     Args:
         sender: Email address of the sender.
         to: Email address of the receiver.
         subject: The subject of the email message.
-        msgHtml: Html message to be sent
-        msgPlain: Alternative plain text message for older email clients
-        attachmentFile: The path to the file to be attached.
+        msgHtml: HTML content of the email.
+        msgPlain: Plain text version of the email.
+        attachmentFile: Path to the file to be attached.
 
     Returns:
-        An object containing a base64url encoded email object.
+        Dict[str, str]: A dictionary containing the base64url encoded email object.
     """
     message = MIMEMultipart("mixed")
     message["to"] = to
@@ -94,54 +174,67 @@ def createMessageWithAttachment(sender, to, subject, msgHtml, msgPlain, attachme
 
     message.attach(messageA)
 
-    print("create_message_with_attachment: file:", attachmentFile)
+    print(f"Creating message with attachment: {attachmentFile}")
     content_type, encoding = mimetypes.guess_type(attachmentFile)
 
     if content_type is None or encoding is not None:
         content_type = "application/octet-stream"
+
     main_type, sub_type = content_type.split("/", 1)
-    if main_type == "text":
-        fp = open(attachmentFile, "rb")
-        msg = MIMEText(fp.read(), _subtype=sub_type)
-        fp.close()
-    elif main_type == "image":
-        fp = open(attachmentFile, "rb")
-        msg = MIMEImage(fp.read(), _subtype=sub_type)
-        fp.close()
-    elif main_type == "audio":
-        fp = open(attachmentFile, "rb")
-        msg = MIMEAudio(fp.read(), _subtype=sub_type)
-        fp.close()
-    else:
-        fp = open(attachmentFile, "rb")
-        msg = MIMEBase(main_type, sub_type)
-        msg.set_payload(fp.read())
-        fp.close()
+
+    with open(attachmentFile, "rb") as fp:
+        if main_type == "text":
+            msg = MIMEText(fp.read().decode("utf-8"), _subtype=sub_type)
+        elif main_type == "image":
+            msg = MIMEImage(fp.read(), _subtype=sub_type)
+        elif main_type == "audio":
+            msg = MIMEAudio(fp.read(), _subtype=sub_type)
+        else:
+            msg = MIMEBase(main_type, sub_type)
+            msg.set_payload(fp.read())
+
     filename = os.path.basename(attachmentFile)
     msg.add_header("Content-Disposition", "attachment", filename=filename)
     message.attach(msg)
 
-    return {"raw": base64.urlsafe_b64encode(message.as_string())}
+    return {"raw": base64.urlsafe_b64encode(message.as_bytes()).decode("utf-8")}
 
 
-def CreateMessageHtml(sender, to, subject, msgHtml, msgPlain):
+def CreateMessageHtml(
+    sender: str, to: str, subject: str, msgHtml: str, msgPlain: str
+) -> dict[str, str]:
+    """Create a MIME message without attachments.
+
+    Args:
+        sender: Email address of the sender.
+        to: Email address of the receiver.
+        subject: The subject of the email message.
+        msgHtml: HTML content of the email.
+        msgPlain: Plain text version of the email.
+
+    Returns:
+        Dict[str, str]: A dictionary containing the base64url encoded email object.
+    """
     msg = MIMEMultipart("alternative")
     msg["Subject"] = subject
     msg["From"] = sender
     msg["To"] = to
     msg.attach(MIMEText(msgPlain, "plain"))
     msg.attach(MIMEText(msgHtml, "html"))
-    return {"raw": base64.urlsafe_b64encode(msg.as_string())}
+
+    return {"raw": base64.urlsafe_b64encode(msg.as_bytes()).decode("utf-8")}
 
 
-def main():
-    to = input("Enter Email Address: ")
-    sender = input("Your Mail ID: ")
-    subject = input("Enter your Subject: ")
-    msgHtml = input("Enter your Message: ")
-    msgPlain = "Hi\nPlain Email"
+def main() -> None:
+    """Main function to send an email interactively."""
+    to = input("Enter recipient email address: ")
+    sender = input("Your email address: ")
+    subject = input("Enter subject: ")
+    msgHtml = input("Enter HTML message: ")
+    msgPlain = "Hi\nThis is the plain text version of the email."
+
     SendMessage(sender, to, subject, msgHtml, msgPlain)
-    # Send message with attachment:
+    # Example of sending with attachment:
     # SendMessage(sender, to, subject, msgHtml, msgPlain, '/path/to/file.pdf')
 
 

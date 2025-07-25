@@ -1,5 +1,3 @@
-from __future__ import print_function
-
 import os  # Load the Library Module
 import subprocess  # Load the Library Module
 import sys  # Load the Library Module
@@ -25,7 +23,6 @@ You need to supply the first octets of the address Usage : """
     )
     sys.exit(0)
 else:
-
     if (
         len(sys.argv) < 2
     ):  # If no arguments are passed then display the help and instructions on how to run the script

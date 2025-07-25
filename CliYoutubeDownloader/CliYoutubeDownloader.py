@@ -1,6 +1,7 @@
 # libraraies
 
 import sys
+
 import pytube
 
 
@@ -13,16 +14,14 @@ class YouTubeDownloder:
         self.showTitle()
 
     def showTitle(self):
-        print("title : {0}\n".format(self.youtube.title))
+        print(f"title : {self.youtube.title}\n")
         self.showStreams()
 
     def showStreams(self):
         self.streamNo = 1
         for stream in self.youtube.streams:
             print(
-                "{0} => resolution:{1}/fps:{2}/type:{3}".format(
-                    self.streamNo, stream.resolution, stream.fps, stream.type
-                )
+                f"{self.streamNo} => resolution:{stream.resolution}/fps:{stream.fps}/type:{stream.type}"
             )
             self.streamNo += 1
         self.chooseStream()
@@ -49,13 +48,7 @@ class YouTubeDownloder:
 
     def getPermisionToContinue(self):
         print(
-            "\n Title : {0} \n Author : {1} \n Size : {2:.2f}MB \n Resolution : {3} \n FPS : {4} \n ".format(
-                self.youtube.title,
-                self.youtube.author,
-                file_size,
-                self.stream.resolution,
-                self.stream.fps,
-            )
+            f"\n Title : {self.youtube.title} \n Author : {self.youtube.author} \n Size : {file_size:.2f}MB \n Resolution : {self.stream.resolution} \n FPS : {self.stream.fps} \n "
         )
         if input("Do you want it ?(default = (y)es) or (n)o ") == "n":
             self.showStreams()
@@ -69,7 +62,7 @@ class YouTubeDownloder:
     def onProgress(stream=None, chunk=None, remaining=None):
         file_downloaded = file_size - (remaining / 1000000)
         print(
-            f"Downloading ... {file_downloaded/file_size*100:0.2f} % [{file_downloaded:.1f}MB of {file_size:.1f}MB]",
+            f"Downloading ... {file_downloaded / file_size * 100:0.2f} % [{file_downloaded:.1f}MB of {file_size:.1f}MB]",
             end="\r",
         )
 

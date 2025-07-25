@@ -6,8 +6,8 @@ def main():
 
     while True:
         try:
-            x = float((input("Enter a number between 0 and 1: ")))
-            if 0 < x and x < 1:
+            x = float(input("Enter a number between 0 and 1: "))
+            if x > 0 and x < 1:
                 break
             else:
                 print("Please enter correct number")

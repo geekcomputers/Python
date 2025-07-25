@@ -55,7 +55,7 @@ class ScrapperLogic:
                         for element in item.find_all(class_=True):
                             classes = []
                             classes.extend(element["class"])
-                            phone_no += str((self.which_digit(classes[1])))
+                            phone_no += str(self.which_digit(classes[1]))
                     except Exception:
                         pass
         except Exception:
@@ -106,10 +106,10 @@ class ScrapperLogic:
         page_number = 1
         service_count = 1
 
-        total_url = "https://www.justdial.com/{0}/{1}".format(self.location, self.query)
+        total_url = f"https://www.justdial.com/{self.location}/{self.query}"
 
         fields = ["Name", "Phone", "Rating", "Rating Count", "Address", "Location"]
-        out_file = open("{0}.csv".format(self.file_name), "w")
+        out_file = open(f"{self.file_name}.csv", "w")
         csvwriter = csv.DictWriter(out_file, delimiter=",", fieldnames=fields)
         csvwriter.writerow(
             {
@@ -140,6 +140,7 @@ class ScrapperLogic:
             req = urllib.request.Request(
                 url, headers={"User-Agent": "Mozilla/5.0 (Windows NT 6.1; Win64; x64)"}
             )
+
             page = urllib.request.urlopen(req)
 
             soup = BeautifulSoup(page.read(), "html.parser")

@@ -1,32 +1,34 @@
-from sys import argv
+#!/usr/bin/env python3
 
-try:
-    # For Python 3.0 and later
-    from urllib.error import URLError
-    from urllib.request import urlopen
-except ImportError:
-    # Fall back to Python 2's urllib2
-    from urllib2 import URLError, urlopen
+import sys
+from urllib.error import URLError
+from urllib.request import urlopen
 
 
-def checkInternetConnectivity():
+def check_internet_connectivity() -> None:
+    """
+    Check internet connectivity by attempting to reach a specified URL.
+    Uses google.com as fallback if no URL is provided.
+    """
     try:
-        url = argv[1]
-        print(url)
-        protocols = ["https://", "http://"]
-        if not any(x for x in protocols if x in url):
+        # Get URL from command-line argument or use default
+        url = sys.argv[1] if len(sys.argv) > 1 else "https://google.com"
+
+        # Ensure URL starts with a protocol
+        if not any(url.startswith(p) for p in ["https://", "http://"]):
             url = "https://" + url
-        print("URL:" + url)
-    except BaseException:
-        url = "https://google.com"
-    try:
+
+        print(f"Checking URL: {url}")
+
+        # Attempt connection with 2-second timeout
         urlopen(url, timeout=2)
         print(f'Connection to "{url}" is working')
 
-    except URLError as E:
-        print("Connection error:%s" % E.reason)
+    except URLError as e:
+        print(f"Connection error: {e.reason}")
+    except Exception as e:
+        print(f"An unexpected error occurred: {e}")
 
 
-checkInternetConnectivity()
-
-# This can be implemented in Jarvis.py
+if __name__ == "__main__":
+    check_internet_connectivity()

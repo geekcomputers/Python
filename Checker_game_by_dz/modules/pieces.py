@@ -3,12 +3,12 @@ Author : Dhruv B Kakadiya
 
 """
 
-from .statics import *
 import pygame as pg
+
+from .statics import *
 
 
 class pieces:
-
     padding = 17
     outline = 2
 

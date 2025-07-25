@@ -1,8 +1,4 @@
-from typing import Dict, List
-        
-
 class Dictionary:
-
     def __init__(self):
         self.node = {}
 
@@ -22,20 +18,20 @@ class Dictionary:
             node = node[ltr]
         return "is_word" in node
 
-    def list_words_from_node(self, node: Dict, spelling: str) -> None:
+    def list_words_from_node(self, node: dict, spelling: str) -> None:
         if "is_word" in node:
             self.words_list.append(spelling)
             return
         for ltr in node:
-            self.list_words_from_node(node[ltr], spelling+ltr)
+            self.list_words_from_node(node[ltr], spelling + ltr)
 
-    def print_all_words_in_dictionary(self) -> List[str]:
+    def print_all_words_in_dictionary(self) -> list[str]:
         node = self.node
         self.words_list = []
         self.list_words_from_node(node, "")
         return self.words_list
 
-    def suggest_words_starting_with(self, prefix: str) -> List[str]:
+    def suggest_words_starting_with(self, prefix: str) -> list[str]:
         node = self.node
         for ltr in prefix:
             if ltr not in node:
@@ -44,8 +40,6 @@ class Dictionary:
         self.words_list = []
         self.list_words_from_node(node, prefix)
         return self.words_list
-
-    
 
 
 # Your Dictionary object will be instantiated and called as such:

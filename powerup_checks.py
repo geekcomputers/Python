@@ -1,5 +1,3 @@
-from __future__ import print_function
-
 import os  # Load the Library Module
 import sqlite3  # Load the Library Module
 import subprocess  # Load the Library Module
@@ -42,7 +40,7 @@ You need to pass an argument, the options the script expects is
 
 def windows():  # This is the function to run if it detects the OS is windows.
     f = open(outputfile, "a")  # Open the logfile
-    for server in open(serverfile, "r"):  # Read the list of servers from the list
+    for server in open(serverfile):  # Read the list of servers from the list
         # ret = subprocess.call("ping -n 3 %s" % server.strip(), shell=True,stdout=open('NUL', 'w'),stderr=subprocess.STDOUT)	# Ping the servers in turn
         ret = subprocess.call(
             "ping -n 3 %s" % server.strip(),
@@ -61,7 +59,7 @@ def windows():  # This is the function to run if it detects the OS is windows.
 
 def linux():  # This is the function to run if it detects the OS is nix.
     f = open("server_startup_" + strftime("%Y-%m-%d") + ".log", "a")  # Open the logfile
-    for server in open(serverfile, "r"):  # Read the list of servers from the list
+    for server in open(serverfile):  # Read the list of servers from the list
         ret = subprocess.call(
             "ping -c 3 %s" % server,
             shell=True,

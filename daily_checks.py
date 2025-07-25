@@ -12,6 +12,7 @@ Modifications	: 1.1 Removed the static lines for the putty sessions, it now read
 
 Description	: This simple script loads everything I need to carry out the daily checks for our systems.
 """
+
 import os
 import platform  # Load Modules
 import subprocess
@@ -43,7 +44,7 @@ def putty_sessions(conffilename):  # Function to load the putty sessions I need
     # Open the file server_list.txt, loop through reading each line
     #  1.1 -Changed - 1.3 Changed name to use variable conffilename
     for server in open(conffilename):
-        subprocess.Popen(("putty -load " + server))  # Open the PuTTY sessions - 1.1
+        subprocess.Popen("putty -load " + server)  # Open the PuTTY sessions - 1.1
 
 
 def rdp_sessions():

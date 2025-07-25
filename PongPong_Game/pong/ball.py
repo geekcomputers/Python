@@ -1,8 +1,8 @@
 # ./PongPong/pong/ball.py
 
-import pyglet
 import random
-from typing import Tuple
+
+import pyglet
 
 
 class BallObject(pyglet.shapes.Circle):
@@ -11,7 +11,7 @@ class BallObject(pyglet.shapes.Circle):
         self.color = (255, 180, 0)
         self.velocity_x, self.velocity_y = 0.0, 0.0
 
-    def update(self, win_size: Tuple, border: Tuple, other_object, dt) -> None:
+    def update(self, win_size: tuple, border: tuple, other_object, dt) -> None:
         speed = [
             2.37,
             2.49,
@@ -30,10 +30,10 @@ class BallObject(pyglet.shapes.Circle):
 
         if newx < border + self.radius or newx > win_size[0] - border - self.radius:
             self.velocity_x = -(self.velocity_x / abs(self.velocity_x)) * rn
-        elif newy > win_size[1] - border - self.radius:
-            self.velocity_y = -(self.velocity_y / abs(self.velocity_y)) * rn
-        elif (newy - self.radius < other_object.height) and (
-            other_object.x <= newx <= other_object.rightx
+        elif (
+            newy > win_size[1] - border - self.radius
+            or (newy - self.radius < other_object.height)
+            and (other_object.x <= newx <= other_object.rightx)
         ):
             self.velocity_y = -(self.velocity_y / abs(self.velocity_y)) * rn
         else:

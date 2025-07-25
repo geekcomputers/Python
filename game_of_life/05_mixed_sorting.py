@@ -15,8 +15,8 @@ Output
 [4, 13, 11, 8, -5, 90]
 Explanation
 
-The even numbers are sorted in increasing order, the odd numbers are sorted in 
-decreasing number, and the relative positions were 
+The even numbers are sorted in increasing order, the odd numbers are sorted in
+decreasing number, and the relative positions were
 [even, odd, odd, even, odd, even] and remain the same after sorting.
 """
 

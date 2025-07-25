@@ -1,5 +1,6 @@
 import pyqrcode
-# from pyqrcode import QRCode 
+
+# from pyqrcode import QRCode
 # no need to import same library again and again
 
 # Creating QR code after given text "input"

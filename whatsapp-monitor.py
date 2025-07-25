@@ -1,25 +1,25 @@
 #! /usr/bin/python3
 
 """
-Author- Tony Stark 
+Author- Tony Stark
 
 download https://github.com/mozilla/geckodriver/releases
 
-set path paste binary file /usr/local/bin 
+set path paste binary file /usr/local/bin
 
 install requirements: python -m pip install selenium
 
 """
 
-from selenium import webdriver
 import time
+
+from selenium import webdriver
 
 driver = webdriver.Firefox()
 driver.get("http://web.whatsapp.com")
 name = input("Please Enter Name for search online status: ")
 
 while True:
-
     try:
         chat = driver.find_element_by_xpath(
             "/html/body/div[1]/div/div/div[3]/div/header/div[2]/div/span/div[2]/div"
@@ -43,7 +43,7 @@ while True:
             try:
                 status = driver.find_element_by_class_name("_315-i").text
                 name = driver.find_element_by_class_name("_19vo_").text
-                print("{0} is {1}".format(name, status))
+                print(f"{name} is {status}")
                 time.sleep(30)
             except:
                 name = driver.find_element_by_class_name("_19vo_").text

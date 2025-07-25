@@ -1,6 +1,7 @@
 # A exclusive CLI version can be made using inquirer library.
-from gtts import gTTS
 from io import BytesIO
+
+from gtts import gTTS
 
 # only use when needed to avoid memory usage in program
 
@@ -150,7 +151,7 @@ class userAudio:
 # hello = userAudio("Hello, world!")
 # hello.play_only()
 
-with open("special_file.txt", "r") as f:
+with open("special_file.txt") as f:
     retrieved_text = f.read()
 retrieved_text = retrieved_text.replace("\n", "")
 
@@ -172,7 +173,7 @@ class fun_secret_generator_string:
     #     print("File saved successfully")
 
     # Reading from the file
-    with open("special_file.txt", "r") as f:
+    with open("special_file.txt") as f:
         retrieved_text = f.read()
     retrieved_text = retrieved_text.replace("\n", "")
 
