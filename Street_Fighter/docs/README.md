@@ -27,15 +27,18 @@
 - **Custom Controls** for two players.
 
 ## 📋 Table of Contents
-- [Features](#features)
-- [Requirements](#requirements)
-- [Installation](#installation)
-- [Gameplay Instructions](#gameplay-instructions)
-- [Downloads](#downloads)
-- [License](#license)
-- [Credits](#credits)
-- [Contributing](#contributing)
-- [Contact](#contact)
+- [Street Fighter](#street-fighter)
+  - [Features](#features)
+  - [📋 Table of Contents](#-table-of-contents)
+  - [Requirements](#requirements)
+  - [Installation](#installation)
+  - [Gameplay Instructions](#gameplay-instructions)
+    - [Player Controls:](#player-controls)
+  - [Downloads](#downloads)
+  - [License](#license)
+  - [Credits](#credits)
+  - [Contributing](#contributing)
+  - [Contact](#contact)
 
 ## Requirements
 - Python 3.7 or higher
@@ -56,7 +59,7 @@ Follow these steps to install and run the game:
 
 2. **Install Dependencies**:
    ```bash
-   pip install -r requirements.txt
+   pip install -r 
    ```
 
 3. **Run the Game**:

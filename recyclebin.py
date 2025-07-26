@@ -14,11 +14,13 @@ from _winreg import *  # Load the Module
 # Description			: Scans the recyclebin and displays the files in there, originally got this script from the Violent Python book
 
 
+from winreg import OpenKey, HKEY_LOCAL_MACHINE, QueryValueEx
+
 def sid2user(sid):  # Start of the function to gather the user
     try:
         key = OpenKey(
             HKEY_LOCAL_MACHINE,
-            "SOFTWARE\Microsoft\Windows NT\CurrentVersion\ProfileList" + "\\" + sid,
+            r"SOFTWARE\Microsoft\Windows NT\CurrentVersion\ProfileList" + "\\" + sid,
         )
         (value, type) = QueryValueEx(key, "ProfileImagePath")
         user = value.split("\\")[-1]

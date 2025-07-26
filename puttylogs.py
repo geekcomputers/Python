@@ -13,8 +13,8 @@ import os  # Load the Library Module
 import shutil  # Load the Library Module - 1.2
 from time import strftime  # Load just the strftime Module from Time
 
-logsdir = "c:\logs\puttylogs"  # Set the Variable logsdir
-zipdir = "c:\logs\puttylogs\zipped_logs"  # Set the Variable zipdir - 1.2
+logsdir = r"c:\logs\puttylogs"  # Set the Variable logsdir
+zipdir = r"c:\logs\puttylogs\zipped_logs"  # Set the Variable zipdir - 1.2
 zip_program = "zip.exe"  # Set the Variable zip_program - 1.1
 
 for files in os.listdir(logsdir):  # Find all the files in the directory
