@@ -2,10 +2,6 @@ import os
 
 import tweepy
 
-# TODO: Further improvements can be made to the program
-# TODO: Further feature improvements and Refactoring can be done to the program
-# TODO: Add a README.md file showcasing how adding it to the PATH variable can make the posting much easier
-
 
 def get_status():
     lines = []

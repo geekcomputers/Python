@@ -6,7 +6,8 @@
 
 # Modifications		: beven nyamande
 
-# Description		: This is a very simple script that opens up a file and writes whatever is set "
+# Description: This is a very simple script thatopens up a file and writes
+# whatever is set
 
 
 def write_to_file(filename, txt):

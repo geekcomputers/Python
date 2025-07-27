@@ -1,4 +1,4 @@
-from tkinter import *
+from tkinter import Button, Entry, Label, Tk
 from tkinter.messagebox import showinfo
 
 import wikipedia

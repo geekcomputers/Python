@@ -1,20 +1,20 @@
 import re
 
-import requests
+import httpx
 from bs4 import BeautifulSoup
 
 re_text = r"\:|\.|\!|(https|http)?:\/\/(\w|\.|\/|\?|\=|\&|\%)*\b|(.twitter.com\/)\w*|\&"
 re_text_1 = r"(pictwittercom)\/\w*"
 
 
-def tweeter_scrapper():
+def tweeter_scrapper() -> None:
     list_of_dirty_tweets = []
     clear_list_of_tweets = []
     base_tweeter_url = "https://twitter.com/{}"
 
     tweeter_id = input()
 
-    response = requests.get(base_tweeter_url.format(tweeter_id))
+    response = httpx.get(base_tweeter_url.format(tweeter_id))
     soup = BeautifulSoup(response.content, "lxml")
     all_tweets = soup.find_all("div", {"class": "tweet"})
 
