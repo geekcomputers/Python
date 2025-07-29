@@ -3,22 +3,24 @@ import pickle
 
 StudentRecord = tuple[int, str, float]
 
+
 def initialize_file_if_not_exists(file_path: str) -> None:
     """
     Check if file exists, create and initialize with empty list if not
     """
     if not file_path:
         raise ValueError("File path cannot be empty")
-    
+
     dir_path = os.path.dirname(file_path)
     if dir_path and not os.path.exists(dir_path):
         os.makedirs(dir_path, exist_ok=True)
         print(f"Directory created: {dir_path}")
-    
+
     if not os.path.exists(file_path):
         with open(file_path, "wb") as f:
             pickle.dump([], f)
         print(f"File initialized: {file_path}")
+
 
 def write_sample_data(file_path: str) -> None:
     """
@@ -39,6 +41,7 @@ def write_sample_data(file_path: str) -> None:
         pickle.dump(sample_data, f)
     print(f"Sample data written to {file_path}")
 
+
 def count_remedial_students(file_path: str) -> None:
     """
     Count and display students needing remedial classes (percentage < 40)
@@ -53,13 +56,14 @@ def count_remedial_students(file_path: str) -> None:
             print("\nStudents requiring remedial classes:")
             for s in remedial:
                 print(f"Roll: {s[0]}, Name: {s[1]}, Percentage: {s[2]:.1f}")
-            
+
             print(f"\nTotal remedial students: {len(remedial)}")
 
     except pickle.UnpicklingError:
         print(f"Error: File {file_path} is corrupted")
     except Exception as e:
         print(f"Error: {str(e)}")
+
 
 def count_top_scorers(file_path: str) -> None:
     """
@@ -81,13 +85,14 @@ def count_top_scorers(file_path: str) -> None:
             print(f"\nTop scorers with {max_percentage:.1f}%:")
             for s in top_scorers:
                 print(f"Roll: {s[0]}, Name: {s[1]}")
-            
+
             print(f"\nTotal top scorers: {len(top_scorers)}")
 
     except pickle.UnpicklingError:
         print(f"Error: File {file_path} is corrupted")
     except Exception as e:
         print(f"Error: {str(e)}")
+
 
 def display_all_students(file_path: str) -> None:
     """
@@ -111,6 +116,7 @@ def display_all_students(file_path: str) -> None:
     except Exception as e:
         print(f"Error: {str(e)}")
 
+
 if __name__ == "__main__":
     FILE_PATH = r"1 File handle\File handle binary\class.dat"
 
@@ -119,4 +125,4 @@ if __name__ == "__main__":
 
     count_remedial_students(FILE_PATH)
     count_top_scorers(FILE_PATH)
-    display_all_students(FILE_PATH)    
+    display_all_students(FILE_PATH)

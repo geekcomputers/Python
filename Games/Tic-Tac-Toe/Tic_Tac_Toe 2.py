@@ -12,11 +12,10 @@ def check_winner(board, player):
         ):
             return True
     # Check diagonals
-    if all(board[i][i] == player for i in range(3)) or all(
-        board[i][2 - i] == player for i in range(3)
-    ):
-        return True
-    return False
+    return bool(
+        all(board[i][i] == player for i in range(3))
+        or all(board[i][2 - i] == player for i in range(3))
+    )
 
 
 def is_full(board):

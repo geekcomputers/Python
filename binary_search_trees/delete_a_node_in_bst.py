@@ -12,7 +12,7 @@ def delete_node(root: Node | None, val: int) -> Node | None:
         val (int): The value of the node to be deleted.
 
     Returns:
-        Node | None: The root node of the binary search tree after deleting the node. 
+        Node | None: The root node of the binary search tree after deleting the node.
         If the tree becomes empty, returns None.
     """
     # Search in the left subtree

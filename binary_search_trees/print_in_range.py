@@ -6,7 +6,7 @@ def print_in_range(root: Node | None, k1: int, k2: int) -> None:
     This function prints the nodes in a BST that are in the range k1 to k2 inclusive.
 
     Args:
-        root (Node | None): The root node of the binary search tree. 
+        root (Node | None): The root node of the binary search tree.
         If the tree is empty, it's None.
         k1 (int): The lower bound of the range.
         k2 (int): The upper bound of the range.
@@ -24,12 +24,12 @@ def print_in_range(root: Node | None, k1: int, k2: int) -> None:
         print(root.data)
         print_in_range(root.right, k1, k2)
 
-    # If the root value is less than k1, 
+    # If the root value is less than k1,
     # the nodes in the range will be in the right subtree
     elif root.data < k1:
         print_in_range(root.right, k1, k2)
 
-    # If the root value is greater than k2, 
+    # If the root value is greater than k2,
     # the nodes in the range will be in the left subtree
     else:
         print_in_range(root.left, k1, k2)

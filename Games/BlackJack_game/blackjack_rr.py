@@ -16,14 +16,35 @@ suits: tuple[str, ...] = (
 )
 
 ranks: tuple[str, ...] = (
-    "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten",
-    "Jack", "Queen", "King", "Ace"
+    "Two",
+    "Three",
+    "Four",
+    "Five",
+    "Six",
+    "Seven",
+    "Eight",
+    "Nine",
+    "Ten",
+    "Jack",
+    "Queen",
+    "King",
+    "Ace",
 )
 
 values: dict[str, int] = {
-    "Two": 2, "Three": 3, "Four": 4, "Five": 5, "Six": 6, "Seven": 7,
-    "Eight": 8, "Nine": 9, "Ten": 10, "Jack": 10, "Queen": 10, "King": 10,
-    "Ace": 11
+    "Two": 2,
+    "Three": 3,
+    "Four": 4,
+    "Five": 5,
+    "Six": 6,
+    "Seven": 7,
+    "Eight": 8,
+    "Nine": 9,
+    "Ten": 10,
+    "Jack": 10,
+    "Queen": 10,
+    "King": 10,
+    "Ace": 11,
 }
 
 playing: bool = True
@@ -140,7 +161,7 @@ def show_all(player: Hand, dealer: Hand) -> None:
     for card in dealer.cards:
         print(f" {card}")
     print(f"Dealer's Total: {dealer.value}")
-    
+
     print("\nYour Hand:")
     for card in player.cards:
         print(f" {card}")

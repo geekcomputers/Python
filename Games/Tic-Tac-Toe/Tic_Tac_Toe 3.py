@@ -29,13 +29,15 @@ def draw_board(board):
 
 def input_player_letter():
     # Lets the player type witch letter they want to be.
-    # Returns a list with the player's letter as the first item, and the computer's letter as the second.
+    # Returns a list with the player's letter as the first item,
+    # and the computer's letter as the second.
     letter = ""
     while not (letter == "X" or letter == "O"):
         print("Do you want to be X or O? ")
         letter = input("> ").upper()
 
-    # the first element in the list is the player’s letter, the second is the computer's letter.
+    # the first element in the list is the player’s letter,
+    # the second is the computer's letter.
     if letter == "X":
         return ["X", "O"]
     else:
@@ -60,8 +62,10 @@ def make_move(board, letter, move):
 
 
 def is_winner(bo, le):
-    # Given a board and a player’s letter, this function returns True if that player has won.
-    # We use bo instead of board and le instead of letter so we don’t have to type as much.
+    # Given a board and a player’s letter,
+    # this function returns True if that player has won.
+    # We use bo instead of board and le instead of
+    # letter so we don’t have to type as much.
     return (
         (bo[7] == le and bo[8] == le and bo[9] == le)
         or (bo[4] == le and bo[5] == le and bo[6] == le)
@@ -109,10 +113,7 @@ def choose_random_move_from_list(board, moveslist):
 
 
 def get_computer_move(board, computer_letter):
-    if computer_letter == "X":
-        player_letter = "O"
-    else:
-        player_letter = "X"
+    player_letter = "O" if computer_letter == "X" else "X"
 
     for i in range(1, 10):
         copy = get_board_copy(board)
@@ -139,10 +140,7 @@ def get_computer_move(board, computer_letter):
 
 
 def is_board_full(board):
-    for i in range(1, 10):
-        if is_space_free(board, i):
-            return False
-    return True
+    return all(not is_space_free(board, i) for i in range(1, 10))
 
 
 print("Welcome To Tic Tac Toe!")

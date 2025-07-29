@@ -54,8 +54,7 @@ class TicTacToe:
 
         # Explicitly type the game board
         self.board: list[list[Literal["X", "O", " "]]] = [
-            [self.EMPTY for _ in range(self.BOARD_SIZE)]
-            for _ in range(self.BOARD_SIZE)
+            [self.EMPTY for _ in range(self.BOARD_SIZE)] for _ in range(self.BOARD_SIZE)
         ]
 
         # Precompute winning lines for faster checks
@@ -142,7 +141,8 @@ class TicTacToe:
         """Create header frame with game status and control buttons"""
         try:
             header_frame = ctk.CTkFrame(
-                self.master, **self.STYLES["frame"]  # type: ignore[arg-type]
+                self.master,
+                **self.STYLES["frame"],  # type: ignore[arg-type]
             )
             header_frame.pack(fill="x", padx=20, pady=15, ipady=10)
 
@@ -153,7 +153,8 @@ class TicTacToe:
             # Game status display
             self.status_label = ctk.CTkLabel(
                 header_frame,
-                text="Your Turn (X)",** self.STYLES["status"]  # type: ignore[arg-type]
+                text="Your Turn (X)",
+                **self.STYLES["status"],  # type: ignore[arg-type]
             )
             self.status_label.grid(row=0, column=0, padx=20, pady=10, sticky="w")
 
@@ -174,7 +175,8 @@ class TicTacToe:
             # How to play button
             self.info_button = ctk.CTkButton(
                 control_frame,
-                text="How to Play",** self.STYLES["info_button"],  # type: ignore[arg-type]
+                text="How to Play",
+                **self.STYLES["info_button"],  # type: ignore[arg-type]
                 command=self._show_instructions,
                 fg_color=("#38B2AC", "#319795"),
             )
@@ -187,7 +189,8 @@ class TicTacToe:
         """Create 3x3 game board with interactive buttons"""
         try:
             board_frame = ctk.CTkFrame(
-                self.master, **self.STYLES["frame"]  # type: ignore[arg-type]
+                self.master,
+                **self.STYLES["frame"],  # type: ignore[arg-type]
             )
             board_frame.pack(fill="both", expand=True, padx=20, pady=5)
 
@@ -204,7 +207,7 @@ class TicTacToe:
                         board_frame,
                         text=self.EMPTY,
                         fg_color=self.STYLES["empty"],  # type: ignore[arg-type]
-                       ** self.STYLES["button"],  # type: ignore[arg-type]
+                        **self.STYLES["button"],  # type: ignore[arg-type]
                         command=lambda r=i, c=j: self._handle_cell_click(r, c),
                     )
                     button.grid(row=i, column=j, padx=8, pady=8, sticky="nsew")
@@ -218,7 +221,8 @@ class TicTacToe:
         """Create footer frame with theme toggle and new game button"""
         try:
             footer_frame = ctk.CTkFrame(
-                self.master, **self.STYLES["frame"]  # type: ignore[arg-type]
+                self.master,
+                **self.STYLES["frame"],  # type: ignore[arg-type]
             )
             footer_frame.pack(fill="x", padx=20, pady=15, ipady=10)
 
@@ -229,7 +233,8 @@ class TicTacToe:
             # Dark/light mode toggle
             self.theme_button = ctk.CTkButton(
                 footer_container,
-                text="Toggle Dark Mode",** self.STYLES["footer_button"],  # type: ignore[arg-type]
+                text="Toggle Dark Mode",
+                **self.STYLES["footer_button"],  # type: ignore[arg-type]
                 command=self._toggle_theme,
                 fg_color=("#718096", "#4A5568"),
             )
@@ -304,10 +309,12 @@ class TicTacToe:
         """
         try:
             # Validate input coordinates and game state in one check
-            if (not 0 <= row < self.BOARD_SIZE 
-                or not 0 <= col < self.BOARD_SIZE 
-                or self.game_over 
-                or self.board[row][col] != self.EMPTY):
+            if (
+                not 0 <= row < self.BOARD_SIZE
+                or not 0 <= col < self.BOARD_SIZE
+                or self.game_over
+                or self.board[row][col] != self.EMPTY
+            ):
                 if not (0 <= row < self.BOARD_SIZE and 0 <= col < self.BOARD_SIZE):
                     logging.warning(f"Invalid cell click: row={row}, col={col}")
                 return
@@ -355,13 +362,13 @@ class TicTacToe:
                 else self.STYLES["ai"]  # type: ignore[assignment]
             )
             start_color = self.STYLES["empty"]  # type: ignore[assignment]
-# Ensure we're working with valid color tuples
+            # Ensure we're working with valid color tuples
             if not (
-                    isinstance(target_color, tuple)
-                    and isinstance(start_color, tuple)
-                    and all(isinstance(c, str) for c in target_color)
-                    and all(isinstance(c, str) for c in start_color)
-                                                                        ):
+                isinstance(target_color, tuple)
+                and isinstance(start_color, tuple)
+                and all(isinstance(c, str) for c in target_color)
+                and all(isinstance(c, str) for c in start_color)
+            ):
                 raise TypeError("Color values must be tuples of hex strings")
 
             # Animate color transition over 20 steps
@@ -631,7 +638,7 @@ class TicTacToe:
                 current_color = self._interpolate_color(
                     (original_color, original_color),  # Same for both themes
                     (draw_color, draw_color),
-                    factor
+                    factor,
                 )
                 self.buttons[row][col].configure(fg_color=current_color)
                 self.master.update()
@@ -837,9 +844,7 @@ class TicTacToe:
                 for j in range(self.BOARD_SIZE):
                     if self.board[i][j] == self.EMPTY:
                         self.board[i][j] = self.HUMAN  # Try human's move
-                        score = self._minimax(
-                            depth + 1, True, depth_limit, alpha, beta
-                        )
+                        score = self._minimax(depth + 1, True, depth_limit, alpha, beta)
                         self.board[i][j] = self.EMPTY  # Undo
                         min_score = min(score, min_score)
                         beta = min(beta, score)

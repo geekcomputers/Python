@@ -35,4 +35,4 @@ p = producer(event)
 p.start()
 p.join()
 
-sleep(100)  # 一定要使主线程处于活动状态，否则信号处理对子线程不起作用
+sleep(100)

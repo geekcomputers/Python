@@ -7,13 +7,13 @@ def search(root: Node | None, val: int) -> bool:
     If not found, it returns False.
 
     Args:
-        root (Node | None): The root node of the binary search tree. 
+        root (Node | None): The root node of the binary search tree.
         If the tree is empty, it's None.
         val (int): The value of the node to be searched.
 
     Returns:
         bool: True if the node is found, False otherwise.
-    """ 
+    """
     # If the tree is empty, return False
     if root is None:
         return False
@@ -22,7 +22,7 @@ def search(root: Node | None, val: int) -> bool:
     if root.data == val:
         return True
 
-    # If the value to be searched is less than the root value, 
+    # If the value to be searched is less than the root value,
     # search in the left subtree
     if root.data > val:
         return search(root.left, val)
