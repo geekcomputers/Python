@@ -7,11 +7,13 @@ def delete_node(root: Node | None, val: int) -> Node | None:
     This function deletes a node with value val from the BST.
 
     Args:
-        root (Node | None): The root node of the binary search tree. If the tree is empty, it's None.
+        root (Node | None): The root node of the binary search tree.
+        If the tree is empty, it's None.
         val (int): The value of the node to be deleted.
 
     Returns:
-        Node | None: The root node of the binary search tree after deleting the node. If the tree becomes empty, returns None.
+        Node | None: The root node of the binary search tree after deleting the node. 
+        If the tree becomes empty, returns None.
     """
     # Search in the left subtree
     if root and root.data < val:

@@ -8,7 +8,8 @@ def is_valid_bst(
     Function to check if a binary tree is a binary search tree.
 
     Args:
-        root (Node | None): The root node of the binary tree. If the tree is empty, it's None.
+        root (Node | None): The root node of the binary tree. 
+        If the tree is empty, it's None.
         min_node (Node | None): The minimum value node for the current subtree.
         max_node (Node | None): The maximum value node for the current subtree.
 
@@ -19,7 +20,9 @@ def is_valid_bst(
     if root is None:
         return True
 
-    # If the root value is less than the minimum value or greater than the maximum value, return False
+    # If the root value is less than the minimum value
+    # or greater than the maximum value, 
+    # return False
     if (
         min_node is not None
         and root.data <= min_node.data

@@ -1,8 +1,10 @@
 """
 Firebase-Twilio Automated Reminder System
 
-This script automates reminder calls to individuals stored in a Firebase Cloud Firestore database.
-It checks for entries every hour and initiates calls 5 minutes prior to the scheduled time for each entry.
+This script automates reminder calls to individuals stored in
+a Firebase Cloud Firestore database.
+It checks for entries every hour and initiates calls 5 minutes 
+prior to the scheduled time for each entry.
 """
 
 import datetime
@@ -30,7 +32,8 @@ twilio_client = Client(ACC_SID, AUTH_TOKEN)
 
 def search() -> None:
     """
-    Search for scheduled calls in the database and initiate reminders 5 minutes prior to the scheduled time.
+    Search for scheduled calls in the database and initiate 
+    reminders 5 minutes prior to the scheduled time.
 
     This function:
     1. Queries the Firebase database for entries with the current date
@@ -60,13 +63,15 @@ def search() -> None:
 
     # Process each scheduled call to check if it's time to send a reminder
     while scheduled_calls:
-        current_timestamp: str = datetime.datetime.now().strftime("%H:%M")
+        datetime.datetime.now().strftime("%H:%M") 
         five_minutes_later: str = (
             datetime.datetime.now() + datetime.timedelta(minutes=5)
         ).strftime("%H:%M")
 
-        for call in scheduled_calls[:]:  # Iterate over a copy to safely remove elements
-            scheduled_time = call["from"][0:5]  # Extract HH:MM from HH:MM:SS
+        for call in scheduled_calls[:]:  
+            # Iterate over a copy to safely remove elements
+            scheduled_time = call["from"][0:5]  
+            # Extract HH:MM from HH:MM:SS
 
             if scheduled_time == five_minutes_later:
                 phone_number: str = call["phone"]

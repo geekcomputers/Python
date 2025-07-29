@@ -1,8 +1,10 @@
 """
 Firebase-Twilio Reminder Scheduler
 
-This script schedules the `search` function from the `caller` module to run at regular intervals.
-The scheduler checks for upcoming reminders every hour and initiates calls 5 minutes before each scheduled time.
+This script schedules the `search` function from the 
+`caller` module to run at regular intervals.
+The scheduler checks for upcoming reminders every hour and 
+initiates calls 5 minutes before each scheduled time.
 """
 
 from apscheduler.schedulers.blocking import BlockingScheduler
@@ -14,7 +16,8 @@ scheduler: BlockingScheduler = BlockingScheduler()
 
 def start_scheduler() -> None:
     """
-    Start the blocking scheduler to run the reminder search function at regular intervals.
+    Start the blocking scheduler to run the reminder 
+    search function at regular intervals.
 
     This function configures the scheduler to call the `search` function every hour
     and starts the scheduler in blocking mode. The process will run indefinitely

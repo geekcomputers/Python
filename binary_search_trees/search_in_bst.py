@@ -3,15 +3,17 @@ from tree_node import Node
 
 def search(root: Node | None, val: int) -> bool:
     """
-    This function searches for a node with value val in the BST and returns True if found, False otherwise.
+    This function searches for a node with value val in the BST and returns True.
+    If not found, it returns False.
 
     Args:
-        root (Node | None): The root node of the binary search tree. If the tree is empty, it's None.
+        root (Node | None): The root node of the binary search tree. 
+        If the tree is empty, it's None.
         val (int): The value of the node to be searched.
 
     Returns:
         bool: True if the node is found, False otherwise.
-    """
+    """ 
     # If the tree is empty, return False
     if root is None:
         return False
@@ -20,7 +22,8 @@ def search(root: Node | None, val: int) -> bool:
     if root.data == val:
         return True
 
-    # If the value to be searched is less than the root value, search in the left subtree
+    # If the value to be searched is less than the root value, 
+    # search in the left subtree
     if root.data > val:
         return search(root.left, val)
     return search(root.right, val)

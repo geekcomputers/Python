@@ -6,10 +6,12 @@ def create_mirror_bst(root: Node | None) -> Node | None:
     Function to create a mirror of a binary search tree.
 
     Args:
-        root (Node | None): The root node of the binary search tree. If the tree is empty, it's None.
+        root (Node | None): The root node of the binary search tree. 
+        If the tree is empty, it's None.
 
     Returns:
-        Node | None: The root node of the mirrored binary search tree. If the original tree is empty, returns None.
+        Node | None: The root node of the mirrored binary search tree. 
+        If the original tree is empty, returns None.
     """
     # If the tree is empty, return None
     if root is None:

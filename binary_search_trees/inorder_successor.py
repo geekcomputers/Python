@@ -11,7 +11,8 @@ def inorder_successor(root: Node) -> Node:
     Returns:
         Node: The inorder successor node.
     """
-    # The inorder successor of a node is the node with the smallest value greater than the value of the node
+    # The inorder successor of a node is the node with the smallest value greater 
+    # than the value of the node
     current: Node = root
 
     # The inorder successor is the leftmost node in the right subtree

@@ -6,7 +6,8 @@ def print_root_to_leaf_paths(root: Node | None, path: list[int]) -> None:
     This function prints all the root-to-leaf paths in a BST.
 
     Args:
-        root (Node | None): The root node of the binary search tree. If the tree is empty, it's None.
+        root (Node | None): The root node of the binary search tree. 
+        If the tree is empty, it's None.
         path (List[int]): A list to store the current path from the root to a leaf.
 
     Returns:

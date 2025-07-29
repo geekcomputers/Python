@@ -20,10 +20,12 @@ def inorder(root: Node | None) -> None:
     and finally traverses the right subtree.
 
     Args:
-        root (Optional[Node]): The root node of the BST. If the tree is empty, this will be None.
+        root (Optional[Node]): The root node of the BST. 
+        If the tree is empty, this will be None.
 
     Returns:
-        None: This function doesn't return a value. It directly prints the node values during traversal.
+        None: This function doesn't return a value. 
+        It directly prints the node values during traversal.
     """
     # The inorder traversal of a BST visits nodes in increasing order
     if root is None:

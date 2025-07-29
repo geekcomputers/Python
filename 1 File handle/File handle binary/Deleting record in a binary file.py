@@ -3,7 +3,8 @@ import pickle
 
 def delete_student_record() -> None:
     """
-    Delete a student record from the binary data file 'studrec.dat' based on the provided roll number.
+    Delete a student record from the binary data file 
+    'studrec.dat' based on the provided roll number.
 
     This function performs the following operations:
     1. Reads the current student records from 'studrec.dat'

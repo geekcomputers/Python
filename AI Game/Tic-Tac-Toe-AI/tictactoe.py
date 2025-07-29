@@ -24,8 +24,7 @@ MODE_HARD = "Hard"
 
 class TicTacToe:
     """
-    A modern Tic-Tac-Toe game with AI opponent, featuring:
-
+    A modern Tic-Tac-Toe game with AI opponent featuring:
     - Smooth animations for moves, wins, and resets
     - Dark/light mode toggle support
     - Adjustable difficulty (Easy/Hard)
@@ -33,18 +32,12 @@ class TicTacToe:
     - Robust error handling and boundary checks
     - Responsive, modern UI design
 
-    The game follows standard Tic-Tac-Toe rules where the first player to get
-    three of their marks in a row (horizontally, vertically, or diagonally) wins.
-    Human player is 'X' and AI is 'O'.
+    Standard Tic-Tac-Toe rules apply: first player to get three marks in a row
+    (horizontally, vertically, or diagonally) wins. Human player is 'X', AI is 'O'.
     """
 
     def __init__(self, master: ctk.CTk) -> None:
-        """
-        Initialize the Tic-Tac-Toe game.
-
-        Args:
-            master: The parent Tkinter/CTkinter window
-        """
+        """Initialize the Tic-Tac-Toe game with UI and game state."""
         self.master = master
         self.master.title("Tic Tac Toe AI")
         self.master.geometry("500x650")
@@ -59,11 +52,17 @@ class TicTacToe:
         self.winning_cells: list[tuple[int, int]] = []
         self.game_mode: str = MODE_HARD  # Default to hard mode
 
+        # Explicitly type the game board
+        self.board: list[list[Literal["X", "O", " "]]] = [
+            [self.EMPTY for _ in range(self.BOARD_SIZE)]
+            for _ in range(self.BOARD_SIZE)
+        ]
+
         # Precompute winning lines for faster checks
         self.winning_lines: list[list[tuple[int, int]]] = self._get_winning_lines()
 
         # UI Style Configuration - Modern, cohesive design
-        self.STYLES = {
+        self.STYLES: dict[str, str | tuple[str, str] | dict] = {
             "empty": ("#F0F4F8", "#2D3748"),  # Light gray / Dark gray
             "human": ("#3182CE", "#4299E1"),  # Blue shades
             "ai": ("#E53E3E", "#F56565"),  # Red shades
@@ -109,22 +108,13 @@ class TicTacToe:
             },
         }
 
-        # Initialize game board and UI components
-        self._initialize_board()
+        # Initialize UI components
+        self.buttons: list[list[ctk.CTkButton]] = []  # Will hold the UI buttons
         self._create_header_frame()
         self._create_board_widgets()
         self._create_footer_frame()
 
         logging.info("Tic-Tac-Toe game initialized successfully")
-
-    def _initialize_board(self) -> None:
-        """Initialize the game board matrix with empty cells"""
-        self.board = [
-            [self.EMPTY for _ in range(self.BOARD_SIZE)] for _ in range(self.BOARD_SIZE)
-        ]
-        self.buttons: list[
-            list[ctk.CTkButton]
-        ] = []  # Will hold the UI buttons for each cell
 
     def _get_winning_lines(self) -> list[list[tuple[int, int]]]:
         """
@@ -151,7 +141,9 @@ class TicTacToe:
     def _create_header_frame(self) -> None:
         """Create header frame with game status and control buttons"""
         try:
-            header_frame = ctk.CTkFrame(self.master, **self.STYLES["frame"])
+            header_frame = ctk.CTkFrame(
+                self.master, **self.STYLES["frame"]  # type: ignore[arg-type]
+            )
             header_frame.pack(fill="x", padx=20, pady=15, ipady=10)
 
             # Configure grid for header layout
@@ -161,8 +153,7 @@ class TicTacToe:
             # Game status display
             self.status_label = ctk.CTkLabel(
                 header_frame,
-                text="Your Turn (X)",
-                **self.STYLES["status"],
+                text="Your Turn (X)",** self.STYLES["status"]  # type: ignore[arg-type]
             )
             self.status_label.grid(row=0, column=0, padx=20, pady=10, sticky="w")
 
@@ -174,7 +165,7 @@ class TicTacToe:
             self.mode_button = ctk.CTkButton(
                 control_frame,
                 text=f"Mode: {self.game_mode}",
-                **self.STYLES["mode"],
+                **self.STYLES["mode"],  # type: ignore[arg-type]
                 command=self._toggle_mode,
                 fg_color=("#4299E1", "#3182CE"),
             )
@@ -183,8 +174,7 @@ class TicTacToe:
             # How to play button
             self.info_button = ctk.CTkButton(
                 control_frame,
-                text="How to Play",
-                **self.STYLES["info_button"],
+                text="How to Play",** self.STYLES["info_button"],  # type: ignore[arg-type]
                 command=self._show_instructions,
                 fg_color=("#38B2AC", "#319795"),
             )
@@ -196,7 +186,9 @@ class TicTacToe:
     def _create_board_widgets(self) -> None:
         """Create 3x3 game board with interactive buttons"""
         try:
-            board_frame = ctk.CTkFrame(self.master, **self.STYLES["frame"])
+            board_frame = ctk.CTkFrame(
+                self.master, **self.STYLES["frame"]  # type: ignore[arg-type]
+            )
             board_frame.pack(fill="both", expand=True, padx=20, pady=5)
 
             # Configure grid weights for responsive layout
@@ -211,8 +203,8 @@ class TicTacToe:
                     button = ctk.CTkButton(
                         board_frame,
                         text=self.EMPTY,
-                        fg_color=self.STYLES["empty"],
-                        **self.STYLES["button"],
+                        fg_color=self.STYLES["empty"],  # type: ignore[arg-type]
+                       ** self.STYLES["button"],  # type: ignore[arg-type]
                         command=lambda r=i, c=j: self._handle_cell_click(r, c),
                     )
                     button.grid(row=i, column=j, padx=8, pady=8, sticky="nsew")
@@ -225,7 +217,9 @@ class TicTacToe:
     def _create_footer_frame(self) -> None:
         """Create footer frame with theme toggle and new game button"""
         try:
-            footer_frame = ctk.CTkFrame(self.master, **self.STYLES["frame"])
+            footer_frame = ctk.CTkFrame(
+                self.master, **self.STYLES["frame"]  # type: ignore[arg-type]
+            )
             footer_frame.pack(fill="x", padx=20, pady=15, ipady=10)
 
             # Footer layout with centered buttons
@@ -235,8 +229,7 @@ class TicTacToe:
             # Dark/light mode toggle
             self.theme_button = ctk.CTkButton(
                 footer_container,
-                text="Toggle Dark Mode",
-                **self.STYLES["footer_button"],
+                text="Toggle Dark Mode",** self.STYLES["footer_button"],  # type: ignore[arg-type]
                 command=self._toggle_theme,
                 fg_color=("#718096", "#4A5568"),
             )
@@ -246,7 +239,7 @@ class TicTacToe:
             self.new_game_button = ctk.CTkButton(
                 footer_container,
                 text="New Game",
-                **self.STYLES["footer_button"],
+                **self.STYLES["footer_button"],  # type: ignore[arg-type]
                 command=self._reset_game,
                 fg_color=("#38B2AC", "#319795"),
                 hover_color=("#319795", "#2C7A7B"),
@@ -310,13 +303,13 @@ class TicTacToe:
             col: Column index of the clicked cell (0-2)
         """
         try:
-            # Validate input coordinates
-            if not (0 <= row < self.BOARD_SIZE and 0 <= col < self.BOARD_SIZE):
-                logging.warning(f"Invalid cell click: row={row}, col={col}")
-                return
-
-            # Check if game is over or cell is already occupied
-            if self.game_over or self.board[row][col] != self.EMPTY:
+            # Validate input coordinates and game state in one check
+            if (not 0 <= row < self.BOARD_SIZE 
+                or not 0 <= col < self.BOARD_SIZE 
+                or self.game_over 
+                or self.board[row][col] != self.EMPTY):
+                if not (0 <= row < self.BOARD_SIZE and 0 <= col < self.BOARD_SIZE):
+                    logging.warning(f"Invalid cell click: row={row}, col={col}")
                 return
 
             # Human move with animation
@@ -355,10 +348,21 @@ class TicTacToe:
             if not (0 <= row < self.BOARD_SIZE and 0 <= col < self.BOARD_SIZE):
                 raise ValueError(f"Invalid cell coordinates: ({row}, {col})")
 
+            # Get correct color tuples from styles
             target_color = (
-                self.STYLES["human"] if player == self.HUMAN else self.STYLES["ai"]
+                self.STYLES["human"]  # type: ignore[assignment]
+                if player == self.HUMAN
+                else self.STYLES["ai"]  # type: ignore[assignment]
             )
-            start_color = self.STYLES["empty"]
+            start_color = self.STYLES["empty"]  # type: ignore[assignment]
+# Ensure we're working with valid color tuples
+            if not (
+                    isinstance(target_color, tuple)
+                    and isinstance(start_color, tuple)
+                    and all(isinstance(c, str) for c in target_color)
+                    and all(isinstance(c, str) for c in start_color)
+                                                                        ):
+                raise TypeError("Color values must be tuples of hex strings")
 
             # Animate color transition over 20 steps
             for i in range(21):
@@ -373,14 +377,14 @@ class TicTacToe:
             logging.error(f"Error animating move: {str(e)}", exc_info=True)
 
     def _interpolate_color(
-        self, start: str | tuple[str, str], target: str | tuple[str, str], factor: float
+        self, start: tuple[str, str], target: tuple[str, str], factor: float
     ) -> str:
         """
-        Interpolate between two colors, handling both string and tuple formats.
+        Interpolate between two colors for light/dark themes.
 
         Args:
-            start: Starting color (either hex string or (light, dark) tuple)
-            target: Target color (either hex string or (light, dark) tuple)
+            start: Starting color as (light, dark) tuple
+            target: Target color as (light, dark) tuple
             factor: Interpolation factor (0.0 to 1.0)
 
         Returns:
@@ -390,16 +394,9 @@ class TicTacToe:
             # Determine current theme (light=0, dark=1)
             theme_idx = 0 if ctk.get_appearance_mode() == "Light" else 1
 
-            # Extract colors based on format
-            if isinstance(start, tuple):
-                start_color = start[theme_idx]
-            else:
-                start_color = start
-
-            if isinstance(target, tuple):
-                target_color = target[theme_idx]
-            else:
-                target_color = target
+            # Extract colors based on current theme
+            start_color = start[theme_idx]
+            target_color = target[theme_idx]
 
             # Convert hex to RGB
             def hex_to_rgb(h: str) -> tuple[int, int, int]:
@@ -413,11 +410,11 @@ class TicTacToe:
             t_r, t_g, t_b = hex_to_rgb(target_color)
 
             # Clamp factor between 0 and 1
-            factor = max(0.0, min(1.0, factor))
+            factor_clamped = max(0.0, min(1.0, factor))
 
-            r = int(s_r + (t_r - s_r) * factor)
-            g = int(s_g + (t_g - s_g) * factor)
-            b = int(s_b + (t_b - s_b) * factor)
+            r = int(s_r + (t_r - s_r) * factor_clamped)
+            g = int(s_g + (t_g - s_g) * factor_clamped)
+            b = int(s_b + (t_b - s_b) * factor_clamped)
 
             # Convert back to hex
             return f"#{r:02x}{g:02x}{b:02x}"
@@ -434,7 +431,7 @@ class TicTacToe:
                 return
 
             best_move = self._find_best_move()
-            if best_move is not None:
+            if best_move:
                 row, col = best_move
 
                 # Validate move coordinates
@@ -567,10 +564,14 @@ class TicTacToe:
             # Get current color based on theme
             theme_idx = 0 if ctk.get_appearance_mode() == "Light" else 1
             original_color = (
-                self.STYLES["human"][theme_idx]
+                self.STYLES["human"][theme_idx]  # type: ignore[index, union-attr]
                 if self.board[row][col] == self.HUMAN
-                else self.STYLES["ai"][theme_idx]
+                else self.STYLES["ai"][theme_idx]  # type: ignore[index, union-attr]
             )
+
+            # Ensure original_color is a string
+            if not isinstance(original_color, str):
+                raise TypeError("Expected string color value")
 
             # Pulse animation - 3 cycles of brightening and dimming
             for _ in range(3):
@@ -610,18 +611,27 @@ class TicTacToe:
             # Get current color based on theme
             theme_idx = 0 if ctk.get_appearance_mode() == "Light" else 1
             original_color = (
-                self.STYLES["human"][theme_idx]
+                self.STYLES["human"][theme_idx]  # type: ignore[index, union-attr]
                 if self.board[row][col] == self.HUMAN
-                else self.STYLES["ai"][theme_idx]
+                else self.STYLES["ai"][theme_idx]  # type: ignore[index, union-attr]
             )
+
+            # Ensure original_color is a string
+            if not isinstance(original_color, str):
+                raise TypeError("Expected string color value")
 
             # Transition to draw color
             draw_color = self.STYLES["draw"]
+            if not isinstance(draw_color, str):
+                raise TypeError("Draw color must be a string")
 
+            # Animate transition
             for i in range(21):
                 factor = i / 20
                 current_color = self._interpolate_color(
-                    original_color, draw_color, factor
+                    (original_color, original_color),  # Same for both themes
+                    (draw_color, draw_color),
+                    factor
                 )
                 self.buttons[row][col].configure(fg_color=current_color)
                 self.master.update()
@@ -631,7 +641,7 @@ class TicTacToe:
             logging.error(f"Error animating draw cell: {str(e)}", exc_info=True)
 
     def _adjust_button_brightness(
-        self, row: int, col: int, base_color: str | tuple[str, str], factor: float
+        self, row: int, col: int, base_color: str, factor: float
     ) -> None:
         """
         Adjust button brightness for animation effects.
@@ -649,15 +659,6 @@ class TicTacToe:
                     f"Invalid cell for brightness adjustment: ({row}, {col})"
                 )
 
-            # Determine current theme
-            theme_idx = 0 if ctk.get_appearance_mode() == "Light" else 1
-
-            # Extract color based on format
-            if isinstance(base_color, tuple):
-                color = base_color[theme_idx]
-            else:
-                color = base_color
-
             # Convert hex to RGB
             def hex_to_rgb(h: str) -> tuple[int, int, int]:
                 h = h.lstrip("#")
@@ -667,9 +668,9 @@ class TicTacToe:
 
             # Convert RGB to hex
             def rgb_to_hex(rgb: tuple[int, int, int]) -> str:
-                return "#%02x%02x%02x" % rgb
+                return f"#{rgb[0]:02x}{rgb[1]:02x}{rgb[2]:02x}"
 
-            r, g, b = hex_to_rgb(color)
+            r, g, b = hex_to_rgb(base_color)
 
             # Adjust brightness with clamping
             def clamp(x: float) -> int:
@@ -714,12 +715,11 @@ class TicTacToe:
                         self.board[i][j] = self.EMPTY  # Undo
 
             # Different strategies based on difficulty
-            if self.game_mode == MODE_EASY:
+            if self.game_mode == MODE_EASY and random.random() < 0.4:
                 # 40% chance of random move in easy mode
-                if random.random() < 0.4:
-                    random_move = self._get_random_move()
-                    if random_move:
-                        return random_move
+                random_move = self._get_random_move()
+                if random_move:
+                    return random_move
 
             # Hard mode uses minimax algorithm for optimal play
             return self._get_minimax_move()
@@ -743,9 +743,7 @@ class TicTacToe:
                 if self.board[i][j] == self.EMPTY
             ]
 
-            if available_moves:
-                return random.choice(available_moves)
-            return None
+            return random.choice(available_moves) if available_moves else None
         except Exception as e:
             logging.error(f"Error getting random move: {str(e)}", exc_info=True)
             return None
@@ -758,7 +756,7 @@ class TicTacToe:
             Tuple of (row, col) for best move, or None if no moves available
         """
         try:
-            best_score = float("-inf")
+            best_score = -float("inf")
             best_move: tuple[int, int] | None = None
             depth_limit = 9  # Full depth for 3x3 board
 
@@ -772,7 +770,7 @@ class TicTacToe:
                     self.board[i][j] = self.AI  # Try the move
                     # Evaluate with minimax
                     score = self._minimax(
-                        0, False, depth_limit, float("-inf"), float("inf")
+                        0, False, depth_limit, -float("inf"), float("inf")
                     )
                     self.board[i][j] = self.EMPTY  # Undo
 
@@ -799,7 +797,7 @@ class TicTacToe:
         Args:
             depth: Current recursion depth
             is_maximizing: True if AI's turn (maximizing), False if human's (minimizing)
-            depth_limit: Maximum recursion depth to prevent excessive computation
+            depth_limit: Maximum recursion depth
             alpha: Alpha value for pruning
             beta: Beta value for pruning
 
@@ -809,17 +807,15 @@ class TicTacToe:
         try:
             # Base cases
             if self._check_winner(self.AI):
-                return 10 - depth  # Positive score for AI win (higher for faster wins)
-            elif self._check_winner(self.HUMAN):
-                return (
-                    -10 + depth
-                )  # Negative score for human win (less negative for slower wins)
-            elif self._is_board_full() or depth >= depth_limit:
+                return 10 - depth  # Positive score for AI win
+            if self._check_winner(self.HUMAN):
+                return -10 + depth  # Negative score for human win
+            if self._is_board_full() or depth >= depth_limit:
                 return 0  # Neutral score for draw or depth limit
 
             if is_maximizing:
                 # AI's turn - maximize score
-                max_score = float("-inf")
+                max_score = -float("inf")
                 for i in range(self.BOARD_SIZE):
                     for j in range(self.BOARD_SIZE):
                         if self.board[i][j] == self.EMPTY:
@@ -834,25 +830,24 @@ class TicTacToe:
                                 break  # Prune this branch
                     if beta <= alpha:
                         break  # Prune this branch
-                return max_score
-            else:
-                # Human's turn - minimize score
-                min_score = float("inf")
-                for i in range(self.BOARD_SIZE):
-                    for j in range(self.BOARD_SIZE):
-                        if self.board[i][j] == self.EMPTY:
-                            self.board[i][j] = self.HUMAN  # Try human's move
-                            score = self._minimax(
-                                depth + 1, True, depth_limit, alpha, beta
-                            )
-                            self.board[i][j] = self.EMPTY  # Undo
-                            min_score = min(score, min_score)
-                            beta = min(beta, score)
-                            if beta <= alpha:
-                                break  # Prune this branch
-                    if beta <= alpha:
-                        break  # Prune this branch
-                return min_score
+                return int(max_score)
+            # Human's turn - minimize score
+            min_score = float("inf")
+            for i in range(self.BOARD_SIZE):
+                for j in range(self.BOARD_SIZE):
+                    if self.board[i][j] == self.EMPTY:
+                        self.board[i][j] = self.HUMAN  # Try human's move
+                        score = self._minimax(
+                            depth + 1, True, depth_limit, alpha, beta
+                        )
+                        self.board[i][j] = self.EMPTY  # Undo
+                        min_score = min(score, min_score)
+                        beta = min(beta, score)
+                        if beta <= alpha:
+                            break  # Prune this branch
+                if beta <= alpha:
+                    break  # Prune this branch
+            return int(min_score)
         except Exception as e:
             logging.error(f"Error in minimax recursion: {str(e)}", exc_info=True)
             return 0  # Neutral score on error
@@ -902,21 +897,28 @@ class TicTacToe:
             # Get current color based on theme
             theme_idx = 0 if ctk.get_appearance_mode() == "Light" else 1
             current_color = self.buttons[row][col].cget("fg_color")
-
-            if isinstance(current_color, tuple):
-                current_color = current_color[theme_idx]
+            current_color_str = (
+                current_color[theme_idx]  # type: ignore[index]
+                if isinstance(current_color, tuple)
+                else current_color
+            )
+            if not isinstance(current_color_str, str):
+                raise TypeError("Current color must be a string")
 
             target_color = self.STYLES["empty"]
+            if not isinstance(target_color, tuple):
+                raise TypeError("Target color must be a tuple")
 
             # Fade out over 15 steps
             for i in range(16):
                 factor = 1 - (i / 15)
-                self._adjust_button_brightness(row, col, current_color, factor)
+                self._adjust_button_brightness(row, col, current_color_str, factor)
                 self.master.update()
                 time.sleep(0.01)
 
             # Reset to empty state
             self.buttons[row][col].configure(text=self.EMPTY, fg_color=target_color)
+
         except Exception as e:
             logging.error(f"Error in reset animation: {str(e)}", exc_info=True)
 
