@@ -1,8 +1,8 @@
 from fuzzywuzzy import fuzz
-import bs4, requests
+import bs4
+import requests
 import numpy as np
 import pandas as pd
-import os
 requests.packages.urllib3.disable_warnings()
 FinalResult=[]
 def SearchResults():

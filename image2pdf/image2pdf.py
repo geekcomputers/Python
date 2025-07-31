@@ -36,7 +36,7 @@ class image2pdf:
             print(f" [Error] there are no pictures in the directory: {self.directory} ")
             return False
         
-        print(f"Found picture(s) :")
+        print("Found picture(s) :")
         return pictures
 
     def selectPictures(self, pictures):

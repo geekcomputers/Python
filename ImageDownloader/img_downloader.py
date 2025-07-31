@@ -2,7 +2,9 @@
 
 
 def ImageDownloader(url):
-    import os, re, requests
+    import os
+    import re
+    import requests
 
     response = requests.get(url)
     text = response.text

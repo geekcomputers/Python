@@ -15,7 +15,7 @@ while True:
             raise ValueError
         else:
             break
-    except ValueError as e:
+    except ValueError:
         print("Please input a correct number")
 
 if utils.validate(player_hand):

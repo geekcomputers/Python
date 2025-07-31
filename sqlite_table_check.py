@@ -14,8 +14,8 @@ import sqlite3
 
 dropbox = os.getenv("dropbox")
 config = os.getenv("my_config")
-dbfile = "Databases\jarvis.db"
-listfile = "sqlite_master_table.lst"
+dbfile = r"Databases\jarvis.db"
+listfile = r"sqlite_master_table.lst"
 master_db = os.path.join(dropbox, dbfile)
 config_file = os.path.join(config, listfile)
 tablelist = open(config_file, "r")

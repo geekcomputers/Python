@@ -20,7 +20,7 @@ p = urllib2.Request(
     "https://www.google.co.in/search?q=gate+psu+2017+ext:pdf&start=" + page
 )
 ht = br.open(p)
-text = '<cite\sclass="_Rm">(.+?)</cite>'
+text = r'<cite\sclass="_Rm">(.+?)</cite>'
 patt = re.compile(text)
 h = ht.read()
 urls = re.findall(patt, h)
@@ -45,7 +45,7 @@ for url in urls:
         file.close()
 
         print("Done")
-    except urllib2.URLError as e:
+    except urllib2.URLError:
         print(
             "Sorry there exists a problem with this URL Please Download this Manually "
             + str(url)

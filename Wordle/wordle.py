@@ -63,7 +63,7 @@ while True:
         continue
 
     # Check if the word given by the user is in the dictionary
-    if not user_inp in dictionary:
+    if user_inp not in dictionary:
         print("Your word is not in the dictionary")
         continue
 

@@ -1,4 +1,3 @@
-import os
 import solara as sr
 import yfinance as yf
 

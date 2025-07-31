@@ -2,7 +2,7 @@
 # from speakListen import long_hear
 from speakListen import *
 
-from colorama import Fore, Back, Style
+from colorama import Fore
 
 def big_text():
     print("By default, I will record your voice for 60 seconds.\nDo you want to change this default timing?")

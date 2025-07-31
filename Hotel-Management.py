@@ -345,7 +345,7 @@ def exit_menu():
 
 try:
     menu()
-except KeyboardInterrupt as exit:
+except KeyboardInterrupt:
     print("\nexiting...!")
 
 # menu()

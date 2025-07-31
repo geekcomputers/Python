@@ -13,7 +13,7 @@ import sys
 # Description	: Runs checks to check my SQLITE database
 
 dropbox = os.getenv("dropbox")
-dbfile = "Databases\jarvis.db"
+dbfile = r"Databases\jarvis.db"
 master_db = os.path.join(dropbox, dbfile)
 con = None
 

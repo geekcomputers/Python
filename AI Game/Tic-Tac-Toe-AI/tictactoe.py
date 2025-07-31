@@ -1,7 +1,6 @@
-import tkinter as tk #provides a library of basic elements of GUI widgets
 from tkinter import messagebox #provides a different set of dialogues that are used to display message boxes
-import random
-
+import customtkinter as ctk
+import customtkinter as messagebox
 def check_winner(board, player):
     # Check rows, columns, and diagonals for a win
     for i in range(3):
@@ -19,7 +18,7 @@ def minimax(board, depth, is_maximizing):
         return -1
     if check_winner(board, 'O'):
         return 1
-    if is_board_full(board): #if game is full, terminate
+    if is_board_full(board): 
         return 0
 
     if is_maximizing: #recursive approach that fills board with Os
@@ -63,7 +62,8 @@ def best_move(board):
 def make_move(row, col):
     if board[row][col] == ' ':
         board[row][col] = 'X'
-        buttons[row][col].config(text='X')
+        # in tk we use the config but in customtkinter  we use configure for 
+        buttons[row][col].configure(text='X')
         if check_winner(board, 'X'):
             messagebox.showinfo("Tic-Tac-Toe", "You win!")
             root.quit()
@@ -79,15 +79,15 @@ def make_move(row, col):
 def ai_move():
     row, col = best_move(board)
     board[row][col] = 'O'
-    buttons[row][col].config(text='O')
+    buttons[row][col].configure(text='O')
     if check_winner(board, 'O'):
         messagebox.showinfo("Tic-Tac-Toe", "AI wins!")
         root.quit()
     elif is_board_full(board):
         messagebox.showinfo("Tic-Tac-Toe", "It's a draw!")
         root.quit()
-
-root = tk.Tk()
+# change old UI code to customtkinter UI
+root = ctk.CTk()
 root.title("Tic-Tac-Toe")
 
 board = [[' ' for _ in range(3)] for _ in range(3)]
@@ -96,8 +96,8 @@ buttons = []
 for i in range(3):
     row_buttons = []
     for j in range(3):
-        button = tk.Button(root, text=' ', font=('normal', 30), width=5, height=2, command=lambda row=i, col=j: make_move(row, col))
-        button.grid(row=i, column=j)
+        button = ctk.CTkButton(root, text=' ', font=('normal', 30), width=100, height=100, command=lambda row=i, col=j: make_move(row, col))
+        button.grid(row=i, column=j, padx=2, pady=2)
         row_buttons.append(button)
     buttons.append(row_buttons)
 

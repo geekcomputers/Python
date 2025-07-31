@@ -14,7 +14,7 @@ def palindrome(a):
               
         else: 
             flag = 1
-            break; 
+            break 
               
     if flag == 0: 
         print("The entered string is palindrome") 

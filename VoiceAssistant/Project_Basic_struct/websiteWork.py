@@ -1,4 +1,4 @@
-from speakListen import greet, hear
+from speakListen import hear
 from speakListen import speak
 
 
@@ -55,7 +55,7 @@ def wiki_search():
                 print("I could'nt understand what you just said!")
                 speak("I could'nt understand what you just said!")
 
-    except Exception as e:
+    except Exception:
         print("Couldn't find")
 
 #wiki_search()
