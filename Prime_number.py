@@ -19,15 +19,14 @@ def is_prime_a(n):
 
 
 def is_prime_b(n):
-    if n > 1:
-        if n == 2:
-            return True
-        else:
-            for i in range(2, int(n//2)+1):
-                if n % i == 0:
-                    return False
-            return True
-    return False
+    if n <= 1:
+        return False
+    if n == 2:
+        return True
+    for i in range(2, int(n//2)+1):
+        if n % i == 0:
+            return False
+    return True
 
 
 def is_prime_c(n):
