@@ -1,3 +1,4 @@
+from typing import Optional
 from insert_in_bst import insert
 from delete_a_node_in_bst import delete_node
 from search_in_bst import search
@@ -5,12 +6,11 @@ from mirror_a_bst import create_mirror_bst
 from print_in_range import print_in_range
 from root_to_leaf_paths import print_root_to_leaf_paths
 from validate_bst import is_valid_bst
+from tree_node import Node
 
-
-def main():
-    
+def main() -> None:
     # Create a BST
-    root = None
+    root: Optional[Node] = None
     root = insert(root, 50)
     root = insert(root, 30)
     root = insert(root, 20)
@@ -28,42 +28,45 @@ def main():
     print_root_to_leaf_paths(root, [])
     
     # Check if the tree is a BST
-    print("Is the tree a BST:", is_valid_bst(root,None,None))
+    print("Is the tree a BST:", is_valid_bst(root, None, None))
     
     
     # Delete nodes from the BST
     print("Deleting 20 from the BST:")
-    root = delete_node(root, 20)
+    if root is not None:
+        root = delete_node(root, 20)
     
     # Print the inorder traversal of the BST
     print("Inorder traversal of the BST after deleting 20:")
     print_in_range(root, 10, 90)
     
     # Check if the tree is a BST
-    print("Is the tree a BST:", is_valid_bst(root,None,None))
+    print("Is the tree a BST:", is_valid_bst(root, None, None))
     
     
     # Delete nodes from the BST
     print("Deleting 30 from the BST:")
-    root = delete_node(root, 30)
+    if root is not None:
+        root = delete_node(root, 30)
     
     # Print the inorder traversal of the BST after deleting 30
     print("Inorder traversal of the BST after deleting 30:")
     print_in_range(root, 10, 90)
     
     # Check if the tree is a BST
-    print("Is the tree a BST:", is_valid_bst(root,None,None))
+    print("Is the tree a BST:", is_valid_bst(root, None, None))
     
     # Delete nodes from the BST
     print("Deleting 50 from the BST:")
-    root = delete_node(root, 50)
+    if root is not None:
+        root = delete_node(root, 50)
     
     # Print the inorder traversal of the BST after deleting 50
     print("Inorder traversal of the BST after deleting 50:")
     print_in_range(root, 10, 90)
     
     # Check if the tree is a BST
-    print("Is the tree a BST:", is_valid_bst(root,None,None))
+    print("Is the tree a BST:", is_valid_bst(root, None, None))
     
     
     print("Searching for 70 in the BST:", search(root, 70))
@@ -71,13 +74,9 @@ def main():
     print("Inorder traversal of the BST:")
     print_in_range(root, 10, 90)
     print("Creating a mirror of the BST:")
-    mirror_root = create_mirror_bst(root)
+    mirror_root: Optional[Node] = create_mirror_bst(root)
     print("Inorder traversal of the mirror BST:")
     print_in_range(mirror_root, 10, 90)
 
 if __name__ == "__main__":
     main()
-
-
-
-

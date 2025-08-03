@@ -1,5 +1,8 @@
-def print_root_to_leaf_paths(root, path):
-    """ This function prints all the root to leaf paths in a BST"""
+from typing import Optional, List
+from tree_node import Node
+
+def print_root_to_leaf_paths(root: Optional[Node], path: List[int]) -> None:
+    """This function prints all the root to leaf paths in a BST"""
     
     # If the tree is empty, return
     if root is None:
