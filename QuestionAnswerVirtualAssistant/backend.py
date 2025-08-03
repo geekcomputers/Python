@@ -3,13 +3,14 @@ import json
 import pandas as pd
 from sklearn.feature_extraction.text import TfidfVectorizer
 
+
 class QuestionAnswerVirtualAssistant:
     """
     Used for automatic question-answering
 
     It works by building a reverse index store that maps
     words to an id. To find the indexed questions that contain
-    a certain the words in the user question, we then take an 
+    a certain the words in the user question, we then take an
     intersection of the ids, ranks the questions to pick the best fit,
     then select the answer that maps to that question
     """
@@ -30,9 +31,17 @@ class QuestionAnswerVirtualAssistant:
         tables_exist = res.fetchone()
 
         if not tables_exist:
-            self.conn.execute("CREATE TABLE IdToQuesAns(id INTEGER PRIMARY KEY, question TEXT, answer TEXT)")
-            self.conn.execute('CREATE TABLE WordToId (name TEXT, value TEXT)')
-            cur.execute("INSERT INTO WordToId VALUES (?, ?)", ("index", "{}",))
+            self.conn.execute(
+                "CREATE TABLE IdToQuesAns(id INTEGER PRIMARY KEY, question TEXT, answer TEXT)"
+            )
+            self.conn.execute("CREATE TABLE WordToId (name TEXT, value TEXT)")
+            cur.execute(
+                "INSERT INTO WordToId VALUES (?, ?)",
+                (
+                    "index",
+                    "{}",
+                ),
+            )
 
     def index_question_answer(self, question, answer):
         """
@@ -46,13 +55,15 @@ class QuestionAnswerVirtualAssistant:
         - passes the question and answer to a method to add them
           to IdToQuesAns
         - retrieves the id of the inserted ques-answer
-        - uses the id to call the method that adds the words of 
+        - uses the id to call the method that adds the words of
           the question to the reverse index WordToId if the word has not
           already been indexed
         """
         row_id = self._add_to_IdToQuesAns(question.lower(), answer.lower())
         cur = self.conn.cursor()
-        reverse_idx = cur.execute("SELECT value FROM WordToId WHERE name='index'").fetchone()[0]
+        reverse_idx = cur.execute(
+            "SELECT value FROM WordToId WHERE name='index'"
+        ).fetchone()[0]
         reverse_idx = json.loads(reverse_idx)
         question = question.split()
         for word in question:
@@ -63,8 +74,10 @@ class QuestionAnswerVirtualAssistant:
                     reverse_idx[word].append(row_id)
         reverse_idx = json.dumps(reverse_idx)
         cur = self.conn.cursor()
-        result = cur.execute("UPDATE WordToId SET value = (?) WHERE name='index'", (reverse_idx,))
-        return("index successful")
+        result = cur.execute(
+            "UPDATE WordToId SET value = (?) WHERE name='index'", (reverse_idx,)
+        )
+        return "index successful"
 
     def _add_to_IdToQuesAns(self, question, answer):
         """
@@ -76,7 +89,13 @@ class QuestionAnswerVirtualAssistant:
         - retrieve and return the row id of the inserted document
         """
         cur = self.conn.cursor()
-        res = cur.execute("INSERT INTO IdToQuesAns (question, answer) VALUES (?, ?)", (question, answer,))
+        res = cur.execute(
+            "INSERT INTO IdToQuesAns (question, answer) VALUES (?, ?)",
+            (
+                question,
+                answer,
+            ),
+        )
         return res.lastrowid
 
     def find_questions(self, user_input):
@@ -91,7 +110,9 @@ class QuestionAnswerVirtualAssistant:
         - return the result of the called method
         """
         cur = self.conn.cursor()
-        reverse_idx = cur.execute("SELECT value FROM WordToId WHERE name='index'").fetchone()[0]
+        reverse_idx = cur.execute(
+            "SELECT value FROM WordToId WHERE name='index'"
+        ).fetchone()[0]
         reverse_idx = json.loads(reverse_idx)
         user_input = user_input.split(" ")
         all_docs_with_user_input = []
@@ -99,18 +120,18 @@ class QuestionAnswerVirtualAssistant:
             if term in reverse_idx:
                 all_docs_with_user_input.append(reverse_idx[term])
 
-        if not all_docs_with_user_input: # the user_input does not exist
+        if not all_docs_with_user_input:  # the user_input does not exist
             return []
 
         common_idx_of_docs = set(all_docs_with_user_input[0])
         for idx in all_docs_with_user_input[1:]:
             common_idx_of_docs.intersection_update(idx)
 
-        if not common_idx_of_docs: # the user_input does not exist
+        if not common_idx_of_docs:  # the user_input does not exist
             return []
 
         return self._find_questions_with_idx(common_idx_of_docs)
-        
+
     def _find_questions_with_idx(self, idxs):
         """
         Returns - list[str]: the list of questions with the idxs
@@ -122,11 +143,11 @@ class QuestionAnswerVirtualAssistant:
         """
         idxs = list(idxs)
         cur = self.conn.cursor()
-        sql="SELECT id, question, answer FROM IdToQuesAns WHERE id in ({seq})".format(
-                                                                seq=','.join(['?']*len(idxs))
-                                                               )
+        sql = "SELECT id, question, answer FROM IdToQuesAns WHERE id in ({seq})".format(
+            seq=",".join(["?"] * len(idxs))
+        )
         result = cur.execute(sql, idxs).fetchall()
-        return(result)
+        return result
 
     def find_most_matched_question(self, user_input, corpus):
         """
@@ -138,14 +159,16 @@ class QuestionAnswerVirtualAssistant:
         """
         vectorizer = TfidfVectorizer()
         tfidf_scores = vectorizer.fit_transform(corpus)
-        tfidf_array = pd.DataFrame(tfidf_scores.toarray(),columns=vectorizer.get_feature_names_out())
+        tfidf_array = pd.DataFrame(
+            tfidf_scores.toarray(), columns=vectorizer.get_feature_names_out()
+        )
         tfidf_dict = tfidf_array.to_dict()
 
         user_input = user_input.split(" ")
         result = []
         for idx in range(len(corpus)):
             result.append([0, corpus[idx]])
-            
+
         for term in user_input:
             if term in tfidf_dict:
                 for idx in range(len(result)):
@@ -165,8 +188,12 @@ class QuestionAnswerVirtualAssistant:
         """
         matching_questions = self.find_questions(user_input)
         corpus = [item[1] for item in matching_questions]
-        question_map = {question:answer for (id, question, answer) in matching_questions}
-        score, most_matching_question = self.find_most_matched_question(user_input, corpus)
+        question_map = {
+            question: answer for (id, question, answer) in matching_questions
+        }
+        score, most_matching_question = self.find_most_matched_question(
+            user_input, corpus
+        )
         return question_map[most_matching_question]
 
 
@@ -174,21 +201,21 @@ if __name__ == "__main__":
     va = QuestionAnswerVirtualAssistant()
     va.index_question_answer(
         "What are the different types of competitions available on Kaggle",
-        "Types of Competitions Kaggle Competitions are designed to provide challenges for competitors"
+        "Types of Competitions Kaggle Competitions are designed to provide challenges for competitors",
     )
     print(
         va.index_question_answer(
             "How to form, manage, and disband teams in a competition",
-            "Everyone that competes in a Competition does so as a team. A team is a group of one or more users"
+            "Everyone that competes in a Competition does so as a team. A team is a group of one or more users",
         )
     )
     va.index_question_answer(
         "What is Data Leakage",
-        "Data Leakage is the presence of unexpected additional information in the training data"
+        "Data Leakage is the presence of unexpected additional information in the training data",
     )
     va.index_question_answer(
         "How does Kaggle handle cheating",
-        "Cheating is not taken lightly on Kaggle. We monitor our compliance account"
+        "Cheating is not taken lightly on Kaggle. We monitor our compliance account",
     )
     print(va.provide_answer("state Kaggle cheating policy"))
     print(va.provide_answer("Tell me what is data leakage"))

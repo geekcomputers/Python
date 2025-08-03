@@ -8,7 +8,6 @@ import pygame as pg
 
 
 class pieces:
-
     padding = 17
     outline = 2
 

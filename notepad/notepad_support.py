@@ -17,7 +17,6 @@ try:
 
     py3 = 0
 except ImportError:
-
     py3 = 1
 
 # connect with database 'data.db'

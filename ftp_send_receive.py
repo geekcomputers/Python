@@ -1,11 +1,11 @@
 """
-	File transfer protocol used to send and receive files using FTP server.
-	Use credentials to provide access to the FTP client
+File transfer protocol used to send and receive files using FTP server.
+Use credentials to provide access to the FTP client
 
-	Note: Do not use root username & password for security reasons
-		  Create a seperate user and provide access to a home directory of the user
-		  Use login id and password of the user created 
-		  cwd here stands for current working directory
+Note: Do not use root username & password for security reasons
+          Create a seperate user and provide access to a home directory of the user
+          Use login id and password of the user created
+          cwd here stands for current working directory
 """
 
 from ftplib import FTP

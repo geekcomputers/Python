@@ -2,17 +2,14 @@ from itertools import product
 
 
 def findPassword(chars, function, show=50, format_="%s"):
-
     password = None
     attempts = 0
     size = 1
     stop = False
 
     while not stop:
-
         # Obtém todas as combinações possíveis com os dígitos do parâmetro "chars".
         for pw in product(chars, repeat=size):
-
             password = "".join(pw)
 
             # Imprime a senha que será tentada.
@@ -56,7 +53,6 @@ def getChars():
 # Para realizar o teste, o usuário deverá inserir uma senha para ser encontrada.
 
 if __name__ == "__main__":
-
     import datetime
     import time
 

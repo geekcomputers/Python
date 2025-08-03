@@ -11,7 +11,6 @@ def hit(key):
 
 
 def isCollide(data):
-
     # for cactus
     for i in range(329, 425):
         for j in range(550, 650):

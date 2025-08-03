@@ -10,7 +10,6 @@ import emoji
 
 
 class Keypad(tk.Frame):
-
     cells = [
         ["😀", "🥰", "😴", "🤓", "🤮", "🤬", "😨", "🤑", "😫", "😎"],
         [
@@ -312,6 +311,7 @@ outputtxt = tk.Text(
     relief="solid",
 )
 outputtxt.place(x=120, y=400)
+
 
 # function for exiting
 def exit_win():

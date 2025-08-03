@@ -12,6 +12,7 @@ Modifications	: 1.1 Removed the static lines for the putty sessions, it now read
 
 Description	: This simple script loads everything I need to carry out the daily checks for our systems.
 """
+
 import os
 import platform  # Load Modules
 import subprocess
@@ -55,11 +56,12 @@ def rdp_sessions():
 
 def euroclear_docs():
     # The command below opens IE and loads the Euroclear password document
-    subprocess.Popen([
-        r"C:\Program Files\Internet Explorer\iexplore.exe",
-        r"file://fs1/pub_b/Pub_Admin/Documentation/Settlements_Files/PWD/Eclr.doc"
-    ])
-
+    subprocess.Popen(
+        [
+            r"C:\Program Files\Internet Explorer\iexplore.exe",
+            r"file://fs1/pub_b/Pub_Admin/Documentation/Settlements_Files/PWD/Eclr.doc",
+        ]
+    )
 
 
 # End of the functions

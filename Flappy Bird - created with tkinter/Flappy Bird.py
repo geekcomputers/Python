@@ -15,6 +15,7 @@ bird_image = pygame.image.load("bird.png").convert_alpha()
 pipe_image = pygame.image.load("pipe.png").convert_alpha()
 background_image = pygame.image.load("background.png").convert_alpha()
 
+
 # Bird class
 class Bird:
     def __init__(self):
@@ -34,6 +35,7 @@ class Bird:
     def draw(self, screen):
         screen.blit(self.image, (self.x, self.y))
 
+
 # Pipe class
 class Pipe:
     def __init__(self):
@@ -47,7 +49,11 @@ class Pipe:
 
     def draw(self, screen):
         screen.blit(self.image, (self.x, self.y))
-        screen.blit(pygame.transform.flip(self.image, False, True), (self.x, self.y - screen_height))
+        screen.blit(
+            pygame.transform.flip(self.image, False, True),
+            (self.x, self.y - screen_height),
+        )
+
 
 def main():
     clock = pygame.time.Clock()
@@ -80,6 +86,7 @@ def main():
         clock.tick(30)
 
     pygame.quit()
+
 
 if __name__ == "__main__":
     main()

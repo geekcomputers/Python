@@ -67,7 +67,7 @@ class YouTubeDownloder:
     def onProgress(stream=None, chunk=None, remaining=None):
         file_downloaded = file_size - (remaining / 1000000)
         print(
-            f"downloading ... {file_downloaded/file_size*100:0.2f} % [{file_downloaded:.1f}MB of {file_size:.1f}MB]",
+            f"downloading ... {file_downloaded / file_size * 100:0.2f} % [{file_downloaded:.1f}MB of {file_size:.1f}MB]",
             end="\r",
         )
 

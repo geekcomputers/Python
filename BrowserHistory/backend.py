@@ -1,10 +1,11 @@
 class DLL:
     """
-        a doubly linked list that holds the current page,
-        next page, and previous page.
-        Used to enforce order in operations.
+    a doubly linked list that holds the current page,
+    next page, and previous page.
+    Used to enforce order in operations.
     """
-    def __init__(self, val: str =None):
+
+    def __init__(self, val: str = None):
         self.val = val
         self.nxt = None
         self.prev = None
@@ -31,7 +32,7 @@ class BrowserHistory:
         self._curr = self._head
         self._back_count = 0
         self._forward_count = 0
-        
+
     def visit(self, url: str) -> None:
         """
         Returns - None
@@ -45,12 +46,12 @@ class BrowserHistory:
         # Clear forward history to prevent memory leaks
         self._curr.nxt = None
         self._forward_count = 0
-        
+
         # Create and link new node
         url_node = DLL(url)
         self._curr.nxt = url_node
         url_node.prev = self._curr
-        
+
         # Update current node and counts
         self._curr = url_node
         self._back_count += 1
@@ -90,7 +91,7 @@ class BrowserHistory:
             self._forward_count -= 1
             self._back_count += 1
         return self._curr.val
-        
+
 
 if __name__ == "__main__":
     obj = BrowserHistory("google.com")
