@@ -81,7 +81,7 @@ Unidecode==1.4.0
 Ball==0.2.9
 pynput==1.8.1
 gTTS==2.5.4
-ccxt==4.4.98
+ccxt==4.4.99
 fitz==0.0.1.dev2
 fastapi==0.116.1
 Django==5.1.7
