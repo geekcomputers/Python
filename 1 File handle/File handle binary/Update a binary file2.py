@@ -4,12 +4,11 @@ import pickle
 
 
 def update():
-
     with open("studrec.dat", "rb+") as File:
         value = pickle.load(File)
         found = False
         roll = int(input("Enter the roll number of the record"))
-        
+
         for i in value:
             if roll == i[0]:
                 print(f"current name {i[1]}")

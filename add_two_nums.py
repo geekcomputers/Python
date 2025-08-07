@@ -1,9 +1,8 @@
 __author__ = "Nitkarsh Chourasia"
 __version__ = "1.0"
-def addition(
-        num1: typing.Union[int, float],
-        num2: typing.Union[int, float]
-) -> str:
+
+
+def addition(num1: typing.Union[int, float], num2: typing.Union[int, float]) -> str:
     """A function to add two given numbers."""
 
     # Checking if the given parameters are numerical or not.

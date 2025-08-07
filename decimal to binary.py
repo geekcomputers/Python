@@ -3,7 +3,7 @@ def decimalToBinary(num):
     to binary and prints it"""
     if num > 1:
         decimalToBinary(num // 2)
-    print(num % 2, end='')
+    print(num % 2, end="")
 
 
 # decimal number

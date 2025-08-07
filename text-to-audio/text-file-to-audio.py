@@ -8,7 +8,7 @@ mytextfile = "hello.txt"
 language = "en"
 
 # Get the contents of your file
-with open(mytextfile, 'r') as f:
+with open(mytextfile, "r") as f:
     mytext = f.read()
     f.close()
 

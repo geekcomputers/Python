@@ -14,6 +14,7 @@ Usage:
 
 enter index of article you would like to see, or 'r' for retry and 'n' for exit.
 """
+
 import requests
 import webbrowser
 

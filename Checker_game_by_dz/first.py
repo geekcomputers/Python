@@ -16,6 +16,7 @@ fps = 60
 WIN = pg.display.set_mode((st.width, st.height))
 pg.display.set_caption("Checkers")
 
+
 # get row and col for mouse
 def get_row_col_mouse(pos):
     x, y = pos
@@ -26,7 +27,6 @@ def get_row_col_mouse(pos):
 
 # main function
 if __name__ == "__main__":
-
     # represents the game
     run = True
 

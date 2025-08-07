@@ -2,9 +2,11 @@ import pandas as pd
 
 # loading the dataset
 
-df= pd.read_csv(r"c:\PROJECT\Drug_Recommendation_System\drug_recommendation_system\Drugs_Review_Datasets.csv")
+df = pd.read_csv(
+    r"c:\PROJECT\Drug_Recommendation_System\drug_recommendation_system\Drugs_Review_Datasets.csv"
+)
 
-print(df) #prints Dataset
+print(df)  # prints Dataset
 # funtions
 print(df.tail())
 print(df.head())

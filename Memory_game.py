@@ -28,10 +28,26 @@ font_small = pygame.font.Font(None, 30)
 
 # Liste des questions et réponses (préférences)
 questions = [
-    {"question": "Quelle est sa couleur préférée ?", "réponse": "Rose", "image": "rose.jpg"},
-    {"question": "Quel est son plat préféré ?", "réponse": "Pizza", "image": "pizza.jpg"},
-    {"question": "Quel est son animal préféré ?", "réponse": "Chat", "image": "chat.jpg"},
-    {"question": "Quel est son film préféré ?", "réponse": "La La Land", "image": "lalaland.jpg"}
+    {
+        "question": "Quelle est sa couleur préférée ?",
+        "réponse": "Rose",
+        "image": "rose.jpg",
+    },
+    {
+        "question": "Quel est son plat préféré ?",
+        "réponse": "Pizza",
+        "image": "pizza.jpg",
+    },
+    {
+        "question": "Quel est son animal préféré ?",
+        "réponse": "Chat",
+        "image": "chat.jpg",
+    },
+    {
+        "question": "Quel est son film préféré ?",
+        "réponse": "La La Land",
+        "image": "lalaland.jpg",
+    },
 ]
 
 # Créer les cartes avec des questions et réponses
@@ -46,10 +62,12 @@ random.shuffle(cards)
 # Créer un dictionnaire pour les positions des cartes
 card_positions = [(x * CARD_SIZE, y * CARD_SIZE) for x in range(4) for y in range(4)]
 
+
 # Fonction pour afficher le texte
 def display_text(text, font, color, x, y):
     text_surface = font.render(text, True, color)
     screen.blit(text_surface, (x, y))
+
 
 # Fonction pour dessiner les cartes
 def draw_cards():
@@ -59,8 +77,11 @@ def draw_cards():
             pygame.draw.rect(screen, WHITE, pygame.Rect(x, y, CARD_SIZE, CARD_SIZE))
             display_text(cards[idx], font, PINK, x + 10, y + 30)
         else:
-            pygame.draw.rect(screen, LIGHT_PINK, pygame.Rect(x, y, CARD_SIZE, CARD_SIZE))
+            pygame.draw.rect(
+                screen, LIGHT_PINK, pygame.Rect(x, y, CARD_SIZE, CARD_SIZE)
+            )
             pygame.draw.rect(screen, GREY, pygame.Rect(x, y, CARD_SIZE, CARD_SIZE), 5)
+
 
 # Variables du jeu
 visible = [False] * len(cards)
@@ -96,10 +117,34 @@ while running:
                     flipped_cards.clear()
 
     if score == len(questions):
-        display_text("Félicitations ! Vous êtes officiellement le plus grand fan de Malak.", font, PINK, 100, HEIGHT // 2)
-        display_text("Mais… Pour accéder au prix ultime (photo ultra exclusive + certificat de starlette n°1),", font_small, PINK, 30, HEIGHT // 2 + 40)
-        display_text("veuillez envoyer 1000$ à Malak Inc.", font_small, PINK, 150, HEIGHT // 2 + 70)
-        display_text("(paiement accepté en chocolat, câlins ou virement bancaire immédiat)", font_small, PINK, 100, HEIGHT // 2 + 100)
+        display_text(
+            "Félicitations ! Vous êtes officiellement le plus grand fan de Malak.",
+            font,
+            PINK,
+            100,
+            HEIGHT // 2,
+        )
+        display_text(
+            "Mais… Pour accéder au prix ultime (photo ultra exclusive + certificat de starlette n°1),",
+            font_small,
+            PINK,
+            30,
+            HEIGHT // 2 + 40,
+        )
+        display_text(
+            "veuillez envoyer 1000$ à Malak Inc.",
+            font_small,
+            PINK,
+            150,
+            HEIGHT // 2 + 70,
+        )
+        display_text(
+            "(paiement accepté en chocolat, câlins ou virement bancaire immédiat)",
+            font_small,
+            PINK,
+            100,
+            HEIGHT // 2 + 100,
+        )
         pygame.display.update()
         pygame.time.delay(3000)
         running = False

@@ -16,6 +16,7 @@ from _winreg import *  # Load the Module
 
 from winreg import OpenKey, HKEY_LOCAL_MACHINE, QueryValueEx
 
+
 def sid2user(sid):  # Start of the function to gather the user
     try:
         key = OpenKey(

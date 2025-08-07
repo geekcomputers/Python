@@ -3,6 +3,7 @@ __author__ = "Himanshu Gupta"
 __version__ = "1.0.0"
 __date__ = "2023-09-03"
 
+
 def binaryExponentiation(x: float, n: int) -> float:
     """
     Function to calculate x raised to the power n (i.e., x^n) where x is a float number and n is an integer and it will return float value
@@ -49,10 +50,9 @@ if __name__ == "__main__":
     print(f"Version: {__version__}")
     print(f"Function Documentation: {binaryExponentiation.__doc__}")
     print(f"Date: {__date__}")
-    
-    print() # Blank Line
+
+    print()  # Blank Line
 
     print(binaryExponentiation(2.00000, 10))
     print(binaryExponentiation(2.10000, 3))
     print(binaryExponentiation(2.00000, -2))
- 

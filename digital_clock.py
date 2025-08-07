@@ -20,6 +20,7 @@ root.title("Clock")
 
 # master
 
+
 # This function is used to
 # display time on the label
 def def_time():
@@ -50,7 +51,6 @@ label.grid(row=0, column=1)
 
 # function to declare the tkniter clock
 def dig_clock():
-
     text_input = time.strftime("%H : %M : %S")  # get the current local time from the PC
 
     label.config(text=text_input)

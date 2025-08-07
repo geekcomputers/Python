@@ -16,7 +16,7 @@ primeFactorization(number)
 greatestPrimeFactor(number)
 smallestPrimeFactor(number)
 getPrime(n)
-getPrimesBetween(pNumber1, pNumber2) 
+getPrimesBetween(pNumber1, pNumber2)
 
 ----
 
@@ -51,7 +51,7 @@ def pi(maxK=70, prec=1008, disp=1007):
     gc().prec = prec
     K, M, L, X, S = 6, 1, 13591409, 1, 13591409
     for k in range(1, maxK + 1):
-        M = Dec((K ** 3 - (K << 4)) * M / k ** 3)
+        M = Dec((K**3 - (K << 4)) * M / k**3)
         L += 545140134
         X *= -262537412640768000
         S += Dec(M * L) / X
@@ -68,9 +68,9 @@ def isPrime(number):
     """
 
     # precondition
-    assert isinstance(number, int) and (
-        number >= 0
-    ), "'number' must been an int and positive"
+    assert isinstance(number, int) and (number >= 0), (
+        "'number' must been an int and positive"
+    )
 
     # 0 and 1 are none primes.
     if number <= 3:
@@ -138,7 +138,6 @@ def getPrimeNumbers(N):
     # iterates over all numbers between 2 up to N+1
     # if a number is prime then appends to list 'ans'
     for number in range(2, N + 1):
-
         if isPrime(number):
             ans.append(number)
 
@@ -169,14 +168,11 @@ def primeFactorization(number):
     quotient = number
 
     if number == 0 or number == 1:
-
         ans.append(number)
 
     # if 'number' not prime then builds the prime factorization of 'number'
     elif not isPrime(number):
-
         while quotient != 1:
-
             if isPrime(factor) and (quotient % factor == 0):
                 ans.append(factor)
                 quotient /= factor
@@ -202,9 +198,9 @@ def greatestPrimeFactor(number):
     """
 
     # precondition
-    assert isinstance(number, int) and (
-        number >= 0
-    ), "'number' bust been an int and >= 0"
+    assert isinstance(number, int) and (number >= 0), (
+        "'number' bust been an int and >= 0"
+    )
 
     ans = 0
 
@@ -229,9 +225,9 @@ def smallestPrimeFactor(number):
     """
 
     # precondition
-    assert isinstance(number, int) and (
-        number >= 0
-    ), "'number' bust been an int and >= 0"
+    assert isinstance(number, int) and (number >= 0), (
+        "'number' bust been an int and >= 0"
+    )
 
     ans = 0
 
@@ -289,9 +285,9 @@ def goldbach(number):
     """
 
     # precondition
-    assert (
-        isinstance(number, int) and (number > 2) and isEven(number)
-    ), "'number' must been an int, even and > 2"
+    assert isinstance(number, int) and (number > 2) and isEven(number), (
+        "'number' must been an int, even and > 2"
+    )
 
     ans = []  # this list will returned
 
@@ -307,11 +303,9 @@ def goldbach(number):
     loop = True
 
     while i < lenPN and loop:
-
         j = i + 1
 
         while j < lenPN and loop:
-
             if primeNumbers[i] + primeNumbers[j] == number:
                 loop = False
                 ans.append(primeNumbers[i])
@@ -359,9 +353,9 @@ def gcd(number1, number2):
         number2 = rest
 
     # precondition
-    assert isinstance(number1, int) and (
-        number1 >= 0
-    ), "'number' must been from type int and positive"
+    assert isinstance(number1, int) and (number1 >= 0), (
+        "'number' must been from type int and positive"
+    )
 
     return number1
 
@@ -388,13 +382,11 @@ def kgV(number1, number2):
 
     # for kgV (x,1)
     if number1 > 1 and number2 > 1:
-
         # builds the prime factorization of 'number1' and 'number2'
         primeFac1 = primeFactorization(number1)
         primeFac2 = primeFactorization(number2)
 
     elif number1 == 1 or number2 == 1:
-
         primeFac1 = []
         primeFac2 = []
         ans = max(number1, number2)
@@ -406,11 +398,8 @@ def kgV(number1, number2):
 
     # iterates through primeFac1
     for n in primeFac1:
-
         if n not in done:
-
             if n in primeFac2:
-
                 count1 = primeFac1.count(n)
                 count2 = primeFac2.count(n)
 
@@ -418,7 +407,6 @@ def kgV(number1, number2):
                     ans *= n
 
             else:
-
                 count1 = primeFac1.count(n)
 
                 for i in range(count1):
@@ -428,9 +416,7 @@ def kgV(number1, number2):
 
     # iterates through primeFac2
     for n in primeFac2:
-
         if n not in done:
-
             count2 = primeFac2.count(n)
 
             for i in range(count2):
@@ -439,9 +425,9 @@ def kgV(number1, number2):
             done.append(n)
 
     # precondition
-    assert isinstance(ans, int) and (
-        ans >= 0
-    ), "'ans' must been from type int and positive"
+    assert isinstance(ans, int) and (ans >= 0), (
+        "'ans' must been from type int and positive"
+    )
 
     return ans
 
@@ -463,7 +449,6 @@ def getPrime(n):
     ans = 2  # this variable holds the answer
 
     while index < n:
-
         index += 1
 
         ans += 1  # counts to the next number
@@ -474,9 +459,9 @@ def getPrime(n):
             ans += 1
 
     # precondition
-    assert isinstance(ans, int) and isPrime(
-        ans
-    ), "'ans' must been a prime number and from type int"
+    assert isinstance(ans, int) and isPrime(ans), (
+        "'ans' must been a prime number and from type int"
+    )
 
     return ans
 
@@ -493,9 +478,9 @@ def getPrimesBetween(pNumber1, pNumber2):
     """
 
     # precondition
-    assert (
-        isPrime(pNumber1) and isPrime(pNumber2) and (pNumber1 < pNumber2)
-    ), "The arguments must been prime numbers and 'pNumber1' < 'pNumber2'"
+    assert isPrime(pNumber1) and isPrime(pNumber2) and (pNumber1 < pNumber2), (
+        "The arguments must been prime numbers and 'pNumber1' < 'pNumber2'"
+    )
 
     number = pNumber1 + 1  # jump to the next number
 
@@ -507,7 +492,6 @@ def getPrimesBetween(pNumber1, pNumber2):
         number += 1
 
     while number < pNumber2:
-
         ans.append(number)
 
         number += 1
@@ -540,7 +524,6 @@ def getDivisors(n):
     ans = []  # will be returned.
 
     for divisor in range(1, n + 1):
-
         if n % divisor == 0:
             ans.append(divisor)
 
@@ -560,9 +543,9 @@ def isPerfectNumber(number):
     """
 
     # precondition
-    assert isinstance(number, int) and (
-        number > 1
-    ), "'number' must been an int and >= 1"
+    assert isinstance(number, int) and (number > 1), (
+        "'number' must been an int and >= 1"
+    )
 
     divisors = getDivisors(number)
 

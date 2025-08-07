@@ -39,9 +39,9 @@ def test_parse_word_from_local() -> None:
 
 
 def test_parse_word_from_local_error() -> None:
-    data_path = Path(os.path.abspath('')) / 'Data'
-    real_name = 'local_words.txt'
-    time_name = 'local_words_not_exist.txt'
+    data_path = Path(os.path.abspath("")) / "Data"
+    real_name = "local_words.txt"
+    time_name = "local_words_not_exist.txt"
 
     os.rename(data_path / real_name, data_path / time_name)
     with pytest.raises(FileNotFoundError):
@@ -56,50 +56,60 @@ def test_parse_word_from_site() -> None:
 
 def test_parse_word_from_site_no_internet() -> None:
     with requests_mock.Mocker() as mock:
-        mock.get('https://random-word-api.herokuapp.com/word', text='["some text"]')
-        assert parse_word_from_site() == 'some text'
+        mock.get("https://random-word-api.herokuapp.com/word", text='["some text"]')
+        assert parse_word_from_site() == "some text"
 
 
 def test_parse_word_from_site_err() -> None:
     with pytest.raises(RuntimeError):
-        parse_word_from_site(url='https://www.google.com/dsfsdfds/sdfsdf/sdfds')
+        parse_word_from_site(url="https://www.google.com/dsfsdfds/sdfsdf/sdfds")
 
 
 def test_get_word(choice_fn: Callable) -> None:
     fk_print = FkPrint()
-    fk_input = FkInput(['none'])
-    main_process = MainProcess(Source(1), pr_func=fk_print, in_func=fk_input, ch_func=choice_fn)
+    fk_input = FkInput(["none"])
+    main_process = MainProcess(
+        Source(1), pr_func=fk_print, in_func=fk_input, ch_func=choice_fn
+    )
 
     assert isinstance(main_process.get_word(), str)
 
 
 def test_start_game_win(choice_fn: Callable) -> None:
     fk_print = FkPrint()
-    fk_input = FkInput(['j', 'a', 'm'])
-    main_process = MainProcess(Source(0), pr_func=fk_print, in_func=fk_input, ch_func=choice_fn)
+    fk_input = FkInput(["j", "a", "m"])
+    main_process = MainProcess(
+        Source(0), pr_func=fk_print, in_func=fk_input, ch_func=choice_fn
+    )
 
     main_process.start_game()
 
-    assert 'YOU WON' in fk_print.container[-1]
+    assert "YOU WON" in fk_print.container[-1]
 
 
-@pytest.mark.parametrize('input_str', [[letter] * 10 for letter in 'qwertyuiopasdfghjklzxcvbnm'])  # noqa: WPS435
+@pytest.mark.parametrize(
+    "input_str", [[letter] * 10 for letter in "qwertyuiopasdfghjklzxcvbnm"]
+)  # noqa: WPS435
 def test_start_game_loose(input_str: List[str], choice_fn: Callable) -> None:
     fk_print = FkPrint()
     fk_input = FkInput(input_str)
-    main_process = MainProcess(Source(0), pr_func=fk_print, in_func=fk_input, ch_func=choice_fn)
+    main_process = MainProcess(
+        Source(0), pr_func=fk_print, in_func=fk_input, ch_func=choice_fn
+    )
 
     main_process.start_game()
 
-    assert 'YOU LOST' in fk_print.container[-1]
+    assert "YOU LOST" in fk_print.container[-1]
 
 
 def test_wow_year(freezer, choice_fn: Callable) -> None:
-    freezer.move_to('2135-10-17')
+    freezer.move_to("2135-10-17")
     fk_print = FkPrint()
-    fk_input = FkInput(['none'] * 100)  # noqa: WPS435
-    main_process = MainProcess(Source(0), pr_func=fk_print, in_func=fk_input, ch_func=choice_fn)
+    fk_input = FkInput(["none"] * 100)  # noqa: WPS435
+    main_process = MainProcess(
+        Source(0), pr_func=fk_print, in_func=fk_input, ch_func=choice_fn
+    )
 
     main_process.start_game()
 
-    assert 'this program' in fk_print.container[0]
+    assert "this program" in fk_print.container[0]

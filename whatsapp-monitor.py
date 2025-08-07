@@ -1,11 +1,11 @@
 #! /usr/bin/python3
 
 """
-Author- Tony Stark 
+Author- Tony Stark
 
 download https://github.com/mozilla/geckodriver/releases
 
-set path paste binary file /usr/local/bin 
+set path paste binary file /usr/local/bin
 
 install requirements: python -m pip install selenium
 
@@ -19,7 +19,6 @@ driver.get("http://web.whatsapp.com")
 name = input("Please Enter Name for search online status: ")
 
 while True:
-
     try:
         chat = driver.find_element_by_xpath(
             "/html/body/div[1]/div/div/div[3]/div/header/div[2]/div/span/div[2]/div"

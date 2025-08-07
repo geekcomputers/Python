@@ -1,12 +1,13 @@
 import sqlite3
 import json
 
+
 class AutoComplete:
     """
     It works by building a `WordMap` that stores words to word-follower-count
     ----------------------------
     e.g. To train the following statement:
-    
+
     It is not enough to just know how tools work and what they worth,
     we have got to learn how to use them and to use them well.
     And with all these new weapons in your arsenal, we would better
@@ -46,9 +47,21 @@ class AutoComplete:
 
         if not tables_exist:
             self.conn.execute("CREATE TABLE WordMap(name TEXT, value TEXT)")
-            self.conn.execute('CREATE TABLE WordPrediction (name TEXT, value TEXT)')
-            cur.execute("INSERT INTO WordMap VALUES (?, ?)", ("wordsmap", "{}",))
-            cur.execute("INSERT INTO WordPrediction VALUES (?, ?)", ("predictions", "{}",))
+            self.conn.execute("CREATE TABLE WordPrediction (name TEXT, value TEXT)")
+            cur.execute(
+                "INSERT INTO WordMap VALUES (?, ?)",
+                (
+                    "wordsmap",
+                    "{}",
+                ),
+            )
+            cur.execute(
+                "INSERT INTO WordPrediction VALUES (?, ?)",
+                (
+                    "predictions",
+                    "{}",
+                ),
+            )
 
     def train(self, sentence):
         """
@@ -66,14 +79,18 @@ class AutoComplete:
         cur = self.conn.cursor()
         words_list = sentence.split(" ")
 
-        words_map = cur.execute("SELECT value FROM WordMap WHERE name='wordsmap'").fetchone()[0]
+        words_map = cur.execute(
+            "SELECT value FROM WordMap WHERE name='wordsmap'"
+        ).fetchone()[0]
         words_map = json.loads(words_map)
 
-        predictions = cur.execute("SELECT value FROM WordPrediction WHERE name='predictions'").fetchone()[0]
+        predictions = cur.execute(
+            "SELECT value FROM WordPrediction WHERE name='predictions'"
+        ).fetchone()[0]
         predictions = json.loads(predictions)
 
-        for idx in range(len(words_list)-1):
-            curr_word, next_word = words_list[idx], words_list[idx+1]
+        for idx in range(len(words_list) - 1):
+            curr_word, next_word = words_list[idx], words_list[idx + 1]
             if curr_word not in words_map:
                 words_map[curr_word] = {}
             if next_word not in words_map[curr_word]:
@@ -84,20 +101,30 @@ class AutoComplete:
             # checking the completion word against the next word
             if curr_word not in predictions:
                 predictions[curr_word] = {
-                    'completion_word': next_word,
-                    'completion_count': 1
+                    "completion_word": next_word,
+                    "completion_count": 1,
                 }
             else:
-                if words_map[curr_word][next_word] > predictions[curr_word]['completion_count']:
-                    predictions[curr_word]['completion_word'] = next_word
-                    predictions[curr_word]['completion_count'] = words_map[curr_word][next_word]
+                if (
+                    words_map[curr_word][next_word]
+                    > predictions[curr_word]["completion_count"]
+                ):
+                    predictions[curr_word]["completion_word"] = next_word
+                    predictions[curr_word]["completion_count"] = words_map[curr_word][
+                        next_word
+                    ]
 
         words_map = json.dumps(words_map)
         predictions = json.dumps(predictions)
 
-        cur.execute("UPDATE WordMap SET value = (?) WHERE name='wordsmap'", (words_map,))
-        cur.execute("UPDATE WordPrediction SET value = (?) WHERE name='predictions'", (predictions,))
-        return("training complete")
+        cur.execute(
+            "UPDATE WordMap SET value = (?) WHERE name='wordsmap'", (words_map,)
+        )
+        cur.execute(
+            "UPDATE WordPrediction SET value = (?) WHERE name='predictions'",
+            (predictions,),
+        )
+        return "training complete"
 
     def predict(self, word):
         """
@@ -110,11 +137,12 @@ class AutoComplete:
         - returns the completion word of the input word
         """
         cur = self.conn.cursor()
-        predictions = cur.execute("SELECT value FROM WordPrediction WHERE name='predictions'").fetchone()[0]
+        predictions = cur.execute(
+            "SELECT value FROM WordPrediction WHERE name='predictions'"
+        ).fetchone()[0]
         predictions = json.loads(predictions)
-        completion_word = predictions[word.lower()]['completion_word']
+        completion_word = predictions[word.lower()]["completion_word"]
         return completion_word
-
 
 
 if __name__ == "__main__":

@@ -2,7 +2,6 @@
 
 
 def SOUNDEX(TERM: str):
-
     # Step 0: Covert the TERM to UpperCase
     TERM = TERM.upper()
     TERM_LETTERS = [char for char in TERM if char.isalpha()]

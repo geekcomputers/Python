@@ -1,11 +1,11 @@
 """
  Pygame base template for opening a window
- 
+
  Sample Python/Pygame Programs
  Simpson College Computer Science
  http://programarcadegames.com/
  http://simpson.edu/computer-science/
- 
+
  Explanation video: http://youtu.be/vRB_983kUMc
 
 -------------------------------------------------
@@ -345,7 +345,6 @@ while not done:
         are both in the same section.
     """
     if gameStatus:
-
         # first draws ball for appropriate displaying the score.
         brickWall.draw()
 

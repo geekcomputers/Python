@@ -25,7 +25,7 @@ if sinput == "1":
     b = int(input("What is value of b?"))
     c = int(input("What is value of c?"))
 
-    D = b ** 2 - 4 * a * c
+    D = b**2 - 4 * a * c
 
     if D < 0:
         print("No real values of x satisfies your equation.")

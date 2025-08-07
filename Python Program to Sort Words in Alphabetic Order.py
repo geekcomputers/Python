@@ -1,23 +1,23 @@
 # Program to sort words alphabetically and put them in a dictionary with corresponding numbered keys
-# We are also removing punctuation to ensure the desired output, without importing a library for assistance. 
+# We are also removing punctuation to ensure the desired output, without importing a library for assistance.
 
 # Declare base variables
 word_Dict = {}
 count = 0
 my_str = "Hello this Is an Example With cased letters. Hello, this is a good string"
-#Initialize punctuation
-punctuations = '''!()-[]{};:'",<>./?@#$%^&*_~'''
+# Initialize punctuation
+punctuations = """!()-[]{};:'",<>./?@#$%^&*_~"""
 
 # To take input from the user
-#my_str = input("Enter a string: ")
+# my_str = input("Enter a string: ")
 
 # remove punctuation from the string and use an empty variable to put the alphabetic characters into
 no_punct = ""
 for char in my_str:
-   if char not in punctuations:
-       no_punct = no_punct + char
+    if char not in punctuations:
+        no_punct = no_punct + char
 
-# Make all words in string lowercase. my_str now equals the original string without the punctuation 
+# Make all words in string lowercase. my_str now equals the original string without the punctuation
 my_str = no_punct.lower()
 
 # breakdown the string into a list of words
@@ -36,7 +36,7 @@ for word in words:
 # insert sorted words into dictionary with key
 
 for word in new_Word_List:
-    count+=1
+    count += 1
     word_Dict[count] = word
 
 print(word_Dict)

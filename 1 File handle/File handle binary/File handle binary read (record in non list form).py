@@ -2,7 +2,7 @@ import pickle
 
 
 def binary_read():
-    with open("studrec.dat","rb") as b:
+    with open("studrec.dat", "rb") as b:
         stud = pickle.load(b)
         print(stud)
 
@@ -10,7 +10,6 @@ def binary_read():
         print("contents of binary file")
 
         for ch in stud:
-
             print(ch)  # prints one of the chosen rec in list
 
             rno = ch[0]
