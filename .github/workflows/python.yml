@@ -23,10 +23,16 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-python-
 
-      - name: Install dependencies and linters
+      - name: Install all dependencies and tools
         run: |
           python -m pip install --upgrade pip
           pip install ruff bandit mypy pytest codespell
+
+      - name: Run Codespell check
+        run: codespell || true
+
+      - name: Run Bandit security scan
+        run: bandit -r . || true
 
       - name: Run Ruff checks with ignored rules
         run: |
@@ -34,12 +40,6 @@ jobs:
 
       - name: Run Mypy type checks
         run: mypy . --ignore-missing-imports || true
-
-      - name: Run Codespell check
-        run: codespell || true
-
-      - name: Run Bandit security scan
-        run: bandit -r . || true
 
       - name: Run Pytest tests
         run: pytest
