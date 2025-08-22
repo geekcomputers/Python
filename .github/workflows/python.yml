@@ -2,7 +2,7 @@ name: Python Checks
 
 on:
   pull_request:
-    types: [opened, synchronize, reopened]  # PR 有代码变化时运行
+    types: [opened, synchronize, reopened]
   push:
     branches:
       - main 
