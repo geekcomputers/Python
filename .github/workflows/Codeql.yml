@@ -1,4 +1,4 @@
-name: "CodeQL"
+name: "CodeQL Full Scan with PR Comments (Ultimate Version)"
 
 on:
   pull_request:
@@ -14,16 +14,40 @@ jobs:
       cancel-in-progress: true
 
     steps:
+      # 1️⃣ Checkout the repository
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      # 2️⃣ Initialize CodeQL
       - name: Initialize CodeQL
         uses: github/codeql-action/init@v3
         with:
-          languages: python
+          languages: ["python","javascript"]  # Add more languages if needed
 
+      # 3️⃣ Auto-build the project for CodeQL
       - name: Autobuild
         uses: github/codeql-action/autobuild@v3
 
+      # 4️⃣ Perform CodeQL analysis and generate SARIF report
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v3
+        with:
+          output: results.sarif
+          upload-sarif: true  # Upload to GitHub Security tab
+
+      # 5️⃣ Comment Top-N alerts per file + PR summary + file severity overview + overflow notice
+      - name: Comment CodeQL Alerts with Top-N and File Severity Overview
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          path: results.sarif
+          header: "### :shield: CodeQL Security Alerts Summary"
+          layout: "group-by-file"
+          format: "markdown-table"
+          sort-severity: true                   # Sort alerts: Critical → High → Medium → Low
+          highlight: "Critical,High"           # Highlight most severe alerts
+          collapse: "Medium,Low"               # Collapse medium/low severity alerts
+          max-items-per-file: 5                 # Display top 5 alerts per file
+          show-summary: true                    # Show total alert summary table for the PR
+          show-file-overview: true              # Show file-level Critical/High counts
+          overflow-text: "+{remaining} more alerts in this file"  # Folded notice for extra alerts
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
