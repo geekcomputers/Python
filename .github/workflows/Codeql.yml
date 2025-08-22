@@ -1,0 +1,54 @@
+name: "CodeQL Python Security Scan (Top-N + PR Comment)"
+
+on:
+  pull_request:
+    branches: [ main, master ]
+    types: [opened, synchronize, reopened]
+  push:
+    branches: [ main, master ]
+
+permissions:
+  contents: read
+  actions: read
+  security-events: write
+
+jobs:
+  codeql-analysis:
+    name: "CodeQL Analysis (Python)"
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
+    - name: Initialize CodeQL
+      uses: github/codeql-action/init@v3
+      with:
+        languages: python
+
+    - name: Autobuild
+      uses: github/codeql-action/autobuild@v3
+
+    - name: Perform CodeQL Analysis
+      uses: github/codeql-action/analyze@v3
+      with:
+        upload: true
+
+    - name: Comment CodeQL Alerts on PR
+      if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository
+      uses: marocchino/sticky-pull-request-comment@v2
+      with:
+        path: results.sarif
+        header: "### :shield: CodeQL Python Security Alerts Summary"
+        layout: "group-by-file"
+        format: "markdown-table"
+        sort-severity: true
+        highlight: "Critical,High"
+        collapse: "Medium,Low"
+        max-items-per-file: 5
+        show-summary: true
+        show-file-overview: true
+        overflow-text: "+{remaining} more alerts in this file"
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
