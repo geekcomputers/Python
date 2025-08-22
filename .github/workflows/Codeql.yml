@@ -1,57 +1,57 @@
-name: "CodeQL Security Scan"
+name: "CodeQL Python Security Scan (Top-N + PR Comment)"
 
 on:
   pull_request:
+    branches: [ main, master ]
     types: [opened, synchronize, reopened]
   push:
-    branches: [main, master]
+    branches: [ main, master ]
 
 permissions:
-  security-events: write
-  actions: read
   contents: read
+  actions: read
+  security-events: write
 
 jobs:
-  codeql:
-    name: "CodeQL Analysis"
+  codeql-analysis:
+    name: "CodeQL Analysis (Python)"
     runs-on: ubuntu-latest
-    if: github.event_name == 'push' || github.event.pull_request.head.repo.full_name == github.repository
-
-    concurrency:
-      group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
-      cancel-in-progress: true
+    if: >
+      github.event_name == 'push' ||
+      (github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository)
 
     steps:
-      # 1️⃣ Checkout the repository
-      - name: Checkout repository
-        uses: actions/checkout@v4
-        with:
-          # 必须深度检出以获取完整历史记录进行精确分析
-          fetch-depth: 0
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
 
-      # 2️⃣ Initialize CodeQL
-      - name: Initialize CodeQL
-        uses: github/codeql-action/init@v3
-        with:
-          languages: ["python","javascript"]
-          # 如果是私有仓库或需要认证的依赖，配置这里
-          # config-file: ./.github/codeql/codeql-config.yml
+    - name: Initialize CodeQL
+      uses: github/codeql-action/init@v3
+      with:
+        languages: python
 
-      # 3️⃣ Auto-build the project for CodeQL
-      - name: Autobuild
-        uses: github/codeql-action/autobuild@v3
+    - name: Autobuild
+      uses: github/codeql-action/autobuild@v3
 
-      # 4️⃣ Perform CodeQL analysis
-      - name: Perform CodeQL Analysis
-        uses: github/codeql-action/analyze@v3
-        with:
-          category: "/language:python_and_javascript"
-          # 上传结果到GitHub安全选项卡
-          upload: true
+    - name: Perform CodeQL Analysis
+      uses: github/codeql-action/analyze@v3
+      with:
+        upload-sarif: true
 
-      # 5️⃣ 可选：添加PR注释（仅当不是fork PR时）
-      - name: Comment PR with CodeQL results
-        if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository
-        uses: github/codeql-action/comment@v3
-        with:
-          moniker: codeql-analysis
+    - name: Comment CodeQL Alerts on PR
+      if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository
+      uses: marocchino/sticky-pull-request-comment@v2
+      with:
+        path: results.sarif
+        header: "### :shield: CodeQL Python Security Alerts Summary"
+        layout: "group-by-file"
+        format: "markdown-table"
+        sort-severity: true
+        highlight: "Critical,High"
+        collapse: "Medium,Low"
+        max-items-per-file: 5
+        show-summary: true
+        show-file-overview: true
+        overflow-text: "+{remaining} more alerts in this file"
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
