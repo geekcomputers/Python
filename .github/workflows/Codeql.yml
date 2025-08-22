@@ -1,4 +1,4 @@
-name: "CodeQL Full Scan with PR Comments (Ultimate Version)"
+name: "CodeQL code Scan"
 
 on:
   pull_request:
