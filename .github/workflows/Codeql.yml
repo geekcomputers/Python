@@ -1,53 +1,57 @@
-name: "CodeQL code Scan"
+name: "CodeQL Security Scan"
 
 on:
   pull_request:
     types: [opened, synchronize, reopened]
+  push:
+    branches: [main, master]
+
+permissions:
+  security-events: write
+  actions: read
+  contents: read
 
 jobs:
   codeql:
     name: "CodeQL Analysis"
     runs-on: ubuntu-latest
+    if: github.event_name == 'push' || github.event.pull_request.head.repo.full_name == github.repository
 
     concurrency:
-      group: ${{ github.workflow }}-${{ github.event.pull_request.number }}
+      group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
       cancel-in-progress: true
 
     steps:
       # 1️⃣ Checkout the repository
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          # 必须深度检出以获取完整历史记录进行精确分析
+          fetch-depth: 0
 
       # 2️⃣ Initialize CodeQL
       - name: Initialize CodeQL
         uses: github/codeql-action/init@v3
         with:
-          languages: ["python","javascript"]  # Add more languages if needed
+          languages: ["python","javascript"]
+          # 如果是私有仓库或需要认证的依赖，配置这里
+          # config-file: ./.github/codeql/codeql-config.yml
 
       # 3️⃣ Auto-build the project for CodeQL
       - name: Autobuild
         uses: github/codeql-action/autobuild@v3
 
-      # 4️⃣ Perform CodeQL analysis and generate SARIF report
+      # 4️⃣ Perform CodeQL analysis
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v3
         with:
-          output: results.sarif
-          upload-sarif: true  # Upload to GitHub Security tab
+          category: "/language:python_and_javascript"
+          # 上传结果到GitHub安全选项卡
+          upload: true
 
-      # 5️⃣ Comment Top-N alerts per file + PR summary + file severity overview + overflow notice
-      - name: Comment CodeQL Alerts with Top-N and File Severity Overview
-        uses: marocchino/sticky-pull-request-comment@v2
+      # 5️⃣ 可选：添加PR注释（仅当不是fork PR时）
+      - name: Comment PR with CodeQL results
+        if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository
+        uses: github/codeql-action/comment@v3
         with:
-          path: results.sarif
-          header: "### :shield: CodeQL Security Alerts Summary"
-          layout: "group-by-file"
-          format: "markdown-table"
-          sort-severity: true                   # Sort alerts: Critical → High → Medium → Low
-          highlight: "Critical,High"           # Highlight most severe alerts
-          collapse: "Medium,Low"               # Collapse medium/low severity alerts
-          max-items-per-file: 5                 # Display top 5 alerts per file
-          show-summary: true                    # Show total alert summary table for the PR
-          show-file-overview: true              # Show file-level Critical/High counts
-          overflow-text: "+{remaining} more alerts in this file"  # Folded notice for extra alerts
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          moniker: codeql-analysis
