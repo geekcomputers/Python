@@ -3,8 +3,6 @@
 wanna try some GUI based calculator, here is one!
 Try it, brake it. If you find some bug and have better way ahead, i welcome your change :)
 
-Install dependencies:
-    pip install kivy==2.3.1 kivymd==1.1.1
 
 """
 
@@ -111,7 +109,7 @@ class calculator(MDApp):
 
         try:
             self.root.ids.field.text = str(eval(raw))
-        except Exception:  # Fixed E722
+        except Exception:
             self.root.ids.field.text = "undefined"
 
 
