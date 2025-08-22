@@ -34,7 +34,7 @@ jobs:
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v3
       with:
-        upload-sarif: true
+        upload: true
 
     - name: Comment CodeQL Alerts on PR
       if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository
