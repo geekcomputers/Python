@@ -1,4 +1,4 @@
-name: "CodeQL Python Security Scan (Top-N)"
+name: "CodeQL Python Security Scan"
 
 on:
   pull_request:
@@ -27,6 +27,7 @@ jobs:
       uses: github/codeql-action/init@v3
       with:
         languages: python
+        queries: +security-extended,+security-and-quality
 
     - name: Autobuild
       uses: github/codeql-action/autobuild@v3
