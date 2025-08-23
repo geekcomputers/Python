@@ -1,4 +1,7 @@
 # My Python Eggs 🐍 😄
+[![CodeQL Python Security Scan (Top-N)](https://github.com/geekcomputers/Python/actions/workflows/Codeql.yml/badge.svg)](https://github.com/geekcomputers/Python/actions/workflows/Codeql.yml)
+[![Python Checks](https://github.com/geekcomputers/Python/actions/workflows/python.yml/badge.svg)](https://github.com/geekcomputers/Python/actions/workflows/python.yml)
+[![Dependabot Updates](https://github.com/geekcomputers/Python/actions/workflows/dependabot/dependabot-updates/badge.svg)](https://github.com/geekcomputers/Python/actions/workflows/dependabot/dependabot-updates)
 
 ## Project readme
 I do not consider myself as a programmer. I create these little programs as experiments to play with Python, or to solve problems for myself. I would gladly accept pointers from others to improve, simplify, or make the code more efficient. If you would like to make any comments then please feel free to email me: `craig@geekcomputers.co.uk.`
