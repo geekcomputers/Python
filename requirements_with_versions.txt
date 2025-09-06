@@ -20,7 +20,7 @@ fileinfo==0.3.3
 backend==0.2.4.1
 win10toast==0.9
 Counter==1.0.0
-Flask==3.1.1
+Flask==3.1.2
 selenium==4.35.0
 firebase-admin==7.1.0
 ujson==5.10.0
