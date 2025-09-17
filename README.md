@@ -171,3 +171,49 @@ Feel free to explore the scripts and use them for your learning and automation n
 <hr>
 
 _**Note**: The content in this repository belongs to the respective authors and creators. I'm just providing a formatted README.md for better presentation._
+
+## How to Run?
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/geekcomputers/Python.git
+   cd Python
+2. Choose a script to run  
+Each script in this repository is standalone and can be executed directly.
+
+## Dependencies  
+Most scripts in this repository rely only on the Python standard library, so they can usually run without installing extra packages.
+
+> **⚠️ Important**  
+> 
+> Some scripts may require additional Python libraries.  
+> The repository provides a dependency file (e.g., `requirements.txt`) as a reference, but it may not list all required packages.  
+> Check each script's header or comments for any extra dependencies that may need manual installation.  
+> 
+> To install the listed dependencies, run:  
+> 
+> ```bash  
+> pip install -r requirements.txt  
+> ```  
+> 
+> For any missing packages, install them manually:  
+> 
+> ```bash  
+> pip install <package-name>  
+> ```
+
+## python version support  
+
+> **Note**
+>
+> Python version support:  
+> Most scripts currently run on Python 3.6 and above.  
+> In future releases, the minimum supported Python version will gradually be updated to 3.9 or later.  
+
+## License  
+
+This project is licensed under the MIT License.  
+
+You are free to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the project, subject to the following conditions:  
+
+- The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.  
+- THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
