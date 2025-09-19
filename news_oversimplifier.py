@@ -11,7 +11,6 @@ from summa.summarizer import summarize
 
 
 def main():
-
     # loads .env variables
     load_dotenv()
     API_KEY = os.getenv("NEWS_API_KEY")
@@ -23,13 +22,13 @@ def main():
         else:
             raise IndexError()
     except IndexError:
-        sys.exit('Please provide correct number of command-line arguments')
+        sys.exit("Please provide correct number of command-line arguments")
 
     try:
         # get number of articles from user
         while True:
             try:
-                num_articles = int(input('Enter number of articles: '))
+                num_articles = int(input("Enter number of articles: "))
                 break
             except ValueError:
                 continue
@@ -40,28 +39,31 @@ def main():
         # output printing title, summary and no. of words in the summary
         for i, article in enumerate(articles):
             capitalized_title = capitalize_title(article["title"])
-            print(f"\n{i+1}. {capitalized_title}")
+            print(f"\n{i + 1}. {capitalized_title}")
 
             content = article.get("content") or article.get("description") or ""
             if not content.strip():
                 print("No content to oversimplify.")
                 continue
 
-            summary = summarize_text(content) # returns summary
-            count = word_count(summary) # returns word count
+            summary = summarize_text(content)  # returns summary
+            count = word_count(summary)  # returns word count
             print(f"\nOVERSIMPLIFIED:\n{summary}\n{count} words\n")
 
             # ask user whether they want to save the output in a txt file
             while True:
-                saving_status = input(
-                    "Would you like to save this in a text file? (y/n): ").strip().lower()
+                saving_status = (
+                    input("Would you like to save this in a text file? (y/n): ")
+                    .strip()
+                    .lower()
+                )
                 if saving_status == "y":
                     save_summary(article["title"], summary)
                     break
                 elif saving_status == "n":
                     break
                 else:
-                    print('Try again\n')
+                    print("Try again\n")
                     continue
 
     except Exception as e:
@@ -127,9 +129,7 @@ def fetch_news(api_key, query, max_articles=5):  # no pytest
     raises:
         Exception: If the API response status is not 'ok'.
     """
-    url = (
-        f"https://newsapi.org/v2/everything?q={query}&language=en&apiKey={api_key}&pageSize={max_articles}"
-    )
+    url = f"https://newsapi.org/v2/everything?q={query}&language=en&apiKey={api_key}&pageSize={max_articles}"
     response = requests.get(url)
     data = response.json()
     if data.get("status") != "ok":
@@ -147,7 +147,7 @@ def save_summary(title, summary, path="summaries.txt"):  # no pytest
         path (str): File path to save the summary, i.e. 'summaries.txt'
     """
     with open(path, "a", encoding="utf-8") as f:
-        f.write(f"{title}\n{summary}\n{'='*60}\n")
+        f.write(f"{title}\n{summary}\n{'=' * 60}\n")
 
 
 if __name__ == "__main__":
