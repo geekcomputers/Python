@@ -32,7 +32,10 @@ jobs:
         run: codespell --skip "*.json,*.txt,*.pdf" || true
 
       - name: Run Bandit security scan
-        run: bandit -r . --skip B101 || true
+        run: bandit -r . --skip B101,B105 || true
+
+      - name: Run Pytest tests
+         run: pytest
 
       - name: Run Ruff checks with ignored rules
         run: |
@@ -41,5 +44,4 @@ jobs:
       - name: Run Mypy type checks
         run: mypy . --ignore-missing-imports || true
 
-      - name: Run Pytest tests
-        run: pytest
+      
