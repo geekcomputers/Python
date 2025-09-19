@@ -5,7 +5,7 @@ on:
     types: [opened, synchronize, reopened]
   push:
     branches:
-      - main 
+      - main
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
@@ -35,7 +35,7 @@ jobs:
         run: bandit -r . --skip B101,B105 || true
 
       - name: Run Pytest tests
-         run: pytest
+        run: pytest
 
       - name: Run Ruff checks with ignored rules
         run: |
@@ -43,5 +43,3 @@ jobs:
 
       - name: Run Mypy type checks
         run: mypy . --ignore-missing-imports || true
-
-      
