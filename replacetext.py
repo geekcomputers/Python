@@ -1,11 +1,36 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# program to replace all the spaces in an entered string with a hyphen"-"
-def replacetext(string):
-    string = string.replace(" ", "-")
-    return string
+"""
+Replace all spaces in a string with hyphens.
+
+Example:
+    >>> replacetext("Hello World")
+    'Hello-World'
+    >>> replacetext("Python 3.13 is fun")
+    'Python-3.13-is-fun'
+"""
 
 
-S = input("Enter a text to replace all its spaces with hyphens: ")
-N = replacetext(S)
-print("The changed text is: ", N)
+def replacetext(text: str) -> str:
+    """
+    Replace spaces in a string with hyphens.
+
+    Parameters
+    ----------
+    text : str
+        Input string.
+
+    Returns
+    -------
+    str
+        String with spaces replaced by '-'.
+    """
+    return text.replace(" ", "-")
+
+
+if __name__ == "__main__":
+    import doctest
+
+    doctest.testmod()
+    user_input: str = input("Enter a text to replace spaces with hyphens: ")
+    print("The changed text is:", replacetext(user_input))

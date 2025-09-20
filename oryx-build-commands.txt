@@ -1,2 +1,0 @@
-PlatformWithVersion=Python 
-BuildCommands=conda env create --file environment.yml --prefix ./venv --quiet
