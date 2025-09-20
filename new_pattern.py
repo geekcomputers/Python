@@ -49,17 +49,18 @@ def pattern(lines: int) -> str:
         raise ValueError("Number of lines must be non-negative")
     if lines == 0:
         return ""
-    
+
     pattern_lines = []
     for i in range(lines, 0, -1):
         at_pattern = "@" * i
         dollar_pattern = "$" * (lines - i + 1)
         pattern_lines.append(f"{at_pattern}    {dollar_pattern}")
-    
+
     return "\n".join(pattern_lines)
 
 
 if __name__ == "__main__":
     import doctest
+
     doctest.testmod(verbose=True)
     main()
