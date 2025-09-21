@@ -43,16 +43,22 @@ class DatabaseManager:
 
     # ----------------- Admin -----------------
     def check_admin(self, name, password):
-        self.cur.execute("SELECT 1 FROM admin WHERE name=? AND pass=?", (name, password))
+        self.cur.execute(
+            "SELECT 1 FROM admin WHERE name=? AND pass=?", (name, password)
+        )
         return self.cur.fetchone() is not None
 
     # ----------------- Staff -----------------
     def create_employee(self, name, password, salary, position):
-        self.cur.execute("INSERT INTO staff VALUES (?, ?, ?, ?)", (name, password, salary, position))
+        self.cur.execute(
+            "INSERT INTO staff VALUES (?, ?, ?, ?)", (name, password, salary, position)
+        )
         self.conn.commit()
 
     def check_employee(self, name, password):
-        self.cur.execute("SELECT 1 FROM staff WHERE name=? AND pass=?", (name, password))
+        self.cur.execute(
+            "SELECT 1 FROM staff WHERE name=? AND pass=?", (name, password)
+        )
         return self.cur.fetchone() is not None
 
     def show_employees(self):
@@ -74,7 +80,7 @@ class DatabaseManager:
         acc_no = self.acc_no
         self.cur.execute(
             "INSERT INTO bank VALUES (?, ?, ?, ?, ?, ?, ?)",
-            (acc_no, name, age, address, balance, acc_type, mobile_number)
+            (acc_no, name, age, address, balance, acc_type, mobile_number),
         )
         self.conn.commit()
         self.acc_no += 1
@@ -95,18 +101,24 @@ class DatabaseManager:
     def update_customer(self, field, new_value, acc_no):
         if field not in {"name", "age", "address", "mobile_number", "account_type"}:
             raise ValueError("Invalid customer field")
-        self.cur.execute(f"UPDATE bank SET {field}=? WHERE acc_no=?", (new_value, acc_no))
+        self.cur.execute(
+            f"UPDATE bank SET {field}=? WHERE acc_no=?", (new_value, acc_no)
+        )
         self.conn.commit()
 
     def update_balance(self, amount, acc_no):
-        self.cur.execute("UPDATE bank SET balance = balance + ? WHERE acc_no=?", (amount, acc_no))
+        self.cur.execute(
+            "UPDATE bank SET balance = balance + ? WHERE acc_no=?", (amount, acc_no)
+        )
         self.conn.commit()
 
     def deduct_balance(self, amount, acc_no):
         self.cur.execute("SELECT balance FROM bank WHERE acc_no=?", (acc_no,))
         bal = self.cur.fetchone()
         if bal and bal[0] >= amount:
-            self.cur.execute("UPDATE bank SET balance=balance-? WHERE acc_no=?", (amount, acc_no))
+            self.cur.execute(
+                "UPDATE bank SET balance=balance-? WHERE acc_no=?", (amount, acc_no)
+            )
             self.conn.commit()
             return True
         return False

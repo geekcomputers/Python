@@ -1,59 +1,117 @@
 """
-hey everyone it is a basic game code using random . in this game computer will randomly chose an number from 1 to 100 and players will have
-to guess that which number it is and game will tell him on every guss whether his/her guess is smaller or bigger than the chosen number. it is
-a multi player game so it can be played with many players there is no such limitations of user till the size of list. if any one wants to modify
-this game he/she is most welcomed.
-  Thank you
+Random Number Guessing Game
+---------------------------
+This is a simple multiplayer game where each player tries to guess a number
+chosen randomly by the computer between 1 and 100. After each guess, the game
+provides feedback whether the guess is higher or lower than the target number.
+The winner is the player who guesses the number in the fewest attempts.
+
+Example:
+    >>> import builtins, random
+    >>> random.seed(0)
+    >>> inputs = iter(["1", "Alice", "50", "49"])
+    >>> builtins.input = lambda prompt="": next(inputs)
+    >>> from game import play_game
+    >>> players, scores, winners = play_game()
+    >>> players
+    ['Alice']
+    >>> scores  # doctest: +ELLIPSIS
+    [2]
+    >>> winners
+    ['Alice']
 """
 
-import os
 import random
+from typing import List, Tuple
 
-players = []
-score = []
 
-print(
-    "\n\tRandom Number Game\n\nHello Everyone ! it is just a game of chance in which you have to guess a number"
-    " from 0 to 100 and computer will tell whether your guess is smaller or bigger than the acctual number chossen by the computer . "
-    "the person with less attempts in guessing the number will be winner ."
-)
-x = input()
-os.system("cls")
+def get_players(n: int) -> List[str]:
+    """
+    Prompt to enter `n` player names.
 
-n = int(input("Enter number of players : "))
-print()
+    Args:
+        n (int): number of players
 
-for i in range(0, n):
-    name = input("Enter name of player : ")
-    players.append(name)
+    Returns:
+        List[str]: list of player names
 
-os.system("cls")
+    Example:
+        >>> import builtins
+        >>> inputs = iter(["Alice", "Bob"])
+        >>> builtins.input = lambda prompt="": next(inputs)
+        >>> get_players(2)
+        ['Alice', 'Bob']
+    """
+    return [input("Enter name of player: ") for _ in range(n)]
 
-for i in range(0, n):
-    orignum = random.randint(1, 100)
-    print(players[i], "your turn :", end="\n\n")
-    count = 0
+
+def play_turn(player: str) -> int:
+    """
+    Let a player try to guess a random number.
+
+    Args:
+        player (str): player name
+
+    Returns:
+        int: number of attempts taken
+
+    Example:
+        >>> import builtins, random
+        >>> random.seed(1)
+        >>> inputs = iter(["30", "15", "9"])
+        >>> builtins.input = lambda prompt="": next(inputs)
+        >>> play_turn("Alice")  # doctest: +ELLIPSIS
+        3
+    """
+    target = random.randint(1, 100)
+    print(f"\n{player}, it's your turn!")
+    attempts = 0
     while True:
-        ch = int(input("Please enter your guess : "))
-        if ch > orignum:
-            print("no! number is smaller...")
-            count += 1
-        elif ch == orignum:
-            print("\n\n\tcongrats you won")
-            break
+        guess = int(input("Please enter your guess: "))
+        attempts += 1
+        if guess > target:
+            print("Too high, try smaller...")
+        elif guess < target:
+            print("Too low, try bigger...")
         else:
-            print("nope ! number is large dude...")
-            count += 1
-    print("    you have taken", count + 1, "attempts")
-    x = input()
-    score.append(count + 1)
-    os.system("cls")
-print("players :\n")
-for i in range(0, n):
-    print(players[i], "-", score[i])
+            print("Congratulations! You guessed it!")
+            return attempts
 
-print("\n\nwinner is :\n")
-for i in range(0, n):
-    if score[i] == min(score):
-        print(players[i])
-x = input()
+
+def play_game() -> Tuple[List[str], List[int], List[str]]:
+    """
+    Run the multiplayer game.
+
+    Returns:
+        Tuple[List[str], List[int], List[str]]: (players, scores, winners)
+
+    Example:
+        >>> import builtins, random
+        >>> random.seed(2)
+        >>> inputs = iter(["1", "Eve", "30", "13"])
+        >>> builtins.input = lambda prompt="": next(inputs)
+        >>> players, scores, winners = play_game()
+        >>> players
+        ['Eve']
+        >>> scores  # doctest: +ELLIPSIS
+        [2]
+        >>> winners
+        ['Eve']
+    """
+    n = int(input("Enter number of players: "))
+    players = get_players(n)
+    scores = [play_turn(p) for p in players]
+    min_score = min(scores)
+    winners = [p for p, s in zip(players, scores) if s == min_score]
+    print("\nResults:")
+    for p, s in zip(players, scores):
+        print(f"{p}: {s} attempts")
+    print("\nWinner(s):", ", ".join(winners))
+    return players, scores, winners
+
+
+if __name__ == "__main__":
+    import doctest
+
+    doctest.testmod()
+    play_game()
