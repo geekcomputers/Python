@@ -2,8 +2,44 @@
 
 
 def selection_sort(arr: list) -> list:
+    """Sorts a list in ascending order using the selection sort algorithm.
+
+    Args:
+        arr: List of comparable elements (e.g., integers, strings).
+
+    Returns:
+        The sorted list (in-place modification).
+
+    Examples:
+    >>> selection_sort([])
+    []
+    >>> selection_sort([1])
+    [1]
+    >>> selection_sort([1, 2, 3, 4])
+    [1, 2, 3, 4]
+    >>> selection_sort([4, 3, 2, 1])
+    [1, 2, 3, 4]
+    >>> selection_sort([3, 1, 3, 2])
+    [1, 2, 3, 3]
+    >>> selection_sort([5, 5, 5, 5])
+    [5, 5, 5, 5]
+    >>> selection_sort([2, 4, 1, 3])
+    [1, 2, 3, 4]
+    >>> selection_sort([-1, -3, 0, 2])
+    [-3, -1, 0, 2]
+    >>> selection_sort([0, -5, 3, -2, 1])
+    [-5, -2, 0, 1, 3]
+    >>> selection_sort(["banana", "apple", "cherry"])
+    ['apple', 'banana', 'cherry']
+    >>> selection_sort(["Apple", "banana", "Cherry"])
+    ['Apple', 'Cherry', 'banana']
+    >>> selection_sort([2147483647, -2147483648, 0])
+    [-2147483648, 0, 2147483647]
+    """
+
     """TC : O(n^2)
     SC : O(1)"""
+
     n = len(arr)
     for i in range(n):
         for j in range(i + 1, n):
