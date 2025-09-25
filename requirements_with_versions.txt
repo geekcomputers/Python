@@ -51,7 +51,7 @@ pywifi==1.1.12
 patterns==0.3
 openai==1.107.1
 background==0.2.1
-pydantic==2.11.7
+pydantic==2.11.9
 openpyxl==3.1.2
 pytesseract==0.3.13
 requests-mock==1.12.1
