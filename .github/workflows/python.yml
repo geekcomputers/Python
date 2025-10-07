@@ -2,7 +2,7 @@ name: Code Quality & Auto-Format Checks
 
 on:
   pull_request: 
-     types: [opened, synchronize, reopened]
+    types: [opened, synchronize, reopened]
   push:
     branches: [ main, master ]
   pull_request:
