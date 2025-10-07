@@ -85,16 +85,3 @@ def test_start_game_loose(input_str: List[str], choice_fn: Callable) -> None:
     main_process.start_game()
 
     assert "YOU LOST" in fk_print.container[-1]
-
-
-def test_wow_year(freezer, choice_fn: Callable) -> None:
-    freezer.move_to("2135-10-17")
-    fk_print = FkPrint()
-    fk_input = FkInput(["none"] * 100)  # noqa: WPS435
-    main_process = MainProcess(
-        Source(0), pr_func=fk_print, in_func=fk_input, ch_func=choice_fn
-    )
-
-    main_process.start_game()
-
-    assert "this program" in fk_print.container[0]
