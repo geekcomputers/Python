@@ -1,242 +1,214 @@
 name: Code Quality & Auto-Format Checks
 
-# Trigger on push to main/master or PRs targeting these branches
 on:
   push:
     branches: [ main, master ]
   pull_request:
     branches: [ main, master ]
 
-# Shared environment variables (avoid duplicate hardcoding)
 env:
   PYTHON_VERSION: '3.13.7'
 
 jobs:
-  # Phase 1: Auto-format with ruff (runs first, controls downstream jobs)
+  # Phase 1: Ruff Auto-Format (no dependency file references)
   ruff-auto-format:
-    name: "📝 Ruff Auto-Format (With Auto-Commit)"
+    name: "📝 Ruff Auto-Format"
     runs-on: ubuntu-latest
-    # Grant write permission for auto-commit (critical for push)
     permissions:
-      contents: write  # Allows workflow to push formatting changes
-      pull-requests: read  # Optional: Reads PR info for branch targeting
+      contents: write  # For auto-commit
+      pull-requests: read
     outputs:
-      changes_made: ${{ steps.format-check.outputs.changes_made }}  # Track if formatting changes were applied
+      changes_made: ${{ steps.format-check.outputs.changes_made }}
     steps:
-      - name: Set up Python ${{ env.PYTHON_VERSION }}
+      - name: Checkout repository (critical for file access)
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+          ref: ${{ github.head_ref || github.ref }}
+          path: .  # Ensure repo is in default working dir
+
+      - name: Set up Python (no cache based on dependency files)
         uses: actions/setup-python@v4
         with:
           python-version: ${{ env.PYTHON_VERSION }}
-          cache: 'pip'  # Cache dependencies to speed up installs
+          # Removed `cache-dependency-path` (no requirements/pyproject to reference)
+          cache: 'pip'  # Still caches pip packages (e.g., ruff) for speed
 
-      - name: Install ruff (code formatter)
+      - name: Install ruff (direct install, no dependency files)
         run: pip install ruff
         env:
-          PIP_DISABLE_PIP_VERSION_CHECK: 1  # Skip pip version check for faster installs
+          PIP_DISABLE_PIP_VERSION_CHECK: 1
 
-      - name: Run ruff format & detect changes
+      - name: Run ruff format & check changes
         id: format-check
         run: |
-          echo "Running ruff format to fix code styling..."
-          ruff format .  # Apply formatting fixes
-          
-          # Check if any files were modified (avoids empty commits)
+          ruff format .
           if git diff --quiet --exit-code; then
             echo "changes_made=false" >> $GITHUB_OUTPUT
-            echo "✅ No formatting issues found. No commit needed."
           else
             echo "changes_made=true" >> $GITHUB_OUTPUT
-            echo "🔄 Formatting changes detected in these files:"
-            git diff --name-only  # List modified files for debugging
           fi
 
       - name: Auto-commit & push formatting changes
         if: steps.format-check.outputs.changes_made == 'true'
         run: |
-          # Configure Git committer info (required for commits)
-          git config --local user.name "GitHub Actions (Ruff Format)"
-          git config --local user.email "actions-ruff-format@github.com"
-          
-          # Commit and push changes
-          git add .
-          git commit -m "[auto] style: Fix code formatting with ruff"  # Clear commit message
-          git push
-          echo "✅ Formatting changes pushed successfully."
+          git config --local user.name "GitHub Actions"
+          git config --local user.email "actions@github.com"
+          git add . && git commit -m "[auto] Fix code format with ruff" && git push
 
-  # Phase 2: Install check tools (runs only after valid ruff-format triggers)
+  # Phase 2: Setup Check Tools (no dependency file checks)
   setup-check-tools:
-    name: "⚙️ Setup Code Check Tools"
-    needs: ruff-auto-format  # Depends on ruff-format completion
-    # Trigger conditions:
-    # - Run on direct pushes to main/master
-    # - Run on PRs only if: 1) ruff made changes, OR 2) PR was merged
+    name: "⚙️ Setup Check Tools"
+    needs: ruff-auto-format
     if: >
       (github.event_name == 'push') || 
-      (github.event_name == 'pull_request' && 
+      (github.event.pull_request && 
        (needs.ruff-auto-format.outputs.changes_made == 'true' || 
         github.event.pull_request.merged == true))
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository code
+      - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          path: .
+          fetch-depth: 1
 
-      - name: Set up Python ${{ env.PYTHON_VERSION }}
+      - name: Set up Python (no dependency file cache)
         uses: actions/setup-python@v4
         with:
           python-version: ${{ env.PYTHON_VERSION }}
-          cache: 'pip'  # Reuse cache from ruff-format job
+          cache: 'pip'  # Caches tools (codespell/bandit) for downstream jobs
 
-      - name: Install all code check tools
+      - name: Install check tools (direct install, no dependency files)
         run: |
           pip install codespell bandit mypy ruff pytest
         env:
           PIP_DISABLE_PIP_VERSION_CHECK: 1
 
-  # Non-blocking check: Spell check (fails won't stop workflow)
+  # --- Non-blocking Checks (no dependency file references) ---
   spell-check:
     name: "🔍 Spell Check (Non-Blocking)"
     needs: setup-check-tools
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository code
+      - name: Checkout repository
         uses: actions/checkout@v4
-
-      - name: Set up Python ${{ env.PYTHON_VERSION }}
+        with:
+          path: .
+      - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: ${{ env.PYTHON_VERSION }}
           cache: 'pip'
+      - name: Run codespell
+        run: codespell --skip="*.json,*.lock,*.csv" --ignore-words-list="xxx,yyy,zzz" --quiet-level=2 || true
 
-      - name: Run codespell (ignore common false positives)
-        run: |
-          codespell \
-            --skip="*.json,*.lock,*.csv" \  # Skip non-code files
-            --ignore-words-list="xxx,yyy,zzz" \  # Ignore custom false positives
-            --quiet-level=2 || true  # Non-blocking: continue if errors exist
-
-  # Non-blocking check: Security scan (fails won't stop workflow)
   security-scan:
     name: "🔒 Security Scan (Non-Blocking)"
     needs: setup-check-tools
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository code
+      - name: Checkout repository
         uses: actions/checkout@v4
-
-      - name: Set up Python ${{ env.PYTHON_VERSION }}
+        with:
+          path: .
+      - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: ${{ env.PYTHON_VERSION }}
           cache: 'pip'
+      - name: Run bandit
+        run: bandit -r . -f human -o bandit-results.txt -f json -o bandit-results.json || true
 
-      - name: Run bandit (security linter for Python)
-        run: |
-          bandit \
-            -r . \  # Scan all Python files recursively
-            -f human -o bandit-results.txt \  # Human-readable report
-            -f json -o bandit-results.json || true  # JSON report (for tools) + non-blocking
-
-  # Non-blocking check: Type check (fails won't stop workflow)
   type-check:
     name: "🎯 Type Check (Non-Blocking)"
     needs: setup-check-tools
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository code
+      - name: Checkout repository
         uses: actions/checkout@v4
-
-      - name: Set up Python ${{ env.PYTHON_VERSION }}
+        with:
+          path: .
+      - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: ${{ env.PYTHON_VERSION }}
           cache: 'pip'
+      - name: Run mypy
+        run: mypy --ignore-missing-imports --show-error-codes . || true
 
-      - name: Run mypy (static type checker)
-        run: |
-          mypy \
-            --ignore-missing-imports \  # Ignore unresolved imports (e.g., third-party libs)
-            --show-error-codes . || true  # Show error codes for debugging + non-blocking
-
-  # Blocking check: Lint check (fails stop workflow)
+  # --- Blocking Checks ---
   lint-check:
     name: "🧹 Lint Check (Blocking)"
     needs: setup-check-tools
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository code
+      - name: Checkout repository
         uses: actions/checkout@v4
-
-      - name: Set up Python ${{ env.PYTHON_VERSION }}
+        with:
+          path: .
+      - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: ${{ env.PYTHON_VERSION }}
           cache: 'pip'
+      - name: Run ruff check
+        run: ruff check --output-format=concise .
 
-      - name: Run ruff check (code linter)
-        run: ruff check --output-format=concise .  # Blocking: fails on lint errors
-
-  # Blocking check: Unit tests (fails stop workflow)
-  unit-tests:
+    unit-tests:
     name: "🧪 Unit Tests (Blocking)"
     needs: setup-check-tools
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository code
+      - name: Checkout repository
         uses: actions/checkout@v4
-
-      - name: Set up Python ${{ env.PYTHON_VERSION }}
+        with:
+          path: .
+      - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: ${{ env.PYTHON_VERSION }}
           cache: 'pip'
+      - name: Run pytest
+        run: pytest  # Adjust test command if your tests are in a subfolder (e.g., pytest tests/)
 
-      - name: Run pytest (unit test framework)
-        run: pytest  # Blocking: fails on test failures
-
-  # Security analysis: CodeQL (for vulnerability detection)
+  # --- CodeQL Analysis ---
   codeql-analysis:
     name: "🛡️ CodeQL Security Analysis"
-    needs: setup-check-tools  # Controlled by ruff-format pre-condition
+    needs: setup-check-tools
     runs-on: ubuntu-latest
     permissions:
       actions: read
       contents: read
-      security-events: write  # Required to upload CodeQL results
+      security-events: write
     steps:
-      - name: Checkout repository code
+      - name: Checkout repository
         uses: actions/checkout@v4
-
+        with:
+          path: .
       - name: Initialize CodeQL
         uses: github/codeql-action/init@v2
         with:
-          languages: python  # Analyze Python code
-
-      - name: Autobuild (auto-configure build for CodeQL)
+          languages: python
+      - name: Autobuild
         uses: github/codeql-action/autobuild@v2
-
-      - name: Run CodeQL analysis
+      - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v2
-        with:
-          output: sarif-results/  # Export results for debugging
 
-  # Final summary: Verify all checks completed
+  # --- Final Summary ---
   all-checks-summary:
     name: "✅ All Checks Summary"
     needs: [spell-check, security-scan, type-check, lint-check, unit-tests, codeql-analysis]
-    if: always()  # Run even if some checks fail
+    if: always()
     runs-on: ubuntu-latest
     steps:
-      - name: Print workflow summary
+      - name: Print summary
         run: |
-          echo "==================== Workflow Summary ===================="
-          echo "Ruff auto-format made changes: ${{ needs.ruff-auto-format.outputs.changes_made }}"
-          echo "---------------------------------------------------------"
-          
-          # Check for blocking failures (lint/tests/CodeQL)
-          if [[ "${{ contains(needs.lint-check.result, 'failure') || contains(needs.unit-tests.result, 'failure') || contains(needs.codeql-analysis.result, 'failure') }}" == "true" ]]; then
-            echo "❌ Critical failure detected (lint/tests/CodeQL). Fix required."
-            exit 1  # Block workflow on critical failures
+          echo "Ruff auto-format changes: ${{ needs.ruff-auto-format.outputs.changes_made }}"
+          if [[ "${{ contains(needs.lint-check.result, 'failure') || contains(needs.unit-tests.result, 'failure') }}" == "true" ]]; then
+            echo "❌ Critical failure (lint/tests) - Fix required"
+            exit 1
           else
-            echo "✅ No critical failures. Non-blocking issues (spelling/type) may exist."
+            echo "✅ No critical failures"
           fi
-  
