@@ -37,10 +37,6 @@ jobs:
       - name: Run Pytest tests
         run: pytest
 
-      - name: Run Doctests only
-        run: |
-          find . -name "*.py" -not -path "./.*" -not -path "./venv/*" -not -path "./tmp/*" -exec python -m doctest {} \; || true
-
       - name: Run Ruff checks with ignored rules
         run: ruff check . --ignore B904,B905,EM101,EXE001,G004,ISC001,PLC0415,PLC1901,PLW060,PLW1641,PLW2901,PT011,PT018,PT028,S101,S311,SIM905,SLF001
 
