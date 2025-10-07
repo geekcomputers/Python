@@ -23,13 +23,6 @@ jobs:
     outputs:
       changes_made: ${{ steps.format-check.outputs.changes_made }}  # Track if formatting changes were applied
     steps:
-      - name: Checkout repository code
-        uses: actions/checkout@v4
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}  # Uses default token (works with 'contents: write' permission)
-          fetch-depth: 0  # Required for full Git history (needed for commits)
-          ref: ${{ github.head_ref || github.ref }}  # Targets PR source branch (avoids merging to main directly)
-
       - name: Set up Python ${{ env.PYTHON_VERSION }}
         uses: actions/setup-python@v4
         with:
