@@ -1,48 +1,47 @@
-name: Code Quality & Auto-Format Checks
+name: Code Quality (PR-Mandatory)
 
+# Trigger explicitly for PRs + retain push events
 on:
-  pull_request: 
-    types: [opened, synchronize, reopened]
   push:
     branches: [ main, master ]
   pull_request:
     branches: [ main, master ]
+    types: [ opened, synchronize, reopened ]  # Trigger on PR create/update/reopen
 
 env:
   PYTHON_VERSION: '3.13.7'
 
 jobs:
-  # Phase 1: Ruff Auto-Format (no dependency file references)
-  ruff-auto-format:
-    name: "📝 Ruff Auto-Format"
+  # 1. PR-Adapted: Ruff Auto-Formatting (critical: commits to PR source branch)
+  ruff-auto-format-pr:
+    name: "📝 Ruff Format (PR-Safe)"
     runs-on: ubuntu-latest
     permissions:
-      contents: write  # For auto-commit
-      pull-requests: read
+      contents: write  # Required for auto-commits to PRs
+      pull-requests: read  # Required to fetch PR branch info
     outputs:
       changes_made: ${{ steps.format-check.outputs.changes_made }}
     steps:
-      - name: Checkout repository (critical for file access)
+      - name: Checkout PR Source Branch
         uses: actions/checkout@v4
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}  # Works for internal PRs; use PAT for forked PRs
           fetch-depth: 0
-          ref: ${{ github.head_ref || github.ref }}
-          path: .  # Ensure repo is in default working dir
+          ref: ${{ github.head_ref }}  # Force checkout PR source branch (not target main)
+          path: .
 
-      - name: Set up Python (no cache based on dependency files)
+      - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: ${{ env.PYTHON_VERSION }}
-          # Removed `cache-dependency-path` (no requirements/pyproject to reference)
-          cache: 'pip'  # Still caches pip packages (e.g., ruff) for speed
+          cache: 'pip'  # Cache pip packages for faster installs
 
-      - name: Install ruff (direct install, no dependency files)
+      - name: Install ruff
         run: pip install ruff
         env:
-          PIP_DISABLE_PIP_VERSION_CHECK: 1
+          PIP_DISABLE_PIP_VERSION_CHECK: 1  # Skip pip version check to speed up installs
 
-      - name: Run ruff format & check changes
+      - name: Run ruff format & detect changes
         id: format-check
         run: |
           ruff format .
@@ -50,144 +49,151 @@ jobs:
             echo "changes_made=false" >> $GITHUB_OUTPUT
           else
             echo "changes_made=true" >> $GITHUB_OUTPUT
+            git diff --name-only  # Show modified files in PR logs for review
           fi
 
-      - name: Auto-commit & push formatting changes
+      - name: Auto-commit format changes to PR
         if: steps.format-check.outputs.changes_made == 'true'
         run: |
-          git config --local user.name "GitHub Actions"
-          git config --local user.email "actions@github.com"
-          git add . && git commit -m "[auto] Fix code format with ruff" && git push
+          git config --local user.name "GitHub Actions (PR Format)"
+          git config --local user.email "pr-format@github.com"
+          git add .
+          git commit -m "[PR-auto] Fix code formatting with ruff"
+          git push  # Pushes to PR source branch; PR updates automatically
 
-  # Phase 2: Setup Check Tools (no dependency file checks)
-  setup-check-tools:
-    name: "⚙️ Setup Check Tools"
-    needs: ruff-auto-format
+  # 2. PR Control: Run checks only if PR has format changes or is merged
+  setup-checks-pr:
+    name: "⚙️ Setup Tools (PR-Triggered)"
+    needs: ruff-auto-format-pr
+    # Condition: Run on push OR PR (with format changes OR merged status)
     if: >
       (github.event_name == 'push') || 
-      (github.event.pull_request && 
-       (needs.ruff-auto-format.outputs.changes_made == 'true' || 
+      (github.event_name == 'pull_request' && 
+       (needs.ruff-auto-format-pr.outputs.changes_made == 'true' || 
         github.event.pull_request.merged == true))
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
+      - name: Checkout PR Source Branch
         uses: actions/checkout@v4
         with:
+          ref: ${{ github.head_ref || github.ref }}  # Use PR source branch (or push branch)
           path: .
-          fetch-depth: 1
 
-      - name: Set up Python (no dependency file cache)
+      - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: ${{ env.PYTHON_VERSION }}
-          cache: 'pip'  # Caches tools (codespell/bandit) for downstream jobs
+          cache: 'pip'
 
-      - name: Install check tools (direct install, no dependency files)
-        run: |
-          pip install codespell bandit mypy ruff pytest
+      - name: Install check tools directly (no dependency files)
+        run: pip install codespell bandit mypy ruff pytest
         env:
           PIP_DISABLE_PIP_VERSION_CHECK: 1
 
-  # --- Non-blocking Checks (no dependency file references) ---
-  spell-check:
-    name: "🔍 Spell Check (Non-Blocking)"
-    needs: setup-check-tools
+  # 3. PR Checks: All tools synced to PR "Checks" tab
+  spell-check-pr:
+    name: "🔍 Spell Check (PR)"
+    needs: setup-checks-pr
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
+      - name: Checkout PR Source Branch
         uses: actions/checkout@v4
         with:
+          ref: ${{ github.head_ref }}
           path: .
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: ${{ env.PYTHON_VERSION }}
           cache: 'pip'
-      - name: Run codespell
+      - name: Run codespell (Non-Blocking in PR)
         run: codespell --skip="*.json,*.lock,*.csv" --ignore-words-list="xxx,yyy,zzz" --quiet-level=2 || true
 
-  security-scan:
-    name: "🔒 Security Scan (Non-Blocking)"
-    needs: setup-check-tools
+  security-check-pr:
+    name: "🔒 Security Check (PR)"
+    needs: setup-checks-pr
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
+      - name: Checkout PR Source Branch
         uses: actions/checkout@v4
         with:
+          ref: ${{ github.head_ref }}
           path: .
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: ${{ env.PYTHON_VERSION }}
           cache: 'pip'
-      - name: Run bandit
-        run: bandit -r . -f human -o bandit-results.txt -f json -o bandit-results.json || true
+      - name: Run bandit (Non-Blocking in PR)
+        run: bandit -r . -f human -o bandit-pr-results.txt -f json -o bandit-pr-results.json || true
 
-  type-check:
-    name: "🎯 Type Check (Non-Blocking)"
-    needs: setup-check-tools
+  type-check-pr:
+    name: "🎯 Type Check (PR)"
+    needs: setup-checks-pr
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
+      - name: Checkout PR Source Branch
         uses: actions/checkout@v4
         with:
+          ref: ${{ github.head_ref }}
           path: .
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: ${{ env.PYTHON_VERSION }}
           cache: 'pip'
-      - name: Run mypy
+      - name: Run mypy (Non-Blocking in PR)
         run: mypy --ignore-missing-imports --show-error-codes . || true
-
-  # --- Blocking Checks ---
-  lint-check:
-    name: "🧹 Lint Check (Blocking)"
-    needs: setup-check-tools
+lint-check-pr:
+    name: "🧹 Lint Check (PR-Blocking)"
+    needs: setup-checks-pr
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
+      - name: Checkout PR Source Branch
         uses: actions/checkout@v4
         with:
+          ref: ${{ github.head_ref }}
           path: .
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: ${{ env.PYTHON_VERSION }}
           cache: 'pip'
-      - name: Run ruff check
+      - name: Run ruff check (Blocking in PR: Fix lint errors first)
         run: ruff check --output-format=concise .
 
-    unit-tests:
-    name: "🧪 Unit Tests (Blocking)"
-    needs: setup-check-tools
+  test-pr:
+    name: "🧪 Unit Tests (PR-Blocking)"
+    needs: setup-checks-pr
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
+      - name: Checkout PR Source Branch
         uses: actions/checkout@v4
         with:
+          ref: ${{ github.head_ref }}
           path: .
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: ${{ env.PYTHON_VERSION }}
           cache: 'pip'
-      - name: Run pytest
-        run: pytest  # Adjust test command if your tests are in a subfolder (e.g., pytest tests/)
+      - name: Run pytest (Blocking in PR: Fix test failures first)
+        run: pytest
 
-  # --- CodeQL Analysis ---
-  codeql-analysis:
-    name: "🛡️ CodeQL Security Analysis"
-    needs: setup-check-tools
+  # 4. PR Security Analysis: CodeQL results synced to PR "Security" tab
+  codeql-pr:
+    name: "🛡️ CodeQL (PR)"
+    needs: setup-checks-pr
     runs-on: ubuntu-latest
     permissions:
       actions: read
       contents: read
-      security-events: write
+      security-events: write  # Required to sync results to PR Security tab
     steps:
-      - name: Checkout repository
+      - name: Checkout PR Source Branch
         uses: actions/checkout@v4
         with:
+          ref: ${{ github.head_ref }}
           path: .
       - name: Initialize CodeQL
         uses: github/codeql-action/init@v2
@@ -198,19 +204,21 @@ jobs:
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v2
 
-  # --- Final Summary ---
-  all-checks-summary:
-    name: "✅ All Checks Summary"
-    needs: [spell-check, security-scan, type-check, lint-check, unit-tests, codeql-analysis]
+  # 5. PR Summary: Clear status in PR "Checks" tab
+  pr-checks-summary:
+    name: "✅ PR All Checks Summary"
+    needs: [spell-check-pr, security-check-pr, type-check-pr, lint-check-pr, test-pr, codeql-pr]
     if: always()
     runs-on: ubuntu-latest
     steps:
-      - name: Print summary
+      - name: Print PR Check Summary
         run: |
-          echo "Ruff auto-format changes: ${{ needs.ruff-auto-format.outputs.changes_made }}"
-          if [[ "${{ contains(needs.lint-check.result, 'failure') || contains(needs.unit-tests.result, 'failure') }}" == "true" ]]; then
-            echo "❌ Critical failure (lint/tests) - Fix required"
+          echo "PR Source Branch: ${{ github.head_ref }}"
+          echo "Formatting Changes Applied: ${{ needs.ruff-auto-format-pr.outputs.changes_made }}"
+          # Block PR merge if critical checks (lint/tests) fail
+          if [[ "${{ contains(needs.lint-check-pr.result, 'failure') || contains(needs.test-pr.result, 'failure') }}" == "true" ]]; then
+            echo "❌ Critical PR Checks Failed (lint/tests) - Fix Before Merging"
             exit 1
           else
-            echo "✅ No critical failures"
+            echo "✅ Critical PR Checks Passed - Non-blocking issues (spelling/type) are optional to fix"
           fi
