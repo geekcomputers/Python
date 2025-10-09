@@ -96,7 +96,7 @@ pyperclip==1.10.0
 newspaper==0.1.0.7
 opencv-python==4.12.0.88
 tensorflow==2.20.0
-pandas==2.3.2
+pandas==2.3.3
 pytest==8.4.2
 qrcode==8.2
 googletrans==4.0.2
