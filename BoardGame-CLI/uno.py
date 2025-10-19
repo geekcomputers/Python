@@ -1,16 +1,25 @@
 #      uno game      #
 
 import random
+from typing import List
 
 """
 Generate the UNO deck of 108 cards.
-Parameters: None
-Return values: deck=>list
+
+Doctest examples:
+
+>>> deck = buildDeck()
+>>> len(deck)
+108
+>>> sum(1 for c in deck if 'Wild' in c)
+8
+
+Return: list of card strings (e.g. 'Red 7', 'Wild Draw Four')
 """
 
 
-def buildDeck():
-    deck = []
+def buildDeck() -> List[str]:
+    deck: List[str] = []
     # example card:Red 7,Green 8, Blue skip
     colours = ["Red", "Green", "Yellow", "Blue"]
     values = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "Draw Two", "Skip", "Reverse"]
@@ -24,7 +33,6 @@ def buildDeck():
     for i in range(4):
         deck.append(wilds[0])
         deck.append(wilds[1])
-    print(deck)
     return deck
 
 
@@ -35,10 +43,9 @@ Return values: deck=>list
 """
 
 
-def shuffleDeck(deck):
-    for cardPos in range(len(deck)):
-        randPos = random.randint(0, 107)
-        deck[cardPos], deck[randPos] = deck[randPos], deck[cardPos]
+def shuffleDeck(deck: List[str]) -> List[str]:
+    # use Python's built-in shuffle which is efficient and correct
+    random.shuffle(deck)
     return deck
 
 
@@ -48,10 +55,18 @@ Return: cardsDrawn -> list
 """
 
 
-def drawCards(numCards):
-    cardsDrawn = []
+def drawCards(numCards: int) -> List[str]:
+    """
+    Draw a number of cards from the top of the global `unoDeck`.
+
+    Raises ValueError if the deck runs out of cards.
+    """
+    cardsDrawn: List[str] = []
     for x in range(numCards):
-        cardsDrawn.append(unoDeck.pop(0))
+        try:
+            cardsDrawn.append(unoDeck.pop(0))
+        except IndexError:
+            raise ValueError("The deck is empty; cannot draw more cards")
     return cardsDrawn
 
 
@@ -62,7 +77,7 @@ Return: None
 """
 
 
-def showHand(player, playerHand):
+def showHand(player: int, playerHand: List[str]) -> None:
     print("Player {}'s Turn".format(players_name[player]))
     print("Your Hand")
     print("------------------")
@@ -80,7 +95,15 @@ Return: boolean
 """
 
 
-def canPlay(colour, value, playerHand):
+def canPlay(colour: str, value: str, playerHand: List[str]) -> bool:
+    """
+    Return True if any card in playerHand is playable on a discard with given colour and value.
+
+    >>> canPlay('Red','5',['Red 3','Green 5'])
+    True
+    >>> canPlay('Blue','7',['Green 1'])
+    False
+    """
     for card in playerHand:
         if "Wild" in card:
             return True
@@ -89,101 +112,114 @@ def canPlay(colour, value, playerHand):
     return False
 
 
+# --- Global deck and initial setup ---
 unoDeck = buildDeck()
 unoDeck = shuffleDeck(unoDeck)
 unoDeck = shuffleDeck(unoDeck)
-discards = []
+discards: List[str] = []
 
-players_name = []
-players = []
+players_name: List[str] = []
+players: List[List[str]] = []
 colours = ["Red", "Green", "Yellow", "Blue"]
-numPlayers = int(input("How many players?"))
-while numPlayers < 2 or numPlayers > 4:
-    numPlayers = int(
-        input("Invalid. Please enter a number between 2-4.\nHow many players?")
-    )
-for player in range(numPlayers):
-    players_name.append(input("Enter player {} name: ".format(player + 1)))
-    players.append(drawCards(5))
 
 
-playerTurn = 0
-playDirection = 1
-playing = True
-discards.append(unoDeck.pop(0))
-splitCard = discards[0].split(" ", 1)
-currentColour = splitCard[0]
-if currentColour != "Wild":
-    cardVal = splitCard[1]
-else:
-    cardVal = "Any"
+def main() -> None:
+    """Run interactive UNO game (keeps original behavior).
 
-while playing:
-    showHand(playerTurn, players[playerTurn])
-    print("Card on top of discard pile: {}".format(discards[-1]))
-    if canPlay(currentColour, cardVal, players[playerTurn]):
-        cardChosen = int(input("Which card do you want to play?"))
-        while not canPlay(
-            currentColour, cardVal, [players[playerTurn][cardChosen - 1]]
-        ):
-            cardChosen = int(input("Not a valid card. Which card do you want to play?"))
-        print("You played {}".format(players[playerTurn][cardChosen - 1]))
-        discards.append(players[playerTurn].pop(cardChosen - 1))
+    Note: main() is interactive and not exercised by doctest.
+    """
+    global players_name, players, discards
 
-        # cheak if player won
-        if len(players[playerTurn]) == 0:
-            playing = False
-            # winner = "Player {}".format(playerTurn+1)
-            winner = players_name[playerTurn]
-        else:
-            # cheak for special cards
-            splitCard = discards[-1].split(" ", 1)
-            currentColour = splitCard[0]
-            if len(splitCard) == 1:
-                cardVal = "Any"
-            else:
-                cardVal = splitCard[1]
-            if currentColour == "Wild":
-                for x in range(len(colours)):
-                    print("{}) {}".format(x + 1, colours[x]))
-                newColour = int(input("What colour would you like to choose? "))
-                while newColour < 1 or newColour > 4:
-                    newColour = int(
-                        input("Invalid option. What colour would you like to choose")
-                    )
-                currentColour = colours[newColour - 1]
-            if cardVal == "Reverse":
-                playDirection = playDirection * -1
-            elif cardVal == "Skip":
-                playerTurn += playDirection
-                if playerTurn >= numPlayers:
-                    playerTurn = 0
-                elif playerTurn < 0:
-                    playerTurn = numPlayers - 1
-            elif cardVal == "Draw Two":
-                playerDraw = playerTurn + playDirection
-                if playerDraw == numPlayers:
-                    playerDraw = 0
-                elif playerDraw < 0:
-                    playerDraw = numPlayers - 1
-                players[playerDraw].extend(drawCards(2))
-            elif cardVal == "Draw Four":
-                playerDraw = playerTurn + playDirection
-                if playerDraw == numPlayers:
-                    playerDraw = 0
-                elif playerDraw < 0:
-                    playerDraw = numPlayers - 1
-                players[playerDraw].extend(drawCards(4))
-            print("")
+    numPlayers = int(input("How many players?"))
+    while numPlayers < 2 or numPlayers > 4:
+        numPlayers = int(
+            input("Invalid. Please enter a number between 2-4.\nHow many players?")
+        )
+    for player in range(numPlayers):
+        players_name.append(input("Enter player {} name: ".format(player + 1)))
+        players.append(drawCards(5))
+
+    playerTurn = 0
+    playDirection = 1
+    playing = True
+    discards.append(unoDeck.pop(0))
+    splitCard = discards[0].split(" ", 1)
+    currentColour = splitCard[0]
+    if currentColour != "Wild":
+        cardVal = splitCard[1]
     else:
-        print("You can't play. You have to draw a card.")
-        players[playerTurn].extend(drawCards(1))
+        cardVal = "Any"
 
-    playerTurn += playDirection
-    if playerTurn >= numPlayers:
-        playerTurn = 0
-    elif playerTurn < 0:
-        playerTurn = numPlayers - 1
+    while playing:
+        showHand(playerTurn, players[playerTurn])
+        print("Card on top of discard pile: {}".format(discards[-1]))
+        if canPlay(currentColour, cardVal, players[playerTurn]):
+            cardChosen = int(input("Which card do you want to play?"))
+            while not canPlay(
+                currentColour, cardVal, [players[playerTurn][cardChosen - 1]]
+            ):
+                cardChosen = int(input("Not a valid card. Which card do you want to play?"))
+            print("You played {}".format(players[playerTurn][cardChosen - 1]))
+            discards.append(players[playerTurn].pop(cardChosen - 1))
 
-print("Game Over")
-print("{} is the Winner!".format(winner))
+            # cheak if player won
+            if len(players[playerTurn]) == 0:
+                playing = False
+                # winner = "Player {}".format(playerTurn+1)
+                winner = players_name[playerTurn]
+            else:
+                # cheak for special cards
+                splitCard = discards[-1].split(" ", 1)
+                currentColour = splitCard[0]
+                if len(splitCard) == 1:
+                    cardVal = "Any"
+                else:
+                    cardVal = splitCard[1]
+                if currentColour == "Wild":
+                    for x in range(len(colours)):
+                        print("{}) {}".format(x + 1, colours[x]))
+                    newColour = int(input("What colour would you like to choose? "))
+                    while newColour < 1 or newColour > 4:
+                        newColour = int(
+                            input("Invalid option. What colour would you like to choose")
+                        )
+                    currentColour = colours[newColour - 1]
+                if cardVal == "Reverse":
+                    playDirection = playDirection * -1
+                elif cardVal == "Skip":
+                    playerTurn += playDirection
+                    if playerTurn >= numPlayers:
+                        playerTurn = 0
+                    elif playerTurn < 0:
+                        playerTurn = numPlayers - 1
+                elif cardVal == "Draw Two":
+                    playerDraw = playerTurn + playDirection
+                    if playerDraw == numPlayers:
+                        playerDraw = 0
+                    elif playerDraw < 0:
+                        playerDraw = numPlayers - 1
+                    players[playerDraw].extend(drawCards(2))
+                elif cardVal == "Draw Four":
+                    playerDraw = playerTurn + playDirection
+                    if playerDraw == numPlayers:
+                        playerDraw = 0
+                    elif playerDraw < 0:
+                        playerDraw = numPlayers - 1
+                    players[playerDraw].extend(drawCards(4))
+                print("")
+        else:
+            print("You can't play. You have to draw a card.")
+            players[playerTurn].extend(drawCards(1))
+
+        playerTurn += playDirection
+        if playerTurn >= numPlayers:
+            playerTurn = 0
+        elif playerTurn < 0:
+            playerTurn = numPlayers - 1
+
+    print("Game Over")
+    print("{} is the Winner!".format(winner))
+
+
+if __name__ == "__main__":
+    main()
