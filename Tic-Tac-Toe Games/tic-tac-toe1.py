@@ -28,11 +28,13 @@ def print_board(board: Board) -> None:
 def check_winner(board: Board, player: str) -> bool:
     """Return True if `player` has won."""
     for i in range(3):
-        if all(board[i][j] == player for j in range(3)) or \
-           all(board[j][i] == player for j in range(3)):
+        if all(board[i][j] == player for j in range(3)) or all(
+            board[j][i] == player for j in range(3)
+        ):
             return True
-    if all(board[i][i] == player for i in range(3)) or \
-       all(board[i][2 - i] == player for i in range(3)):
+    if all(board[i][i] == player for i in range(3)) or all(
+        board[i][2 - i] == player for i in range(3)
+    ):
         return True
     return False
 
@@ -86,5 +88,6 @@ def main() -> None:
 
 if __name__ == "__main__":
     import doctest
+
     doctest.testmod()
     main()

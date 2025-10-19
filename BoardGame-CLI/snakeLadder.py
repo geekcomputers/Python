@@ -90,7 +90,7 @@ def play():
                 elif n == 2:
                     players = {}  # stores player ans their locations
                     isReady = {}
-                    current_loc = 0  # vaiable for iterating location
+                    current_loc = 1  # reset starting location to 1
                     player_input()
 
                 elif n == 3:
@@ -170,4 +170,5 @@ print("Welcome to the snake ladder game !!!!!!!")
 print("/" * 40)
 
 
-player_input()
+if __name__ == "__main__":
+    player_input()

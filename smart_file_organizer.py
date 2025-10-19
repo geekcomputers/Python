@@ -68,7 +68,9 @@ def organize_files(base_path: str) -> None:
     Args:
         base_path: Path of the directory to organize.
     """
-    files = [f for f in os.listdir(base_path) if os.path.isfile(os.path.join(base_path, f))]
+    files = [
+        f for f in os.listdir(base_path) if os.path.isfile(os.path.join(base_path, f))
+    ]
     if not files:
         print(f"[{datetime.now().strftime('%H:%M:%S')}] No files found in {base_path}")
         return
@@ -82,9 +84,13 @@ def organize_files(base_path: str) -> None:
 
         try:
             shutil.move(source, os.path.join(target_folder, file_name))
-            print(f"[{datetime.now().strftime('%H:%M:%S')}] Moved: {file_name} -> {category}/")
+            print(
+                f"[{datetime.now().strftime('%H:%M:%S')}] Moved: {file_name} -> {category}/"
+            )
         except Exception as e:
-            print(f"[{datetime.now().strftime('%H:%M:%S')}] Error moving {file_name}: {e}")
+            print(
+                f"[{datetime.now().strftime('%H:%M:%S')}] Error moving {file_name}: {e}"
+            )
 
 
 def main() -> None:
@@ -92,16 +98,12 @@ def main() -> None:
     parser = argparse.ArgumentParser(
         description="Organize files in a directory into categorized subfolders."
     )
-    parser.add_argument(
-        "--path",
-        required=True,
-        help="Directory path to organize."
-    )
+    parser.add_argument("--path", required=True, help="Directory path to organize.")
     parser.add_argument(
         "--interval",
         type=int,
         default=0,
-        help="Interval (in minutes) to repeat automatically (0 = run once)."
+        help="Interval (in minutes) to repeat automatically (0 = run once).",
     )
     args = parser.parse_args()
 

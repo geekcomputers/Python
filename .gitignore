@@ -16,12 +16,10 @@ for i in string:
         odd+=i
 print(lower+upper+odd+even)
 
+.vscode
+__pycache__/
 .venv
-# operating system-related files
 
-# file properties cache/storage on macOS
 *.DS_Store
-
-# thumbnail cache on Windows
 Thumbs.db
 bankmanaging.db

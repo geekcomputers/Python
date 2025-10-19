@@ -21,11 +21,13 @@ Board = List[List[str]]
 def check_winner(board: Board, player: str) -> bool:
     """Check if `player` has a winning line on `board`."""
     for i in range(3):
-        if all(board[i][j] == player for j in range(3)) or \
-           all(board[j][i] == player for j in range(3)):
+        if all(board[i][j] == player for j in range(3)) or all(
+            board[j][i] == player for j in range(3)
+        ):
             return True
-    if all(board[i][i] == player for i in range(3)) or \
-       all(board[i][2 - i] == player for i in range(3)):
+    if all(board[i][i] == player for i in range(3)) or all(
+        board[i][2 - i] == player for i in range(3)
+    ):
         return True
     return False
 
@@ -116,16 +118,19 @@ def ai_move() -> None:
 # --- Initialize GUI ---
 root = ctk.CTk()
 root.title("Tic-Tac-Toe")
-board: Board = [[" "]*3 for _ in range(3)]
+board: Board = [[" "] * 3 for _ in range(3)]
 buttons: List[List[ctk.CTkButton]] = []
 
 for i in range(3):
     row_buttons: List[ctk.CTkButton] = []
     for j in range(3):
         btn = ctk.CTkButton(
-            root, text=" ", font=("normal", 30),
-            width=100, height=100,
-            command=lambda r=i, c=j: make_move(r, c)
+            root,
+            text=" ",
+            font=("normal", 30),
+            width=100,
+            height=100,
+            command=lambda r=i, c=j: make_move(r, c),
         )
         btn.grid(row=i, column=j, padx=2, pady=2)
         row_buttons.append(btn)
@@ -133,5 +138,6 @@ for i in range(3):
 
 if __name__ == "__main__":
     import doctest
+
     doctest.testmod()
     root.mainloop()

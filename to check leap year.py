@@ -15,6 +15,7 @@ True
 False
 """
 
+
 def is_leap_year(year: int) -> bool:
     """
     Return True if year is a leap year, False otherwise.
@@ -29,6 +30,7 @@ def is_leap_year(year: int) -> bool:
 
 if __name__ == "__main__":
     import doctest
+
     doctest.testmod()
 
     year_input = input("Enter a year: ").strip()

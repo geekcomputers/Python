@@ -62,9 +62,14 @@ def check_win(player_pos: Dict[str, List[int]], cur_player: str) -> bool:
     False
     """
     soln = [
-        [1, 2, 3], [4, 5, 6], [7, 8, 9],  # Rows
-        [1, 4, 7], [2, 5, 8], [3, 6, 9],  # Columns
-        [1, 5, 9], [3, 5, 7]              # Diagonals
+        [1, 2, 3],
+        [4, 5, 6],
+        [7, 8, 9],  # Rows
+        [1, 4, 7],
+        [2, 5, 8],
+        [3, 6, 9],  # Columns
+        [1, 5, 9],
+        [3, 5, 7],  # Diagonals
     ]
     return any(all(pos in player_pos[cur_player] for pos in combo) for combo in soln)
 
