@@ -67,5 +67,6 @@ label_result.pack(pady=5)
 
 if __name__ == "__main__":
     import doctest
+
     doctest.testmod()
     root.mainloop()

@@ -158,7 +158,9 @@ def main() -> None:
             while not canPlay(
                 currentColour, cardVal, [players[playerTurn][cardChosen - 1]]
             ):
-                cardChosen = int(input("Not a valid card. Which card do you want to play?"))
+                cardChosen = int(
+                    input("Not a valid card. Which card do you want to play?")
+                )
             print("You played {}".format(players[playerTurn][cardChosen - 1]))
             discards.append(players[playerTurn].pop(cardChosen - 1))
 
@@ -181,7 +183,9 @@ def main() -> None:
                     newColour = int(input("What colour would you like to choose? "))
                     while newColour < 1 or newColour > 4:
                         newColour = int(
-                            input("Invalid option. What colour would you like to choose")
+                            input(
+                                "Invalid option. What colour would you like to choose"
+                            )
                         )
                     currentColour = colours[newColour - 1]
                 if cardVal == "Reverse":

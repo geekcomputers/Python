@@ -14,6 +14,7 @@ Example usage:
 4.0
 """
 
+
 def add(x: float, y: float) -> float:
     """Return the sum of x and y."""
     return x + y
@@ -41,17 +42,17 @@ def calculator() -> None:
 
     while True:
         choice: str = input("Enter choice (1/2/3/4): ").strip()
-        if choice in ('1', '2', '3', '4'):
+        if choice in ("1", "2", "3", "4"):
             num1: float = float(input("Enter first number: "))
             num2: float = float(input("Enter second number: "))
 
-            if choice == '1':
+            if choice == "1":
                 print(f"{num1} + {num2} = {add(num1, num2)}")
-            elif choice == '2':
+            elif choice == "2":
                 print(f"{num1} - {num2} = {subtract(num1, num2)}")
-            elif choice == '3':
+            elif choice == "3":
                 print(f"{num1} * {num2} = {multiply(num1, num2)}")
-            elif choice == '4':
+            elif choice == "4":
                 print(f"{num1} / {num2} = {divide(num1, num2)}")
             break
         else:
@@ -60,5 +61,6 @@ def calculator() -> None:
 
 if __name__ == "__main__":
     import doctest
+
     doctest.testmod()
     calculator()
