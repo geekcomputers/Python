@@ -20,16 +20,16 @@ The primary goal of Quizzler is to:
 ### Initial Screen and result
 <table>
 <tr>
-<td><img src="/screenshots/s1.png" width="420px" height="250px" alt="Login Page"/></td>
-<td><img src="/screenshots/s4.png" width="420px" height="250px" alt="Register Page"/></td>
+<td><img src="./screenshots/s1.png" width="420px" height="250px" alt="Login Page"/></td>
+<td><img src="./screenshots/s4.png" width="420px" height="250px" alt="Register Page"/></td>
 </tr>
 </table>
 
 ### Response to wrong or correct answer
 <table>
 <tr>
-<td><img src="/screenshots/s2.png" width="420px" height="250px" alt="Profile Page"/></td>
-<td><img src="/screenshots/s3.png" width="420px" height="250px" alt="Home Page"/></td>
+<td><img src="./screenshots/s2.png" width="420px" height="250px" alt="Profile Page"/></td>
+<td><img src="./screenshots/s3.png" width="420px" height="250px" alt="Home Page"/></td>
 </tr>
 </table>
 
@@ -99,4 +99,5 @@ pip install requests
  - Instant feedback with visual cues (color-based)
  - Real-time data fetching using API
  - Modular code architecture for scalability
+
 
