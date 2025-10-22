@@ -3,9 +3,11 @@
 import pickle
 import os
 from dotenv import load_dotenv
+
 base = os.path.dirname(__file__)
 load_dotenv(os.path.join(base, ".env"))
 student_record = os.getenv("STUDENTS_RECORD_FILE")
+
 
 def update():
     with open(student_record, "rb") as F:
@@ -22,7 +24,6 @@ def update():
 
         if found:
             print("Record not found")
-
 
         with open(student_record, "wb") as F:
             pickle.dump(S, F)

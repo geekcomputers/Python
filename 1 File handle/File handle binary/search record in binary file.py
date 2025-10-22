@@ -3,10 +3,11 @@
 import pickle
 from dotenv import load_dotenv
 
+
 def search():
     with open("student_records.pkl", "rb") as F:
         # your file path will be different
-        search = True 
+        search = True
         rno = int(input("Enter the roll number of the student"))
 
         for i in pickle.load(F):
