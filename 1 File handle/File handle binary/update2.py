@@ -1,10 +1,14 @@
 # Updating records in a binary file
 # ! Have a .env file please
 import pickle
-
+import os
+from dotenv import load_dotenv
+base = os.path.dirname(__file__)
+load_dotenv(os.path.join(base, ".env"))
+student_record = os.getenv("STUDENTS_RECORD_FILE")
 
 def update():
-    with open("class.dat", "rb+") as F:
+    with open(student_record, "rb") as F:
         S = pickle.load(F)
         found = False
         rno = int(input("enter the roll number you want to update"))
@@ -19,12 +23,9 @@ def update():
         if found:
             print("Record not found")
 
-        else:
-            F.seek(0)
+
+        with open(student_record, "wb") as F:
             pickle.dump(S, F)
 
 
 update()
-
-with open("class.dat", "rb") as F:
-    print(pickle.load(F))
