@@ -8,10 +8,12 @@ Write a function remcount( ) to count the number of students who need
 
 
 """
+
 # also find no. of children who got top marks
 
 import pickle
 
+# ! Making a generator would be lovely a fake data generator for testing purposes
 list = [
     [1, "Ramya", 30],
     [2, "vaishnavi", 60],
