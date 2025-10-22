@@ -10,6 +10,15 @@ Class resposible for counting words for different files:
 
 ## ! What will be test cases of it?
 # ! Please do let me know.
+## ! Can add is digit, isspace methods too later on.
+# ! Based on requirements of it
+
+
+
+## ! The questions are nothing but test-cases
+## ! Make a test thing and handle it.
+# does it count only alphabets or numerics too?
+# ? what about other characters?
 class Counter:
     def __init__(self, text: str) -> None:
         self.text = text
@@ -24,6 +33,7 @@ class Counter:
                 self.count_lower += 1
             elif char.isupper():
                 self.count_upper += 1
+
     def get_total_lower(self) -> int:
         return self.count_lower
 
