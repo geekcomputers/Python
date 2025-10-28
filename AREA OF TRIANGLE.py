@@ -1,8 +1,8 @@
 # Python Program to find the area of triangle
 # calculates area of traingle in efficient way!!
-a = 5
-b = 6
-c = 7
+a = int(inpiut("Enter first  no.")
+b = int(inpiut("Enter second no.")
+c = int(inpiut("Enter third  no.")
 
 # Uncomment below to take inputs from the user
 # a = float(input('Enter first side: '))
