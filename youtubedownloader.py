@@ -1,14 +1,10 @@
 from tkinter import Button, Entry, Label, Tk, filedialog, messagebox
 from threading import Thread
 from pytube import YouTube
-
-
 def threading():
     # Call work function
     t1 = Thread(target=download)
     t1.start()
-
-
 def download():
     try:
         url = YouTube(str(url_box.get()))
@@ -30,7 +26,6 @@ root.title("YouTube Downloader")
 root.geometry("780x500+200+200")
 root.configure(bg="olivedrab1")
 root.resizable(False, False)
-
 # Label widgets
 introlable = Label(
     root,
@@ -52,5 +47,4 @@ url_box.place(x=40, y=180)
 
 btn = Button(root, text="DOWNLOAD", font=("sans-serif", 25), command=threading)
 btn.place(x=270, y=240)
-
 root.mainloop()
