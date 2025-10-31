@@ -168,6 +168,7 @@ Feel free to explore the scripts and use them for your learning and automation n
 153. [wiki/wiki.py](https://github.com/geekcomputers/Python/blob/master/wiki/wiki.py) - Wikipedia content extraction and processing
 154. [PDF/basic.py](https://github.com/geekcomputers/Python/blob/master/PDF/basic.py) - Basic PDF generation and manipulation
 155. [How to begin the journey of open source (first contribution)](https://www.youtube.com/watch?v=v2X51AVgl3o) - First Contribution of open source
+
 <hr>
 
 _**Note**: The content in this repository belongs to the respective authors and creators. I'm just providing a formatted README.md for better presentation._

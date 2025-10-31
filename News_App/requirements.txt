@@ -1,4 +1,4 @@
-solara == 1.51.1
+solara == 1.54.0
 Flask 
 gunicorn ==23.0.0
 simple-websocket

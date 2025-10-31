@@ -21,3 +21,7 @@ String1 = """Smile
             Life"""
 print("\nCreating a multiline String: ")
 print(String1)
+
+# Use F string to incert variables with {
+String1 = "4"
+print(f"I am an f string. 2 + 2 = {String1}")

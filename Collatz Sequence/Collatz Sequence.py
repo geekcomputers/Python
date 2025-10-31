@@ -9,6 +9,7 @@ def collatz_sequence(n):
         steps.append(n)
     return steps
 
+
 # --- Main Program ---
 try:
     num = int(input("Enter a positive integer: "))

@@ -2,215 +2,146 @@ import sqlite3
 import os
 
 
-# Making connection with database
-def connect_database():
-    global conn
-    global cur
-    conn = sqlite3.connect(os.path.join(os.path.dirname(__file__), "bankmanaging.db"))
-    cur = conn.cursor()
-    cur.execute(
-        """
-        CREATE TABLE IF NOT EXISTS bank (
-            acc_no INTEGER PRIMARY KEY,
-            name TEXT,
-            age INTEGER,
-            address TEXT,
-            balance INTEGER,
-            account_type TEXT,
-            mobile_number TEXT
+class DatabaseManager:
+    def __init__(self, db_name="bankmanaging.db"):
+        self.db_path = os.path.join(os.path.dirname(__file__), db_name)
+        self.conn = sqlite3.connect(self.db_path, check_same_thread=False)
+        self.cur = self.conn.cursor()
+        self._setup_tables()
+        self.acc_no = self._get_last_acc_no() + 1
+
+    def _setup_tables(self):
+        self.cur.execute("""
+            CREATE TABLE IF NOT EXISTS bank (
+                acc_no INTEGER PRIMARY KEY,
+                name TEXT,
+                age INTEGER,
+                address TEXT,
+                balance INTEGER,
+                account_type TEXT,
+                mobile_number TEXT
+            )
+        """)
+        self.cur.execute("""
+            CREATE TABLE IF NOT EXISTS staff (
+                name TEXT,
+                pass TEXT,
+                salary INTEGER,
+                position TEXT
+            )
+        """)
+        self.cur.execute("CREATE TABLE IF NOT EXISTS admin (name TEXT, pass TEXT)")
+        self.cur.execute("SELECT COUNT(*) FROM admin")
+        if self.cur.fetchone()[0] == 0:
+            self.cur.execute("INSERT INTO admin VALUES (?, ?)", ("admin", "admin123"))
+        self.conn.commit()
+
+    def _get_last_acc_no(self):
+        self.cur.execute("SELECT MAX(acc_no) FROM bank")
+        last = self.cur.fetchone()[0]
+        return last if last else 0
+
+    # ----------------- Admin -----------------
+    def check_admin(self, name, password):
+        self.cur.execute(
+            "SELECT 1 FROM admin WHERE name=? AND pass=?", (name, password)
         )
-        """
-    )
-    cur.execute(
-        """
-        CREATE TABLE IF NOT EXISTS staff (
-            name TEXT,
-            pass TEXT,
-            salary INTEGER,
-            position TEXT
+        return self.cur.fetchone() is not None
+
+    # ----------------- Staff -----------------
+    def create_employee(self, name, password, salary, position):
+        self.cur.execute(
+            "INSERT INTO staff VALUES (?, ?, ?, ?)", (name, password, salary, position)
         )
-        """
-    )
-    cur.execute("CREATE TABLE IF NOT EXISTS admin (name TEXT, pass TEXT)")
+        self.conn.commit()
 
-    # Only insert admin if not exists
-    cur.execute("SELECT COUNT(*) FROM admin")
-    if cur.fetchone()[0] == 0:
-        cur.execute("INSERT INTO admin VALUES (?, ?)", ("admin", "admin123"))
-
-    conn.commit()
-
-    # Fetch last account number to avoid duplicate or incorrect numbering
-    cur.execute("SELECT acc_no FROM bank ORDER BY acc_no DESC LIMIT 1")
-    acc = cur.fetchone()
-    global acc_no
-    acc_no = 1 if acc is None else acc[0] + 1
-
-
-# Check admin details in database
-def check_admin(name, password):
-    cur.execute("SELECT * FROM admin WHERE name = ? AND pass = ?", (name, password))
-    return cur.fetchone() is not None
-
-
-# Create employee in database
-def create_employee(name, password, salary, position):
-    cur.execute(
-        "INSERT INTO staff VALUES (?, ?, ?, ?)", (name, password, salary, position)
-    )
-    conn.commit()
-
-
-# Check employee login details
-def check_employee(name, password):
-    cur.execute("SELECT 1 FROM staff WHERE name = ? AND pass = ?", (name, password))
-    return cur.fetchone() is not None
-
-
-# Create customer in database
-def create_customer(name, age, address, balance, acc_type, mobile_number):
-    global acc_no
-    cur.execute(
-        "INSERT INTO bank VALUES (?, ?, ?, ?, ?, ?, ?)",
-        (acc_no, name, age, address, balance, acc_type, mobile_number),
-    )
-    conn.commit()
-    acc_no += 1
-    return acc_no - 1
-
-
-# Check if account number exists
-def check_acc_no(acc_no):
-    cur.execute("SELECT 1 FROM bank WHERE acc_no = ?", (acc_no,))
-    return cur.fetchone() is not None
-
-
-# Get customer details
-def get_details(acc_no):
-    cur.execute("SELECT * FROM bank WHERE acc_no = ?", (acc_no,))
-    detail = cur.fetchone()
-    return detail if detail else False
-
-
-# Update customer balance
-def update_balance(new_money, acc_no):
-    cur.execute(
-        "UPDATE bank SET balance = balance + ? WHERE acc_no = ?", (new_money, acc_no)
-    )
-    conn.commit()
-
-
-# Deduct balance
-def deduct_balance(new_money, acc_no):
-    cur.execute("SELECT balance FROM bank WHERE acc_no = ?", (acc_no,))
-    bal = cur.fetchone()
-    if bal and bal[0] >= new_money:
-        cur.execute(
-            "UPDATE bank SET balance = balance - ? WHERE acc_no = ?",
-            (new_money, acc_no),
+    def check_employee(self, name, password):
+        self.cur.execute(
+            "SELECT 1 FROM staff WHERE name=? AND pass=?", (name, password)
         )
-        conn.commit()
-        return True
-    return False
+        return self.cur.fetchone() is not None
 
+    def show_employees(self):
+        self.cur.execute("SELECT name, salary, position FROM staff")
+        return self.cur.fetchall()
 
-# Get account balance
-def check_balance(acc_no):
-    cur.execute("SELECT balance FROM bank WHERE acc_no = ?", (acc_no,))
-    bal = cur.fetchone()
-    return bal[0] if bal else 0
+    def update_employee(self, field, new_value, name):
+        if field not in {"name", "pass", "salary", "position"}:
+            raise ValueError("Invalid employee field")
+        self.cur.execute(f"UPDATE staff SET {field}=? WHERE name=?", (new_value, name))
+        self.conn.commit()
 
+    def check_name_in_staff(self, name):
+        self.cur.execute("SELECT 1 FROM staff WHERE name=?", (name,))
+        return self.cur.fetchone() is not None
 
-# Update customer details
-def update_name_in_bank_table(new_name, acc_no):
-    cur.execute("UPDATE bank SET name = ? WHERE acc_no = ?", (new_name, acc_no))
-    conn.commit()
+    # ----------------- Customer -----------------
+    def create_customer(self, name, age, address, balance, acc_type, mobile_number):
+        acc_no = self.acc_no
+        self.cur.execute(
+            "INSERT INTO bank VALUES (?, ?, ?, ?, ?, ?, ?)",
+            (acc_no, name, age, address, balance, acc_type, mobile_number),
+        )
+        self.conn.commit()
+        self.acc_no += 1
+        return acc_no
 
+    def check_acc_no(self, acc_no):
+        self.cur.execute("SELECT 1 FROM bank WHERE acc_no=?", (acc_no,))
+        return self.cur.fetchone() is not None
 
-def update_age_in_bank_table(new_age, acc_no):
-    cur.execute("UPDATE bank SET age = ? WHERE acc_no = ?", (new_age, acc_no))
-    conn.commit()
+    def get_details(self, acc_no):
+        self.cur.execute("SELECT * FROM bank WHERE acc_no=?", (acc_no,))
+        return self.cur.fetchone()
 
+    def get_detail(self, acc_no):
+        self.cur.execute("SELECT name, balance FROM bank WHERE acc_no=?", (acc_no,))
+        return self.cur.fetchone()
 
-def update_address_in_bank_table(new_address, acc_no):
-    cur.execute("UPDATE bank SET address = ? WHERE acc_no = ?", (new_address, acc_no))
-    conn.commit()
+    def update_customer(self, field, new_value, acc_no):
+        if field not in {"name", "age", "address", "mobile_number", "account_type"}:
+            raise ValueError("Invalid customer field")
+        self.cur.execute(
+            f"UPDATE bank SET {field}=? WHERE acc_no=?", (new_value, acc_no)
+        )
+        self.conn.commit()
 
+    def update_balance(self, amount, acc_no):
+        self.cur.execute(
+            "UPDATE bank SET balance = balance + ? WHERE acc_no=?", (amount, acc_no)
+        )
+        self.conn.commit()
 
-def update_mobile_number_in_bank_table(new_mobile_number, acc_no):
-    cur.execute(
-        "UPDATE bank SET mobile_number = ? WHERE acc_no = ?",
-        (new_mobile_number, acc_no),
-    )
-    conn.commit()
+    def deduct_balance(self, amount, acc_no):
+        self.cur.execute("SELECT balance FROM bank WHERE acc_no=?", (acc_no,))
+        bal = self.cur.fetchone()
+        if bal and bal[0] >= amount:
+            self.cur.execute(
+                "UPDATE bank SET balance=balance-? WHERE acc_no=?", (amount, acc_no)
+            )
+            self.conn.commit()
+            return True
+        return False
 
+    def check_balance(self, acc_no):
+        self.cur.execute("SELECT balance FROM bank WHERE acc_no=?", (acc_no,))
+        bal = self.cur.fetchone()
+        return bal[0] if bal else 0
 
-def update_acc_type_in_bank_table(new_acc_type, acc_no):
-    cur.execute(
-        "UPDATE bank SET account_type = ? WHERE acc_no = ?", (new_acc_type, acc_no)
-    )
-    conn.commit()
+    def list_all_customers(self):
+        self.cur.execute("SELECT * FROM bank")
+        return self.cur.fetchall()
 
+    def delete_acc(self, acc_no):
+        self.cur.execute("DELETE FROM bank WHERE acc_no=?", (acc_no,))
+        self.conn.commit()
 
-# List all customers
-def list_all_customers():
-    cur.execute("SELECT * FROM bank")
-    return cur.fetchall()
+    # ----------------- Stats -----------------
+    def all_money(self):
+        self.cur.execute("SELECT SUM(balance) FROM bank")
+        total = self.cur.fetchone()[0]
+        return total if total else 0
 
-
-# Delete account
-def delete_acc(acc_no):
-    cur.execute("DELETE FROM bank WHERE acc_no = ?", (acc_no,))
-    conn.commit()
-
-
-# Show employees
-def show_employees():
-    cur.execute("SELECT name, salary, position FROM staff")
-    return cur.fetchall()
-
-
-# Get total money in bank
-def all_money():
-    cur.execute("SELECT SUM(balance) FROM bank")
-    total = cur.fetchone()[0]
-    return total if total else 0
-
-
-# Get employee details
-def show_employees_for_update():
-    cur.execute("SELECT * FROM staff")
-    return cur.fetchall()
-
-
-# Update employee details
-def update_employee_name(new_name, old_name):
-    cur.execute("UPDATE staff SET name = ? WHERE name = ?", (new_name, old_name))
-    conn.commit()
-
-
-def update_employee_password(new_pass, old_name):
-    cur.execute("UPDATE staff SET pass = ? WHERE name = ?", (new_pass, old_name))
-    conn.commit()
-
-
-def update_employee_salary(new_salary, old_name):
-    cur.execute("UPDATE staff SET salary = ? WHERE name = ?", (new_salary, old_name))
-    conn.commit()
-
-
-def update_employee_position(new_pos, old_name):
-    cur.execute("UPDATE staff SET position = ? WHERE name = ?", (new_pos, old_name))
-    conn.commit()
-
-
-# Get customer name and balance
-def get_detail(acc_no):
-    cur.execute("SELECT name, balance FROM bank WHERE acc_no = ?", (acc_no,))
-    return cur.fetchone()
-
-
-# Check if employee exists
-def check_name_in_staff(name):
-    cur.execute("SELECT 1 FROM staff WHERE name = ?", (name,))
-    return cur.fetchone() is not None
+    # ----------------- Cleanup -----------------
+    def close(self):
+        self.conn.close()

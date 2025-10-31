@@ -87,4 +87,5 @@ def play_snakes_and_ladders():
 
 
 # Start the game
-play_snakes_and_ladders()
+if __name__ == "__main__":
+    play_snakes_and_ladders()

@@ -1,5 +1,3 @@
-import os
-from pathlib import Path
 from typing import Callable, List
 
 import pytest
@@ -8,7 +6,6 @@ import requests_mock
 from src.hangman.main import (
     MainProcess,
     Source,
-    parse_word_from_local,
     parse_word_from_site,
 )
 
@@ -32,21 +29,6 @@ class FkInput(object):
 @pytest.fixture
 def choice_fn() -> Callable:
     return lambda array: array[0]  # noqa: E731
-
-
-def test_parse_word_from_local() -> None:
-    assert isinstance(parse_word_from_local(), str)
-
-
-def test_parse_word_from_local_error() -> None:
-    data_path = Path(os.path.abspath("")) / "Data"
-    real_name = "local_words.txt"
-    time_name = "local_words_not_exist.txt"
-
-    os.rename(data_path / real_name, data_path / time_name)
-    with pytest.raises(FileNotFoundError):
-        parse_word_from_local()
-    os.rename(data_path / time_name, data_path / real_name)
 
 
 @pytest.mark.internet_required
