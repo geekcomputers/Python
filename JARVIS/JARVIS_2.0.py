@@ -13,16 +13,16 @@ import datetime  # datetime module supplies classes for manipulating dates and t
 import subprocess  # subprocess module allows you to spawn new processes
 
 # master
-import pyjokes # for generating random jokes
+import pyjokes  # for generating random jokes
 import requests
 import json
-from PIL import Image, ImageGrab
+from PIL import ImageGrab
 from gtts import gTTS
 
 # for 30 seconds clip "Jarvis, clip that!" and discord ctrl+k quick-move (might not come to fruition)
 from pynput import keyboard
-from pynput.keyboard import Key, Listener
-from pynput.mouse import Button, Controller
+from pynput.keyboard import Key
+from pynput.mouse import Controller
 
 # =======
 from playsound import *  # for sound output
@@ -30,17 +30,18 @@ from playsound import *  # for sound output
 # master
 # auto install for pyttsx3 and speechRecognition
 import os
-try:
-    import pyttsx3 #Check if already installed
-except:# If not installed give exception
-    os.system('pip install pyttsx3')#install at run time
-    import pyttsx3 #import again for speak function
 
-try :
+try:
+    import pyttsx3  # Check if already installed
+except:  # If not installed give exception
+    os.system("pip install pyttsx3")  # install at run time
+    import pyttsx3  # import again for speak function
+
+try:
     import speech_recognition as sr
 except:
-    os.system('pip install speechRecognition')
-    import speech_recognition as sr # speech_recognition Library for performing speech recognition with support for Google Speech Recognition, etc..
+    os.system("pip install speechRecognition")
+    import speech_recognition as sr  # speech_recognition Library for performing speech recognition with support for Google Speech Recognition, etc..
 
 # importing the pyttsx3 library
 import webbrowser
@@ -82,24 +83,31 @@ def sendEmail(to, content):
     server.sendmail("youremail@gmail.com", to, content)
     server.close()
 
+
 import openai
-import base64 
-stab=(base64.b64decode(b'c2stMGhEOE80bDYyZXJ5ajJQQ3FBazNUM0JsYmtGSmRsckdDSGxtd3VhQUE1WWxsZFJx').decode("utf-8"))
+import base64
+
+stab = base64.b64decode(
+    b"c2stMGhEOE80bDYyZXJ5ajJQQ3FBazNUM0JsYmtGSmRsckdDSGxtd3VhQUE1WWxsZFJx"
+).decode("utf-8")
 api_key = stab
+
+
 def ask_gpt3(que):
     openai.api_key = api_key
 
     response = openai.Completion.create(
-        engine="text-davinci-002",  
+        engine="text-davinci-002",
         prompt=f"Answer the following question: {question}\n",
-        max_tokens=150,  
-        n = 1, 
-        stop=None,  
-        temperature=0.7  
+        max_tokens=150,
+        n=1,
+        stop=None,
+        temperature=0.7,
     )
 
     answer = response.choices[0].text.strip()
     return answer
+
 
 def wishme():
     # This function wishes user
@@ -127,7 +135,7 @@ def takecommand():
         print("Recognizing...")
         query = r.recognize_google(audio, language="en-in")
         print(f"User said {query}\n")
-    except Exception as e:
+    except Exception:
         print("Say that again please...")
         return "None"
     return query
@@ -249,9 +257,9 @@ def get_app(Q):
     elif Q == "open github":
         webbrowser.open("https://github.com/")
     elif Q == "search for":
-        que=Q.lstrip("search for")
-        answer = ask_gpt3(que)
-        
+        que = Q.lstrip("search for")
+        ask_gpt3(que)
+
     elif (
         Q == "email to other"
     ):  # here you want to change and input your mail and password whenver you implement
@@ -261,7 +269,7 @@ def get_app(Q):
             with sr.Microphone() as source:
                 print("Listening...")
                 r.pause_threshold = 1
-                audio = r.listen(source)
+                r.listen(source)
             to = "abc@gmail.com"
             content = input("Enter content")
             sendEmail(to, content)
@@ -299,11 +307,11 @@ def get_app(Q):
     elif Q == "take a break":
         exit()
     else:
-        answer = ask_gpt3(Q)
+        ask_gpt3(Q)
 
     # master
 
-    apps = {
+    {
         "time": datetime.datetime.now(),
         "notepad": "Notepad.exe",
         "calculator": "calc.exe",
@@ -311,8 +319,8 @@ def get_app(Q):
         "shell": "powershell.exe",
         "paint": "mspaint.exe",
         "cmd": "cmd.exe",
-        "browser": "C:\\Program Files\Internet Explorer\iexplore.exe",
-        "vscode": "C:\\Users\\Users\\User\\AppData\\Local\\Programs\Microsoft VS Code"
+        "browser": r"C:\\Program Files\Internet Explorer\iexplore.exe",
+        "vscode": r"C:\\Users\\Users\\User\\AppData\\Local\\Programs\Microsoft VS Code",
     }
     # master
 

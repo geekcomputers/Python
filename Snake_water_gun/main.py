@@ -47,7 +47,6 @@ i = 0
 score = 0
 
 while run and i < 10:
-
     comp_choice = random.choice(li)
     user_choice = input("Type s for snake, w for water or g for gun: ").lower()
 
@@ -80,9 +79,9 @@ while run and i < 10:
         continue
 
     i += 1
-    print(f"{10-i} matches left")
+    print(f"{10 - i} matches left")
 
-if run == True:
+if run:
     print(f"Your score is {score} and the final result is...")
     time.sleep(3)
     if score > 5:

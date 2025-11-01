@@ -1,5 +1,4 @@
 def levenshtein_dis(wordA, wordB):
-
     wordA = wordA.lower()  # making the wordA lower case
     wordB = wordB.lower()  # making the wordB lower case
 

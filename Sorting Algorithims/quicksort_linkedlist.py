@@ -1,8 +1,9 @@
 """
-Given a linked list with head pointer, 
+Given a linked list with head pointer,
 sort the linked list using quicksort technique without using any extra space
 Time complexity: O(NlogN), Space complexity: O(1)
 """
+
 from __future__ import annotations
 
 
@@ -25,19 +26,20 @@ class LinkedList:
     # method to print the linkedlist
     def printLL(self) -> None:
         temp = self.head
-        if temp == None:
-            return 'Linked List is empty'
+        if temp is None:
+            return "Linked List is empty"
         while temp.next:
-            print(temp.data, '->', end='')
+            print(temp.data, "->", end="")
             temp = temp.next
         print(temp.data)
         return
+
 
 # Partition algorithm with pivot as first element
 
 
 def partition(start, end):
-    if start == None or start.next == None:
+    if start is None or start.next is None:
         return start
     prev, curr = start, start.next
     pivot = prev.data
@@ -65,12 +67,14 @@ def quicksort_LL(start, end):
 
 if __name__ == "__main__":
     ll = LinkedList()
-    print("Enter the space seperated values of numbers to be inserted in linkedlist prompted below:")
+    print(
+        "Enter the space seperated values of numbers to be inserted in linkedlist prompted below:"
+    )
     arr = list(map(int, input().split()))
     for num in arr:
         ll.insert(num)
     print("Linkedlist before sorting:")
     ll.printLL()
     quicksort_LL(ll.head, None)
-    print('Linkedlist after sorting: ')
+    print("Linkedlist after sorting: ")
     ll.printLL()

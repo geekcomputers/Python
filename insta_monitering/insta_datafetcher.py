@@ -95,7 +95,7 @@ async def datapullpost(future, url):
                 return data
 
         data = await request_pull(url)
-        if data != None:
+        if data is not None:
             break
     data = await dataprocess(htmldata=data)
     # here processing of data has to occur
@@ -104,7 +104,6 @@ async def datapullpost(future, url):
 
 class MoniteringClass:
     def __init__(self, user, tags, type, productId):
-
         try:
             self.mon = pymongo.MongoClient(host=config.host, port=config.mongoPort)
             db = self.mon[productId + ":" + user + ":insta"]
@@ -218,11 +217,11 @@ class MoniteringClass:
                         return data
 
                 data = reqest_pull(self._url)
-                if data != None:
+                if data is not None:
                     break
             datadict = ujson.loads(data)
             userdata, media_post, top_post = self._dataProcessing(datadict)
-            finallydata = self._lastProcess(
+            self._lastProcess(
                 userdata=userdata, media_post=media_post, top_post=top_post
             )
             # print(ujson.dumps(finallydata))
@@ -313,7 +312,7 @@ class InstaPorcessClass:
                 hashtags(user=user, tags=tags, type=type, productId=productId)
                 check = self._dbProcessReader(user=user, tags=tags, productId=productId)
                 print(check)
-                if check == False:
+                if not check:
                     break
                 time.sleep(300)
                 # therad.join()
@@ -389,7 +388,7 @@ class DBDataFetcher:
         postval = {}
         try:
             postval["posts"] = None
-            if limit.isdigit() == False and date.isdigit() == False:
+            if not limit.isdigit() and not date.isdigit():
                 raise Exception
             limit = int(limit)
             date = int(date)
@@ -420,7 +419,7 @@ class DBDataFetcher:
         postval = {}
         try:
             postval["posts"] = None
-            if limit.isdigit() == False and date.isdigit() == False:
+            if not limit.isdigit() and not date.isdigit():
                 raise Exception
             limit = int(limit)
             date = int(date)

@@ -1,6 +1,5 @@
 def crc_check(data, div):
     l = len(div)
-    ct = 0
     data = [int(i) for i in data]
     div = [int(i) for i in div]
     zero = [0 for i in range(l)]

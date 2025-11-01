@@ -100,7 +100,7 @@ class Vector(object):
         """
         summe = 0
         for c in self.__components:
-            summe += c ** 2
+            summe += c**2
         return math.sqrt(summe)
 
     def __add__(self, other):

@@ -50,7 +50,6 @@ def github():  # Start of the function just to count the files in the github dir
     if (
         github_count > 5
     ):  # If the number of files is greater then 5, then print the following messages
-
         print("\nYou have too many in here, start uploading !!!!!")
         print("You have: " + str(github_count) + " waiting to be uploaded to github!!")
     elif github_count == 0:  # Unless the count is 0, then print the following messages
@@ -71,7 +70,6 @@ def development():  # Start of the function just to count the files in the devel
     if (
         dev_count > 10
     ):  # If the number of files is greater then 10, then print the following messages
-
         print("\nYou have too many in here, finish them or delete them !!!!!")
         print("You have: " + str(dev_count) + " waiting to be finished!!")
     elif dev_count == 0:  # Unless the count is 0, then print the following messages

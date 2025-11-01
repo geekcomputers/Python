@@ -7,6 +7,7 @@ import pygame as pg
 from .statics import *
 from .pieces import *
 
+
 # checker board creation
 class checker_board:
     def __init__(self):

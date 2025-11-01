@@ -3,7 +3,6 @@ def jpeg_res(filename):
 
     # open image for reading in binary mode
     with open(filename, "rb") as img_file:
-
         # height of image (in 2 bytes) is at 164th position
         img_file.seek(163)
 

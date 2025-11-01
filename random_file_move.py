@@ -6,7 +6,8 @@
 # Description   : This will move specified number of files(given in ratio) from the src directory to dest directory.
 
 
-import os, random
+import os
+import random
 import argparse
 
 

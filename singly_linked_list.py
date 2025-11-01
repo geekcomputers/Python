@@ -3,14 +3,15 @@ class Node:
         self.data = data
         self.next = None
 
-class LinkedList():
+
+class LinkedList:
     def __init__(self):
         self.head = None
 
     def length(self):
         curr = self.head
         count = 0
-        while curr.next != None:
+        while curr.next is not None:
             count += 1
             curr = curr.next
         return count
@@ -21,7 +22,7 @@ class LinkedList():
             self.head = new_node
         else:
             curr = self.head
-            while curr.next != None:
+            while curr.next is not None:
                 curr = curr.next
             curr.next = new_node
 
@@ -38,7 +39,7 @@ class LinkedList():
         elif pos == 0:
             self.insert_at_head(data)
             return
-        elif pos == self.length()-1:
+        elif pos == self.length() - 1:
             self.add_node(data)
             return
         new_node = Node(data)
@@ -53,17 +54,17 @@ class LinkedList():
             prev = curr
             curr = curr.next
             curr_pos += 1
-        
+
     def delete_head(self):
         temp = self.head
         self.head = temp.next
         del temp
-    
+
     def delete_end(self):
         curr = self.head
         prev = None
         while True:
-            if curr.next == None:
+            if curr.next is None:
                 prev.next = None
                 del curr
                 break
@@ -77,7 +78,7 @@ class LinkedList():
         elif pos == 0:
             self.delete_head()
             return
-        elif pos == self.length()-1:
+        elif pos == self.length() - 1:
             self.delete_end()
             return
         curr = self.head
@@ -97,8 +98,8 @@ class LinkedList():
             print("List is empty")
         rev = []
         curr = self.head
-        while curr != None:
-            print(f"{curr.data} --> ", end='')
+        while curr is not None:
+            print(f"{curr.data} --> ", end="")
             rev.append(curr.data)
             curr = curr.next
         print()

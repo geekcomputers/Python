@@ -1,9 +1,5 @@
 import requests
-from requests import get
 from bs4 import BeautifulSoup
-import pandas as pd
-import numpy as np
-import html5lib
 
 # * Using html5lib as the parser is good
 # * It is the most lenient parser and works as
@@ -51,7 +47,6 @@ for name_div in az_names:
         while next_sibling and next_sibling.name == "br":
             next_sibling = next_sibling.next_sibling
 
-            
         # Print the text content of the next sibling element
         if next_sibling:
             print(next_sibling.text.strip())

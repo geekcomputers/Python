@@ -1,52 +1,72 @@
-##Clock in pt2thon##
+"""
+Tkinter Clock Difference Calculator.
 
-t1 = input("Init schedule : ")  # first schedule
-HH1 = int(t1[0] + t1[1])
-MM1 = int(t1[3] + t1[4])
-SS1 = int(t1[6] + t1[7])
+Compute difference between two times (HH:MM:SS) with midnight wrap-around.
 
-t2 = input("Final schedule : ")  # second schedule
-HH2 = int(t2[0] + t2[1])
-MM2 = int(t2[3] + t2[4])
-SS2 = int(t2[6] + t2[7])
+Doctests:
 
-tt1 = (HH1 * 3600) + (MM1 * 60) + SS1  # total schedule 1
-tt2 = (HH2 * 3600) + (MM2 * 60) + SS2  # total schedule 2
-tt3 = tt2 - tt1  # difference between tt2 e tt1
+>>> clock_diff("12:00:00", "14:30:15")
+'02:30:15'
+>>> clock_diff("23:50:00", "00:15:30")
+'00:25:30'
+>>> clock_diff("00:00:00", "00:00:00")
+'00:00:00'
+"""
 
-# Part Math
-if tt3 < 0:
-    # If the difference between tt2 e tt1 for negative :
+import tkinter as tk
+from tkinter import messagebox
 
-    a = 86400 - tt1  # 86400 is seconds in 1 day;
-    a2 = a + tt2  # a2 is the difference between 1 day e the <hours var>;
-    Ht = a2 // 3600  # Ht is hours calculated;
 
-    a = a2 % 3600  # Convert 'a' in seconds;
-    Mt = a // 60  # Mt is minutes calculated;
-    St = a % 60  # St is seconds calculated;
+def clock_diff(t1: str, t2: str) -> str:
+    """Return difference between t1 and t2 as HH:MM:SS (zero-padded)."""
+    h1, m1, s1 = int(t1[0:2]), int(t1[3:5]), int(t1[6:8])
+    h2, m2, s2 = int(t2[0:2]), int(t2[3:5]), int(t2[6:8])
+    sec1 = h1 * 3600 + m1 * 60 + s1
+    sec2 = h2 * 3600 + m2 * 60 + s2
+    diff = sec2 - sec1
+    if diff < 0:
+        diff += 24 * 3600
+    h = diff // 3600
+    m = (diff % 3600) // 60
+    s = diff % 60
+    return f"{h:02}:{m:02}:{s:02}"
 
-else:
-    # If the difference between tt2 e tt1 for positive :
 
-    Ht = tt3 // 3600  # Ht is hours calculated;
-    z = tt3 % 3600  # 'z' is tt3 converting in hours by seconds
+def calculate() -> None:
+    """Tkinter callback to calculate and display clock difference."""
+    t1 = entry_t1.get().strip()
+    t2 = entry_t2.get().strip()
+    try:
+        for t in [t1, t2]:
+            if len(t) != 8 or t[2] != ":" or t[5] != ":":
+                raise ValueError("Format must be HH:MM:SS")
+            h, m, s = int(t[0:2]), int(t[3:5]), int(t[6:8])
+            if not (0 <= h < 24 and 0 <= m < 60 and 0 <= s < 60):
+                raise ValueError("Time out of range")
+        result = clock_diff(t1, t2)
+        label_result.config(text=f"Difference: {result}")
+    except Exception as e:
+        messagebox.showerror("Error", f"Invalid input!\n{e}")
 
-    Mt = z // 60  # Mt is minutes calculated;
-    St = tt3 % 60  # St is seconds calculated;
 
-# special condition below :
-if Ht < 10:
-    h = "0" + str(Ht)
-    Ht = h
-if Mt < 10:
-    m = "0" + str(Mt)
-    Mt = m
-if St < 10:
-    s = "0" + str(St)
-    St = s
-# add '0' to the empty spaces (caused by previous operations) in the final result!
+root = tk.Tk()
+root.title("Clock Difference Calculator")
+root.geometry("300x200")
 
-print(
-    "final result is :", str(Ht) + ":" + str(Mt) + ":" + str(St)
-)  # final result (formatted in clock)
+tk.Label(root, text="Init schedule (HH:MM:SS):").pack(pady=5)
+entry_t1 = tk.Entry(root)
+entry_t1.pack()
+
+tk.Label(root, text="Final schedule (HH:MM:SS):").pack(pady=5)
+entry_t2 = tk.Entry(root)
+entry_t2.pack()
+
+tk.Button(root, text="Calculate Difference", command=calculate).pack(pady=10)
+label_result = tk.Label(root, text="Difference: ")
+label_result.pack(pady=5)
+
+if __name__ == "__main__":
+    import doctest
+
+    doctest.testmod()
+    root.mainloop()

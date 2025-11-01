@@ -12,7 +12,6 @@ print(
 )
 
 for i in range(1, max_size + 1):
-
     print("*" * i, end=" " * (max_size - i + 3))
 
     print("*" * (max_size - i + 1), end=" " * (i - 1 + 3))

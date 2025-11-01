@@ -21,7 +21,6 @@ class Phonearena:
         self.absolute_path = os.getcwd().strip() + "/" + self.new_folder_name
 
     def crawl_html_page(self, sub_url):
-
         url = sub_url  # Url for html content parsing.
 
         # Handing the connection error of the url.
@@ -31,7 +30,7 @@ class Phonearena:
             soup = BeautifulSoup(page.text, "html.parser")
             return soup
 
-        except ConnectionError as err:
+        except ConnectionError:
             print("Please check your network connection and re-run the script.")
             exit()
 

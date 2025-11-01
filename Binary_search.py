@@ -24,7 +24,10 @@ def binary_search(arr, l, r, x):
 # Main Function
 if __name__ == "__main__":
     # User input array
-    arr = [int(x) for x in input("Enter the array with elements separated by commas: ").split(",")]
+    arr = [
+        int(x)
+        for x in input("Enter the array with elements separated by commas: ").split(",")
+    ]
 
     # User input element to search for
     x = int(input("Enter the element you want to search for: "))

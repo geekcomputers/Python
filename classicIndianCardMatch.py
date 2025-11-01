@@ -93,7 +93,7 @@ while (
     len(player1) != 0 and len(player2) != 0
 ):  # this needs a fix as it goes on an infinite loop on a success.
     switchPlayer = True
-    while switchPlayer == True:
+    while switchPlayer:
         for card in range(len(player1)):
             input("Enter any key to place a card!!!\n")
             currentPlayer1Card = player1[card].rank
@@ -107,7 +107,7 @@ while (
                     "The human got a match and takes all the cards from center pile.."
                 )
             break
-    while switchPlayer == False:
+    while not switchPlayer:
         for card in range(len(player2)):
             currentPlayer2Card = player2[card].rank
             print("Computer's current card's rank: {}".format(currentPlayer2Card))

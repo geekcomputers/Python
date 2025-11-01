@@ -1,0 +1,3 @@
+pygame
+numpy
+opencv-python

@@ -1,4 +1,4 @@
-"""@Author: Anurag Kumar(mailto:anuragkumarak95@gmail.com) 
+"""@Author: Anurag Kumar(mailto:anuragkumarak95@gmail.com)
 This module is used for generating a TF-IDF file or values from a list of files that contains docs.
 
 What is TF-IDF : https://en.wikipedia.org/wiki/Tf%E2%80%93idf
@@ -6,8 +6,8 @@ What is TF-IDF : https://en.wikipedia.org/wiki/Tf%E2%80%93idf
 python:
   - 3.5
 
-pre-requisites: 
-  - colorama==0.3.9 
+pre-requisites:
+  - colorama==0.3.9
 
 sample file format of input:
 
@@ -31,6 +31,7 @@ here, every line represents a document.
 
 have fun, cheers.
 """
+
 import math
 import pickle
 
@@ -100,7 +101,6 @@ def find_tf_idf(file_names=None, prev_file_path=None, dump_path=None):
         prev_corpus_length = len(tf_idf)
 
     for f in file_names:
-
         file1 = open(
             f, "r"
         )  # never use 'rb' for textual data, it creates something like,  {b'line-inside-the-doc'}
@@ -135,17 +135,21 @@ def find_tf_idf(file_names=None, prev_file_path=None, dump_path=None):
         TAG,
         "Total number of unique words in corpus",
         len(idf),
-        "( " + paint("++" + str(len(idf) - prev_doc_count), "g") + " )"
-        if prev_file_path
-        else "",
+        (
+            "( " + paint("++" + str(len(idf) - prev_doc_count), "g") + " )"
+            if prev_file_path
+            else ""
+        ),
     )
     print(
         TAG,
         "Total number of docs in corpus:",
         len(tf_idf),
-        "( " + paint("++" + str(len(tf_idf) - prev_corpus_length), "g") + " )"
-        if prev_file_path
-        else "",
+        (
+            "( " + paint("++" + str(len(tf_idf) - prev_corpus_length), "g") + " )"
+            if prev_file_path
+            else ""
+        ),
     )
 
     # dump if a dir-path is given

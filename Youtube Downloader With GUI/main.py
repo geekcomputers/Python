@@ -12,6 +12,8 @@ file_size = 0
 q = input("")
 if q == "shutdown":
     os.system("shutdown -s")
+
+
 # function progress to keep check of progress of function.
 def progress(stream=None, chunk=None, remaining=None):
     file_downloaded = file_size - remaining
@@ -31,7 +33,7 @@ def startDownload():
             return
         ob = YouTube(URL, on_progress_callback=progress)
         strm = ob.streams[0]
-        x = ob.description.split("|")
+        ob.description.split("|")
         file_size = strm.filesize
         dfile_size = file_size
         dfile_size /= 1000000

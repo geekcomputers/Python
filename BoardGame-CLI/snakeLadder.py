@@ -19,7 +19,7 @@ def player_input():
         player_num = int(input("Enter the number of players: "))
         if player_num > 0:
             for i in range(player_num):
-                name = input(f"Enter player {i+1} name: ")
+                name = input(f"Enter player {i + 1} name: ")
                 players[name] = current_loc
                 isReady[name] = False
             x = False
@@ -43,11 +43,11 @@ def play():
     global imp
 
     while imp:
-        print("/"*20)
+        print("/" * 20)
         print("1 -> roll the dice (or enter)")
         print("2 -> start new game")
         print("3 -> exit the game")
-        print("/"*20)
+        print("/" * 20)
 
         for i in players:
             n = input("{}'s turn: ".format(i)) or 1
@@ -59,7 +59,7 @@ def play():
                     print(f"you got {temp1}")
                     print("")
 
-                    if isReady[i] == False and temp1 == 6:
+                    if not isReady[i] and temp1 == 6:
                         isReady[i] = True
 
                     if isReady[i]:
@@ -70,7 +70,7 @@ def play():
                             looproll = roll()
                             temp1 += looproll
                             print(f"you got {looproll} ")
-                            if counter_6 == 3 :
+                            if counter_6 == 3:
                                 temp1 -= 18
                                 print("Three consectutives 6 got cancelled")
                             print("")
@@ -90,7 +90,6 @@ def play():
                 elif n == 2:
                     players = {}  # stores player ans their locations
                     isReady = {}
-                    current_loc = 0  # vaiable for iterating location
                     player_input()
 
                 elif n == 3:
@@ -116,19 +115,19 @@ def move(a, i):
 
 # snake bite code
 def snake(c, i):
-    if (c == 32):
+    if c == 32:
         players[i] = 10
-    elif (c == 36):
+    elif c == 36:
         players[i] = 6
-    elif (c == 48):
+    elif c == 48:
         players[i] = 26
-    elif (c == 63):
+    elif c == 63:
         players[i] = 18
-    elif (c == 88):
+    elif c == 88:
         players[i] = 24
-    elif (c == 95):
+    elif c == 95:
         players[i] = 56
-    elif (c == 97):
+    elif c == 97:
         players[i] = 78
     else:
         return players[i]
@@ -141,21 +140,21 @@ def snake(c, i):
 def ladder(a, i):
     global players
 
-    if (a == 4):
+    if a == 4:
         players[i] = 14
-    elif (a == 8):
+    elif a == 8:
         players[i] = 30
-    elif (a == 20):
+    elif a == 20:
         players[i] = 38
-    elif (a == 40):
+    elif a == 40:
         players[i] = 42
-    elif (a == 28):
+    elif a == 28:
         players[i] = 76
-    elif (a == 50):
+    elif a == 50:
         players[i] = 67
-    elif (a == 71):
+    elif a == 71:
         players[i] = 92
-    elif (a == 88):
+    elif a == 88:
         players[i] = 99
     else:
         return players[i]
@@ -165,9 +164,10 @@ def ladder(a, i):
 
 
 # while run:
-print("/"*40)
+print("/" * 40)
 print("Welcome to the snake ladder game !!!!!!!")
-print("/"*40)
+print("/" * 40)
 
 
-player_input()
+if __name__ == "__main__":
+    player_input()

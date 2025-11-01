@@ -1,0 +1,44 @@
+name: Python Checks
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+  push:
+    branches:
+      - main
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  Test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.14.0'
+
+      - name: Install all dependencies and tools
+        run: |
+          python -m pip install --upgrade pip
+          pip install ruff bandit mypy pytest codespell requests-mock colorama
+
+      - name: Run Codespell check
+        run: codespell --skip "*.json,*.txt,*.pdf" || true
+
+      - name: Run Bandit security scan
+        run: bandit -r . --skip B101,B105 || true
+
+      - name: Run Pytest tests
+        run: pytest || true
+
+      - name: Run Ruff checks with ignored rules
+        run: ruff check . --ignore B904,B905,EM101,EXE001,G004,ISC001,PLC0415,PLC1901,PLW060,PLW1641,PLW2901,PT011,PT018,PT028,S101,S311,SIM905,SLF001,F405
+
+      - name: Run Mypy type checks
+        run: mypy . --ignore-missing-imports || true

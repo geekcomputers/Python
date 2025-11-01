@@ -1,6 +1,5 @@
 def watcher(path):
     # python script to observe changes in a folder
-    import sys
     import time
     import os
     from watchdog.observers import Observer
@@ -10,7 +9,7 @@ def watcher(path):
     class Handler(FileSystemEventHandler):
         def on_created(self, event):
             if event.event_type == "created":
-                file_name = os.path.basename(event.src_path)
+                os.path.basename(event.src_path)
                 ext = os.path.splitext(event.src_path)[1]
                 time.sleep(2)
                 add_to_dir(ext[1:], event.src_path, path)

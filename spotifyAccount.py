@@ -31,7 +31,6 @@ errors = 0
 class proxy:
     def update(self):
         while True:
-
             data = ""
             urls = [
                 "https://api.proxyscrape.com/?request=getproxies&proxytype=socks4&timeout=10000&ssl=yes"
@@ -92,7 +91,6 @@ def creator():
         }
 
         try:
-
             r = s.post(
                 "https://spclient.wg.spotify.com/signup/public/v1/account/",
                 data=data,

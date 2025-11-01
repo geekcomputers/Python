@@ -4,6 +4,7 @@
 # Used to return -infinite when stack is empty
 from sys import maxsize
 
+
 # Function to create a stack. It initializes size of stack as 0
 def createStack():
     stack = []

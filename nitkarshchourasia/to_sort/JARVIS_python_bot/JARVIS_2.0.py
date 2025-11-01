@@ -16,13 +16,13 @@ import subprocess  # subprocess module allows you to spawn new processes
 import pyjokes  # for generating random jokes
 import requests
 import json
-from PIL import Image, ImageGrab
+from PIL import ImageGrab
 from gtts import gTTS
 
 # for 30 seconds clip "Jarvis, clip that!" and discord ctrl+k quick-move (might not come to fruition)
 from pynput import keyboard
-from pynput.keyboard import Key, Listener
-from pynput.mouse import Button, Controller
+from pynput.keyboard import Key
+from pynput.mouse import Controller
 from playsound import *  # for sound output
 
 
@@ -135,7 +135,7 @@ def takecommand():
         print("Recognizing...")
         query = r.recognize_google(audio, language="en-in")
         print(f"User said {query}\n")
-    except Exception as e:
+    except Exception:
         print("Say that again please...")
         return "None"
     return query
@@ -258,7 +258,7 @@ def get_app(Q):
         webbrowser.open("https://github.com/")
     elif Q == "search for":
         que = Q.lstrip("search for")
-        answer = ask_gpt3(que)
+        ask_gpt3(que)
 
     elif (
         Q == "email to other"
@@ -269,7 +269,7 @@ def get_app(Q):
             with sr.Microphone() as source:
                 print("Listening...")
                 r.pause_threshold = 1
-                audio = r.listen(source)
+                r.listen(source)
             to = "abc@gmail.com"
             content = input("Enter content")
             sendEmail(to, content)
@@ -307,11 +307,11 @@ def get_app(Q):
     elif Q == "take a break":
         exit()
     else:
-        answer = ask_gpt3(Q)
+        ask_gpt3(Q)
 
     # master
 
-    apps = {
+    {
         "time": datetime.datetime.now(),
         "notepad": "Notepad.exe",
         "calculator": "calc.exe",
@@ -319,8 +319,8 @@ def get_app(Q):
         "shell": "powershell.exe",
         "paint": "mspaint.exe",
         "cmd": "cmd.exe",
-        "browser": "C:\\Program Files\Internet Explorer\iexplore.exe",
-        "vscode": "C:\\Users\\Users\\User\\AppData\\Local\\Programs\Microsoft VS Code",
+        "browser": r"C:\\Program Files\Internet Explorer\iexplore.exe",
+        "vscode": r"C:\\Users\\Users\\User\\AppData\\Local\\Programs\Microsoft VS Code",
     }
     # master
 

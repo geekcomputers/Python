@@ -1,125 +1,108 @@
 # PasswordGenerator GGearing 314 01/10/19
 # modified Prince Gangurde 4/4/2020
 
-from random import randint
+import random
 import pycountry
 
-case = randint(1, 2)
-number = randint(1, 999)
 
-# TODO: Pick random country from it
+def generate_password():
+    # Define characters and word sets
+    special_characters = list("!@#$%/?<>|&*-=+_")
 
-countries = list(pycountry.countries)
-country_names = [country.name for country in countries]
+    animals = (
+        "ant",
+        "alligator",
+        "baboon",
+        "badger",
+        "barb",
+        "bat",
+        "beagle",
+        "bear",
+        "beaver",
+        "bird",
+        "bison",
+        "bombay",
+        "bongo",
+        "booby",
+        "butterfly",
+        "bee",
+        "camel",
+        "cat",
+        "caterpillar",
+        "catfish",
+        "cheetah",
+        "chicken",
+        "chipmunk",
+        "cow",
+        "crab",
+        "deer",
+        "dingo",
+        "dodo",
+        "dog",
+        "dolphin",
+        "donkey",
+        "duck",
+        "eagle",
+        "earwig",
+        "elephant",
+        "emu",
+        "falcon",
+        "ferret",
+        "fish",
+        "flamingo",
+        "fly",
+        "fox",
+        "frog",
+        "gecko",
+        "gibbon",
+        "giraffe",
+        "goat",
+        "goose",
+        "gorilla",
+    )
 
-print(country_names)
+    colours = (
+        "red",
+        "orange",
+        "yellow",
+        "green",
+        "blue",
+        "indigo",
+        "violet",
+        "purple",
+        "magenta",
+        "cyan",
+        "pink",
+        "brown",
+        "white",
+        "grey",
+        "black",
+    )
 
-# TODO: Try to add languages, too.
+    # Get random values
+    animal = random.choice(animals)
+    colour = random.choice(colours)
+    number = random.randint(1, 999)
+    special = random.choice(special_characters)
+    case_choice = random.choice(["upper_colour", "upper_animal"])
 
-specialCharacters = (
-    "!",
-    "@",
-    "#",
-    "$",
-    "%",
-    "/",
-    "?",
-    ":",
-    "<",
-    ">",
-    "|",
-    "&",
-    "*",
-    "-",
-    "=",
-    "+",
-    "_",
-)
+    # Pick a random country and language
+    country = random.choice(list(pycountry.countries)).name
+    languages = [lang.name for lang in pycountry.languages if hasattr(lang, "name")]
+    language = random.choice(languages)
 
-animals = (
-    "ant",
-    "alligator",
-    "baboon",
-    "badger",
-    "barb",
-    "bat",
-    "beagle",
-    "bear",
-    "beaver",
-    "bird",
-    "bison",
-    "bombay",
-    "bongo",
-    "booby",
-    "butterfly",
-    "bee",
-    "camel",
-    "cat",
-    "caterpillar",
-    "catfish",
-    "cheetah",
-    "chicken",
-    "chipmunk",
-    "cow",
-    "crab",
-    "deer",
-    "dingo",
-    "dodo",
-    "dog",
-    "dolphin",
-    "donkey",
-    "duck",
-    "eagle",
-    "earwig",
-    "elephant",
-    "emu",
-    "falcon",
-    "ferret",
-    "fish",
-    "flamingo",
-    "fly",
-    "fox",
-    "frog",
-    "gecko",
-    "gibbon",
-    "giraffe",
-    "goat",
-    "goose",
-    "gorilla",
-)
+    # Apply casing
+    if case_choice == "upper_colour":
+        colour = colour.upper()
+    else:
+        animal = animal.upper()
 
-colour = (
-    "red",
-    "orange",
-    "yellow",
-    "green",
-    "blue",
-    "indigo",
-    "violet",
-    "purple",
-    "magenta",
-    "cyan",
-    "pink",
-    "brown",
-    "white",
-    "grey",
-    "black",
-)
-
-chosenanimal = animals[
-    randint(0, len(animals) - 1)
-]  # randint will return max lenght but , tuple has index from 0 to len-1
-chosencolour = colour[randint(0, len(colour) - 1)]
-chosenSpecialCharacter = specialCharacters[randint(0, len(specialCharacters) - 1)]
-
-if case == 1:
-    chosenanimal = chosenanimal.upper()
-    print(chosencolour + str(number) + chosenanimal + chosenSpecialCharacter)
-else:
-    chosencolour = chosencolour.upper()
-    print(chosenanimal + str(number) + chosencolour + chosenSpecialCharacter)
-
-# Try to consolidate unify the characters.
+    # Combine to form password
+    password = f"{colour}{number}{animal}{special}"
+    print("Generated Password:", password)
+    print("Based on Country:", country)
+    print("Language Hint:", language)
 
 
-# The program can be further improved.
+# Run it
+generate_password()

@@ -31,7 +31,7 @@ def main():  # Main Program
     tgtHost = options.tgtHost
     tgtPorts = str(options.tgtPort).split(",")
 
-    if (tgtHost == None) | (tgtPorts[0] == None):
+    if (tgtHost is None) | (tgtPorts[0] is None):
         print(parser.usage)
         exit(0)
 

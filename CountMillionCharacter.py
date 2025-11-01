@@ -6,9 +6,10 @@ that number appears in the triple quoted string.
 Credit to William J. Turkel and Adam Crymble for the word
 frequency code used below. I just merged the two ideas.
 """
+
 import re
 
-pattern = re.compile("\W")  # re is used to compile the expression more than once
+pattern = re.compile(r"\W")  # re is used to compile the expression more than once
 # wordstring consisting of a million characters
 wordstring = """SCENE I. Yorkshire. Gaultree Forest.
 Enter the ARCHBISHOP OF YORK, MOWBRAY, LORD HASTINGS, and others

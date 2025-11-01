@@ -35,7 +35,7 @@ def show_sensors():
     for address in ip_addresses():
         print("IP Addresses: {0[1]} ({0[0]})".format(address))
     print("CPU Load: {:.1f}".format(cpu_load()))
-    print("RAM Available: {} MiB".format(ram_available() / 1024 ** 2))
+    print("RAM Available: {} MiB".format(ram_available() / 1024**2))
     print("AC Connected: {}".format(ac_connected()))
 
 
@@ -44,7 +44,7 @@ def command_line(argv):
         description="Display the values of the sensors",
         add_help=True,
     )
-    arguments = parser.parse_args()
+    parser.parse_args()
     show_sensors()
 
 

@@ -12,6 +12,7 @@ Original file is located at
 
 from googletrans import Translator
 
+
 # make a simple function that will translate any language to english
 def text_translator(Text):
     translator = Translator()

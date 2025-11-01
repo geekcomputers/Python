@@ -2,9 +2,6 @@
 # Email-kingslayer8509@gmail.com
 # you need to create a file password.txt which contains all possible passwords
 import requests
-import threading
-import urllib.request
-import os
 from bs4 import BeautifulSoup
 import sys
 

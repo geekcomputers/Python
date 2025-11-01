@@ -1,11 +1,11 @@
 """
  Pygame base template for opening a window
- 
+
  Sample Python/Pygame Programs
  Simpson College Computer Science
  http://programarcadegames.com/
  http://simpson.edu/computer-science/
- 
+
  Explanation video: http://youtu.be/vRB_983kUMc
 
 -------------------------------------------------
@@ -196,8 +196,8 @@ class Brick(pygame.sprite.Sprite):
         brickH = self._height
         ballX = ball._xLoc
         ballY = ball._yLoc
-        ballXVel = ball.getXVel()
-        ballYVel = ball.getYVel()
+        ball.getXVel()
+        ball.getYVel()
 
         if (
             (ballX + ball._radius) >= brickX
@@ -252,7 +252,7 @@ class BrickWall(pygame.sprite.Group):
         draws all bricks onto screen.
         """
         for brick in self._bricks:
-            if brick != None:
+            if brick is not None:
                 brick.draw()
 
     def update(self, ball):
@@ -260,7 +260,7 @@ class BrickWall(pygame.sprite.Group):
         checks collision between ball and bricks.
         """
         for i in range(len(self._bricks)):
-            if (self._bricks[i] != None) and self._bricks[i].collide(ball):
+            if (self._bricks[i] is not None) and self._bricks[i].collide(ball):
                 self._bricks[i] = None
 
         # removes the None-elements from the brick list.
@@ -345,7 +345,6 @@ while not done:
         are both in the same section.
     """
     if gameStatus:
-
         # first draws ball for appropriate displaying the score.
         brickWall.draw()
 

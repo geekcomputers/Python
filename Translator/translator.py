@@ -1,6 +1,7 @@
 from tkinter import *
 from translate import Translator
 
+
 # Translator function
 def translate():
     translator = Translator(from_lang=lan1.get(), to_lang=lan2.get())

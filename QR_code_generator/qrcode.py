@@ -1,5 +1,7 @@
-import pyqrcode, png
-from pyqrcode import QRCode
+import pyqrcode
+
+# from pyqrcode import QRCode
+# no need to import same library again and again
 
 # Creating QR code after given text "input"
 url = pyqrcode.create(input("Enter text to convert: "))

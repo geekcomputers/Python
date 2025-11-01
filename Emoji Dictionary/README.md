@@ -10,6 +10,8 @@
 - tkinter module
 - from tkinter messagebox module
 - emoji
+- opencv
+
 
 ### How this Script works :
 - User just need to download the file and run the emoji_dictionary.py on their local system.

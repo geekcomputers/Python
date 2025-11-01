@@ -1,13 +1,13 @@
-""" author: Ataba29
-    the code is just a russian roulette game against
-    the computer
+"""author: Ataba29
+the code is just a russian roulette game against
+the computer
 """
+
 from random import randrange
 import time
 
 
 def main():
-
     # create the gun and set the bullet
     numOfRounds = 6
     gun = [0, 0, 0, 0, 0, 0]
@@ -38,19 +38,21 @@ def main():
         answer = input("please enter again ('m' or 'p'): ")
 
     # set turn
-    if answer == 'm':
+    if answer == "m":
         turn = "player"
     else:
         turn = "pc"
 
     # game starts
-    while numOfRounds != 0 and (pc == False and player == False):
+    while numOfRounds != 0 and (not pc and not player):
         print(f"\nRound number {numOfRounds}/6")
         time.sleep(1)
         print("the gun is being loaded")
         time.sleep(3)
-        print("the gun is placed on " + ("your head" if turn ==
-              "player" else "the cpu of the pc"))
+        print(
+            "the gun is placed on "
+            + ("your head" if turn == "player" else "the cpu of the pc")
+        )
         time.sleep(3)
         print("and...")
         time.sleep(1)
