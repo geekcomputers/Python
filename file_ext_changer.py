@@ -97,7 +97,7 @@ xten = xten.split(",")
 # Validation
 for file in files:
     check = p(file).exists()
-    if check == False:
+    if not check:
         print(f"{file} is not found. Paste this file in the directory of {file}")
         files.remove(file)
 # Ended validation
@@ -122,7 +122,7 @@ else:
         # Validation
         for file in files:
             check = p(file).exists()
-            if check == False:
+            if not check:
                 print(
                     f"{file} is not found. Paste this file in the directory of {file}"
                 )

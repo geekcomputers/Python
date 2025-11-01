@@ -6,16 +6,16 @@ from docx.api import Document
 
 # %%
 
-if os.path.isdir("Parent") == True:
+if os.path.isdir("Parent"):
     os.chdir("Parent")
 # FOR CHILD1 DIRECTORY
-if os.path.isdir("Child1") == True:
+if os.path.isdir("Child1"):
     os.chdir("Child1")
 # PDF FILE READING
-if os.path.isfile("Pdf1_Child1.pdf") == True:
+if os.path.isfile("Pdf1_Child1.pdf"):
     df_pdf_child1 = tabula.read_pdf("Pdf1_Child1.pdf", pages="all")
 # DOCUMENT READING
-if os.path.isfile("Document_Child1.docx") == True:
+if os.path.isfile("Document_Child1.docx"):
     document = Document("Document_Child1.docx")
     table = document.tables[0]
     data = []
@@ -30,7 +30,7 @@ if os.path.isfile("Document_Child1.docx") == True:
         data.append(row_data)
 df_document_child1 = pd.DataFrame(data)
 # TEXT READING
-if os.path.isfile("Text_Child1.txt") == True:
+if os.path.isfile("Text_Child1.txt"):
     df_text_child1 = pd.read_csv("Text_Child1.txt")
 
 # %%
@@ -39,16 +39,16 @@ df_text_child1
 
 # %%
 os.chdir("../")
-if os.path.isdir("Parent") == True:
+if os.path.isdir("Parent"):
     os.chdir("Parent")
 # FOR CHILD2 DIRECTORY
-if os.path.isdir("Child2") == True:
+if os.path.isdir("Child2"):
     os.chdir("Child2")
 # PDF FILE READING
-if os.path.isfile("Pdf1_Child2.pdf") == True:
+if os.path.isfile("Pdf1_Child2.pdf"):
     df_pdf_child2 = tabula.read_pdf("Pdf1_Child2.pdf", pages="all")
 # DOCUMENT READING
-if os.path.isfile("Document_Child2.docx") == True:
+if os.path.isfile("Document_Child2.docx"):
     document = Document("Document_Child2.docx")
     table = document.tables[0]
     data = []
@@ -63,7 +63,7 @@ if os.path.isfile("Document_Child2.docx") == True:
         data.append(row_data)
 df_document_child2 = pd.DataFrame(data)
 # TEXT READING
-if os.path.isfile("Text_Child2.txt") == True:
+if os.path.isfile("Text_Child2.txt"):
     df_text_child2 = pd.read_csv("Text_Child2.txt")
 
 # %%
@@ -71,16 +71,16 @@ df_pdf_child2[0].head(4)
 
 # %%
 os.chdir("../")
-if os.path.isdir("Parent") == True:
+if os.path.isdir("Parent"):
     os.chdir("Parent")
 # FOR CHILD3 DIRECTORY
-if os.path.isdir("Child3") == True:
+if os.path.isdir("Child3"):
     os.chdir("Child3")
 # PDF FILE READING
-if os.path.isfile("Pdf1_Child3.pdf") == True:
+if os.path.isfile("Pdf1_Child3.pdf"):
     df_pdf_child3 = tabula.read_pdf("Pdf1_Child3.pdf", pages="all")
 # DOCUMENT READING
-if os.path.isfile("Document_Child3.docx") == True:
+if os.path.isfile("Document_Child3.docx"):
     document = Document("Document_Child3.docx")
     table = document.tables[0]
     data = []
@@ -95,7 +95,7 @@ if os.path.isfile("Document_Child3.docx") == True:
         data.append(row_data)
 df_document_child3 = pd.DataFrame(data)
 # TEXT READING
-if os.path.isfile("Text_Child3.txt") == True:
+if os.path.isfile("Text_Child3.txt"):
     df_text_child3 = pd.read_csv("Text_Child3.txt")
 
 # %%

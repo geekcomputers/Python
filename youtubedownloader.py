@@ -1,10 +1,14 @@
 from tkinter import Button, Entry, Label, Tk, filedialog, messagebox
 from threading import Thread
 from pytube import YouTube
+
+
 def threading():
     # Call work function
     t1 = Thread(target=download)
     t1.start()
+
+
 def download():
     try:
         url = YouTube(str(url_box.get()))

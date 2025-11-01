@@ -41,7 +41,7 @@ if __name__ == "__main__":
     while run:
         clock.tick(fps)
 
-        if board.winner() != None:
+        if board.winner() is not None:
             print(board.winner())
 
         # check if any events is running or not

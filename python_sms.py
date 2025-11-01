@@ -30,7 +30,7 @@ loc_stmt = "SELECT name, number from table"
 cursor.execute(loc_stmt)
 while True:
     row = cursor.fetchone()
-    if row == None:
+    if row is None:
         break
     sname = row[0]
     snumber = row[1]

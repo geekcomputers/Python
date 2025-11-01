@@ -133,22 +133,22 @@ def deal():
 
 
 def stand():
-    if in_play == True:
+    if in_play:
         while dealer_card.get_value() < 17:
             dealer_card.add_card(deck.deal_card())
     if dealer_card.get_value() > 21:
-        outcome = "you won!!"
+        pass
     elif player_card.get_value() <= dealer_card.get_value():
-        outcome = "you lose"
+        pass
     else:
-        outcome = "you won!!"
-    score1 = str(player_card.get_value())
-    score2 = str(dealer_card.get_value())
+        pass
+    str(player_card.get_value())
+    str(dealer_card.get_value())
 
 
 def hit():
     global outcome, in_play, score1, score2, player_card, dealer_card, deck
-    if in_play == True:
+    if in_play:
         player_card.add_card(deck.deal_card())
 
     if player_card.get_value() > 21:

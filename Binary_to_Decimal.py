@@ -10,7 +10,7 @@ def binaryToDecimal(binary):
     >>> binaryToDecimal(101011)
     43
     """
-    decimal, i, n = 0, 0, 0
+    decimal, i, _n = 0, 0, 0
     while binary != 0:
         dec = binary % 10
         decimal = decimal + dec * pow(2, i)

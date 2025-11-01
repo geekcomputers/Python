@@ -87,7 +87,7 @@ def get_servers(query):  # Function to get the servers from the database
     print("\nDisplaying Servers for : " + query + "\n")
     while True:  # While there are results
         row = cursor.fetchone()  # Return the results
-        if row == None:
+        if row is None:
             break
         f = open(serverfile, "a")  # Open the serverfile
         f.write("%s\n" % str(row[0]))  # Write the server out to the file

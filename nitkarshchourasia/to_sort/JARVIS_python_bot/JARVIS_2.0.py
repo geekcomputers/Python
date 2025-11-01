@@ -258,7 +258,7 @@ def get_app(Q):
         webbrowser.open("https://github.com/")
     elif Q == "search for":
         que = Q.lstrip("search for")
-        answer = ask_gpt3(que)
+        ask_gpt3(que)
 
     elif (
         Q == "email to other"
@@ -269,7 +269,7 @@ def get_app(Q):
             with sr.Microphone() as source:
                 print("Listening...")
                 r.pause_threshold = 1
-                audio = r.listen(source)
+                r.listen(source)
             to = "abc@gmail.com"
             content = input("Enter content")
             sendEmail(to, content)
@@ -307,11 +307,11 @@ def get_app(Q):
     elif Q == "take a break":
         exit()
     else:
-        answer = ask_gpt3(Q)
+        ask_gpt3(Q)
 
     # master
 
-    apps = {
+    {
         "time": datetime.datetime.now(),
         "notepad": "Notepad.exe",
         "calculator": "calc.exe",

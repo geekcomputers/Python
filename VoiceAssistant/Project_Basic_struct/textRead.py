@@ -181,7 +181,7 @@ def pdf_read():
             try:
                 key = input("Lesson name - ")
                 start_pg_no, end_pg_no = search_in_toc(toc, key, total_pages)
-                if start_pg_no != None and end_pg_no != None:
+                if start_pg_no is not None and end_pg_no is not None:
                     start_pg_no, end_pg_no = map(
                         int, search_in_toc(toc, key, total_pages)
                     )
@@ -199,7 +199,7 @@ def pdf_read():
                     start_pg_no, end_pg_no = map(
                         int, search_in_toc(toc, key, total_pages)
                     )
-                    if start_pg_no != None and end_pg_no != None:
+                    if start_pg_no is not None and end_pg_no is not None:
                         for i in range(start_pg_no - 1, end_pg_no):
                             page = pdf.load_page(i)
                             text = page.get_text("text")
@@ -212,7 +212,7 @@ def pdf_read():
                 speak("Lesson name")
                 key = input("Lesson name - ")
                 start_pg_no, end_pg_no = search_in_toc(toc, key, total_pages)
-                if start_pg_no != None and end_pg_no != None:
+                if start_pg_no is not None and end_pg_no is not None:
                     start_pg_no, end_pg_no = map(
                         int, search_in_toc(toc, key, total_pages)
                     )
