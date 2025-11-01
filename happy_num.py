@@ -1,5 +1,6 @@
 # Way2 1:
 
+
 # isHappyNumber() will determine whether a number is happy or not
 def isHappyNumber(num):
     rem = sum = 0

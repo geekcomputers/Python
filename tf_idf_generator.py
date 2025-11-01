@@ -88,7 +88,9 @@ def find_tf_idf(file_names=None, prev_file_path=None, dump_path=None):
     """
     if file_names is None:
         file_names = ["./../test/testdata"]
-    tf_idf = []  # will hold a dict of word_count for every doc(line in a doc in this case)
+    tf_idf = (
+        []
+    )  # will hold a dict of word_count for every doc(line in a doc in this case)
     idf = {}
 
     # this statement is useful for altering existant tf-idf file and adding new docs in itself.(## memory is now the biggest issue)
@@ -133,17 +135,21 @@ def find_tf_idf(file_names=None, prev_file_path=None, dump_path=None):
         TAG,
         "Total number of unique words in corpus",
         len(idf),
-        "( " + paint("++" + str(len(idf) - prev_doc_count), "g") + " )"
-        if prev_file_path
-        else "",
+        (
+            "( " + paint("++" + str(len(idf) - prev_doc_count), "g") + " )"
+            if prev_file_path
+            else ""
+        ),
     )
     print(
         TAG,
         "Total number of docs in corpus:",
         len(tf_idf),
-        "( " + paint("++" + str(len(tf_idf) - prev_corpus_length), "g") + " )"
-        if prev_file_path
-        else "",
+        (
+            "( " + paint("++" + str(len(tf_idf) - prev_corpus_length), "g") + " )"
+            if prev_file_path
+            else ""
+        ),
     )
 
     # dump if a dir-path is given

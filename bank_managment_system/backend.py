@@ -11,7 +11,8 @@ class DatabaseManager:
         self.acc_no = self._get_last_acc_no() + 1
 
     def _setup_tables(self):
-        self.cur.execute("""
+        self.cur.execute(
+            """
             CREATE TABLE IF NOT EXISTS bank (
                 acc_no INTEGER PRIMARY KEY,
                 name TEXT,
@@ -21,15 +22,18 @@ class DatabaseManager:
                 account_type TEXT,
                 mobile_number TEXT
             )
-        """)
-        self.cur.execute("""
+        """
+        )
+        self.cur.execute(
+            """
             CREATE TABLE IF NOT EXISTS staff (
                 name TEXT,
                 pass TEXT,
                 salary INTEGER,
                 position TEXT
             )
-        """)
+        """
+        )
         self.cur.execute("CREATE TABLE IF NOT EXISTS admin (name TEXT, pass TEXT)")
         self.cur.execute("SELECT COUNT(*) FROM admin")
         if self.cur.fetchone()[0] == 0:

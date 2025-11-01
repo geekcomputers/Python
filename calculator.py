@@ -23,7 +23,6 @@ convert degrees to radians : rad(deg)
 absolute value             : aval(n)
 """
 
-
 ## Imported math library to run sin(), cos(), tan() and other such functions in the calculator
 
 

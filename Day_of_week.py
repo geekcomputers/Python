@@ -12,9 +12,9 @@ def process_date(user_input):
 
 
 def find_day(date):
-    born = (
-        datetime.datetime.strptime(date, "%d %m %Y").weekday()
-    )  # this statement returns an integer corresponding to the day of the week
+    born = datetime.datetime.strptime(
+        date, "%d %m %Y"
+    ).weekday()  # this statement returns an integer corresponding to the day of the week
     return calendar.day_name[
         born
     ]  # this statement returns the corresponding day name to the integer generated in the previous statement

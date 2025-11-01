@@ -43,7 +43,9 @@ def pdf_read():
 
         path = doubleslash(location)
         pdf = fitz.open(path)
-        details = pdf.metadata  # Stores the meta-data which generally includes Author name and Title of book/document.
+        details = (
+            pdf.metadata
+        )  # Stores the meta-data which generally includes Author name and Title of book/document.
         total_pages = pdf.pageCount  # Stores the total number of pages
 
     except Exception as exp:
@@ -54,10 +56,10 @@ def pdf_read():
         )
         return "None"
     try:
-        """     1. Author
-                2. Creator
-                3. Producer
-                4. Title  """
+        """1. Author
+        2. Creator
+        3. Producer
+        4. Title"""
 
         author = details["author"]
         # print("Author : ",author)
