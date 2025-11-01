@@ -126,7 +126,9 @@ class MainProcess(object):
 
     def user_win(self) -> None:
         """Print text for end of game and exits."""
-        print_wrong(f"{self._word_string_to_show} YOU WON", self._print_function)  # noqa:WPS305
+        print_wrong(
+            f"{self._word_string_to_show} YOU WON", self._print_function
+        )  # noqa:WPS305
 
     def game_process(self, user_character: str) -> bool:
         # noqa: DAR201

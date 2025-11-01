@@ -142,7 +142,9 @@ files.download("Fake_news.csv")
 
 """**Scraping news from Times of India**"""
 
-TOIarticle_links = []  # Creating an empty list of all the urls of news from Times of India site
+TOIarticle_links = (
+    []
+)  # Creating an empty list of all the urls of news from Times of India site
 
 # Extracting links for all the pages (2 to 125) of boomlive fake news section
 for i in range(2, 126):

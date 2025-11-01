@@ -1,4 +1,3 @@
-
 """This file manages the graphical user interface of the quiz, using Tkinter to display questions, answer options, and the score to the user."""
 
 from tkinter import *
@@ -22,20 +21,29 @@ W_TEXT = "#522258"
 
 FONT = ("Lucida sans", 20)
 
-class QuizInterface:
 
+class QuizInterface:
     def __init__(self, quiz_brain: QuizBrain):
         self.quiz = quiz_brain
         self.window = Tk()
         self.window.title("Quizzler")
         self.window.config(padx=20, pady=20, bg=BACKGROUND)
 
-        self.score_label = Label(text="Score: 0", fg="white", bg=BACKGROUND, font=("Lucida sans", 15, "bold"))
+        self.score_label = Label(
+            text="Score: 0", fg="white", bg=BACKGROUND, font=("Lucida sans", 15, "bold")
+        )
         self.score_label.grid(row=0, column=1)
 
         self.canvas = Canvas(width=1000, height=550, bg=CANVAS)
         self.question_text = self.canvas.create_text(
-            500, 100, width=800, text="Some question text", fill=TEXT, font=FONT, anchor="center", justify="center"
+            500,
+            100,
+            width=800,
+            text="Some question text",
+            fill=TEXT,
+            font=FONT,
+            anchor="center",
+            justify="center",
         )
         self.canvas.grid(row=1, column=0, columnspan=2, pady=50)
 
@@ -59,8 +67,16 @@ class QuizInterface:
         y_position = 230
         for i in range(4):
             radio_button = Radiobutton(
-                self.canvas, text="", variable=self.opt_selected, value=i + 1, font=FONT, bg=CANVAS, anchor="w", 
-                justify="left", fg=TEXT, wraplength=900
+                self.canvas,
+                text="",
+                variable=self.opt_selected,
+                value=i + 1,
+                font=FONT,
+                bg=CANVAS,
+                anchor="w",
+                justify="left",
+                fg=TEXT,
+                wraplength=900,
             )
             radio_buttons.append(radio_button)
             self.canvas.create_window(50, y_position, window=radio_button, anchor="w")

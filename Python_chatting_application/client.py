@@ -20,7 +20,6 @@ def recieve():
         except Exception as error:
             print(f"An Erro occured {error}")
             s.close()
-            flag = 1
             break
 
 
@@ -32,7 +31,6 @@ def Write():
         except Exception as error:
             print(f"An Error Occured while sending message !!!\n error : {error}")
             s.close()
-            flag = 1
             break
 
 

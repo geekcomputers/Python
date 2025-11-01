@@ -1,14 +1,15 @@
-
 items = {"apple": 5, "soap": 4, "soda": 6, "pie": 7, "cake": 20}
 total_price = 0
 try:
-    print("""
+    print(
+        """
 Press 1 for apple
 Press 2 for soap
 Press 3 for soda
 Press 4 for pie
 Press 5 for cake
-Press 6 for bill""")
+Press 6 for bill"""
+    )
     while True:
         choice = int(input("enter your choice here.."))
         if choice == 1:
@@ -28,10 +29,12 @@ Press 6 for bill""")
             print("cake added to the cart")
             total_price += items["cake"]
         elif choice == 6:
-            print(f"""
+            print(
+                f"""
 
 Total amount :{total_price}
-""")
+"""
+            )
             break
         else:
             print("Please enter the digits within the range 1-6..")

@@ -11,7 +11,7 @@ class LinkedList:
     def length(self):
         curr = self.head
         count = 0
-        while curr.next != None:
+        while curr.next is not None:
             count += 1
             curr = curr.next
         return count
@@ -22,7 +22,7 @@ class LinkedList:
             self.head = new_node
         else:
             curr = self.head
-            while curr.next != None:
+            while curr.next is not None:
                 curr = curr.next
             curr.next = new_node
 
@@ -64,7 +64,7 @@ class LinkedList:
         curr = self.head
         prev = None
         while True:
-            if curr.next == None:
+            if curr.next is None:
                 prev.next = None
                 del curr
                 break
@@ -98,7 +98,7 @@ class LinkedList:
             print("List is empty")
         rev = []
         curr = self.head
-        while curr != None:
+        while curr is not None:
             print(f"{curr.data} --> ", end="")
             rev.append(curr.data)
             curr = curr.next

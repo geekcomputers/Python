@@ -8,7 +8,7 @@ def fibonacci_generator(n=None):
     """
     f0, f1 = 0, 1
     yield f1
-    while n == None or n > 1:
+    while n is None or n > 1:
         fn = f0 + f1
         yield fn
         f0, f1 = f1, fn

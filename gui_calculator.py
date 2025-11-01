@@ -98,7 +98,7 @@ def subtract():
 
 
 def get():
-    b = txt1.get()
+    txt1.get()
 
 
 def equals():

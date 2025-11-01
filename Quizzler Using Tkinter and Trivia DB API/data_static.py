@@ -5,8 +5,8 @@ question_data = [
         "incorrect_answers": [
             "Increase in hardware prices",
             "Decrease in computational power",
-            "Less complex problems for software engineers"
-        ]
+            "Less complex problems for software engineers",
+        ],
     },
     {
         "question": "How have software engineers coped with the challenges of increasing computational capabilities?",
@@ -14,8 +14,8 @@ question_data = [
         "incorrect_answers": [
             "By reducing programming efforts",
             "By simplifying programming languages",
-            "By avoiding large and complex problems"
-        ]
+            "By avoiding large and complex problems",
+        ],
     },
     {
         "question": "Which of the following is a definition of software engineering according to IEEE?",
@@ -23,8 +23,8 @@ question_data = [
         "incorrect_answers": [
             "The art of writing computer programs",
             "An engineering approach to developing software",
-            "A collection of unorganized programming techniques"
-        ]
+            "A collection of unorganized programming techniques",
+        ],
     },
     {
         "question": "Why is software engineering similar to other engineering disciplines?",
@@ -32,8 +32,8 @@ question_data = [
         "incorrect_answers": [
             "It makes use of subjective judgement and ill understood principles",
             "It often avoids conflicting goals",
-            "It relies solely on qualitative attributes"
-        ]
+            "It relies solely on qualitative attributes",
+        ],
     },
     {
         "question": "Which statement supports the idea that software engineering is not just an art?",
@@ -41,8 +41,8 @@ question_data = [
         "incorrect_answers": [
             "It makes subjective judgement based on qualitative attributes",
             "It avoids systematic and disciplined approaches",
-            "It does not require tradeoffs in problem solving"
-        ]
+            "It does not require tradeoffs in problem solving",
+        ],
     },
     {
         "question": "How have software engineering principles evolved over the last sixty years?",
@@ -50,17 +50,13 @@ question_data = [
         "incorrect_answers": [
             "From a science to an art form",
             "From a craft to an art form",
-            "From an engineering discipline to a craft"
-        ]
+            "From an engineering discipline to a craft",
+        ],
     },
     {
         "question": "Which programming style is characterized by quickly developing a program without any specification, plan, or design?",
         "correct_answer": "Build and fix",
-        "incorrect_answers": [
-            "Exploratory",
-            "Code and fix",
-            "Ad hoc"
-        ]
+        "incorrect_answers": ["Exploratory", "Code and fix", "Ad hoc"],
     },
     {
         "question": "According to the text, what has been a symptom of the present software crisis?",
@@ -68,8 +64,8 @@ question_data = [
         "incorrect_answers": [
             "Decrease in software development costs",
             "Software products becoming easier to alter and debug",
-            "Software products being delivered on time"
-        ]
+            "Software products being delivered on time",
+        ],
     },
     {
         "question": "What is one of the main benefits of adopting software engineering techniques according to the text?",
@@ -77,8 +73,8 @@ question_data = [
         "incorrect_answers": [
             "Increasing hardware costs",
             "Avoiding the use of scientific principles",
-            "Making software development more subjective"
-        ]
+            "Making software development more subjective",
+        ],
     },
     {
         "question": "What is a key characteristic of toy software?",
@@ -86,9 +82,9 @@ question_data = [
         "incorrect_answers": [
             "Developed by a team of professionals",
             "Large in size and highly complex",
-            "Thoroughly tested and maintained"
-        ]
-    }
+            "Thoroughly tested and maintained",
+        ],
+    },
     # {
     #     "question": "What differentiates professional software from toy software?",
     #     "correct_answer": "Professional software is systematically designed, carefully implemented, and thoroughly tested",

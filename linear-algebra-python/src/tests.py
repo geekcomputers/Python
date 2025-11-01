@@ -23,7 +23,7 @@ class Test(unittest.TestCase):
         self.assertEqual(x.component(0), 1)
         self.assertEqual(x.component(2), 3)
         try:
-            y = Vector()
+            Vector()
             self.assertTrue(False)
         except:
             self.assertTrue(True)

@@ -18,7 +18,7 @@ expression = ""
 
 def start_reloader():
     """Adding a live server for tkinter test GUI, which reloads the GUI when the code is changed."""
-    reloader = hupper.start_reloader("p1.main")
+    hupper.start_reloader("p1.main")
 
 
 # Function to update expression

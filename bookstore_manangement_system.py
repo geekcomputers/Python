@@ -230,7 +230,7 @@ DBZ()
 a = True
 
 
-while a == True:
+while a:
     # PROGRAM STARTED
 
     print("     *TO VIEW ALL ENTER 1")
@@ -286,7 +286,7 @@ while a == True:
         mycur.execute(display)
         data2 = mycur.fetchone()
 
-        if data2 != None:
+        if data2 is not None:
             print("BOOK IS AVAILABLE")
 
             # BUY OR NOT
@@ -613,7 +613,7 @@ while a == True:
             mycur.execute(display10)
             data20 = mycur.fetchone()
 
-            if data20 != None:
+            if data20 is not None:
                 print("This  ISBN Already Exists")
 
                 os._exit(0)
@@ -657,7 +657,7 @@ while a == True:
         mycur.execute(display)
         data2 = mycur.fetchone()
 
-        if data2 != None:
+        if data2 is not None:
             SNo1 = int(input("ENTER NEW SNo OF BOOK -- "))
             name1 = input("ENTER NEW NAME OF BOOK --- ")
             author1 = input("ENTER NEW NAME OF AUTHOR -- ")
@@ -724,7 +724,7 @@ while a == True:
         mycur.execute(display)
         data2 = mycur.fetchone()
 
-        if data2 != None:
+        if data2 is not None:
             separator()
 
             choice5 = input("ARE YOU SURE TO DELETE THIS BOOK ENTER Y/N -- ")

@@ -74,7 +74,7 @@ class QuestionAnswerVirtualAssistant:
                     reverse_idx[word].append(row_id)
         reverse_idx = json.dumps(reverse_idx)
         cur = self.conn.cursor()
-        result = cur.execute(
+        cur.execute(
             "UPDATE WordToId SET value = (?) WHERE name='index'", (reverse_idx,)
         )
         return "index successful"

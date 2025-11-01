@@ -135,7 +135,7 @@ def counting_sort(arr: list) -> list:
 
     TC : O(n)
     SC : O(n)"""
-    n = len(arr)
+    len(arr)
     maxx = max(arr)
     counts = [0] * (maxx + 1)
     for x in arr:
@@ -151,17 +151,8 @@ def counting_sort(arr: list) -> list:
 
 
 def main():
-    algos = {
-        "selection_sort": ["TC : O(n^2)", "SC : O(1)"],
-        "bubble_sort": ["TC : O(n^2)", "SC : O(1)"],
-        "insertion_sort": ["TC : O(n^2)", "SC : O(1)"],
-        "merge_sort": ["TC : O(n^2)", "SC : O(1)"],
-        "quick_sort": ["TC : O(n^2)", "SC : O(1)"],
-        "counting_sort": ["TC : O(n^2)", "SC : O(1)"],
-    }
-
     inp = [1, 2, 7, -8, 34, 2, 80, 790, 6]
-    arr = counting_sort(inp)
+    counting_sort(inp)
     print("U are amazing, Keep up")
 
 

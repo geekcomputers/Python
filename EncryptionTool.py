@@ -48,11 +48,10 @@ def decrypt(enc_text):
 def readAndDecrypt(filename):
     file = open(filename, "r")
     data = file.read()
-    datalistint = []
     actualdata = []
     datalist = data.split(" ")
     datalist.remove("")
-    datalistint = [float(data) for data in datalist]
+    [float(data) for data in datalist]
     for data in datalist:
         current1 = int(decryptChar(data))
         current1 = chr(current1)
@@ -66,7 +65,6 @@ def readAndEncrypt(filename):
     data = file.read()
     datalist = list(data)
     encrypted_list = list()
-    encrypted_list_str = list()
     for data in datalist:
         current = ord(data)
         current = encryptChar(current)

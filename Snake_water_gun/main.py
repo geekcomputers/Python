@@ -81,7 +81,7 @@ while run and i < 10:
     i += 1
     print(f"{10 - i} matches left")
 
-if run == True:
+if run:
     print(f"Your score is {score} and the final result is...")
     time.sleep(3)
     if score > 5:

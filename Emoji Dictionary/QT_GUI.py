@@ -131,7 +131,8 @@ class MainWindow(QMainWindow):
                 button = QPushButton(emoji)
                 button.setFixedSize(40, 40)
                 button.setFont(QFont("Arial", 20))
-                button.setStyleSheet("""
+                button.setStyleSheet(
+                    """
                   QPushButton {
                      background-color: #ffffff;
                      border: 1px solid #e0e0e0;
@@ -140,7 +141,8 @@ class MainWindow(QMainWindow):
                   QPushButton:hover {
                      background-color: #f0f0f0;
                   }
-               """)
+               """
+                )
                 button.clicked.connect(lambda checked, e=emoji: add_input_emoji(e))
                 self.emoji_layout.addWidget(button, row_idx, col_idx)
                 self.emoji_buttons.append(button)

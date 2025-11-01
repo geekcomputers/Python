@@ -55,7 +55,7 @@ class Fighter:
         key = pygame.key.get_pressed()
 
         # can only perform other actions if not currently attacking
-        if self.attacking == False and self.alive == True and round_over == False:
+        if not self.attacking and self.alive and not round_over:
             # check player 1 controls
             if self.player == 1:
                 # movement
@@ -66,7 +66,7 @@ class Fighter:
                     dx = SPEED
                     self.running = True
                 # jump
-                if key[pygame.K_w] and self.jump == False:
+                if key[pygame.K_w] and not self.jump:
                     self.vel_y = -30
                     self.jump = True
                 # attack
@@ -88,7 +88,7 @@ class Fighter:
                     dx = SPEED
                     self.running = True
                 # jump
-                if key[pygame.K_UP] and self.jump == False:
+                if key[pygame.K_UP] and not self.jump:
                     self.vel_y = -30
                     self.jump = True
                 # attack

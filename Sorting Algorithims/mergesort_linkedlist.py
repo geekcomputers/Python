@@ -18,7 +18,7 @@ class LinkedList:
 
     def printLL(self) -> None:
         temp = self.head
-        if temp == None:
+        if temp is None:
             return "Linked List is empty"
         while temp.next:
             print(temp.data, "->", end="")

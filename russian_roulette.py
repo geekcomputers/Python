@@ -44,7 +44,7 @@ def main():
         turn = "pc"
 
     # game starts
-    while numOfRounds != 0 and (pc == False and player == False):
+    while numOfRounds != 0 and (not pc and not player):
         print(f"\nRound number {numOfRounds}/6")
         time.sleep(1)
         print("the gun is being loaded")

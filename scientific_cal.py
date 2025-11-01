@@ -1,16 +1,19 @@
 import math
 
 while True:
-    print("""
+    print(
+        """
     Press 1 for basic calculator
-    Press 2 for scientifc calculator""")
+    Press 2 for scientifc calculator"""
+    )
     try:
         cho = int(input("enter your choice here.. "))
         if cho == 1:
             print(eval(input("enter the numbers with operator ")))
         elif cho == 2:
             user = int(
-                input("""
+                input(
+                    """
         Press 1 for pi calculation
         press 2 for sin calculation
         press 3 for exponent calculation
@@ -18,7 +21,8 @@ while True:
         press 5 for square root calculation
         press 6 round calculation
         press 7 for absoulte value
-        press any other number to exit the loop. """)
+        press any other number to exit the loop. """
+                )
             )
 
             a = float(input("enter your value here.. "))

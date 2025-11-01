@@ -15,9 +15,9 @@ def process_date(user_input):
 
 
 def find_day(date):
-    born = (
-        datetime.datetime.strptime(date, "%d %m %Y").weekday()
-    )  # this statement returns an integer corresponding to the day of the week
+    born = datetime.datetime.strptime(
+        date, "%d %m %Y"
+    ).weekday()  # this statement returns an integer corresponding to the day of the week
     return calendar.day_name[
         born
     ]  # this statement returns the corresponding day name to the integer generated in the previous statement
@@ -30,9 +30,7 @@ def printt():
     user_input = user_input1.get()
     date = process_date(user_input)
     c = "Day on " + user_input + "  is " + find_day(date)
-    label2 = tk.Label(root, text=c, font=("Times new roman", 20), fg="black").place(
-        x=20, y=200
-    )
+    tk.Label(root, text=c, font=("Times new roman", 20), fg="black").place(x=20, y=200)
 
 
 lbl = tk.Label(root, text="Date --", font=("Ubuntu", 20), fg="black").place(

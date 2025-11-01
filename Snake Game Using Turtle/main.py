@@ -3,6 +3,7 @@ This is the main file that runs the Snake game.
 It handles screen setup, dynamic boundaries, UI controls (buttons),
 game state management, and the main game loop.
 """
+
 from turtle import Screen, Turtle
 from snake import Snake
 from food import Food
@@ -43,17 +44,18 @@ scoreboard = Scoreboard()
 # --- UI CONTROLS (BUTTONS) ---
 buttons = {}  # Dictionary to hold button turtles and their properties
 
+
 def create_button(name, x, y, width=120, height=40):
     """Creates a turtle-based button with a label."""
-    if name in buttons and buttons[name]['turtle'] is not None:
-        buttons[name]['turtle'].clear()
+    if name in buttons and buttons[name]["turtle"] is not None:
+        buttons[name]["turtle"].clear()
 
     button_turtle = Turtle()
     button_turtle.hideturtle()
     button_turtle.penup()
     button_turtle.speed("fastest")
 
-    button_turtle.goto(x - width/2, y - height/2)
+    button_turtle.goto(x - width / 2, y - height / 2)
     button_turtle.color(colors.BUTTON_BORDER_COLOR, colors.BUTTON_BG_COLOR)
     button_turtle.begin_fill()
     for _ in range(2):
@@ -67,13 +69,22 @@ def create_button(name, x, y, width=120, height=40):
     button_turtle.color(colors.BUTTON_TEXT_COLOR)
     button_turtle.write(name, align="center", font=("Lucida Sans", 14, "bold"))
 
-    buttons[name] = {'turtle': button_turtle, 'x': x, 'y': y, 'w': width, 'h': height, 'visible': True}
+    buttons[name] = {
+        "turtle": button_turtle,
+        "x": x,
+        "y": y,
+        "w": width,
+        "h": height,
+        "visible": True,
+    }
+
 
 def hide_button(name):
     """Hides a button by clearing its turtle."""
-    if name in buttons and buttons[name]['visible']:
-        buttons[name]['turtle'].clear()
-        buttons[name]['visible'] = False
+    if name in buttons and buttons[name]["visible"]:
+        buttons[name]["turtle"].clear()
+        buttons[name]["visible"] = False
+
 
 def manage_buttons():
     """Shows or hides buttons based on the current game state."""
@@ -93,12 +104,14 @@ def manage_buttons():
     elif game_state == "game_over":
         create_button("Restart", btn_x, btn_y)
 
+
 # --- GAME LOGIC & STATE TRANSITIONS ---
 def start_game():
     global game_state
     if game_state == "start":
         game_state = "playing"
         scoreboard.update_scoreboard()
+
 
 def toggle_pause_resume():
     global game_state
@@ -109,6 +122,7 @@ def toggle_pause_resume():
         game_state = "playing"
         scoreboard.update_scoreboard()
 
+
 def restart_game():
     global game_state
     if game_state == "game_over":
@@ -117,13 +131,17 @@ def restart_game():
         food.refresh(LEFT_WALL, RIGHT_WALL, BOTTOM_WALL, TOP_WALL)
         scoreboard.reset()
 
+
 def is_click_on_button(name, x, y):
     """Checks if a click (x, y) is within the bounds of a visible button."""
-    if name in buttons and buttons[name]['visible']:
+    if name in buttons and buttons[name]["visible"]:
         btn = buttons[name]
-        return (btn['x'] - btn['w']/2 < x < btn['x'] + btn['w']/2 and
-                btn['y'] - btn['h']/2 < y < btn['y'] + btn['h']/2)
+        return (
+            btn["x"] - btn["w"] / 2 < x < btn["x"] + btn["w"] / 2
+            and btn["y"] - btn["h"] / 2 < y < btn["y"] + btn["h"] / 2
+        )
     return False
+
 
 def handle_click(x, y):
     """Main click handler to delegate actions based on button clicks."""
@@ -136,23 +154,31 @@ def handle_click(x, y):
     elif game_state == "game_over" and is_click_on_button("Restart", x, y):
         restart_game()
 
+
 # --- KEYBOARD HANDLERS ---
 def handle_snake_up():
     if game_state in ["start", "playing"]:
         start_game()
         snake.up()
+
+
 def handle_snake_down():
     if game_state in ["start", "playing"]:
         start_game()
         snake.down()
+
+
 def handle_snake_left():
     if game_state in ["start", "playing"]:
         start_game()
         snake.left()
+
+
 def handle_snake_right():
     if game_state in ["start", "playing"]:
         start_game()
         snake.right()
+
 
 # --- KEY & MOUSE BINDINGS ---
 screen.listen()
@@ -165,6 +191,7 @@ screen.onkey(restart_game, "r")
 screen.onkey(restart_game, "R")
 screen.onclick(handle_click)
 
+
 # --- MAIN GAME LOOP ---
 def game_loop():
     global game_state
@@ -176,7 +203,10 @@ def game_loop():
             snake.extend()
             scoreboard.increase_score()
         # Collision with wall
-        if not (LEFT_WALL < snake.head.xcor() < RIGHT_WALL and BOTTOM_WALL < snake.head.ycor() < TOP_WALL):
+        if not (
+            LEFT_WALL < snake.head.xcor() < RIGHT_WALL
+            and BOTTOM_WALL < snake.head.ycor() < TOP_WALL
+        ):
             game_state = "game_over"
             scoreboard.game_over()
         # Collision with tail
@@ -188,8 +218,8 @@ def game_loop():
     screen.update()
     screen.ontimer(game_loop, MOVE_DELAY_MS)
 
+
 # --- INITIALIZE GAME ---
 scoreboard.display_start_message()
 game_loop()
 screen.exitonclick()
-

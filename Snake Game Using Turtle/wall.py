@@ -3,8 +3,10 @@
 from turtle import Turtle, Screen
 import colors
 
+
 class Wall:
-    """ This class creates a wall around the game screen that adjusts to its dimensions. """
+    """This class creates a wall around the game screen that adjusts to its dimensions."""
+
     def __init__(self):
         self.screen = Screen()
         self.create_wall()
@@ -43,4 +45,3 @@ class Wall:
         wall.goto(right - 10, top - 70)
 
         self.screen.update()
-

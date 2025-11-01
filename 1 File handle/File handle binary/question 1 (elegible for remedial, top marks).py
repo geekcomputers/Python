@@ -20,7 +20,6 @@ load_dotenv(os.path.join(base, ".env"))
 student_record = os.getenv("STUDENTS_RECORD_FILE")
 
 import pickle
-import logging
 
 # Define logger with info
 # import polar

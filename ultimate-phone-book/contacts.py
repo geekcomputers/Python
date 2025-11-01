@@ -130,7 +130,7 @@ while loopvar < 1:
 
     # if option 4 is selected
     elif a == 4:
-        if keyacess == True:
+        if keyacess:
             sortcounter = 1
             while sortcounter != 0:
                 # reset counter

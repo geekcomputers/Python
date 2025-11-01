@@ -26,7 +26,7 @@ class LinkedList:
     # method to print the linkedlist
     def printLL(self) -> None:
         temp = self.head
-        if temp == None:
+        if temp is None:
             return "Linked List is empty"
         while temp.next:
             print(temp.data, "->", end="")
@@ -39,7 +39,7 @@ class LinkedList:
 
 
 def partition(start, end):
-    if start == None or start.next == None:
+    if start is None or start.next is None:
         return start
     prev, curr = start, start.next
     pivot = prev.data
