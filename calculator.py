@@ -27,9 +27,6 @@ import sys
 
 ## Imported math library to run sin(), cos(), tan() and other such functions in the calculator
 
-from fileinfo import raw_input
-
-
 def calc(term):
     """
     input: term of type str
@@ -76,17 +73,13 @@ def calc(term):
     # here goes to the error cases.
     except ZeroDivisionError:
         print("Can't divide by 0.  Please try again.")
-
     except NameError:
         print("Invalid input.  Please try again")
-
     except AttributeError:
         print("Please check usage method and try again.")
     except TypeError:
-        print("please enter inputs of correct datatype ")
-
+        print ("Please only enter integers")
     return term
-
 
 def result(term):
     """
@@ -109,21 +102,12 @@ def main():
         "\nScientific Calculator\n\nFor Example: sin(rad(90)) + 50% * (sqrt(16)) + round(1.42^2)"
         + "- 12mod3\n\nEnter quit to exit"
     )
-
-    if sys.version_info.major >= 3:
-        while True:
-            k = input("\nWhat is ")
-            if k == "quit":
-                break
-            result(k)
-
-    else:
-        while True:
-            k = raw_input("\nWhat is ")
-            if k == "quit":
-                break
-            result(k)
-
-
-if __name__ == "__main__":
+k = input("\nWhat is ")
+if k == "quit" or "q":
+    result(k)
+elif k == None:
+    print("Couldn't read input. Please try again.")
+elif q == None:
+    print("Couldn't read input. Please try again.")
+else:
     main()
