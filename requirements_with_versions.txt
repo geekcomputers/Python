@@ -1,5 +1,5 @@
 pafy==0.5.5
-aiohttp==3.13.1
+aiohttp==3.13.2
 fuzzywuzzy==0.18.0
 hupper==1.12.1
 seaborn==0.13.2
@@ -41,7 +41,7 @@ tornado==6.5.2
 obs==0.0.0
 todo==0.1
 oauth2client==4.1.3
-keras==3.11.3
+keras==3.12.0
 pymongo==4.15.3
 playsound==1.3.0
 pyttsx3==2.99
@@ -58,7 +58,7 @@ requests-mock==1.12.1
 pyglet==2.1.9
 urllib3==2.5.0
 thirdai==0.9.33
-google-api-python-client==2.185.0
+google-api-python-client==2.186.0
 sound==0.1.0
 xlwt==1.3.0
 pygame==2.6.1
@@ -81,9 +81,9 @@ Unidecode==1.4.0
 Ball==0.2.9
 pynput==1.8.1
 gTTS==2.5.4
-ccxt==4.5.12
+ccxt==4.5.14
 fitz==0.0.1.dev2
-fastapi==0.120.0
+fastapi==0.120.2
 Django==5.2.7
 docx==0.2.4
 matplotlib==3.10.7
@@ -92,7 +92,7 @@ geocoder==1.38.1
 APScheduler==3.11.0
 PyQRCode==1.2.1
 freegames==2.5.3
-pyperclip==1.10.0
+pyperclip==1.11.0
 newspaper==0.1.0.7
 opencv-python==4.12.0.88
 tensorflow==2.20.0
@@ -101,7 +101,7 @@ pytest==8.4.2
 qrcode==8.2
 googletrans==4.0.2
 slab==1.8.2
-psutil==7.1.1
+psutil==7.1.2
 mediapipe==0.10.21
 rich==14.2.0
 httplib2==0.31.0
