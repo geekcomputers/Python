@@ -416,7 +416,7 @@ if __name__ == "__main__":
 # Adjustable everything.
 # Default size, launch, but customizable.
 # Adding history.
-# Being able to continuosly operate on a number.
+# Being able to continuously operate on a number.
 # What is the error here, see to it.
 # To add Author Metadata.
 
