@@ -4,7 +4,7 @@
 # Last Modified	: 14 February 2016
 # Version		: 1.0.1
 
-# Modifications	: 1.0.1 - Remove unecessary line and variable on Line 21
+# Modifications	: 1.0.1 - Remove unnecessary line and variable on Line 21
 
 # Description	: Scans directories to check if there are any sqlite files in there
 
