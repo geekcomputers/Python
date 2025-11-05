@@ -4,7 +4,7 @@ from time import sleep
 # Do you want to include the message counter?
 # make a class of it.
 
-# Can make a broswer session open and navigating to web.whatsapp
+# Can make a browser session open and navigating to web.whatsapp
 # os dependencies and browser dependencies and default browser if none
 # also check for whatsapp on the system
 
