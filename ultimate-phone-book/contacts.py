@@ -108,9 +108,9 @@ while loopvar < 1:
                 if array[fname][i].upper() == rmcontact.upper():
                     tempvar += 1
                     rmvar = i
-            # if no cotacts found
+            # if no contacts found
             if tempvar == 0:
-                print("no cantact matches first name provided")
+                print("no contact matches first name provided")
             # if only one contact is found
             elif tempvar == 1:
                 print("DO YOU WANT TO DELETE CONTACT")
@@ -177,7 +177,7 @@ while loopvar < 1:
         outfile = open("data/pickle-main", "wb")
         pickle.dump(array, outfile)
         outfile.close()
-        print("YOUR DATA HAS BEEN SAVED SUCESSFULLY!")
+        print("YOUR DATA HAS BEEN SAVED SUCCESSFULLY!")
         loopvar += 1
 
     # if no true option is selected
