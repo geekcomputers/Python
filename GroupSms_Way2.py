@@ -15,7 +15,7 @@ username = input("Enter mobile number:")
 passwd = getpass()
 message = input("Enter Message:")
 # Fill the list with Recipients
-x = input("Enter Mobile numbers seperated with comma:")
+x = input("Enter Mobile numbers separated with comma:")
 num = x.split(",")
 message = "+".join(message.split(" "))
 
