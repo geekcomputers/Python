@@ -13,7 +13,7 @@ def cret(command):
     return process.communicate()[0]
 
 
-# function for genrate mac address random
+# function for generate mac address random
 def randmac():
     return [
         0x00,
