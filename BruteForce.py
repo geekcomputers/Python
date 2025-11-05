@@ -50,7 +50,7 @@ def getChars():
 
 
 # Se este módulo não for importado, o programa será testado.
-# Para realizar o teste, o usuário deverá inserir uma senha para ser encontrada.
+# Para realizar o teste, o usuário deverá inserir uma senha para set encontrada.
 
 if __name__ == "__main__":
     import datetime
