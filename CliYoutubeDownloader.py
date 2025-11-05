@@ -55,7 +55,7 @@ class YouTubeDownloder:
                 self.stream.fps,
             )
         )
-        if input("do you want it ?(defualt = (y)es) or (n)o ") == "n":
+        if input("do you want it ?(default = (y)es) or (n)o ") == "n":
             self.showStreams()
         else:
             self.main()
