@@ -22,8 +22,8 @@ def google_search():
     if query != "None":
         webbrowser.open(google_search_link + query)
     elif query == "None":
-        print("I could'nt understand what you just said!")
-        speak("I could'nt understand what you just said!")
+        print("I couldn't understand what you just said!")
+        speak("I couldn't understand what you just said!")
 
 
 def wiki_search():
@@ -59,8 +59,8 @@ def wiki_search():
                 webbrowser.open(wiki_search_link + query)
 
             elif query == "None":
-                print("I could'nt understand what you just said!")
-                speak("I could'nt understand what you just said!")
+                print("I couldn't understand what you just said!")
+                speak("I couldn't understand what you just said!")
 
     except Exception:
         print("Couldn't find")
