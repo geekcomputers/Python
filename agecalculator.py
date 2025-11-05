@@ -6,7 +6,7 @@ from _datetime import *
 win = tk.Tk()
 win.title("Age Calculate")
 win.geometry("310x400")
-# win.iconbitmap('pic.png')    this is use extention  ico then show pic
+# win.iconbitmap('pic.png')    this is use extension  ico then show pic
 
 ############################################ Frame ############################################
 pic = tk.PhotoImage(file=r"E:\Python Practice\Age_calculate\pic.png")
