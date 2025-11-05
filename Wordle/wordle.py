@@ -86,7 +86,7 @@ while True:
         for g in letters_checked:
             if g == user_inp[letter]:
                 counter += 1
-                # Check if letter has been checkd more or equal to the ammount of these letters inside of the word
+                # Check if letter has been checked more or equal to the amount of these letters inside of the word
                 if counter >= count_letters[i]:
                     cont = True
 
