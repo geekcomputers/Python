@@ -1,4 +1,4 @@
-# trggering the process
+# triggering the process
 import os
 import subprocess
 import sys
