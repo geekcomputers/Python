@@ -7,7 +7,7 @@ import bs4  # Beautiful Soup for Web Scraping
 from win10toast import ToastNotifier
 
 toaster = ToastNotifier()
-# url from where we extrat data
+# url from where we extract data
 
 url = "http://www.cricbuzz.com/cricket-match/live-scores"
 
