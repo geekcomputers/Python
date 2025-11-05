@@ -13,19 +13,19 @@ def input_list():
 
 def insertion_sort(list, n):
     """
-    sort list in assending order
+    sort list in ascending order
 
     INPUT:
         list=list of values to be sorted
         n=size of list that contains values to be sorted
 
     OUTPUT:
-        list of sorted values in assending order
+        list of sorted values in ascending order
     """
     for i in range(0, n):
         key = list[i]
         j = i - 1
-        # Swap elements witth key iff they are
+        # Swap elements with key iff they are
         # greater than key
         while j >= 0 and list[j] > key:
             list[j + 1] = list[j]
@@ -48,7 +48,7 @@ def insertion_sort_desc(list, n):
     for i in range(0, n):
         key = list[i]
         j = i - 1
-        # Swap elements witth key iff they are
+        # Swap elements with key iff they are
         # greater than key
         while j >= 0 and list[j] < key:
             list[j + 1] = list[j]
