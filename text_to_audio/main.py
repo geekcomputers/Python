@@ -111,7 +111,7 @@ class userAudio:
     #         # if he says no, then asks to input again.
     #         # then ask three times.
     #         # at max
-    #     """dir testing has to be done seprately"""
+    #     """dir testing has to be done separately"""
 
     #     if user_path.is_dir:
     #         gTTS.save(user_path)
