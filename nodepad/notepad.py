@@ -70,7 +70,7 @@ class Notepads_managment:
         )
 
         top.geometry("600x450")
-        top.title("Notepads managment")
+        top.title("Notepads management")
         top.configure(highlightcolor="black")
 
         self.style.configure("TNotebook.Tab", background=_bgcolor)
@@ -190,7 +190,7 @@ class Notepads_managment:
         self.Label4 = Label(self.TNotebook1_t2)
         self.Label4.place(relx=0.09, rely=0.14, height=18, width=259)
         self.Label4.configure(activebackground="#f9f9f9")
-        self.Label4.configure(text="""For creating a new notepads managment.""")
+        self.Label4.configure(text="""For creating a new notepads management.""")
 
         self.Button6 = Button(self.TNotebook1_t2)
         self.Button6.place(relx=0.22, rely=0.25, height=26, width=69)
