@@ -79,7 +79,7 @@ file_info_vales = (
 for f_key, f_value in zip(file_info_keys, file_info_vales):
     print(f_key, " =", f_value)
 
-# check the `file` is direcotry
+# check the `file` is directory
 # print out the file stats
 if stat.S_ISDIR(file_stats[stat.ST_MODE]):
     print("This a directory.")
