@@ -30,7 +30,7 @@ def ms_word():
         print(f"ERROR - {exp}")
         print(
             Fore.YELLOW
-            + "I could'nt locate the file!\nIf you didn't specify the extension of the file, please specify it."
+            + "I couldn't locate the file!\nIf you didn't specify the extension of the file, please specify it."
         )
         return "None"
 
@@ -50,7 +50,7 @@ def pdf_read():
         print(f"ERROR - {exp}")
         print(
             Fore.YELLOW
-            + "I could'nt locate the file!\nIf you didn't specify the extension of the file, please specify it."
+            + "I couldn't locate the file!\nIf you didn't specify the extension of the file, please specify it."
         )
         return "None"
     try:
@@ -98,8 +98,8 @@ def pdf_read():
             print_n_speak_index(toc)
             time.sleep(10)
         elif q == "None":
-            print("I could'nt understand what you just said!")
-            speak("I could'nt understand what you just said!")
+            print("I couldn't understand what you just said!")
+            speak("I couldn't understand what you just said!")
             time.sleep(4)
         else:
             time.sleep(4)
@@ -223,8 +223,8 @@ def pdf_read():
                         print(text.replace("\t", " "))
                         speak(text.replace("\t", " "))
                 else:
-                    print("Sorry, I cannot find the perticular lesson.")
-                    speak("Sorry, I cannot find the perticular lesson.")
+                    print("Sorry, I cannot find the particular lesson.")
+                    speak("Sorry, I cannot find the particular lesson.")
 
         elif "whole" in q or "complete" in q:
             for i in range(total_pages):
@@ -234,8 +234,8 @@ def pdf_read():
                 speak(text.replace("\t", " "))
 
         elif q == "None":
-            print("I could'nt understand what you just said!")
-            speak("I could'nt understand what you just said!")
+            print("I couldn't understand what you just said!")
+            speak("I couldn't understand what you just said!")
         else:
             print("You didn't say a valid command!")
             time.sleep(5)
