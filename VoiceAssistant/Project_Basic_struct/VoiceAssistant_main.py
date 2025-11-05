@@ -60,8 +60,8 @@ def main():
                     time.sleep(5)
 
                 else:
-                    print("I could'nt understand what you just said!")
-                    speak("I could'nt understand what you just said!")
+                    print("I couldn't understand what you just said!")
+                    speak("I couldn't understand what you just said!")
 
                 print(
                     "\nDo you want to continue? if yes then say "
