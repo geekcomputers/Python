@@ -8,7 +8,7 @@ from fpdf import FPDF
 # Example to Append all the images inside a folder to pdf
 pdf = FPDF()
 
-# Size of a A4 Page in mm Where P is for Potrait and L is for Landscape
+# Size of a A4 Page in mm Where P is for Portrait and L is for Landscape
 A4_SIZE = {"P": {"w": 210, "h": 297}, "L": {"w": 297, "h": 210}}
 # pdf may produce empty page so we need to set auto page break as false
 pdf.set_auto_page_break(0)
@@ -27,7 +27,7 @@ for filename in os.listdir("images"):
         # Convert Width and Height into mm from px as 1px  = 0.2645833333 mm
         width, height = float(width * 0.264583), float(height * 0.264583)
 
-        # Check if Width is greater than height so to know the image is in landscape or else in potrait
+        # Check if Width is greater than height so to know the image is in landscape or else in portrait
         orientation = "P" if width < height else "L"
 
         # Read the minimum of A4 Size and the image size
