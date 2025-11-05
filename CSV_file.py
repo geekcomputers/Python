@@ -7,7 +7,7 @@ df = pd.read_csv(
 )
 
 print(df)  # prints Dataset
-# funtions
+# functions
 print(df.tail())
 print(df.head())
 print(df.info())
