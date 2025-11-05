@@ -1,5 +1,5 @@
 import re  # regular expressions
-import calendar  # module of python to provide useful fucntions related to calendar
+import calendar  # module of python to provide useful functions related to calendar
 import datetime  # module of python to get the date and time
 import tkinter as tk
 
@@ -25,7 +25,7 @@ def find_day(date):
 
 # To get the input from the user
 # User may type 1/2/1999 or 1-2-1999
-# To overcome those we have to process user input and make it standard to accept as defined by  calender and time module
+# To overcome those we have to process user input and make it standard to accept as defined by  calendar and time module
 def printt():
     user_input = user_input1.get()
     date = process_date(user_input)
