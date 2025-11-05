@@ -41,12 +41,12 @@ def chxten_(files, xten):
             ch_xten = chfile[i] + xten[i]
             chxten.append(ch_xten)
     else:
-        return "an error occured"
+        return "an error occurred"
     return chxten
 
 
 # End of function definitions
-# Beggining of execution of code
+# Beginning of execution of code
 # password
 password = input("Enter password:")
 
@@ -62,8 +62,8 @@ else:
     print("wrong password!")
     time.sleep(0.3)
     exit(404)
-files = input("Enter file names and thier extensions (seperated by commas):")
-xten = input("Enter Xtensions to change with (seperated by commas):")
+files = input("Enter file names and their extensions (separated by commas):")
+xten = input("Enter Xtensions to change with (separated by commas):")
 
 if files == "*":
     pw = p.cwd()
@@ -106,7 +106,7 @@ count = len(files)
 chxten = chxten_(files, xten)
 
 # Error Handlings
-if chxten == "an error occured":
+if chxten == "an error occurred":
     print("Check your inputs correctly")
     time.sleep(1)
     exit(404)
@@ -128,7 +128,7 @@ else:
                 )
                 files.remove(file)
     # except Exception:
-    #     print('An Error Has Occured in exception')
+    #     print('An Error Has Occurred in exception')
     #     time.sleep(1)
     #     exit(404)
 
