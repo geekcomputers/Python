@@ -36,5 +36,5 @@ def get_user_input(start, end):
 x = get_user_input(1, 6)
 print(x)
 # Asks user to enter something, ie. a number option from a menu.
-# While type != interger, and not in the given range,
+# While type != integer, and not in the given range,
 # Program gives error message and asks for new input.
