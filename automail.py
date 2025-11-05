@@ -26,4 +26,4 @@ while check:
         if subEval[0] == "ENDTASK":  # remote kill command
             check = False
         i += 1
-    time.sleep(60)  # change check frquency; default every minute
+    time.sleep(60)  # change check frequency; default every minute
