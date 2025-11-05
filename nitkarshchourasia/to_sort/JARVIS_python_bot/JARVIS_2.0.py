@@ -262,7 +262,7 @@ def get_app(Q):
 
     elif (
         Q == "email to other"
-    ):  # here you want to change and input your mail and password whenver you implement
+    ):  # here you want to change and input your mail and password whenever you implement
         try:
             speak("What should I say?")
             r = sr.Recognizer()
@@ -284,8 +284,8 @@ def get_app(Q):
         drive_letter = "C:\\"
         folder_name = r"downloaded-files"
         folder_time = datetime.datetime.now().strftime("%Y-%m-%d_%I-%M-%S_%p")
-        extention = ".jpg"
-        folder_to_save_files = drive_letter + folder_name + folder_time + extention
+        extension = ".jpg"
+        folder_to_save_files = drive_letter + folder_name + folder_time + extension
         snapshot.save(folder_to_save_files)
 
     elif Q == "Jokes":
