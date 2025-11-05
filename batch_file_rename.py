@@ -27,7 +27,7 @@ def batch_rename(work_dir, old_ext, new_ext):
         root_name, file_ext = split_file
         # Start of the logic to check the file extensions, if old_ext = file_ext
         if old_ext == file_ext:
-            # Returns changed name of the file with new extention
+            # Returns changed name of the file with new extension
             newfile = root_name + new_ext
 
             # Write the files
