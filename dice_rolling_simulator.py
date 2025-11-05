@@ -1,6 +1,6 @@
 # Made on May 27th, 2017
 # Made by SlimxShadyx
-# Editted by CaptMcTavish, June 17th, 2017
+# Edited by CaptMcTavish, June 17th, 2017
 # Comments edits by SlimxShadyx, August 11th, 2017
 
 # Dice Rolling Simulator
