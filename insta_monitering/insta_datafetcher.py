@@ -1,4 +1,4 @@
-# only god knows  whats happening in the code
+# only god knows  what's happening in the code
 # if I forget the code structure
 # please pray to god for help
 import asyncio
@@ -45,7 +45,7 @@ class PorxyApplyingDecorator(object):
         socket.socket = socks.socksocket
 
         def wrapper_function(url):
-            # this is used for applyting socks5 proxy over the request
+            # this is used for applying socks5 proxy over the request
             return function_to_call_for_appling_proxy(url)
 
         socks.set_default_proxy()
@@ -146,7 +146,7 @@ class MoniteringClass:
                 i["data"] = i["future"].result()
         except Exception as err:
             print(f"Exception ! : {err}")
-            print("error::Monitering.dataProcessing>>", sys.exc_info()[1])
+            print("error::Monitoring.dataProcessing>>", sys.exc_info()[1])
         finally:
             # loop.close()
             print("userdata::", len(userdata))
@@ -161,8 +161,8 @@ class MoniteringClass:
                 # record["timestamp"] = time.time()
                 self._collection.insert(record)
         except Exception as err:
-            print(f"Execption : {err}")
-            print("error::Monitering.insertFunction>>", sys.exc_info()[1])
+            print(f"Exception : {err}")
+            print("error::Monitoring.insertFunction>>", sys.exc_info()[1])
 
     def _lastProcess(self, userdata, media_post, top_post):
         mainlist = []
@@ -227,7 +227,7 @@ class MoniteringClass:
             # print(ujson.dumps(finallydata))
         except Exception as e:
             print(f"exception : {e}\n")
-            print("error::Monitering.request_data_from_instagram>>", sys.exc_info()[1])
+            print("error::Monitoring.request_data_from_instagram>>", sys.exc_info()[1])
 
     def __del__(self):
         self.mon.close()
@@ -298,7 +298,7 @@ class InstaPorcessClass:
             temp["productId"] = productId
             collection.insert(temp)
         except Exception as err:
-            print(f"execption : {err}\n")
+            print(f"exception : {err}\n")
             print("error::processstart>>", sys.exc_info()[1])
         finally:
             mon.close()
