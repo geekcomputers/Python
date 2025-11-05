@@ -50,7 +50,7 @@ class image2pdf:
 
         userInput = (
             input(
-                "\n Enter the number(s) - (comma seperated/no spaces) or (A or a) to merge All \nChoice: "
+                "\n Enter the number(s) - (comma separated/no spaces) or (A or a) to merge All \nChoice: "
             )
             .strip()
             .lower()
@@ -94,7 +94,7 @@ class image2pdf:
             self.save()
 
         else:
-            # Each pic in seperate pdf.
+            # Each pic in separate pdf.
             for picture in pictures:
                 self.save(
                     Image.open(f"{self.directory}\\{picture}").convert("RGB"),
@@ -110,7 +110,7 @@ class image2pdf:
         print(f"{'#' * 30}\n")
 
     def save(self, image=None, title="All-PDFs", isMergeAll=True):
-        # Save all to one pdf or each in seperate file
+        # Save all to one pdf or each in separate file
 
         if isMergeAll:
             self.pictures[0].save(
