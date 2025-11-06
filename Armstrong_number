@@ -6,8 +6,9 @@ def is_armstrong_number(number):
     temp = 0
     while num != 0:
         rem = num % 10
-        num //=  10
-        temp += rem ** length
+        num //= 10
+        temp += rem**length
     return temp == number
-    
+
+
 is_armstrong_number(5)

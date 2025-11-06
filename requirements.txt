@@ -20,7 +20,7 @@ win10toast
 Counter
 Flask
 selenium
-firebase-admin
+firebase - admin
 ujson
 requests
 quo
@@ -30,10 +30,10 @@ twilio
 tabula
 nltk
 Pillow
-SocksiPy-branch
+SocksiPy - branch
 xlrd
 fpdf
-mysql-connector-repackaged
+mysql - connector - repackaged
 word2number
 tornado
 obs
@@ -43,7 +43,7 @@ keras
 pymongo
 playsound
 pyttsx3
-auto-mix-prep
+auto - mix - prep
 lib
 pywifi
 patterns
@@ -52,11 +52,11 @@ background
 pydantic
 openpyxl
 pytesseract
-requests-mock
+requests - mock
 pyglet
 urllib3
 thirdai
-google-api-python-client
+google - api - python - client
 sound
 xlwt
 pygame
@@ -68,7 +68,7 @@ yfinance
 tweepy
 tkcalendar
 pytube
-xor-cipher
+xor - cipher
 bird
 mechanize
 translate
@@ -92,7 +92,7 @@ PyQRCode
 freegames
 pyperclip
 newspaper
-opencv-python
+opencv - python
 tensorflow
 pandas
 pytest
@@ -106,6 +106,6 @@ httplib2
 protobuf
 colorama
 plyer
-Flask-Ask
+Flask - Ask
 emoji
 PyAutoGUI

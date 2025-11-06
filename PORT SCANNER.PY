@@ -75,7 +75,9 @@ from time import time
 import platform
 
 # Clear the screen
-subprocess.call('clear' if platform.platform() in ("Linux", "Darwin") else "cls", shell=True)
+subprocess.call(
+    "clear" if platform.platform() in ("Linux", "Darwin") else "cls", shell=True
+)
 
 # Ask for input
 remoteServer = input("Enter a remote host to scan: ")
@@ -106,7 +108,7 @@ except KeyboardInterrupt:
     sys.exit(2)
 
 except socket.gaierror:
-    print('Hostname could not be resolved. Exiting')
+    print("Hostname could not be resolved. Exiting")
     sys.exit(1)
 
 except socket.error:
@@ -120,4 +122,4 @@ t2 = time()
 total = t2 - t1
 
 # Printing the information to screen
-print('Scanning Completed in about {total} seconds', total)
+print("Scanning Completed in about {total} seconds", total)
