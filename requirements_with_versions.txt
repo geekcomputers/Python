@@ -58,7 +58,7 @@ requests-mock==1.12.1
 pyglet==2.1.9
 urllib3==2.5.0
 thirdai==0.9.33
-google-api-python-client==2.186.0
+google-api-python-client==2.187.0
 sound==0.1.0
 xlwt==1.3.0
 pygame==2.6.1
