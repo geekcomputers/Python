@@ -1,10 +1,10 @@
 def resistance_calculator(
-    material: str, lenght: float, section: float, temperature: float
+    material: str, length: float, section: float, temperature: float
 ):
     """
     material is a string indicating the material of the wire
 
-    lenght is a floating value indicating the lenght of the wire in meters
+    length is a floating value indicating the length of the wire in meters
 
     diameter is a floating value indicating the diameter of the wire in millimeters
 
@@ -35,6 +35,6 @@ def resistance_calculator(
     temp_coefficient = materials[material]["coefficient"]
 
     rho = rho_20deg * (1 + temp_coefficient * (temperature - 20))
-    resistance = rho * lenght / section
+    resistance = rho * length / section
 
     return f"{resistance}Ω"
