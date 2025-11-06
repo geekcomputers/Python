@@ -33,7 +33,7 @@ size = (700, 500)
 screen = pygame.display.set_mode(size)
 
 """
-    This is a simple Ball class for respresenting a ball 
+    This is a simple Ball class for representing a ball 
     in the game. 
 """
 
