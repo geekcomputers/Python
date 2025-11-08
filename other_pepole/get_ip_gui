@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+from logging import root
 import socket
 # **************** Modules Require *****************#
 from tkinter import *
@@ -9,7 +10,9 @@ from urllib.request import urlopen
 
 # **************** Get IP commands *****************#
 # control buttons
-def get_wan_ip():
+
+def get_wan_ip() -> None:
+    '''get wan ip'''
     try:
         # get ip from http://ipecho.net/plain as text
         wan_ip = urlopen('http://ipecho.net/plain').read().decode('utf-8')
@@ -18,18 +21,17 @@ def get_wan_ip():
         res.configure(text='Problem in source : http://ipecho.net/plain', fg='red')
 
 
-# get local ip
-def get_local_ip():
+def get_local_ip() -> None:
+    '''get local ip'''
     try:
         lan_ip = (socket.gethostbyname(socket.gethostname()))
         res.configure(text='Local IP is : ' + lan_ip, fg='#600')
     except:
         res.configure(text='Unkown Error', fg='#red')
-    # **************** about control button *****************#
 
 
-# show about info and change the button command and place
 def about():
+    '''show about info and change the button command and place'''
     global close_app, frame, info
     about_app.destroy()
     frame = Frame(root, width=350, height=2, bg='blue')
@@ -44,8 +46,8 @@ def about():
     close_app.grid(row=4, column=0, columnspan=4, pady=5)
 
 
-# remove about info and remove close button then return about button in orignal place
-def close_about():
+def close_about() -> None:
+    '''remove about info and remove close button then return about button in orignal place'''
     global frame, about_app, info
     info.destroy()
     frame.destroy()
@@ -53,21 +55,26 @@ def close_about():
     about_app = Button(root, text='about', command=about)
     about_app.grid(row=1, column=2, padx=5, pady=5, sticky=W)
 
+def start_app() -> None:
+    '''start the app'''
+    global root, res, about_app
+    # **************** Tkinter GUI *****************#
+    root = Tk()
+    root.title('Khaled programing practice')
+    # all buttons
+    res = Label(root, text='00.00.00.00', font=25)
+    res_wan_ip = Button(root, text='Get Wan IP', command=get_wan_ip)
+    res_local_ip = Button(root, text='Get Local IP', command=get_local_ip)
+    about_app = Button(root, text='about', command=about)
+    quit_app = Button(root, text='quit', command=quit, bg='#f40')
+    # method grid to install the button in window
+    res.grid(row=0, column=0, columnspan=4, sticky=N, padx=10, pady=5)
+    res_wan_ip.grid(row=1, column=0, padx=5, pady=5, sticky=W)
+    res_local_ip.grid(row=1, column=1, padx=5, pady=5, sticky=W)
+    about_app.grid(row=1, column=2, padx=5, pady=5, sticky=W)
+    quit_app.grid(row=1, column=3, padx=5, pady=5, sticky=E)
+    # run GUI/app
+    root.mainloop()
 
-# **************** Tkinter GUI *****************#
-root = Tk()
-root.title('Khaled programing practice')
-# all buttons
-res = Label(root, text='00.00.00.00', font=25)
-res_wan_ip = Button(root, text='Get Wan IP', command=get_wan_ip)
-res_local_ip = Button(root, text='Get Local IP', command=get_local_ip)
-about_app = Button(root, text='about', command=about)
-quit_app = Button(root, text='quit', command=quit, bg='#f40')
-# method grid to install the button in window
-res.grid(row=0, column=0, columnspan=4, sticky=N, padx=10, pady=5)
-res_wan_ip.grid(row=1, column=0, padx=5, pady=5, sticky=W)
-res_local_ip.grid(row=1, column=1, padx=5, pady=5, sticky=W)
-about_app.grid(row=1, column=2, padx=5, pady=5, sticky=W)
-quit_app.grid(row=1, column=3, padx=5, pady=5, sticky=E)
-# run GUI/app
-root.mainloop()
+if __name__ == '__main__':
+    start_app()
