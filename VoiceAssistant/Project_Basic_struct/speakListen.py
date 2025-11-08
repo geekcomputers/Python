@@ -54,14 +54,14 @@ def hear():
         [str]: [Speech of user as a string in English(en - IN)]
     """
     r = sr.Recognizer()
-    """Reconizer is a class which has lot of functions related to Speech i/p and o/p.
+    """Recognizer is a class which has lot of functions related to Speech i/p and o/p.
     """
     r.pause_threshold = (
         1  # a pause of more than 1 second will stop the microphone temporarily
     )
     r.energy_threshold = 300  # python by default sets it to 300. It is the minimum input energy to be considered.
     r.dynamic_energy_threshold = (
-        True  # pyhton now can dynamically change the threshold energy
+        True  # python now can dynamically change the threshold energy
     )
 
     with sr.Microphone() as source:
@@ -102,14 +102,14 @@ def long_hear(duration_time=60):
         [str]: [Speech of user as a string in English(en - IN)]
     """
     r = sr.Recognizer()
-    """Reconizer is a class which has lot of functions related to Speech i/p and o/p.
+    """Recognizer is a class which has lot of functions related to Speech i/p and o/p.
     """
     r.pause_threshold = (
         1  # a pause of more than 1 second will stop the microphone temporarily
     )
     r.energy_threshold = 300  # python by default sets it to 300. It is the minimum input energy to be considered.
     r.dynamic_energy_threshold = (
-        True  # pyhton now can dynamically change the threshold energy
+        True  # python now can dynamically change the threshold energy
     )
 
     with sr.Microphone() as source:
@@ -141,14 +141,14 @@ def short_hear(duration_time=5):
         [str]: [Speech of user as a string in English(en - IN)]
     """
     r = sr.Recognizer()
-    """Reconizer is a class which has lot of functions related to Speech i/p and o/p.
+    """Recognizer is a class which has lot of functions related to Speech i/p and o/p.
     """
     r.pause_threshold = (
         1  # a pause of more than 1 second will stop the microphone temporarily
     )
     r.energy_threshold = 300  # python by default sets it to 300. It is the minimum input energy to be considered.
     r.dynamic_energy_threshold = (
-        True  # pyhton now can dynamically change the threshold energy
+        True  # python now can dynamically change the threshold energy
     )
 
     with sr.Microphone() as source:
