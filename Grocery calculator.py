@@ -11,7 +11,7 @@ take it to the store!"""
 # Methods = addToList, Total, Subtotal, returnList
 class GroceryList(dict):
     def __init__(self):
-        self = {}
+        pass
 
     def addToList(self, item, price):
         self.update({item: price})

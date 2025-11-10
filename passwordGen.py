@@ -1,4 +1,5 @@
 import random
+
 lChars = "abcdefghijklmnopqrstuvwxyz"
 uChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 digits = "1234567890"
@@ -20,4 +21,4 @@ for _ in range(2):
 for _ in range(2):
     myPass += random.choice(uChars)
 
-print(myPass)  
+print(myPass)

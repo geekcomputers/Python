@@ -129,7 +129,7 @@ def show():
     r = check_string_in_account_no(acc_no)
     if len(acc_no) != 0 and r:
         details = backend.get_details(acc_no)
-        if details != False:
+        if details:
             search_frame.grid_forget()
             global show_frame
             show_frame = Frame(tk)
@@ -452,7 +452,7 @@ def update():
             # def a function eho updates name in database
             def update_name_in_database():
                 new_name = entry_name.get()
-                r = check_string_in_account_no(new_name)
+                check_string_in_account_no(new_name)
                 if len(new_name) != 0:
                     # function in backend that updates name in table
                     backend.update_name_in_bank_table(new_name, acc_no)

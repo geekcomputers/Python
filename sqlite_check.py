@@ -44,6 +44,6 @@ cur = con.cursor()
 cur.execute("SELECT name FROM sqlite_master WHERE type='table'")
 while True:
     row = cur.fetchone()
-    if row == None:
+    if row is None:
         break
     print(row[0])

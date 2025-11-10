@@ -39,7 +39,7 @@ def display_greeting(name):
 
 
 def magic_8_ball():
-    question = inquirer.text(message="What's your question?").execute()
+    inquirer.text(message="What's your question?").execute()
     answer = random.choice(responses)
     print(Fore.BLUE + Style.BRIGHT + answer + Style.RESET_ALL)
     try_again()

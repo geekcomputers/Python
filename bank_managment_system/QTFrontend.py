@@ -65,7 +65,8 @@ def create_styled_button(parent, text, min_size=None):
     button = QtWidgets.QPushButton(parent)
     if min_size:
         button.setMinimumSize(QtCore.QSize(*min_size))
-    button.setStyleSheet("""
+    button.setStyleSheet(
+        """
         QPushButton {
             background-color: #3498db;
             color: white;
@@ -82,7 +83,8 @@ def create_styled_button(parent, text, min_size=None):
         QPushButton:pressed {
             background-color: #1c6ea4;
         }
-    """)
+    """
+    )
     button.setText(text)
     return button
 
@@ -172,7 +174,8 @@ def show_popup_message(
     else:
         button_box = QtWidgets.QDialogButtonBox(QtWidgets.QDialogButtonBox.Ok)
 
-    button_box.setStyleSheet("""
+    button_box.setStyleSheet(
+        """
         QPushButton {
             background-color: #3498db;
             color: white;
@@ -186,7 +189,8 @@ def show_popup_message(
         QPushButton:pressed {
             background-color: #1c6ea4;
         }
-    """)
+    """
+    )
     layout.addWidget(button_box)
 
     # Connect buttons
@@ -423,7 +427,8 @@ def create_home_page(parent, on_admin_clicked, on_employee_clicked, on_exit_clic
     admin_button = create_styled_button(button_container, "Admin")
     employee_button = create_styled_button(button_container, "Employee")
     exit_button = create_styled_button(button_container, "Exit")
-    exit_button.setStyleSheet("""
+    exit_button.setStyleSheet(
+        """
         QPushButton {
             background-color: #e74c3c;
             color: white;
@@ -440,7 +445,8 @@ def create_home_page(parent, on_admin_clicked, on_employee_clicked, on_exit_clic
         QPushButton:pressed {
             background-color: #992d22;
         }
-    """)
+    """
+    )
 
     button_container_layout.addWidget(admin_button)
     button_container_layout.addWidget(employee_button)
@@ -556,7 +562,8 @@ def create_add_employee_page(
     )
     main_layout.addWidget(content_frame)
     back_btn = QtWidgets.QPushButton("Back", content_frame)
-    back_btn.setStyleSheet("""
+    back_btn.setStyleSheet(
+        """
         QPushButton {
             background-color: #6c757d;
             color: white;
@@ -568,7 +575,8 @@ def create_add_employee_page(
         QPushButton:hover {
             background-color: #5a6268;
         }
-    """)
+    """
+    )
     back_btn.clicked.connect(lambda: parent.setCurrentIndex(ADMIN_MENU_PAGE))
     main_layout.addWidget(back_btn, 0, alignment=QtCore.Qt.AlignLeft)
     if update_btn:
@@ -666,7 +674,8 @@ def show_employee_list_page(parent, title):
 
     # Back button
     back_button = QtWidgets.QPushButton("Back", content_frame)
-    back_button.setStyleSheet("""
+    back_button.setStyleSheet(
+        """
         QPushButton {
             background-color: #6c757d;
             color: white;
@@ -678,7 +687,8 @@ def show_employee_list_page(parent, title):
         QPushButton:hover {
             background-color: #5a6268;
         }
-    """)
+    """
+    )
     back_button.clicked.connect(lambda: parent.setCurrentIndex(ADMIN_MENU_PAGE))
 
     content_layout.addWidget(table_frame)
@@ -706,7 +716,8 @@ def show_total_money(parent, title):
     content_layout.addWidget(total_money_label, alignment=QtCore.Qt.AlignCenter)
     # Back button
     back_button = QtWidgets.QPushButton("Back", content_frame)
-    back_button.setStyleSheet("""
+    back_button.setStyleSheet(
+        """
                               QPushButton {
                                     background-color: #6c757d;
                                     color: white;
@@ -718,7 +729,8 @@ def show_total_money(parent, title):
                                 QPushButton:hover {
                                     background-color: #5a6268;
                                 }
-                            """)
+                            """
+    )
     back_button.clicked.connect(lambda: parent.setCurrentIndex(ADMIN_MENU_PAGE))
     content_layout.addWidget(back_button, alignment=QtCore.Qt.AlignCenter)
     main_layout.addWidget(content_frame)
@@ -816,7 +828,8 @@ def create_account_page(parent, title, update_btn=False):
     form_layout.addWidget(account_type_label)
     account_type_dropdown = QtWidgets.QComboBox(form_frame)
     account_type_dropdown.addItems(["Savings", "Current", "Fixed Deposit"])
-    account_type_dropdown.setStyleSheet("""
+    account_type_dropdown.setStyleSheet(
+        """
         QComboBox {
             padding: 5px;
             border: 1px solid #ccc;
@@ -842,7 +855,8 @@ def create_account_page(parent, title, update_btn=False):
             selection-background-color: #0078d4;
             selection-color: white;
         }
-    """)
+    """
+    )
     form_layout.addWidget(account_type_dropdown)
 
     # Submit button
@@ -861,7 +875,8 @@ def create_account_page(parent, title, update_btn=False):
     )
     main_layout.addWidget(content_frame)
     back_btn = QtWidgets.QPushButton("Back", content_frame)
-    back_btn.setStyleSheet("""
+    back_btn.setStyleSheet(
+        """
         QPushButton {
             background-color: #6c757d;
             color: white;
@@ -873,7 +888,8 @@ def create_account_page(parent, title, update_btn=False):
         QPushButton:hover {
             background-color: #5a6268;
         }
-    """)
+    """
+    )
     back_btn.clicked.connect(lambda: parent.setCurrentIndex(EMPLOYEE_MENU_PAGE))
     main_layout.addWidget(back_btn, 0, alignment=QtCore.Qt.AlignLeft)
 
@@ -972,7 +988,8 @@ def create_show_details_page2(parent, title):
             account_type_field = input_field
 
     exite_btn = create_styled_button(form_frame, "Exit", min_size=(100, 50))
-    exite_btn.setStyleSheet("""
+    exite_btn.setStyleSheet(
+        """
                             QPushButton {
                                 background-color: #6c757d;
                                 color: white;
@@ -984,7 +1001,8 @@ def create_show_details_page2(parent, title):
                             QPushButton:hover {
                                 background-color: #5a6268;
                             }
-                        """)
+                        """
+    )
     exite_btn.clicked.connect(lambda: parent.setCurrentIndex(EMPLOYEE_MENU_PAGE))
     content_layout.addWidget(
         form_frame, 0, QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter
@@ -1064,7 +1082,8 @@ def update_user(parent, title, input_fields_label, input_fielf: bool = True):
     )
     main_layout.addWidget(content_frame)
     back_btn = create_styled_button(content_frame, "Back", min_size=(100, 50))
-    back_btn.setStyleSheet("""
+    back_btn.setStyleSheet(
+        """
                            QPushButton {
                                 background-color: #6c757d;
                                 color: white;
@@ -1076,7 +1095,8 @@ def update_user(parent, title, input_fields_label, input_fielf: bool = True):
                             QPushButton:hover {
                                 background-color: #5a6268;
                             }
-                        """)
+                        """
+    )
     back_btn.clicked.connect(lambda: parent.setCurrentIndex(EMPLOYEE_MENU_PAGE))
     backend
     if input_fielf:

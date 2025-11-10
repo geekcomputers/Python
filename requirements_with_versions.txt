@@ -54,6 +54,9 @@ background==0.2.1
 pydantic==2.12.4
 openpyxl==3.1.2
 pytesseract==0.3.13
+pydantic==2.7.3
+openpyxl==3.1.5
+pytesseract==0.3.10
 requests-mock==1.12.1
 pyglet==2.1.9
 urllib3==2.5.0

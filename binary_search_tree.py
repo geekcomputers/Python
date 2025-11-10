@@ -234,7 +234,7 @@ def inorder_itr(node):
     stack = []
     current = node
     while True:
-        if current != None:
+        if current is not None:
             stack.append(current)  # L
             current = current.left
         elif stack != []:

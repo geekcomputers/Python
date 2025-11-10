@@ -4,6 +4,7 @@ Time Delta Calculator
 This module provides functionality to calculate the absolute difference
 in seconds between two timestamps in the format: Day dd Mon yyyy hh:mm:ss +xxxx
 """
+
 # -----------------------------------------------------------------------------
 # You are givent two timestams in the format: Day dd Mon yyyy hh:mm:ss +xxxx
 # where +xxxx represents the timezone.

@@ -40,7 +40,7 @@ def search():
         for doc in list_of_docs:
             if doc["from"][0:5] == five_minutes_prior:
                 phone_number = doc["phone"]
-                call = client.calls.create(
+                client.calls.create(
                     to=phone_number,
                     from_="add your twilio number",
                     url="http://demo.twilio.com/docs/voice.xml",

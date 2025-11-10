@@ -58,7 +58,7 @@ def search_for_image():
 
     results = sew.findAll("div", {"class": "rg_meta"})
     for re in results:
-        (link, Type) = (json.loads(re.text)["ou"], json.loads(re.text)["ity"])
+        (link, _Type) = (json.loads(re.text)["ou"], json.loads(re.text)["ity"])
         images.append(link)
     counter = 0
     for re in images:

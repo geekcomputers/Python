@@ -23,7 +23,7 @@ class DoublyLinkedList:
 
     def insert_front(self, data):
         node = Node(data, self.head)
-        if self.head == None:
+        if self.head is None:
             self.tail = node
         node.prev = self.head
         self.head = node
@@ -31,7 +31,7 @@ class DoublyLinkedList:
 
     def insert_back(self, data):
         node = Node(data, None, self.tail)
-        if self.head == None:
+        if self.head is None:
             self.tail = self.head = node
             self.length += 1
         else:
@@ -72,7 +72,7 @@ class DoublyLinkedList:
         temp = self.head
         print("NULL <-", end=" ")
         while temp:
-            if temp.next == None:
+            if temp.next is None:
                 print(f"{temp.data} ->", end=" ")
                 break
             print(f"{temp.data} <=>", end=" ")
@@ -158,7 +158,7 @@ class DoublyLinkedList:
                 temp.next.prev = temp.prev
                 self.length -= 1
                 return
-            if temp != None:
+            if temp is not None:
                 temp = temp.next
         print("The Element is not the List!")
 
@@ -195,7 +195,7 @@ class DoublyLinkedList:
             return
         prev = c_next = None
         curr = self.head
-        while curr != None:
+        while curr is not None:
             c_next = curr.next
             curr.next = prev
             prev = curr
@@ -209,7 +209,7 @@ class DoublyLinkedList:
             return
         slow = self.head.next
         fast = self.head.next.next
-        while fast != None and fast.next != None:
+        while fast is not None and fast.next is not None:
             slow = slow.next
             fast = fast.next.next
         return slow.data

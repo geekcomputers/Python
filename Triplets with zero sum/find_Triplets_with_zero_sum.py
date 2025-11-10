@@ -50,7 +50,7 @@ def find_Triplets_with_zero_sum(arr, num):
             else:
                 right -= 1
 
-    if found == False:
+    if not found:
         print(" No Triplet Found")
 
 

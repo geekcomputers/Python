@@ -28,9 +28,9 @@ def mem():
         num = int(match.group(1))
         unit = match.group(2)
         if unit == "MB":
-            s = " " * (num * 1024 * 1024)
+            " " * (num * 1024 * 1024)
         else:
-            s = " " * (num * 1024 * 1024 * 1024)
+            " " * (num * 1024 * 1024 * 1024)
         time.sleep(24 * 3600)
     else:
         print("bad args.....")

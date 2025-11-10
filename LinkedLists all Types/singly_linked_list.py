@@ -22,14 +22,14 @@ class LinkedList:
 
     def insert_front(self, data):
         node = Node(data, self.head)
-        if self.head == None:
+        if self.head is None:
             self.tail = node
         self.head = node
         self.length += 1
 
     def insert_back(self, data):
         node = Node(data)
-        if self.head == None:
+        if self.head is None:
             self.tail = self.head = node
             self.length += 1
         else:
@@ -142,7 +142,7 @@ class LinkedList:
             self.length -= 1
             temp.next = None
             return
-        while temp.next != None:
+        while temp.next is not None:
             if temp.next.data == idx_data:
                 temp.next = temp.next.next
                 self.length -= 1
@@ -184,7 +184,7 @@ class LinkedList:
             return
         prev = c_next = None
         curr = self.head
-        while curr != None:
+        while curr is not None:
             c_next = curr.next
             curr.next = prev
             prev = curr
@@ -198,7 +198,7 @@ class LinkedList:
             return
         slow = self.head.next
         fast = self.head.next.next
-        while fast != None and fast.next != None:
+        while fast is not None and fast.next is not None:
             slow = slow.next
             fast = fast.next.next
         return slow.data

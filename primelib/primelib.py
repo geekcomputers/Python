@@ -68,9 +68,9 @@ def isPrime(number):
     """
 
     # precondition
-    assert isinstance(number, int) and (number >= 0), (
-        "'number' must been an int and positive"
-    )
+    assert isinstance(number, int) and (
+        number >= 0
+    ), "'number' must been an int and positive"
 
     # 0 and 1 are none primes.
     if number <= 3:
@@ -198,9 +198,9 @@ def greatestPrimeFactor(number):
     """
 
     # precondition
-    assert isinstance(number, int) and (number >= 0), (
-        "'number' bust been an int and >= 0"
-    )
+    assert isinstance(number, int) and (
+        number >= 0
+    ), "'number' bust been an int and >= 0"
 
     ans = 0
 
@@ -225,9 +225,9 @@ def smallestPrimeFactor(number):
     """
 
     # precondition
-    assert isinstance(number, int) and (number >= 0), (
-        "'number' bust been an int and >= 0"
-    )
+    assert isinstance(number, int) and (
+        number >= 0
+    ), "'number' bust been an int and >= 0"
 
     ans = 0
 
@@ -285,9 +285,9 @@ def goldbach(number):
     """
 
     # precondition
-    assert isinstance(number, int) and (number > 2) and isEven(number), (
-        "'number' must been an int, even and > 2"
-    )
+    assert (
+        isinstance(number, int) and (number > 2) and isEven(number)
+    ), "'number' must been an int, even and > 2"
 
     ans = []  # this list will returned
 
@@ -353,9 +353,9 @@ def gcd(number1, number2):
         number2 = rest
 
     # precondition
-    assert isinstance(number1, int) and (number1 >= 0), (
-        "'number' must been from type int and positive"
-    )
+    assert isinstance(number1, int) and (
+        number1 >= 0
+    ), "'number' must been from type int and positive"
 
     return number1
 
@@ -425,9 +425,9 @@ def kgV(number1, number2):
             done.append(n)
 
     # precondition
-    assert isinstance(ans, int) and (ans >= 0), (
-        "'ans' must been from type int and positive"
-    )
+    assert isinstance(ans, int) and (
+        ans >= 0
+    ), "'ans' must been from type int and positive"
 
     return ans
 
@@ -459,9 +459,9 @@ def getPrime(n):
             ans += 1
 
     # precondition
-    assert isinstance(ans, int) and isPrime(ans), (
-        "'ans' must been a prime number and from type int"
-    )
+    assert isinstance(ans, int) and isPrime(
+        ans
+    ), "'ans' must been a prime number and from type int"
 
     return ans
 
@@ -478,9 +478,9 @@ def getPrimesBetween(pNumber1, pNumber2):
     """
 
     # precondition
-    assert isPrime(pNumber1) and isPrime(pNumber2) and (pNumber1 < pNumber2), (
-        "The arguments must been prime numbers and 'pNumber1' < 'pNumber2'"
-    )
+    assert (
+        isPrime(pNumber1) and isPrime(pNumber2) and (pNumber1 < pNumber2)
+    ), "The arguments must been prime numbers and 'pNumber1' < 'pNumber2'"
 
     number = pNumber1 + 1  # jump to the next number
 
@@ -543,9 +543,9 @@ def isPerfectNumber(number):
     """
 
     # precondition
-    assert isinstance(number, int) and (number > 1), (
-        "'number' must been an int and >= 1"
-    )
+    assert isinstance(number, int) and (
+        number > 1
+    ), "'number' must been an int and >= 1"
 
     divisors = getDivisors(number)
 

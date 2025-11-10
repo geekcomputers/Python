@@ -60,7 +60,7 @@ class Square:
         # I will have to learn inheritance and polymorphism.
         condition = 3
         # condition = True
-        if condition == True and isinstance(condition, bool):
+        if condition and isinstance(condition, bool):
             while condition:
                 n = input("Enter the side of the square: ")
                 self.side = float(n)

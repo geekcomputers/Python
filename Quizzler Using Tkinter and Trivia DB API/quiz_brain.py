@@ -1,7 +1,7 @@
-
 """This file contains the logic that drives the quiz game, including managing the current question, checking answers, and tracking the score."""
 
 import html
+
 
 class QuizBrain:
     def __init__(self, q_list):

@@ -43,7 +43,9 @@ def pdf_read():
 
         path = doubleslash(location)
         pdf = fitz.open(path)
-        details = pdf.metadata  # Stores the meta-data which generally includes Author name and Title of book/document.
+        details = (
+            pdf.metadata
+        )  # Stores the meta-data which generally includes Author name and Title of book/document.
         total_pages = pdf.pageCount  # Stores the total number of pages
 
     except Exception as exp:
@@ -54,10 +56,10 @@ def pdf_read():
         )
         return "None"
     try:
-        """     1. Author
-                2. Creator
-                3. Producer
-                4. Title  """
+        """1. Author
+        2. Creator
+        3. Producer
+        4. Title"""
 
         author = details["author"]
         # print("Author : ",author)
@@ -181,7 +183,7 @@ def pdf_read():
             try:
                 key = input("Lesson name - ")
                 start_pg_no, end_pg_no = search_in_toc(toc, key, total_pages)
-                if start_pg_no != None and end_pg_no != None:
+                if start_pg_no is not None and end_pg_no is not None:
                     start_pg_no, end_pg_no = map(
                         int, search_in_toc(toc, key, total_pages)
                     )
@@ -199,7 +201,7 @@ def pdf_read():
                     start_pg_no, end_pg_no = map(
                         int, search_in_toc(toc, key, total_pages)
                     )
-                    if start_pg_no != None and end_pg_no != None:
+                    if start_pg_no is not None and end_pg_no is not None:
                         for i in range(start_pg_no - 1, end_pg_no):
                             page = pdf.load_page(i)
                             text = page.get_text("text")
@@ -212,7 +214,7 @@ def pdf_read():
                 speak("Lesson name")
                 key = input("Lesson name - ")
                 start_pg_no, end_pg_no = search_in_toc(toc, key, total_pages)
-                if start_pg_no != None and end_pg_no != None:
+                if start_pg_no is not None and end_pg_no is not None:
                     start_pg_no, end_pg_no = map(
                         int, search_in_toc(toc, key, total_pages)
                     )

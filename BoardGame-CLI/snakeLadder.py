@@ -59,7 +59,7 @@ def play():
                     print(f"you got {temp1}")
                     print("")
 
-                    if isReady[i] == False and temp1 == 6:
+                    if not isReady[i] and temp1 == 6:
                         isReady[i] = True
 
                     if isReady[i]:
@@ -90,7 +90,6 @@ def play():
                 elif n == 2:
                     players = {}  # stores player and their locations
                     isReady = {}
-                    current_loc = 1  # reset starting location to 1
                     player_input()
 
                 elif n == 3:

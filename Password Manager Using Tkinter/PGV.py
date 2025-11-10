@@ -1,11 +1,8 @@
 import json
 
 new_data = {
-        website_input.get():{
-            "email": email_input.get(),
-            "password": passw_input.get()
-        }
-    }
+    website_input.get(): {"email": email_input.get(), "password": passw_input.get()}
+}
 
 try:
     with open("data.json", "r") as data_file:
@@ -15,4 +12,4 @@ except FileNotFoundError:
         pass
 else:
     with open("data.json", "w") as data_file:
-        json.dump(new_data, data_file, indent = 4)
+        json.dump(new_data, data_file, indent=4)

@@ -33,7 +33,7 @@ def startDownload():
             return
         ob = YouTube(URL, on_progress_callback=progress)
         strm = ob.streams[0]
-        x = ob.description.split("|")
+        ob.description.split("|")
         file_size = strm.filesize
         dfile_size = file_size
         dfile_size /= 1000000

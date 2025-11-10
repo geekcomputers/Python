@@ -135,19 +135,19 @@ def main():
         )  # setting the threshold value for every row in the frame
 
         # For the specific row , if all the values are non-zero then it is sorted with color
-        if np.all(np.asarray(color)) == True:
+        if np.all(np.asarray(color)):
             color.sort(key=lambda bgr: step(bgr, 8))  # step sorting
             band, img = generateColors(color, img, row)
             measure(len(color), row, col, height, width)
 
         # For the specific row , if any of the values are zero it gets sorted with color_n
-        if np.all(np.asarray(color)) == False:
+        if not np.all(np.asarray(color)):
             for ind, i in enumerate(color):
                 # Accessing every list within color
                 # Added to color_n if any of the element in the list is non-zero
                 # and their sum is less than threshold  value
 
-                if np.any(np.asarray(i)) == True and sum(i) < thresh:
+                if np.any(np.asarray(i)) and sum(i) < thresh:
                     color_n.append(i)
 
             color_n.sort(key=lambda bgr: step(bgr, 8))  # step sorting
