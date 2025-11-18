@@ -26,14 +26,19 @@ class PuzzleState:
         return self.moves + self.manhattan()
 
     def manhattan(self) -> int:
-        """Calculate Manhattan distance from current to goal state."""
+        """Calculate Manhattan distance using actual goal positions."""
         distance = 0
+        # Create a lookup table for goal tile positions
+        goal_pos = {self.goal[i][j]: (i, j) for i in range(3) for j in range(3)}
+
         for i in range(3):
             for j in range(3):
-                if self.board[i][j] != 0:
-                    x, y = divmod(self.board[i][j] - 1, 3)
+                value = self.board[i][j]
+                if value != 0:  # skip the empty tile
+                    x, y = goal_pos[value]
                     distance += abs(x - i) + abs(y - j)
         return distance
+
 
     def is_goal(self) -> bool:
         """Check if current state matches goal."""
