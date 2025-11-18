@@ -1,5 +1,5 @@
 """
-Class resposible for counting words for different files:
+Class responsible for counting words for different files:
 - Reduce redundant code
 - Easier code management/debugging
 - Code readability
