@@ -54,8 +54,167 @@ Feel free to explore the scripts and use them for your learning and automation n
 39. [space_invader.py.py](https://github.com/meezan-mallick/space_invader_game) - Classical 2D space invader game to recall your childhood memories.
 40. [Test Case Generator](https://github.com/Tanmay-901/test-case-generator/blob/master/test_case.py) - Generate different types of test cases with a clean and friendly UI, used in competitive programming and software testing.
 41. [Extract Thumbnail From Video](https://github.com/geekcomputers/Python/tree/ExtractThumbnailFromVideo) - Extract Thumbnail from video files
-42. [How to begin the journey of open source (first contribution)](https://www.youtube.com/watch?v=v2X51AVgl3o) - First Contribution of open source
-43. [smart_file_organizer.py](https://github.com/sangampaudel530/Python2.0/blob/main/smart_file_organizer.py) - Organizes files in a directory into categorized subfolders based on file type (Images, Documents, Videos, Audios, Archives, Scripts, Others). You can run it once or automatically at set intervals using the `--path` and `--interval` options.
+42. [8_puzzle.py](https://github.com/geekcomputers/Python/blob/master/8_puzzle.py) - 8-puzzle sliding game solver using A* algorithm
+43. [ARKA.py](https://github.com/geekcomputers/Python/blob/master/ARKA.py) - Interactive text-based adventure game with multiple scenarios
+44. [BruteForce.py](https://github.com/geekcomputers/Python/blob/master/BruteForce.py) - Brute force password cracking demonstration tool
+45. [CSV_file.py](https://github.com/geekcomputers/Python/blob/master/CSV_file.py) - CSV file manipulation and data processing utilities
+46. [FizzBuzz.py](https://github.com/geekcomputers/Python/blob/master/FizzBuzz.py) - Classic FizzBuzz programming challenge implementation
+47. [Hangman.py](https://github.com/geekcomputers/Python/blob/master/Hangman.py) - Interactive hangman word guessing game
+48. [JsonParser.py](https://github.com/geekcomputers/Python/blob/master/JsonParser.py) - JSON file parsing and manipulation utilities
+49. [List.py](https://github.com/geekcomputers/Python/blob/master/List.py) - List data structure operations and examples
+50. [Multiply.py](https://github.com/geekcomputers/Python/blob/master/Multiply.py) - Mathematical multiplication operations and calculations
+51. [Organise.py](https://github.com/geekcomputers/Python/blob/master/Organise.py) - File organization and directory management tool
+52. [PONG_GAME.py](https://github.com/geekcomputers/Python/blob/master/PONG_GAME.py) - Classic Pong arcade game implementation
+53. [Polyline.py](https://github.com/geekcomputers/Python/blob/master/Polyline.py) - Geometric polyline drawing and manipulation
+54. [RandomDice.py](https://github.com/geekcomputers/Python/blob/master/RandomDice.py) - Random dice rolling simulation game
+55. [SOUNDEX.py](https://github.com/geekcomputers/Python/blob/master/SOUNDEX.py) - SOUNDEX phonetic algorithm implementation
+56. [Strings.py](https://github.com/geekcomputers/Python/blob/master/Strings.py) - String manipulation and processing utilities
+57. [TTS.py](https://github.com/geekcomputers/Python/blob/master/TTS.py) - Text-to-speech conversion utility
+58. [TicTacToe.py](https://github.com/geekcomputers/Python/blob/master/TicTacToe.py) - Interactive Tic-Tac-Toe game implementation
+59. [Todo_GUi.py](https://github.com/geekcomputers/Python/blob/master/Todo_GUi.py) - GUI-based todo list management application
+60. [WeatherGUI.py](https://github.com/geekcomputers/Python/blob/master/WeatherGUI.py) - Weather information display with graphical interface
+61. [Web Socket.py](https://github.com/geekcomputers/Python/blob/master/Web%20Socket.py) - WebSocket communication implementation
+62. [automail.py](https://github.com/geekcomputers/Python/blob/master/automail.py) - Automated email sending utility
+63. [basic_cal.py](https://github.com/geekcomputers/Python/blob/master/basic_cal.py) - Basic calculator with arithmetic operations
+64. [billing.py](https://github.com/geekcomputers/Python/blob/master/billing.py) - Billing and invoice generation system
+65. [binod.py](https://github.com/geekcomputers/Python/blob/master/binod.py) - Text processing and manipulation utility
+66. [birthdays.py](https://github.com/geekcomputers/Python/blob/master/birthdays.py) - Birthday reminder and management system
+67. [bodymass.py](https://github.com/geekcomputers/Python/blob/master/bodymass.py) - Body Mass Index (BMI) calculator
+68. [calc_area.py](https://github.com/geekcomputers/Python/blob/master/calc_area.py) - Geometric area calculation for various shapes
+69. [calci.py](https://github.com/geekcomputers/Python/blob/master/calci.py) - Advanced calculator with scientific functions
+70. [chaos.py](https://github.com/geekcomputers/Python/blob/master/chaos.py) - Chaos theory and fractal generation
+71. [check_file.py](https://github.com/geekcomputers/Python/blob/master/check_file.py) - File existence and properties checking utility
+72. [consonant.py](https://github.com/geekcomputers/Python/blob/master/consonant.py) - Consonant and vowel analysis in text
+73. [dec_to_hex.py](https://github.com/geekcomputers/Python/blob/master/dec_to_hex.py) - Decimal to hexadecimal number conversion
+74. [diamond.py](https://github.com/geekcomputers/Python/blob/master/diamond.py) - Diamond pattern generation and display
+75. [dice.py](https://github.com/geekcomputers/Python/blob/master/dice.py) - Dice rolling simulation and statistics
+76. [diction.py](https://github.com/geekcomputers/Python/blob/master/diction.py) - Dictionary and word lookup utilities
+77. [encryptsys.py](https://github.com/geekcomputers/Python/blob/master/encryptsys.py) - Text encryption and decryption system
+78. [equations.py](https://github.com/geekcomputers/Python/blob/master/equations.py) - Mathematical equation solver
+79. [ex20.py](https://github.com/geekcomputers/Python/blob/master/ex20.py) - Programming exercise and example code
+80. [factors.py](https://github.com/geekcomputers/Python/blob/master/factors.py) - Prime factorization and number analysis
+81. [fastapi.py](https://github.com/geekcomputers/Python/blob/master/fastapi.py) - FastAPI web framework demonstration
+82. [fetch_news.py](https://github.com/geekcomputers/Python/blob/master/fetch_news.py) - News fetching and aggregation utility
+83. [fibonacci.py](https://github.com/geekcomputers/Python/blob/master/fibonacci.py) - Fibonacci sequence generation and analysis
+84. [find_prime.py](https://github.com/geekcomputers/Python/blob/master/find_prime.py) - Prime number detection and generation
+85. [friday.py](https://github.com/geekcomputers/Python/blob/master/friday.py) - Virtual assistant with voice commands
+86. [gambler.py](https://github.com/geekcomputers/Python/blob/master/gambler.py) - Gambling simulation and probability analysis
+87. [gcd.py](https://github.com/geekcomputers/Python/blob/master/gcd.py) - Greatest Common Divisor calculation
+88. [google.py](https://github.com/geekcomputers/Python/blob/master/google.py) - Google search automation utility
+89. [googlemaps.py](https://github.com/geekcomputers/Python/blob/master/googlemaps.py) - Google Maps integration and location services
+90. [googleweb.py](https://github.com/geekcomputers/Python/blob/master/googleweb.py) - Google web search and result processing
+91. [greaterno.py](https://github.com/geekcomputers/Python/blob/master/greaterno.py) - Number comparison and analysis utility
+92. [greattwono.py](https://github.com/geekcomputers/Python/blob/master/greattwono.py) - Two-number comparison operations
+93. [happy_num.py](https://github.com/geekcomputers/Python/blob/master/happy_num.py) - Happy number detection and generation
+94. [heap_sort.py](https://github.com/geekcomputers/Python/blob/master/heap_sort.py) - Heap sort algorithm implementation
+95. [helloworld.py](https://github.com/geekcomputers/Python/blob/master/helloworld.py) - Basic "Hello World" program example
+96. [index.py](https://github.com/geekcomputers/Python/blob/master/index.py) - Index and search functionality implementation
+97. [iprint.py](https://github.com/geekcomputers/Python/blob/master/iprint.py) - Enhanced printing and output formatting
+98. [is_number.py](https://github.com/geekcomputers/Python/blob/master/is_number.py) - Number validation and type checking
+99. [jee_result.py](https://github.com/geekcomputers/Python/blob/master/jee_result.py) - JEE exam result processing and analysis
+100. [largestno.py](https://github.com/geekcomputers/Python/blob/master/largestno.py) - Largest number finding algorithm
+101. [lcm.py](https://github.com/geekcomputers/Python/blob/master/lcm.py) - Least Common Multiple calculation
+102. [leap year.py](https://github.com/geekcomputers/Python/blob/master/leap%20year.py) - Leap year detection and calendar utilities
+103. [length.py](https://github.com/geekcomputers/Python/blob/master/length.py) - Length and distance measurement utilities
+104. [loader.py](https://github.com/geekcomputers/Python/blob/master/loader.py) - File loading and data import utilities
+105. [login.py](https://github.com/geekcomputers/Python/blob/master/login.py) - User authentication and login system
+106. [loops.py](https://github.com/geekcomputers/Python/blob/master/loops.py) - Loop structures and iteration examples
+107. [magic8ball.py](https://github.com/geekcomputers/Python/blob/master/magic8ball.py) - Magic 8-ball fortune telling game
+108. [mapit.py](https://github.com/geekcomputers/Python/blob/master/mapit.py) - Address mapping and location services
+109. [meme_maker.py](https://github.com/geekcomputers/Python/blob/master/meme_maker.py) - Meme generation and image processing
+110. [memorygame.py](https://github.com/geekcomputers/Python/blob/master/memorygame.py) - Memory matching game implementation
+111. [merge.py](https://github.com/geekcomputers/Python/blob/master/merge.py) - Data merging and combination utilities
+112. [new.py](https://github.com/geekcomputers/Python/blob/master/new.py) - Template for new Python projects
+113. [new_script.py](https://github.com/geekcomputers/Python/blob/master/new_script.py) - Script generation and automation tool
+114. [nmap_scan.py](https://github.com/geekcomputers/Python/blob/master/nmap_scan.py) - Network scanning and port analysis
+115. [num-py.py](https://github.com/geekcomputers/Python/blob/master/num-py.py) - NumPy array operations and examples
+116. [oneeven.py](https://github.com/geekcomputers/Python/blob/master/oneeven.py) - Even number detection and processing
+117. [palindrome.py](https://github.com/geekcomputers/Python/blob/master/palindrome.py) - Palindrome detection and generation
+118. [pan.py](https://github.com/geekcomputers/Python/blob/master/pan.py) - PAN card validation and processing
+119. [ph_email.py](https://github.com/geekcomputers/Python/blob/master/ph_email.py) - Phone and email validation utilities
+120. [polygon.py](https://github.com/geekcomputers/Python/blob/master/polygon.py) - Polygon geometry and calculation tools
+121. [power_of_n.py](https://github.com/geekcomputers/Python/blob/master/power_of_n.py) - Power and exponentiation calculations
+122. [pscheck.py](https://github.com/geekcomputers/Python/blob/master/pscheck.py) - Process monitoring and system checking
+123. [psunotify.py](https://github.com/geekcomputers/Python/blob/master/psunotify.py) - System notification and alert utility
+124. [pyauto.py](https://github.com/geekcomputers/Python/blob/master/pyauto.py) - Automation and scripting utilities
+125. [pygame.py](https://github.com/geekcomputers/Python/blob/master/pygame.py) - Pygame game development examples
+126. [python_sms.py](https://github.com/geekcomputers/Python/blob/master/python_sms.py) - SMS sending and messaging utilities
+127. [qrcode.py](https://github.com/geekcomputers/Python/blob/master/qrcode.py) - QR code generation and processing
+128. [qrdecoder.py](https://github.com/geekcomputers/Python/blob/master/qrdecoder.py) - QR code decoding and reading utility
+129. [quiz_game.py](https://github.com/geekcomputers/Python/blob/master/quiz_game.py) - Interactive quiz game with scoring
+130. [quote.py](https://github.com/geekcomputers/Python/blob/master/quote.py) - Inspirational quote generator and display
+131. [rangoli.py](https://github.com/geekcomputers/Python/blob/master/rangoli.py) - Rangoli pattern generation and art
+132. [recyclebin.py](https://github.com/geekcomputers/Python/blob/master/recyclebin.py) - Recycle bin management and file recovery
+133. [repeat.py](https://github.com/geekcomputers/Python/blob/master/repeat.py) - Text and pattern repetition utilities
+134. [rook.py](https://github.com/geekcomputers/Python/blob/master/rook.py) - Chess rook movement and game logic
+135. [rotatelist.py](https://github.com/geekcomputers/Python/blob/master/rotatelist.py) - List rotation and manipulation operations
+136. [scalg.py](https://github.com/geekcomputers/Python/blob/master/scalg.py) - Scientific algorithm implementations
+137. [scrap_file.py](https://github.com/geekcomputers/Python/blob/master/scrap_file.py) - Web scraping and data extraction
+138. [sendemail.py](https://github.com/geekcomputers/Python/blob/master/sendemail.py) - Email sending and SMTP utilities
+139. [sha1.py](https://github.com/geekcomputers/Python/blob/master/sha1.py) - SHA1 hash generation and verification
+140. [snake.py](https://github.com/geekcomputers/Python/blob/master/snake.py) - Classic Snake game implementation
+141. [stack.py](https://github.com/geekcomputers/Python/blob/master/stack.py) - Stack data structure operations
+142. [sudoku.py](https://github.com/geekcomputers/Python/blob/master/sudoku.py) - Sudoku puzzle solver and generator
+143. [swap.py](https://github.com/geekcomputers/Python/blob/master/swap.py) - Variable swapping and exchange operations
+144. [tik_tak.py](https://github.com/geekcomputers/Python/blob/master/tik_tak.py) - Alternative Tic-Tac-Toe game implementation
+145. [time_delta.py](https://github.com/geekcomputers/Python/blob/master/time_delta.py) - Time difference calculation utilities
+146. [triangles.py](https://github.com/geekcomputers/Python/blob/master/triangles.py) - Triangle geometry and calculation tools
+147. [tuple.py](https://github.com/geekcomputers/Python/blob/master/tuple.py) - Tuple data structure operations and examples
+148. [two_num.py](https://github.com/geekcomputers/Python/blob/master/two_num.py) - Two-number mathematical operations
+149. [voice.py](https://github.com/geekcomputers/Python/blob/master/voice.py) - Voice recognition and speech processing
+150. [webcam.py](https://github.com/geekcomputers/Python/blob/master/webcam.py) - Webcam capture and image processing
+151. [wikipedia.py](https://github.com/geekcomputers/Python/blob/master/wikipedia.py) - Wikipedia search and content retrieval
+152. [news_oversimplifier.py](https://github.com/geekcomputers/Python/blob/master/news_oversimplifier.py) - News article simplification and summarization
+153. [wiki/wiki.py](https://github.com/geekcomputers/Python/blob/master/wiki/wiki.py) - Wikipedia content extraction and processing
+154. [PDF/basic.py](https://github.com/geekcomputers/Python/blob/master/PDF/basic.py) - Basic PDF generation and manipulation
+155. [How to begin the journey of open source (first contribution)](https://www.youtube.com/watch?v=v2X51AVgl3o) - First Contribution of open source
+
 <hr>
 
 _**Note**: The content in this repository belongs to the respective authors and creators. I'm just providing a formatted README.md for better presentation._
+
+## How to Run?
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/geekcomputers/Python.git
+   cd Python
+2. Choose a script to run  
+Each script in this repository is standalone and can be executed directly.
+
+## Dependencies  
+Most scripts in this repository rely only on the Python standard library, so they can usually run without installing extra packages.
+
+> **⚠️ Important**  
+> 
+> Some scripts may require additional Python libraries.  
+> The repository provides a dependency file (e.g., `requirements.txt`) as a reference, but it may not list all required packages.  
+> Check each script's header or comments for any extra dependencies that may need manual installation.  
+> 
+> To install the listed dependencies, run:  
+> 
+> ```bash  
+> pip install -r requirements.txt  
+> ```  
+> 
+> For any missing packages, install them manually:  
+> 
+> ```bash  
+> pip install <package-name>  
+> ```
+
+## python version support  
+
+> **Note**
+>
+> Python version support:  
+> Most scripts currently run on Python 3.6 and above.  
+> In future releases, the minimum supported Python version will gradually be updated to 3.9 or later.  
+
+## License  
+
+This project is licensed under the MIT License.  
+
+You are free to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the project, subject to the following conditions:  
+
+- The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.  
+- THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
