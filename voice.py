@@ -5,6 +5,7 @@ import os
 # Define the text you want to convert to speech
 text = "Hello! This is a sample text to convert to speech."
 
+# Exception Handaled 
 try:
     # Create a gTTS object
     tts = gTTS(text=text, lang="en")
