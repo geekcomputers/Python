@@ -132,5 +132,6 @@ def main():
     print(SHA1Hash(hash_input).final_hash())
 
 
+# starting point of code
 if __name__ == "__main__":
     main()
