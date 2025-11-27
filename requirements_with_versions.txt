@@ -83,7 +83,7 @@ pynput==1.8.1
 gTTS==2.5.4
 ccxt==4.5.21
 fitz==0.0.1.dev2
-fastapi==0.121.1
+fastapi==0.122.0
 Django==5.2.7
 docx==0.2.4
 matplotlib==3.10.7
