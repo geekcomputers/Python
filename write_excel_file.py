@@ -1,8 +1,28 @@
-import xlwt
-import openpyxl
+import xlwt # type: ignore
+import openpyxl # type: ignore
 
 # Workbook is created
 xlwt_wb = xlwt.Workbook()
+
+"""
+we can also use of json object format for this file or code,
+for the index we can use (for loop) and for data use json object.
+example of json object:
+{
+    "data":[
+        "ISBT DEHRADUN".
+        "SHASTRADHARA",
+        "CLEMEN TOWN",
+        "RAJPUR ROAD",
+        "CLOCK TOWER",
+        "ISBT DEHRADUN",
+        "SHASTRADHARA",
+        "CLEMEN TOWN",
+        "RAJPUR ROAD",
+        "CLOCK TOWER"
+    ]
+}
+"""
 
 # add_sheet is used to create sheet.
 sheet1 = xlwt_wb.add_sheet("Sheet 1")
