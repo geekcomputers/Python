@@ -49,7 +49,8 @@ def sum_of_digits(n: int) -> int:
     Compute the sum of the digits of an integer.
 
     Args:
-        n: A non-negative integer.
+        n:Non - negative integer
+        If the integer is negative , it is converted to postive interger and assigned to same number
 
     Returns:
         Sum of digits of the number.
@@ -60,6 +61,7 @@ def sum_of_digits(n: int) -> int:
         >>> sum_of_digits(405)
         9
     """
+    n=abs(n)
     total = 0
     while n > 0:
         # Add last digit and remove it from n
