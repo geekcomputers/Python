@@ -49,7 +49,7 @@ def sum_of_digits(n: int) -> int:
     Compute the sum of the digits of an integer.
 
     Args:
-        n:Non - negative integer
+        n:Non-negative integer
         If the integer is negative , it is converted to postive interger and assigned to same number
 
     Returns:
