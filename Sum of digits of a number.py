@@ -31,8 +31,8 @@ def addition(num):
     Examples:
     >>> addition(123)
     6
-    >>> addition(-789)
-    24
+    >>> addition(-784)
+    19
     """
     Sum = 0
     if type(num) is type(
