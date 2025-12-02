@@ -24,16 +24,27 @@ def get_integer():
 
 
 def addition(num):
+    """
+    Returns the sum of the digits of a number.
+    Negative numbers are handled using the absolute value.
+
+    Examples:
+    >>> addition(123)
+    6
+    >>> addition(-789)
+    24
+    """
     Sum = 0
     if type(num) is type(
         None
     ):  # Checks if number type is none or not. If type is none program exits.
         print("Try again!")
         sys.exit()
+    num = abs(num) # Handle negative numbers
     while num > 0:  # Addition- adding the digits in the number.
         digit = int(num % 10)
         Sum += digit
-        num /= 10
+        num //= 10
     return Sum  # Returns sum to where the function is called.
 
 
@@ -42,4 +53,5 @@ if (
 ):  # this is used to overcome the problems while importing this file.
     number = get_integer()
     Sum = addition(number)
-    print(f"Sum of digits of {number} is {Sum}")  # Prints the sum
+    abs_display = f" (absolute value: {abs(number)})" if number < 0 else ""
+    print(f"Sum of digits of {number}{abs_display} is {Sum}")  # Prints the sum
