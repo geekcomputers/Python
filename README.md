@@ -58,4 +58,4 @@ Feel free to explore the scripts and use them for your learning and automation n
 43. [smart_file_organizer.py](https://github.com/sangampaudel530/Python2.0/blob/main/smart_file_organizer.py) - Organizes files in a directory into categorized subfolders based on file type (Images, Documents, Videos, Audios, Archives, Scripts, Others). You can run it once or automatically at set intervals using the `--path` and `--interval` options.
 <hr>
 
-_**Note**: The content in this repository belongs to the respective authors and creators. I'm just providing a formatted README.md for better presentation._
+_**Note**: The content in this repository belongs to the respective authors and creators. I'm just providing a formatted README.md for better presentation.
