@@ -49,6 +49,7 @@ if __name__=="__main__":
         x=40, y=150
     )
 
+    # entry box in UI
     url_box = Entry(root, font=("arial", 30), width=30)
     url_box.place(x=40, y=180)
 
