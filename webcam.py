@@ -40,7 +40,7 @@ while True:
 
         # Display the resulting frame
         cv2.imshow("frame", gray)
-        if cv2.waitKey(1) & 0xFF == ord("q"):
+        if cv2.waitKey(1) & 0xFF == ord(" "):
             break
 
 # When everything is done, release the capture and video writer
