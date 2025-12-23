@@ -74,7 +74,7 @@ xor-cipher==5.0.2
 bird==0.1.2
 mechanize==0.4.10
 translate==3.8.0
-solara==1.54.0
+solara==1.55.1
 pywhatkit==5.4
 mutagen==1.47.0
 Unidecode==1.4.0
