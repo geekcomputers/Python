@@ -48,7 +48,7 @@ def selection_sort(arr: list) -> list:
     return arr
 
 
-def bubble_sort(arr: list) -> list:
+def optimized_bubble_sort(arr: list) -> list:
     """TC : O(n^2)
     SC : O(1)"""
     n = len(arr)
@@ -62,7 +62,7 @@ def bubble_sort(arr: list) -> list:
     return arr
 
 
-def insertion_sort(arr: list) -> list:
+def bubble_sort(arr: list) -> list:
     """TC : O(n^2)
     SC : O(1)"""
     n = len(arr)
