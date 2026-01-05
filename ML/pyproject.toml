@@ -1,0 +1,87 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "NeuralForgeAI"
+version = "1.0.0"
+description = "High-performance deep learning framework with CUDA acceleration and neural architecture search"
+readme = "README.md"
+requires-python = ">=3.8"
+license = {text = "MIT"}
+authors = [
+    {name = "Luka"}
+]
+keywords = ["deep-learning", "neural-networks", "pytorch", "cuda", "machine-learning", "ai"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+
+dependencies = [
+    "torch>=2.0.0",
+    "torchvision>=0.15.0",
+    "numpy>=1.21.0",
+    "tqdm>=4.62.0",
+    "matplotlib>=3.4.0",
+    "pillow>=8.3.0",
+    "scipy>=1.7.0",
+    "tensorboard>=2.10.0",
+]
+
+[project.optional-dependencies]
+gui = ["PyQt6>=6.4.0"]
+dev = [
+    "pytest>=7.0.0",
+    "pytest-cov>=3.0.0",
+    "black>=22.0.0",
+    "flake8>=4.0.0",
+    "mypy>=0.950",
+]
+
+[project.scripts]
+NeuralForgeAI = "neuralforge.cli.train:main"
+neuralforge = "neuralforge.cli.train:main"
+neuralforge-train = "neuralforge.cli.train:main"
+neuralforge-test = "neuralforge.cli.test:main"
+neuralforge-gui = "neuralforge.cli.gui:main"
+neuralforge-nas = "neuralforge.cli.nas:main"
+
+[project.urls]
+Homepage = "https://github.com/Luka12-dev"
+Documentation = "https://github.com/Luka12-dev/NeuralForgeAI/blob/main/DOCUMENTATION.md"
+Repository = "https://github.com/Luka12-dev/NeuralForgeAI"
+Issues = "https://github.com/Luka12-dev/NeuralForgeAI/issues"
+
+[tool.setuptools]
+packages = {find = {where = ["src/python"]}}
+
+[tool.setuptools.package-dir]
+"" = "src/python"
+
+[tool.black]
+line-length = 100
+target-version = ['py38', 'py39', 'py310', 'py311']
+include = '\.pyi?$'
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+
+[tool.mypy]
+python_version = "3.8"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = false
