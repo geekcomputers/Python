@@ -1,5 +1,5 @@
 # User inputs the string and it gets stored in variable str
-str = input("Enter a string: ")
+str = input("Enter a string for str leangth : ")
 
 # counter variable to count the character in a string
 counter = 0

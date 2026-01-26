@@ -257,6 +257,7 @@ class Notebook:
 # ==================== Classes End Here ... ! =================
 
 
+# this code runes only in this file
 if __name__ == "__main__":
     run = Main()
     Notebook(run)

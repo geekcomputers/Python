@@ -47,6 +47,7 @@ def no_files():
     # Graceful exit for Ctrl + C, Ctrl + D
     except KeyboardInterrupt:
         exit()
+    # exit when no data found in file
     except EOFError:
         exit()
 

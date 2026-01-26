@@ -88,6 +88,6 @@ class TestBrowserHistory(unittest.TestCase):
         # Verify we can't go forward to cleared history
         self.assertEqual(self.browser.forward(1), "page4.com")
 
-
+# starting point of code
 if __name__ == "__main__":
     unittest.main()

@@ -745,7 +745,7 @@ def scanner(string):
 
 def scan():
     """
-    scan: applys function scanner() to each line of the source code.
+    scan: applies function scanner() to each line of the source code.
     """
     global lines
     assert len(lines) > 0, "no lines"
@@ -1008,7 +1008,7 @@ def parser():
                 elif eax == 3:
                     ecx = float(input(">> "))
 
-                elif eax == 4:  # output informations
+                elif eax == 4:  # output information
                     print(ecx)
 
         elif token.token == "push":  # push commando
@@ -1157,7 +1157,7 @@ def parser():
                     pointer = jumps[token.token]
 
                 else:  # error case
-                    print("Error: Unknow subprogram!")
+                    print("Error: Unknown subprogram!")
                     return
 
             else:  # error case
@@ -1169,7 +1169,7 @@ def parser():
                 pointer = returnStack.pop()
 
             else:  # error case
-                print("Error: No return adress on stack")
+                print("Error: No return address on stack")
                 return
 
         elif token.t == "subprogram":

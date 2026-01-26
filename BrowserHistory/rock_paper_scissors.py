@@ -1,5 +1,6 @@
 """
-Rock, Paper, Scissors Game (CLI Version)
+Triple Round : Rock, Paper, Scissors Game (CLI Version)
+Final round is the Winning Round
 Author: Your Name
 """
 
@@ -38,10 +39,13 @@ def decide_winner(player, computer):
 
 def main():
     """Main function to play the game."""
-    user_choice = get_user_choice()
-    computer_choice = get_computer_choice()
-    print(f"Computer chose: {computer_choice}")
-    print(decide_winner(user_choice, computer_choice))
+    for i in range(1, 4):
+        print(f"round -> {i}\n")
+        user_choice = get_user_choice()
+        computer_choice = get_computer_choice()
+        print(f"Computer chose: {computer_choice}")
+        
+    print(f"Final result : {decide_winner(user_choice, computer_choice)}")
 
 
 if __name__ == "__main__":

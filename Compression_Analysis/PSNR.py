@@ -16,7 +16,7 @@ def calculate(img):
 
 
 def main():
-    # Loading images (orignal image and compressed image)
+    # Loading images (original image and compressed image)
     orignal_image = cv2.imread("orignal_image.png", 1)
     compressed_image = cv2.imread("compressed_image.png", 1)
 
