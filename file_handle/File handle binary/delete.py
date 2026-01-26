@@ -4,6 +4,9 @@ import pickle
 
 from dotenv import load_dotenv
 
+
+## ! Light corrections I have to make
+
 base = os.path.dirname(__file__)
 load_dotenv(os.path.join(base, ".env"))
 
