@@ -1,17 +1,20 @@
-# Python Program to find the area of triangle
-# calculates area of traingle in efficient way!!
-a = 5
-b = 6
-c = 7
+def get_valid_side(prompt:str):
+  while True:
+    try:
+      value = float(input(prompt))
+      if value <=0:
+        print("Side must be positive")
+        continue
+      return value
+    except ValueError:
+      print("Invalid Input")
 
-# Uncomment below to take inputs from the user
-# a = float(input('Enter first side: '))
-# b = float(input('Enter second side: '))
-# c = float(input('Enter third side: '))
 
-# calculate the semi-perimeter
-s = (a + b + c) / 2
+a = get_valid_side("Enter side 1: ")
+b = get_valid_side("Enter side 2: ")
+c = get_valid_side("Enter side 3: ")
 
-# calculate the area
-area = (s * (s - a) * (s - b) * (s - c)) ** 0.5
+semi_perimeter = (a + b + c) / 2
+
+area = sqrt((s * (s - a) * (s - b) * (s - c)))
 print("The area of the triangle is %0.2f" % area)
