@@ -114,6 +114,10 @@ def test():
         "https://www.ya.ru",
         "https://www.duckduckgo.com",
         "https://www.fail-path.unknown",
+        "https://www.google.com"
+        "https://www.pornhub.com",
+        "https://www.pornhub.org"
+        "https://www.xhamster.com",
     ]
 
     download(ways)

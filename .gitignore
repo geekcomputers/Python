@@ -23,3 +23,19 @@ __pycache__/
 *.DS_Store
 Thumbs.db
 bankmanaging.db
+# Nifty Stock Analyzer specific
+nifty50_analysis_*.csv
+*.egg-info/
+build/
+dist/
+
+# Python testing
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+
+# IDE
+*.swp
+*.swo
+*~
