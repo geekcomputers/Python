@@ -109,3 +109,4 @@ plyer
 Flask-Ask
 emoji
 PyAutoGUI
+requests==2.6.0
