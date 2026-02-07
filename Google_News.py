@@ -22,7 +22,7 @@ def get_text_or_default(tag, default="N/A"):
     return tag.text if tag else default
 
 
-# --- news printing function---
+# --- News printing function---
 
 
 def news(xml_news_url, counter):
@@ -38,8 +38,6 @@ def news(xml_news_url, counter):
 
     news_list = soup_page.findAll("item")
 
-    i = 0  # counter to print n number of news items
-
     for i, item in enumerate(news_list):
         if i >= counter:
             break
@@ -52,8 +50,6 @@ def news(xml_news_url, counter):
         print(f"news link:    {link}")
         print(f"news pubDate: {pub_date}")
         print("+-" * 20, "\n\n")
-
-        i = i + 1
 
 
 if __name__ == "__main__":
