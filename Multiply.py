@@ -1,6 +1,6 @@
 def product(a, b):
     if b < 0:
-        return -product(a, -b)
+        return -1 * product(a, -b)
     
     if a < b:
         return product(b, a)
