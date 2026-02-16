@@ -1,7 +1,7 @@
 N = int(input("Enter The Size Of Array"))
 list = []
 for i in range(0, N):
-    temp = int(input("Enter The Intger Numbers"))
+    temp = int(input("Enter An Integer Number: "))
     list.append(temp)
 
 
@@ -10,7 +10,7 @@ for i in range(0, N):
 # Let's say we want to print list after its d number of rotations.
 
 finalList = []
-d = int(input("Enter The Number Of Times You Want To Rotate The Array"))
+d = int(input("Enter The Number Of Times You Want To Rotate The Array: "))
 
 for i in range(0, N):
     finalList.append(list[(i + d) % N])
