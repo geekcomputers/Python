@@ -1,45 +1,39 @@
-# Script Name	: dice.py
-# Author		: Craig Richards
-# Created		: 05th February 2017
-# Last Modified	:
-# Version		: 1.0
-
-# Modifications	:
-
-# Description	: This will randomly select two numbers,
-# like throwing dice, you can change the sides of the dice if you wish
-
 import random
 
-
-class Die(object):
-    # A dice has a feature of number about how many sides it has when it's
-    # established,like 6.
-    def __init__(self):
-        self.sides = 6
-
-    """because a dice contains at least 4 planes.
-    So use this method to give it a judgement when you need
-    to change the instance attributes.
+class Die:
+    """
+    A class used to represent a multi-sided die.
+    
+    Attributes:
+        sides (int): The number of sides on the die (default is 6).
     """
 
-    def set_sides(self, sides_change):
-        if sides_change >= 4:
-            if sides_change != 6:
-                print("change sides from 6 to ", sides_change, " !")
+    def __init__(self, sides=6):
+        """Initializes the die. Defaults to 6 sides if no value is provided."""
+        self.sides = 6  # Internal default
+        self.set_sides(sides)
+
+    def set_sides(self, num_sides):
+        """
+        Validates and sets the number of sides. 
+        A physical die must have at least 4 sides.
+        """
+        if isinstance(num_sides, int) and num_sides >= 4:
+            if num_sides != self.sides:
+                print(f"Changing sides from {self.sides} to {num_sides}!")
             else:
-                # added else clause for printing a message that sides set to 6
-                print("sides set to 6")
-            self.sides = sides_change
+                print(f"Sides already set to {num_sides}.")
+            self.sides = num_sides
         else:
-            print("wrong sides! sides set to 6")
+            print(f"Invalid input: {num_sides}. Keeping current value: {self.sides}")
 
     def roll(self):
+        """Returns a random integer between 1 and the number of sides."""
         return random.randint(1, self.sides)
 
-
-d = Die()
-d1 = Die()
-d.set_sides(4)
-d1.set_sides(4)
-print(d.roll(), d1.roll())
+# --- Example Usage ---
+if __name__ == "__main__":
+    d1 = Die(4)  # Initialize directly with 4 sides
+    d2 = Die(12) # A Dungeons & Dragons classic
+    
+    print(f"Roll Result: D{d1.sides} -> {d1.roll()}, D{d2.sides} -> {d2.roll()}")
