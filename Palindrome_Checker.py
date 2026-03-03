@@ -8,6 +8,6 @@ phrase = input()
 if phrase == phrase[::-1]:  # slicing technique
     """phrase[::-1] this code is for reverse a string very smartly"""
 
-    print("\n Wow!, The phrase is a Palindrome!")
+    print(f"\n Wow!, The {phrase} is a Palindrome!")
 else:
-    print("\n Sorry, The given phrase is not a Palindrome.")
+    print(f"\n Sorry, The given {phrase} is not a Palindrome.")
