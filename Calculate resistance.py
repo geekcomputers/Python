@@ -7,8 +7,8 @@ def res(R1, R2):
     return 0
 
 
-Resistance1 = int(input("Enter R1 : "))
-Resistance2 = int(input("Enter R2 : "))
+Resistance1 = float(input("Enter R1 : "))
+Resistance2 = float(input("Enter R2 : "))
 option = input("Enter series or parallel :")
 print("\n")
 R = res(Resistance1, Resistance2)

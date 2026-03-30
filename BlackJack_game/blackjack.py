@@ -106,7 +106,7 @@ def dealer_choice():
 while sum(p_cards) < 21:
     # to continue the game again and again !!
     k = input("Want to hit or stay?\n Press 1 for hit and 0 for stay ")
-    if k == "1":  # Ammended 1 to a string
+    if k == "1":  # Amended 1 to a string
         random.shuffle(deck)
         p_cards.append(deck.pop())
         print("You have a total of " + str(sum(p_cards)) + " with the cards ", p_cards)

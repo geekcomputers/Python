@@ -1,0 +1,26 @@
+Supported Datasets for GUI:
+
+You can type any of these (with or without dashes/underscores):
+
+Small Datasets:
+✓ cifar10 / cifar-10 / cifar_10
+✓ cifar100 / cifar-100 / cifar_100
+✓ mnist
+✓ fashion_mnist / fashion-mnist / fashionmnist
+
+Medium Datasets:
+✓ stl10 / stl-10 / stl_10
+✓ tiny_imagenet / tiny-imagenet / tinyimagenet
+✓ oxford_pets / oxford-pets / oxfordpets
+✓ caltech256 / caltech-256 / caltech_256
+
+Large Datasets:
+✓ food101 / food-101 / food_101
+✓ imagenet
+
+All formats work! The GUI automatically normalizes the name.
+
+Examples:
+- Type "stl-10" or "stl10" or "stl_10" → Works!
+- Type "tiny-imagenet" or "tinyimagenet" → Works!
+- Type "fashion-mnist" or "fashionmnist" → Works!

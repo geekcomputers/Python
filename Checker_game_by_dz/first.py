@@ -10,7 +10,7 @@ from modules.statics import *
 from modules.checker_board import *
 from modules.checker import *
 
-# static variables for this perticular file
+# static variables for this particular file
 fps = 60
 
 WIN = pg.display.set_mode((st.width, st.height))

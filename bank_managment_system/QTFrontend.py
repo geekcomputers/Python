@@ -1171,7 +1171,7 @@ def setup_main_window(main_window: QtWidgets.QMainWindow):
             )
             backend.conn.commit()
             show_popup_message(
-                stacked_widget, "Employee Upadate successfully", UPDATE_EMPLOYEE_PAGE2
+                stacked_widget, "Employee Update successfully", UPDATE_EMPLOYEE_PAGE2
             )
 
         except:

@@ -53,7 +53,7 @@ cal.place(x=300, y=20)
 
 
 # Create button, it will change label text
-button = Button(window, text="Add to calender", command=show).place(x=100, y=200)
+button = Button(window, text="Add to calendar", command=show).place(x=100, y=200)
 
 # Create Label
 label = Label(window, text=" ")

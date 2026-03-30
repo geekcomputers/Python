@@ -1,4 +1,4 @@
 """
-Auhtor : Dhruv B Kakadiya
+Author : Dhruv B Kakadiya
 
 """

@@ -1,12 +1,9 @@
 import random
-
 lChars = "abcdefghijklmnopqrstuvwxyz"
 uChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 digits = "1234567890"
-specialChars = "!@#$%^&*-_+="
-
+specialChars = "!@#$%^&*-_+=()[]"
 myPass = ""
-
 # Generate 3 lowercase letters
 for _ in range(3):
     myPass += random.choice(lChars)
@@ -23,4 +20,4 @@ for _ in range(2):
 for _ in range(2):
     myPass += random.choice(uChars)
 
-print(myPass)  # Output: 10-character password (e.g. "abc123!@AB")
+print(myPass)  

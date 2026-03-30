@@ -3,7 +3,7 @@ import random
 # Taking players data
 players = {}  # stores players name their locations
 isReady = {}
-current_loc = 1  # vaiable for iterating location
+current_loc = 1  # variable for iterating location
 
 imp = True
 
@@ -23,7 +23,7 @@ def player_input():
                 players[name] = current_loc
                 isReady[name] = False
             x = False
-            play()  # play funtion call
+            play()  # play function call
 
         else:
             print("Number of player cannot be zero")
@@ -88,7 +88,7 @@ def play():
                     print(f"you are at position {players[i]}")
 
                 elif n == 2:
-                    players = {}  # stores player ans their locations
+                    players = {}  # stores player and their locations
                     isReady = {}
                     current_loc = 1  # reset starting location to 1
                     player_input()

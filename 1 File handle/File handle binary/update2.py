@@ -17,7 +17,7 @@ def update():
 
         for i in S:
             if rno == i[0]:
-                print(f"the currrent name is {i[1]}")
+                print(f"the current name is {i[1]}")
                 i[1] = input("enter the new name")
                 found = True
                 break

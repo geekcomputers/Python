@@ -9,6 +9,7 @@ from bs4 import BeautifulSoup
 
 
 def getVal(cont1, cont2):
+    # Extract currency codes from user input (format assumed like "USD- United States Dollar")
     cont1val = cont1.split("-")[1]
     cont2val = cont2.split("-")[1]
     url = f"https://free.currconv.com/api/v7/convert?q={cont1val}_{cont2val}&compact=ultra&apiKey=b43a653672c4a94c4c26"
@@ -16,6 +17,7 @@ def getVal(cont1, cont2):
     htmlContent = r.content
     soup = BeautifulSoup(htmlContent, "html.parser")
     try:
+        # Extract the numeric value from the response text
         valCurr = float(soup.get_text().split(":")[1].removesuffix("}"))  # {USD:70.00}
     except Exception:
         print("Server down.")

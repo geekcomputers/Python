@@ -1,12 +1,13 @@
 import mysql.connector
-
 # MySQl databses details
-
+host = input("Enter MySQL host: ")
+username = input("Enter MySQL username: ")
+password = input("Enter MySQL password: ")
+db_name = input("Enter MySQL database: ")
 mydb = mysql.connector.connect(
-    host="0.0.0.0", user="root", passwd="", database="db_name"
+    host=host, user=username, passwd=password, database=db_name
 )
 mycursor = mydb.cursor()
-
 # Execute SQL Query =>>>> mycursor.execute("SQL Query")
 mycursor.execute("SELECT column FROM table")
 

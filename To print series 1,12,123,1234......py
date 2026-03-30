@@ -1,47 +1,20 @@
-# master
-def num(a):
-    # initialising starting number
-
-    num = 1
-
-    # outer loop to handle number of rows
-
-    for i in range(0, a):
-        # re assigning num
-
-        num = 1
-
-        # inner loop to handle number of columns
-
-        # values changing acc. to outer loop
-
-        for k in range(0, i + 1):
-            # printing number
-
-            print(num, end=" ")
-
-            # incrementing number at each column
-
-            num = num + 1
-
-        # ending line after each row
-
-        print("\r")
+def print_pattern(rows: int) -> None:
+    for i in range(1, rows + 1):
+        print("".join(str(j) for j in range(1, i + 1)))
 
 
-# Driver code
+def start():
+    while True:
+        try:
+            n = int(input("Enter number of rows: "))
+            if n < 1:
+                print("Invalid value, enter a positive integer.")
+                continue
+            break
+        except ValueError:
+            print("Invalid input, please enter a number.")
 
-a = 5
+    print_pattern(n)
 
-num(a)
-# =======
-# 1-12-123-1234 Pattern up to n lines
 
-n = int(input("Enter number of rows: "))
-
-for i in range(1, n + 1):
-    for j in range(1, i + 1):
-        print(j, end="")
-    print()
-
-# master
+start()

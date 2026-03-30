@@ -1,4 +1,4 @@
-a = int(input("enter first value"))
-b = int(input("enter second value"))
-add = a + b
+First = int(input("enter first value"))
+Second = int(input("enter second value"))
+add = First + Second
 print(add)
