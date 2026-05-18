@@ -1,3 +1,15 @@
+#########
+
+__author__ = "Mohammed Shokr <mohammedshokr2014@gmail.com>"
+__version__ = "v 0.1"
+
+"""
+JARVIS:
+- Control windows programs with your voice
+"""
+
+# import modules
+
 import datetime
 import subprocess
 import webbrowser
