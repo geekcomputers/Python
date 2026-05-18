@@ -1,0 +1,10 @@
+pyjokes
+requests
+Pillow
+gTTS
+pynput
+playsound
+pyttsx3
+SpeechRecognition
+openai
+pyaudio
