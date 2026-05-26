@@ -1,6 +1,10 @@
 #This is a new repo
 # My Python Eggs 🐍 😄
 
+[![Python Checks](https://github.com/geekcomputers/Python/actions/workflows/python.yml/badge.svg)](https://github.com/geekcomputers/Python/actions/workflows/python.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
+
 <hr>
 
 I do not consider myself as a programmer. I create these little programs as experiments to play with Python, or to solve problems for myself. I would gladly accept pointers from others to improve, simplify, or make the code more efficient. If you would like to make any comments then please feel free to email me: craig@geekcomputers.co.uk.
@@ -10,6 +14,13 @@ I do not consider myself as a programmer. I create these little programs as expe
 This repository contains a collection of Python scripts that are designed to reduce human workload and serve as educational examples for beginners to get started with Python. The code documentation is aligned correctly for viewing in [Notepad++](https://notepad-plus-plus.org/) :spiral_notepad:
 
 Feel free to explore the scripts and use them for your learning and automation needs!
+
+## Getting Started
+
+- **New Contributors?** Check out [DEVELOPMENT.md](DEVELOPMENT.md) for setup instructions
+- **Want to contribute?** Read our [CONTRIBUTING.md](CONTRIBUTING.md) guidelines
+- **Found a bug?** Open an [issue](https://github.com/geekcomputers/Python/issues/new?assignees=&labels=bug&template=bug_report.md)
+- **Have an idea?** Suggest a [feature](https://github.com/geekcomputers/Python/issues/new?assignees=&labels=enhancement&template=feature_request.md)
 
 ## List of Scripts:
 
