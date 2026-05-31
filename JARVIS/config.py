@@ -2,12 +2,10 @@ from pathlib import Path
 
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-MEMORY_FILE = BASE_DIR / "jarvis_memory.json"
-APP_INDEX_FILE = BASE_DIR / "jarvis_app_index.json"
 
-OPENAI_API_KEY = "lm-studio"
-OPENAI_BASE_URL = "http://localhost:1234/v1"
-OPENAI_MODEL = "google/gemma-3-4b"
+OPENAI_API_KEY = ""
+OPENAI_BASE_URL = ""
+OPENAI_MODEL = ""
 MAX_OUTPUT_TOKENS = 150
 MAX_MEMORY_ITEMS = 30
 
