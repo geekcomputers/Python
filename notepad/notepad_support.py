@@ -6,7 +6,7 @@
 
 
 import sqlite3
-
+import tkinter as tk
 try:
     from Tkinter import *
 except ImportError:
