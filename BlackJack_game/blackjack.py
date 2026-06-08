@@ -22,10 +22,10 @@ print("I Mean Your Fortune")
 sleep(2)
 print("Lets Check How Lucky You Are  Wish You All The Best")
 sleep(2)
-print("Loading---")
+print("Loading...")
 sleep(2)
 
-print("Still Loading---")
+print("Still Loading...")
 sleep(2)
 print(
     "So You Are Still Here Not Gone I Gave You Chance But No Problem May Be You Trust Your Fortune A Lot \n Lets Begin Then"
@@ -105,7 +105,7 @@ def dealer_choice():
 
 while sum(p_cards) < 21:
     # to continue the game again and again !!
-    k = input("Want to hit or stay?\n Press 1 for hit and 0 for stay ")
+    k = input("Want to hit or stay?\n Press 1 for hit and 0 for stay: ")
     if k == "1":  # Amended 1 to a string
         random.shuffle(deck)
         p_cards.append(deck.pop())
