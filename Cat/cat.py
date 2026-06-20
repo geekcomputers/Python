@@ -1,64 +1,147 @@
 """
-The 'cat' Program Implemented in Python 3
+A simple Python implementation of the Unix cat command.
 
-The Unix 'cat' utility reads the contents
-of file(s) specified through stdin and 'conCATenates'
-into stdout. If it is run without any filename(s) given,
-then the program reads from standard input itself,
-which means it simply copies stdin to stdout.
+Author:
+- Nitkarsh Chourasia
 
-It is fairly easy to implement such a program
-in Python, and as a result countless examples
-exist online. This particular implementation
-focuses on the basic functionality of the cat
-utility. Compatible with Python 3.6 or higher.
+Features:
+- Reads one or more files
+- Reads from stdin when no files are given
+- Supports "-" as stdin
+- Prints errors to stderr
+- Continues after file errors
+- Uses proper exit codes
+- Supports:
+  -n : number all lines
+  -b : number non-empty lines
+  -s : squeeze repeated blank lines
+  -E : show $ at end of each line
 
-Syntax:
-python3 cat.py [filename1] [filename2] etc...
-Separate filenames with spaces.
-
-David Costell (DontEatThemCookies on GitHub)
-v2 - 03/12/2022
+Design notes:
+- Files and stdin are both handled as streams.
+- Line numbering state is shared across files, matching cat-style behavior.
+- File errors are reported to stderr while processing continues.
 """
 
+import argparse
 import sys
 
-
-def with_files(files):
-    """Executes when file(s) is/are specified."""
-    try:
-        # Read each file's contents and store them
-        file_contents = [contents for contents in [open(file).read() for file in files]]
-    except OSError as err:
-        # This executes when there's an error (e.g. FileNotFoundError)
-        exit(print(f"cat: error reading files ({err})"))
-
-    # Write all file contents into the standard output stream
-    for contents in file_contents:
-        sys.stdout.write(contents)
+__author__ = "Nitkarsh Chourasia"
 
 
-def no_files():
-    """Executes when no file(s) is/are specified."""
-    try:
-        # Get input, output the input, repeat
-        while True:
-            print(input())
-    # Graceful exit for Ctrl + C, Ctrl + D
-    except KeyboardInterrupt:
-        exit()
-    # exit when no data found in file
-    except EOFError:
-        exit()
+def process_stream(stream, args, state):
+    """Read from a stream and write processed output to stdout."""
+    for line in stream:
+        is_blank = line == "\n"
+
+        if args.squeeze_blank and is_blank and state["previous_was_blank"]:
+            continue
+
+        state["previous_was_blank"] = is_blank
+
+        if args.show_ends:
+            if line.endswith("\n"):
+                line = line[:-1] + "$\n"
+            else:
+                line = line + "$"
+
+        if args.number_nonblank:
+            if not is_blank:
+                sys.stdout.write(f"{state['line_number']:6}\t")
+                state["line_number"] += 1
+        elif args.number:
+            sys.stdout.write(f"{state['line_number']:6}\t")
+            state["line_number"] += 1
+
+        sys.stdout.write(line)
+
+
+def process_file(filename, args, state):
+    """Open one file and process its contents."""
+    with open(filename, "r", encoding="utf-8") as file:
+        process_stream(file, args, state)
+
+
+def process_files(files, args):
+    """Process all given filenames."""
+    had_error = False
+
+    state = {
+        "line_number": 1,
+        "previous_was_blank": False,
+    }
+
+    for filename in files:
+        try:
+            if filename == "-":
+                process_stream(sys.stdin, args, state)
+            else:
+                process_file(filename, args, state)
+        except OSError as err:
+            print(f"cat: {filename}: {err}", file=sys.stderr)
+            had_error = True
+
+    return had_error
+
+
+def parse_arguments():
+    """Parse command-line arguments."""
+    parser = argparse.ArgumentParser(description="A simple Python cat command.")
+
+    parser.add_argument(
+        "files",
+        nargs="*",
+        help="Files to read. Use '-' to read from standard input.",
+    )
+
+    parser.add_argument(
+        "-n",
+        "--number",
+        action="store_true",
+        help="Number all output lines.",
+    )
+
+    parser.add_argument(
+        "-b",
+        "--number-nonblank",
+        action="store_true",
+        help="Number non-empty output lines.",
+    )
+
+    parser.add_argument(
+        "-s",
+        "--squeeze-blank",
+        action="store_true",
+        help="Suppress repeated empty output lines.",
+    )
+
+    parser.add_argument(
+        "-E",
+        "--show-ends",
+        action="store_true",
+        help="Display $ at the end of each line.",
+    )
+
+    return parser.parse_args()
 
 
 def main():
-    """Entry point of the cat program."""
-    # Read the arguments passed to the program
-    if not sys.argv[1:]:
-        no_files()
-    else:
-        with_files(sys.argv[1:])
+    args = parse_arguments()
+
+    if not args.files:
+        state = {
+            "line_number": 1,
+            "previous_was_blank": False,
+        }
+        process_stream(sys.stdin, args, state)
+        sys.exit(0)
+
+    had_error = process_files(args.files, args)
+
+    if had_error:
+        sys.exit(1)
+
+    sys.exit(0)
 
 
 if __name__ == "__main__":
