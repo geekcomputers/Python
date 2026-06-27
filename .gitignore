@@ -1,25 +1,61 @@
-.idea
-*.pyc
-string=sorted(input())
-lower=""
-even=""
-odd=""
-upper=""
-for i in string:
-    if i.islower():
-        lower+=i
-    elif i.isupper():
-        upper+=i
-    elif int(i)%2==0:
-        even+=i
-    else:
-        odd+=i
-print(lower+upper+odd+even)
-
-.vscode
-__pycache__/
-.venv
-
-*.DS_Store
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
 Thumbs.db
-bankmanaging.db
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+.venv
+venv/
+ENV/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+
+# Virtual environments
+venv/
+env/
+ENV/
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Project specific
+.mypy_cache/
+.dmypy.json
+dmypy.json
+*.log
