@@ -1,5 +1,5 @@
 """
-A simple program to calculate the sum of digits of a user-input integer.
+A simple program to calculate the sum of digits of a user-input number (integer or decimal).
 
 Features:
 - Input validation with limited attempts.
@@ -11,48 +11,42 @@ Doctests:
     6
     >>> sum_of_digits(0)
     0
-    >>> sum_of_digits(999)
+    >>> sum_of_digits(999.45)
     27
-    >>> sum_of_digits(-123)
-    6
+    >>> sum_of_digits(-123.56)
+    17
 """
 
 import sys
 
 
-def get_integer_input(prompt: str, attempts: int) -> int | None:
+def get_number_input(prompt: str, attempts: int) -> float | None:
     """
-    Prompt the user for an integer input, retrying up to a given number of attempts.
+    Prompt the user for a number (int or float) input, retrying up to a given number of attempts.
 
     Args:
         prompt: The message shown to the user.
         attempts: Maximum number of input attempts.
 
     Returns:
-        The integer entered by the user, or None if all attempts fail.
-
-    Example:
-        User input: "12" -> returns 12
+        The number entered by the user, or None if all attempts fail.
     """
     for i in range(attempts, 0, -1):
         try:
-            # Attempt to parse user input as integer
-            n = int(input(prompt))
+            n = float(input(prompt))
             return n
         except ValueError:
-            # Invalid input: notify and decrement chances
-            print("Enter an integer only")
+            print("Enter a valid number only")
             print(f"{i - 1} {'chance' if i - 1 == 1 else 'chances'} left")
     return None
 
 
-def sum_of_digits(n: int) -> int:
+def sum_of_digits(n: float) -> int:
     """
-    Compute the sum of the digits of an integer.
+    Compute the sum of digits of a number, ignoring signs and decimal points.
 
     Args:
-        n: Non-negative integer.
-        If the integer is negative, it is converted to positive before computing the sum.
+        n: Number (int or float)
 
     Returns:
         Sum of digits of the number.
@@ -60,24 +54,23 @@ def sum_of_digits(n: int) -> int:
     Examples:
         >>> sum_of_digits(123)
         6
-        >>> sum_of_digits(405)
-        9
-        >>> sum_of_digits(-789)
-        24
+        >>> sum_of_digits(405.2)
+        11
+        >>> sum_of_digits(-789.56)
+        35
     """
-    n = abs(n)  # FIX: handle negative numbers
+    n_str = str(abs(n))  # convert to string, remove negative sign
     total = 0
-    while n > 0:
-        # Add last digit and remove it from n
-        total += n % 10
-        n //= 10
+    for ch in n_str:
+        if ch.isdigit():
+            total += int(ch)
     return total
 
 
 def main() -> None:
     """Main entry point of the program."""
     chances = 3
-    number = get_integer_input("Enter a number: ", chances)
+    number = get_number_input("Enter a number: ", chances)
 
     if number is None:
         print("You've used all your chances.")
