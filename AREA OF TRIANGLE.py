@@ -1,13 +1,13 @@
-def get_valid_side(prompt:str):
-  while True:
-    try:
-      value = float(input(prompt))
-      if value <=0:
-        print("Side must be positive")
-        continue
-      return value
-    except ValueError:
-      print("Invalid Input")
+def get_valid_side(prompt: str):
+    while True:
+        try:
+            value = float(input(prompt))
+            if value <= 0:
+                print("Side must be positive")
+                continue
+            return value
+        except ValueError:
+            print("Invalid Input")
 
 
 a = get_valid_side("Enter side 1: ")

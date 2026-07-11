@@ -44,7 +44,7 @@ def main():
         user_choice = get_user_choice()
         computer_choice = get_computer_choice()
         print(f"Computer chose: {computer_choice}")
-        
+
     print(f"Final result : {decide_winner(user_choice, computer_choice)}")
 
 

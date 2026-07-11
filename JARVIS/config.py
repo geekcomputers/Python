@@ -38,4 +38,3 @@ CMD_OPEN_PHRASES = {
     "komut istemi ac",
     "komut istemi aç",
 }
-

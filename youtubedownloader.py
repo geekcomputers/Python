@@ -1,13 +1,15 @@
 # modules for Using of app
-from tkinter import Button, Entry, Label, Tk, filedialog, messagebox # Gui Modules 
-from threading import Thread # modules for multi threding 
-from pytube import YouTube # Module for Youtube service
+from tkinter import Button, Entry, Label, Tk, filedialog, messagebox  # Gui Modules
+from threading import Thread  # modules for multi threding
+from pytube import YouTube  # Module for Youtube service
 
-# this function for mulple code runes at a time 
+
+# this function for mulple code runes at a time
 def threading():
     # Call work function
     t1 = Thread(target=download)
     t1.start()
+
 
 # this function for Download Youtube video
 def download():
@@ -25,9 +27,9 @@ def download():
     except Exception:
         messagebox.showerror("Error", "Some Thing Went Wrong!!!\nplease try again")
 
-        
+
 # This code runes on only this file
-if __name__=="__main__":
+if __name__ == "__main__":
     root = Tk()
     root.title("YouTube Downloader")
     root.geometry("780x500+200+200")
@@ -45,9 +47,13 @@ if __name__=="__main__":
     )
     introlable.place(x=35, y=20)
 
-    Label(root, text="Enter YouTube Link", font=("sans-serif", 16), bg="olivedrab1", fg='Black').place(
-        x=40, y=150
-    )
+    Label(
+        root,
+        text="Enter YouTube Link",
+        font=("sans-serif", 16),
+        bg="olivedrab1",
+        fg="Black",
+    ).place(x=40, y=150)
 
     # entry box in UI
     url_box = Entry(root, font=("arial", 30), width=30)

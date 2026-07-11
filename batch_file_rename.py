@@ -6,7 +6,7 @@ from pathlib import Path
 def batch_rename(work_dir, old_ext, new_ext, dry_run=False):
     """
     Batch rename files in a directory from one extension to another.
-    
+
     Args:
         work_dir (str): Path to the target directory.
         old_ext (str): Extension to find (e.g., '.txt' or '.tar.gz').
@@ -25,7 +25,7 @@ def batch_rename(work_dir, old_ext, new_ext, dry_run=False):
         new_ext = "." + new_ext
 
     print(f"[*] Scanning {work_dir} for files with extension '{old_ext}'...")
-    
+
     found_files = list(work_path.glob(f"*{old_ext}"))
     if not found_files:
         print(f"[!] No files found with extension '{old_ext}'.")
@@ -34,13 +34,16 @@ def batch_rename(work_dir, old_ext, new_ext, dry_run=False):
     for file_path in found_files:
         # Handle compound extensions by checking ends-with
         if file_path.name.endswith(old_ext):
-            new_name = file_path.name[:-len(old_ext)] + new_ext
+            new_name = file_path.name[: -len(old_ext)] + new_ext
             new_file_path = file_path.with_name(new_name)
         else:
             new_file_path = file_path.with_suffix(new_ext)
-        
+
         if new_file_path.exists():
-            print(f"[!] Skip: {new_file_path.name} already exists. Cannot rename {file_path.name}.", file=sys.stderr)
+            print(
+                f"[!] Skip: {new_file_path.name} already exists. Cannot rename {file_path.name}.",
+                file=sys.stderr,
+            )
             continue
 
         if dry_run:
@@ -68,12 +71,8 @@ def get_parser():
         "work_dir",
         help="The directory where to change extension",
     )
-    parser.add_argument(
-        "old_ext", help="Old extension (e.g., .txt or txt)"
-    )
-    parser.add_argument(
-        "new_ext", help="New extension (e.g., .md or md)"
-    )
+    parser.add_argument("old_ext", help="Old extension (e.g., .txt or txt)")
+    parser.add_argument("new_ext", help="New extension (e.g., .md or md)")
     parser.add_argument(
         "--dry-run",
         action="store_true",

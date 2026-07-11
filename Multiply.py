@@ -2,7 +2,7 @@ def product(a, b):
     # Handle negative values
     if b < 0:
         return -product(a, -b)
-    
+
     if a < b:
         return product(b, a)
     elif b != 0:

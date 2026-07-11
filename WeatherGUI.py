@@ -1,10 +1,13 @@
 import tkinter as tk
 import requests
 from bs4 import BeautifulSoup
+
 url = "https://weather.com/en-IN/weather/today/l/32355ced66b7ce3ab7ccafb0a4f45f12e7c915bcf8454f712efa57474ba8d6c8"
 root = tk.Tk()
 root.title("Weather")
 root.config(bg="white")
+
+
 def getWeather():
     page = requests.get(url)
     soup = BeautifulSoup(page.content, "html.parser")

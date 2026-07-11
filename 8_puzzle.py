@@ -39,7 +39,6 @@ class PuzzleState:
                     distance += abs(x - i) + abs(y - j)
         return distance
 
-
     def is_goal(self) -> bool:
         """Check if current state matches goal."""
         return self.board == self.goal

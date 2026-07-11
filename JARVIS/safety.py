@@ -47,4 +47,3 @@ BLOCKED_APPS = {
 def is_dangerous_request(text):
     words = set(re.findall(r"[a-z0-9]+", normalize_text(text)))
     return bool(words & DANGEROUS_WORDS)
-

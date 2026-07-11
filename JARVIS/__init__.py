@@ -1,2 +1,1 @@
 """Jarvis local desktop assistant."""
-

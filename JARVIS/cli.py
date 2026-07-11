@@ -13,7 +13,15 @@ from .text_utils import normalize_text
 
 
 def should_exit(text):
-    return normalize_text(text) in {"exit", "quit", "bye", "cik", "çık", "stop jarvis", "kapat jarvis"}
+    return normalize_text(text) in {
+        "exit",
+        "quit",
+        "bye",
+        "cik",
+        "çık",
+        "stop jarvis",
+        "kapat jarvis",
+    }
 
 
 def wants_type_mode(text):
@@ -31,7 +39,12 @@ def wants_type_mode(text):
 
 
 def wants_developer_mode(text):
-    return normalize_text(text) in {"developer mode", "development mode", "dev mode", "change mode"}
+    return normalize_text(text) in {
+        "developer mode",
+        "development mode",
+        "dev mode",
+        "change mode",
+    }
 
 
 def wants_normal_mode(text):
@@ -79,7 +92,12 @@ def handle_command(user_input):
         return "Developer mode disabled."
     if cleaned in {"help", "/help", "yardim", "yardım"}:
         return help_text()
-    if cleaned in {"clear memory", "memory clear", "hafizayi temizle", "hafızayı temizle"}:
+    if cleaned in {
+        "clear memory",
+        "memory clear",
+        "hafizayi temizle",
+        "hafızayı temizle",
+    }:
         clear_memory()
         return "Memory cleared."
     if cleaned.startswith("/apps"):
@@ -98,7 +116,9 @@ def handle_and_say(user_input):
 
 def voice_loop():
     say("Ready.")
-    print("Listening stays on. Speak when you want something, or say 'type mode' to write.")
+    print(
+        "Listening stays on. Speak when you want something, or say 'type mode' to write."
+    )
     check_lm_studio()
     apps = build_application_index()
     say(f"Safe app index ready: {len(apps)} apps found.")
@@ -129,7 +149,11 @@ def voice_loop():
                         handle_and_say(typed)
                     print("Listening again...")
                     continue
-                if normalize_text(user_input) in {"refresh apps", "uygulamalari yenile", "uygulamaları yenile"}:
+                if normalize_text(user_input) in {
+                    "refresh apps",
+                    "uygulamalari yenile",
+                    "uygulamaları yenile",
+                }:
                     apps = build_application_index()
                     say(f"Safe app index refreshed: {len(apps)} apps found.")
                     continue
@@ -148,7 +172,7 @@ def typed_loop():
     while True:
         try:
             user_input = input("You: ").strip()
-        except (EOFError, KeyboardInterrupt):
+        except EOFError, KeyboardInterrupt:
             print()
             say("Goodbye.")
             break

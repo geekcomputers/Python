@@ -2,10 +2,11 @@ import os
 import sys
 from PIL import Image
 
+
 def compress_image(image_path, quality=60):
     """
     Compresses an image by reducing its quality.
-    
+
     Args:
         image_path (str): Path to the image file.
         quality (int): Quality of the output image (1-100). Default is 60.
@@ -25,19 +26,20 @@ def compress_image(image_path, quality=60):
             # Save with reduced quality
             # Optimize=True ensures the encoder does extra work to minimize size
             img.save(output_path, quality=quality, optimize=True)
-            
+
             # Calculate savings
             original_size = os.path.getsize(image_path)
             new_size = os.path.getsize(output_path)
             savings = ((original_size - new_size) / original_size) * 100
-            
+
             print(f"[+] Compressed: {output_path}")
-            print(f"    Original: {original_size/1024:.2f} KB")
-            print(f"    New:      {new_size/1024:.2f} KB")
+            print(f"    Original: {original_size / 1024:.2f} KB")
+            print(f"    New:      {new_size / 1024:.2f} KB")
             print(f"    Saved:    {savings:.2f}%")
 
     except Exception as e:
         print(f"[-] Error compressing {image_path}: {e}")
+
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:

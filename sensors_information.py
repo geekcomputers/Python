@@ -2,8 +2,12 @@ import argparse
 import sys
 import socket
 import psutil
+
+
 def python_version():
     return sys.version_info
+
+
 def ip_addresses():
     hostname = socket.gethostname()
     addresses = socket.getaddrinfo(hostname, None)

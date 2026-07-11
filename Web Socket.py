@@ -1,6 +1,6 @@
 # Program to print a data & it's Metadata of online uploaded file using "socket".
 import socket
-from colorama import Fore # this module for Color the font 
+from colorama import Fore  # this module for Color the font
 
 # handling the exceptions
 try:
@@ -8,8 +8,8 @@ try:
     skt_c.connect(("data.pr4e.org", 80))
     link = "GET http://data.pr4e.org/intro-short.txt HTTP/1.0\r\n\r\n".encode()
     skt_c.send(link)
-except(Exception) as e:
-    # this code runes on error in any connection 
+except Exception as e:
+    # this code runes on error in any connection
     print(Fore.RED, e, Fore.RESET)
 
 while True:

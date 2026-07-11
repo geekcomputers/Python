@@ -13,7 +13,8 @@ from .text_utils import normalize_text
 def safe_search_dirs():
     dirs = [
         Path(os.environ.get("APPDATA", "")) / r"Microsoft\Windows\Start Menu\Programs",
-        Path(os.environ.get("PROGRAMDATA", "")) / r"Microsoft\Windows\Start Menu\Programs",
+        Path(os.environ.get("PROGRAMDATA", ""))
+        / r"Microsoft\Windows\Start Menu\Programs",
         Path(os.environ.get("USERPROFILE", "")) / "Desktop",
         Path(os.environ.get("PUBLIC", r"C:\Users\Public")) / "Desktop",
         Path(os.environ.get("LOCALAPPDATA", "")) / "Programs",
@@ -41,7 +42,11 @@ def build_application_index():
     for root in safe_search_dirs():
         try:
             candidates = list(root.rglob("*.lnk"))
-            if root.name.lower() in {"program files", "program files (x86)", "programs"}:
+            if root.name.lower() in {
+                "program files",
+                "program files (x86)",
+                "programs",
+            }:
                 candidates.extend(root.glob("*/*.exe"))
                 candidates.extend(root.glob("*.exe"))
         except OSError:
@@ -53,7 +58,9 @@ def build_application_index():
             key = normalize_text(name)
             apps.setdefault(key, {"name": name, "path": str(path)})
     sorted_apps = sorted(apps.values(), key=lambda item: item["name"].lower())
-    APP_INDEX_FILE.write_text(json.dumps(sorted_apps, ensure_ascii=False, indent=2), encoding="utf-8")
+    APP_INDEX_FILE.write_text(
+        json.dumps(sorted_apps, ensure_ascii=False, indent=2), encoding="utf-8"
+    )
     return sorted_apps
 
 
@@ -68,9 +75,13 @@ def find_application(name):
     wanted = normalize_text(name)
     if not wanted:
         return None
-    if wanted in BLOCKED_APPS or any(word in wanted.split() for word in DANGEROUS_WORDS):
+    if wanted in BLOCKED_APPS or any(
+        word in wanted.split() for word in DANGEROUS_WORDS
+    ):
         return None
-    normalized_apps = [(app, normalize_text(app.get("name", ""))) for app in load_application_index()]
+    normalized_apps = [
+        (app, normalize_text(app.get("name", ""))) for app in load_application_index()
+    ]
     for app, app_name in normalized_apps:
         if wanted == app_name:
             return app

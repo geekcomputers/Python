@@ -1,4 +1,5 @@
 import mysql.connector
+
 # MySQl databses details
 host = input("Enter MySQL host: ")
 username = input("Enter MySQL username: ")

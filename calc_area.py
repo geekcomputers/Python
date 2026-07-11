@@ -1,6 +1,8 @@
 # Author: PrajaktaSathe
 # Program to calculate the area of - square, rectangle, circle, and triangle -
 import math as m
+
+
 def main():
     shape = int(
         input(

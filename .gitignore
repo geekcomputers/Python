@@ -6,7 +6,7 @@
 *~
 .DS_Store
 Thumbs.db
-
+.python-version
 # Python
 __pycache__/
 *.pyc
@@ -32,7 +32,7 @@ wheels/
 *.egg-info/
 .installed.cfg
 *.egg
-
+.ruff_cache/*
 # Testing
 .pytest_cache/
 .coverage

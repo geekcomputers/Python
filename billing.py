@@ -1,4 +1,3 @@
-
 items = {"apple": 5, "soap": 4, "soda": 6, "pie": 7, "cake": 20}
 total_price = 0
 try:

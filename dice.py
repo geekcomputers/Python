@@ -1,9 +1,10 @@
 import random
 
+
 class Die:
     """
     A class used to represent a multi-sided die.
-    
+
     Attributes:
         sides (int): The number of sides on the die (default is 6).
     """
@@ -15,7 +16,7 @@ class Die:
 
     def set_sides(self, num_sides):
         """
-        Validates and sets the number of sides. 
+        Validates and sets the number of sides.
         A physical die must have at least 4 sides.
         """
         if isinstance(num_sides, int) and num_sides >= 4:
@@ -31,9 +32,10 @@ class Die:
         """Returns a random integer between 1 and the number of sides."""
         return random.randint(1, self.sides)
 
+
 # --- Example Usage ---
 if __name__ == "__main__":
     d1 = Die(4)  # Initialize directly with 4 sides
-    d2 = Die(12) # A Dungeons & Dragons classic
-    
+    d2 = Die(12)  # A Dungeons & Dragons classic
+
     print(f"Roll Result: D{d1.sides} -> {d1.roll()}, D{d2.sides} -> {d2.roll()}")

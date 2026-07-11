@@ -8,7 +8,7 @@ def load_json_list(path):
         return []
     try:
         data = json.loads(path.read_text(encoding="utf-8"))
-    except (OSError, json.JSONDecodeError):
+    except OSError, json.JSONDecodeError:
         return []
     return data if isinstance(data, list) else []
 
@@ -44,4 +44,3 @@ def memory_context():
     if not memory:
         return "No saved memory yet."
     return "\n".join(f"- {item}" for item in memory[-10:])
-

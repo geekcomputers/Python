@@ -23,7 +23,7 @@ try:
     # 60 FPS video capture
     # Create video writer object. Save file to recording.avi
     out = cv2.VideoWriter("recording.avi", fourcc, 60.0, (frames_width, frames_height))
-except(Exception) as e:
+except Exception as e:
     print(Fore.RED, e, Fore.RESET)
 
 while True:
@@ -33,7 +33,7 @@ while True:
     if ret == True:
         # Write frame to recording.avi
         out.write(frame)
-        
+
         # color video output
         # Our operations on the frame come here
         gray = cv2.cvtColor(frame, cv2.COLOR_BGR2BGRA)
@@ -47,4 +47,3 @@ while True:
 cap.release()
 out.release()
 cv2.destroyAllWindows()
-

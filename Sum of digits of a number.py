@@ -40,7 +40,7 @@ def addition(num):
     ):  # Checks if number type is none or not. If type is none program exits.
         print("Try again!")
         sys.exit()
-    num = abs(num) # Handle negative numbers
+    num = abs(num)  # Handle negative numbers
     while num > 0:  # Addition- adding the digits in the number.
         digit = int(num % 10)
         Sum += digit
