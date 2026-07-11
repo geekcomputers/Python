@@ -58,7 +58,7 @@ def main():
         type="string",
         help="specify target port[s] seperated by a comma",
     )
-    (options, args) = parser.parse_args()
+    options, args = parser.parse_args()
     tgtHost = options.tgtHost
     tgtPorts = str(options.tgtPort).split(",")
     if (tgtHost == None) | (tgtPorts[0] == None):

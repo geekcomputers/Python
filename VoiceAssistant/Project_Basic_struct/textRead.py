@@ -54,10 +54,10 @@ def pdf_read():
         )
         return "None"
     try:
-        """     1. Author
-                2. Creator
-                3. Producer
-                4. Title  """
+        """1. Author
+        2. Creator
+        3. Producer
+        4. Title"""
 
         author = details["author"]
         # print("Author : ",author)

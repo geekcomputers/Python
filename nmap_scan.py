@@ -4,7 +4,6 @@ import optparse  # Import the module
 
 import nmap  # Import the module
 
-
 # Script Name		: nmap_scan.py
 # Author				: Craig Richards
 # Created				: 24th May 2013
@@ -27,7 +26,7 @@ def main():  # Main Program
     )  # Display options/help if required
     parser.add_option("-H", dest="tgtHost", type="string", help="specify host")
     parser.add_option("-p", dest="tgtPort", type="string", help="port")
-    (options, args) = parser.parse_args()
+    options, args = parser.parse_args()
     tgtHost = options.tgtHost
     tgtPorts = str(options.tgtPort).split(",")
 

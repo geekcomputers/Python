@@ -4,7 +4,6 @@ import os  # Load the Module
 
 from _winreg import *  # Load the Module
 
-
 # Script Name		: recyclebin.py
 # Author				: Craig Richards
 # Created				: 07th June 2013
@@ -23,7 +22,7 @@ def sid2user(sid):  # Start of the function to gather the user
             HKEY_LOCAL_MACHINE,
             r"SOFTWARE\Microsoft\Windows NT\CurrentVersion\ProfileList" + "\\" + sid,
         )
-        (value, type) = QueryValueEx(key, "ProfileImagePath")
+        value, type = QueryValueEx(key, "ProfileImagePath")
         user = value.split("\\")[-1]
         return user
     except Exception:

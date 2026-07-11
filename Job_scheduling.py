@@ -65,7 +65,7 @@ class Scheduling:
                 self.index2 = self.jobs.index(self.tmp[j])
                 j += 1
                 if deadline[self.index1] > deadline[self.index2]:
-                    (self.tmp[i], self.tmp[j]) = (
+                    self.tmp[i], self.tmp[j] = (
                         self.tmp[j],
                         self.tmp[i],
                     )
@@ -104,7 +104,7 @@ def main():
         current_job.extend((jobs[i].deadline, jobs[i].profit, jobs[i].job_id))
         midresult.append(current_job)
     midresult.sort(key=lambda k: (k[0], -k[1]))
-    (deadline, profit, jobs) = map(list, zip(*midresult))
+    deadline, profit, jobs = map(list, zip(*midresult))
 
     scheduling_jobs = Scheduling(jobs)
     scheduled_jobs = scheduling_jobs.schedule(len(jobs), deadline)

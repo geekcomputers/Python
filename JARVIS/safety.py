@@ -2,7 +2,6 @@ import re
 
 from .text_utils import normalize_text
 
-
 DANGEROUS_WORDS = {
     "install",
     "uninstall",

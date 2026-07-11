@@ -25,7 +25,6 @@ from pynput.keyboard import Key
 from pynput.mouse import Controller
 from playsound import *  # for sound output
 
-
 # master
 # auto install for pyttsx3 and speechRecognition
 import os

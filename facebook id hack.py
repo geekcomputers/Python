@@ -6,13 +6,11 @@ from bs4 import BeautifulSoup
 import sys
 
 if sys.version_info[0] != 3:
-    print(
-        """--------------------------------------
+    print("""--------------------------------------
 	REQUIRED PYTHON 3.x
 	use: python3 fb.py
 --------------------------------------
-			"""
-    )
+			""")
     sys.exit()
 
 post_url = "https://www.facebook.com/login.php"

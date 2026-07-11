@@ -7,7 +7,6 @@
 from nltk.corpus import twitter_samples
 import random
 
-
 # In[ ]:
 
 
@@ -57,7 +56,6 @@ import string
 from nltk.corpus import stopwords
 from nltk.stem import PorterStemmer
 from nltk.tokenize import TweetTokenizer
-
 
 # In[20]:
 

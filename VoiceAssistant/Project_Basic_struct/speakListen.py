@@ -5,7 +5,6 @@ import pyttsx3
 import datetime
 from rich.progress import Progress
 
-
 python = pyttsx3.init("sapi5")  # name of the engine is set as Python
 voices = python.getProperty("voices")
 # print(voices)

@@ -15,7 +15,6 @@ from pygame import mixer, time
 from io import BytesIO
 from pprint import pprint
 
-
 # Find the best of best extensions for the auto generation of the documentation parts.
 # For your favourite languages like JavaScript, Python ,etc,...
 # Should be able to print date and time too.

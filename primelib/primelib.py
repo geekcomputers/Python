@@ -19,7 +19,6 @@ import math
 from functools import lru_cache
 from sympy import isprime, factorint, primerange, prime as sympy_prime
 
-
 # ---------- Basic utilities ----------
 
 

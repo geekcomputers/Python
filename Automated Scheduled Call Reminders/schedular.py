@@ -4,7 +4,6 @@ from apscheduler.schedulers.blocking import BlockingScheduler
 
 from caller import search
 
-
 sched = BlockingScheduler()
 
 # Schedule job_function to be called every two hours

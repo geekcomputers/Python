@@ -6,7 +6,6 @@ from watermark import Watermark
 import pyglet
 from tkinter import colorchooser
 
-
 # ------------------- Create Window -----------------
 pyglet.font.add_directory("fonts")
 
