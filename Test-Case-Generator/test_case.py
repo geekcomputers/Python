@@ -19,7 +19,6 @@ from tkinter import (
     END,
     HORIZONTAL,
     LEFT,
-    Frame,
 )
 
 mycolor = "#262626"

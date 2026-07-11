@@ -17,7 +17,7 @@ search, navigation, and deletion.
 
 import sys
 import sqlite3
-from tkinter import END, Toplevel  # explicit imports instead of *
+from tkinter import END  # explicit imports instead of *
 
 # ----------------------------------------------------------------------
 # Database configuration
