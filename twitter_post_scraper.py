@@ -1,6 +1,7 @@
+import re
+
 import requests
 from bs4 import BeautifulSoup
-import re
 
 re_text = r"\:|\.|\!|(https|http)?:\/\/(\w|\.|\/|\?|\=|\&|\%)*\b|(.twitter.com\/)\w*|\&"
 re_text_1 = r"(pictwittercom)\/\w*"

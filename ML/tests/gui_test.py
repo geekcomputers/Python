@@ -1,32 +1,19 @@
-import sys
 import os
+import sys
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 
-from PyQt6.QtWidgets import (
-    QApplication,
-    QMainWindow,
-    QWidget,
-    QVBoxLayout,
-    QHBoxLayout,
-    QPushButton,
-    QLabel,
-    QLineEdit,
-    QFileDialog,
-    QProgressBar,
-    QTextEdit,
-    QGroupBox,
-)
-from PyQt6.QtCore import Qt, QThread, pyqtSignal
-from PyQt6.QtGui import QPixmap, QFont
-
 import torch
 import torch.nn.functional as F
-from torchvision import transforms
 from PIL import Image
-
+from PyQt6.QtCore import Qt, QThread, pyqtSignal
+from PyQt6.QtGui import QFont, QPixmap
+from PyQt6.QtWidgets import (QApplication, QFileDialog, QGroupBox, QHBoxLayout,
+                             QLabel, QLineEdit, QMainWindow, QProgressBar,
+                             QPushButton, QTextEdit, QVBoxLayout, QWidget)
 from src.python.neuralforge.data.datasets import get_dataset, get_num_classes
 from src.python.neuralforge.models.resnet import ResNet18
+from torchvision import transforms
 
 
 class PredictionThread(QThread):
@@ -443,7 +430,8 @@ class NeuralForgeGUI(QMainWindow):
                     dataset, "classes", [str(i) for i in range(num_classes)]
                 )
             except:
-                from src.python.neuralforge.data.datasets import get_class_names
+                from src.python.neuralforge.data.datasets import \
+                    get_class_names
 
                 self.classes = get_class_names(self.dataset_name)
 

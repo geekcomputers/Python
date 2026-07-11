@@ -1,4 +1,5 @@
 from typing import Optional
+
 from tree_node import Node
 
 

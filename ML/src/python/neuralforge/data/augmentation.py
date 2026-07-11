@@ -1,6 +1,7 @@
-import torch
 import random
+
 import numpy as np
+import torch
 from PIL import Image, ImageEnhance, ImageOps
 
 

@@ -1,6 +1,5 @@
 import os
 
-
 import mysql.connector as mys
 
 mycon = mys.connect(

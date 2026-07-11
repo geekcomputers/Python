@@ -1,8 +1,9 @@
 """This file manages the graphical user interface of the quiz, using Tkinter to display questions, answer options, and the score to the user."""
 
 from tkinter import *
-from quiz_brain import QuizBrain
+
 from data_dynamic import error_message
+from quiz_brain import QuizBrain
 
 # Normal screen
 BACKGROUND = "#608BC1"

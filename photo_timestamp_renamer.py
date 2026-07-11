@@ -17,18 +17,19 @@ i.e.
 """
 
 from __future__ import annotations
+
 import argparse
+import re
+import sys
 from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
-import re
-import sys
 
 SUPPORTED_EXTS = {".jpg", ".jpeg", ".png", ".heic", ".webp", ".tif", ".tiff"}
 
 # EXIF support is optional (w\ Pillow)
 try:
-    from PIL import Image, ExifTags  # type: ignore
+    from PIL import ExifTags, Image  # type: ignore
 
     PIL_OK = True
 except Exception:

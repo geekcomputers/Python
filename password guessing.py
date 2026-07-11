@@ -57,6 +57,7 @@ def guess_password_simulation(password: str) -> str:
 
 if __name__ == "__main__":
     import doctest
+
     import pyautogui
 
     doctest.testmod()

@@ -1,8 +1,9 @@
 """Write a function in python to count the number of lowercase
 alphabets present in a text file “happy.txt"""
 
-import time
 import os
+import time
+
 from counter import Counter
 
 print(

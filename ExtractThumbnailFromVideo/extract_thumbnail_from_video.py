@@ -1,5 +1,6 @@
-import cv2
 import os
+
+import cv2
 
 
 def extract_thumbnail(video_path, frame_size):

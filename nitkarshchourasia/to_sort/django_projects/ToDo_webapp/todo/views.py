@@ -1,12 +1,13 @@
-from django.shortcuts import render, redirect
 from django.contrib import messages
+from django.shortcuts import redirect, render
+
+from .forms import TodoForm
+from .models import Todo
 
 # Create your views here.
 
 # Import todo form and models
 
-from .forms import TodoForm
-from .models import Todo
 
 
 def index(request):

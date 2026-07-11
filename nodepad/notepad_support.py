@@ -15,8 +15,8 @@ functions for the notepad GUI (created by PAGE). It manages notes storage,
 search, navigation, and deletion.
 """
 
-import sys
 import sqlite3
+import sys
 from tkinter import END  # explicit imports instead of *
 
 # ----------------------------------------------------------------------

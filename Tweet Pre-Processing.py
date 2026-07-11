@@ -4,8 +4,9 @@
 # In[10]:
 
 
-from nltk.corpus import twitter_samples
 import random
+
+from nltk.corpus import twitter_samples
 
 # In[ ]:
 

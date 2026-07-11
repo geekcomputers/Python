@@ -15,7 +15,8 @@ Stability: Not stable (partition swaps elements).
 """
 
 from __future__ import annotations
-from typing import Optional, Iterable, List, Iterator
+
+from typing import Iterable, Iterator, List, Optional
 
 
 class Node:

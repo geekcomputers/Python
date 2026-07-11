@@ -5,8 +5,9 @@
 example quote -Quote Author Name
 """
 
-import requests
 from json import loads
+
+import requests
 
 
 def return_quote():

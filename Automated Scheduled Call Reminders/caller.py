@@ -1,9 +1,10 @@
 # The project automates calls for people from the firebase cloud database and the schedular keeps it running and checks for entries
 # every 1 hour using aps scedular
 # The project can be used to set 5 min before reminder calls to a set of people for doing a particular job
-from firebase_admin import credentials, firestore, initialize_app
 from datetime import datetime, timedelta
 from time import gmtime, strftime
+
+from firebase_admin import credentials, firestore, initialize_app
 from twilio.rest import Client
 
 # twilio credentials

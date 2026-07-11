@@ -1,14 +1,16 @@
-import torch
-import torch.nn as nn
-import torch.amp as amp
-from torch.utils.data import DataLoader
-from typing import Optional, Dict, Any
-import time
 import os
+import time
+from typing import Any, Dict, Optional
+
+import torch
+import torch.amp as amp
+import torch.nn as nn
+from torch.utils.data import DataLoader
 from tqdm import tqdm
+
+from .config import Config
 from .utils.logger import Logger
 from .utils.metrics import MetricsTracker
-from .config import Config
 
 
 class Trainer:

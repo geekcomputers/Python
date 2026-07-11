@@ -1,7 +1,8 @@
 # modules for use of voice
-from gtts import gTTS
-from colorama import Fore
 import os
+
+from colorama import Fore
+from gtts import gTTS
 
 # Define the text you want to convert to speech
 text = "Hello! This is a sample text to convert to speech."

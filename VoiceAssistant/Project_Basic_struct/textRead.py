@@ -1,11 +1,11 @@
-from speakListen import hear
-from speakListen import speak
+import time
+
 import docx
 import fitz
-import time
+from colorama import Fore
 from rich.console import Console  # pip3 install Rich
 from rich.table import Table
-from colorama import Fore
+from speakListen import hear, speak
 
 
 def ms_word():

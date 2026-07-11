@@ -1,7 +1,8 @@
-import whisper
-import re
-import openai
 import os
+import re
+
+import openai
+import whisper
 
 
 def transcript_generator():

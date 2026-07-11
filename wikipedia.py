@@ -1,6 +1,7 @@
-import wikipedia
 from tkinter import *
 from tkinter.messagebox import showinfo
+
+import wikipedia
 
 win = Tk()  # objek
 win.title("WIKIPEDIA")

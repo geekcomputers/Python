@@ -1,5 +1,5 @@
-from .resnet import ResNet18, ResNet34, ResNet50
 from .efficientnet import EfficientNetB0
+from .resnet import ResNet18, ResNet34, ResNet50
 from .vit import VisionTransformer
 
 __all__ = [

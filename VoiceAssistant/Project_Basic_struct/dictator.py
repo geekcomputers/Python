@@ -1,8 +1,7 @@
 # from speakListen import hear
 # from speakListen import long_hear
-from speakListen import *
-
 from colorama import Fore
+from speakListen import *
 
 
 def big_text():

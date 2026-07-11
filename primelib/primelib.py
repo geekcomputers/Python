@@ -17,7 +17,10 @@ Examples:
 
 import math
 from functools import lru_cache
-from sympy import isprime, factorint, primerange, prime as sympy_prime
+
+from sympy import factorint, isprime
+from sympy import prime as sympy_prime
+from sympy import primerange
 
 # ---------- Basic utilities ----------
 
@@ -304,7 +307,8 @@ def goldbach(number: int) -> list[int]:
 
 def pi(maxK: int = 70, prec: int = 1008, disp: int = 1007) -> str:
     """Compute π using the Chudnovsky algorithm (unchanged)."""
-    from decimal import Decimal as Dec, getcontext as gc
+    from decimal import Decimal as Dec
+    from decimal import getcontext as gc
 
     gc().prec = prec
     K, M, L, X, S = 6, 1, 13591409, 1, 13591409

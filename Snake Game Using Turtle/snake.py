@@ -4,6 +4,7 @@ extension, and reset functionality.
 """
 
 from turtle import Turtle
+
 import colors
 
 STARTING_POSITIONS = [(0, 0), (-20, 0), (-40, 0)]

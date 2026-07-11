@@ -1,6 +1,8 @@
 # modules for Using of app
-from tkinter import Button, Entry, Label, Tk, filedialog, messagebox  # Gui Modules
 from threading import Thread  # modules for multi threding
+from tkinter import (Button, Entry, Label, Tk, filedialog,  # Gui Modules
+                     messagebox)
+
 from pytube import YouTube  # Module for Youtube service
 
 

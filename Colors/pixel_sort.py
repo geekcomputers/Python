@@ -1,17 +1,17 @@
 """Pixel Sorting"""
 
 # Importing Libraries
+import argparse
+import colorsys
+import math
+import os
+
 import cv2
 import numpy as np
-import math
-import colorsys
 import pandas as pd
-import os
-import argparse
-from tqdm import tqdm
-
 # Importing the external file Library
 import sound
+from tqdm import tqdm
 
 # Taking arguments from command line
 parser = argparse.ArgumentParser()  # you iniatize as such

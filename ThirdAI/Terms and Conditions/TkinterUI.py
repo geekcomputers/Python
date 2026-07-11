@@ -1,7 +1,7 @@
 import tkinter as tk
+from tkinter import filedialog, messagebox
 from tkinter.font import Font
-from tkinter import messagebox
-from tkinter import filedialog
+
 from ThirdAI import NeuralDBClient as Ndb
 
 

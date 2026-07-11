@@ -10,24 +10,22 @@ JARVIS:
 
 # import modules
 import datetime  # datetime module supplies classes for manipulating dates and times
+import json
+# master
+# auto install for pyttsx3 and speechRecognition
+import os
 import subprocess  # subprocess module allows you to spawn new processes
 
 # master
 import pyjokes  # for generating random jokes
 import requests
-import json
-from PIL import ImageGrab
 from gtts import gTTS
-
+from PIL import ImageGrab
+from playsound import *  # for sound output
 # for 30 seconds clip "Jarvis, clip that!" and discord ctrl+k quick-move (might not come to fruition)
 from pynput import keyboard
 from pynput.keyboard import Key
 from pynput.mouse import Controller
-from playsound import *  # for sound output
-
-# master
-# auto install for pyttsx3 and speechRecognition
-import os
 
 try:
     import pyttsx3  # Check if already installed
@@ -42,8 +40,8 @@ except:
     import speech_recognition as sr  # speech_recognition Library for performing speech recognition with support for Google Speech Recognition, etc..
 
 # importing the pyttsx3 library
-import webbrowser
 import smtplib
+import webbrowser
 
 # initialisation
 engine = pyttsx3.init()
@@ -82,8 +80,9 @@ def sendEmail(to, content):
     server.close()
 
 
-import openai
 import base64
+
+import openai
 
 # Will learn it.
 stab = base64.b64decode(

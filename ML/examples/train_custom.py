@@ -3,8 +3,9 @@ import sys
 sys.path.insert(0, ".")
 
 import torch.nn as nn
-from src.python.neuralforge import Trainer, Config
-from src.python.neuralforge.data.dataset import SyntheticDataset, DataLoaderBuilder
+from src.python.neuralforge import Config, Trainer
+from src.python.neuralforge.data.dataset import (DataLoaderBuilder,
+                                                 SyntheticDataset)
 from src.python.neuralforge.models.resnet import ResNet18
 from src.python.neuralforge.optim.optimizers import AdamW
 from src.python.neuralforge.optim.schedulers import CosineAnnealingWarmRestarts

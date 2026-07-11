@@ -1,6 +1,7 @@
-from torchvision import transforms
-import torch
 from typing import Tuple
+
+import torch
+from torchvision import transforms
 
 
 def get_transforms(

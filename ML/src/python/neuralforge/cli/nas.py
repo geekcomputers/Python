@@ -1,10 +1,11 @@
 import argparse
+
 import torch
-from neuralforge.nas.search_space import SearchSpace
-from neuralforge.nas.evolution import EvolutionarySearch
-from neuralforge.nas.evaluator import ProxyEvaluator
-from neuralforge.data.dataset import SyntheticDataset, DataLoaderBuilder
 from neuralforge.config import Config
+from neuralforge.data.dataset import DataLoaderBuilder, SyntheticDataset
+from neuralforge.nas.evaluator import ProxyEvaluator
+from neuralforge.nas.evolution import EvolutionarySearch
+from neuralforge.nas.search_space import SearchSpace
 
 
 def main():

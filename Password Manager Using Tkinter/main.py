@@ -1,10 +1,11 @@
+import json
 import tkinter as tk
+from random import choice, randint, shuffle
 from tkinter import messagebox, simpledialog
+
+import pyperclip
 import ttkbootstrap as ttk
 from ttkbootstrap.constants import *
-import pyperclip
-import json
-from random import choice, randint, shuffle
 
 # ---------------------------- CONSTANTS ------------------------------- #
 FONT_NAME = "Helvetica"

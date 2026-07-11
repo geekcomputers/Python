@@ -3,7 +3,8 @@ This file manages the display of the score, high score, and game messages.
 It now positions the score dynamically in the top-left corner.
 """
 
-from turtle import Turtle, Screen
+from turtle import Screen, Turtle
+
 import colors
 
 # Constants for styling and alignment

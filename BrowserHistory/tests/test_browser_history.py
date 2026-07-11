@@ -1,6 +1,6 @@
-import unittest
-import sys
 import os
+import sys
+import unittest
 
 # Add parent directory to path to import backend
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))

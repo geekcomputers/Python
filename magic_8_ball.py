@@ -1,6 +1,7 @@
 import random
-from colorama import Fore, Style
+
 import inquirer
+from colorama import Fore, Style
 
 responses = [
     "It is certain",

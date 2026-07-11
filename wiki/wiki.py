@@ -1,20 +1,11 @@
 # In this program you ask it about any topic and it will show you the data from wikipedia
 # pip install wikipedia
 
-import wikipedia
 import tkinter as tk
-from tkinter import (
-    Label,
-    Button,
-    Entry,
-    Text,
-    messagebox,
-    SOLID,
-    GROOVE,
-    StringVar,
-    WORD,
-    END,
-)
+from tkinter import (END, GROOVE, SOLID, WORD, Button, Entry, Label, StringVar,
+                     Text, messagebox)
+
+import wikipedia
 
 # import PIL as ImageTK
 

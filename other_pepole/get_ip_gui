@@ -2,9 +2,9 @@
 # -*- coding: utf-8 -*-
 
 import socket
-from tkinter import Tk, Label, Button, Frame
-from urllib.request import urlopen
+from tkinter import Button, Frame, Label, Tk
 from urllib.error import URLError
+from urllib.request import urlopen
 
 
 class IPApp:

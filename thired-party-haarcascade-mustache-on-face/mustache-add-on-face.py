@@ -1,5 +1,4 @@
 import cv2
-
 from utils import image_resize
 
 cap = cv2.VideoCapture(0)

@@ -14,7 +14,7 @@ def ResNet34(num_classes=1000, in_channels=3):
 
 
 def ResNet50(num_classes=1000, in_channels=3):
-    from ..nn.layers import BottleneckBlock
     from ..nn.convolution import ResNet
+    from ..nn.layers import BottleneckBlock
 
     return ResNet(BottleneckBlock, [3, 4, 6, 3], num_classes, in_channels)

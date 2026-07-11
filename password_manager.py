@@ -1,6 +1,6 @@
+import os
 import sqlite3
 from getpass import getpass
-import os
 
 # set the environment variable ADMIN_PASS to your desired string, which will be your password.
 ADMIN_PASSWORD = os.environ["ADMIN_PASS"]

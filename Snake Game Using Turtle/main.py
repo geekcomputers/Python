@@ -5,11 +5,13 @@ game state management, and the main game loop.
 """
 
 from turtle import Screen, Turtle
-from snake import Snake
+
 from food import Food
 from scoreboard import Scoreboard
 from wall import Wall
+
 import colors
+from snake import Snake
 
 # --- CONSTANTS ---
 MOVE_DELAY_MS = 100  # Game speed in milliseconds

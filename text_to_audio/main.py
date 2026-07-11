@@ -1,6 +1,7 @@
 # A exclusive CLI version can be made using inquirer library.
-from gtts import gTTS
 from io import BytesIO
+
+from gtts import gTTS
 
 # only use when needed to avoid memory usage in program
 

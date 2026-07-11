@@ -1,5 +1,6 @@
-from torchvision import datasets, transforms
 import os
+
+from torchvision import datasets, transforms
 
 
 class CIFAR10Dataset:
@@ -270,8 +271,8 @@ class TinyImageNetDataset:
                     ]
                 )
 
-        import zipfile
         import urllib.request
+        import zipfile
 
         data_dir = os.path.join(root, "tiny-imagenet-200")
         if download and not os.path.exists(data_dir):

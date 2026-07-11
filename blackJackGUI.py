@@ -1,5 +1,7 @@
 from __future__ import print_function
+
 import random
+
 import simplegui
 
 CARD_SIZE = (72, 96)

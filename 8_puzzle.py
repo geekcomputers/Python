@@ -1,5 +1,5 @@
 from queue import PriorityQueue
-from typing import List, Tuple, Optional, Set
+from typing import List, Optional, Set, Tuple
 
 
 class PuzzleState:

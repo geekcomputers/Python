@@ -3,8 +3,9 @@ This file handles the creation of food. Its placement is now controlled
 by the main game logic to ensure it spawns within the correct boundaries.
 """
 
-from turtle import Turtle
 import random
+from turtle import Turtle
+
 import colors
 
 

@@ -3,7 +3,6 @@ import os
 import sys
 import tempfile
 
-
 from .config import LISTEN_PHRASE_SECONDS, SPEECH_LANGUAGES, TTS_MODE
 from .text_utils import clean_assistant_output, normalize_text
 

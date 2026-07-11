@@ -1,6 +1,7 @@
 """This file creates a responsive boundary wall that adapts to the game window size."""
 
-from turtle import Turtle, Screen
+from turtle import Screen, Turtle
+
 import colors
 
 

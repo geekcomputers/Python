@@ -36,8 +36,9 @@ pickle.dump(model, open(filename, "wb"))
 
 from tkinter import Tk
 from tkinter.filedialog import askopenfilename
-from keras.preprocessing import image
+
 import numpy as np
+from keras.preprocessing import image
 
 Tk().withdraw()
 filename = askopenfilename()

@@ -1,7 +1,7 @@
 """This file processes the fetched questions and prepares them for use in the quiz."""
 
-from question_model import Question
 from data_dynamic import question_data
+from question_model import Question
 from quiz_brain import QuizBrain
 from ui import QuizInterface
 

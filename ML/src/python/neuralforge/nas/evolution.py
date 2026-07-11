@@ -1,9 +1,11 @@
 import random
-import numpy as np
 from typing import List
+
+import numpy as np
 from tqdm import tqdm
-from .search_space import SearchSpace, Architecture
+
 from .evaluator import ModelEvaluator
+from .search_space import Architecture, SearchSpace
 
 
 class EvolutionarySearch:

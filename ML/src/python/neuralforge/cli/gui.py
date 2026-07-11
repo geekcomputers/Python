@@ -1,5 +1,5 @@
-import sys
 import os
+import sys
 
 
 def main():
@@ -18,29 +18,17 @@ def main():
 
     sys.path.insert(0, root_dir)
 
-    from PyQt6.QtWidgets import (
-        QMainWindow,
-        QWidget,
-        QVBoxLayout,
-        QHBoxLayout,
-        QPushButton,
-        QLabel,
-        QLineEdit,
-        QFileDialog,
-        QProgressBar,
-        QTextEdit,
-        QGroupBox,
-    )
-    from PyQt6.QtCore import Qt, QThread, pyqtSignal
-    from PyQt6.QtGui import QPixmap, QFont
-
     import torch
     import torch.nn.functional as F
-    from torchvision import transforms
-    from PIL import Image
-
     from neuralforge.data.datasets import get_dataset, get_num_classes
     from neuralforge.models.resnet import ResNet18
+    from PIL import Image
+    from PyQt6.QtCore import Qt, QThread, pyqtSignal
+    from PyQt6.QtGui import QFont, QPixmap
+    from PyQt6.QtWidgets import (QFileDialog, QGroupBox, QHBoxLayout, QLabel,
+                                 QLineEdit, QMainWindow, QProgressBar,
+                                 QPushButton, QTextEdit, QVBoxLayout, QWidget)
+    from torchvision import transforms
 
     class PredictionThread(QThread):
         finished = pyqtSignal(list, list, str)

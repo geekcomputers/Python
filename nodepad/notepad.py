@@ -16,8 +16,7 @@ The backend logic is handled by notepad_support.py.
 """
 
 import sys
-from tkinter import Tk, Toplevel, Frame, Label, Button, Entry, Text, WORD
-from tkinter import ttk
+from tkinter import WORD, Button, Entry, Frame, Label, Text, Tk, Toplevel, ttk
 
 import notepad_support
 

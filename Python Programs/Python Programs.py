@@ -31,7 +31,8 @@ Dependencies:
 
 import math
 import sys
-from typing import List, Optional, Dict
+from typing import Dict, List, Optional
+
 from sympy import primefactors
 
 

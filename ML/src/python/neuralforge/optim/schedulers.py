@@ -1,5 +1,6 @@
-from torch.optim.lr_scheduler import _LRScheduler
 import math
+
+from torch.optim.lr_scheduler import _LRScheduler
 
 
 class WarmupScheduler(_LRScheduler):

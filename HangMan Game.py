@@ -1,5 +1,6 @@
 # Program for HangMan Game.
 import random
+
 import HangMan_Includes as incl
 
 while True:

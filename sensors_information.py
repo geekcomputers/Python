@@ -1,6 +1,7 @@
 import argparse
-import sys
 import socket
+import sys
+
 import psutil
 
 

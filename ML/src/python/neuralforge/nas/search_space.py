@@ -1,6 +1,7 @@
-import torch.nn as nn
-from typing import List, Dict, Any
 import random
+from typing import Any, Dict, List
+
+import torch.nn as nn
 
 
 class Architecture:

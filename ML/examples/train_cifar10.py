@@ -1,13 +1,13 @@
-import sys
 import os
+import sys
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 
 import torch
 import torch.nn as nn
-from src.python.neuralforge import Trainer, Config
-from src.python.neuralforge.data.datasets import get_dataset
+from src.python.neuralforge import Config, Trainer
 from src.python.neuralforge.data.dataset import DataLoaderBuilder
+from src.python.neuralforge.data.datasets import get_dataset
 from src.python.neuralforge.models.resnet import ResNet18
 from src.python.neuralforge.optim.optimizers import AdamW
 from src.python.neuralforge.optim.schedulers import CosineAnnealingWarmRestarts

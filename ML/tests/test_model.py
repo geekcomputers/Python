@@ -1,20 +1,16 @@
-import sys
 import os
+import sys
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 
+import numpy as np
 import torch
 import torch.nn.functional as F
-from torchvision import transforms
 from PIL import Image
-import numpy as np
-
-from src.python.neuralforge.data.datasets import (
-    get_dataset,
-    get_num_classes,
-    get_class_names,
-)
+from src.python.neuralforge.data.datasets import (get_class_names, get_dataset,
+                                                  get_num_classes)
 from src.python.neuralforge.models.resnet import ResNet18
+from torchvision import transforms
 
 
 class ModelTester:

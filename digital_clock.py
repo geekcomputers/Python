@@ -4,15 +4,13 @@
 # using python code base
 
 import time
-
+# importing strftime function to
+# retrieve system's time
+from time import strftime
 # because we need digital clock , so we are importing the time library.
 #  master
 from tkinter import *
 from tkinter.ttk import *
-
-# importing strftime function to
-# retrieve system's time
-from time import strftime
 
 # creating tkinter window
 root = Tk()

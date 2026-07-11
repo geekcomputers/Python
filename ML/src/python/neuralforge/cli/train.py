@@ -1,16 +1,17 @@
 import argparse
+import random
+
+import numpy as np
 import torch
 import torch.nn as nn
-import random
-import numpy as np
-
-from neuralforge.trainer import Trainer
 from neuralforge.config import Config
+from neuralforge.data.dataset import DataLoaderBuilder, SyntheticDataset
 from neuralforge.data.datasets import get_dataset, get_num_classes
-from neuralforge.data.dataset import SyntheticDataset, DataLoaderBuilder
 from neuralforge.models.resnet import ResNet18
 from neuralforge.optim.optimizers import AdamW
-from neuralforge.optim.schedulers import CosineAnnealingWarmRestarts, OneCycleLR
+from neuralforge.optim.schedulers import (CosineAnnealingWarmRestarts,
+                                          OneCycleLR)
+from neuralforge.trainer import Trainer
 from neuralforge.utils.logger import Logger
 
 

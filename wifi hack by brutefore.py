@@ -38,11 +38,10 @@ if __name__ == "__main__":
 #  2. brute force password when using longer
 
 
-import pywifi
-
-from pywifi import const  # quote some definitions
-
 import time
+
+import pywifi
+from pywifi import const  # quote some definitions
 
 """
  Problems encountered do not understand? Python learning exchange group: 821 460 695 meet your needs, data base files have been uploaded, you can download their own!

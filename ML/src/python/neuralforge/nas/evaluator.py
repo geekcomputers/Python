@@ -1,8 +1,10 @@
+from typing import Tuple
+
 import torch
 import torch.nn as nn
 from torch.utils.data import DataLoader
-from typing import Tuple
-from .search_space import SearchSpace, Architecture
+
+from .search_space import Architecture, SearchSpace
 
 
 class ModelEvaluator:

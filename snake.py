@@ -6,9 +6,9 @@
 
 try:
     import curses
-    from time import sleep
-    from curses import KEY_RIGHT, KEY_LEFT, KEY_UP, KEY_DOWN
+    from curses import KEY_DOWN, KEY_LEFT, KEY_RIGHT, KEY_UP
     from random import randint
+    from time import sleep
 
     print(
         "Use the arrow keys to move, press the space bar to pause, and press ESC to quit"

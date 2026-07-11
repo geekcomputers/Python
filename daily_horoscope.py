@@ -1,5 +1,5 @@
-from bs4 import BeautifulSoup
 import requests
+from bs4 import BeautifulSoup
 
 """
    this check_sign function checks and returns the zodiac sign

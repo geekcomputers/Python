@@ -1,6 +1,7 @@
 from __future__ import print_function
 
 import os  # Load the Module
+from winreg import HKEY_LOCAL_MACHINE, OpenKey, QueryValueEx
 
 from _winreg import *  # Load the Module
 
@@ -13,7 +14,6 @@ from _winreg import *  # Load the Module
 # Description			: Scans the recyclebin and displays the files in there, originally got this script from the Violent Python book
 
 
-from winreg import OpenKey, HKEY_LOCAL_MACHINE, QueryValueEx
 
 
 def sid2user(sid):  # Start of the function to gather the user
