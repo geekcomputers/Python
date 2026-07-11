@@ -461,7 +461,7 @@ def main():
 
                     self.classes = get_class_names(self.dataset_name)
 
-                self.model_status.setText(f"✓ Model loaded successfully")
+                self.model_status.setText("✓ Model loaded successfully")
                 self.model_status.setStyleSheet("color: #4CAF50;")
 
                 self.predict_btn.setEnabled(True)

@@ -1,8 +1,5 @@
-import torch
-from torch.utils.data import Dataset
 from torchvision import datasets, transforms
 import os
-from typing import Optional, Callable
 
 
 class CIFAR10Dataset:

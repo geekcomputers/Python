@@ -1,7 +1,6 @@
 import torch
 import torch.nn as nn
-from torch.utils.data import DataLoader, Subset
-import time
+from torch.utils.data import DataLoader
 from typing import Tuple
 from .search_space import SearchSpace, Architecture
 

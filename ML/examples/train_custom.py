@@ -2,7 +2,6 @@ import sys
 
 sys.path.insert(0, ".")
 
-import torch
 import torch.nn as nn
 from src.python.neuralforge import Trainer, Config
 from src.python.neuralforge.data.dataset import SyntheticDataset, DataLoaderBuilder

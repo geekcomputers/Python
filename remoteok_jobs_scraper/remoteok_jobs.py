@@ -1,5 +1,4 @@
 import requests
-import xlwt
 from xlwt import Workbook
 
 BASE_URL = "https://remoteok.com/api"

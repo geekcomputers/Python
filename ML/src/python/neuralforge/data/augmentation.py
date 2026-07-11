@@ -2,7 +2,6 @@ import torch
 import random
 import numpy as np
 from PIL import Image, ImageEnhance, ImageOps
-from typing import List, Tuple
 
 
 class RandAugment:

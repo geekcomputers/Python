@@ -25,7 +25,7 @@ def main():
     config.model_name = "resnet18_cifar10"
     config.device = "cuda" if torch.cuda.is_available() else "cpu"
 
-    print(f"Downloading CIFAR-10 dataset...")
+    print("Downloading CIFAR-10 dataset...")
     train_dataset = get_dataset("cifar10", root="./data", train=True, download=True)
     val_dataset = get_dataset("cifar10", root="./data", train=False, download=True)
 
@@ -56,11 +56,11 @@ def main():
     print("Starting training...")
     trainer.train()
 
-    print(f"\nTraining completed!")
+    print("\nTraining completed!")
     print(f"Best validation loss: {trainer.best_val_loss:.4f}")
-    print(f"Model saved to: ./models/best_model.pt")
-    print(f"\nTest the model:")
-    print(f"  python tests/test_model.py --dataset cifar10 --mode interactive")
+    print("Model saved to: ./models/best_model.pt")
+    print("\nTest the model:")
+    print("  python tests/test_model.py --dataset cifar10 --mode interactive")
 
 
 if __name__ == "__main__":

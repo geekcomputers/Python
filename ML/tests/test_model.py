@@ -106,7 +106,7 @@ class ModelTester:
             )
 
             if not is_correct:
-                print(f"    Top-5: ", end="")
+                print("    Top-5: ", end="")
                 for j, (idx, prob) in enumerate(zip(top5_idx, top5_prob)):
                     print(f"{self.classes[idx]}({prob:.1%})", end=" ")
                 print()

@@ -1,7 +1,6 @@
 # binary file to search a given record
 
 import pickle
-from dotenv import load_dotenv
 
 
 def search():

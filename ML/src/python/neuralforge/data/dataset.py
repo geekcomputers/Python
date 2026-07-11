@@ -1,6 +1,6 @@
 import torch
 from torch.utils.data import Dataset, DataLoader
-from torchvision import datasets, transforms
+from torchvision import transforms
 from PIL import Image
 import os
 from typing import Optional, Callable, Tuple, List

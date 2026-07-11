@@ -2,7 +2,6 @@ import sys
 
 sys.path.insert(0, ".")
 
-import torch
 from src.python.neuralforge.nas.search_space import SearchSpace
 from src.python.neuralforge.nas.evolution import EvolutionarySearch
 from src.python.neuralforge.nas.evaluator import ProxyEvaluator
@@ -41,7 +40,7 @@ def main():
     print("Starting Neural Architecture Search...")
     best_architecture = evolution.search()
 
-    print(f"\nBest Architecture Found:")
+    print("\nBest Architecture Found:")
     print(f"Fitness: {best_architecture.fitness:.4f}")
     print(f"Accuracy: {best_architecture.accuracy:.2f}%")
     print(f"Parameters: {best_architecture.params:,}")

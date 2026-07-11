@@ -3,7 +3,6 @@ import torch
 from neuralforge.nas.search_space import SearchSpace
 from neuralforge.nas.evolution import EvolutionarySearch
 from neuralforge.nas.evaluator import ProxyEvaluator
-from neuralforge.data.datasets import get_dataset
 from neuralforge.data.dataset import SyntheticDataset, DataLoaderBuilder
 from neuralforge.config import Config
 
@@ -66,7 +65,7 @@ Examples:
     print("Starting Neural Architecture Search...")
     best_architecture = evolution.search()
 
-    print(f"\nBest Architecture Found:")
+    print("\nBest Architecture Found:")
     print(f"Fitness: {best_architecture.fitness:.4f}")
     print(f"Accuracy: {best_architecture.accuracy:.2f}%")
     print(f"Parameters: {best_architecture.params:,}")

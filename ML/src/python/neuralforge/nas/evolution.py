@@ -1,7 +1,6 @@
-import torch
 import random
 import numpy as np
-from typing import List, Dict, Any
+from typing import List
 from tqdm import tqdm
 from .search_space import SearchSpace, Architecture
 from .evaluator import ModelEvaluator

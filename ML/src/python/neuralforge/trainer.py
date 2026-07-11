@@ -2,7 +2,7 @@ import torch
 import torch.nn as nn
 import torch.amp as amp
 from torch.utils.data import DataLoader
-from typing import Optional, Dict, Any, Callable
+from typing import Optional, Dict, Any
 import time
 import os
 from tqdm import tqdm

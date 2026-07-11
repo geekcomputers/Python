@@ -1,6 +1,3 @@
-import string
-
-
 def check_password_strength(password):
     strength = 0
 
