@@ -7,8 +7,19 @@
 import os
 import webbrowser
 from random import choices, randint
-from tkinter import (END, HORIZONTAL, LEFT, Button, Entry, IntVar, Label,
-                     Scrollbar, StringVar, Text, Tk)
+from tkinter import (
+    END,
+    HORIZONTAL,
+    LEFT,
+    Button,
+    Entry,
+    IntVar,
+    Label,
+    Scrollbar,
+    StringVar,
+    Text,
+    Tk,
+)
 
 mycolor = "#262626"
 

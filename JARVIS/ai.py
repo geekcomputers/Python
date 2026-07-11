@@ -1,8 +1,7 @@
 from openai import OpenAI, OpenAIError
 
 from . import state
-from .config import (MAX_OUTPUT_TOKENS, OPENAI_API_KEY, OPENAI_BASE_URL,
-                     OPENAI_MODEL)
+from .config import MAX_OUTPUT_TOKENS, OPENAI_API_KEY, OPENAI_BASE_URL, OPENAI_MODEL
 from .memory import memory_context
 from .prompts import ACTION_CLASSIFIER_PROMPT, ASSISTANT_PROMPT
 from .text_utils import clean_assistant_output

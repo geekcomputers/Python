@@ -10,6 +10,7 @@ import time
 
 # Added pafy to get video length for the user
 import pafy
+
 # Changed the method of opening the browser.
 # Selenium allows for the page to be refreshed.
 from selenium import webdriver

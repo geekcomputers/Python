@@ -3,8 +3,7 @@ import sys
 sys.path.insert(0, ".")
 
 from src.python.neuralforge.config import Config
-from src.python.neuralforge.data.dataset import (DataLoaderBuilder,
-                                                 SyntheticDataset)
+from src.python.neuralforge.data.dataset import DataLoaderBuilder, SyntheticDataset
 from src.python.neuralforge.nas.evaluator import ProxyEvaluator
 from src.python.neuralforge.nas.evolution import EvolutionarySearch
 from src.python.neuralforge.nas.search_space import SearchSpace

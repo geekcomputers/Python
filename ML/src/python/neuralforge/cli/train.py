@@ -9,8 +9,7 @@ from neuralforge.data.dataset import DataLoaderBuilder, SyntheticDataset
 from neuralforge.data.datasets import get_dataset, get_num_classes
 from neuralforge.models.resnet import ResNet18
 from neuralforge.optim.optimizers import AdamW
-from neuralforge.optim.schedulers import (CosineAnnealingWarmRestarts,
-                                          OneCycleLR)
+from neuralforge.optim.schedulers import CosineAnnealingWarmRestarts, OneCycleLR
 from neuralforge.trainer import Trainer
 from neuralforge.utils.logger import Logger
 

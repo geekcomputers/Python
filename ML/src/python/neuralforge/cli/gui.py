@@ -25,9 +25,19 @@ def main():
     from PIL import Image
     from PyQt6.QtCore import Qt, QThread, pyqtSignal
     from PyQt6.QtGui import QFont, QPixmap
-    from PyQt6.QtWidgets import (QFileDialog, QGroupBox, QHBoxLayout, QLabel,
-                                 QLineEdit, QMainWindow, QProgressBar,
-                                 QPushButton, QTextEdit, QVBoxLayout, QWidget)
+    from PyQt6.QtWidgets import (
+        QFileDialog,
+        QGroupBox,
+        QHBoxLayout,
+        QLabel,
+        QLineEdit,
+        QMainWindow,
+        QProgressBar,
+        QPushButton,
+        QTextEdit,
+        QVBoxLayout,
+        QWidget,
+    )
     from torchvision import transforms
 
     class PredictionThread(QThread):

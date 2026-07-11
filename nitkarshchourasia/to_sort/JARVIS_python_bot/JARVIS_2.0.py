@@ -11,6 +11,7 @@ JARVIS:
 # import modules
 import datetime  # datetime module supplies classes for manipulating dates and times
 import json
+
 # master
 # auto install for pyttsx3 and speechRecognition
 import os
@@ -22,6 +23,7 @@ import requests
 from gtts import gTTS
 from PIL import ImageGrab
 from playsound import *  # for sound output
+
 # for 30 seconds clip "Jarvis, clip that!" and discord ctrl+k quick-move (might not come to fruition)
 from pynput import keyboard
 from pynput.keyboard import Key

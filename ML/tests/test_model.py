@@ -7,8 +7,11 @@ import numpy as np
 import torch
 import torch.nn.functional as F
 from PIL import Image
-from src.python.neuralforge.data.datasets import (get_class_names, get_dataset,
-                                                  get_num_classes)
+from src.python.neuralforge.data.datasets import (
+    get_class_names,
+    get_dataset,
+    get_num_classes,
+)
 from src.python.neuralforge.models.resnet import ResNet18
 from torchvision import transforms
 

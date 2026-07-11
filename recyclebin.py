@@ -14,8 +14,6 @@ from _winreg import *  # Load the Module
 # Description			: Scans the recyclebin and displays the files in there, originally got this script from the Violent Python book
 
 
-
-
 def sid2user(sid):  # Start of the function to gather the user
     try:
         key = OpenKey(

@@ -15,6 +15,7 @@ import sys
 
 import pandas as pd
 import requests
+
 # importing necessary libraries
 from bs4 import BeautifulSoup
 from newspaper import Article

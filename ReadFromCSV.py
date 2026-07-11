@@ -1,7 +1,6 @@
 __author__ = "vamsi"
 import pandas as pd  # pandas library to read csv file
-from matplotlib import \
-    pyplot as plt  # matplotlib library to visualise the data
+from matplotlib import pyplot as plt  # matplotlib library to visualise the data
 from matplotlib import style
 
 style.use("ggplot")
