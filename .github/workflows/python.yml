@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: ['3.10', '3.11', '3.12']
+        python-version: ['3.11', '3.12','3.13','3.14']
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -29,7 +29,7 @@ jobs:
       - name: Install all dependencies and tools
         run: |
           python -m pip install --upgrade pip
-          pip install ruff bandit mypy pytest codespell requests-mock colorama
+          pip install ruff bandit mypy pytest codespell requests-mock colorama pytest-xdist
 
       - name: Run Codespell check
         run: codespell --skip "*.json,*.txt,*.pdf,*.md" || true
@@ -38,7 +38,7 @@ jobs:
         run: bandit -r . --skip B101,B105 -ll || true
 
       - name: Run Pytest tests
-        run: pytest --tb=short || true
+        run: pytest --doctest-modules -tb=short -n auto || true
 
       - name: Run Ruff checks with ignored rules
         run: ruff check . --ignore B904,B905,EM101,EXE001,G004,ISC001,PLC0415,PLC1901,PLW060,PLW1641,PLW2901,PT011,PT018,PT028,S101,S311,SIM905,SLF001,F405

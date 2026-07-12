@@ -6,7 +6,6 @@ and removes URLs, special characters, and common noise patterns.
 """
 
 import re
-import urllib.parse
 from typing import List
 
 import requests

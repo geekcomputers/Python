@@ -39,15 +39,50 @@ except ImportError:
 # Word lists – extend as needed, but keep them diverse
 # ----------------------------------------------------------------------
 ANIMALS = (
-    "ant", "bear", "cat", "dog", "eagle", "fox", "goat", "hawk", "ibis",
-    "jaguar", "kangaroo", "lion", "monkey", "newt", "owl", "panda", "quail",
-    "rabbit", "shark", "tiger", "unicorn", "vulture", "wolf", "xerus",
-    "yak", "zebra"
+    "ant",
+    "bear",
+    "cat",
+    "dog",
+    "eagle",
+    "fox",
+    "goat",
+    "hawk",
+    "ibis",
+    "jaguar",
+    "kangaroo",
+    "lion",
+    "monkey",
+    "newt",
+    "owl",
+    "panda",
+    "quail",
+    "rabbit",
+    "shark",
+    "tiger",
+    "unicorn",
+    "vulture",
+    "wolf",
+    "xerus",
+    "yak",
+    "zebra",
 )
 
 COLOURS = (
-    "red", "orange", "yellow", "green", "blue", "indigo", "violet",
-    "purple", "magenta", "cyan", "pink", "brown", "white", "grey", "black"
+    "red",
+    "orange",
+    "yellow",
+    "green",
+    "blue",
+    "indigo",
+    "violet",
+    "purple",
+    "magenta",
+    "cyan",
+    "pink",
+    "brown",
+    "white",
+    "grey",
+    "black",
 )
 
 SPECIAL_CHARS = "!@#$%/?<>|&*-=+_"
@@ -61,7 +96,7 @@ def generate_secure_password(
     animal_list: tuple = ANIMALS,
     colour_list: tuple = COLOURS,
     special_chars: str = SPECIAL_CHARS,
-    num_digits: int = 3
+    num_digits: int = 3,
 ) -> str:
     """
     Generate a secure, memorable password using cryptographically strong randomness.
@@ -89,7 +124,7 @@ def generate_secure_password(
     colour = secrets.choice(colour_list)
 
     # Build a random digit string of given length
-    digit_str = ''.join(secrets.choice(DIGITS) for _ in range(num_digits))
+    digit_str = "".join(secrets.choice(DIGITS) for _ in range(num_digits))
 
     special = secrets.choice(special_chars)
 
@@ -124,7 +159,9 @@ def get_random_country_and_language() -> tuple[Optional[str], Optional[str]]:
                 country = secrets.choice(countries).name
 
             # Pick a random language (only those with a 'name' attribute)
-            languages = [lang.name for lang in pycountry.languages if hasattr(lang, "name")]
+            languages = [
+                lang.name for lang in pycountry.languages if hasattr(lang, "name")
+            ]
             if languages:
                 language = secrets.choice(languages)
         except Exception:

