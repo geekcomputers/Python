@@ -4,10 +4,8 @@ git: github.com/Chayan-19
 Requirements: selenium, BeautifulSoup
 """
 
-import requests
 from bs4 import BeautifulSoup
 from selenium import webdriver
-from selenium.webdriver.common.keys import Keys
 import time
 
 # url of the page we want to scrape

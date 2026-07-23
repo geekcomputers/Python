@@ -14,7 +14,6 @@ def simpleColor(r, g, b):
     try:
         # ROJO --------------------------------------------------
         if r > g and r > b:
-
             rg = diff(r, g)  # distancia rojo a verde
             rb = diff(r, b)  # distancia rojo a azul
 
@@ -84,7 +83,6 @@ def simpleColor(r, g, b):
 
             if r > b:  # ROJO > AZUL
                 if gr < gb:  # Verde con Rojo
-
                     if rb >= 150 and gr <= 20:
                         return "AMARILLO"
                     else:
@@ -94,7 +92,6 @@ def simpleColor(r, g, b):
 
             elif r < b:  # AZUL > ROJO
                 if gb < gr:  # Verde con Azul
-
                     if gb <= 20:
                         return "TURQUESA"
                     else:
@@ -167,7 +164,6 @@ def simpleColor(r, g, b):
             return "GRIS"
 
     except:
-
         return "Not Color"
 
 

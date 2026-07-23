@@ -113,7 +113,7 @@ def download_wallpapers_1080p():
 
 ###################
 def view_images_directory():
-    for (folders, subfolder, files) in walk(curdir):
+    for folders, subfolder, files in walk(curdir):
         for folder in subfolder:
             print(folder)
     return True

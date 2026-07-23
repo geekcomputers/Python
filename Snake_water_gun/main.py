@@ -22,27 +22,31 @@ class bcolors:
 run = True
 li = ["s", "w", "g"]
 
-system("clear")
-b = input(
-    bcolors.OKBLUE
-    + bcolors.BOLD
-    + "Welcome to the game 'Snake-Water-Gun'.\nWanna play? Type Y or N: "
-    + bcolors.ENDC
-).capitalize()
+while True:
+    system("clear")
+    b = input(
+        bcolors.OKBLUE
+        + bcolors.BOLD
+        + "Welcome to the game 'Snake-Water-Gun'.\nWanna play? Type Y or N: "
+        + bcolors.ENDC
+    ).capitalize()
 
-if b == "N":
-    run = False
-    print("Ok bubyeee! See you later")
-elif b == "Y" or b == "y":
-    print(
-        "There will be 10 matches, and the one who wins more matches will win. Let's start."
-    )
+    if b == "N":
+        run = False
+        print("Ok bubyeee! See you later")
+        break
+    elif b == "Y" or b == "y":
+        print(
+            "There will be 10 matches, and the one who wins more matches will win. Let's start."
+        )
+        break
+    else:
+        continue
 
 i = 0
 score = 0
 
 while run and i < 10:
-
     comp_choice = random.choice(li)
     user_choice = input("Type s for snake, w for water or g for gun: ").lower()
 
@@ -75,7 +79,7 @@ while run and i < 10:
         continue
 
     i += 1
-    print(f"{10-i} matches left")
+    print(f"{10 - i} matches left")
 
 if run == True:
     print(f"Your score is {score} and the final result is...")

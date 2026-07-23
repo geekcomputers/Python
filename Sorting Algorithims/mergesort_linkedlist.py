@@ -1,9 +1,11 @@
 from __future__ import annotations
 
+
 class Node:
     def __init__(self, data: int) -> None:
         self.data = data
         self.next = None
+
 
 class LinkedList:
     def __init__(self):
@@ -17,12 +19,13 @@ class LinkedList:
     def printLL(self) -> None:
         temp = self.head
         if temp == None:
-            return 'Linked List is empty'
+            return "Linked List is empty"
         while temp.next:
-            print(temp.data, '->', end='')
+            print(temp.data, "->", end="")
             temp = temp.next
         print(temp.data)
         return
+
 
 # Merge two sorted linked lists
 def merge(left, right):
@@ -39,6 +42,7 @@ def merge(left, right):
         result.next = merge(left, right.next)
 
     return result
+
 
 # Merge sort for linked list
 def merge_sort(head):
@@ -61,9 +65,12 @@ def merge_sort(head):
 
     return merge(left, right)
 
+
 if __name__ == "__main__":
     ll = LinkedList()
-    print("Enter the space-separated values of numbers to be inserted in the linked list prompted below:")
+    print(
+        "Enter the space-separated values of numbers to be inserted in the linked list prompted below:"
+    )
     arr = list(map(int, input().split()))
     for num in arr:
         ll.insert(num)
@@ -73,5 +80,5 @@ if __name__ == "__main__":
 
     ll.head = merge_sort(ll.head)
 
-    print('Linked list after sorting:')
+    print("Linked list after sorting:")
     ll.printLL()

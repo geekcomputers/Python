@@ -3,7 +3,8 @@ class Node:
         self.data = data
         self.next = None
 
-class LinkedList():
+
+class LinkedList:
     def __init__(self):
         self.head = None
 
@@ -38,7 +39,7 @@ class LinkedList():
         elif pos == 0:
             self.insert_at_head(data)
             return
-        elif pos == self.length()-1:
+        elif pos == self.length() - 1:
             self.add_node(data)
             return
         new_node = Node(data)
@@ -53,12 +54,12 @@ class LinkedList():
             prev = curr
             curr = curr.next
             curr_pos += 1
-        
+
     def delete_head(self):
         temp = self.head
         self.head = temp.next
         del temp
-    
+
     def delete_end(self):
         curr = self.head
         prev = None
@@ -77,7 +78,7 @@ class LinkedList():
         elif pos == 0:
             self.delete_head()
             return
-        elif pos == self.length()-1:
+        elif pos == self.length() - 1:
             self.delete_end()
             return
         curr = self.head
@@ -98,7 +99,7 @@ class LinkedList():
         rev = []
         curr = self.head
         while curr != None:
-            print(f"{curr.data} --> ", end='')
+            print(f"{curr.data} --> ", end="")
             rev.append(curr.data)
             curr = curr.next
         print()

@@ -1,5 +1,4 @@
 # imports modules
-import sys
 import time
 from getpass import getuser
 

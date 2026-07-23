@@ -18,5 +18,4 @@ def FizzBuzz(num):
             print(i)
 
 
-
 FizzBuzz(20)  # prints FizzBuzz up to 20

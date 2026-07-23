@@ -4,4 +4,7 @@ def vowel_remover(text):
         if l.lower() not in "aeiou":
             string += l
     return string
-print(vowel_remover("hello world!"))
+
+# this code runes on only this file
+if __name__=="__main__":
+    print(vowel_remover("hello world!"))

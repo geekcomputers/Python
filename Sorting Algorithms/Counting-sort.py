@@ -7,7 +7,6 @@ n = len(tlist)
 
 
 def counting_sort(tlist, k, n):
-
     """Counting sort algo with sort in place.
     Args:
         tlist: target list to sort

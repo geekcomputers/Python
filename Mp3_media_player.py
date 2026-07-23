@@ -20,13 +20,11 @@ index = 0
 
 
 def directorychooser():
-
     directory = askdirectory()
     os.chdir(directory)
 
     for files in os.listdir(directory):
         if files.endswith(".mp3"):
-
             realdir = os.path.realpath(files)
             audio = ID3(realdir)
             realnames.append(audio["TIT2"].text[0])

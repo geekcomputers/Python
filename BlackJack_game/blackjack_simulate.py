@@ -46,7 +46,7 @@ class Card:
 
     def __init__(self, suit, rank, face=True):
         """
-        :param suit: patter in the card
+        :param suit: pattern in the card
         :param rank: point in the card
         :param face: show or cover the face(point & pattern on it)
         """

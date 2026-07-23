@@ -1,11 +1,11 @@
 """
  Pygame base template for opening a window
- 
+
  Sample Python/Pygame Programs
  Simpson College Computer Science
  http://programarcadegames.com/
  http://simpson.edu/computer-science/
- 
+
  Explanation video: http://youtu.be/vRB_983kUMc
 
 -------------------------------------------------
@@ -33,7 +33,7 @@ size = (700, 500)
 screen = pygame.display.set_mode(size)
 
 """
-    This is a simple Ball class for respresenting a ball 
+    This is a simple Ball class for representing a ball 
     in the game. 
 """
 
@@ -345,7 +345,6 @@ while not done:
         are both in the same section.
     """
     if gameStatus:
-
         # first draws ball for appropriate displaying the score.
         brickWall.draw()
 

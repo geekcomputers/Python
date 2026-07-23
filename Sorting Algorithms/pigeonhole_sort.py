@@ -3,7 +3,6 @@
 
 
 def pigeonhole_sort(a):
-
     # (number of pigeonholes we need)
     my_min = min(a)
     my_max = max(a)

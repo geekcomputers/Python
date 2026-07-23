@@ -6,7 +6,7 @@
 
 
 import sqlite3
-
+import tkinter as tk
 try:
     from Tkinter import *
 except ImportError:
@@ -17,8 +17,6 @@ try:
 
     py3 = 0
 except ImportError:
-    import tkinter.ttk as ttk
-
     py3 = 1
 
 # connect with database 'data.db'

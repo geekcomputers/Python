@@ -34,7 +34,6 @@ def create():
             and len(acc_type) != 0
             and len(mobile_number) != 0
         ):
-
             acc_no = backend.create_customer(
                 name, age, address, balance, acc_type, mobile_number
             )
@@ -655,7 +654,6 @@ def delete():
             result = backend.check_acc_no(acc_no)
             print(result)
             if not result:
-
                 label = Label(search_frame, text="invalid account number")
                 label.grid(pady=2)
                 button = Button(search_frame, text="Exit", command=back_page2)
@@ -877,7 +875,6 @@ def update_employee():
                     new_salary = entry19.get()
                     r = check_string_in_account_no(new_salary)
                     if len(new_salary) != 0 and r:
-
                         old_name = staff_name.get()
                         backend.update_employee_salary(new_salary, old_name)
                         entry19.destroy()
@@ -900,7 +897,6 @@ def update_employee():
                 def database_calling():
                     new_position = entry19.get()
                     if len(new_position) != 0:
-
                         old_name = staff_name.get()
                         backend.update_employee_position(new_position, old_name)
                         entry19.destroy()
@@ -977,7 +973,6 @@ def update_employee():
         if len(name) != 0:
             result = backend.check_name_in_staff(name)
             if result:
-
                 update_that_particular_employee()
             else:
                 label = Label(show_employee_frame, text="Employee not found")

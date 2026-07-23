@@ -11,7 +11,7 @@ def main():
                 break
             else:
                 print("Please enter correct number")
-        except Exception as e:
+        except Exception:
             print("Please enter correct number")
 
     for i in range(10):

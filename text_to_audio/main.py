@@ -3,7 +3,6 @@ from gtts import gTTS
 from io import BytesIO
 
 # only use when needed to avoid memory usage in program
-from pprint import pprint
 
 """_summary_
 def some_function():

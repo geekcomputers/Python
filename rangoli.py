@@ -3,7 +3,7 @@
 
 # Prints a rangoli of size n
 def print_rangoli(n):
-    """Prints a rangoli of size n"""    
+    """Prints a rangoli of size n"""
     # Width of the rangoli
     width = 4 * n - 3
 
@@ -40,6 +40,6 @@ def print_rangoli(n):
         string = ""
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     n = int(input())
     print_rangoli(n)

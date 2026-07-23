@@ -13,25 +13,20 @@ def get_user_input(start, end):
     loop = True  # controls while-loop
 
     while loop:
-
         try:
-
             # reads and converts the input from the console.
             user_input = int(input("Enter Your choice: "))
 
             # checks whether input is in the given bounds.
             if user_input > end or user_input < start:
-
                 # error case
                 print("Please try again. Not in valid bounds.")
 
             else:
-
                 # valid case
                 loop = False  # aborts while-loop
 
         except ValueError:
-
             # error case
             print("Please try again. Only numbers")
 

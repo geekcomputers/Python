@@ -6,9 +6,7 @@ battery = psutil.sensors_battery()
 
 # battery percent will return the current battery prcentage
 percent = battery.percent
-charging = (
-    battery.power_plugged
-)
+charging = battery.power_plugged
 
 # Notification(title, description, duration)--to send
 # notification to desktop

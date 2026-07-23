@@ -1,0 +1,42 @@
+name: "CodeQL Python Security and Quality Scan"
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+permissions:
+  contents: read
+  actions: read
+  security-events: write
+
+jobs:
+  codeql-analysis:
+    name: "CodeQL Analysis (Python)"
+    runs-on: ubuntu-latest
+
+    steps:
+    # 1. 检出代码
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
+    # 2. 初始化 CodeQL
+    - name: Initialize CodeQL
+      uses: github/codeql-action/init@v3
+      with:
+        languages: python
+        # 不指定 queries，Action 会默认跑安全 + 质量查询
+
+    # 3. 自动构建
+    - name: Autobuild
+      uses: github/codeql-action/autobuild@v3
+
+    # 4. 执行分析
+    - name: Perform CodeQL Analysis
+      uses: github/codeql-action/analyze@v3
+      with:
+        # 不指定 queries，Action 会自动跑安全 + 质量规则
+        upload: true

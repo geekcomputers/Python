@@ -1,11 +1,11 @@
 """Author Anurag Kumar(mailto:anuragkumarak95@gmail.com)
-    The Knuth-Morris-Pratt Algorithm for finding a pattern within a piece of te$
-    with complexity O(n + m)
-    1) Preprocess pattern to identify any suffixes that are identical to prefix$
-        This tells us where to continue from if we get a mismatch between a cha$
-        and the text.
-    2) Step through the text one character at a time and compare it to a charac$
-        updating our location within the pattern if necessary
+The Knuth-Morris-Pratt Algorithm for finding a pattern within a piece of te$
+with complexity O(n + m)
+1) Preprocess pattern to identify any suffixes that are identical to prefix$
+    This tells us where to continue from if we get a mismatch between a cha$
+    and the text.
+2) Step through the text one character at a time and compare it to a charac$
+    updating our location within the pattern if necessary
 """
 
 
