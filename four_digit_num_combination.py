@@ -1,4 +1,4 @@
-""" small script to learn how to print out all 4-digit num"""
+"""small script to learn how to print out all 4-digit num"""
 
 
 # ALL the combinations of 4 digit combo

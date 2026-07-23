@@ -2,12 +2,8 @@ import argparse
 import sys
 import socket
 import psutil
-
-
 def python_version():
     return sys.version_info
-
-
 def ip_addresses():
     hostname = socket.gethostname()
     addresses = socket.getaddrinfo(hostname, None)
@@ -35,7 +31,7 @@ def show_sensors():
     for address in ip_addresses():
         print("IP Addresses: {0[1]} ({0[0]})".format(address))
     print("CPU Load: {:.1f}".format(cpu_load()))
-    print("RAM Available: {} MiB".format(ram_available() / 1024 ** 2))
+    print("RAM Available: {} MiB".format(ram_available() / 1024**2))
     print("AC Connected: {}".format(ac_connected()))
 
 

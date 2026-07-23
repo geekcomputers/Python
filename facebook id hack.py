@@ -2,9 +2,6 @@
 # Email-kingslayer8509@gmail.com
 # you need to create a file password.txt which contains all possible passwords
 import requests
-import threading
-import urllib.request
-import os
 from bs4 import BeautifulSoup
 import sys
 
@@ -59,7 +56,7 @@ file = open("passwords.txt", "r")
 email = input("Enter Email/Username : ")
 
 print("\nTarget Email ID : ", email)
-print("\nTrying Passwords from list ...")
+print("Trying Passwords from list ...")
 
 i = 0
 while file:

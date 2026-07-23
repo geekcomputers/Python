@@ -104,7 +104,6 @@ async def datapullpost(future, url):
 
 class MoniteringClass:
     def __init__(self, user, tags, type, productId):
-
         try:
             self.mon = pymongo.MongoClient(host=config.host, port=config.mongoPort)
             db = self.mon[productId + ":" + user + ":insta"]

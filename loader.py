@@ -1,5 +1,5 @@
 """
-Shaurya Pratap Singh 
+Shaurya Pratap Singh
 @shaurya-blip
 
 Shows loading message while doing something.

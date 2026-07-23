@@ -1,6 +1,5 @@
 def watcher(path):
     # python script to observe changes in a folder
-    import sys
     import time
     import os
     from watchdog.observers import Observer

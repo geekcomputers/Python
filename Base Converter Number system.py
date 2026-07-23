@@ -7,7 +7,6 @@ def base_check(xnumber, xbase):
 
 def convert_from_10(xnumber, xbase, arr, ybase):
     if int(xbase) == 2 or int(xbase) == 4 or int(xbase) == 6 or int(xbase) == 8:
-
         if xnumber == 0:
             return arr
         else:

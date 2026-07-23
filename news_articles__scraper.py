@@ -11,10 +11,7 @@ Original file is located at
 
 # ! pip install newspaper3k
 
-import pickle
-import re
 import sys
-import urllib
 
 import pandas as pd
 import requests
@@ -41,7 +38,7 @@ for i in range(1, 159):
             fakearticle_links.append(link.get("href"))
 
     # this describes what to do if an exception is thrown
-    except Exception as e:
+    except Exception:
         # get the exception information
         error_type, error_obj, error_info = sys.exc_info()
         # print the link that cause the problem
@@ -56,10 +53,6 @@ len(fakearticle_links)
 
 fakearticle_links[1888:]
 
-import matplotlib.pyplot as plt
-import pandas as pd
-
-import numpy as np
 
 """We have to modify the links so that the links actually work as we can see that the string extracted is the last part of the url!
 
@@ -149,9 +142,7 @@ files.download("Fake_news.csv")
 
 """**Scraping news from Times of India**"""
 
-TOIarticle_links = (
-    []
-)  # Creating an empty list of all the urls of news from Times of India site
+TOIarticle_links = []  # Creating an empty list of all the urls of news from Times of India site
 
 # Extracting links for all the pages (2 to 125) of boomlive fake news section
 for i in range(2, 126):
@@ -168,7 +159,7 @@ for i in range(2, 126):
             TOIarticle_links.append(link.get("href"))
 
     # this describes what to do if an exception is thrown
-    except Exception as e:
+    except Exception:
         # get the exception information
         error_type, error_obj, error_info = sys.exc_info()
         # print the link that cause the problem

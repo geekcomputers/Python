@@ -1,103 +1,63 @@
-import os
-import time
+# Tic Tac Toe Game in Python
 
-board = [" ", " ", " ", " ", " ", " ", " ", " ", " ", " "]
-player = 1
+board = [" " for _ in range(9)]
 
-########win Flags##########
-Win = 1
-Draw = -1
-Running = 0
-Stop = 1
-###########################
-Game = Running
-Mark = "X"
+def print_board():
+    print()
+    print(f" {board[0]} | {board[1]} | {board[2]} ")
+    print("---|---|---")
+    print(f" {board[3]} | {board[4]} | {board[5]} ")
+    print("---|---|---")
+    print(f" {board[6]} | {board[7]} | {board[8]} ")
+    print()
 
-# This Function Draws Game Board
-def DrawBoard():
-    print(" %c | %c | %c " % (board[1], board[2], board[3]))
-    print("___|___|___")
-    print(" %c | %c | %c " % (board[4], board[5], board[6]))
-    print("___|___|___")
-    print(" %c | %c | %c " % (board[7], board[8], board[9]))
-    print("   |   |   ")
+def check_winner(player):
+    win_conditions = [
+        [0,1,2], [3,4,5], [6,7,8],  # rows
+        [0,3,6], [1,4,7], [2,5,8],  # columns
+        [0,4,8], [2,4,6]            # diagonals
+    ]
+    for condition in win_conditions:
+        if all(board[i] == player for i in condition):
+            return True
+    return False
 
+def is_draw():
+    return " " not in board
 
-# This Function Checks position is empty or not
-def CheckPosition(x):
-    if board[x] == " ":
-        return True
-    else:
-        return False
+current_player = "X"
 
+print("Welcome to Tic Tac Toe!")
+print("Positions are numbered 1 to 9 as shown below:")
+print("""
+ 1 | 2 | 3
+---|---|---
+ 4 | 5 | 6
+---|---|---
+ 7 | 8 | 9
+""")
 
-# This Function Checks player has won or not
-def CheckWin():
-    global Game
-    # Horizontal winning condition
-    if board[1] == board[2] and board[2] == board[3] and board[1] != " ":
-        Game = Win
-    elif board[4] == board[5] and board[5] == board[6] and board[4] != " ":
-        Game = Win
-    elif board[7] == board[8] and board[8] == board[9] and board[7] != " ":
-        Game = Win
-    # Vertical Winning Condition
-    elif board[1] == board[4] and board[4] == board[7] and board[1] != " ":
-        Game = Win
-    elif board[2] == board[5] and board[5] == board[8] and board[2] != " ":
-        Game = Win
-    elif board[3] == board[6] and board[6] == board[9] and board[3] != " ":
-        Game = Win
-    # Diagonal Winning Condition
-    elif board[1] == board[5] and board[5] == board[9] and board[5] != " ":
-        Game = Win
-    elif board[3] == board[5] and board[5] == board[7] and board[5] != " ":
-        Game = Win
-    # Match Tie or Draw Condition
-    elif (
-        board[1] != " "
-        and board[2] != " "
-        and board[3] != " "
-        and board[4] != " "
-        and board[5] != " "
-        and board[6] != " "
-        and board[7] != " "
-        and board[8] != " "
-        and board[9] != " "
-    ):
-        Game = Draw
-    else:
-        Game = Running
+while True:
+    print_board()
+    try:
+        move = int(input(f"Player {current_player}, choose position (1-9): ")) - 1
+        if board[move] != " ":
+            print("That position is already taken. Try again.")
+            continue
+    except (ValueError, IndexError):
+        print("Invalid input. Enter a number between 1 and 9.")
+        continue
 
+    board[move] = current_player
 
-print("Tic-Tac-Toe Game Designed By Sourabh Somani")
-print("Player 1 [X] --- Player 2 [O]\n")
-print()
-print()
-print("Please Wait...")
-time.sleep(3)
-while Game == Running:
-    os.system("cls")
-    DrawBoard()
-    if player % 2 != 0:
-        print("Player 1's chance")
-        Mark = "X"
-    else:
-        print("Player 2's chance")
-        Mark = "O"
-    choice = int(input("Enter the position between [1-9] where you want to mark : "))
-    if CheckPosition(choice):
-        board[choice] = Mark
-        player += 1
-        CheckWin()
+    if check_winner(current_player):
+        print_board()
+        print(f"🎉 Player {current_player} wins!")
+        break
 
-os.system("cls")
-DrawBoard()
-if Game == Draw:
-    print("Game Draw")
-elif Game == Win:
-    player -= 1
-    if player % 2 != 0:
-        print("Player 1 Won")
-    else:
-        print("Player 2 Won")
+    if is_draw():
+        print_board()
+        print("🤝 It's a draw!")
+        break
+
+    current_player = "O" if current_player == "X" else "X"

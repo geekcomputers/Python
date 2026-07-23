@@ -1,4 +1,9 @@
+#This is a new repo
 # My Python Eggs 🐍 😄
+
+[![Python Checks](https://github.com/geekcomputers/Python/actions/workflows/python.yml/badge.svg)](https://github.com/geekcomputers/Python/actions/workflows/python.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
 
 <hr>
 
@@ -9,6 +14,13 @@ I do not consider myself as a programmer. I create these little programs as expe
 This repository contains a collection of Python scripts that are designed to reduce human workload and serve as educational examples for beginners to get started with Python. The code documentation is aligned correctly for viewing in [Notepad++](https://notepad-plus-plus.org/) :spiral_notepad:
 
 Feel free to explore the scripts and use them for your learning and automation needs!
+
+## Getting Started
+
+- **New Contributors?** Check out [DEVELOPMENT.md](DEVELOPMENT.md) for setup instructions
+- **Want to contribute?** Read our [CONTRIBUTING.md](CONTRIBUTING.md) guidelines
+- **Found a bug?** Open an [issue](https://github.com/geekcomputers/Python/issues/new?assignees=&labels=bug&template=bug_report.md)
+- **Have an idea?** Suggest a [feature](https://github.com/geekcomputers/Python/issues/new?assignees=&labels=enhancement&template=feature_request.md)
 
 ## List of Scripts:
 
@@ -53,6 +65,8 @@ Feel free to explore the scripts and use them for your learning and automation n
 39. [space_invader.py.py](https://github.com/meezan-mallick/space_invader_game) - Classical 2D space invader game to recall your childhood memories.
 40. [Test Case Generator](https://github.com/Tanmay-901/test-case-generator/blob/master/test_case.py) - Generate different types of test cases with a clean and friendly UI, used in competitive programming and software testing.
 41. [Extract Thumbnail From Video](https://github.com/geekcomputers/Python/tree/ExtractThumbnailFromVideo) - Extract Thumbnail from video files
+42. [How to begin the journey of open source (first contribution)](https://www.youtube.com/watch?v=v2X51AVgl3o) - First Contribution of open source
+43. [smart_file_organizer.py](https://github.com/sangampaudel530/Python2.0/blob/main/smart_file_organizer.py) - Organizes files in a directory into categorized subfolders based on file type (Images, Documents, Videos, Audios, Archives, Scripts, Others). You can run it once or automatically at set intervals using the `--path` and `--interval` options.
 <hr>
 
-_**Note**: The content in this repository belongs to the respective authors and creators. I'm just providing a formatted README.md for better presentation._
+_**Note**: The content in this repository belongs to the respective authors and creators. I'm just providing a formatted README.md for better presentation.

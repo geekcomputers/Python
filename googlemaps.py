@@ -1,5 +1,4 @@
 import requests
-import json
 import geocoder
 
 g = geocoder.ip("me")

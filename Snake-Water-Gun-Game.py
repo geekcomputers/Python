@@ -75,7 +75,7 @@ print("I am Mr. Computer, We will play this game 10 times")
 print("Whoever wins more matches will be the winner\n")
 
 while x < 10:
-    print(f"Game No. {x+1}")
+    print(f"Game No. {x + 1}")
     for key, value in choices.items():
         print(f"Choose {key} for {value}")
 

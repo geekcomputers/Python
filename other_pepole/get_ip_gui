@@ -2,72 +2,84 @@
 # -*- coding: utf-8 -*-
 
 import socket
-# **************** Modules Require *****************#
-from tkinter import *
+from tkinter import Tk, Label, Button, Frame
 from urllib.request import urlopen
+from urllib.error import URLError
 
 
-# **************** Get IP commands *****************#
-# control buttons
-def get_wan_ip():
-    try:
-        # get ip from http://ipecho.net/plain as text
-        wan_ip = urlopen('http://ipecho.net/plain').read().decode('utf-8')
-        res.configure(text='Wan IP is : ' + wan_ip, fg='#600')
-    except:
-        res.configure(text='Problem in source : http://ipecho.net/plain', fg='red')
+class IPApp:
+    '''A simple GUI application to get WAN and local IP addresses.'''
+    def __init__(self):
+        '''Initialize the application'''
+        self.root = Tk()
+        self.root.title('Khaled programming practice')
+        self._setup_ui()
+
+    def _setup_ui(self) -> None:
+        """Initialize the user interface"""
+        # Result label
+        self.res = Label(self.root, text='00.00.00.00', font=25)
+        self.res.grid(row=0, column=0, columnspan=4, sticky='N', padx=10, pady=5)
+
+        # Buttons
+        Button(self.root, text='Get Wan IP', command=self.get_wan_ip).grid(
+            row=1, column=0, padx=5, pady=5, sticky='W')
+        Button(self.root, text='Get Local IP', command=self.get_local_ip).grid(
+            row=1, column=1, padx=5, pady=5, sticky='W')
+        Button(self.root, text='About', command=self.show_about).grid(
+            row=1, column=2, padx=5, pady=5, sticky='W')
+        Button(self.root, text='Quit', command=self.root.quit, bg='#f40').grid(
+            row=1, column=3, padx=5, pady=5, sticky='E')
+
+        # About section widgets (initially hidden)
+        self.about_frame = Frame(self.root, width=350, height=2, bg='blue')
+        self.about_info = Label(self.root, text="""\
+Practice Python 
+Take idea from here:
+https://github.com/geekcomputers/Python/blob/master/myip.py
+""", fg='#02F')
+        self.about_close = Button(self.root, text='Close', 
+                                 command=self.hide_about, bg='#55F')
+
+    def get_wan_ip(self) -> None:
+        """Get and display WAN IP address"""
+        try:
+            wan_ip = urlopen('http://ipecho.net/plain', timeout=5).read().decode('utf-8')
+            self.res.configure(text=f'WAN IP is: {wan_ip}', fg='#600')
+        except URLError as e:
+            self.res.configure(text=f'Network error: {e.reason}', fg='red')
+        except Exception as e:
+            self.res.configure(text=f'Unexpected error: {str(e)}', fg='red')
+
+    def get_local_ip(self) -> None:
+        """Get and display local IP address"""
+        try:
+            local_ip = socket.gethostbyname(socket.gethostname())
+            self.res.configure(text=f'Local IP is: {local_ip}', fg='#600')
+        except Exception as e:
+            self.res.configure(text=f'Error getting local IP: {str(e)}', fg='red')
+
+    def show_about(self) -> None:
+        """Show about information"""
+        self.about_frame.grid(row=2, column=0, columnspan=4)
+        self.about_info.grid(row=3, column=0, columnspan=4, padx=5)
+        self.about_close.grid(row=4, column=0, columnspan=4, pady=5)
+
+    def hide_about(self) -> None:
+        """Hide about information"""
+        self.about_frame.grid_remove()
+        self.about_info.grid_remove()
+        self.about_close.grid_remove()
+
+    def run(self) -> None:
+        """Start the application"""
+        self.root.mainloop()
 
 
-# get local ip
-def get_local_ip():
-    try:
-        lan_ip = (socket.gethostbyname(socket.gethostname()))
-        res.configure(text='Local IP is : ' + lan_ip, fg='#600')
-    except:
-        res.configure(text='Unkown Error', fg='#red')
-    # **************** about control button *****************#
+def main() -> None:
+    app = IPApp()
+    app.run()
 
 
-# show about info and change the button command and place
-def about():
-    global close_app, frame, info
-    about_app.destroy()
-    frame = Frame(root, width=350, height=2, bg='blue')
-    frame.grid(row=2, column=0, columnspan=4)
-    info = Label(root, text="""
-    Practice Python 
-    Take idea from here :
-    https://github.com/geekcomputers/Python/blob/master/myip.py
-    """, fg='#02F')
-    info.grid(row=3, column=0, columnspan=4, padx=5)
-    close_app = Button(root, text='Close', command=close_about, bg='#55F')
-    close_app.grid(row=4, column=0, columnspan=4, pady=5)
-
-
-# remove about info and remove close button then return about button in orignal place
-def close_about():
-    global frame, about_app, info
-    info.destroy()
-    frame.destroy()
-    close_app.destroy()
-    about_app = Button(root, text='about', command=about)
-    about_app.grid(row=1, column=2, padx=5, pady=5, sticky=W)
-
-
-# **************** Tkinter GUI *****************#
-root = Tk()
-root.title('Khaled programing practice')
-# all buttons
-res = Label(root, text='00.00.00.00', font=25)
-res_wan_ip = Button(root, text='Get Wan IP', command=get_wan_ip)
-res_local_ip = Button(root, text='Get Local IP', command=get_local_ip)
-about_app = Button(root, text='about', command=about)
-quit_app = Button(root, text='quit', command=quit, bg='#f40')
-# method grid to install the button in window
-res.grid(row=0, column=0, columnspan=4, sticky=N, padx=10, pady=5)
-res_wan_ip.grid(row=1, column=0, padx=5, pady=5, sticky=W)
-res_local_ip.grid(row=1, column=1, padx=5, pady=5, sticky=W)
-about_app.grid(row=1, column=2, padx=5, pady=5, sticky=W)
-quit_app.grid(row=1, column=3, padx=5, pady=5, sticky=E)
-# run GUI/app
-root.mainloop()
+if __name__ == '__main__':
+    main()

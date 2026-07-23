@@ -1,4 +1,4 @@
-"""@Author: Anurag Kumar(mailto:anuragkumarak95@gmail.com) 
+"""@Author: Anurag Kumar(mailto:anuragkumarak95@gmail.com)
 This module is used for generating a TF-IDF file or values from a list of files that contains docs.
 
 What is TF-IDF : https://en.wikipedia.org/wiki/Tf%E2%80%93idf
@@ -6,8 +6,8 @@ What is TF-IDF : https://en.wikipedia.org/wiki/Tf%E2%80%93idf
 python:
   - 3.5
 
-pre-requisites: 
-  - colorama==0.3.9 
+pre-requisites:
+  - colorama==0.3.9
 
 sample file format of input:
 
@@ -31,6 +31,7 @@ here, every line represents a document.
 
 have fun, cheers.
 """
+
 import math
 import pickle
 
@@ -87,9 +88,7 @@ def find_tf_idf(file_names=None, prev_file_path=None, dump_path=None):
     """
     if file_names is None:
         file_names = ["./../test/testdata"]
-    tf_idf = (
-        []
-    )  # will hold a dict of word_count for every doc(line in a doc in this case)
+    tf_idf = []  # will hold a dict of word_count for every doc(line in a doc in this case)
     idf = {}
 
     # this statement is useful for altering existant tf-idf file and adding new docs in itself.(## memory is now the biggest issue)
@@ -100,7 +99,6 @@ def find_tf_idf(file_names=None, prev_file_path=None, dump_path=None):
         prev_corpus_length = len(tf_idf)
 
     for f in file_names:
-
         file1 = open(
             f, "r"
         )  # never use 'rb' for textual data, it creates something like,  {b'line-inside-the-doc'}

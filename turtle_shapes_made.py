@@ -1,5 +1,6 @@
 import turtle
 
+
 class ShapeDrawer:
     def __init__(self, color, pensize):
         self.turtle = turtle.Turtle()
@@ -17,6 +18,7 @@ class ShapeDrawer:
         for _ in range(3):
             self.turtle.forward(length)
             self.turtle.left(120)
+
 
 def main():
     scrn = turtle.Screen()
@@ -44,6 +46,7 @@ def main():
     circle_drawer.turtle.circle(50)
 
     scrn.exitonclick()
+
 
 if __name__ == "__main__":
     main()

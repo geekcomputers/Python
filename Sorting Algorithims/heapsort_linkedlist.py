@@ -3,6 +3,7 @@ class Node:
         self.data = data
         self.next = None
 
+
 class LinkedList:
     def __init__(self):
         self.head = None
@@ -63,6 +64,7 @@ class LinkedList:
         for i in range(n - 1, 0, -1):
             self.swap(0, i)
             self.heapify(i, 0)
+
 
 # Example usage:
 linked_list = LinkedList()

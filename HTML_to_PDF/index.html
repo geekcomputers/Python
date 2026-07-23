@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML to PDF Test Page</title>
+    <style>
+        /* Reset styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        /* Highlight Banner */
+        .pdf-banner {
+            background-color: #ff6600;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+
+        /* Header Styling */
+        header {
+            background-color: #222;
+            color: white;
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            top: 40px; /* Moved down to make space for the PDF banner */
+            left: 0;
+            z-index: 1000;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .container {
+            width: 85%;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            font-size: 1.8em;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 1em;
+            padding: 8px 12px;
+            transition: all 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            background-color: #444;
+            border-radius: 5px;
+        }
+
+        /* Main Content */
+        main {
+            width: 85%;
+            margin: 120px auto 20px;
+        }
+
+        section {
+            margin-bottom: 40px;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        section h2 {
+            color: #222;
+            margin-bottom: 10px;
+            border-bottom: 2px solid #ff6600;
+            padding-bottom: 5px;
+            display: inline-block;
+        }
+
+        section p, section ul {
+            font-size: 1.1em;
+            color: #555;
+        }
+
+        section ul {
+            list-style: square;
+            margin-left: 20px;
+        }
+
+        /* PDF Test Highlight Box */
+        .pdf-test-box {
+            background-color: #ffefcc;
+            padding: 15px;
+            border-left: 5px solid #ff6600;
+            font-size: 1.1em;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        /* Contact Section */
+        #contact a {
+            color: #ff6600;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        #contact a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer Styling */
+        footer {
+            text-align: center;
+            padding: 15px;
+            background: #222;
+            color: white;
+            margin-top: 40px;
+            font-size: 0.9em;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            nav ul {
+                margin-top: 10px;
+            }
+
+            nav ul li {
+                margin: 5px 0;
+            }
+
+            .pdf-banner {
+                font-size: 1em;
+                padding: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- PDF Test Banner -->
+    <div class="pdf-banner">
+        📄 This page is created for testing HTML to PDF conversion!
+    </div>
+
+    <header>
+        <div class="container">
+            <h1>HTML to PDF Test</h1>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="home">
+            <h2>Welcome!</h2>
+            <p>This is a test page designed to check HTML to PDF conversion.</p>
+            <div class="pdf-test-box">
+                ⚡ This section highlights that we are testing the ability to convert HTML pages into PDF format.
+            </div>
+        </section>
+
+        <section id="about">
+            <h2>About This Test</h2>
+            <p>This page includes various HTML elements to check how they appear in the converted PDF.</p>
+        </section>
+
+        <section id="services">
+            <h2>Elements to Test</h2>
+            <ul>
+                <li>Headings & Paragraphs</li>
+                <li>Navigation & Links</li>
+                <li>Lists & Bullet Points</li>
+                <li>Background Colors & Styling</li>
+                <li>Margins & Spacing</li>
+            </ul>
+        </section>
+
+        <section id="contact">
+            <h2>Need Help?</h2>
+            <p>For any issues with the HTML to PDF conversion, contact us at: <a href="mailto:info@example.com">info@example.com</a></p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 HTML to PDF Test Page. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

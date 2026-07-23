@@ -1,6 +1,6 @@
-solara == 1.26.1
+solara == 1.56.0
 Flask 
-gunicorn ==21.2.0
+gunicorn ==23.0.0
 simple-websocket
 flask-sock 
 yfinance
