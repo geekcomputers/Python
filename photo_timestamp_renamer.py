@@ -17,18 +17,20 @@ i.e.
 """
 
 from __future__ import annotations
+
 import argparse
+import re
+import sys
 from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
-import re
-import sys
 
 SUPPORTED_EXTS = {".jpg", ".jpeg", ".png", ".heic", ".webp", ".tif", ".tiff"}
 
 # EXIF support is optional (w\ Pillow)
 try:
-    from PIL import Image, ExifTags  # type: ignore
+    from PIL import ExifTags, Image  # type: ignore
+
     PIL_OK = True
 except Exception:
     PIL_OK = False
@@ -166,13 +168,22 @@ def rename_photos(opts: Options) -> int:
 
 
 def main(argv: list[str]) -> int:
-    ap = argparse.ArgumentParser(description="Auto-rename photos using EXIF date (or file modified time).")
+    ap = argparse.ArgumentParser(
+        description="Auto-rename photos using EXIF date (or file modified time)."
+    )
     ap.add_argument("folder", help="Folder containing photos")
     ap.add_argument("--recursive", action="store_true", help="Process subfolders too")
-    ap.add_argument("--dry-run", action="store_true", help="Preview changes without renaming")
-    ap.add_argument("--prefix", default="", help="Optional prefix (e.g., Japan, RWTH, Trip)")
-    ap.add_argument("--keep-original", action="store_true",
-                    help="Skip files that already match YYYY-MM-DD_HH-MM-SS naming")
+    ap.add_argument(
+        "--dry-run", action="store_true", help="Preview changes without renaming"
+    )
+    ap.add_argument(
+        "--prefix", default="", help="Optional prefix (e.g., Japan, RWTH, Trip)"
+    )
+    ap.add_argument(
+        "--keep-original",
+        action="store_true",
+        help="Skip files that already match YYYY-MM-DD_HH-MM-SS naming",
+    )
     args = ap.parse_args(argv)
 
     folder = Path(args.folder).expanduser()
@@ -181,7 +192,9 @@ def main(argv: list[str]) -> int:
         return 2
 
     if not PIL_OK:
-        print("[Note] Pillow not installed; EXIF dates won't be read (mtime fallback only).")
+        print(
+            "[Note] Pillow not installed; EXIF dates won't be read (mtime fallback only)."
+        )
         print("       Install for best results: pip install pillow")
 
     opts = Options(

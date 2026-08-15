@@ -1,10 +1,13 @@
 """This file creates a responsive boundary wall that adapts to the game window size."""
 
-from turtle import Turtle, Screen
+from turtle import Screen, Turtle
+
 import colors
 
+
 class Wall:
-    """ This class creates a wall around the game screen that adjusts to its dimensions. """
+    """This class creates a wall around the game screen that adjusts to its dimensions."""
+
     def __init__(self):
         self.screen = Screen()
         self.create_wall()
@@ -43,4 +46,3 @@ class Wall:
         wall.goto(right - 10, top - 70)
 
         self.screen.update()
-

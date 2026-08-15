@@ -1,6 +1,6 @@
+import os
 import sqlite3
 from getpass import getpass
-import os
 
 # set the environment variable ADMIN_PASS to your desired string, which will be your password.
 ADMIN_PASSWORD = os.environ["ADMIN_PASS"]
@@ -83,13 +83,11 @@ def is_service_present(service_):
 
 if connect == ADMIN_PASSWORD:
     try:
-        conn.execute(
-            """CREATE TABLE STORE
+        conn.execute("""CREATE TABLE STORE
             (SERVICE TEXT PRIMARY KEY NOT NULL,
             USERNAME TEXT NOT NULL,
             PASSWORD TEXT NOT NULL);
-            """
-        )
+            """)
         print("Your safe has been created!\nWhat would you like to store in it today?")
     except:
         print("You have a safe, what would you like to do today?")

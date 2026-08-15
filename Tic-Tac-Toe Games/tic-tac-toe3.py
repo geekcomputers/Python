@@ -11,9 +11,10 @@ True
 False
 """
 
-from typing import List, Optional, Tuple
-import customtkinter as ctk
 from tkinter import messagebox
+from typing import List, Optional, Tuple
+
+import customtkinter as ctk
 
 Board = List[List[str]]
 

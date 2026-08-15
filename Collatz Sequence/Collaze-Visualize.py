@@ -1,5 +1,7 @@
 import time
+
 import matplotlib.pyplot as plt
+
 
 def collatz_sequence(n):
     """Generate the Collatz sequence for n."""
@@ -12,7 +14,7 @@ def collatz_sequence(n):
 
 def visualize(sequence, title="Collatz Sequence"):
     plt.clf()
-    plt.plot(sequence, marker='o')
+    plt.plot(sequence, marker="o")
     plt.title(title)
     plt.xlabel("Step")
     plt.ylabel("Value")
@@ -30,7 +32,7 @@ def auto_mode(interval):
 
     def on_key(event):
         nonlocal stop
-        if event.key == ' ':
+        if event.key == " ":
             stop = True
 
     fig = plt.figure()

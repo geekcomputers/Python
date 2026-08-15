@@ -1,7 +1,7 @@
-import sys
 import os
+import sys
 
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 
 import torch
 from src.python.neuralforge.data.datasets import get_dataset
@@ -13,7 +13,7 @@ print("=" * 60)
 
 print("\n[1/3] Testing CIFAR-10 dataset download...")
 try:
-    dataset = get_dataset('cifar10', root='./data', train=False, download=True)
+    dataset = get_dataset("cifar10", root="./data", train=False, download=True)
     print(f"✓ CIFAR-10 loaded: {len(dataset)} samples")
     print(f"  Classes: {dataset.classes}")
 except Exception as e:

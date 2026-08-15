@@ -32,7 +32,6 @@ import random
 import sys
 
 import numpy as np
-
 from matplotlib import use as mpluse
 
 mpluse("TkAgg")

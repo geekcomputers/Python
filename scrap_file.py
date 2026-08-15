@@ -25,4 +25,3 @@ def download(url, filename):
 # Example usage
 url = "https://avatars0.githubusercontent.com/u/29729380?s=400&v=4"
 download(url, "avatar.jpg")
-

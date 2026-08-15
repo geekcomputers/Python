@@ -1,9 +1,10 @@
-from rich.console import Console
-from rich.syntax import Syntax
-from rich.progress import Progress, SpinnerColumn, BarColumn, TextColumn
-from rich.table import Table
-import time
 import json
+import time
+
+from rich.console import Console
+from rich.progress import BarColumn, Progress, SpinnerColumn, TextColumn
+from rich.syntax import Syntax
+from rich.table import Table
 
 console = Console()
 

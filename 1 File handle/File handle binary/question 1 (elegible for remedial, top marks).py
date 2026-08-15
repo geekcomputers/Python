@@ -12,15 +12,15 @@ We have to find weak students and bright students.
 
 ## Find bright students and weak students
 
-from dotenv import load_dotenv
 import os
+
+from dotenv import load_dotenv
 
 base = os.path.dirname(__file__)
 load_dotenv(os.path.join(base, ".env"))
 student_record = os.getenv("STUDENTS_RECORD_FILE")
 
 import pickle
-import logging
 
 # Define logger with info
 # import polar

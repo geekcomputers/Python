@@ -1,4 +1,4 @@
-from tkinter import Tk, Canvas
+from tkinter import Canvas, Tk
 
 from PIL.Image import open as openImage
 from PIL.ImageTk import PhotoImage

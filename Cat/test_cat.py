@@ -4,7 +4,6 @@ import tempfile
 import unittest
 from pathlib import Path
 
-
 CAT_SCRIPT = Path(__file__).with_name("cat.py")
 
 

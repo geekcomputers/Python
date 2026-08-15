@@ -1,8 +1,9 @@
 # ./PongPong/pong/ball.py
 
-import pyglet
 import random
 from typing import Tuple
+
+import pyglet
 
 
 class BallObject(pyglet.shapes.Circle):

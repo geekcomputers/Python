@@ -1,10 +1,11 @@
 def watcher(path):
     # python script to observe changes in a folder
-    import time
     import os
-    from watchdog.observers import Observer
-    from watchdog.events import FileSystemEventHandler
+    import time
+
     from move_to_directory import add_to_dir
+    from watchdog.events import FileSystemEventHandler
+    from watchdog.observers import Observer
 
     class Handler(FileSystemEventHandler):
         def on_created(self, event):

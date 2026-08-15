@@ -22,10 +22,11 @@ True
 -1
 """
 
-import numpy as np
 import random
 from time import sleep
 from typing import List, Tuple
+
+import numpy as np
 
 
 def create_board() -> np.ndarray:

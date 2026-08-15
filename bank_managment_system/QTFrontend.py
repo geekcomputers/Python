@@ -1,6 +1,7 @@
-from PyQt5 import QtCore, QtGui, QtWidgets
 import sys
+
 import backend
+from PyQt5 import QtCore, QtGui, QtWidgets
 
 backend.connect_database()
 

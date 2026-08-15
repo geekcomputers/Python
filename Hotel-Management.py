@@ -100,8 +100,8 @@ def add():
     exit_menu()
 
 
-import os
 import json
+import os
 
 filecheck = os.path.isfile("Management.txt")
 if not filecheck:

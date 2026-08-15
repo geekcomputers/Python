@@ -3,9 +3,10 @@
 
 # (requires API key in .env file)
 
-import requests
 import os
 import sys
+
+import requests
 from dotenv import load_dotenv
 from summa.summarizer import summarize
 

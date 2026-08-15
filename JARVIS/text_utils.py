@@ -19,6 +19,7 @@ def normalize_text(text):
 def clean_assistant_output(text):
     cleaned = str(text).strip()
     cleaned = re.sub(r"^(jarvis\s*:\s*)+", "", cleaned, flags=re.IGNORECASE).strip()
-    cleaned = re.sub(r"^(jarvis[,.! ]+){2,}", "Jarvis ", cleaned, flags=re.IGNORECASE).strip()
+    cleaned = re.sub(
+        r"^(jarvis[,.! ]+){2,}", "Jarvis ", cleaned, flags=re.IGNORECASE
+    ).strip()
     return cleaned
-

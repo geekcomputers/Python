@@ -1,4 +1,5 @@
 from __future__ import print_function
+
 import base64
 import mimetypes
 import os
@@ -10,12 +11,14 @@ from email.mime.text import MIMEText
 
 import httplib2
 import oauth2client
-from apiclient import errors, discovery
+from apiclient import discovery, errors
 from oauth2client import client, tools
 
 SCOPES = "https://www.googleapis.com/auth/gmail.send"
 CLIENT_SECRET_FILE = "client_secret.json"
 APPLICATION_NAME = "Gmail API Python Send Email"
+
+
 def get_credentials():
     home_dir = os.path.expanduser("~")
     credential_dir = os.path.join(home_dir, ".credentials")

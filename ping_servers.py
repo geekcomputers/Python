@@ -17,16 +17,14 @@ filename = sys.argv[0]  # Sets a variable for the script name
 if (
     "-h" in sys.argv or "--h" in sys.argv or "-help" in sys.argv or "--help" in sys.argv
 ):  # Help Menu if called
-    print(
-        """
+    print("""
 You need to supply the application group for the servers you want to ping, i.e.
     dms
     swaps
 
 Followed by the site i.e.
     155
-    bromley"""
-    )
+    bromley""")
     sys.exit(0)
 else:
     if (

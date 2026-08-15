@@ -1,13 +1,12 @@
-from speakListen import hear
-from speakListen import speak
-
+from speakListen import hear, speak
 
 """ 1. speakListen.speak(text)
     2. speakListen.greet()
     3. speakListen.hear()
 """
-import wikipedia
 import webbrowser
+
+import wikipedia
 
 
 def google_search():

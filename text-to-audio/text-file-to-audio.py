@@ -1,5 +1,6 @@
-from gtts import gTTS
 import os
+
+from gtts import gTTS
 
 # Enter the name of your text file
 mytextfile = "hello.txt"

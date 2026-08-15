@@ -2,18 +2,15 @@
 # -*- coding: utf-8 -*-
 # importing required libraries
 import json
-from os import chdir, system
-from os import walk
-from os.path import curdir
-from os.path import pardir
+import ssl
+from os import chdir, system, walk
+from os.path import curdir, pardir
 from urllib.parse import urlencode
-from urllib.request import urlopen, Request
+from urllib.request import Request, urlopen
 
 import requests
-import ssl
 from bs4 import BeautifulSoup
 from create_dir import create_directory
-
 
 ssl._create_default_https_context = ssl._create_unverified_context
 
@@ -58,7 +55,7 @@ def search_for_image():
 
     results = sew.findAll("div", {"class": "rg_meta"})
     for re in results:
-        (link, Type) = (json.loads(re.text)["ou"], json.loads(re.text)["ity"])
+        link, Type = (json.loads(re.text)["ou"], json.loads(re.text)["ity"])
         images.append(link)
     counter = 0
     for re in images:
@@ -132,29 +129,24 @@ def set_directory():
 
 ##############
 def quit():
-    print(
-        """
+    print("""
 -------------------------***Thank You For Using***-------------------------
-        """
-    )
+        """)
     return False
 
 
 run = True
 
-print(
-    """
+print("""
 ***********[First Creating Folder To Save Your Images}***********
-    """
-)
+    """)
 
 create_directory("Images")
 DEFAULT_DIRECTORY = pardir + "\\Images"
 chdir(DEFAULT_DIRECTORY)
 count = 0
 while run:
-    print(
-        """
+    print("""
 -------------------------WELCOME-------------------------
     1. Search for image
     2. Download Wallpapers 1080p
@@ -162,8 +154,7 @@ while run:
     4. Set directory
     5. Exit
 -------------------------*******-------------------------
-    """
-    )
+    """)
     choice = input()
     try:
         # Via eval() let `str expression` to `function`

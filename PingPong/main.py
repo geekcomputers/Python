@@ -1,6 +1,6 @@
+import pygame
 from Ball import Ball
 from Slab import Slab
-import pygame
 
 WIDTH = 600
 HEIGHT = 600

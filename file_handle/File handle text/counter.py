@@ -14,7 +14,6 @@ Class resposible for counting words for different files:
 # ! Based on requirements of it
 
 
-
 ## ! The questions are nothing but test-cases
 ## ! Make a test thing and handle it.
 # does it count only alphabets or numerics too?

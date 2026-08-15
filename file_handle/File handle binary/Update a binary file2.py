@@ -1,7 +1,7 @@
 # updating records in a binary file
 
-import pickle
 import os
+import pickle
 
 base = os.path.dirname(__file__)
 from dotenv import load_dotenv

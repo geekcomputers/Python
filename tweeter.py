@@ -1,5 +1,7 @@
 from __future__ import print_function
+
 import os
+
 import tweepy
 
 # TODO: Further improvements can be made to the program

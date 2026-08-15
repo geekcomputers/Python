@@ -1,5 +1,5 @@
-import xlwt # type: ignore
-import openpyxl # type: ignore
+import openpyxl  # type: ignore
+import xlwt  # type: ignore
 
 # Workbook is created
 xlwt_wb = xlwt.Workbook()

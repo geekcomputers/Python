@@ -31,7 +31,6 @@ import random
 import time
 from typing import Dict
 
-
 CHOICES: Dict[str, str] = {"s": "Snake", "w": "Water", "g": "Gun"}
 
 

@@ -1,5 +1,6 @@
-import sqlite3
 import json
+import sqlite3
+
 import pandas as pd
 from sklearn.feature_extraction.text import TfidfVectorizer
 

@@ -1,5 +1,5 @@
-import string as str
 import secrets
+import string as str
 
 
 class PasswordGenerator:

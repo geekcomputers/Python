@@ -68,11 +68,11 @@ Open up an text editor, copy & paste the code below. Save the file as:
 "portscanner.py" and exit the editor
 """
 
+import platform
 import socket
 import subprocess
 import sys
 from time import time
-import platform
 
 # Clear the screen
 subprocess.call('clear' if platform.platform() in ("Linux", "Darwin") else "cls", shell=True)

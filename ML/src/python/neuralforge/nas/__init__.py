@@ -1,10 +1,10 @@
-from .search_space import *
-from .evolution import *
 from .evaluator import *
+from .evolution import *
+from .search_space import *
 
 __all__ = [
-    'SearchSpace',
-    'EvolutionarySearch',
-    'ModelEvaluator',
-    'Architecture',
+    "SearchSpace",
+    "EvolutionarySearch",
+    "ModelEvaluator",
+    "Architecture",
 ]

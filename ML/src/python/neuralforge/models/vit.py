@@ -1,5 +1,5 @@
-import torch.nn as nn
 from ..nn.attention import VisionTransformerBlock
+
 
 def VisionTransformer(
     img_size=224,
@@ -10,7 +10,7 @@ def VisionTransformer(
     depth=12,
     num_heads=12,
     mlp_ratio=4.0,
-    dropout=0.1
+    dropout=0.1,
 ):
     return VisionTransformerBlock(
         img_size=img_size,
@@ -20,5 +20,5 @@ def VisionTransformer(
         num_heads=num_heads,
         num_layers=depth,
         num_classes=num_classes,
-        dropout=dropout
+        dropout=dropout,
     )

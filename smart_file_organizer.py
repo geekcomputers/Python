@@ -18,9 +18,9 @@ Author:
     Sangam Paudel
 """
 
+import argparse
 import os
 import shutil
-import argparse
 import time
 from datetime import datetime
 

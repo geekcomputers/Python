@@ -1,5 +1,5 @@
 from queue import PriorityQueue
-from typing import List, Tuple, Optional, Set
+from typing import List, Optional, Set, Tuple
 
 
 class PuzzleState:
@@ -38,7 +38,6 @@ class PuzzleState:
                     x, y = goal_pos[value]
                     distance += abs(x - i) + abs(y - j)
         return distance
-
 
     def is_goal(self) -> bool:
         """Check if current state matches goal."""

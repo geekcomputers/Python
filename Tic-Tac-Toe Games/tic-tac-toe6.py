@@ -16,7 +16,7 @@ False
 True
 """
 
-from typing import List, Dict
+from typing import Dict, List
 
 
 def print_tic_tac_toe(values: List[str]) -> None:

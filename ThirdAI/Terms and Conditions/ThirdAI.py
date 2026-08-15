@@ -1,4 +1,5 @@
-from thirdai import licensing, neural_db as ndb
+from thirdai import licensing
+from thirdai import neural_db as ndb
 
 
 class NeuralDBClient:

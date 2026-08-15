@@ -1,11 +1,10 @@
 # cc program
-from PyQt5.QtGui import *
-from PyQt5.QtCore import *
-from PyQt5.QtWidgets import *
-from PyQt5 import QtWidgets, uic
-from PyQt5.QtCore import *
 import httpx
 from bs4 import BeautifulSoup
+from PyQt5 import QtWidgets, uic
+from PyQt5.QtCore import *
+from PyQt5.QtGui import *
+from PyQt5.QtWidgets import *
 
 
 def getVal(cont1, cont2):

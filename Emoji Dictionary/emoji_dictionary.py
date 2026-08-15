@@ -1,9 +1,10 @@
 # Emoji Dictionary
 
 # -----------------------------------------------------------------------------------------------------
-from tkinter import *  # importing the necessary libraries
-import tkinter.messagebox as mbox
 import tkinter as tk  # imported tkinter as tk
+import tkinter.messagebox as mbox
+from tkinter import *  # importing the necessary libraries
+
 import emoji
 
 # -----------------------------------------------------------------------------------------------

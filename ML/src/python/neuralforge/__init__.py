@@ -1,10 +1,6 @@
-from . import nn
-from . import optim
-from . import data
-from . import utils
-from . import nas
-from .trainer import Trainer
+from . import data, nas, nn, optim, utils
 from .config import Config
+from .trainer import Trainer
 
 __version__ = "1.0.0"
-__all__ = ['nn', 'optim', 'data', 'utils', 'nas', 'Trainer', 'Config']
+__all__ = ["nn", "optim", "data", "utils", "nas", "Trainer", "Config"]

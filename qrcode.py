@@ -1,5 +1,6 @@
-import qrcode
 import cv2
+
+import qrcode
 
 qr = qrcode.QRCode(version=1, box_size=10, border=5)
 

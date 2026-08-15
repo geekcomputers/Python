@@ -59,7 +59,11 @@ def open_web_target(target):
     cleaned = normalize_text(target)
     url = KNOWN_SITES.get(cleaned)
     if not url and "." in cleaned:
-        url = target if target.startswith(("http://", "https://")) else f"https://{target}"
+        url = (
+            target
+            if target.startswith(("http://", "https://"))
+            else f"https://{target}"
+        )
     if not url or not is_safe_url(url):
         return "I can only open safe web addresses."
     webbrowser.open(url)
@@ -102,7 +106,14 @@ def rule_based_action(text):
     if is_dangerous_request(cleaned):
         return "blocked"
 
-    search_prefixes = ["search for ", "google search ", "look up ", "find ", "ara ", "google da ara "]
+    search_prefixes = [
+        "search for ",
+        "google search ",
+        "look up ",
+        "find ",
+        "ara ",
+        "google da ara ",
+    ]
     for prefix in search_prefixes:
         if cleaned.startswith(prefix):
             query = cleaned.removeprefix(prefix).strip()
@@ -120,7 +131,15 @@ def rule_based_action(text):
         app = cleaned[: -len(" kapat")].strip()
         return f"close_app:{app}" if app else ""
 
-    open_prefixes = ["open ", "launch ", "start ", "can you open ", "please open ", "ac ", "aç "]
+    open_prefixes = [
+        "open ",
+        "launch ",
+        "start ",
+        "can you open ",
+        "please open ",
+        "ac ",
+        "aç ",
+    ]
     suffix_open_words = [" ac", " aç", " i ac", " i aç", " u ac", " u aç"]
     for site, url in KNOWN_SITES.items():
         if cleaned in {site, f"open {site}", f"{site} ac", f"{site} aç"}:

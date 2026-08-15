@@ -1,18 +1,17 @@
 # Author-Kingslayer
 # Email-kingslayer8509@gmail.com
 # you need to create a file password.txt which contains all possible passwords
-import requests
-from bs4 import BeautifulSoup
 import sys
 
+import requests
+from bs4 import BeautifulSoup
+
 if sys.version_info[0] != 3:
-    print(
-        """--------------------------------------
+    print("""--------------------------------------
 	REQUIRED PYTHON 3.x
 	use: python3 fb.py
 --------------------------------------
-			"""
-    )
+			""")
     sys.exit()
 
 post_url = "https://www.facebook.com/login.php"

@@ -1,11 +1,11 @@
-import requests
-from bs4 import BeautifulSoup
+# import time
+import json
 
 # import csv
 import os
 
-# import time
-import json
+import requests
+from bs4 import BeautifulSoup
 
 
 class Phonearena:

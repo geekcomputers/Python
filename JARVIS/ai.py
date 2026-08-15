@@ -48,7 +48,9 @@ def ask_model(text):
         )
     except OpenAIError as exc:
         state.debug("chat error", str(exc))
-        return "I cannot reach LM Studio right now. Start the local server and try again."
+        return (
+            "I cannot reach LM Studio right now. Start the local server and try again."
+        )
     debug_response("chat", prompt, response)
     return clean_assistant_output(response.output_text)
 
@@ -56,7 +58,9 @@ def ask_model(text):
 def classify_action(text):
     prompt = f"{ACTION_CLASSIFIER_PROMPT}\nUser: {text}"
     try:
-        response = lm_client().responses.create(model=OPENAI_MODEL, input=prompt, max_output_tokens=40)
+        response = lm_client().responses.create(
+            model=OPENAI_MODEL, input=prompt, max_output_tokens=40
+        )
     except OpenAIError as exc:
         state.debug("action error", str(exc))
         return "chat"

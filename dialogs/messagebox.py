@@ -1,5 +1,4 @@
-# Use the MessageBox() function to display a simple message box.
-
 from quo.dialog import MessageBox
+from quo.text import Text
 
-MessageBox(title="Example dialog window", text="Do you want to continue?")
+MessageBox(title=Text("Example dialog window"), text=Text('Do you want to "continue"?'))

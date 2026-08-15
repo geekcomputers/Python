@@ -3,8 +3,6 @@ import os
 import sys
 import tempfile
 
-import speech_recognition as sr
-
 from .config import LISTEN_PHRASE_SECONDS, SPEECH_LANGUAGES, TTS_MODE
 from .text_utils import clean_assistant_output, normalize_text
 
@@ -98,7 +96,9 @@ def speak(text):
 def say(text):
     output_encoding = sys.stdout.encoding or "utf-8"
     clean_text = clean_assistant_output(text)
-    safe_text = clean_text.encode(output_encoding, errors="replace").decode(output_encoding)
+    safe_text = clean_text.encode(output_encoding, errors="replace").decode(
+        output_encoding
+    )
     print(f"Jarvis: {safe_text}")
     speak(safe_text)
 
@@ -107,11 +107,17 @@ def recognize_audio(audio, recognizer):
     candidates = []
     for language in SPEECH_LANGUAGES:
         try:
-            result = recognizer.recognize_google(audio, language=language, show_all=True)
+            result = recognizer.recognize_google(
+                audio, language=language, show_all=True
+            )
         except Exception:
             continue
         alternatives = result.get("alternative", []) if isinstance(result, dict) else []
-        candidates.extend(item.get("transcript", "") for item in alternatives if item.get("transcript"))
+        candidates.extend(
+            item.get("transcript", "")
+            for item in alternatives
+            if item.get("transcript")
+        )
     unique_candidates = []
     seen = set()
     for candidate in candidates:
@@ -124,7 +130,9 @@ def recognize_audio(audio, recognizer):
 
 def listen_once(recognizer, source, choose_best_candidate):
     print("Listening...")
-    audio = recognizer.listen(source, timeout=None, phrase_time_limit=LISTEN_PHRASE_SECONDS)
+    audio = recognizer.listen(
+        source, timeout=None, phrase_time_limit=LISTEN_PHRASE_SECONDS
+    )
     candidates = recognize_audio(audio, recognizer)
     if candidates:
         print("I heard these possibilities:")

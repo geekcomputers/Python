@@ -12,6 +12,14 @@ import aiohttp
 
 
 def download(ways):
+    """
+    Download all files from the given list of URLs.
+
+    Args:
+        ways (list): A list of URL strings to download.
+
+    Prints progress and final summary of succeeded/failed downloads.
+    """
     if not ways:
         print("Ways list is empty. Downloading is impossible")
         return
@@ -21,13 +29,10 @@ def download(ways):
     success_files = set()
     failure_files = set()
 
-    event_loop = asyncio.get_event_loop()
-    try:
-        event_loop.run_until_complete(
-            async_downloader(ways, event_loop, success_files, failure_files)
-        )
-    finally:
-        event_loop.close()
+    # asyncio.run() creates a new event loop, runs the coroutine,
+    # and closes the loop automatically – this fixes the
+    # "no current event loop" error in Python 3.10+.
+    asyncio.run(async_downloader(ways, success_files, failure_files))
 
     print("Download complete")
     print("-" * 100)
@@ -43,19 +48,22 @@ def download(ways):
             print(file)
 
 
-async def async_downloader(ways, loop, success_files, failure_files):
-    async with aiohttp.ClientSession() as session:
-        coroutines = [
-            download_file_by_url(
-                url,
-                session=session,
-            )
-            for url in ways
-        ]
+async def async_downloader(ways, success_files, failure_files):
+    """
+    Asynchronously download multiple files using aiohttp.
 
+    Args:
+        ways (list): List of URL strings.
+        success_files (set): Set to collect successful URLs.
+        failure_files (set): Set to collect failed URLs.
+    """
+    async with aiohttp.ClientSession() as session:
+        # Create a coroutine for each URL
+        coroutines = [download_file_by_url(url, session=session) for url in ways]
+
+        # Process tasks as they complete
         for task in asyncio.as_completed(coroutines):
             fail, url = await task
-
             if fail:
                 failure_files.add(url)
             else:
@@ -63,59 +71,63 @@ async def async_downloader(ways, loop, success_files, failure_files):
 
 
 async def download_file_by_url(url, session=None):
+    """
+    Download a single file from a URL and save it locally.
+
+    Args:
+        url (str): The URL to download.
+        session (aiohttp.ClientSession): The session to use for the request.
+
+    Returns:
+        tuple: (fail, url) where fail is True if download failed, else False.
+    """
     fail = True
     file_name = basename(url)
 
-    assert session
+    # Ensure a valid session is provided
+    assert session, "aiohttp session is required"
 
     try:
         async with session.get(url) as response:
+            # Handle 404 specifically
             if response.status == 404:
+                print(f"\t{file_name} from {url} : Failed : 404 - Not found")
+                return fail, url
+
+            # Any non-200 status is considered a failure
+            if response.status != 200:
                 print(
-                    "\t{} from {} : Failed : {}".format(
-                        file_name, url, "404 - Not found"
-                    )
+                    f"\t{file_name} from {url} : Failed : HTTP response {response.status}"
                 )
                 return fail, url
 
-            if not response.status == 200:
-                print(
-                    "\t{} from {} : Failed : HTTP response {}".format(
-                        file_name, url, response.status
-                    )
-                )
-                return fail, url
-
+            # Read and save the content
             data = await response.read()
-
             with open(file_name, "wb") as file:
                 file.write(data)
 
     except asyncio.TimeoutError:
-        print("\t{} from {}: Failed : {}".format(file_name, url, "Timeout error"))
+        print(f"\t{file_name} from {url}: Failed : Timeout error")
 
     except aiohttp.client_exceptions.ClientConnectionError:
-        print(
-            "\t{} from {}: Failed : {}".format(
-                file_name, url, "Client connection error"
-            )
-        )
+        print(f"\t{file_name} from {url}: Failed : Client connection error")
 
     else:
-        print("\t{} from {} : Success".format(file_name, url))
+        # No exception occurred – download succeeded
+        print(f"\t{file_name} from {url} : Success")
         fail = False
 
     return fail, url
 
 
 def test():
+    """Test the downloader with a list of sample URLs."""
     ways = [
         "https://www.wikipedia.org",
         "https://www.ya.ru",
         "https://www.duckduckgo.com",
         "https://www.fail-path.unknown",
     ]
-
     download(ways)
 
 

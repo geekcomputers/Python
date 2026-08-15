@@ -1,4 +1,5 @@
 from typing import Optional
+
 from inorder_successor import inorder_successor
 from tree_node import Node
 

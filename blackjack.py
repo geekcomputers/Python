@@ -84,7 +84,9 @@ def start_game():
         if k == "1":
             random.shuffle(deck)
             p_cards.append(deck.pop())
-            print("You have a total of " + str(sum(p_cards)) + " with the cards ", p_cards)
+            print(
+                "You have a total of " + str(sum(p_cards)) + " with the cards ", p_cards
+            )
 
             if sum(p_cards) > 21:
                 print("*************You are BUSTED !*************\n Dealer Wins !!")

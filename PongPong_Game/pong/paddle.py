@@ -1,8 +1,9 @@
 # ./PongPong/pong/paddle.py
 
+from typing import Tuple
+
 import pyglet
 from pyglet.window import key
-from typing import Tuple
 
 
 class Paddle(pyglet.shapes.Rectangle):

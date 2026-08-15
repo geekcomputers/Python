@@ -14,4 +14,3 @@ def debug(label, value):
     if not DEVELOPER_MODE:
         return
     print(f"[dev] {label}: {value}")
-

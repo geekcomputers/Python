@@ -11,7 +11,7 @@ merged_pdf = open(path, mode="rb")
 
 pdf = PyPDF2.PdfFileReader(merged_pdf)
 
-(u, ctr, x) = tuple([0] * 3)
+u, ctr, x = tuple([0] * 3)
 for i in range(1, pdf.numPages + 1):
     if u >= pdf.numPages:
         print("Successfully done!")
