@@ -36,17 +36,21 @@ def main():
   rolls = [random.randint(1, 6) for _ in range(num_dice)]
 
   print(f"\nRolling {num_dice} dice...")
-  print("~" * (num_dice * 11))
 
   # Retrieve ASCII art for each rolled die
   dice_arts = [get_die_art(val) for val in rolls]
 
+  separator = "  "
+  die_width = len(dice_arts[0][0])
+  divider = "~" * (num_dice * die_width + (num_dice - 1) * len(separator))
+  print(divider)
+
   # Print dice side-by-side by iterating line by line (0 to 4)
   for line_index in range(5):
-    row_line = "  ".join(dice_art[line_index] for dice_art in dice_arts)
+    row_line = separator.join(dice_art[line_index] for dice_art in dice_arts)
     print(row_line)
 
-  print("~" * (num_dice * 11))
+  print(divider)
 
   # Output results and total sum
   print(f"Individual Rolls: {rolls}")
