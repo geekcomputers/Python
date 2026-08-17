@@ -1,32 +1,28 @@
-# Python code to calculate the sum of digits of a number, by taking number input from user.
+"""
+Module Name: Addition of Digits
+Description: Calculates the sum of digits of a user-input integer (supports negative numbers).
+Author: Mohammad Arham Javed
+Date: 2026-07-18
+"""
 
 import sys
 
-
 def get_integer():
-    for i in range(
-        3, 0, -1
-    ):  # executes the loop 3 times. Giving 3 chances to the user.
+    for i in range(3, 0, -1):  # executes the loop 3 times. Giving 3 chances to the user.
         num = input("enter a number:")
-        if num.isnumeric():  # checks if entered input is an integer string or not.
-            num = int(
-                num
-            )  # converting integer string to integer. And returns it to where function is called.
-            return num
+        # .lstrip('-') allows negative numbers to pass the numeric check
+        if num.lstrip('-').isnumeric():  
+            return int(num)
         else:
             print("enter integer only")
-            print(
-                f"{i - 1} chances are left"
-                if (i - 1) > 1
-                else f"{i - 1} chance is left"
-            )  # prints if user entered wrong input and chances left.
-        continue
+            print(f"{i - 1} chances are left" if (i - 1) > 1 else f"{i - 1} chance is left")
+    return None
 
 
 def addition(num):
     """
     Returns the sum of the digits of a number.
-    Negative numbers are handled using the absolute value.
+    Negative numbers are handled gracefully.
 
     Examples:
     >>> addition(123)
@@ -34,24 +30,17 @@ def addition(num):
     >>> addition(-784)
     19
     """
-    Sum = 0
-    if type(num) is type(
-        None
-    ):  # Checks if number type is none or not. If type is none program exits.
+    if num is None:
         print("Try again!")
         sys.exit()
-    num = abs(num) # Handle negative numbers
-    while num > 0:  # Addition- adding the digits in the number.
-        digit = int(num % 10)
-        Sum += digit
-        num //= 10
-    return Sum  # Returns sum to where the function is called.
+        
+    # Strip the minus sign if present, and sum the integer values
+    return sum(int(digit) for digit in str(num).replace('-', ''))
 
 
-if (
-    __name__ == "__main__"
-):  # this is used to overcome the problems while importing this file.
+if __name__ == "__main__":
     number = get_integer()
-    Sum = addition(number)
-    abs_display = f" (absolute value: {abs(number)})" if number < 0 else ""
-    print(f"Sum of digits of {number}{abs_display} is {Sum}")  # Prints the sum
+    if number is not None:
+        Sum = addition(number)
+        abs_display = f" (absolute value: {abs(number)})" if number < 0 else ""
+        print(f"Sum of digits of {number}{abs_display} is {Sum}")
