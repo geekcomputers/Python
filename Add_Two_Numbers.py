@@ -1,8 +1,9 @@
 __author__ = "Nitkarsh Chourasia"
 __version__ = "1.0"
 
+from typing import Union
 
-def addition(num1: typing.Union[int, float], num2: typing.Union[int, float]) -> str:
+def addition(num1: Union[int, float], num2: Union[int, float]) -> str:
     """A function to add two given numbers."""
 
     # Checking if the given parameters are numerical or not.
