@@ -7,6 +7,7 @@ from PyQt5.QtCore import *
 import httpx
 from bs4 import BeautifulSoup
 
+# hiiihihihihihihih
 
 def getVal(cont1, cont2):
     # Extract currency codes from user input (format assumed like "USD- United States Dollar")
