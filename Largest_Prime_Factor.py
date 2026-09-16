@@ -35,6 +35,7 @@ def solution(n: int = 600851475143) -> int:
         ...
     TypeError: Parameter n must be int or passive of cast to int.
     """
+    
     try:
         n = int(n)
     except (TypeError, ValueError):
@@ -63,6 +64,8 @@ def solution(n: int = 600851475143) -> int:
 
 
 if __name__ == "__main__":
+    print("Enter a number: ", end="")
+    
     # print(solution(int(input().strip())))
     import doctest
 
