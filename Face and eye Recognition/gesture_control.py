@@ -1,27 +1,47 @@
 import cv2 as cv
 
-# Read the image in grayscale
-img = cv.imread(r"..\img\hand1.jpg", cv.IMREAD_GRAYSCALE)
+# Read the image
+img = cv.imread(r"..\img\hand1.jpg")
 
-# Apply thresholding to create a binary image
-_, thresholded = cv.threshold(img, 70, 255, cv.THRESH_BINARY)
+# Check if image loaded
+if img is None:
+    print("Error: Image not found")
+    exit()
 
-# Find contours in the binary image
-contours, _ = cv.findContours(thresholded.copy(), cv.RETR_TREE, cv.CHAIN_APPROX_SIMPLE)
+# Convert to grayscale
+gray = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
 
-# Convex Hull for each contour
-convex_hulls = [cv.convexHull(contour) for contour in contours]
+# Apply Gaussian Blur to remove noise
+blur = cv.GaussianBlur(gray, (5, 5), 0)
 
-# Draw contours and convex hulls on the original image
-original_with_contours = cv.drawContours(img.copy(), contours, -1, (0, 0, 0), 2)
-original_with_convex_hulls = cv.drawContours(img.copy(), convex_hulls, -1, (0, 0, 0), 2)
+# Apply Otsu Thresholding (automatic)
+_, thresh = cv.threshold(blur, 0, 255, cv.THRESH_BINARY + cv.THRESH_OTSU)
 
-# Display the images
-cv.imshow("Original Image", img)
-cv.imshow("Thresholded Image", thresholded)
-cv.imshow("Contours", original_with_contours)
-cv.imshow("Convex Hulls", original_with_convex_hulls)
+# Find contours
+contours, _ = cv.findContours(thresh, cv.RETR_EXTERNAL, cv.CHAIN_APPROX_SIMPLE)
 
-# Wait for a key press and close windows
+# Get largest contour (assumed as hand)
+largest_contour = max(contours, key=cv.contourArea)
+
+# Convex Hull
+hull = cv.convexHull(largest_contour)
+
+# Create copies for drawing
+contour_img = img.copy()
+hull_img = img.copy()
+
+# Draw largest contour (Green)
+cv.drawContours(contour_img, [largest_contour], -1, (0, 255, 0), 2)
+
+# Draw convex hull (Blue)
+cv.drawContours(hull_img, [hull], -1, (255, 0, 0), 2)
+
+# Show images
+cv.imshow("Original", img)
+cv.imshow("Threshold", thresh)
+cv.imshow("Largest Contour", contour_img)
+cv.imshow("Convex Hull", hull_img)
+
+# Wait & close
 cv.waitKey(0)
 cv.destroyAllWindows()
