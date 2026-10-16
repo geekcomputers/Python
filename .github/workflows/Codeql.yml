@@ -19,24 +19,24 @@ jobs:
     steps:
     # 1. 检出代码
     - name: Checkout repository
-      uses: actions/checkout@v4
+      uses: actions/checkout@v7
       with:
         fetch-depth: 0
 
     # 2. 初始化 CodeQL
     - name: Initialize CodeQL
-      uses: github/codeql-action/init@v3
+      uses: github/codeql-action/init@v4
       with:
         languages: python
         # 不指定 queries，Action 会默认跑安全 + 质量查询
 
     # 3. 自动构建
     - name: Autobuild
-      uses: github/codeql-action/autobuild@v3
+      uses: github/codeql-action/autobuild@v4
 
     # 4. 执行分析
     - name: Perform CodeQL Analysis
-      uses: github/codeql-action/analyze@v3
+      uses: github/codeql-action/analyze@v4
       with:
         # 不指定 queries，Action 会自动跑安全 + 质量规则
         upload: true
