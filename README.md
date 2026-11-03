@@ -47,26 +47,25 @@ Feel free to explore the scripts and use them for your learning and automation n
 21. [testlines.py](https://github.com/geekcomputers/Python/blob/master/testlines.py) - Open a file and print out 100 lines of the set line variable.
 22. [tweeter.py](https://github.com/geekcomputers/Python/blob/master/tweeter.py) - Tweet text or a picture from the terminal.
 23. [serial_scanner.py](https://github.com/geekcomputers/Python/blob/master/serial_scanner.py) - List available serial ports in use on Linux and Windows systems.
-24. [get_youtube_view.py](https://github.com/geekcomputers/Python/blob/master/get_youtube_view.py) - Get more views for YouTube videos and repeat songs on YouTube.
-25. [CountMillionCharacter.py](https://github.com/geekcomputers/Python/blob/master/CountMillionCharacter.py) and [CountMillionCharacter2.0](https://github.com/geekcomputers/Python/blob/master/CountMillionCharacters-2.0.py) - Get character count of a text file.
-26. [xkcd_downloader.py](https://github.com/geekcomputers/Python/blob/master/xkcd_downloader.py) - Download the latest XKCD comic and place them in a new folder called "comics".
-27. [timymodule.py](https://github.com/geekcomputers/Python/blob/master/timymodule.py) - An alternative to Python's 'timeit' module and easier to use.
-28. [calculator.py](https://github.com/geekcomputers/Python/blob/master/calculator.py) - Implement a calculator using Python's eval() function.
-29. [Google_News.py](https://github.com/geekcomputers/Python/blob/master/Google_News.py) - Use BeautifulSoup to provide latest news headlines along with news links.
-30. [cricket_live_score](https://github.com/geekcomputers/Python/blob/master/Cricket_score.py) - Use BeautifulSoup to provide live cricket scores.
-31. [youtube.py](https://github.com/geekcomputers/Python/blob/master/youtube.py) - Take a song name as input and fetch the YouTube URL of the best matching song and play it.
-32. [site_health.py](https://github.com/geekcomputers/Python/blob/master/site_health.py) - Check the health of a remote server.
-33. [SimpleStopWatch.py](https://github.com/geekcomputers/Python/blob/master/SimpleStopWatch.py) - Simple stop watch implementation using Python's time module.
-34. [Changemac.py](https://github.com/geekcomputers/Python/blob/master/changemac.py) - Change your MAC address, generate a random MAC address, or enter input as a new MAC address on Linux (Successfully Tested in Ubuntu 18.04).
-35. [whatsapp-monitor.py](https://github.com/geekcomputers/Python/blob/master/whatsapp-monitor.py) - Use Selenium to give online status updates about your contacts in WhatsApp on the terminal.
-36. [whatsapp-chat-analyzer.py](https://github.com/subahanii/whatsapp-Chat-Analyzer) - WhatsApp group/individual chat analyzer that visualizes chat activity using matplotlib.
-37. [JARVIS.py](https://git.io/fjH8m) - Control Windows programs with your voice.
-38. [Images Downloader](https://git.io/JvnJh) - Download images from webpages on Unix-based systems.
-39. [space_invader.py.py](https://github.com/meezan-mallick/space_invader_game) - Classical 2D space invader game to recall your childhood memories.
-40. [Test Case Generator](https://github.com/Tanmay-901/test-case-generator/blob/master/test_case.py) - Generate different types of test cases with a clean and friendly UI, used in competitive programming and software testing.
-41. [Extract Thumbnail From Video](https://github.com/geekcomputers/Python/tree/ExtractThumbnailFromVideo) - Extract Thumbnail from video files
-42. [How to begin the journey of open source (first contribution)](https://www.youtube.com/watch?v=v2X51AVgl3o) - First Contribution of open source
-43. [smart_file_organizer.py](https://github.com/sangampaudel530/Python2.0/blob/main/smart_file_organizer.py) - Organizes files in a directory into categorized subfolders based on file type (Images, Documents, Videos, Audios, Archives, Scripts, Others). You can run it once or automatically at set intervals using the `--path` and `--interval` options.
+24. [CountMillionCharacter.py](https://github.com/geekcomputers/Python/blob/master/CountMillionCharacter.py) and [CountMillionCharacter2.0](https://github.com/geekcomputers/Python/blob/master/CountMillionCharacters-2.0.py) - Get character count of a text file.
+25. [xkcd_downloader.py](https://github.com/geekcomputers/Python/blob/master/xkcd_downloader.py) - Download the latest XKCD comic and place them in a new folder called "comics".
+26. [timymodule.py](https://github.com/geekcomputers/Python/blob/master/timymodule.py) - An alternative to Python's 'timeit' module and easier to use.
+27. [calculator.py](https://github.com/geekcomputers/Python/blob/master/calculator.py) - Implement a calculator using Python's eval() function.
+28. [Google_News.py](https://github.com/geekcomputers/Python/blob/master/Google_News.py) - Use BeautifulSoup to provide latest news headlines along with news links.
+29. [cricket_live_score](https://github.com/geekcomputers/Python/blob/master/Cricket_score.py) - Use BeautifulSoup to provide live cricket scores.
+30. [youtube.py](https://github.com/geekcomputers/Python/blob/master/youtube.py) - Take a song name as input and fetch the YouTube URL of the best matching song and play it.
+31. [site_health.py](https://github.com/geekcomputers/Python/blob/master/site_health.py) - Check the health of a remote server.
+32. [SimpleStopWatch.py](https://github.com/geekcomputers/Python/blob/master/SimpleStopWatch.py) - Simple stop watch implementation using Python's time module.
+33. [Changemac.py](https://github.com/geekcomputers/Python/blob/master/changemac.py) - Change your MAC address, generate a random MAC address, or enter input as a new MAC address on Linux (Successfully Tested in Ubuntu 18.04).
+34. [whatsapp-monitor.py](https://github.com/geekcomputers/Python/blob/master/whatsapp-monitor.py) - Use Selenium to give online status updates about your contacts in WhatsApp on the terminal.
+35. [whatsapp-chat-analyzer.py](https://github.com/subahanii/whatsapp-Chat-Analyzer) - WhatsApp group/individual chat analyzer that visualizes chat activity using matplotlib.
+36. [JARVIS.py](https://git.io/fjH8m) - Control Windows programs with your voice.
+37. [Images Downloader](https://git.io/JvnJh) - Download images from webpages on Unix-based systems.
+38. [space_invader.py.py](https://github.com/meezan-mallick/space_invader_game) - Classical 2D space invader game to recall your childhood memories.
+39. [Test Case Generator](https://github.com/Tanmay-901/test-case-generator/blob/master/test_case.py) - Generate different types of test cases with a clean and friendly UI, used in competitive programming and software testing.
+40. [Extract Thumbnail From Video](https://github.com/geekcomputers/Python/tree/ExtractThumbnailFromVideo) - Extract Thumbnail from video files
+41. [How to begin the journey of open source (first contribution)](https://www.youtube.com/watch?v=v2X51AVgl3o) - First Contribution of open source
+42. [smart_file_organizer.py](https://github.com/sangampaudel530/Python2.0/blob/main/smart_file_organizer.py) - Organizes files in a directory into categorized subfolders based on file type (Images, Documents, Videos, Audios, Archives, Scripts, Others). You can run it once or automatically at set intervals using the `--path` and `--interval` options.
 <hr>
 
 _**Note**: The content in this repository belongs to the respective authors and creators. I'm just providing a formatted README.md for better presentation.
