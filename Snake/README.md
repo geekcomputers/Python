@@ -25,26 +25,16 @@ A polished terminal game with a fixed-size board, responsive controls, score tra
 
 ## Installation
 
-1. Create and activate a virtual environment:
+1. Linux or Mac - Curses comes pre-installed with python3
+
+2. Windows - Run 
    ```bash
-   python -m venv .venv
-   source .venv/bin/activate
-   ```
-2. Upgrade pip:
-   ```bash
-   python -m pip install --upgrade pip
-   ```
+   pip3 install -r requirements.txt
 
 ## Running the Game
 
 From the project root:
 
-- Recommended (if `uv` is installed):
-  ```bash
-  uv run main.py
-  ```
-
-- Fallback option:
   ```bash
   python main.py
   ```
