@@ -1,0 +1,6 @@
+# Standard dependencies (if you have any)
+# requests>=2.31.0
+
+# Install curses wrapper ONLY if the target system is Windows
+windows-curses; sys_platform == 'win32'
+
