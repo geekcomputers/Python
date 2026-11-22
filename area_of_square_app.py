@@ -65,7 +65,7 @@ class Square:
                 n = input("Enter the side of the square: ")
                 self.side = float(n)
         elif isinstance(condition, (int, float)):
-            for i in range(_=condition):
+            for i in range(condition):
                 n = input("Enter the side of the square: ")
                 self.side = float(n)
         # n = input("Enter the side of the square: ")
