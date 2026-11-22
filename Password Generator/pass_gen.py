@@ -14,9 +14,11 @@ class PasswordGenerator:
             str.punctuation,
         ]
         sequence = ""
-        for x in range(len(conditions)):
-            if conditions[x]:
-                sequence += possible_characters[x]
+        keys = ["lowercase", "uppercase", "digits", "punctuation"]
+
+        for key, chars in zip(keys, possible_characters):
+            if conditions[key]:
+                sequence += chars
             else:
                 pass
         return sequence
@@ -54,7 +56,7 @@ class Interface:
         print(cls.has_characters)  # print the output
 
     def generate_password(self, lenght):
-        sequence = PasswordGenerator.gen_sequence(list(self.has_characters.values()))
+        sequence = PasswordGenerator.gen_sequence(self.has_characters)
         print(PasswordGenerator.gen_password(sequence, lenght))
 
 
